@@ -12,7 +12,16 @@
 
 1. `pip install mkdocs-material` - ставим (нужен py3)
 2. `mkdocs new .` - создаст `mkdocs.yml` и `docs/index.md`
-3. `mkdocs build` - рендерим html
+3. Пишем в конфиге тему и название:
+   
+      ```yaml
+      site_name: My Docs
+
+      theme:
+        name: material
+      ```
+
+4. `mkdocs build` - рендерим html
 
 ## Как посмотреть доку на локалке?
 
@@ -66,7 +75,6 @@ repo_url: https://bitbucket.org/{организация/юзер}/{проект}
 edit_uri: src/master/{путь к доке}
 ```
 
-
 ---
 
 ## Как деплоить?
@@ -91,7 +99,7 @@ site_dir: ../../static/docs
 
 #### app.yaml
 
-Проставить роутинг статики: 
+Проставить роутинг статики:
 
 ```yaml
 - url: /docs/
@@ -109,3 +117,7 @@ login: admin
 ```
 
 Источник: https://github.com/mkdocs/mkdocs/issues/1622
+
+## Топики для изучения
+
+- https://github.com/squidfunk/mkdocs-material/discussions/3482

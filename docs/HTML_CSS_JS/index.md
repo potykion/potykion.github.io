@@ -1,0 +1,48 @@
+# HTML, CSS, JS
+
+## JS
+
+### Как удалить элемент из массива по индексу?
+
+```js
+const array = [1, 2, 3];
+const index = 1;
+array.splice(index, 1);
+// array == [1, 3]
+```
+
+### Как валидировать форму?
+
+Напр. как завалидировать required-inputы
+
+```js
+for (const el of document.getElementById('form').querySelectorAll("[required]")) {
+    if (!el.reportValidity()) {
+        return;
+    }
+}
+```
+
+[Источник](https://stackoverflow.com/a/67826542/5500609)
+
+### Как fetch использовать?
+
+```js
+await fetch(
+    `/company/config_settings/iiko_transport/payment_types`,
+    {
+        method: 'POST',
+        body: JSON.stringify({...}),
+    },
+)
+```
+
+#### Как передавать query-параметры?
+
+https://stackoverflow.com/a/58437909/5500609
+
+```js
+await fetch(
+    '/company/config_settings/verification' + new URLSearchParams({status: this.status}),
+)
+```

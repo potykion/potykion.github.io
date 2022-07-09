@@ -1,8 +1,10 @@
-site_name: Руководство по выживанию для бекера
-
+#site_name: Руководство по выживанию для бекера
+site_name: potyk-io
 dev_addr: 127.0.0.1:8001
 
 theme:
+  favicon: assets/favicon-16x16.png
+  logo: assets/favicon-32x32.png
   name: material
   palette:
     primary: pink
