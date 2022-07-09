@@ -9,6 +9,24 @@ theme:
   palette:
     primary: pink
 
+  features:
+    # Якори
+    - navigation.tracking
+    # Табы
+    - navigation.tabs
+    # Кнопка "Вверх"
+    - navigation.top
+
+plugins:
+    - search
+    - awesome-pages
+
+nav:
+  - index.md
+  - ... | Разработка/**/*.md
+  - ... | Жизнб/**/*.md
+  - ... | Meta/**/*.md
+
 markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.highlight:

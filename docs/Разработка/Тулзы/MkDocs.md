@@ -13,7 +13,7 @@
 1. `pip install mkdocs-material` - ставим (нужен py3)
 2. `mkdocs new .` - создаст `mkdocs.yml` и `docs/index.md`
 3. Пишем в конфиге тему и название:
-   
+
       ```yaml
       site_name: My Docs
 
@@ -118,6 +118,67 @@ login: admin
 
 Источник: https://github.com/mkdocs/mkdocs/issues/1622
 
-## Топики для изучения
+## Как сделать навигацию?
 
-- https://github.com/squidfunk/mkdocs-material/discussions/3482
+Ниже мой конфиг по навигации:
+
+```yaml
+theme:
+  features:
+    # Якори
+    - navigation.tracking
+    # Табы
+    - navigation.tabs
+    # Кнопка "Вверх"
+    - navigation.top
+
+```
+
+### Как упорядочить табы?
+
+Использовать плагин https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
+
+Напр. этот блог по умолчанию делал такие табы:
+
+- Meta
+- Жизнь
+- Разработка
+
+А хочется в обратном порядке
+
+Чтобы это сделать определяем навигацию
+
+```yaml
+plugins:
+  - search
+  - awesome-pages
+
+nav:
+  - index.md
+  - ... | Разработка/**/*.md
+  - ... | Жизнб/**/*.md
+  - ... | Meta/**/*.md
+
+```
+
+[Источник](https://github.com/squidfunk/mkdocs-material/discussions/3482)
+
+## Как сделать поиск?
+
+```yaml
+theme:
+  features:
+    - search.suggest
+    - search.highlight
+
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ru
+
+```
+
+[Источник](https://squidfunk.github.io/mkdocs-material/setup/setting-up-site-search/)
+
