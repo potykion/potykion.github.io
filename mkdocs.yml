@@ -16,6 +16,8 @@ theme:
     - navigation.tabs
     # Кнопка "Вверх"
     - navigation.top
+    # Секции в рамках одного раздела
+    - navigation.sections
 
 plugins:
     - search
