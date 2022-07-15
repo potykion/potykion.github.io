@@ -14,14 +14,23 @@ theme:
     - navigation.tracking
     # Табы
     - navigation.tabs
+    - navigation.tabs.sticky
+    # В левой навигации все раскрыто
+    - navigation.expand
     # Кнопка "Вверх"
     - navigation.top
     # Секции в рамках одного раздела
     - navigation.sections
+    # Поиск
+    - search.suggest
+    - search.highlight
 
 plugins:
-    - search
-    - awesome-pages
+  - search:
+      lang:
+        - en
+        - ru
+  - awesome-pages
 
 nav:
   - index.md
