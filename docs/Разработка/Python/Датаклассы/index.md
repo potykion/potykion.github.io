@@ -14,38 +14,9 @@
 - [dataclasses](https://docs.python.org/3/library/dataclasses.html) - встроено в Python 3.7+
 - [pydantic](https://pydantic-docs.helpmanual.io/) - для парса из примитивов (Python 3.6+)
 - [attrs](https://www.attrs.org/en/stable/) - для старых версий python (Python 2, Python < 3.6) + есть парсилка
-  - [cattrs](https://cattrs.readthedocs.io/en/latest/)
+    - [cattrs](https://cattrs.readthedocs.io/en/latest/)
 
 ## dataclasses
 
 - https://www.youtube.com/watch?v=T-TwcmT6Rcw - топ видос по теме
 
-## attrs
-
-### Как использовать валидаторы?
-
-- Дока: https://www.attrs.org/en/stable/examples.html#validators
-- Используем готовые из `attr.validators`
-    - Напр. `attr.validators.matches_re` валидирует значение поля по регулярке
-- Или пишем свой, определяя функцию с 3 аргументами:
-
-```python
-def val_req(_, __, val):
-    """attrs-валидатор, проверяющий заполнено ли значение"""
-    # Для интов 0 возможен, так что чекаем на None
-    if isinstance(val, int):
-        return val is not None
-
-    return bool(val)
-```
-
-- Передаем в аргументе `validator`:
-
-```python
-# Как 1 функцию
-phone = attr.ib(type=basestring, validator=val_req)
-# Как список функций
-phone = attr.ib(type=basestring, validator=[val_req, attr.validators.matches_re(r'\d{8}')])
-```
-
-### cattrs
