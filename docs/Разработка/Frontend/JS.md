@@ -45,6 +45,13 @@ await fetch(
 )
 ```
 
+### Как читать json-response?
+
+```js
+const resp = await fetch(...);
+const res = await resp.json();
+```
+
 ## Как написать groupBy?
 
 ```js
@@ -59,5 +66,11 @@ function groupBy(xs, key) {
 ## Как снять выбор с radio-button?
 
 - Нажатием на radio-button никак
-- [При использовании Vue](./Vue.md) можно сделать кнопку, которая будет для v-model выставлять null - таким образом можно снять
+- [При использовании Vue](./Vue.md) можно сделать кнопку, которая будет для v-model выставлять null - таким образом
+  можно снять
   выбор с radio-button
+
+## Как работать с файлами?
+
+- [База](https://developer.mozilla.org/en-US/docs/Web/API/File)
+- [При использовании Vue](./Vue.md)

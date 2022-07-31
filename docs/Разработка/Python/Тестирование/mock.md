@@ -24,6 +24,25 @@ get_houses_by_coordinates_mock.return_value = dadata_addresses
 assert dadata_service_mock.get_houses_by_coordinates(*args, **kwargs) == dadata_addresses
 ```
 
+## Как мокать объекты?
+
+Использовать `mock.patch.object`:
+
+```python
+@mock.patch.object(
+    GetAccessTokenForFCM,
+    '__call__',
+)
+def test_setup_fcm(
+    GetAccessTokenForFCM_mock,  # type: mock.MagicMock
+):
+    GetAccessTokenForFCM_mock.return_value = 'token'
+
+    assert GetAccessTokenForFCM()() == 'token'
+```
+
+Здесь классу `GetAccessTokenForFCM` мокаем метод `__call__`. Теперь при вызове метода `__call__` объект будет всегда
+возвращать токен.
 
 ## Очередность моков
 

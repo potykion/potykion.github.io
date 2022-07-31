@@ -25,13 +25,31 @@
 </label>
 ```
 
-- walletPaymentType - переменная, которая используется для биндинга
-- PAYMENT_TYPE, DISCOUNT - строковые константы
-- Суть в v-model: когда выбран radio-button, то в v-model выставляется значение нажатого radio-button, а в других radio-button
+- `walletPaymentType` - переменная, которая используется для биндинга
+- `PAYMENT_TYPE`, `DISCOUNT` - строковые константы
+- Суть в `v-model`: когда выбран radio-button, то в `v-model` выставляется значение нажатого radio-button, а в других
+  radio-button
   нажатие снимается
 
 ### Как снять выбор с radio-button?
 
 - Нажатием на radio-button никак
-- Можно сделать кнопку, которая будет для v-model выставлять null - таким образом можно снять
+- Можно сделать кнопку, которая будет для `v-model` выставлять `null` - таким образом можно снять
   выбор с radio-button
+
+## Как считать содержимое файла?
+
+```html
+<input type="file" @change="readFile">
+```
+
+```js
+{
+    async readFile(e) {
+        const file = e.target.files[0];
+        const text = await file.text();
+    }
+}
+```
+
+[Источник](https://stackoverflow.com/a/50900809/5500609)
