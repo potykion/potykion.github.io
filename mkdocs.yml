@@ -35,7 +35,24 @@ plugins:
 nav:
   - index.md
   - ... | Разработка/**/*.md
-  - ... | Жизнб/**/*.md
+  - Жизнб:
+      - Всякое:
+          - ... | flat | Life/Other/**/*.md
+      - Вождение:
+          - Теория:
+              -  ... | flat | Life/Driving/Theory/**/*.md
+          - Практика:
+              -  ... | flat | Life/Driving/Practice/**/*.md
+      - Итоги:
+          - Дня:
+              - ... | flat | Life/Results/Day/**/*.md
+          - Недели:
+              - ... | flat | Life/Results/Week/**/*.md
+          - Месяца:
+              - ... | flat | Life/Results/Month/**/*.md
+          - Года:
+              - ... | flat | Life/Results/Year/**/*.md
+
   - ... | Meta/**/*.md
 
 markdown_extensions:
@@ -45,3 +62,16 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - md_in_html
+
+extra:
+  social:
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/potykion
+      name: тг
+    - icon: fontawesome/brands/github
+      link: https://github.com/potykion
+      name: гх
+    - icon: material/mirror
+      link: https://potykion.github.io/
+      name: зеркало

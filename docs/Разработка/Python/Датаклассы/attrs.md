@@ -70,3 +70,37 @@ except AssertionError:
 - По-сути литералы нам достаточно парсить в литералы - то есть ничего не делать с ними
 - Но cattrs не слишком умный и если мы передадим строку, отличную от литерала, он ее проглотит
 - Так что в функции-парсере литерала пишем проверочку на принадлежность к литералу
+
+### Какие могут быть проблемы?
+
+#### dict
+
+```python
+@attr.s
+class PrivateKeyReq(object):
+    project_id = attr.ib(type=ProjectId)
+    private_key = attr.ib(type=Optional[dict], default=None)
+
+
+cattr.strucure({'project_id': 'sam', 'private_key': None}, PrivateKeyReq)
+
+```
+
+Для поля `private_key` с типом `dict` cattr выкинет такое:
+
+```
+AttributeError: type object 'dict' has no attribute '__args__'
+```
+
+Решение: для полей-словарей лучше юзать `Dict`
+
+```python
+@attr.s
+class PrivateKeyReq(object):
+    project_id = attr.ib(type=ProjectId)
+    private_key = attr.ib(type=Optional[Dict], default=None)
+
+
+cattr.strucure({'project_id': 'sam', 'private_key': None}, PrivateKeyReq)  # ok
+
+```

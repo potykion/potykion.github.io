@@ -9,6 +9,16 @@
 </div>
 ```
 
+## Как итегрироваться по объекту?
+
+```html
+<li v-for="(value, key) in myObject">
+  {{ key }}: {{ value }}
+</li>
+```
+
+[Источник](https://vuejs.org/guide/essentials/list.html#v-for-with-an-object)
+
 ## Как писать radio-button-ы?
 
 ```js
@@ -45,7 +55,9 @@
 
 ```js
 {
-    async readFile(e) {
+    async
+    readFile(e)
+    {
         const file = e.target.files[0];
         const text = await file.text();
     }

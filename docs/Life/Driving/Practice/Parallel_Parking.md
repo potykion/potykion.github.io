@@ -3,7 +3,7 @@
 ## Как делать?
 
 
-![img.png](Параллельная_парковка.png)
+![img.png](Parallel_Parking.png)
 
 [Источник](https://remont-avto.info/parallelnaya-parkovka-zadnim-xodom-poshagovaya-instrukciya/)
 
