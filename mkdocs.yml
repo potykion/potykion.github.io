@@ -34,15 +34,15 @@ plugins:
 
 nav:
   - index.md
-  - ... | Разработка/**/*.md
+  - ... | Dev/**/*.md
   - Жизнб:
       - Всякое:
           - ... | flat | Life/Other/**/*.md
       - Вождение:
           - Теория:
-              -  ... | flat | Life/Driving/Theory/**/*.md
+              - ... | flat | Life/Driving/Theory/**/*.md
           - Практика:
-              -  ... | flat | Life/Driving/Practice/**/*.md
+              - ... | flat | Life/Driving/Practice/**/*.md
       - Итоги:
           - Дня:
               - ... | flat | Life/Results/Day/**/*.md
@@ -52,7 +52,6 @@ nav:
               - ... | flat | Life/Results/Month/**/*.md
           - Года:
               - ... | flat | Life/Results/Year/**/*.md
-
   - ... | Meta/**/*.md
 
 markdown_extensions:
@@ -63,6 +62,8 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
   - md_in_html
+  - attr_list
+
 
 extra:
   social:
