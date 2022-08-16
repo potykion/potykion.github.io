@@ -68,6 +68,9 @@ markdown_extensions:
 
 
 extra:
+  analytics:
+    provider: google
+    property: G-P2KPCZXW6M
   social:
     - icon: fontawesome/brands/telegram
       link: https://t.me/potykion
