@@ -34,27 +34,9 @@ plugins:
 
 nav:
   - index.md
-  - ... | Dev/**/*.md
-  - Жизнб:
-      - Деньги:
-          - ... | flat | Life/Money/**/*.md
-      - Всякое:
-          - ... | flat | Life/Other/**/*.md
-      - Вождение:
-          - Теория:
-              - ... | flat | Life/Driving/Theory/**/*.md
-          - Практика:
-              - ... | flat | Life/Driving/Practice/**/*.md
-      - Итоги:
-          - Дня:
-              - ... | flat | Life/Results/Day/**/*.md
-          - Недели:
-              - ... | flat | Life/Results/Week/**/*.md
-          - Месяца:
-              - ... | flat | Life/Results/Month/**/*.md
-          - Года:
-              - ... | flat | Life/Results/Year/**/*.md
-  - ... | Meta/**/*.md
+  - ... | Python/**/*.md
+  - ... | Ops/**/*.md
+  - ... | Frontend/**/*.md
 
 markdown_extensions:
   - pymdownx.magiclink
