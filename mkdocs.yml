@@ -7,7 +7,7 @@ theme:
   logo: assets/favicon-32x32.png
   name: material
   palette:
-    primary: pink
+    primary: blue
 
   features:
     # Якори
