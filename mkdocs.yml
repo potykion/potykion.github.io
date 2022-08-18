@@ -37,6 +37,9 @@ nav:
   - ... | Python/**/*.md
   - ... | Ops/**/*.md
   - ... | Frontend/**/*.md
+  - Other:
+    - ... | flat | Other/**/**.md
+
 
 markdown_extensions:
   - pymdownx.magiclink
