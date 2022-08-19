@@ -16,12 +16,8 @@ theme:
     # Табы
     - navigation.tabs
     - navigation.tabs.sticky
-    # В левой навигации все раскрыто
-    - navigation.expand
     # Кнопка "Вверх"
     - navigation.top
-    # Секции в рамках одного раздела
-    - navigation.sections
     # Поиск
     - search.suggest
     - search.highlight
@@ -36,7 +32,17 @@ plugins:
 nav:
   - Ayo 👋: index.md
   - Python 🐍:
-      - ... | Python/**/*.md
+      - Python/index.md
+      - База:
+          - ... | flat | Python/Base/**/*.md
+      - Либы:
+          - ... | flat | Python/Libs/**/*.md
+      - Django:
+          - ... | flat | Python/Django/**/*.md
+      - Тесты:
+          - ... | flat | Python/Testing/**/*.md
+      - Тулзы:
+          - ... | flat | Python/Tools/**/*.md
   - Ops 👷‍:
       - ... | flat | Ops/**/*.md
   - Frontend 💻:
