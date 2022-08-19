@@ -6,6 +6,11 @@
 - Штука для генерации документации
 - Оч простая: достаточно 1 файла с конфигурацией, чтобы отрендерить маркдаун
 
+## Ссылки
+
+- [Дока по mkdocs](https://www.mkdocs.org/user-guide/configuration/)
+- [Дока по плагину для навигации](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin)
+
 ---
 
 ## Как генерить доку?
