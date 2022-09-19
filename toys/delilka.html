@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delilka</title>
+
+    <style>
+        .py-2 {
+            padding-block: 10px;
+        }
+    </style>
+
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/petite-vue?module'
+        createApp({
+            partsAmount: 3,
+            parts: [20, 30, 50],
+            sum: null,
+            updateParts() {
+                this.parts = [...Array(this.partsAmount).keys()].map(_ => Math.round(100 / this.partsAmount));
+            },
+            setPart(index, newPart) {
+                this.parts[index] = newPart;
+            },
+            get partSum() {
+                return this.parts.reduce((acc, part) => acc + part, 0);
+            },
+            splitSum(part) {
+                return Math.round(this.sum * part / this.partSum);
+            },
+            setPreset(preset) {
+                if (preset == '20/30/50') {
+                    this.partsAmount = 3;
+                    this.parts = [20, 30, 50];
+                }
+            },            
+        }).mount()
+      </script>
+</head>
+<body>
+    <h1>Delilka</h1>
+    <p style="font-style: italic">Делит число на части</p>
+    
+    <div>
+        <div class="py-2">
+            <label>
+                Число:
+                <input type="number" v-model.number="sum" placeholder="Введи число для начала">
+            </label>
+        </div>
+        
+      
+        <div class="py-2" >
+            <label>
+                Части:
+                <input type="number" v-model.number="partsAmount" @change="updateParts">
+            </label>
+            <br>
+            <label>
+                Пресеты:
+                <button @click="setPreset('20/30/50')">20/30/50</button>
+            </label>
+        </div>
+    
+        <div class="py-2" >
+            <div v-for="(part, index) in parts">
+                <label>
+                    {{ index + 1 }} часть:
+                    <input type="number" v-model.number="part" @change="setPart(index, part)">
+                </label>
+            </div>
+        </div>
+
+        <div class="py-2" >
+            <h2>Делилово на части</h2>
+            <div v-if="sum">
+            <ul v-for="(part, index) in parts">
+                <li v-effect="$el.textContent = splitSum(part)"></span>
+            </ul>
+        </div>
+        <div v-else>
+            Нечего делить, введи число
+        </div>
+        </div>
+    
+    </div>
+</body>
+</html>
