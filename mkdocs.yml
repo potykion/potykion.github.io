@@ -49,7 +49,11 @@ nav:
   - Frontend 💻:
       - ... | flat | Frontend/**/*.md
   - Жизнь 🤡:
-      - ... | flat | Life/**/**.md
+      - Life/Money/index.md
+      - Еда:
+        - База: Life/Food/index.md
+        - Рецепты: Life/Food/Recipes.md
+      - ... | flat | Life/**/*.md
 
 
 markdown_extensions:

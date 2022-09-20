@@ -64,3 +64,11 @@
 - [Рынок и общепит](https://yandex.ru/maps/-/CCURfGCRwC)
     - Все порции огромные
     - Шакшука топчик
+
+## Как есть?
+
+- Маленькими порциями
+- Следуя [здоровой тарелке питания](https://www.hsph.harvard.edu/nutritionsource/healthy-eating-plate/translations/russian/)
+
+![Здоровая тарелка питания](Здоровая_тарелка_питания.png)
+
