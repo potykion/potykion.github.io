@@ -52,7 +52,8 @@ nav:
       - Life/Money/index.md
       - Еда:
         - База: Life/Food/index.md
-        - Рецепты: Life/Food/Recipes.md
+        - Рецепты: Life/Food/Recipes/index.md
+        - ПроСто кухня: Life/Food/Просто_кухня.md
       - ... | flat | Life/**/*.md
 
 
