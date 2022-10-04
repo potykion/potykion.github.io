@@ -53,7 +53,7 @@ nav:
       - Еда:
         - База: Life/Food/index.md
         - Рецепты: Life/Food/Recipes/index.md
-        - ПроСто кухня: Life/Food/Просто_кухня.md
+        - ПроСто кухня: Life/Food/ProstoKuhnya.md
       - ... | flat | Life/**/*.md
 
 
