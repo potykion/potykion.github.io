@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block libs %}
+    {% if config.extra.yandex %}
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         (function (m, e, t, r, i, k, a) {
@@ -18,16 +19,17 @@
         })
         (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-        ym(82960681, "init", {
+        ym({{ config.extra.yandex }}, "init", {
             clickmap: true,
             trackLinks: true,
             accurateTrackBounce: true
         });
     </script>
     <noscript>
-        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
+        <div><img src="https://mc.yandex.ru/watch/{{ config.extra.yandex }}" style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
     <!-- /Yandex.Metrika counter -->
+    {% endif %}
 {% endblock %}
 
 
