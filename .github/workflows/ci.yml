@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install -r requirements.txt
-      - run: mkdocs gh-deploy --force
-        env:
+      - env:
           GA_KEY: ${{ secrets.GA_KEY }}
           YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
+        run: mkdocs gh-deploy --force
