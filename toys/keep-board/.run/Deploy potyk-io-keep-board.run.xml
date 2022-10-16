@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Deploy potyk-io-keep-board" type="yandex-cloud-deploy-function">
+    <option name="entryPoint" value="cloud_function.handler" />
+    <option name="functionId" value="d4evmq3b5u0kmmehthvf" />
+    <option name="runtime" value="python39" />
+    <option name="sourceFiles">
+      <list>
+        <option value="$PROJECT_DIR$/keep_board_back" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/cloud_function.py" />
+        <option value="$PROJECT_DIR$/.env" />
+      </list>
+    </option>
+    <option name="sourceFolderPolicy" value="keep" />
+    <option name="timeoutSeconds" value="7" />
+    <method v="2" />
+  </configuration>
+</component>
