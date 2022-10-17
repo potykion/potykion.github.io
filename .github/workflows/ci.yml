@@ -38,11 +38,8 @@ jobs:
       - uses: goodsmileduck/yandex-serverless-action@v2
         with:
           token: ${{ secrets.YA_CLI_TOKEN }}
-          bucket: ${{ secrets.KEEP_BOARD_BACK_BUCKET }}
-          accessKeyId: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           function_id: ${{ secrets.YA_CLOUD_FUNCTION }}
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
           source: 'toys/keep-board/keep_board_back'
-          environment: 'SAM=SAM'
+          environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }}
