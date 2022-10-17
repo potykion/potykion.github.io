@@ -17,6 +17,10 @@ jobs:
           GA_KEY: ${{ secrets.GA_KEY }}
           YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
         run: mkdocs gh-deploy --force
+  keep-board-front:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete
@@ -27,3 +31,17 @@ jobs:
           AWS_S3_ENDPOINT: https://storage.yandexcloud.net
           AWS_REGION: 'ru-central1'
           SOURCE_DIR: 'toys/keep-board/keep_board_front'
+  keep-board-back:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: goodsmileduck/yandex-serverless-action@v2
+        with:
+          token: ${{ secrets.YA_CLI_TOKEN }}
+          bucket: ${{ secrets.KEEP_BOARD_BACK_BUCKET }}
+          accessKeyId: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          function_id: ${{ secrets.YA_CLOUD_FUNCTION }}
+          runtime: 'python39'
+          entrypoint: 'cloud_function.handler'
+          source: 'toys/keep-board/keep_board_back'

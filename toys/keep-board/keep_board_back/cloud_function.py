@@ -2,7 +2,7 @@ import json
 
 from dotenv import load_dotenv
 
-from keep_board_back.api_cli import KeepCli
+from .api_cli import KeepCli
 
 
 def handler(event, context):
