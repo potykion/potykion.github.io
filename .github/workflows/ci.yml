@@ -45,4 +45,4 @@ jobs:
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
           source: 'toys/keep-board/keep_board_back'
-          environment: ''
+          environment: 'SAM=SAM'
