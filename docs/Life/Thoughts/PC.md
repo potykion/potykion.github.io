@@ -1,22 +1,6 @@
-# Компы
+# Мысли о компах
 
-## Зачем эта статья?
-
-- Знать какое железо у меня сейчас
-- На что обращать внимание, когда буду брать новый ноут/комп
-
-## Текущий ноут
-
-- Asus ZenBook Pro 15 UX 550 GD
-- Вес: 1.95 kg
-- Дисплей: 15.6 - 1920x1080
-- SSD: 1 TB
-- RAM:  16 GB
-- CPU: [Intel Core i7-8750H @ 2.20GHz](https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-8750H+%40+2.20GHz&id=3237)
-- OS: Win 10 Pro
-- Цена: ~3000$
-
-## Компьютерные характеристики
+## На что смотреть при выборе компа?
 
 - **Диск**
     - Тип: eMMC < HDD < SSD
@@ -44,6 +28,19 @@
           чипа с
           8 ядрами.
 
-## Дешманские ноуты
+## Что у меня сейчас?
+
+### Рабочий ноут
+
+- Asus ZenBook Pro 15 UX 550 GD
+- Вес: 1.95 kg
+- Дисплей: 15.6 - 1920x1080
+- SSD: 1 TB
+- RAM:  16 GB
+- CPU: [Intel Core i7-8750H @ 2.20GHz](https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-8750H+%40+2.20GHz&id=3237)
+- OS: Win 10 Pro
+- Цена: ~3000$
+
+### Дешманский ноут
 
 - <https://www.ozon.ru/product/15-6-noutbuk-h15-n5095-16g-metal-russkaya-raskladka-klaviatury-intel-celeron-n5095-2-0-ggts-ram-16-619491519/?sh=DxDTd7js9A>
