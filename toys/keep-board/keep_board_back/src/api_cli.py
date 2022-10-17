@@ -20,12 +20,8 @@ class KeepCli:
         self.keep = _KeepSetup()()
         return self
 
-    def notes(self, label: Optional[str] = None) -> List[GKeepNote]:
-        if label:
-            keep_notes = self.keep.find(labels=[self.keep.findLabel(label)])
-        else:
-            keep_notes = self.keep.all()
-
+    def notes(self, label: str) -> List[GKeepNote]:
+        keep_notes = self.keep.find(labels=[self.keep.findLabel(label)])
         return list(map(GKeepNote.from_gkeep, keep_notes))
 
 
