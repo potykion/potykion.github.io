@@ -2,7 +2,7 @@ import json
 
 from dotenv import load_dotenv
 
-from .api_cli import KeepCli
+from src.api_cli import KeepCli
 
 
 def handler(event, context):
