@@ -30,11 +30,25 @@
     </div>
 
     <div class="navbar-menu">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <button :class="['button', 'is-warning', mode === 'daily' ? 'has-text-weight-bold' : '']"
+                            @click="setMode('daily')">
+                        По дням
+                    </button>
+                    <button :class="['button', 'is-warning', mode === 'weekly' ? 'has-text-weight-bold' : '']"
+                            @click="setMode('weekly')">
+                        По неделям
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <button class="button is-white" @click="loadNotes(true)">
-                        ↻ Обновить заметки
+                    <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
+                        {{ loading ? 'Грузим...' : '↻' }}
                     </button>
                 </div>
             </div>
@@ -42,75 +56,139 @@
     </div>
 </nav>
 
-<section class="section">
+<section class="pt-4">
     <div class="container is-fluid" @vue:mounted="loadNotes">
-        <div class="columns ">
-            <button class="button is-white" @click="previousWeek">◀</button>
-            <div class="column" v-for="(notes, date) in dailyNotes()">
-                <div class="block" v-html="date"></div>
-                <div class="block box note-font-size " style="white-space: pre-line" v-for="note in notes"
+        <div class="columns">
+            <button class="button is-white" @click="prevGroup">◀</button>
+            <div class="column" v-for="(notes, group) in groupedNotes()">
+                <div class="block has-text-centered" v-html="group"></div>
+
+                <div class="block box note-font-size " style="white-space: pre-line"
+                     v-for="note in notes"
                      v-html="note.text"></div>
             </div>
-            <button class="button is-white" @click="nextWeek">▶</button>
-
+            <button class="button is-white" @click="nextGroup">▶</button>
         </div>
     </div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isBetween.js"></script>
+
 <script type="module">
     import {createApp} from 'https://unpkg.com/petite-vue?module'
 
-    const groupBy = (xs, key) => xs.reduce(function (rv, x) {
-        (rv[x[key]] = rv[x[key]] || []).push(x);
-        return rv;
-    }, {});
 
+    dayjs.extend(window.dayjs_plugin_isBetween)
+
+    const apply = (obj, keyOrFunc) => typeof keyOrFunc === 'string'
+        ? obj[keyOrFunc]
+        : keyOrFunc(obj);
+    const groupBy = (items, keyOrFunc) => items.reduce(
+        (res, obj) => ({
+            ...res,
+            [apply(obj, keyOrFunc)]: [...(res[apply(obj, keyOrFunc)] ?? []), obj]
+        }),
+        {},
+    );
+    const zip = (keys, values) => {
+        let obj = {};
+        keys.forEach((key, index) => obj[key] = values[index]);
+        return obj;
+    }
+
+    /**
+     * По дню генерирует массив дней недели
+     */
     const weekDays = (today = null) => {
-        today = today ?? dayjs();
+        today = dayjs(today ?? dayjs());
         const weekStart = today.add(-((today.day() + 6) % 7), 'd');
         return [...Array(7).keys()].map(i => weekStart.add(i, 'd').format('YYYY-MM-DD'));
     };
-    const shiftWeek = (weeks = 1, today = null) => {
-        return weekDays(
-            (today ?? dayjs())
-                .add(7 * weeks, 'd')
-        );
-    }
+    const formatDateRange = dateRange => `${dateRange[0]} - ${dateRange[dateRange.length - 1]}`;
+    /**
+     * Двигает массив дней недели на неделю вперед или назад
+     */
+    const shiftWeek = (weeks = 1, today = null) => weekDays((today ?? dayjs()).add(weeks, 'w'))
 
     createApp({
-        weekdays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+        loading: false,
+
         // [{title, text, created}]
         notes: [],
-        dateRange: weekDays(),
-        // {weekday: notes}
-        dailyNotes() {
-            const dailyNotes_ = groupBy(this.notes, 'created');
-            return Object.fromEntries(
-                this.dateRange.map((wd, index) => [
-                    `<b>${this.weekdays[index]}</b> ${wd}`,
-                    dailyNotes_[wd] ?? [],
-                ]),
-            );
-        },
-        formatDateRange() {
-            return `${this.dateRange[0]} - ${this.dateRange[this.dateRange.length - 1]}`;
-        },
-        previousWeek() {
-            this.dateRange = shiftWeek(-1, dayjs(this.dateRange[0]));
-        },
-        nextWeek() {
-            this.dateRange = shiftWeek(1, dayjs(this.dateRange[0]));
-        },
-        async loadNotes(reset = false) {
-            const cachedNotes = JSON.parse(localStorage.getItem('notes'));
-            if (cachedNotes && !reset) {
-                this.notes = cachedNotes;
-            } else {
-                const res = await fetch('https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf')
-                this.notes = await res.json();
-                localStorage.setItem('notes', JSON.stringify(this.notes));
+
+        // daily, weekly
+        mode: 'daily',
+        setMode(mode) {
+            this.mode = mode;
+
+            if (this.mode === 'daily') {
+                this.groups = weekDays();
+            } else if (this.mode === 'weekly') {
+                const todayWeek = weekDays();
+                const weekStart = dayjs(todayWeek[0]);
+                const monthStart = weekStart.startOf('M');
+                const monthEnd = weekStart.endOf('M');
+
+                let groups = [];
+                let curWeek = weekDays(monthStart);
+                while (true) {
+                    groups.push(formatDateRange(curWeek));
+                    curWeek = weekDays(dayjs(curWeek[0]).add(1, 'w'));
+                    if (monthEnd.isBetween(curWeek[0], curWeek[curWeek.length - 1])) {
+                        groups.push(formatDateRange(curWeek));
+                        break
+                    }
+                }
+
+                this.groups = groups;
             }
+
+            this.loadNotes();
+        },
+
+        async loadNotes(reset = false) {
+            this.loading = true;
+            try {
+                const cachedNotes = JSON.parse(localStorage.getItem(`${this.mode}_notes`));
+                if (cachedNotes && !reset) {
+                    this.notes = cachedNotes;
+                } else {
+                    const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${this.mode}`)
+                    this.notes = await res.json();
+                    localStorage.setItem(`${this.mode}_notes`, JSON.stringify(this.notes));
+                }
+            } finally {
+                this.loading = false;
+            }
+        },
+
+        weekdays: ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'],
+
+        groups: weekDays(),
+        groupedNotes() {
+            // {weekday: notes}
+            if (this.mode === 'daily') {
+                const dailyNotes_ = groupBy(this.notes, 'created');
+                return zip(
+                    this.groups.map((wd, index) => `<b>${this.weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
+                    this.groups.map(wd => dailyNotes_[wd] ?? []),
+                );
+            }
+            if (this.mode === 'weekly') {
+                const weeklyNotes = groupBy(this.notes, (note) => formatDateRange(weekDays(note.created)))
+                return zip(
+                    this.groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
+                    this.groups.map(week => weeklyNotes[week] ?? []),
+                );
+
+            }
+        },
+        prevGroup() {
+            this.groups = shiftWeek(-1, dayjs(this.groups[0]));
+        },
+        nextGroup() {
+            this.groups = shiftWeek(1, dayjs(this.groups[0]));
         },
     }).mount();
 </script>
