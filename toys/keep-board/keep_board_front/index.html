@@ -64,7 +64,7 @@
                 <div class="block has-text-centered" v-html="group"></div>
 
                 <template v-for="note in notes">
-                    <a :href="note.url">
+                    <a :href="note.url" target="_blank">
                         <div class="block box note-font-size "
                              style="white-space: pre-line"
                              v-html="note.text"></div>
