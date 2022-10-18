@@ -41,5 +41,5 @@ jobs:
           function_id: ${{ secrets.YA_CLOUD_FUNCTION }}
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
-          source: 'toys/keep-board/keep_board_back'
+          source: 'toys/keep-board'
           environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }}

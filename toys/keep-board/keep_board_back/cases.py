@@ -1,7 +1,7 @@
 import dataclasses
 from typing import Literal
 
-from keep_board_back.src.api_cli import KeepCli
+from .api_cli import KeepCli
 
 
 @dataclasses.dataclass()

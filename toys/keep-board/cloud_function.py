@@ -1,7 +1,7 @@
 import json
 
-from src.cases import ListNotes
-from src.yc import Event, Resp
+from keep_board_back.cases import ListNotes
+from keep_board_back.yc import Resp, Event
 
 
 def handler(event: Event, context) -> Resp:
