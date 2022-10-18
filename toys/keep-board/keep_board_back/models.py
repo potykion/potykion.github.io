@@ -11,6 +11,7 @@ class GKeepNote:
     title: str
     text: str
     labels: List[str]
+    url: str
 
     @classmethod
     def from_gkeep(cls, gkeep_note: Note):
@@ -19,6 +20,7 @@ class GKeepNote:
             title=gkeep_note.title,
             text=gkeep_note.text.strip(),
             labels=[l.name for l in gkeep_note.labels.all()],
+            url=f'https://keep.google.com/#NOTE/{gkeep_note.server_id}',
         )
 
     def to_json(self):
