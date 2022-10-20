@@ -12,7 +12,7 @@ theme:
   name: material
   # Цвет темы
   palette:
-      primary: blue
+    primary: blue
   # Фавикон - иконка вкладки браузера
   favicon: assets/favicon-16x16.png
   # Иконка в навбаре
@@ -66,11 +66,13 @@ nav:
   - Жизнь 🤡:
       - Life/Money/index.md
       - Еда:
-        - База: Life/Food/index.md
-        - Рецепты: Life/Food/Recipes/index.md
-        - ПроСто кухня: Life/Food/ProstoKuhnya/index.md
+          - База: Life/Food/index.md
+          - Рецепты: Life/Food/Recipes/index.md
+          - ПроСто кухня: Life/Food/ProstoKuhnya/index.md
       - Мысли о:
           - ... | flat | Life/Thoughts/**/*.md
+      - Обо мне:
+          - ... | flat | n/**/*.md
       - ... | flat | Life/**/*.md
 
 # Расширения маркдауна - возможность использовать новые конструкции в маркдауне
