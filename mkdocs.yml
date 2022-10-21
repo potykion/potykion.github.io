@@ -63,6 +63,10 @@ nav:
       - ... | flat | Ops/**/*.md
   - Frontend 💻:
       - ... | flat | Frontend/**/*.md
+  - Сравнятор 📊:
+      - ... | flat | Comparator/*.md
+      - Фреймворки:
+          - ... | flat | Comparator/Frameworks/*.md
   - Жизнь 🤡:
       - Life/Money/index.md
       - Еда:

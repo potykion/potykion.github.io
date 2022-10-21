@@ -20,6 +20,10 @@ hide:
 - [Ops](./Ops/Bat.md) - про консоледроч и веб-базу
 - [Frontend](./Frontend/HTML.md) - про html, js, vue
 
+### Сравнятор
+
+- [Сравнятор](./Comparator/Apps.md) - сравниваю всякие приложения и технологии
+
 ### Жизнь
 
 - [Food](./Life/Food/index.md) - рецепты, принципы
