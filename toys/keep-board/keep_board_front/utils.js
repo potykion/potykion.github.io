@@ -13,3 +13,6 @@ export const zip = (keys, values) => {
     keys.forEach((key, index) => obj[key] = values[index]);
     return obj;
 }
+
+export const makeClickableLinks = (str) =>
+    str.replace(/(https?:\/\/[^\s]+)/g, "<a href='$1' target='_blank'>$1</a>");
