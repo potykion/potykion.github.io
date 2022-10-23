@@ -1,6 +1,6 @@
 <!-- https://keep-board.website.yandexcloud.net/ -->
 <!DOCTYPE html>
-<html lang="en" xmlns:>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,17 +58,26 @@
 
 <section class="pt-4">
     <div class="container is-fluid" @vue:mounted="loadNotes">
-        <div class="columns">
+        <div class="columns is-variable is-1">
             <button class="button is-white" @click="prevGroup">◀</button>
             <div class="column" v-for="(notes, group) in groupedNotes()">
                 <div class="block has-text-centered" v-html="group"></div>
 
                 <template v-for="note in notes">
-                    <a :href="note.url" target="_blank">
-                        <div class="block box note-font-size "
-                             style="white-space: pre-line"
-                             v-html="note.text"></div>
-                    </a>
+                    <div class="card">
+                        <div class="card-image" v-if="note.image">
+                            <figure class="image is-4by3">
+                                <img :src="note.image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
+                        </div>
+                        <footer class="card-footer">
+                            <a :href="note.url" target="_blank" class="card-footer-item note-font-size">🔗</a>
+                        </footer>
+                    </div>
+
                 </template>
 
             </div>
@@ -82,25 +91,10 @@
 
 <script type="module">
     import {createApp} from 'https://unpkg.com/petite-vue?module'
-
+    import {groupBy, zip} from "./utils.js";
+    import {loadNotesFromCache} from "./notes.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween)
-
-    const apply = (obj, keyOrFunc) => typeof keyOrFunc === 'string'
-        ? obj[keyOrFunc]
-        : keyOrFunc(obj);
-    const groupBy = (items, keyOrFunc) => items.reduce(
-        (res, obj) => ({
-            ...res,
-            [apply(obj, keyOrFunc)]: [...(res[apply(obj, keyOrFunc)] ?? []), obj]
-        }),
-        {},
-    );
-    const zip = (keys, values) => {
-        let obj = {};
-        keys.forEach((key, index) => obj[key] = values[index]);
-        return obj;
-    }
 
     /**
      * По дню генерирует массив дней недели
@@ -152,16 +146,30 @@
             this.loadNotes();
         },
 
+        setNotes(notes, clickableLinks = false) {
+            if (clickableLinks) {
+                notes = notes.map(note => ({
+                        ...note,
+                        text: note.text.replace(/(https?:\/\/[^\s]+)/g, "<a href='$1' target='_blank'>$1</a>"),
+                    })
+                );
+            }
+
+            this.notes = notes;
+        },
         async loadNotes(reset = false) {
             this.loading = true;
             try {
-                const cachedNotes = JSON.parse(localStorage.getItem(`${this.mode}_notes`));
-                if (cachedNotes && !reset) {
-                    this.notes = cachedNotes;
+                const cachedNotes = loadNotesFromCache(`${this.mode}_notes`, reset)
+                if (cachedNotes) {
+                    this.setNotes(cachedNotes);
                 } else {
                     const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${this.mode}`)
-                    this.notes = await res.json();
-                    localStorage.setItem(`${this.mode}_notes`, JSON.stringify(this.notes));
+                    this.setNotes(await res.json(), true);
+                    localStorage.setItem(`${this.mode}_notes`, JSON.stringify({
+                        notes: this.notes,
+                        exp: dayjs().add(1, 'd')
+                    }));
                 }
             } finally {
                 this.loading = false;
