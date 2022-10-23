@@ -22,7 +22,7 @@ class KeepCli:
 
     def notes(self, label: str) -> List[GKeepNote]:
         keep_notes = self.keep.find(labels=[self.keep.findLabel(label)])
-        return list(map(GKeepNote.from_gkeep, keep_notes))
+        return [GKeepNote.from_gkeep(note, self.keep) for note in keep_notes]
 
 
 @dataclasses.dataclass()
@@ -37,7 +37,7 @@ class _KeepSetup:
             .or_else(self._from_token)
             .or_else(self._from_pass)
             .and_then(self._set_token)
-            .and_then(self._cache)
+            # .and_then(self._cache)
             .unwrap()
         )
 
@@ -72,7 +72,7 @@ class _KeepSetup:
     def _set_token(self, keep: Keep) -> Result[Keep]:
         try:
             keyring.set_password('google-keep-token', self.username, keep.getMasterToken())
-        except NoKeyringError:
+        except (NoKeyringError, AttributeError):
             pass
         return Ok(keep)
 
