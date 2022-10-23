@@ -20,26 +20,24 @@
 </head>
 <body>
 
-<nav class="navbar has-background-warning" role="navigation" aria-label="main navigation">
+<nav class="navbar has-background-warning is-flex" role="navigation" aria-label="main navigation">
     <div class="navbar-brand ">
         <div class="navbar-item">
-            <div class="is-size-4">
-                <b>KeepBoard</b>
-            </div>
+            <div class="is-size-4 is-size-6-mobile has-text-weight-bold">KeepBoard</div>
         </div>
     </div>
 
-    <div class="navbar-menu">
+    <div class="navbar-menu is-active is-flex has-background-warning is-flex-grow-1 is-justify-content-space-between is-shadowless">
         <div class="navbar-start">
             <div class="navbar-item">
                 <div class="buttons">
                     <button :class="['button', 'is-warning', mode === 'daily' ? 'has-text-weight-bold' : '']"
                             @click="setMode('daily')">
-                        По дням
+                        <span class="is-hidden-tablet">Д</span><span class="is-hidden-mobile">По дням</span>
                     </button>
                     <button :class="['button', 'is-warning', mode === 'weekly' ? 'has-text-weight-bold' : '']"
                             @click="setMode('weekly')">
-                        По неделям
+                        <span class="is-hidden-tablet">Н</span><span class="is-hidden-mobile">По неделям</span>
                     </button>
                 </div>
             </div>
@@ -60,7 +58,9 @@
     <div class="container is-fluid" @vue:mounted="mounted">
         <div v-if="loading">Грузим...</div>
         <div v-else class="columns is-variable is-1">
-            <button class="button is-white" @click="shiftGroups(-1)">◀</button>
+            <button class="button is-white" @click="shiftGroups(-1)">
+                ◀ <span class="is-hidden-tablet">&nbsp; Туда</span>
+            </button>
             <div class="column" v-for="(notes, group) in groupedNotes()">
                 <div class="block has-text-centered" v-html="group"></div>
 
@@ -82,7 +82,9 @@
                 </template>
 
             </div>
-            <button class="button is-white" @click="shiftGroups(1)">▶</button>
+            <button class="button is-white" @click="shiftGroups(1)">
+                <span class="is-hidden-tablet">Сюда &nbsp;</span>▶
+            </button>
         </div>
     </div>
 </section>
