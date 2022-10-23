@@ -11,11 +11,24 @@
             font-size: .75rem;
         }
 
+        .btn-small-mobile {
+            font-size: 1em;
+        }
+
         @media screen and (min-width: 1500px) {
             .note-font-size {
                 font-size: 1em;
             }
+
+
         }
+        @media screen and (max-width: 768px){
+            .btn-small-mobile {
+                font-size: .75rem;
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -27,17 +40,17 @@
         </div>
     </div>
 
-    <div class="navbar-menu is-active is-flex has-background-warning is-flex-grow-1 is-justify-content-space-between is-shadowless">
+    <div class="navbar-menu is-active is-flex has-background-warning is-flex-grow-1 is-justify-content-space-between is-shadowless is-align-items-center">
         <div class="navbar-start">
             <div class="navbar-item">
                 <div class="buttons">
-                    <button :class="['button', 'is-warning', mode === 'daily' ? 'has-text-weight-bold' : '']"
+                    <button :class="['button', 'btn-small-mobile', 'is-warning', mode === 'daily' ? 'has-text-weight-bold' : '']"
                             @click="setMode('daily')">
-                        <span class="is-hidden-tablet">Д</span><span class="is-hidden-mobile">По дням</span>
+                        Дни
                     </button>
-                    <button :class="['button', 'is-warning', mode === 'weekly' ? 'has-text-weight-bold' : '']"
+                    <button :class="['button', 'btn-small-mobile', 'is-warning', mode === 'weekly' ? 'has-text-weight-bold' : '']"
                             @click="setMode('weekly')">
-                        <span class="is-hidden-tablet">Н</span><span class="is-hidden-mobile">По неделям</span>
+                        Недели
                     </button>
                 </div>
             </div>
@@ -46,7 +59,7 @@
             <div class="navbar-item">
                 <div class="buttons">
                     <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
-                        {{ loading ? 'Грузим...' : '↻' }}
+                        {{ loading ? '⏳' : '↻' }}
                     </button>
                 </div>
             </div>
