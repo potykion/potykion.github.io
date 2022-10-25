@@ -59,6 +59,8 @@ nav:
           - ... | flat | Python/Testing/**/*.md
       - Тулзы:
           - ... | flat | Python/Tools/**/*.md
+      - Утилитки:
+          - ... | flat | Python/Utils/**/*.md
   - Ops 👷‍:
       - ... | flat | Ops/**/*.md
   - Frontend 💻:

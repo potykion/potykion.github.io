@@ -1,5 +1,7 @@
 # Vue
 
+<embed alt="Vue-Essentials-Cheat-Sheet via VueMastery" src="../../Vue-Essentials-Cheat-Sheet.pdf" width="100%" height="800px"  />
+
 ## Как итерироваться с индексом?
 
 ```html
@@ -12,8 +14,9 @@
 ## Как итегрироваться по объекту?
 
 ```html
+
 <li v-for="(value, key) in myObject">
-  {{ key }}: {{ value }}
+    {{ key }}: {{ value }}
 </li>
 ```
 
