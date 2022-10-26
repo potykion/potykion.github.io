@@ -1,4 +1,4 @@
-import {makeClickableLinks} from "./utils.js";
+import {makeClickableLinks, prettifyLinks} from "./utils.js";
 
 export class Note {
     created;
@@ -34,7 +34,7 @@ export class Note {
     static loadFromBack = async type => {
         const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${type}`)
         const notes = (await res.json())
-            .map(note => ({...note, text: makeClickableLinks(note.text)}))
+            .map(note => ({...note, text: prettifyLinks(makeClickableLinks(note.text))}))
             .map(n => new Note(n));
         localStorage.setItem(
             `${type}_notes`,
