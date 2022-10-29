@@ -22,7 +22,8 @@
 
 
         }
-        @media screen and (max-width: 768px){
+
+        @media screen and (max-width: 768px) {
             .btn-small-mobile {
                 font-size: .75rem;
             }
@@ -88,7 +89,10 @@
                             <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
                         </div>
                         <footer class="card-footer">
-                            <a :href="note.url" target="_blank" class="card-footer-item note-font-size">🔗</a>
+                            <button class="button is-white card-footer-item note-font-size"
+                                    @click="openEditNoteModal(note)">✏️
+                            </button>
+                            <a :href="note.url" target="_blank" class="button is-white card-footer-item note-font-size">🔗</a>
                         </footer>
                     </div>
 
@@ -102,6 +106,25 @@
     </div>
 </section>
 
+
+<div class="modal" id="edit-note-modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            WIP
+        </section>
+        <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button">Cancel</button>
+        </footer>
+    </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isBetween.js"></script>
 
@@ -112,6 +135,15 @@
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
+
+    const closeModal = () => document.getElementById('edit-note-modal').classList.remove('is-active');
+    const openModal = () => document.getElementById('edit-note-modal').classList.add('is-active');
+
+    document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button')
+        .forEach(($close) => $close.addEventListener('click', () => closeModal()));
+    document.addEventListener('keydown', (event) => {
+        if ((event || window.event).keyCode === 27) closeModal();
+    });
 
     createApp({
         loading: false,
@@ -147,6 +179,7 @@
 
         /** @type {Note[]} */
         notes: [],
+        selectedNote: null,
         setNotes(notes) {
             this.notes = notes;
         },
@@ -178,6 +211,11 @@
                     this.groups.map(week => weeklyNotes[week] ?? []),
                 );
             }
+        },
+
+        openEditNoteModal(note) {
+            this.selectedNote = note;
+            openModal();
         },
     }).mount();
 </script>

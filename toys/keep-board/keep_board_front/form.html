@@ -1,0 +1,133 @@
+<!-- https://keep-board.website.yandexcloud.net/ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KeepBoard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <style>
+        .note-font-size {
+            font-size: .75rem;
+        }
+
+        .btn-small-mobile {
+            font-size: 1em;
+        }
+
+        @media screen and (min-width: 1500px) {
+            .note-font-size {
+                font-size: 1em;
+            }
+
+
+        }
+
+        @media screen and (max-width: 768px) {
+            .btn-small-mobile {
+                font-size: .75rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+<section class="pt-4">
+    <div class="container">
+
+        <div class="form" @vue:mounted="mounted">
+            <div class="field has-addons" v-for="(point, i) in points">
+                <div class="control has-icons-left is-expanded">
+                    <input class="input is-small" :placeholder="categories[point.category]" v-model="point.value">
+                    <span class="icon is-small is-left">{{ point.category }}</span>
+                </div>
+                <div class="control">
+                    <button class="button is-small" @click="removePoint(point, i)">❌</button>
+                </div>
+                <div class="control">
+                    <button class="button is-small" @click="addPoint(point.category, i)">➕</button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isBetween.js"></script>
+
+<script type="module">
+    import {createApp} from 'https://unpkg.com/petite-vue?module'
+    import {groupBy, zip} from "./utils.js";
+    import {Note} from "./notes.js";
+    import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
+
+    dayjs.extend(window.dayjs_plugin_isBetween);
+
+    createApp({
+        categories: {
+            '🚀': 'Что зарелизил?',
+            '📝': 'Что нового написал?',
+            '⚒️': 'В процессе',
+            '📱': 'Че по rbcn сделал?',
+            '🏥': 'Че по risx сделал?',
+
+            '💡': 'Идеи, интересные статьи',
+            '😲': 'Что удивило?',
+            '📖': 'Че почитал интересного?',
+
+            '🥪': 'Что вкусненького съел?',
+            '🥘': 'Че приготовил?',
+            '🍴': 'Где ел?',
+
+            '🖼️': 'Картинка дня',
+            '🎵': 'Трек дня',
+            '😭': 'Были ли успешные раны в сасАйзеке?',
+            '📹': 'Видос дня',
+            '📺': 'Серик дня',
+            '🎥': 'Кино дня',
+            '🎭': 'Театрик дня',
+
+            '🏋️‍♂️': 'Че по спорту?',
+            '🤔': 'Странная тема',
+        },
+        mounted() {
+            Object.keys(this.categories).forEach(
+                category => {
+                    if (this.points.map(p => p.category).includes(category)) {
+                        // nothing
+                    } else {
+                        this.points.push({category, value: ''});
+                    }
+                }
+            );
+            this.points = this.points.sort(
+                (p1, p2) => {
+                    let catIndex1 = Object.keys(this.categories).indexOf(p1.category);
+                    let catIndex2 = Object.keys(this.categories).indexOf(p2.category);
+                    return catIndex1 - catIndex2;
+                }
+            );
+        },
+        points: [
+            {category: '🥪', value: 'Булочка с маком в шоколадной глазури'},
+        ],
+        addPoint(category, index) {
+            this.points.splice(index + 1, 0, {category, value: ''});
+        },
+        removePoint(point, index) {
+            if (this.points.filter(p => p.category === point.category).length === 1) {
+                point.value = '';
+            } else {
+                this.points.splice(index, 1);
+            }
+        },
+    }).mount();
+</script>
+
+</body>
+</html>
