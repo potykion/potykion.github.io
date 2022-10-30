@@ -135,13 +135,13 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/isBetween.js"></script>
+<script src="./libs/dayjs.min.js"></script>
+<script src="./libs/dayjs.isBetween.js"></script>
 
 <script type="module">
-    import {createApp} from 'https://unpkg.com/petite-vue?module'
+    import {createApp} from './libs/petite-vue.es.js'
     import {groupBy, zip} from "./utils.js";
-    import {Note} from "./notes.js";
+    import {Note, NoteVM} from "./notes.js";
     import {NotePoint} from "./points.js";
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
 
@@ -215,16 +215,17 @@
         },
         groupedNotes() {
             // {weekday: notes}
+            let notes = this.notes.map(note => new NoteVM(note));
             if (this.mode === 'daily') {
                 const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
-                const dailyNotes_ = groupBy(this.notes, 'created');
+                const dailyNotes_ = groupBy(notes, 'created');
                 return zip(
                     this.groups.map((wd, index) => `<b>${weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
                     this.groups.map(wd => dailyNotes_[wd] ?? []),
                 );
             }
             if (this.mode === 'weekly') {
-                const weeklyNotes = groupBy(this.notes, (note) => formatDateRange(getWeekDays(note.created)))
+                const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)))
                 return zip(
                     this.groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
                     this.groups.map(week => weeklyNotes[week] ?? []),
@@ -234,8 +235,9 @@
 
         /** @type {NotePoint[]} */
         points: [],
-        openEditNoteModal: function (note) {
-            this.selectedNote = note;
+        /** @param {NoteVM} vm */
+        openEditNoteModal(vm) {
+            this.selectedNote = vm.note;
 
             this.points = NotePoint.fromNote(this.selectedNote);
             this.points = [
@@ -253,7 +255,6 @@
                     return catIndex1 - catIndex2;
                 }
             );
-
 
             openModal();
         },

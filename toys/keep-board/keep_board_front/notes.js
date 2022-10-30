@@ -19,22 +19,18 @@ export class Note {
 
     static loadFromCache(type, reset) {
         const notesCache = JSON.parse(localStorage.getItem(`${type}_notes`));
-        if (
+        const notesCacheExpired = !(
             notesCache &&
             (notesCache.notes ?? []).length &&
             dayjs() < dayjs(notesCache.exp ?? dayjs()) &&
             !reset
-        ) {
-            return notesCache.notes.map(n => new Note(n));
-        } else {
-            return null;
-        }
+        )
+        return notesCacheExpired ? null : notesCache.notes.map(n => new Note(n));
     }
 
     static loadFromBack = async type => {
         const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${type}`)
         const notes = (await res.json())
-            .map(note => ({...note, text: prettifyLinks(makeClickableLinks(note.text))}))
             .map(n => new Note(n));
         localStorage.setItem(
             `${type}_notes`,
@@ -42,4 +38,14 @@ export class Note {
         );
         return notes;
     };
+}
+
+export class NoteVM extends Note {
+    note;
+
+    constructor(note) {
+        super(note);
+        this.text = prettifyLinks(makeClickableLinks(this.text));
+        this.note = note;
+    }
 }
