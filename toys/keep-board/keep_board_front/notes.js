@@ -1,4 +1,5 @@
-import {makeClickableLinks, prettifyLinks} from "./utils.js";
+import {groupBy, makeClickableLinks, prettifyLinks, zip} from "./utils.js";
+import {formatDateRange, getWeekDays} from "./date.js";
 
 export class Note {
     created;
@@ -47,5 +48,26 @@ export class NoteVM extends Note {
         super(note);
         this.text = prettifyLinks(makeClickableLinks(this.text));
         this.note = note;
+    }
+
+    static buildDaily(notes, groups) {
+        notes = notes.map(note => new NoteVM(note));
+
+        const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
+        const dailyNotes_ = groupBy(notes, 'created');
+        return zip(
+            groups.map((wd, index) => `<b>${weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
+            groups.map(wd => dailyNotes_[wd] ?? []),
+        );
+    }
+
+    static buildWeekly(notes, groups) {
+        notes = notes.map(note => new NoteVM(note));
+
+        const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)))
+        return zip(
+            groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
+            groups.map(week => weeklyNotes[week] ?? []),
+        );
     }
 }

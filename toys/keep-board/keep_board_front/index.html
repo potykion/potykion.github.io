@@ -111,20 +111,20 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">{{ modeStr() }} от {{ selectedNote.created }}</p>
+            <p class="modal-card-title" v-if="selectedNote">{{ modeStr() }} от {{ selectedNote.created }}</p>
             <button class="delete" aria-label="close"></button>
         </header>
-        <section class="modal-card-body">
-            <div class="field has-addons" v-for="(point, i) in points">
+        <section class="modal-card-body" v-if="pointsForm">
+            <div class="field has-addons" v-for="(point, i) in pointsForm.points">
                 <div class="control has-icons-left is-expanded">
                     <input class="input is-small" :placeholder="categories[point.category]" v-model="point.value">
                     <span class="icon is-small is-left">{{ point.category }}</span>
                 </div>
                 <div class="control">
-                    <button class="button is-small" @click="removePoint(point, i)">❌</button>
+                    <button class="button is-small" @click="pointsForm.removePoint(point, i)">❌</button>
                 </div>
                 <div class="control">
-                    <button class="button is-small" @click="addPoint(point.category, i)">➕</button>
+                    <button class="button is-small" @click="pointsForm.addPoint(point.category, i)">➕</button>
                 </div>
             </div>
         </section>
@@ -142,19 +142,13 @@
     import {createApp} from './libs/petite-vue.es.js'
     import {groupBy, zip} from "./utils.js";
     import {Note, NoteVM} from "./notes.js";
-    import {NotePoint} from "./points.js";
+    import {NotePoint, NotePointForm} from "./points.js";
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
+    import {setupModal} from "./modal.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
 
-    const closeModal = () => document.getElementById('edit-note-modal').classList.remove('is-active');
-    const openModal = () => document.getElementById('edit-note-modal').classList.add('is-active');
-
-    document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button')
-        .forEach(($close) => $close.addEventListener('click', () => closeModal()));
-    document.addEventListener('keydown', (event) => {
-        if ((event || window.event).keyCode === 27) closeModal();
-    });
+    const [openModal, _] = setupModal('#edit-note-modal')
 
     createApp({
         loading: false,
@@ -214,47 +208,24 @@
             }
         },
         groupedNotes() {
-            // {weekday: notes}
-            let notes = this.notes.map(note => new NoteVM(note));
-            if (this.mode === 'daily') {
-                const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
-                const dailyNotes_ = groupBy(notes, 'created');
-                return zip(
-                    this.groups.map((wd, index) => `<b>${weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
-                    this.groups.map(wd => dailyNotes_[wd] ?? []),
-                );
-            }
-            if (this.mode === 'weekly') {
-                const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)))
-                return zip(
-                    this.groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
-                    this.groups.map(week => weeklyNotes[week] ?? []),
-                );
+            switch (this.mode) {
+                case "daily":
+                    return NoteVM.buildDaily(this.notes, this.groups);
+                case "weekly":
+                    return NoteVM.buildWeekly(this.notes, this.groups);
             }
         },
 
-        /** @type {NotePoint[]} */
-        points: [],
+        /** @type {NotePointForm} */
+        pointsForm: null,
         /** @param {NoteVM} vm */
         openEditNoteModal(vm) {
             this.selectedNote = vm.note;
 
-            this.points = NotePoint.fromNote(this.selectedNote);
-            this.points = [
-                ...this.points,
-                ...Object.keys(this.categories).flatMap(
-                    category => this.points.map(p => p.category).includes(category)
-                        ? []
-                        : [new NotePoint({category})]
-                ),
-            ];
-            this.points = this.points.sort(
-                (p1, p2) => {
-                    let catIndex1 = Object.keys(this.categories).indexOf(p1.category);
-                    let catIndex2 = Object.keys(this.categories).indexOf(p2.category);
-                    return catIndex1 - catIndex2;
-                }
-            );
+            this.pointsForm = NotePointForm
+                .fromNote(this.selectedNote)
+                .syncWithCategories(this.categories)
+                .sortByCategories(this.categories);
 
             openModal();
         },
@@ -284,16 +255,7 @@
             '🏋️‍♂️': 'Че по спорту?',
             '🤔': 'Странная тема',
         },
-        addPoint(category, index) {
-            this.points.splice(index + 1, 0, {category, value: ''});
-        },
-        removePoint(point, index) {
-            if (this.points.filter(p => p.category === point.category).length === 1) {
-                point.value = '';
-            } else {
-                this.points.splice(index, 1);
-            }
-        },
+
     }).mount();
 </script>
 
