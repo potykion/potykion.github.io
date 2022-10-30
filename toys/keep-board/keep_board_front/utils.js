@@ -19,11 +19,8 @@ export const makeClickableLinks = (str) =>
 
 export const prettifyLinks = (str) => {
     return str
-        .replace(/>https:\/\/www\.youtube\.com\/watch\?v=/g, '>yt/')
+        .replace(/>https:\/\/www\.youtube\.com\/watch\?v=(\w+)/g, '>https://youtu.be/$1')
         .replace(/>https:\/\/music\.yandex\.ru\/album\/(\d+)\/track\/(\d+)/g, '>ya.mu/$1/$2')
-        .replace(/>https?:\/\/vc.ru\/\w+\/(\d+)/g, '>vc/$1')
-        .replace(/>https?:\/\/vc.ru\/(\d+)/g, '>vc/$1')
-        .replace(/>https:\/\/soundcloud.com\//g, '>sc/')
         .replace(/>https?:\/\//g, '>')
         ;
 };

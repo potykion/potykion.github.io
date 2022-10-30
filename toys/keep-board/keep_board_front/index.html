@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>KeepBoard</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./libs/bulma.min.css">
     <style>
         .note-font-size {
             font-size: .75rem;
@@ -106,20 +106,30 @@
     </div>
 </section>
 
-
+<!-- МОДАЛЬКА ФОРМЫ ЗАМЕТКИ -->
 <div class="modal" id="edit-note-modal">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
+            <p class="modal-card-title">{{ modeStr() }} от {{ selectedNote.created }}</p>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
-            WIP
+            <div class="field has-addons" v-for="(point, i) in points">
+                <div class="control has-icons-left is-expanded">
+                    <input class="input is-small" :placeholder="categories[point.category]" v-model="point.value">
+                    <span class="icon is-small is-left">{{ point.category }}</span>
+                </div>
+                <div class="control">
+                    <button class="button is-small" @click="removePoint(point, i)">❌</button>
+                </div>
+                <div class="control">
+                    <button class="button is-small" @click="addPoint(point.category, i)">➕</button>
+                </div>
+            </div>
         </section>
-        <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
-            <button class="button">Cancel</button>
+        <footer class="modal-card-foot is-flex is-justify-content-right">
+            <button class="button is-success">Сохранить</button>
         </footer>
     </div>
 </div>
@@ -132,6 +142,7 @@
     import {createApp} from 'https://unpkg.com/petite-vue?module'
     import {groupBy, zip} from "./utils.js";
     import {Note} from "./notes.js";
+    import {NotePoint} from "./points.js";
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
@@ -152,7 +163,7 @@
             this.loadNotes();
         },
 
-        // daily, weekly
+        /** @type {('daily'|'weekly')} */
         mode: 'daily',
         setMode(mode) {
             this.mode = mode;
@@ -164,6 +175,14 @@
             }
 
             this.loadNotes();
+        },
+        modeStr() {
+            switch (this.mode) {
+                case "daily":
+                    return 'Дейли';
+                case "weekly":
+                    return 'Викли';
+            }
         },
 
         groups: getWeekDays(),
@@ -213,9 +232,66 @@
             }
         },
 
-        openEditNoteModal(note) {
+        /** @type {NotePoint[]} */
+        points: [],
+        openEditNoteModal: function (note) {
             this.selectedNote = note;
+
+            this.points = NotePoint.fromNote(this.selectedNote);
+            this.points = [
+                ...this.points,
+                ...Object.keys(this.categories).flatMap(
+                    category => this.points.map(p => p.category).includes(category)
+                        ? []
+                        : [new NotePoint({category})]
+                ),
+            ];
+            this.points = this.points.sort(
+                (p1, p2) => {
+                    let catIndex1 = Object.keys(this.categories).indexOf(p1.category);
+                    let catIndex2 = Object.keys(this.categories).indexOf(p2.category);
+                    return catIndex1 - catIndex2;
+                }
+            );
+
+
             openModal();
+        },
+        categories: {
+            '🚀': 'Что зарелизил?',
+            '📝': 'Что нового написал?',
+            '⚒️': 'В процессе',
+            '📱': 'Че по rbcn сделал?',
+            '🏥': 'Че по risx сделал?',
+
+            '💡': 'Идеи, интересные статьи',
+            '😲': 'Что удивило?',
+            '📖': 'Че почитал интересного?',
+
+            '🥪': 'Что вкусненького съел?',
+            '🥘': 'Че приготовил?',
+            '🍴': 'Где ел?',
+
+            '🖼️': 'Картинка дня',
+            '🎵': 'Трек дня',
+            '😭': 'Были ли успешные раны в сасАйзеке?',
+            '📹': 'Видос дня',
+            '📺': 'Серик дня',
+            '🎥': 'Кино дня',
+            '🎭': 'Театрик дня',
+
+            '🏋️‍♂️': 'Че по спорту?',
+            '🤔': 'Странная тема',
+        },
+        addPoint(category, index) {
+            this.points.splice(index + 1, 0, {category, value: ''});
+        },
+        removePoint(point, index) {
+            if (this.points.filter(p => p.category === point.category).length === 1) {
+                point.value = '';
+            } else {
+                this.points.splice(index, 1);
+            }
         },
     }).mount();
 </script>
