@@ -1,4 +1,3 @@
-<!-- https://keep-board.website.yandexcloud.net/ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,12 +57,18 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
-                <div class="buttons">
-                    <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
-                        {{ loading ? '⏳' : '↻' }}
-                    </button>
-                </div>
+                <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
+                    {{ loading ? '⏳' : '↻' }}
+                </button>
             </div>
+            <div class="navbar-item">
+                <figure class="image" v-if="user">
+                    <img class="is-rounded" :src="user.picture">
+                </figure>
+
+                <div id="google-auth" v-else></div>
+            </div>
+
         </div>
     </div>
 </nav>
@@ -88,7 +93,7 @@
                         <div class="card-content">
                             <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
                         </div>
-                        <footer class="card-footer">
+                        <footer class="card-footer" v-if="user.isAdmin">
                             <button class="button is-white card-footer-item note-font-size"
                                     @click="openEditNoteModal(note)">✏️
                             </button>
@@ -134,27 +139,33 @@
     </div>
 </div>
 
-
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="./libs/dayjs.min.js"></script>
 <script src="./libs/dayjs.isBetween.js"></script>
 
 <script type="module">
     import {createApp} from './libs/petite-vue.es.js'
-    import {groupBy, zip} from "./utils.js";
-    import {Note, NoteVM} from "./notes.js";
-    import {NotePoint, NotePointForm} from "./points.js";
-    import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek, formatDateRange} from "./date.js";
-    import {setupModal} from "./modal.js";
+    import {Note, NoteVM} from "./js/notes.js";
+    import {NotePointForm} from "./js/points.js";
+    import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek} from "./js/date.js";
+    import {setupModal} from "./js/modal.js";
+    import {User} from "./js/auth.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
 
     const [openModal, _] = setupModal('#edit-note-modal')
 
     createApp({
+        user: null,
         loading: false,
 
         mounted() {
             this.loadNotes();
+            this.user = User.loadFromCache() ??
+                User.setupAuth("#google-auth", (token) => this.auth(token));
+        },
+        auth(token) {
+            this.user = User.setupFromToken(token);
         },
 
         /** @type {('daily'|'weekly')} */
