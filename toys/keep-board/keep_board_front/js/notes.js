@@ -2,6 +2,7 @@ import {groupBy, makeClickableLinks, prettifyLinks, zip} from "./utils.js";
 import {formatDateRange, getWeekDays} from "./date.js";
 
 export class Note {
+    id;
     created;
     title;
     text;
@@ -9,7 +10,8 @@ export class Note {
     url;
     image;
 
-    constructor({created, title, text, labels, url, image}) {
+    constructor({id, created, title, text, labels, url, image}) {
+        this.id = id;
         this.created = created;
         this.title = title;
         this.text = text;
@@ -28,8 +30,20 @@ export class Note {
         return notes;
     };
 
-    save() {
-        console.log('saved')
+    /**
+     * @param {User} user
+     * @param {NotePointForm} pointsForm
+     * @returns {Promise<void>}
+     */
+    async save(user, pointsForm) {
+        this.text = pointsForm.points.filter(p => p.value).map(p => `${p.category} ${p.value}`).join('\n');
+        await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=update&id=${this.id}`, {
+            method: 'POST',
+            body: JSON.stringify({text: this.text}),
+            headers: {
+                'KB-Authorization': user.token,
+            }
+        })
     }
 }
 

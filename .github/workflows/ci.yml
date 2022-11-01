@@ -42,4 +42,4 @@ jobs:
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
           source: 'toys/keep-board'
-          environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }}
+          environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}

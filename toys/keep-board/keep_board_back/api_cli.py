@@ -3,6 +3,7 @@ import json
 import os
 from typing import Optional, List
 
+import gkeepapi.exception
 import keyring
 from gkeepapi import Keep
 from keyring.errors import NoKeyringError
@@ -14,6 +15,7 @@ from .monads import Err, Ok, Result
 
 @dataclasses.dataclass()
 class KeepCli:
+    """https://gkeepapi.readthedocs.io/en/latest/"""
     keep: Keep = dataclasses.field(init=False)
 
     def setup(self):
@@ -23,6 +25,12 @@ class KeepCli:
     def notes(self, label: str) -> List[GKeepNote]:
         keep_notes = self.keep.find(labels=[self.keep.findLabel(label)])
         return [GKeepNote.from_gkeep(note, self.keep) for note in keep_notes]
+
+    def update_note(self, note_id: str, note_data: dict):
+        note = self.keep.get(note_id)
+        for field, val in note_data.items():
+            setattr(note, field, val)
+        self.keep.sync()
 
 
 @dataclasses.dataclass()
@@ -57,12 +65,12 @@ class _KeepSetup:
         try:
             token = keyring.get_password('google-keep-token', self.username)
         except NoKeyringError:
-            token = None
+            return Err(keep)
 
-        if token:
+        try:
             keep.resume(self.username, token)
             return Ok(keep)
-        else:
+        except gkeepapi.exception.LoginException:
             return Err(keep)
 
     def _from_pass(self, keep: Keep) -> Result[Keep]:

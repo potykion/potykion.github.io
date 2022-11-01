@@ -93,7 +93,7 @@
                         <div class="card-content">
                             <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
                         </div>
-                        <footer class="card-footer" v-if="user.isAdmin">
+                        <footer class="card-footer" v-if="user && user.isAdmin">
                             <button class="button is-white card-footer-item note-font-size"
                                     @click="openEditNoteModal(note)">✏️
                             </button>
@@ -228,7 +228,7 @@
             }
         },
         async saveNote() {
-            await this.selectedNote.save(this.user);
+            await this.selectedNote.save(this.user, this.pointsForm);
             NoteCache.save(this.notes, this.mode);
             closeModal();
         },
