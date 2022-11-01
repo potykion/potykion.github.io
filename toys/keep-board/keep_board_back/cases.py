@@ -32,8 +32,9 @@ class Mode:
         else:
             note_id = None
             note_data = None
+            user_token = None
 
-        return cls(mode, note_id, note_data)
+        return cls(mode, note_id, note_data, user_token)
 
     def apply(self) -> Tuple[Json, Optional[int]]:
         if self.type == 'daily' or self.type == 'weekly':
