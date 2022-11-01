@@ -18,3 +18,14 @@ class Resp(TypedDict, total=False):
     statusCode: Literal[200, 400]
     body: str
     headers: dict
+
+
+def resp_cors() -> Resp:
+    return {
+        'statusCode': 200,
+        'body': '',
+        'headers': {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': '*'
+        }
+    }

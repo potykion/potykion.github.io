@@ -8,6 +8,7 @@ from gkeepapi.node import Note
 
 @dataclasses.dataclass()
 class GKeepNote:
+    id: str
     created: dt.date
     title: str
     text: str
@@ -18,6 +19,7 @@ class GKeepNote:
     @classmethod
     def from_gkeep(cls, gkeep_note: Note, keep: Keep):
         return cls(
+            id=gkeep_note.server_id,
             created=gkeep_note.timestamps.created.date(),
             title=gkeep_note.title,
             text=gkeep_note.text.strip(),
