@@ -18,27 +18,19 @@ export class Note {
         this.image = image;
     }
 
-    static loadFromCache(type, reset) {
-        const notesCache = JSON.parse(localStorage.getItem(`${type}_notes`));
-        const notesCacheExpired = !(
-            notesCache &&
-            (notesCache.notes ?? []).length &&
-            dayjs() < dayjs(notesCache.exp ?? dayjs()) &&
-            !reset
-        )
-        return notesCacheExpired ? null : notesCache.notes.map(n => new Note(n));
-    }
+    static loadFromCache = (type, reset) => NoteCache.load(type, reset);
 
     static loadFromBack = async type => {
         const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${type}`)
         const notes = (await res.json())
             .map(n => new Note(n));
-        localStorage.setItem(
-            `${type}_notes`,
-            JSON.stringify({notes, exp: dayjs().add(1, 'd')}),
-        );
+        NoteCache.save(notes, type);
         return notes;
     };
+
+    save() {
+        console.log('saved')
+    }
 }
 
 export class NoteVM extends Note {
@@ -50,7 +42,7 @@ export class NoteVM extends Note {
         this.note = note;
     }
 
-    static buildDaily(notes, groups) {
+    static buildDaily = (notes, groups) => {
         notes = notes.map(note => new NoteVM(note));
 
         const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
@@ -59,9 +51,9 @@ export class NoteVM extends Note {
             groups.map((wd, index) => `<b>${weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
             groups.map(wd => dailyNotes_[wd] ?? []),
         );
-    }
+    };
 
-    static buildWeekly(notes, groups) {
+    static buildWeekly = (notes, groups) => {
         notes = notes.map(note => new NoteVM(note));
 
         const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)))
@@ -69,5 +61,25 @@ export class NoteVM extends Note {
             groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
             groups.map(week => weeklyNotes[week] ?? []),
         );
-    }
+    };
+}
+
+export class NoteCache {
+    static load = (type, reset) => {
+        const notesCache = JSON.parse(localStorage.getItem(`${type}_notes`));
+        const notesCacheExpired = !(
+            notesCache &&
+            (notesCache.notes ?? []).length &&
+            dayjs() < dayjs(notesCache.exp ?? dayjs()) &&
+            !reset
+        )
+        return notesCacheExpired ? null : notesCache.notes.map(n => new Note(n));
+    };
+
+    static save = (notes, type) => {
+        localStorage.setItem(
+            `${type}_notes`,
+            JSON.stringify({notes, exp: dayjs().add(1, 'd')}),
+        );
+    };
 }

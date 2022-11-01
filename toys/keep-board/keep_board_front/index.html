@@ -134,7 +134,7 @@
             </div>
         </section>
         <footer class="modal-card-foot is-flex is-justify-content-right">
-            <button class="button is-success">Сохранить</button>
+            <button class="button is-success" @click="saveNote">Сохранить</button>
         </footer>
     </div>
 </div>
@@ -145,7 +145,7 @@
 
 <script type="module">
     import {createApp} from './libs/petite-vue.es.js'
-    import {Note, NoteVM} from "./js/notes.js";
+    import {Note, NoteVM, NoteCache} from "./js/notes.js";
     import {NotePointForm} from "./js/points.js";
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek} from "./js/date.js";
     import {setupModal} from "./js/modal.js";
@@ -153,7 +153,7 @@
 
     dayjs.extend(window.dayjs_plugin_isBetween);
 
-    const [openModal, _] = setupModal('#edit-note-modal')
+    const [openModal, closeModal] = setupModal('#edit-note-modal')
 
     createApp({
         user: null,
@@ -203,6 +203,7 @@
 
         /** @type {Note[]} */
         notes: [],
+        /** @type {Note} */
         selectedNote: null,
         setNotes(notes) {
             this.notes = notes;
@@ -225,6 +226,11 @@
                 case "weekly":
                     return NoteVM.buildWeekly(this.notes, this.groups);
             }
+        },
+        async saveNote() {
+            await this.selectedNote.save(this.user);
+            NoteCache.save(this.notes, this.mode);
+            closeModal();
         },
 
         /** @type {NotePointForm} */
