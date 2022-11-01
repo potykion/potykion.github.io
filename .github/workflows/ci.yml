@@ -43,4 +43,4 @@ jobs:
           entrypoint: 'cloud_function.handler'
           source: 'toys/keep-board'
           environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
-          exclude: 'keep_board_front/'
+          exclude: 'toys/keep-board/keep_board_front/'
