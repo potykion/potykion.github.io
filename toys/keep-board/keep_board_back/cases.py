@@ -27,7 +27,7 @@ class Mode:
             note_id = event['queryStringParameters'].get('id')
             note_data = json.loads(event['body'])
             print(event['headers'])
-            user_token = event['headers'].get('KB-Authorization')
+            user_token = event['headers'].get('Kb-Authorization')
             assert note_id, 'No id passed'
             assert note_data, 'No body passed'
             assert user_token, 'No token passed'
