@@ -17,40 +17,32 @@ jobs:
           GA_KEY: ${{ secrets.GA_KEY }}
           YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
         run: mkdocs gh-deploy --force
-  keep-board-front:
+  keep-board-cdn:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
-      - uses: sergeevpasha/yandex-cloud-s3-sync-github-actions@v0.1.0
+      - uses: jakejarvis/s3-sync-action@master
         with:
-          YANDEX_CLOUD_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          YANDEX_CLOUD_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          YANDEX_CLOUD_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
-          PATH: "./toys/keep-board/keep_board_front"
-          CLEAR: true
-  #      - uses: jakejarvis/s3-sync-action@master
-  #        with:
-  #          args: --acl public-read --follow-symlinks --delete
-  #        env:
-  #          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-  #          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  #          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  #          AWS_S3_ENDPOINT: https://storage.yandexcloud.net
-  #          AWS_REGION: 'ru-central1'
-  #          SOURCE_DIR: 'toys/keep-board/keep_board_front'
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_S3_ENDPOINT: https://storage.yandexcloud.net
+          AWS_REGION: 'ru-central1'
+          SOURCE_DIR: 'toys/keep-board'
   keep-board-back:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: goodsmileduck/yandex-serverless-action@v2
+      - uses: yc-actions/yc-sls-function@v2
         with:
-          token: ${{ secrets.YA_CLI_TOKEN }}
-          function_id: ${{ secrets.YA_CLOUD_FUNCTION }}
+          yc-sa-json-credentials: ${{ secrets.Y_CF_KEY }}
+          bucket: ${{ secrets.AWS_S3_BUCKET }}
+          folder-id: 'keep_board_back'
+          function-name: 'potyk-io-keep-board'
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
-          source: 'toys/keep-board'
-          environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
-          bucket: kbb
-          accessKeyId: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          environment: |
+            GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }}
+            GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }}
+            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
