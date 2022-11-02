@@ -12,7 +12,10 @@ export class NotePoint {
     static fromText(text) {
         let emojiRegex = /^\p{Emoji}/gu;
         return new NotePoint({
-            category: text.match(emojiRegex)[0],
+            category: text.match(emojiRegex)[0]
+                .replaceAll('⚒', '🚧')
+                .replaceAll('🏋', '💪')
+                .replaceAll('🖼', '📷'),
             value: text.replace(emojiRegex, '').trim(),
         });
     }
@@ -29,7 +32,8 @@ export class NotePointForm {
 
     /** @param {Note} note */
     static fromNote(note) {
-        return new NotePointForm(note.text.split('\n').map(NotePoint.fromText));
+        let preparedText = note.text;
+        return new NotePointForm(preparedText.split('\n').map(NotePoint.fromText));
     }
 
     /** @param {object} categories */
