@@ -44,5 +44,5 @@ jobs:
           source: 'toys/keep-board'
           environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
           bucket: kbb
-          accessKeyId: ${{ secrets.ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.SECRET_ACCESS_KEY }}
+          accessKeyId: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
