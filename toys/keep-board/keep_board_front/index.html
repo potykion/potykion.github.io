@@ -166,6 +166,7 @@
         },
         auth(token) {
             this.user = User.setupFromToken(token);
+            this.loadNotes(true);
         },
 
         /** @type {('daily'|'weekly')} */
