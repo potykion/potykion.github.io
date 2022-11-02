@@ -134,7 +134,7 @@
             </div>
         </section>
         <footer class="modal-card-foot is-flex is-justify-content-right">
-            <button class="button is-success" @click="saveNote">Сохранить</button>
+            <button :class="['button',  'is-success', saving ? 'is-loading':'']" @click="saveNote">Сохранить</button>
         </footer>
     </div>
 </div>
@@ -227,10 +227,17 @@
                     return NoteVM.buildWeekly(this.notes, this.groups);
             }
         },
+
+        saving: false,
         async saveNote() {
-            await this.selectedNote.save(this.user, this.pointsForm);
-            NoteCache.save(this.notes, this.mode);
-            closeModal();
+            this.saving = true;
+            try {
+                await this.selectedNote.save(this.user, this.pointsForm);
+                NoteCache.save(this.notes, this.mode);
+            } finally {
+                this.saving = false;
+                closeModal();
+            }
         },
 
         /** @type {NotePointForm} */
