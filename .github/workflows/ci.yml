@@ -43,3 +43,4 @@ jobs:
           entrypoint: 'cloud_function.handler'
           source: 'toys/keep-board/keep_board_back'
           environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+          execution_timeout: 10
