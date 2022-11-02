@@ -17,7 +17,7 @@ jobs:
           GA_KEY: ${{ secrets.GA_KEY }}
           YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
         run: mkdocs gh-deploy --force
-  keep-board-cdn:
+  keep-board-front:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -30,16 +30,16 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_ENDPOINT: https://storage.yandexcloud.net
           AWS_REGION: 'ru-central1'
-          SOURCE_DIR: 'toys/keep-board'
-      - uses: yc-actions/yc-sls-function@v2.3.0
+          SOURCE_DIR: 'toys/keep-board/keep_board_front'
+  keep-board-back:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: goodsmileduck/yandex-serverless-action@v2
         with:
-          yc-sa-json-credentials: ${{ secrets.Y_CF_KEY }}
-          bucket: ${{ secrets.AWS_S3_BUCKET }}
-          folder-id: 'keep_board_back'
-          function-name: 'potyk-io-keep-board'
+          token: ${{ secrets.YA_CLI_TOKEN }}
+          function_id: ${{ secrets.YA_CLOUD_FUNCTION }}
           runtime: 'python39'
           entrypoint: 'cloud_function.handler'
-          environment: |
-            GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }}
-            GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }}
-            GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
+          source: 'toys/keep-board/keep_board_back'
+          environment: GOOGLE_EMAIL=${{ secrets.GOOGLE_EMAIL }},GOOGLE_APP_PASS=${{ secrets.GOOGLE_APP_PASS }},GOOGLE_CLIENT_ID=${{ secrets.GOOGLE_CLIENT_ID }}
