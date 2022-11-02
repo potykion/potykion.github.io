@@ -21,16 +21,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: jakejarvis/s3-sync-action@master
+
+      - uses: sergeevpasha/yandex-cloud-s3-sync-github-actions@v0.1.0
         with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_S3_ENDPOINT: https://storage.yandexcloud.net
-          AWS_REGION: 'ru-central1'
-          SOURCE_DIR: 'toys/keep-board/keep_board_front'
+          YANDEX_CLOUD_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          YANDEX_CLOUD_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          YANDEX_CLOUD_BUCKET_NAME: ${{ secrets.AWS_S3_BUCKET }}
+          PATH: "./toys/keep-board/keep_board_front"
+          CLEAR: true
+  #      - uses: jakejarvis/s3-sync-action@master
+  #        with:
+  #          args: --acl public-read --follow-symlinks --delete
+  #        env:
+  #          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+  #          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #          AWS_S3_ENDPOINT: https://storage.yandexcloud.net
+  #          AWS_REGION: 'ru-central1'
+  #          SOURCE_DIR: 'toys/keep-board/keep_board_front'
   keep-board-back:
     runs-on: ubuntu-latest
     steps:
