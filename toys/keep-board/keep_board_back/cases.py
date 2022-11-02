@@ -25,7 +25,7 @@ class Mode:
 
         if mode == 'update':
             note_id = event['queryStringParameters'].get('id')
-            logging.info(event['body'])
+            print(event['body'])
             note_data = json.loads(event['body'])
             user_token = event['headers'].get('KB-Authorization')
             assert note_id, 'No id passed'

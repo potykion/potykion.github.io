@@ -41,6 +41,7 @@ export class Note {
             method: 'POST',
             body: JSON.stringify({text: this.text}),
             headers: {
+                'Content-Type': 'application/json',
                 'KB-Authorization': user.token,
             }
         })
