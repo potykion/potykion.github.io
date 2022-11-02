@@ -31,9 +31,6 @@ jobs:
           AWS_S3_ENDPOINT: https://storage.yandexcloud.net
           AWS_REGION: 'ru-central1'
           SOURCE_DIR: 'toys/keep-board'
-  keep-board-back:
-    runs-on: ubuntu-latest
-    steps:
       - uses: yc-actions/yc-sls-function@v2
         with:
           yc-sa-json-credentials: ${{ secrets.Y_CF_KEY }}
