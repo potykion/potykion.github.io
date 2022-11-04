@@ -5,3 +5,4 @@
     - [Беспроводные наушники Sony WH-1000XM4 Bluetooth Smart с шумоподавлением](https://www.ozon.ru/product/besprovodnye-naushniki-sony-wh-1000xm4-bluetooth-smart-s-shumopodavleniem-709349875)
 - [ ] зажим для купюр, типа [такого](https://www.ozon.ru/product/zazhim-dlya-kupyur-rels-180770018/?sh=DxDTdwPCrw)
 - [ ] проездной на год за 19к!
+- [ ] новый мощный ноут, суса какая-нибудь последняя или синкпад
