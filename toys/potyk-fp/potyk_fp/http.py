@@ -1,7 +1,11 @@
 import dataclasses
-from typing import Callable, Tuple
+from typing import Callable, Tuple, Union
 
-__all__ = ['HttpRes']
+__all__ = ['HttpRes', 'Json', 'StatusCode', 'Code', 'Response']
+
+Json = Union[dict, list]
+StatusCode = Code = int
+Response = Tuple[Json, StatusCode]
 
 
 @dataclasses.dataclass()
@@ -32,7 +36,7 @@ class HttpRes:
             return self
 
     @property
-    def as_response(self) -> Tuple[dict, int]:
+    def as_response(self) -> Response:
         return {'success': self.success, 'msg': self.msg}, self.code
 
 

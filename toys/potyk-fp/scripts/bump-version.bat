@@ -1,2 +1,2 @@
 Rem $1 = minor | major | patch
-poetry version $1
+poetry version %1
