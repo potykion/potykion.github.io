@@ -57,6 +57,19 @@ class HttpRes(Generic[HttpResT]):
     def ok_id(cls, id_: IdType, code=None):
         return cls.ok(IdResp(id_), code)
 
+    @classmethod
+    def safe(cls, callable_: Callable[[], 'HttpRes'], ):
+        try:
+            return cls.ok(callable_())
+        except Exception as e:
+            return cls.err_msg(str(e))
+
+    def flatten(self):
+        if isinstance(self.resp, HttpRes):
+            return self.resp
+        else:
+            return self
+
     def and_then(self, res: Callable[[], 'HttpRes']):
         return res() if self.success else self
 
@@ -88,3 +101,10 @@ def test_HttpRes():
 
     assert HttpRes.ok(WithToJson()).as_response == ({'op': 'oppa'}, 200)
     assert HttpRes.ok([{'ass': 'tities'}]).as_response == ([{'ass': 'tities'}], 200)
+
+    def raises():
+        raise ValueError('op')
+
+    assert HttpRes.safe(raises).as_response == ({'msg': 'op'}, 400)
+
+    assert HttpRes.ok(HttpRes.ok_msg('ok')).flatten().as_response == ({'msg': 'ok'}, 200)
