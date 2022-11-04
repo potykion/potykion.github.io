@@ -1,79 +1,87 @@
-import dataclasses
 import json
-import logging
-from typing import Literal, Optional, Union, Tuple
+from typing import Literal, Any
 
-from .api_cli import KeepCli
-from .auth import validate_token
-from .yc import Event
+from potyk_fp.http import HttpRes
+from pydantic import BaseModel
 
-Json = Union[dict, list]
+from src.api_cli import KeepCli
+from src import auth
+from src.yc import Event
 
 
-@dataclasses.dataclass()
-class Mode:
-    type: Literal['daily', 'weekly', 'update']
-    note_id: Optional[str] = None
-    note_data: Optional[dict] = None
-    user_token: Optional[str] =None
+class Mode(BaseModel):
+    mode_type: Literal['daily', 'weekly', 'update', 'create']
+    mode_case: Any
 
     @classmethod
     def from_event(cls, event: Event):
-        mode = event['queryStringParameters'].get('mode', 'daily')
-        assert mode in ('daily', 'weekly', 'update'), \
-            f'invalid mode: {mode}; should be one of the following: daily, weekly, update'
-
+        mode = event['queryStringParameters'].get('mode')
         if mode == 'update':
-            note_id = event['queryStringParameters'].get('id')
-            note_data = json.loads(event['body'])
-            print(event['headers'])
-            user_token = event['headers'].get('Kb-Authorization')
-            assert note_id, 'No id passed'
-            assert note_data, 'No body passed'
-            assert user_token, 'No token passed'
-        else:
-            note_id = None
-            note_data = None
-            user_token = None
-
-        return cls(mode, note_id, note_data, user_token)
-
-    def apply(self) -> Tuple[Json, Optional[int]]:
-        if self.type == 'daily' or self.type == 'weekly':
-            return ListNotes(self.type)(), 200
-        if self.type == 'update':
-            return UpdateNote(self.note_id, self.note_data, self.user_token)()
+            return cls(mode_type=mode, mode_case=UpdateNote.from_event(event))
+        if mode == 'create':
+            return cls(mode_type=mode, mode_case=CreateNote.from_event(event))
+        if mode in ('daily', 'weekly'):
+            return cls(mode_type=mode, mode_case=ListNotes(mode=mode))
+        raise ValueError(f'Invalid mode: {mode}')
 
 
-@dataclasses.dataclass()
-class ListNotes:
-    mode: Literal['daily', 'weekly']
-    keep_cli: KeepCli = dataclasses.field(default_factory=KeepCli)
+class ListNotes(BaseModel):
+    mode: Literal['daily', 'weekly'] = 'daily'
 
-    def __post_init__(self):
-        assert self.mode in ('daily', 'weekly'), 'mode should be daily or weekly'
-        self.keep_cli.setup()
-
-    def __call__(self, ):
-        notes = self.keep_cli.notes(label=self.mode)
+    def __call__(self, keep_cli=None) -> HttpRes:
+        notes = (keep_cli or KeepCli.setup()).notes(label=self.mode)
         notes = sorted(notes, key=lambda note: note.created)
-        return [note.to_json() for note in notes]
+        return HttpRes.ok([note.to_json() for note in notes])
 
 
-@dataclasses.dataclass()
-class UpdateNote:
+class UpdateNote(BaseModel):
     note_id: str
-    note_data: dict
+    note_text: str
     user_token: str
-    keep_cli: KeepCli = dataclasses.field(default_factory=KeepCli)
 
-    def __post_init__(self):
-        self.keep_cli.setup()
+    @classmethod
+    def from_event(cls, event: Event):
+        return cls(
+            **json.loads(event['body']),
+            user_token=event['headers'].get('Kb-Authorization'),
 
-    def __call__(self, ) -> Tuple[Json, int]:
-        user_data = validate_token(self.user_token)
-        if user_data and user_data['email'] == 'potykion@gmail.com':
-            self.keep_cli.update_note(self.note_id, self.note_data)
-            return {}, 200
-        else:
-            return {'error': 'Invalid token'}, 400
+        )
+
+    def __call__(self, keep_cli=None) -> HttpRes:
+        return (
+            do_auth(self.user_token)
+            .and_then(lambda: HttpRes.ok(
+                (keep_cli or KeepCli.setup())
+                .update_note(self.note_id, self.note_text),
+            ))
+        )
+
+
+class CreateNote(BaseModel):
+    note_type: Literal['daily', 'weekly']
+    note_text: str
+    user_token: str
+
+    def __call__(self, keep_cli=None) -> HttpRes:
+        return (
+            do_auth(self.user_token)
+            .and_then(lambda: HttpRes.ok_id(
+                id_=(keep_cli or KeepCli.setup())
+                .create_note(self.note_type, self.note_text),
+            ))
+        )
+
+    @classmethod
+    def from_event(cls, event):
+        return cls(
+            **json.loads(event['body']),
+            user_token=event['headers'].get('Kb-Authorization'),
+        )
+
+
+def do_auth(token: str) -> HttpRes:
+    user_data = auth.validate_token(token)
+    if user_data and user_data['email'] == 'potykion@gmail.com':
+        return HttpRes.ok()
+    else:
+        return HttpRes.err_msg('Invalid token')

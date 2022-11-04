@@ -1,5 +1,7 @@
 import json
 
+from potyk_fp.http import HttpRes
+
 from src.cases import Mode
 from src.yc import Resp, Event, resp_cors
 
@@ -11,15 +13,10 @@ def handler(event: Event, context) -> Resp:
     if event['httpMethod'] == 'OPTIONS':
         return resp_cors()
 
-    try:
-        json_, status = Mode.from_event(event).apply()
-    except AssertionError as e:
-        return {
-            'statusCode': 400,
-            'body': json.dumps({'error': str(e)}),
-        }
-    else:
-        return {
-            'statusCode': status or 200,
-            'body': json.dumps(json_),
-        }
+    res = HttpRes.safe(Mode.from_event(event).mode_case).flatten()
+    resp, code = res.as_response
+
+    return {
+        'statusCode': code,
+        'body': json.dumps(resp),
+    }

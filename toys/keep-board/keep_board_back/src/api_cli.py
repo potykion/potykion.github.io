@@ -1,7 +1,7 @@
 import dataclasses
 import json
 import os
-from typing import Optional, List
+from typing import List, Literal
 
 import gkeepapi.exception
 import keyring
@@ -18,19 +18,27 @@ class KeepCli:
     """https://gkeepapi.readthedocs.io/en/latest/"""
     keep: Keep = dataclasses.field(init=False)
 
-    def setup(self):
-        self.keep = _KeepSetup()()
-        return self
+    @classmethod
+    def setup(cls):
+        cli = cls()
+        cli.keep = _KeepSetup()()
+        return cli
 
     def notes(self, label: str) -> List[GKeepNote]:
         keep_notes = self.keep.find(labels=[self.keep.findLabel(label)])
         return [GKeepNote.from_gkeep(note, self.keep) for note in keep_notes]
 
-    def update_note(self, note_id: str, note_data: dict):
+    def update_note(self, note_id: str, note_text: str):
         note = self.keep.get(note_id)
-        for field, val in note_data.items():
-            setattr(note, field, val)
+        note.text = note_text
         self.keep.sync()
+
+    def create_note(self, note_type: Literal['daily', 'weekly'], note_text: str) -> str:
+        note = self.keep.createNote(title='', text=note_text)
+        type_label = self.keep.findLabel(note_type)
+        note.labels.add(type_label)
+        self.keep.sync()
+        return note.id
 
 
 @dataclasses.dataclass()

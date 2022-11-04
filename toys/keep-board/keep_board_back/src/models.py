@@ -9,12 +9,11 @@ from gkeepapi.node import Note
 @dataclasses.dataclass()
 class GKeepNote:
     id: str
-    created: dt.date
-    title: str
     text: str
-    labels: List[str]
-    url: str
+    title: str = ''
+    labels: List[str] = dataclasses.field(default_factory=list)
     image: Optional[str] = None
+    created: dt.date = dataclasses.field(default_factory=dt.date.today)
 
     @classmethod
     def from_gkeep(cls, gkeep_note: Note, keep: Keep):
@@ -24,13 +23,16 @@ class GKeepNote:
             title=gkeep_note.title,
             text=gkeep_note.text.strip(),
             labels=[l.name for l in gkeep_note.labels.all()],
-            url=f'https://keep.google.com/#NOTE/{gkeep_note.server_id}',
             image=keep.getMediaLink(gkeep_note.images[0]) if gkeep_note.images else None,
         )
+
+    def url(self):
+        return f'https://keep.google.com/#NOTE/{self.id}'
 
     def to_json(self):
         dict_ = dataclasses.asdict(self)
         return {
             **dict_,
             'created': str(self.created),
+            'url': self.url,
         }

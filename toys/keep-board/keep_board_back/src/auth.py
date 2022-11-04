@@ -1,8 +1,8 @@
 import os
 from typing import TypedDict, Optional
 
-from google.oauth2 import id_token
 from google.auth.transport import requests
+from google.oauth2 import id_token
 
 
 class AuthInfo(TypedDict):
@@ -32,3 +32,5 @@ def validate_token(token) -> Optional[AuthInfo]:
         )
     except ValueError:
         return None
+
+
