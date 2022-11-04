@@ -3,6 +3,8 @@ from typing import TypeVar, Generic, Callable
 
 T = TypeVar('T')
 
+__all__ = ['Maybe', 'Some', 'Nothing']
+
 
 class Maybe(Generic[T]):
     def or_else(self, maybe_callable: Callable[[], 'Maybe']):

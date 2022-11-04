@@ -3,6 +3,8 @@
 import attr
 from typing import TypeVar, Generic, cast, Union, Callable
 
+__all__ = ['Either', 'Left', 'Right']
+
 LeftT = TypeVar('LeftT')
 RightT = TypeVar('RightT')
 

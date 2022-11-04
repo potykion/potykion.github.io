@@ -1,3 +1,5 @@
+__all__ = ['pipe']
+
 def pipe(*callables):
     """
     >>> sum_and_str = pipe(sum, str)

@@ -1,3 +1,5 @@
+__all__ = ['If', 'Then']
+
 class _IfPart:
     def __init__(self, val):
         self.val = val() if callable(val) else val
