@@ -28,6 +28,8 @@ class HttpRes:
         else:
             return self
 
+    then = map
+
     @property
     def as_response(self) -> Response:
         return {'success': self.success, 'msg': self.msg}, self.code
