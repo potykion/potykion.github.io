@@ -12,22 +12,15 @@ Response = Tuple[Json, StatusCode]
 class HttpRes:
     success: bool
     msg: str = ''
-    _code: int = None
+    code: int = None
 
     @classmethod
-    def ok(cls, msg='', **kwargs):
-        return HttpRes(success=True, msg=msg, **kwargs)
+    def ok(cls, msg='', code=200, **kwargs):
+        return HttpRes(success=True, msg=msg, code=code)
 
     @classmethod
-    def err(cls, msg='', **kwargs):
-        return HttpRes(success=False, msg=msg, **kwargs)
-
-    @property
-    def code(self):
-        if self._code:
-            return self._code
-        else:
-            return 200 if self.success else 400
+    def err(cls, msg='', code=400, **kwargs):
+        return HttpRes(success=False, msg=msg, code=code)
 
     def map(self, callable_: Callable[[], 'HttpRes']):
         if self.success:
