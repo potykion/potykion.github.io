@@ -78,11 +78,19 @@ class HttpRes(Generic[HttpResT]):
 
     @property
     def as_response(self) -> Response:
+        return self.to_json(), self.code
+
+    def to_json(self):
+        def resp_to_json(resp):
+            return (
+                resp.to_json() if hasattr(resp, 'to_json') else
+                (dataclasses.asdict(resp) if dataclasses.is_dataclass(resp) else
+                 resp),
+            )
+
         return (
-            self.resp.to_json() if hasattr(self.resp, 'to_json') else
-            (dataclasses.asdict(self.resp) if dataclasses.is_dataclass(self.resp) else
-             self.resp),
-            self.code
+            list(map(resp_to_json, self.resp)) if isinstance(self.resp, list) else
+            resp_to_json(self.resp)
         )
 
 
