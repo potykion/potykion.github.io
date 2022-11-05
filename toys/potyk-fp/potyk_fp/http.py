@@ -85,7 +85,7 @@ class HttpRes(Generic[HttpResT]):
             return (
                 resp.to_json() if hasattr(resp, 'to_json') else
                 (dataclasses.asdict(resp) if dataclasses.is_dataclass(resp) else
-                 resp),
+                 resp)
             )
 
         return (
