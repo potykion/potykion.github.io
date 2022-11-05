@@ -1,5 +1,6 @@
 import {groupBy, makeClickableLinks, prettifyLinks, zip} from "./utils.js";
 import {formatDateRange, getWeekDays} from "./date.js";
+import {ApiCli} from "./apiCli.js";
 
 export class Note {
     id;
@@ -23,9 +24,7 @@ export class Note {
     static loadFromCache = (type, reset) => NoteCache.load(type, reset);
 
     static loadFromBack = async type => {
-        const res = await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=${type}`)
-        const notes = (await res.json())
-            .map(n => new Note(n));
+        const notes = await new ApiCli().listNotes(type);
         NoteCache.save(notes, type);
         return notes;
     };
@@ -36,16 +35,19 @@ export class Note {
      * @returns {Promise<void>}
      */
     async save(user, pointsForm) {
-        this.text = pointsForm.points.filter(p => p.value).map(p => `${p.category} ${p.value}`).join('\n');
-        await fetch(`https://functions.yandexcloud.net/d4evmq3b5u0kmmehthvf?mode=update&id=${this.id}`, {
-            method: 'POST',
-            body: JSON.stringify({text: this.text}),
-            headers: {
-                'Content-Type': 'application/json',
-                'KB-Authorization': user.token,
-            }
-        })
+        this.text = pointsForm.toText();
+        await new ApiCli().updateNote(this.id, this.text, user.token);
     }
+
+    /**
+     *
+     * @param {'daily', 'weekly'} noteType
+     * @param {User} user
+     * @param {NotePointForm} pointsForm
+     * @return {Promise<Note>}
+     */
+    static create = async (noteType, user, pointsForm) =>
+        await new ApiCli().createNote(noteType, pointsForm.toText(), user.token);
 }
 
 export class NoteVM extends Note {

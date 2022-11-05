@@ -72,4 +72,11 @@ export class NotePointForm {
             this.points.splice(index, 1);
         }
     }
+
+    toText() {
+        return this.points
+            .filter(p => p.value)
+            .map(p => `${p.category} ${p.value}`)
+            .join('\n');
+    }
 }

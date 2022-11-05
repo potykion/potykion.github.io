@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 from src.api_cli import KeepCli
 from src import auth
+from src.models import GKeepNote
 from src.yc import Event
 
 
@@ -62,11 +63,11 @@ class CreateNote(BaseModel):
     note_text: str
     user_token: str
 
-    def __call__(self, keep_cli=None) -> HttpRes:
+    def __call__(self, keep_cli=None) -> HttpRes[GKeepNote]:
         return (
             do_auth(self.user_token)
-            .and_then(lambda: HttpRes.ok_id(
-                id_=(keep_cli or KeepCli.setup())
+            .and_then(lambda: HttpRes.ok(
+                (keep_cli or KeepCli.setup())
                 .create_note(self.note_type, self.note_text),
             ))
         )

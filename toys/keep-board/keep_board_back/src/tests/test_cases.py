@@ -77,7 +77,7 @@ def test_CreateNote(validate_token_mock: mock.MagicMock):
 
     keep_cli_mock = mock.MagicMock()
     create_note_mock: mock.MagicMock = keep_cli_mock.create_note
-    create_note_mock.return_value = 'id'
+    create_note_mock.return_value = GKeepNote(id='id', text='text', created='2022-11-05')
 
     res = (
         CreateNote(note_type=note_type, note_text=note_text, user_token=user_token)
@@ -86,4 +86,15 @@ def test_CreateNote(validate_token_mock: mock.MagicMock):
 
     validate_token_mock.assert_called_with(user_token)
     create_note_mock.assert_called_with(note_type, note_text)
-    assert res.as_response == ({'id': 'id'}, 200)
+    assert res.as_response == (
+        {
+            'created': '2022-11-05',
+            'id': 'id',
+            'image': None,
+            'labels': [],
+            'text': 'text',
+            'title': '',
+            'url': 'https://keep.google.com/#NOTE/id'
+        },
+        200
+    )

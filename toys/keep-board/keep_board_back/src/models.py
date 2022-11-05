@@ -26,6 +26,7 @@ class GKeepNote:
             image=keep.getMediaLink(gkeep_note.images[0]) if gkeep_note.images else None,
         )
 
+    @property
     def url(self):
         return f'https://keep.google.com/#NOTE/{self.id}'
 

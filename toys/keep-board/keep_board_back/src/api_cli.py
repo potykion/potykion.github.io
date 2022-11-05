@@ -38,7 +38,7 @@ class KeepCli:
         type_label = self.keep.findLabel(note_type)
         note.labels.add(type_label)
         self.keep.sync()
-        return note.id
+        return GKeepNote.from_gkeep(note, self.keep)
 
 
 @dataclasses.dataclass()
