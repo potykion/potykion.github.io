@@ -162,7 +162,11 @@ export class WeeklyNoteBoardCol extends NoteBoardCol {
     }
 
     get title() {
-        return `<b>Неделя ${this.weekIndex + 1}</b><br />
+        let weekIndex = `<b>Неделя ${this.weekIndex + 1}</b>`;
+        if (this.isToday) {
+            weekIndex = `<u>${weekIndex}</u>`;
+        }
+        return `${weekIndex}<br />
                 <span class="content is-small">${this.week}</span> `
     }
 

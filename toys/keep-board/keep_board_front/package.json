@@ -1,7 +1,9 @@
 {
   "name": "keep_board_front",
   "version": "1.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "dayjs": "^1.11.6"
+  },
   "devDependencies": {
     "vitest": "^0.24.3"
   },

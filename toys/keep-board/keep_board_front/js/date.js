@@ -1,3 +1,10 @@
+// import dayjs from "dayjs";
+// import isBetween from "dayjs/plugin/isBetween";
+// import "dayjs/locale/ru";
+//
+// dayjs.locale('ru')
+// dayjs.extend(isBetween);
+
 export const formatDateRange = dateRange => `${dateRange[0]} - ${dateRange[dateRange.length - 1]}`;
 
 /**
@@ -5,35 +12,67 @@ export const formatDateRange = dateRange => `${dateRange[0]} - ${dateRange[dateR
  */
 export const getWeekDays = (today = null) => {
     today = dayjs(today ?? dayjs());
-    const weekStart = today.add(-((today.day() + 6) % 7), 'd');
+    const weekStart = today.add(-getWeekday(today), 'd');
     return [...Array(7).keys()].map(i => weekStart.add(i, 'd').format('YYYY-MM-DD'));
 };
 
-export function getMonthWeeks(today = null) {
-    /** @type {string[]} */
-    let groups = [];
+/**
+ * Monday > 0
+ * Sunday > 6
+ *
+ */
+function getWeekday(dayjs_) {
+    return (dayjs_.day() + 6) % 7
+}
 
-    today = today ? dayjs(today) : dayjs(getWeekDays()[0]);
-    const monthStart = today.startOf('M');
-    const monthEnd = today.endOf('M');
+const Weekdays = {
+    Mon: 0,
+    Tue: 1,
+    Wed: 2,
+    Thu: 3,
+    Fri: 4,
+    Sat: 5,
+    Sun: 6,
+}
 
-    let curWeek = getWeekDays(monthStart);
-    while (true) {
-        if (dayjs(curWeek[0]).isBefore(monthStart, 'day')) {
-            curWeek = getWeekDays(dayjs(curWeek[0]).add(1, 'w'));
-            continue;
-        }
+export function getMonthWeeks(today) {
+    today = today ? dayjs(today) : dayjs();
 
-        groups.push(formatDateRange(curWeek));
-        curWeek = getWeekDays(dayjs(curWeek[0]).add(1, 'w'));
+    let weeks = [
+        formatDateRange(getWeekDays(today)),
+    ];
 
-        if (monthEnd.isBetween(curWeek[0], curWeek[curWeek.length - 1], 'day', '[]')) {
-            groups.push(formatDateRange(curWeek));
-            break
+    let currentDay = today.startOf('month');
+    if (getWeekday(currentDay) <= Weekdays.Thu) {
+        weeks.push(formatDateRange(getWeekDays(currentDay)));
+    } else {
+        const monthStartWeek = getWeekDays(currentDay)
+        if (today.isBetween(monthStartWeek[0], monthStartWeek[monthStartWeek.length - 1], 'day', '[]')) {
+            currentDay = currentDay.subtract(1, 'M');
+            if (getWeekday(currentDay) <= Weekdays.Thu) {
+                weeks.push(formatDateRange(getWeekDays(currentDay)));
+            }
         }
     }
 
-    return groups;
+    const monthEnd = currentDay.endOf('month');
+
+    while (true) {
+        currentDay = currentDay.add(1, 'w');
+        let week = getWeekDays(currentDay);
+
+        if (monthEnd.isBetween(week[0], week[week.length - 1], 'day', '[]')) {
+            if (getWeekday(monthEnd) > Weekdays.Thu) {
+                weeks.push(formatDateRange(week));
+            }
+            break;
+        }
+
+        weeks.push(formatDateRange(week));
+    }
+
+    weeks = [...new Set(weeks)].sort();
+    return weeks;
 }
 
 /**
