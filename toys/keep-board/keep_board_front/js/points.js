@@ -27,7 +27,7 @@ export class NotePointForm {
     points;
 
     constructor(points) {
-        this.points = points;
+        this.points = points ?? [];
     }
 
     /** @param {Note} note */

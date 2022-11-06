@@ -50,36 +50,6 @@ export class Note {
         await new ApiCli().createNote(noteType, pointsForm.toText(), user.token);
 }
 
-export class NoteVM extends Note {
-    note;
-
-    constructor(note) {
-        super(note);
-        this.text = prettifyLinks(makeClickableLinks(this.text));
-        this.note = note;
-    }
-
-    static buildDaily = (notes, groups) => {
-        notes = notes.map(note => new NoteVM(note));
-
-        const weekdays = ['ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ', 'ВС'];
-        const dailyNotes_ = groupBy(notes, 'created');
-        return zip(
-            groups.map((wd, index) => `<b>${weekdays[index]}</b><br /><span class="content is-small">${wd}</span>`),
-            groups.map(wd => dailyNotes_[wd] ?? []),
-        );
-    };
-
-    static buildWeekly = (notes, groups) => {
-        notes = notes.map(note => new NoteVM(note));
-
-        const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)))
-        return zip(
-            groups.map((week, index) => `<b>Неделя ${index + 1}</b><br /><span class="content is-small">${week}</span> `),
-            groups.map(week => weeklyNotes[week] ?? []),
-        );
-    };
-}
 
 export class NoteCache {
     static load = (type, reset) => {
@@ -99,4 +69,100 @@ export class NoteCache {
             JSON.stringify({notes, exp: dayjs().add(1, 'd')}),
         );
     };
+}
+
+export class NoteBoard {
+    /**  @type {NoteBoardCol[]} */
+    cols;
+
+    constructor(cols) {
+        this.cols = cols;
+    }
+
+    /**
+     *
+     * @param {Note[]} notes
+     * @param {string[]} groups
+     * @return {NoteBoard}
+     */
+    static buildDaily = (notes, groups) => {
+        const dailyNotes_ = groupBy(notes, 'created');
+        return new NoteBoard(
+            groups.map(g => new DailyNoteBoardCol(g, dailyNotes_[g] ?? []))
+        );
+    };
+
+    /**
+     *
+     * @param {Note[]} notes
+     * @param {string[]} groups
+     * @return {NoteBoard}
+     */
+    static buildWeekly = (notes, groups) => {
+        const weeklyNotes = groupBy(notes, (note) => formatDateRange(getWeekDays(note.created)));
+        return new NoteBoard(
+            groups.map((g, index) => new WeeklyNoteBoardCol(index, g, weeklyNotes[g] ?? []))
+        );
+    };
+
+
+    static formatNoteText(note) {
+        return prettifyLinks(makeClickableLinks(note.text))
+    }
+}
+
+export class NoteBoardCol {
+    notes;
+
+    constructor(notes) {
+        this.notes = notes;
+    }
+
+    get title() {
+        return 'Please fill me ~~with cum~~'
+    }
+
+    get isToday() {
+        return false;
+    }
+}
+
+export class DailyNoteBoardCol extends NoteBoardCol {
+    /** @type {string} */
+    weekday;
+
+    constructor(weekday, notes) {
+        super(notes);
+        this.weekday = weekday;
+    }
+
+    get title() {
+        let weekdayShort = `<b>${dayjs(this.weekday).format('dd').toUpperCase()}</b>`;
+        if (this.isToday) {
+            weekdayShort = `<u>${weekdayShort}</u>`;
+        }
+        return `${weekdayShort}<br /><span class="content is-small">${this.weekday}</span>`;
+    }
+
+    get isToday() {
+        return dayjs(this.weekday).isSame(dayjs(), 'day');
+    }
+}
+
+export class WeeklyNoteBoardCol extends NoteBoardCol {
+    /** @type {string} */
+    week;
+    /** @type {int} */
+    weekIndex;
+
+    constructor(weekIndex, week, notes) {
+        super(notes);
+        this.weekIndex = weekIndex;
+        this.week = week;
+    }
+
+    get title() {
+        return `<b>Неделя ${this.weekIndex + 1}</b><br />
+                <span class="content is-small">${this.week}</span> `
+    }
 }

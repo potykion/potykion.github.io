@@ -80,11 +80,11 @@
             <button class="button is-white" @click="shiftGroups(-1)">
                 ◀ <span class="is-hidden-tablet">&nbsp; Туда</span>
             </button>
-            <div class="column" v-for="(notes, group) in groupedNotes()">
-                <div class="block has-text-centered" v-html="group"></div>
+            <div class="column" v-for="col in buildNoteBoard().cols">
+                <div class="block has-text-centered" v-html="col.title"></div>
 
-                <template v-for="note in notes">
-                    <div class="card">
+                <template v-for="note in col.notes">
+                    <div class="card block">
                         <div class="card-image" v-if="note.image">
                             <figure class="image is-4by3">
                                 <img :src="note.image">
@@ -102,6 +102,16 @@
                     </div>
                 </template>
 
+                <div v-if="col.isToday && user && user.isAdmin && col.notes.length === 0">
+                    <div class="card block">
+                        <footer class="card-footer">
+                            <button class="button is-white card-footer-item note-font-size"
+                                    @click="openCreateNoteModal">➕
+                            </button>
+                        </footer>
+                    </div>
+                </div>
+
             </div>
             <button class="button is-white" @click="shiftGroups(1)">
                 <span class="is-hidden-tablet">Сюда &nbsp;</span>▶
@@ -115,7 +125,9 @@
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
+
             <p class="modal-card-title" v-if="selectedNote">{{ modeStr() }} от {{ selectedNote.created }}</p>
+            <p class="modal-card-title" v-else>Создание {{ modeStr() }}</p>
             <button class="delete" aria-label="close"></button>
         </header>
         <section class="modal-card-body" v-if="pointsForm">
@@ -133,7 +145,8 @@
             </div>
         </section>
         <footer class="modal-card-foot is-flex is-justify-content-right">
-            <button :class="['button',  'is-success', saving ? 'is-loading':'']" @click="saveNote">Сохранить</button>
+            <button v-if="selectedNote" :class="['button',  'is-success', saving ? 'is-loading':'']" @click="saveNote">Сохранить</button>
+            <button v-else :class="['button',  'is-success', saving ? 'is-loading':'']" @click="createNote">Сохранить</button>
         </footer>
     </div>
 </div>
@@ -141,16 +154,18 @@
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="./libs/dayjs.min.js"></script>
 <script src="./libs/dayjs.isBetween.js"></script>
+<script src="./libs/dayjs.ru.js"></script>
 
 <script type="module">
     import {createApp} from './libs/petite-vue.es.js'
-    import {Note, NoteVM, NoteCache} from "./js/notes.js";
+    import {Note, NoteBoard, NoteCache} from "./js/notes.js";
     import {NotePointForm} from "./js/points.js";
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek} from "./js/date.js";
     import {setupModal} from "./js/modal.js";
     import {User} from "./js/auth.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
+    dayjs.locale('ru');
 
     const [openModal, closeModal] = setupModal('#edit-note-modal')
 
@@ -219,12 +234,12 @@
                 this.loading = false;
             }
         },
-        groupedNotes() {
+        buildNoteBoard() {
             switch (this.mode) {
                 case "daily":
-                    return NoteVM.buildDaily(this.notes, this.groups);
+                    return NoteBoard.buildDaily(this.notes, this.groups);
                 case "weekly":
-                    return NoteVM.buildWeekly(this.notes, this.groups);
+                    return NoteBoard.buildWeekly(this.notes, this.groups);
             }
         },
 
@@ -239,17 +254,34 @@
                 closeModal();
             }
         },
+        async createNote() {
+            this.saving = true;
+            try {
+                const note = await Note.create(this.mode, this.user, this.pointsForm);
+                this.notes.push(note);
+                NoteCache.save(this.notes, this.mode);
+            } finally {
+                this.saving = false;
+                closeModal();
+            }
+        },
+
 
         /** @type {NotePointForm} */
         pointsForm: null,
-        /** @param {NoteVM} vm */
-        openEditNoteModal(vm) {
-            this.selectedNote = vm.note;
+        openEditNoteModal(note) {
+            this.selectedNote = note;
 
             this.pointsForm = NotePointForm
                 .fromNote(this.selectedNote)
                 .syncWithCategories(this.categories)
                 .sortByCategories(this.categories);
+
+            openModal();
+        },
+        openCreateNoteModal() {
+            this.pointsForm = new NotePointForm()
+                .syncWithCategories(this.categories);
 
             openModal();
         },
