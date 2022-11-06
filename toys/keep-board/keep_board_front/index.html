@@ -144,9 +144,19 @@
                 </div>
             </div>
         </section>
-        <footer class="modal-card-foot is-flex is-justify-content-right">
-            <button v-if="selectedNote" :class="['button',  'is-success', saving ? 'is-loading':'']" @click="saveNote">Сохранить</button>
-            <button v-else :class="['button',  'is-success', saving ? 'is-loading':'']" @click="createNote">Сохранить</button>
+        <footer class="modal-card-foot is-flex is-justify-content-right buttons">
+            <button v-if="selectedNote" :class="['button',  'is-success', saving ? 'is-loading':'']" @click="saveNote">
+                Сохранить
+            </button>
+            <button v-if="!selectedNote && mode === 'weekly'" :class="['button',  'is-warning']"
+                    @click="fillWeeklyFormWithDaily">
+                Собрать из
+                дейли
+            </button>
+            <button v-if="!selectedNote" :class="['button',  'is-success', saving ? 'is-loading':'']"
+                    @click="createNote">Сохранить
+            </button>
+
         </footer>
     </div>
 </div>
@@ -163,6 +173,7 @@
     import {shiftMonth, getMonthWeeks, getWeekDays, shiftWeek} from "./js/date.js";
     import {setupModal} from "./js/modal.js";
     import {User} from "./js/auth.js";
+    import {groupBy} from "./js/utils.js";
 
     dayjs.extend(window.dayjs_plugin_isBetween);
     dayjs.locale('ru');
@@ -284,6 +295,17 @@
                 .syncWithCategories(this.categories);
 
             openModal();
+        },
+        fillWeeklyFormWithDaily() {
+            const notes = Note.loadFromCache('daily');
+            const allDailyNotes = groupBy(notes, 'created')
+            const weeklyDailyNotes = getWeekDays().flatMap(g => allDailyNotes[g] ?? []);
+
+            this.pointsForm = NotePointForm
+                .fromNotes(weeklyDailyNotes)
+                .syncWithCategories(this.categories)
+                .sortByCategories(this.categories);
+
         },
         categories: {
             '📷': 'Картинка дня',

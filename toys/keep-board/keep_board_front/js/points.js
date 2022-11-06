@@ -19,6 +19,10 @@ export class NotePoint {
             value: text.replace(emojiRegex, '').trim(),
         });
     }
+
+    static fromNote(note) {
+        return note.text.split('\n').map(NotePoint.fromText)
+    }
 }
 
 
@@ -32,8 +36,11 @@ export class NotePointForm {
 
     /** @param {Note} note */
     static fromNote(note) {
-        let preparedText = note.text;
-        return new NotePointForm(preparedText.split('\n').map(NotePoint.fromText));
+        return new NotePointForm(NotePoint.fromNote(note));
+    }
+
+    static fromNotes(notes) {
+        return new NotePointForm(notes.flatMap(note => NotePoint.fromNote(note)));
     }
 
     /** @param {object} categories */

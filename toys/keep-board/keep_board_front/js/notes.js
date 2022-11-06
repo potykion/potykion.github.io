@@ -165,4 +165,10 @@ export class WeeklyNoteBoardCol extends NoteBoardCol {
         return `<b>Неделя ${this.weekIndex + 1}</b><br />
                 <span class="content is-small">${this.week}</span> `
     }
+
+    get isToday() {
+        const [weekStart, weekEnd] = this.week.split(' - ').map(w => dayjs(w));
+        return dayjs().isBetween(weekStart, weekEnd, 'day', '[]');
+    }
+
 }
