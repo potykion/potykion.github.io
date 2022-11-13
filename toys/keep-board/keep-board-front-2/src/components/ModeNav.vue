@@ -31,8 +31,8 @@
                   </button>
                 </div>
                 <div class="navbar-item">
-                  <figure class="image" v-if="user">
-                    <img class="is-rounded" :src="user.picture">
+                  <figure class="image" v-if="userStore.user">
+                    <img class="is-rounded" :src="userStore.user.picture">
                   </figure>
                   <div id="google-auth" v-else></div>
                 </div>
@@ -51,7 +51,7 @@ import { onMounted } from "vue";
 
 const modeStore = useModeStore();
 const {loadNotes, loading} = useNoteStore();
-const {user} = useUserStore();
+const userStore = useUserStore();
 
 </script>
 

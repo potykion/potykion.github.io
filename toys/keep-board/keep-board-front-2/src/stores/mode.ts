@@ -1,7 +1,10 @@
-import {defineStore} from "pinia";
-import type {Ref} from "vue";
-import {computed, ref} from "vue";
-import type {Mode} from "@/logic/mode";
+import { defineStore } from "pinia";
+import type { Ref } from "vue";
+import { computed, ref } from "vue";
+import type { Mode } from "@/logic/mode";
+import { useDateRangeStore } from "./date-range";
+import { getMonthWeeks, getWeekDays } from "@/logic/date";
+import { useNoteStore } from "./note";
 
 
 export const useModeStore = defineStore(
@@ -18,16 +21,18 @@ export const useModeStore = defineStore(
             }
         });
 
+        const { setDateRanges } = useDateRangeStore();
+        const { loadNotes } = useNoteStore();
         const setMode = (newMode: Mode) => {
             mode.value = newMode;
 
-            // todo
-            //   if (this.mode === 'daily') {
-            //       this.groups = getWeekDays();
-            //   } else if (this.mode === 'weekly') {
-            //       this.groups = getMonthWeeks();
-            //   }
-            //   this.loadNotes();
+
+            if (mode.value === 'daily') {
+                setDateRanges(getWeekDays());
+            } else if (mode.value === 'weekly') {
+                setDateRanges(getMonthWeeks());
+            }
+            loadNotes();
         };
 
         return {

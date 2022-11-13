@@ -29,7 +29,7 @@ export const usePointStore = defineStore(
             pointsForm.value = new NotePointForm()
                 .syncWithCategories(categories);
 
-            // openModal();
+            
         };
         const fillWeeklyFormWithDaily = () => {
             const notes = Note.loadFromCache('daily');
@@ -43,5 +43,5 @@ export const usePointStore = defineStore(
                 .sortByCategories(categories);
         };
 
-        return { pointsForm };
+        return { pointsForm, openEditNoteModal, openCreateNoteModal, fillWeeklyFormWithDaily };
     });

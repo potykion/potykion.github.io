@@ -18,8 +18,7 @@
             <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
           </div>
           <footer class="card-footer" v-if="user && user.isAdmin">
-            <button class="button is-white card-footer-item note-font-size"
-                    @click="openEditNoteModal(note)">✏️
+            <button class="button is-white card-footer-item note-font-size" @click="openEditNoteModal(note)">✏️
             </button>
             <a :href="note.url" target="_blank" class="button is-white card-footer-item note-font-size">🔗</a>
           </footer>
@@ -29,8 +28,7 @@
       <div v-if="col.isToday && col.notes.length === 0 && user && user.isAdmin ">
         <div class="card block">
           <footer class="card-footer">
-            <button class="button is-white card-footer-item note-font-size"
-                    @click="noteStore.openCreateNoteModal">➕
+            <button class="button is-white card-footer-item note-font-size" @click="openCreateNoteModal">➕
             </button>
           </footer>
         </div>
@@ -42,22 +40,39 @@
     </button>
   </div>
 
-  <NotePointFormModal></NotePointFormModal>
+  <NotePointFormModal v-model="opened"></NotePointFormModal>
 
 </template>
 <script setup lang="ts">
-import NotePointFormModal from '@/components/NotePointFormModal.vue';
 
-import {useModeStore} from "@/stores/mode";
-import {useDateRangeStore} from "@/stores/date-range";
+
+import { useModeStore } from "@/stores/mode";
+import { useDateRangeStore } from "@/stores/date-range";
 import { useNoteStore } from "@/stores/note";
 import { useUserStore } from "@/stores/user";
+import { usePointStore } from "@/stores/point";
+import { setupModal } from '@/logic/modal';
+import NotePointFormModal from "./NotePointFormModal.vue";
+import { ref } from "vue";
 
 const modeStore = useModeStore();
 const dateRangeStore = useDateRangeStore();
 const noteStore = useNoteStore();
+const pointStore = usePointStore();
 
-const {user} = useUserStore();
+const { user } = useUserStore();
+
+const opened = ref(false);
+
+function openCreateNoteModal() {
+  pointStore.openCreateNoteModal();
+  opened.value = true;
+}
+function openEditNoteModal(note) {
+  pointStore.openEditNoteModal(note);
+  opened.value = true;
+}
+
 </script>
 <style scoped>
 
