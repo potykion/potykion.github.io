@@ -2,7 +2,7 @@
 
 ## Техно
 
-- Евро: виталики
+- Евро: всякие виталики и гесы
 - Рус: локеды
 - Немцы: швешельгельб
 
@@ -10,7 +10,7 @@
 
 - Клиппинг
 - Грипсы
-- Jpegmafia aka Пеги 
+- Jpegmafia aka Пеги
 
 ## Грайндкор
 
@@ -21,3 +21,8 @@
 ## Эксперимантал электро
 
 ![](experimental-electronic-nonbinary.webp)
+
+- Sophie
+- Dorian Electra
+- Shygirl
+- Quay Dash
