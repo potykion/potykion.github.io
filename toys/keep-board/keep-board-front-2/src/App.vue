@@ -19,11 +19,8 @@ const noteStore = useNoteStore();
 const userStore = useUserStore();
 
 onMounted(() => {
-  console.log("fuck");
   noteStore.loadNotes();
-
-  userStore.loadOrSetupAuth("#google-auth" );
-  
+  userStore.loadFromCache();
 });
 
 </script>

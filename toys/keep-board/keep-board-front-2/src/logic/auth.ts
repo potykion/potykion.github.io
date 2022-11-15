@@ -1,6 +1,5 @@
-import { parseJwt } from "./jwt";
+import {parseJwt} from "./jwt";
 import dayjs from "dayjs";
-import google from "google-one-tap";
 
 export class User {
     /** @type {string} */
@@ -46,18 +45,5 @@ export class User {
             tokenData.picture,
             tokenData.email === 'potykion@gmail.com',
         );
-    }
-
-    static setupAuth(authBtn: string, callback: (token: string) => void) {
-        google.accounts.id.initialize({
-            client_id: "643332836412-9o4lbidm9e1th1um834fhd9jd8hvbhun.apps.googleusercontent.com",
-            callback: (resp: { credential: string; }) => callback(resp.credential),
-        });
-        google.accounts.id.renderButton(
-            document.querySelector(authBtn)!,
-            { theme: "outline", size: "medium", type: 'icon', shape: 'circle' }
-        );
-        google.accounts.id.prompt(); // also display the One Tap dialog
-        return null;
     }
 }

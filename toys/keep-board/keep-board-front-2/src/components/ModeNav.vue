@@ -1,3 +1,23 @@
+<script setup lang="ts">
+
+import {
+  GoogleSignInButton,
+  type CredentialResponse,
+} from "vue3-google-signin";
+
+
+import {useModeStore} from "@/stores/mode";
+import {useNoteStore} from "@/stores/note";
+import {useUserStore} from "@/stores/user";
+
+const modeStore = useModeStore();
+const {loadNotes, loading} = useNoteStore();
+const userStore = useUserStore();
+
+const handleLoginSuccess = (response: CredentialResponse) => userStore.auth(response.credential!);
+
+</script>
+
 <template>
   <nav class="navbar has-background-warning is-flex" role="navigation" aria-label="main navigation">
     <div class="navbar-brand ">
@@ -24,36 +44,28 @@
           </div>
         </div>
       </div>
-       <div class="navbar-end">
-                <div class="navbar-item">
-                  <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
-                    {{ loading ? '⏳' : '↻' }}
-                  </button>
-                </div>
-                <div class="navbar-item">
-                  <figure class="image" v-if="userStore.user">
-                    <img class="is-rounded" :src="userStore.user.picture">
-                  </figure>
-                  <div id="google-auth" v-else></div>
-                </div>
-              </div> 
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
+            {{ loading ? '⏳' : '↻' }}
+          </button>
+        </div>
+        <div class="navbar-item">
+          <figure class="image" v-if="userStore.user">
+            <img class="is-rounded" :src="userStore.user.picture">
+          </figure>
+          <template v-else>
+            <GoogleSignInButton theme="outline" size="medium" type="icon" shape="circle"
+                                @success="handleLoginSuccess"></GoogleSignInButton>
+          </template>
+
+        </div>
+      </div>
     </div>
 
   </nav>
 </template>
 
-<script setup lang="ts">
-import { setupModal } from "@/logic/modal";
-import {useModeStore} from "@/stores/mode";
-import { useNoteStore } from "@/stores/note";
-import { useUserStore } from "@/stores/user";
-import { onMounted } from "vue";
-
-const modeStore = useModeStore();
-const {loadNotes, loading} = useNoteStore();
-const userStore = useUserStore();
-
-</script>
 
 <style scoped>
 
