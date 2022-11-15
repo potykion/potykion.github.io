@@ -67,7 +67,7 @@ export class Note {
 
 
 export class NoteCache {
-    static load = (type: Mode, reset?: boolean) => {
+    static load: (type: Mode, reset?: boolean) => Note[] | null = (type: Mode, reset?: boolean) => {
         const notesCache = JSON.parse(localStorage.getItem(`${type}_notes`) ?? '[]');
         const notesCacheExpired = !(
             notesCache &&

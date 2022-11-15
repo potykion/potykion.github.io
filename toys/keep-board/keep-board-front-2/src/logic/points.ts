@@ -1,3 +1,5 @@
+import type {Note} from "@/logic/note";
+
 export class NotePoint {
     category: string;
     value: string;
@@ -20,7 +22,7 @@ export class NotePoint {
         });
     }
 
-    static fromNote(note) {
+    static fromNote(note: Note): NotePoint[] {
         return note.text.split('\n').map(NotePoint.fromText)
     }
 }
@@ -29,16 +31,16 @@ export class NotePoint {
 export class NotePointForm {
     points: NotePoint[];
 
-    constructor(points = null) {
+    constructor(points: NotePoint[] | null = null) {
         this.points = points ?? [];
     }
 
     /** @param {Note} note */
-    static fromNote(note) {
+    static fromNote(note: Note) {
         return new NotePointForm(NotePoint.fromNote(note));
     }
 
-    static fromNotes(notes) {
+    static fromNotes(notes: Note[]) {
         return new NotePointForm(notes.flatMap(note => NotePoint.fromNote(note)));
     }
 

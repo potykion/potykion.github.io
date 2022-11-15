@@ -1,5 +1,6 @@
 import { parseJwt } from "./jwt";
 import dayjs from "dayjs";
+import google from "google-one-tap";
 
 export class User {
     /** @type {string} */
@@ -53,7 +54,7 @@ export class User {
             callback: (resp: { credential: string; }) => callback(resp.credential),
         });
         google.accounts.id.renderButton(
-            document.querySelector(authBtn),
+            document.querySelector(authBtn)!,
             { theme: "outline", size: "medium", type: 'icon', shape: 'circle' }
         );
         google.accounts.id.prompt(); // also display the One Tap dialog

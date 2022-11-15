@@ -33,7 +33,7 @@ export const usePointStore = defineStore(
         };
         const fillWeeklyFormWithDaily = () => {
             const notes = Note.loadFromCache('daily');
-            const allDailyNotes = groupBy(notes, 'created')
+            const allDailyNotes = groupBy(notes!, 'created')
             // @ts-ignore
             const weeklyDailyNotes = getWeekDays().flatMap(g => allDailyNotes[g] ?? []);
 

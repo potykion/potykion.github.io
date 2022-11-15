@@ -1,8 +1,10 @@
-import { defineStore } from "pinia"
-import { ref } from "vue";
+import {defineStore} from "pinia"
+import type {Ref} from "vue";
+import {ref} from "vue";
+import type {Dict} from "@/logic/utils";
 
 export const useCategoryStore = defineStore("category", () => {
-    const categories = ref({
+    const categories: Ref<Dict<string>> = ref({
         '📷': 'Картинка дня',
 
         '🚀': 'Что зарелизил?',

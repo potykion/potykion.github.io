@@ -1,6 +1,9 @@
-const apply = <K>(obj: K, keyOrFunc: string | ((obj: K) => string)) =>
+export interface Dict<T> {
+    [key: string]: T
+}
+
+const apply = <K extends Dict<any>>(obj: K, keyOrFunc: string | ((obj: K) => string)) =>
     typeof keyOrFunc === 'string'
-        // @ts-ignore
         ? (obj[keyOrFunc] as string)
         : keyOrFunc(obj);
 
@@ -8,10 +11,9 @@ export const groupBy = <K>(items: K[], keyOrFunc: string | ((obj: K) => string))
     items.reduce(
         (res, obj) => ({
             ...res,
-            // @ts-ignore
             [apply(obj, keyOrFunc)]: [...(res[apply(obj, keyOrFunc)] ?? []), obj]
         }),
-        {},
+        {} as Dict<K[]>,
     );
 export const zip = (keys: string[], values: any[]) => {
     let obj = {};

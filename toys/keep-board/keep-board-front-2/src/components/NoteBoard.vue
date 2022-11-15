@@ -46,21 +46,22 @@
 <script setup lang="ts">
 
 
-import { useModeStore } from "@/stores/mode";
-import { useDateRangeStore } from "@/stores/date-range";
-import { useNoteStore } from "@/stores/note";
-import { useUserStore } from "@/stores/user";
-import { usePointStore } from "@/stores/point";
-import { setupModal } from '@/logic/modal';
+import {useModeStore} from "@/stores/mode";
+import {useDateRangeStore} from "@/stores/date-range";
+import {useNoteStore} from "@/stores/note";
+import {useUserStore} from "@/stores/user";
+import {usePointStore} from "@/stores/point";
+import {setupModal} from '@/logic/modal';
 import NotePointFormModal from "./NotePointFormModal.vue";
-import { ref } from "vue";
+import {ref} from "vue";
+import type {Note} from "@/logic/note";
 
 const modeStore = useModeStore();
 const dateRangeStore = useDateRangeStore();
 const noteStore = useNoteStore();
 const pointStore = usePointStore();
 
-const { user } = useUserStore();
+const {user} = useUserStore();
 
 const opened = ref(false);
 
@@ -68,7 +69,8 @@ function openCreateNoteModal() {
   pointStore.openCreateNoteModal();
   opened.value = true;
 }
-function openEditNoteModal(note) {
+
+function openEditNoteModal(note: Note) {
   pointStore.openEditNoteModal(note);
   opened.value = true;
 }
