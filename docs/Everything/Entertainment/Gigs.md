@@ -17,7 +17,7 @@
 - [Урбан](https://rockgig.net/club/3471)
     - Молодой клуб средних размеров
     - Здесь был [Mashupable 2](https://vk.com/mashupble)
-- [Mutabor](https://rockgig.net/club/2904) - электронные движухи, жаль ночные
+- [Mutabor](https://rockgig.net/club/2904) - электронные движухи, жаль ночные; хотя как-то раз и [Uniform был](https://www.youtube.com/watch?v=kiN_7QOiPPU)
 - [ГлавClub](https://rockgig.net/club/1261) - большой клуб, и более-менее известные исполнители здесь выступают,
   например Мэйби Бэйби)))
 - [Aglomerat](https://rockgig.net/club/2231) - в основном металл
