@@ -42,21 +42,19 @@ export class NotePointForm {
         return new NotePointForm(notes.flatMap(note => NotePoint.fromNote(note)));
     }
 
-    /** @param {object} categories */
-    syncWithCategories(categories) {
+    syncWithCategories(categories: object) {
         this.points = [
             ...this.points,
             ...Object.keys(categories).flatMap(
                 category => this.points.map(p => p.category).includes(category)
                     ? []
-                    : [new NotePoint({ category })]
+                    : [new NotePoint({ category, value: '' })]
             ),
         ];
         return this;
     }
 
-    /** @param {object} categories */
-    sortByCategories(categories) {
+    sortByCategories(categories: object) {
         this.points.sort(
             (p1, p2) => {
                 let catIndex1 = Object.keys(categories).indexOf(p1.category);
@@ -67,11 +65,11 @@ export class NotePointForm {
         return this;
     }
 
-    addPoint(category, index) {
+    addPoint(category: string, index: number) {
         this.points.splice(index + 1, 0, { category, value: '' });
     }
 
-    removePoint(point, index) {
+    removePoint(point: NotePoint, index: number) {
         if (this.points.filter(p => p.category === point.category).length === 1) {
             point.value = '';
         } else {
