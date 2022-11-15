@@ -71,7 +71,8 @@ nav:
       - Фреймворки:
           - ... | flat | Comparator/Frameworks/*.md
   - Жизнь 🤡:
-      - Life/Money/index.md
+      - Life/index.md
+      - Деньги: Life/Money/index.md
       - Еда:
           - База: Life/Food/index.md
           - Рецепты: Life/Food/Recipes/index.md
