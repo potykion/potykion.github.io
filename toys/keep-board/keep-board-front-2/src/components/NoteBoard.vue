@@ -17,7 +17,7 @@
           <div class="card-content">
             <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
           </div>
-          <footer class="card-footer" v-if="user && user.isAdmin">
+          <footer class="card-footer" v-if="userStore.user && userStore.user.isAdmin">
             <button class="button is-white card-footer-item note-font-size" @click="openEditNoteModal(note)">✏️
             </button>
             <a :href="note.url" target="_blank" class="button is-white card-footer-item note-font-size">🔗</a>
@@ -25,7 +25,7 @@
         </div>
       </template>
 
-      <div v-if="col.isToday && col.notes.length === 0 && user && user.isAdmin ">
+      <div v-if="col.isToday && col.notes.length === 0 && userStore.user && userStore.user.isAdmin ">
         <div class="card block">
           <footer class="card-footer">
             <button class="button is-white card-footer-item note-font-size" @click="openCreateNoteModal">➕
@@ -46,22 +46,19 @@
 <script setup lang="ts">
 
 
-import {useModeStore} from "@/stores/mode";
 import {useDateRangeStore} from "@/stores/date-range";
 import {useNoteStore} from "@/stores/note";
 import {useUserStore} from "@/stores/user";
 import {usePointStore} from "@/stores/point";
-import {setupModal} from '@/logic/modal';
 import NotePointFormModal from "./NotePointFormModal.vue";
 import {ref} from "vue";
 import type {Note} from "@/logic/note";
 
-const modeStore = useModeStore();
 const dateRangeStore = useDateRangeStore();
 const noteStore = useNoteStore();
 const pointStore = usePointStore();
 
-const {user} = useUserStore();
+const userStore = useUserStore();
 
 const opened = ref(false);
 
