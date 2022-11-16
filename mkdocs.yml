@@ -117,6 +117,3 @@ extra:
     - icon: material/mirror
       link: https://potykion.github.io/
       name: зеркало
-
-extra_css:
-  - stylesheets/extra.css
