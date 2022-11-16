@@ -33,28 +33,4 @@ https://vk.com/hedgehogs56104
 https://vk.com/mi.tut.prosta2
 https://vk.com/chill_capybaras
 
-## Записи
 
-
-## Мемы
-
-- **Тонилайф**: https://vk.com/wall-208670236_8384
-    - https://vk.com/wall-208670236_10927
-- Сенатор Жмильстронг: https://vk.com/video35780346_456240073?list=998bb2e4cbb22f1374
-- DALL-E: https://vk.com/wall-134304854_178900
-    - https://vk.com/wall-200076852_16507
-    - https://vk.com/wall-56942352_25134
-    - https://vk.com/wall-187407903_225
-    - https://vk.com/wall-186626603_84932
-- Погодите, это реально
-- Тайлер Жирден: https://vk.com/video351536565_456239177
-- Понял, вычеркиваем
-- Семья Сопрано: https://vk.com/thebebranos
-- Фондовые рынки: https://vk.com/video-208324395_456239056
-- Либерал спрашивает куда, а патриот кого
-- Тинькофф все
-- айзек
-    - https://vk.com/wall-128136718_320511
-- гиф бумеры
-    - https://vk.com/wall-205680857_82567
-    - https://vk.com/wall-117149296_314820

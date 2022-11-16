@@ -24,14 +24,14 @@ theme:
   features:
     # Табы
     - navigation.tabs
-    # Табы будет отображаться при скролле
-    - navigation.tabs.sticky
     # Кнопка "Вверх"
     - navigation.top
     # Поиск: предложения и подсветка искомого текста
     - search.suggest
     - search.highlight
     - navigation.indexes
+  font:
+    text: Noto Sans
 
 # Плагины - для нового функционала
 plugins:
@@ -117,3 +117,6 @@ extra:
     - icon: material/mirror
       link: https://potykion.github.io/
       name: зеркало
+
+extra_css:
+  - stylesheets/extra.css

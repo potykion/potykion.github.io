@@ -11,5 +11,6 @@ Your browser does not support the video tag.
 
 ### Ссылки
 
+- https://vk.com/isaaccirclekerk - база
 - https://dead-god.ru/ - сайт со всеми предметами
 - https://platinumgod.co.uk/bag-of-crafting/index.html - рецепты Bag of Crafting для Tainted Cain

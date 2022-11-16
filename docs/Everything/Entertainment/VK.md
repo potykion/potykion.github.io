@@ -56,6 +56,7 @@
 - https://vk.com/adultswimming
 - https://vk.com/lentyay_tv
 - https://vk.com/officeguypublicmemestash
+- https://vk.com/spazm_aticus
 
 ## приколы по Игрушкам
 
@@ -80,10 +81,14 @@
 
 - https://vk.com/dafoe_every_day
 
-## Приколы про инвест
+## Приколы про инвестиции
 
 - https://vk.com/warningbuffet
 - https://vk.com/fiximprofit
+
+<video controls><source src="../../../assets/vk/telezhka.mp4" type="video/mp4"></video>
+
+
 
 ## Политржач
 
