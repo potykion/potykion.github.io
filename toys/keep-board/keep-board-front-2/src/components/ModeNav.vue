@@ -1,0 +1,72 @@
+<script setup lang="ts">
+
+import {
+  GoogleSignInButton,
+  type CredentialResponse,
+} from "vue3-google-signin";
+
+
+import {useModeStore} from "@/stores/mode";
+import {useNoteStore} from "@/stores/note";
+import {useUserStore} from "@/stores/user";
+
+const modeStore = useModeStore();
+const {loadNotes, loading} = useNoteStore();
+const userStore = useUserStore();
+
+const handleLoginSuccess = (response: CredentialResponse) => userStore.auth(response.credential!);
+
+</script>
+
+<template>
+  <nav class="navbar has-background-warning is-flex" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand ">
+      <div class="navbar-item">
+        <div class="is-size-4 is-size-6-mobile has-text-weight-bold">KeepBoard</div>
+      </div>
+    </div>
+
+    <div
+        class="navbar-menu is-active is-flex has-background-warning is-flex-grow-1 is-justify-content-space-between is-shadowless is-align-items-center">
+      <div class="navbar-start">
+        <div class="navbar-item">
+          <div class="buttons">
+            <button
+                :class="['button', 'btn-small-mobile', 'is-warning', {'has-text-weight-bold': modeStore.mode === 'daily'}]"
+                @click="modeStore.setMode('daily')">
+              Дни
+            </button>
+            <button
+                :class="['button', 'btn-small-mobile', 'is-warning', {'has-text-weight-bold': modeStore.mode === 'weekly'}]"
+                @click="modeStore.setMode('weekly')">
+              Недели
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <button class="button is-warning " @click="loadNotes(true)" :disabled="loading">
+            {{ loading ? '⏳' : '↻' }}
+          </button>
+        </div>
+        <div class="navbar-item">
+          <figure class="image" v-if="userStore.user">
+            <img class="is-rounded" :src="userStore.user.picture">
+          </figure>
+          <template v-else>
+            <GoogleSignInButton theme="outline" size="medium" type="icon" shape="circle"
+                                @success="handleLoginSuccess"></GoogleSignInButton>
+          </template>
+
+        </div>
+      </div>
+    </div>
+
+  </nav>
+</template>
+
+
+<style scoped>
+
+</style>
