@@ -62,7 +62,7 @@
 
 - https://vk.com/shitty_nicknames
 
-<img src="../../../assets/vk/life-is-good.jpg">
+<img src="life-is-good.jpg">
 
 - https://vk.com/enciar
 - https://vk.com/hotline_muhosrani
@@ -75,18 +75,24 @@
 
 ## Приколы про актеров
 
-- https://vk.com/goslyaa
+### [G O S L Y A](https://vk.com/goslyaa)
 
-<img src="../../../assets/vk/goslya.gif">
+<img src="goslya.gif">
 
-- https://vk.com/dafoe_every_day
+### [Ебало Уиллема Дэфо на каждый божий день](https://vk.com/dafoe_every_day)
+
+![Дефо](./dafoe.jpg)
 
 ## Приколы про инвестиции
 
 - https://vk.com/warningbuffet
+
+<video controls><source src="./telezhka.mp4" type="video/mp4"></video>
+
+
 - https://vk.com/fiximprofit
 
-<video controls><source src="../../../assets/vk/telezhka.mp4" type="video/mp4"></video>
+![Когда началась СВО, торговля в шорт была запрещена](./short.jpg)
 
 
 
