@@ -37,3 +37,4 @@ hide:
   нескольким кучкам
 - [KeepBoard](https://keep-board.website.yandexcloud.net/): Заметки из Keep разбитые по дням/неделям, удобно
   использовать как ежедневник
+- [Книга рецептов в Notion](https://potyk.notion.site/potyk/d47b6c5c807a41e2a9bb145632a20a5b) - рецептики из [ПростоКухня](./Life/Food/ProstoKuhnya/index.md)
