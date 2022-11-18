@@ -75,7 +75,7 @@
 
 ## Приколы про актеров
 
-### [G O S L Y A](https://vk.com/goslyaa)
+### [G O S L Y A](https://vk.com/goslyaa) и [Райан Гослинг на каждый день](https://vk.com/goslingdaily)
 
 <img src="goslya.gif">
 
