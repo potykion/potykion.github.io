@@ -75,7 +75,6 @@ nav:
       - Деньги: Life/Money/index.md
       - Еда:
           - База: Life/Food/index.md
-          - Рецепты: Life/Food/Recipes/index.md
           - ПроСто кухня: Life/Food/ProstoKuhnya/index.md
       - Мысли о:
           - ... | flat | Life/Thoughts/**/*.md
