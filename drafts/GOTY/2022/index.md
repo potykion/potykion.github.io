@@ -105,15 +105,15 @@ img {
 ### 🥈 [Сенатор Жмильстронг](https://vk.com/karelian_balsam) 🥈
 
 <div class="flex">
-<video class="video" style="flex: 1; padding: 4px" controls><source src="./zmilstrong-1.mp4" type="video/mp4"></video>
-<video class="video" style="flex: 1; padding: 4px" controls><source src="./zmilstrong-2.mp4" type="video/mp4"></video>
+<video class="video" style="flex: 1; padding: 4px" controls><source src="zmilstrong-1.mp4" type="video/mp4"></video>
+<video class="video" style="flex: 1; padding: 4px" controls><source src="zmilstrong-2.mp4" type="video/mp4"></video>
 
 </div>
 
 ### 🏆 [ТОНИЛАЙФ](https://vk.com/filosofia_toni) 🏆 {.text-center}
 
 <div class="flex">
-<video class="video" controls><source src="./tony-life.mp4" type="video/mp4"></video>
+<video class="video" controls><source src="tony-life.mp4" type="video/mp4"></video>
 </div>
 
 ### Хонорабл меншнс
@@ -121,7 +121,7 @@ img {
 <div class="grid-2d">
   <div>
     <h4>Нейромемы</h4>
-    <img src="./dall-e.jpg">
+    <img src="dall-e.jpg">
   </div>
   <div>
     <h4>Нейромемы еще</h4>
@@ -129,7 +129,7 @@ img {
   </div>
    <div>
     <h4>МобилиZация</h4>           
-    <img src="./mobilization.jpg">
+    <img src="mobilization.jpg">
   </div>
   <div> 
     <h4>Понял, вычеркиваем</h4>
@@ -137,23 +137,23 @@ img {
   </div>
    <div> 
     <h4>Тиньков - все</h4>
-    <img src="./tink.jpg">                      
+    <img src="tink.jpg">                      
    </div>
    <div> 
     <h4>Инвестиции - все</h4> 
-    <video class="video mx-auto" controls><source src="./telezhka.mp4" type="video/mp4"></video>
+    <video class="video mx-auto" controls><source src="telezhka.mp4" type="video/mp4"></video>
    </div>
    <div> 
     <h4>Маск купил тви</h4> 
-    <img  src="./musk.jpg"> 
+    <img  src="musk.jpg"> 
    </div>
    <div> 
     <h4>Брейкин бед, лучше звоните солу, густаво, кид неймед фингер</h4> 
-    <img  src="./payday.jpg">
+    <img  src="payday.jpg">
    </div>                                                                                                                            
    <div> 
     <h4>Погодите, это реально?</h4> 
-    <img src="./eto-realno.jpg">                    
+    <img src="eto-realno.jpg">                    
    </div>
   <div>
    <h4><a href="https://vk.com/thebebranos">Семья Сопрано</a></h4>
