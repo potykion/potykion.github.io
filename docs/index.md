@@ -1,7 +1,9 @@
 ---
 hide:
+
 - navigation
 - toc
+
 ---
 
 # `potyk.io`
@@ -12,10 +14,7 @@ hide:
 
 ## Писанина
 
-- [Python](./Python/index.md) - про синтаксис, либы, тестирование
-- [Ops](./Ops/Bat.md) - про консоледроч и веб-базу
-- [Frontend](./Frontend/HTML.md) - про html, js, vue
-- [Сравнятор](./Comparator/Apps.md) - сравниваю всякие приложения и технологии
+- [Код](Code/index.md) - про веб-программирование, а конкретно про Python бекенд, попсовый Фронтенд и DevOps
 - [Все что я знаю](./Everything/index.md) - про мой жизненный опыт
 
 ## Проекты

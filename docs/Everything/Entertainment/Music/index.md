@@ -1,5 +1,7 @@
 # Музыка
 
+![soundcloud be like](sc.jpg)
+
 - База: https://vk.com/come_to_brazil
 
 ## Техно
@@ -14,9 +16,13 @@
 
 <img src="../../../assets/vk/mc-ride.gif">
 
-
 - Клиппинг
 - Jpegmafia aka Пеги
+- Кста есть видос про него
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/evy5J-1jP1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+- Да и вообще прикольны [канальчик про рэпчик](https://www.youtube.com/@MutenRoshi5137) - подписывайтес
 
 ## Грайндкор
 

@@ -37,22 +37,22 @@ description: Кидаем http-запросики и кайфуем
 1. Итак, качаем с [офф-сайта](https://www.postman.com/downloads/), ставим + логинимся, видим начальный экран - он же
    Launchpad, жмем **Create a request**
 
-    ![Начальный экран](./launchpad.jpg)
+    ![Начальный экран](launchpad.jpg)
 
 2. Появляется экран отправки запроса — тут все и происходит
 
-    ![Экран отправки запроса](./request.png)
+    ![Экран отправки запроса](request.png)
 
 3. Кинем POST-запросик с какими-нибудь параметрами; для этого выбираем POST-метод, заполняем URL, и напишем какой-нить
    джсончик
 
-    ![Результат отправки](./post.jpg)
+    ![Результат отправки](post.jpg)
 
     В ответе видим, что отправили POST-запрос на `https://httpbin.org/post` с json-данными `{"field": "value"}`
 
 4. И, для закрепа, кинем еще GET-запрос с query-параметрами:
 
-    ![GET-запросик](./get.jpg)
+    ![GET-запросик](get.jpg)
 
     В ответе видим, что отправили GET-запрос на `https://httpbin.org/get` с query-параметрами `field=value`
 
@@ -89,16 +89,16 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NSIsIm5hbWUiOiJKb2huIEdvbGQ
 
 - Используя вкладку "Headers":
 
-![Токен как Authorization-хедер](./auth-token.jpg)
+![Токен как Authorization-хедер](auth-token.jpg)
 
 - Используя вкладку "Authorization" и тип "API Key":
 
-![Вкладка Authorization + тип API Key](./auth-header.jpg)
+![Вкладка Authorization + тип API Key](auth-header.jpg)
 
 - По науке передавать токен в такой схеме нужно используя префикс Bearer - для этого на той же вкладке выбираем тип "
   Bearer Token":
 
-![Вкладка Authorization + тип Bearer Token](./auth-bearer.jpg)
+![Вкладка Authorization + тип Bearer Token](auth-bearer.jpg)
 
 #### Query-параметр
 
@@ -106,11 +106,11 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NSIsIm5hbWUiOiJKb2huIEdvbGQ
 
 - Используя вкладку "Params":
 
-![Токен как query-параметр](./query-token.jpg)
+![Токен как query-параметр](query-token.jpg)
 
 - Используя вкладку "Authorization", тип "API Key" и настройку "Add to" = "Query Params":
 
-![Authorization + API Key + Add to Query Params](./auth-query.jpg)
+![Authorization + API Key + Add to Query Params](auth-query.jpg)
 
 #### Логин и пароль ака Basic Auth
 
@@ -118,13 +118,13 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 
 Для проведения такой аутентификации, в Postman, выбираем вкладку "Authorization" и тип "Basic Auth":
 
-![Вводим доступы, видим что отправляется Authorization-хедер с зашифрованными BasicAuth-данными](./auth-basic.jpg)
+![Вводим доступы, видим что отправляется Authorization-хедер с зашифрованными BasicAuth-данными](auth-basic.jpg)
 
 ### Коллекции
 
 Когда нужно кидать не один запрос и не один раз, хорошо бы завести коллекцию запросов
 
-![Так выглядят коллекции](./collection.jpg)
+![Так выглядят коллекции](collection.jpg)
 
 Коллекция - это по сути папочка с запросиками + плюшечки:
 
@@ -144,17 +144,17 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 Коллекцию можно создать из панели сбоку, нажав на "Create collection"; или сохранив запрос, нажав кнопку "Save"
 или `Ctrl + S`, и создав коллекцию оттуда
 
-![Сохранение запроса с возможностью выбрать или создать коллекцию](./save-request.jpg)
+![Сохранение запроса с возможностью выбрать или создать коллекцию](save-request.jpg)
 
 #### Общие данные ака переменные
 
 В окне редактирования коллекции (... > Edit) есть вкладка "Variables":
 
-![Вкладка Variables](./collection-variables.jpg)
+![Вкладка Variables](collection-variables.jpg)
 
 Здесь можно выставлять данные, которые будут использоваться всеми запросами коллекции, такими как токены, айдишники
 
-![Создание переменной](./collection-var-creation.jpg)
+![Создание переменной](collection-var-creation.jpg)
 
 - Variable - это название переменной
 - Initial Value - можно оставить пустым
@@ -166,7 +166,7 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 
 Эту штуку можно вставлять в любое место запроса: query-параметры, заголовки, json-body
 
-![Использование переменной в Authorization](./collection-var-usage.jpg)
+![Использование переменной в Authorization](collection-var-usage.jpg)
 
 ## Еще о переменных
 
@@ -178,7 +178,7 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 В Postman для этого существует Environment (енвайронмент, енв) - это как раз тот самый набор переменных, которые можно
 быстро выставлять и переключать для всех запросов
 
-![Environment](./env.jpg)
+![Environment](env.jpg)
 
 Работает и настраивается все так же как и для коллекций, но приоритет у енвайронментов выше. Так что если выставить
 переменную `token` в коллекции и в енвайронменте, то значение будет взято из енва
@@ -188,7 +188,7 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 Вообще в постмане
 существует [несколько уровней переменных](https://learning.postman.com/docs/sending-requests/variables/):
 
-![Уровни переменных](./var-scopes.png)
+![Уровни переменных](var-scopes.png)
 
 Работают они от global до local, то есть как я писал про енвы, если выставить переменные на уровне collection, то
 совпадающие по названию переменные перезапишутся переменными из уровня environment
@@ -205,7 +205,7 @@ Basic Auth - это когда сразу кидаем запросы, имея 
 
 Заходим в раздел "Tests" и у нас появляется возможность писать JavaScript-код:
 
-![Вкладка Tests, где можно писать код](./tests.jpg)
+![Вкладка Tests, где можно писать код](tests.jpg)
 
 Для того чтобы взаимодействовать с Postman из кода, используется объект `pm` - в нем есть доступ к ответу на запрос, а
 так же возможность выставлять переменные
