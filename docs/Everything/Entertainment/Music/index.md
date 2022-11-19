@@ -19,10 +19,10 @@
 - Клиппинг
 - Jpegmafia aka Пеги
 - Кста есть видос про него
-
   <iframe width="560" height="315" src="https://www.youtube.com/embed/evy5J-1jP1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 - Да и вообще прикольны [канальчик про рэпчик](https://www.youtube.com/@MutenRoshi5137) - подписывайтес
+- И про грипсов там, одобряю крч
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/_oNJmLQpUTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Грайндкор
 
