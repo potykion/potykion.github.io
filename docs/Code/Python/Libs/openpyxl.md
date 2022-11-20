@@ -139,7 +139,7 @@ cell.border = Border(left=side, top=side, right=side, bottom=side)
 
 ```python
 cell.alignment = Alignment(
-    horizontal='center', 
+    horizontal='center',
     vertical='center',
 )
 ```
@@ -178,7 +178,7 @@ sheet.column_dimensions['A'].width = 21
 Для получения буквы столбца помогает функция `openpyxl.utils.cell.get_column_letter`
 
 ```python
->>> openpyxl.utils.cell.get_column_letter(1)
+>> > openpyxl.utils.cell.get_column_letter(1)
 'A'
 ```
 
@@ -186,6 +186,29 @@ sheet.column_dimensions['A'].width = 21
 
 ```python
 sheet.row_dimensions[2].width = 53
+```
+
+#### Установка ширины под размер контента
+
+- [Источник](https://stackoverflow.com/q/39529662/5500609)
+
+```python
+from openpyxl.cell import MergedCell
+
+
+def adjust_cols(sheet):
+    for column_cells in sheet.columns:
+        length = max(len(str(cell.value)) for cell in column_cells)
+
+        # Определяем букву колонки по первой необъединенной ячейке
+        col_letter = next((
+            cell.column_letter
+            for cell in column_cells
+            if not isinstance(cell, MergedCell)
+        ))
+
+        # Значение 1.1 подобрано опытным путем
+        sheet.column_dimensions[col_letter].width = length * 1.1
 ```
 
 ## Сложный эксель
