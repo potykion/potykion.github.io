@@ -8,10 +8,8 @@ export const useUserStore = defineStore(
     'user', () => {
         const user: Ref<User | null> = ref(null);
 
-        const {loadNotes} = useNoteStore();
         const auth = (token: string) => {
             user.value = User.setupFromToken(token);
-            loadNotes(true);
         };
 
         const loadFromCache = () => user.value = User.loadFromCache();

@@ -81,7 +81,7 @@ export class NoteCache {
     static save = (notes: Note[], type: Mode) => {
         localStorage.setItem(
             `${type}_notes`,
-            JSON.stringify({notes, exp: dayjs().add(1, 'd')}),
+            JSON.stringify({notes, exp: dayjs().add(1, 'h')}),
         );
     };
 }

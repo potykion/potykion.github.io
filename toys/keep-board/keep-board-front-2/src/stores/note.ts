@@ -53,7 +53,6 @@ export const useNoteStore = defineStore<string, NoteStoreState, NoteStoreGetters
         },
 
         async loadNotes(reset = false) {
-            console.log("fk");
             const { mode } = useModeStore();
             this.loading = true;
             try {
