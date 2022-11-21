@@ -40,7 +40,7 @@
     - [tailwind](https://tailwindcss.com/) - если хочется кастомный диз, но писать css-код не хочется - этот фреймворк
       предоставляет утилитки на все случаи жизни
     - [Больше css-фреймворков](https://github.com/troxler/awesome-css-frameworks)
-- **А как хоститься?** Github Pages или закинуть статику
+- **А как хоститься?** [Github Pages](https://pages.github.com/) или закинуть статику
   на [Yandex Object Storage](https://cloud.yandex.ru/services/storage)
 
 ## А как бекенд сделать?
