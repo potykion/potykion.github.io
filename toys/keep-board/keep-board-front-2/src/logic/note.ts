@@ -63,6 +63,10 @@ export class Note {
      */
     static create = async (noteType: Mode, user: User, pointsForm: NotePointForm) =>
         await new ApiCli().createNote(noteType, pointsForm.toText(), user.token);
+
+    get formattedText() {
+        return prettifyLinks(makeClickableLinks(this.text));
+    }
 }
 
 
@@ -122,9 +126,6 @@ export class NoteBoard {
     };
 
 
-    static formatNoteText(note: Note) {
-        return prettifyLinks(makeClickableLinks(note.text))
-    }
 }
 
 export class NoteBoardCol {

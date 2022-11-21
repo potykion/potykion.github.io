@@ -25,10 +25,9 @@ export const zip = (keys: string[], values: any[]) => {
 export const makeClickableLinks = (str: string) =>
     str.replace(/(https?:\/\/\S+)/g, "<a href='$1' target='_blank'>$1</a>");
 
-export const prettifyLinks = (str: string) => {
-    return str
+export const prettifyLinks = (str: string) =>
+    str
         .replace(/>https:\/\/www\.youtube\.com\/watch\?v=(\w+)/g, '>https://youtu.be/$1')
         .replace(/>https:\/\/music\.yandex\.ru\/album\/(\d+)\/track\/(\d+)/g, '>ya.mu/$1/$2')
         .replace(/>https?:\/\//g, '>')
-        ;
-};
+        .replace(/\?utm_medium=copy_link</g, '<');

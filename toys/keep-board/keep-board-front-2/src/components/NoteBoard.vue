@@ -15,7 +15,7 @@
             </figure>
           </div>
           <div class="card-content">
-            <div class="note-font-size" style="white-space: pre-line" v-html="note.text"></div>
+            <div class="note-font-size" style="white-space: pre-line" v-html="note.formattedText"></div>
           </div>
           <footer class="card-footer" v-if="userStore.user && userStore.user.isAdmin">
             <button class="button is-white card-footer-item note-font-size" @click="openEditNoteModal(note)">✏️

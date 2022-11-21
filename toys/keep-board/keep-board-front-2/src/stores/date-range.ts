@@ -9,14 +9,14 @@ export const useDateRangeStore = defineStore(
     () => {
         const dateRanges: Ref<string[]> = ref(getWeekDays());
 
-        const {mode} = useModeStore();
+        const modeStore = useModeStore();
 
         const setDateRanges = (newDateRanges: string[]) => {
             dateRanges.value = newDateRanges;
         };
 
         const shift = function (by = 1) {
-            if (mode === 'daily') {
+            if (modeStore.mode === 'daily') {
                 let today = dateRanges.value[0];
                 dateRanges.value = shiftWeek(by, dayjs(today));
             } else {
