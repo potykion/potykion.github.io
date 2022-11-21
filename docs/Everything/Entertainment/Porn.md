@@ -36,6 +36,7 @@
 - Качаем [скреперы](https://github.com/stashapp/CommunityScrapers): склонить репо и папку scrapers закинуть в
   директорию со Stash
     - [Список скреперов](https://github.com/stashapp/CommunityScrapers/blob/master/SCRAPERS-LIST.md)
+    - В списке выше описапы с каких сайтов можно спарсить инфу => на этих же сайтах надо искать сцены для парса
 - Далее вводим ссылку на видос, и жмем кнопку скрепа
     - Пример ссылки: https://www.21sextury.com/en/video/assholefever/Anal-Stretching-Session/97175
 
@@ -50,14 +51,3 @@
 - Если у скрепера тип `CDP`, то выставить путь к хрому чето не помагает(((
     - Возможно, сработает https://hub.docker.com/r/chromedp/headless-shell/
 
-#### Где искать видео для парса
-
-- https://www.reidmylips.com/
-- https://www.evilangel.com/en/videos
-- https://www.21sextury.com/en
-- https://publicagent.com/
-- https://www.kink.com/
-
-#### Что не поддерживается
-
-- FaKings (VidasLiberales)
