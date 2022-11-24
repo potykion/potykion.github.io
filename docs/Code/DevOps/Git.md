@@ -1,4 +1,4 @@
-# Git 
+# Git
 
 ## Как установить шаблон коммит-сообщений?
 
@@ -27,4 +27,8 @@ W:
 # Если в коммите было сделано несколько изменений, то разделяем их ---
 ```
 
-Источник: https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733
+[Источник](https://gist.github.com/lisawolderiksen/a7b99d94c92c6671181611be1641c733)
+
+## Как удалить файл из истории (всех коммитов)
+
+Использовать [BFG Repo-Cleaner](https://github.com/rtyley/bfg-repo-cleaner)
