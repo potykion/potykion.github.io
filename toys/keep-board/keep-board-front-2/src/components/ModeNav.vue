@@ -1,18 +1,10 @@
 <script setup lang="ts">
 
-import {
-  GoogleSignInButton,
-  type CredentialResponse,
-} from "vue3-google-signin";
-
 
 import {useModeStore} from "@/stores/mode";
-import {useNoteStore} from "@/stores/note";
 import {useUserStore} from "@/stores/user";
-import {useRouter} from "vue-router";
 
 const modeStore = useModeStore();
-const {loadNotes, loading} = useNoteStore();
 const userStore = useUserStore();
 
 </script>
@@ -33,12 +25,17 @@ const userStore = useUserStore();
             <button
                 :class="['button', 'btn-small-mobile', 'is-warning', {'has-text-weight-bold': modeStore.mode === 'daily'}]"
                 @click="modeStore.setMode('daily')">
-              Дни
+              D
             </button>
             <button
                 :class="['button', 'btn-small-mobile', 'is-warning', {'has-text-weight-bold': modeStore.mode === 'weekly'}]"
                 @click="modeStore.setMode('weekly')">
-              Недели
+              W
+            </button>
+            <button
+                :class="['button', 'btn-small-mobile', 'is-warning', {'has-text-weight-bold': modeStore.mode === 'monthly'}]"
+                @click="modeStore.setMode('monthly')">
+              M
             </button>
           </div>
         </div>

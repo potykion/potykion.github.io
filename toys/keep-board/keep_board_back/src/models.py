@@ -1,9 +1,11 @@
 import dataclasses
 import datetime as dt
-from typing import List, Optional
+from typing import List, Optional, Literal
 
 from gkeepapi import Keep
 from gkeepapi.node import Note
+
+NoteType = Literal['daily', 'weekly', 'monthly']
 
 
 @dataclasses.dataclass()

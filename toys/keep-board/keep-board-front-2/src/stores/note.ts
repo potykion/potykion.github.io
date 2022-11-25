@@ -40,6 +40,8 @@ export const useNoteStore = defineStore<string, NoteStoreState, NoteStoreGetters
                     return NoteBoard.buildDaily(state.notes, dateRanges);
                 case "weekly":
                     return NoteBoard.buildWeekly(state.notes, dateRanges);
+                case "monthly":
+                    return NoteBoard.buildMonthly(state.notes, dateRanges);
             }
 
         }

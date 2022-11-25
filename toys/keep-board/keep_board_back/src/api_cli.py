@@ -9,7 +9,7 @@ from gkeepapi import Keep
 from keyring.errors import NoKeyringError
 
 from .dir_ import DATA_DIR
-from .models import GKeepNote
+from .models import GKeepNote, NoteType
 from .monads import Err, Ok, Result
 
 
@@ -33,7 +33,7 @@ class KeepCli:
         note.text = note_text
         self.keep.sync()
 
-    def create_note(self, note_type: Literal['daily', 'weekly'], note_text: str) -> str:
+    def create_note(self, note_type: NoteType, note_text: str) -> str:
         note = self.keep.createNote(title='', text=note_text)
         type_label = self.keep.findLabel(note_type)
         note.labels.add(type_label)

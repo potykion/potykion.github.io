@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import type {Mode} from "@/logic/mode";
 import type {User} from "@/logic/auth";
 import type {NotePointForm} from "@/logic/points";
+import {wrapB} from "@/logic/html-utils";
 
 
 export type RawNote = {
@@ -126,6 +127,12 @@ export class NoteBoard {
     };
 
 
+    static buildMonthly(notes: Note[], dateRanges: string[]) {
+        const monthlyNotes = groupBy(notes, (note) => dayjs(note.created).format('YYYY-MM'));
+        return new NoteBoard(
+            dateRanges.map((month) => new MonthlyNoteBoardCol(month, monthlyNotes[month] ?? [])),
+        );
+    }
 }
 
 export class NoteBoardCol {
@@ -191,5 +198,21 @@ export class WeeklyNoteBoardCol extends NoteBoardCol {
         const [weekStart, weekEnd] = this.week.split(' - ').map(w => dayjs(w));
         return dayjs().isBetween(weekStart, weekEnd, 'day', '[]');
     }
+}
 
+export class MonthlyNoteBoardCol extends NoteBoardCol {
+    constructor(public month: string, notes: Note[]) {
+        super(notes);
+    }
+
+
+    get title() {
+        let title_ = this.month;
+        title_ = this.isToday ? wrapB(title_) : title_;
+        return title_;
+    }
+
+    get isToday() {
+        return dayjs().startOf('month').isSame(dayjs(this.month));
+    }
 }

@@ -4,7 +4,7 @@ from unittest import mock
 import pytest
 
 from src.api_cli import KeepCli
-from src.cases import Mode, ListNotes, UpdateNote, CreateNote
+from src.cases import NoteAction, ListNotes, UpdateNote, CreateNote
 from src.models import GKeepNote
 
 
@@ -36,9 +36,9 @@ from src.models import GKeepNote
     ]
 )
 def test_mode(event, mode_type, mode_case_cls):
-    mode = Mode.from_event(event)
+    mode = NoteAction.from_event(event)
 
-    assert mode.mode_type == mode_type
+    assert mode.action_type == mode_type
     assert isinstance(mode.mode_case, mode_case_cls)
 
 

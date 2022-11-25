@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
 import {ref, type Ref} from "vue";
-import {getWeekDays, shiftMonth, shiftWeek} from "@/logic/date";
+import {getQuarterMonths, getWeekDays, shiftMonth, shiftWeek} from "@/logic/date";
 import {useModeStore} from "@/stores/mode";
 import dayjs from "dayjs";
 
@@ -11,17 +11,22 @@ export const useDateRangeStore = defineStore(
 
         const modeStore = useModeStore();
 
-        const setDateRanges = (newDateRanges: string[]) => {
-            dateRanges.value = newDateRanges;
-        };
+        const setDateRanges = (newDateRanges: string[]) => dateRanges.value = newDateRanges;
 
         const shift = function (by = 1) {
-            if (modeStore.mode === 'daily') {
-                let today = dateRanges.value[0];
-                dateRanges.value = shiftWeek(by, dayjs(today));
-            } else {
-                let today = dateRanges.value[0].split(' - ')[1];
-                dateRanges.value = shiftMonth(by, dayjs(today));
+            switch (modeStore.mode) {
+                case "daily":
+                    dateRanges.value = shiftWeek(by, dayjs(dateRanges.value[0]));
+                    break;
+                case "weekly":
+                    dateRanges.value = shiftMonth(by, dayjs(dateRanges.value[0].split(' - ')[1]));
+                    break;
+                case "monthly":
+                    dateRanges.value = getQuarterMonths(
+                        dayjs(dateRanges.value[0]).add(by * 4, 'month'),
+                    );
+                    break;
+
             }
         };
 

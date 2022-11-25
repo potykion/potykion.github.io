@@ -17,6 +17,17 @@ export const getWeekDays = (today?: RawDate) => {
     today = dayjs(today ?? dayjs());
     const weekStart = today.add(-getWeekday(today), 'd');
     return [...Array(7).keys()].map(i => weekStart.add(i, 'd').format('YYYY-MM-DD'));
+}
+
+/**
+ * По дню генерит месяцы
+ */
+export const getQuarterMonths = (today?: RawDate) => {
+    const quarterMonths = 4;
+    today = dayjs(today ?? dayjs());
+    const monthStart = today.startOf('month')
+    const quarterStart = monthStart.add(-(monthStart.month() % quarterMonths), 'month');
+    return [...Array(quarterMonths).keys()].map(i => quarterStart.add(i, 'month').format('YYYY-MM'));
 };
 
 /**

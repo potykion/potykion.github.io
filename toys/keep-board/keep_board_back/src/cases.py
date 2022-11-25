@@ -6,28 +6,28 @@ from pydantic import BaseModel
 
 from src.api_cli import KeepCli
 from src import auth
-from src.models import GKeepNote
+from src.models import GKeepNote, NoteType
 from src.yc import Event
 
 
-class Mode(BaseModel):
-    mode_type: Literal['daily', 'weekly', 'update', 'create']
+class NoteAction(BaseModel):
+    action_type: Literal['daily', 'weekly', 'monthly', 'update', 'create']
     mode_case: Any
 
     @classmethod
     def from_event(cls, event: Event):
         mode = event['queryStringParameters'].get('mode')
         if mode == 'update':
-            return cls(mode_type=mode, mode_case=UpdateNote.from_event(event))
+            return cls(action_type=mode, mode_case=UpdateNote.from_event(event))
         if mode == 'create':
-            return cls(mode_type=mode, mode_case=CreateNote.from_event(event))
-        if mode in ('daily', 'weekly'):
-            return cls(mode_type=mode, mode_case=ListNotes(mode=mode))
+            return cls(action_type=mode, mode_case=CreateNote.from_event(event))
+        if mode in ('daily', 'weekly', 'monthly'):
+            return cls(action_type=mode, mode_case=ListNotes(mode=mode))
         raise ValueError(f'Invalid mode: {mode}')
 
 
 class ListNotes(BaseModel):
-    mode: Literal['daily', 'weekly'] = 'daily'
+    mode: NoteType = 'daily'
 
     def __call__(self, keep_cli=None) -> HttpRes:
         notes = (keep_cli or KeepCli.setup()).notes(label=self.mode)
@@ -59,7 +59,7 @@ class UpdateNote(BaseModel):
 
 
 class CreateNote(BaseModel):
-    note_type: Literal['daily', 'weekly']
+    note_type: NoteType
     note_text: str
     user_token: str
 
