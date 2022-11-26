@@ -1,4 +1,4 @@
-import { getWeekDays } from "@/logic/date";
+import {formatDateRange, getMonthWeeks, getWeekDays} from "@/logic/date";
 import { Note } from "@/logic/note";
 import { NotePointForm } from "@/logic/points";
 import { groupBy } from "@/logic/utils";
@@ -42,6 +42,17 @@ export const usePointStore = defineStore(
                 .syncWithCategories(categories)
                 .sortByCategories(categories);
         };
+        const fillMonthlyFormWithWeekly = () => {
+            const notes = Note.loadFromCache('weekly');
+            const allWeeklyNotes = groupBy(notes!, (note) => formatDateRange(getWeekDays(note.created)));
+            // @ts-ignore
+            const monthlyWeeklyNotes = getMonthWeeks().flatMap(g => allWeeklyNotes[g] ?? []);
 
-        return { pointsForm, openEditNoteModal, openCreateNoteModal, fillWeeklyFormWithDaily };
+            pointsForm.value = NotePointForm
+                .fromNotes(monthlyWeeklyNotes)
+                .syncWithCategories(categories)
+                .sortByCategories(categories);
+        };
+
+        return { pointsForm, openEditNoteModal, openCreateNoteModal, fillWeeklyFormWithDaily, fillMonthlyFormWithWeekly };
     });

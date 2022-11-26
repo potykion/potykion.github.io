@@ -35,6 +35,10 @@
                   @click="pointStore.fillWeeklyFormWithDaily">
             Собрать из
             дейли
+          </button><button v-if="!noteStore.selectedNote && modeStore.mode === 'monthly'" :class="['button', 'is-warning']"
+                  @click="pointStore.fillMonthlyFormWithWeekly">
+            Собрать из
+            викли
           </button>
           <button v-if="!noteStore.selectedNote" :class="['button', 'is-success', noteStore.saving ? 'is-loading' : '']"
                   @click="noteStore.createNote">Сохранить
