@@ -3,13 +3,13 @@
 ## Что мне интересно
 
 - ИНТЕРНЕТ
-- [развлечения](./Entertainment/index.md) в тч [мемы](Entertainment/Memes/index.md), [музыка](Entertainment/Music/index.md) и [концерты](Entertainment/Music/Gigs.md), [игры](Entertainment/Games.md), [порно](Entertainment/Porn.md), кино и сериалы  
-- [веб-программирование](../Code/index.md) и [писательство](Writing/index.md)
-- [еда](./Food/index.md) в тч [готовка](https://potyk.notion.site/d47b6c5c807a41e2a9bb145632a20a5b) и [алкоголь](./Food/Alko.md)
-- [работа](./Work/index.md) в тч [продуктивность](Work/Productivity/index.md) и [деньги](Work/Money/index.md)
-- [девайсы](Tech/index.md) и приложения
-- [здоровье](./Health/index.md) в тч [спорт](./Health/Sport.md)
-- [бытовуха](./Routine/Cleaning.md)
+- [Развлечения](./Entertainment/index.md) в тч [мемы](Entertainment/Memes/index.md), [музыка](Entertainment/Music/index.md) и [концерты](Entertainment/Music/Gigs.md), [игры](Entertainment/Games.md), [порно](Entertainment/Porn.md), кино и сериалы  
+- [Веб-программирование](../Code/index.md) и [писательство](Writing/index.md)
+- [Еда](./Food/index.md) в тч [готовка](https://potyk.notion.site/d47b6c5c807a41e2a9bb145632a20a5b) и [алкоголь](./Food/Alko.md)
+- [Работа](./Work/index.md) в тч [продуктивность](Work/Productivity/index.md) и [деньги](Work/Money/index.md)
+- [Техника и технологии](Tech/index.md)
+- [Здоровье](./Health/index.md) в тч [спорт](./Health/Sport.md)
+- [Бытовуха](./Routine/Cleaning.md)
 
 ## Что мне неинтересно (но я что-то про это знаю)
 

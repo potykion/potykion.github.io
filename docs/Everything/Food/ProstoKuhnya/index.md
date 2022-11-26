@@ -9,6 +9,7 @@ hide:
 - Рецепты из выпусков ПроСто кухня
 - https://www.youtube.com/c/ПроСтокухняСТС/featured
 - https://www.youtube.com/playlist?list=PLRQwloIf-xS-PWGAytv_U1HUJ6U8BvSiP
+- https://vk.com/sashabelkovich
 - **Жирным** - то, что приготовил и понравилось
 - ~~Зачеркнуто~~ - то, что приготовил и не понравилось
 - _Курсив_ - то, что хочется

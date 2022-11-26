@@ -1,6 +1,6 @@
 # Vue
 
-<embed alt="Vue-Essentials-Cheat-Sheet via VueMastery" src="../../Vue-Essentials-Cheat-Sheet.pdf" width="100%" height="800px"  />
+<embed alt="Vue-Essentials-Cheat-Sheet via VueMastery" src="../../../assets/Vue-Essentials-Cheat-Sheet.pdf" width="100%" height="800px"  />
 
 ## Как итерироваться с индексом?
 
@@ -68,3 +68,11 @@
 ```
 
 [Источник](https://stackoverflow.com/a/50900809/5500609)
+
+## Petite Vue
+
+- [Petite Vue](https://github.com/vuejs/petite-vue) хорош только для динамических формочек
+- Пользоваться им на полную не выйдет - не все поддерживается:
+    - Лямбды не робят
+    - В цикл нельзя ифы вставлять
+    - Нет геттеров 

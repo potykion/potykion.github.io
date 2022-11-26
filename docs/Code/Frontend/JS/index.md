@@ -1,5 +1,9 @@
 # JS
 
+## Как типизировать без TypeScript?
+
+Использовать [jsdoc](https://jsdoc.app/), а именно [@type](https://jsdoc.app/tags-type.html)-тег
+
 ## Как удалить элемент из массива по индексу?
 
 ```js
