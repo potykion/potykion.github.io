@@ -45,7 +45,7 @@
 
 ## А как бекенд сделать?
 
-- Юзать **BAAS**: [фаербейз](https://firebase.google.com/) и [другие](https://www.youtube.com/watch?v=SXmYUalHyYk)
+- Юзать **BAAS**: [фаербейз](https://firebase.google.com/) и [другие](https://www.youtube.com/watch?v=SXmYUalHyYk) в частности [supabase](https://supabase.com/)
 - Использовать **serverless** функции - напр. [Cloud Function](https://cloud.yandex.ru/services/functions) от Яндекс
   облака
     - Писать код бека можно прямо в интерфейсе
