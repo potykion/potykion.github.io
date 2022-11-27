@@ -41,3 +41,8 @@ ignore_names = ["post", "_post_put_hook"]
 - `vulture {path_to_file} --make-whitelist > whitelist.py`
 - Очевидно, такой файл будет не один, так что лучше сделать папочку - `vulture_whitelists`
 - `vulture {path_to_file} --make-whitelist > vulture_whitelists/{path_to_file}.py`
+
+## Стоит ли использовать?
+
+- Слепо - нет - много false-positive
+- Но есть гибкая система игноров false-positive, так что тулза лучше, чем искать неиспользуемый код руками
