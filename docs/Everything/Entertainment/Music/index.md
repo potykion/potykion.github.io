@@ -2,7 +2,10 @@
 
 ![soundcloud be like](sc.jpg)
 
-[Мемная База](https://vk.com/come_to_brazil)
+- Я очень люблю музыку, так что она мне надоела
+- Тем не менее я хочу о ней написать
+- Мой [плейлист с триповыми клипами](https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q)
+- [Мемная База](https://vk.com/come_to_brazil)
 
 ## Техно
 
@@ -56,3 +59,20 @@
 <iframe frameborder="0" style="border:none;width:100%;height:100px;" height="100" src="https://music.yandex.ru/iframe/#track/52467702/7388929">Слушайте <a href='https://music.yandex.ru/album/7388929/track/52467702'>Push It To The Limit</a> — <a href='https://music.yandex.ru/artist/632210'>Qo</a> на Яндекс Музыке</iframe>
 
 <iframe frameborder="0" style="border:none;width:100%;height:100px;"  height="100" src="https://music.yandex.ru/iframe/#track/50008390/6883838">Слушайте <a href='https://music.yandex.ru/album/6883838/track/50008390'>Jungle Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</a> на Яндекс Музыке</iframe>
+
+## Базовый хардкорчик
+
+- Xibalba
+- Varials
+
+## Мешапы
+
+- Мешапы - это когда 2 трека миксуют и получается прикольно, даже [музтв про это статью написал](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
+- [Legaloli](https://vk.com/legaloli) 
+- [sektorjazza](https://vk.com/cringerecords) - лиричные мешапы
+- [DeepSpaceAudio](https://vk.com/dspaudio) - днб мешапы
+- [MOVIESTRAIFE](https://vk.com/moviestraife_group) - мощные мешапы
+- [FinalSketch](https://vk.com/finalsketchmusic) - брейккор мешапы
+- [Zetton](https://vk.com/zetton_mashups)
+- [Качественный Саунд](https://vk.com/highqualitysound) - мультисурс мешапы, тоже днбшные
+- [Gefalsht](https://vk.com/gefalsht) - турбомешапы, набирающие [миллионы просмотров](https://www.youtube.com/watch?v=k0H4GwnT5kE)
