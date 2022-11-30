@@ -4,8 +4,13 @@
 
 - https://django-ninja.rest-framework.com/
 - Надстройка над Django позволяющая юзать pydantic, аналогично FastAPI
-- Аналогично FastAPI автоматически генерит Swagger-доку по пути `/api/docs`
-- Важно: все что работает для Django, должно работать и для Django Ninja, напр. [CORS](./Django/CORS.md)
+
+## Чем хорош?
+
+- Аналогично FastAPI: автоматически генерит Swagger-доку по пути `/api/docs`
+- Аналогично FastAPI: Хорошие валидационные ошибки: `body.ctx.services.0.order_fee.0.__root__` - максимально подробный
+  путь, где возникла ошибка
+- Все что работает для Django, должно работать и для Django Ninja, напр. [CORS](./Django/CORS.md)
 
 ## Как использовать енамы?
 
