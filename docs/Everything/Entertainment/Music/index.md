@@ -60,6 +60,8 @@
 
 <iframe frameborder="0" style="border:none;width:100%;height:100px;"  height="100" src="https://music.yandex.ru/iframe/#track/50008390/6883838">Слушайте <a href='https://music.yandex.ru/album/6883838/track/50008390'>Jungle Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</a> на Яндекс Музыке</iframe>
 
+- Хотя есть НОВАТОРСКИЕ ребята, типа ~~Северсталь~~ Sewerslut 
+
 ## Базовый хардкорчик
 
 - Xibalba
@@ -67,7 +69,7 @@
 
 ## Мешапы
 
-- Мешапы - это когда 2 трека миксуют и получается прикольно, даже [музтв про это статью написал](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
+- Мешапы - это когда 2+ трека миксуют и получается прикольно, даже [музтв про это статью написал](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
 - [Legaloli](https://vk.com/legaloli) 
 - [sektorjazza](https://vk.com/cringerecords) - лиричные мешапы
 - [DeepSpaceAudio](https://vk.com/dspaudio) - днб мешапы

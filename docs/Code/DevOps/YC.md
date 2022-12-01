@@ -31,3 +31,6 @@ yc serverless container allow-unauthenticated-invoke {name}
 yc serverless container revision deploy --container-id {id} --image cr.yandex/{cr_id}/{image_name} --service-account-id {service_acc_id}
 ```
 
+### Важности
+
+- Важно запускать свою Docker-приложуньку на порту из переменной среды `PORT`
