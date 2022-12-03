@@ -233,6 +233,13 @@ img {
 
 ## Видосы года
 
+### Депрсна с Фео
+
+Депрсна с Фео из Психеи в 2 частях - вау, вау, вью года
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/VCQTe8PUswU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FQCchAeup_Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Mukbang-Gloryhole™ ASMR
 
 Самая большая ржака года
