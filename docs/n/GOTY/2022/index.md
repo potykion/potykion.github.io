@@ -136,6 +136,9 @@ img {
 - Потеря GoDaddy домена 
 - Уход Спотика, блокировка треков в ЯМузыке
 - Друзяшки уехали из России
+- Закрытие ИС
+
+![](ic.png)
 
 ---
 
@@ -177,6 +180,14 @@ img {
 </div>
 
 </div>
+
+### Открытие года
+
+**LIL DARKIE** - нормальный бодрый экспериментал хип-хоп, качовые шумные звуки есть, панковые треки есть, крч рил нормально выдает
+
+<iframe frameborder="0" style="border:none;width:320px;height:100px;" width="320" height="100" src="https://music.yandex.ru/iframe/#track/81956023/15243918">Слушайте <a href='https://music.yandex.ru/album/15243918/track/81956023'>FIGHT!</a> — <a href='https://music.yandex.ru/artist/6559030'>LIL DARKIE</a> на Яндекс Музыке</iframe>
+<iframe frameborder="0" style="border:none;width:320px;height:100px;" width="320" height="100" src="https://music.yandex.ru/iframe/#track/74817780/13109050">Слушайте <a href='https://music.yandex.ru/album/13109050/track/74817780'>BAR FIGHT MUSIC</a> — <a href='https://music.yandex.ru/artist/6559030'>LIL DARKIE</a> на Яндекс Музыке</iframe>
+<iframe frameborder="0" style="border:none;width:320px;height:100px;" width="320" height="100" src="https://music.yandex.ru/iframe/#track/64746300/10421376">Слушайте <a href='https://music.yandex.ru/album/10421376/track/64746300'>drink my piss you nasty slut yeah yeah</a> — <a href='https://music.yandex.ru/artist/6559030'>LIL DARKIE</a> на Яндекс Музыке</iframe>
 
 ### Плейлист
 
