@@ -68,8 +68,10 @@ class Abs(models.Model):
     class Meta:
         abstract = True
 
+
 class B(Abs):
     ...
+
 
 class C(Abs):
     ...
@@ -90,13 +92,15 @@ B.many_a: (fields.E304) Reverse accessor for 'B.many_a' clashes with reverse acc
 ```python
 class Abs(models.Model):
     a = models.ForeignKey(A)
-    many_a = models.ManyToManyField(A, related_name='%(class)s_a',)
+    many_a = models.ManyToManyField(A, related_name='%(class)s_a', )
 
     class Meta:
         abstract = True
 
+
 class B(Abs):
     ...
+
 
 class C(Abs):
     ...
@@ -129,7 +133,6 @@ class Migration(migrations.Migration):
 - https://stackoverflow.com/questions/22538563/django-reverse-accessors-for-foreign-keys-clashing
 - https://stackoverflow.com/questions/41595364/fields-e304-reverse-accessor-clashes-in-django
 
-
 ## Как работать с ManyToMany?
 
 ```python
@@ -153,3 +156,33 @@ class AnyModel(models.Model):
 ```
 
 [Источник](https://stackoverflow.com/a/27912261/5500609)
+
+## JSONField
+
+- Че-то оно не ощущается как продакшн реди
+
+### `TypeError: the JSON object must be str, bytes or bytearray, not dict`
+
+- То ли psycopg, то ли еще че, но при чтении данных в JSONField может прилететь словарь, и будем получать ошибку, типа
+  не могу распарсить словарь
+    - Тру стори, во на [стеке такая же ситуевина](https://stackoverflow.com/q/72045796/5500609)
+- Чтобы это пофиксить надо унаследовать JSONField и реализовать поддержку словарей
+
+```python
+class DictJsonField(models.JSONField):
+    def from_db_value(self, value, expression, connection):
+        if isinstance(value, dict):
+            return value
+        return super().from_db_value(value, expression, connection)
+```
+
+### `TypeError: Object of type Decimal is not JSON serializable`
+
+- Что-то посложнее Python-примитивов, типа Decimal, конечно же сунуть в JSONField просто так нельзя
+- Чтоб заробило, нужно указать `encoder` с `JSONEncoder`, напр. джанго-енкодером:
+
+```python
+from django.core.serializers.json import DjangoJSONEncoder
+
+DictJsonField(encoder=DjangoJSONEncoder)
+```
