@@ -52,6 +52,7 @@ nav:
 # Расширения маркдауна - возможность использовать новые конструкции в маркдауне
 markdown_extensions:
   - admonition
+  - pymdownx.details
   - pymdownx.magiclink
   - pymdownx.highlight:
       anchor_linenums: true
