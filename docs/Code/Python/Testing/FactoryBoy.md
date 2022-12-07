@@ -1,19 +1,30 @@
-# FactoryBoy
+# FactoryBoy (+ Faker, mimesis)
 
-## Зачем нужно?
-
-Генерировать сущности любой сложности для тестов (да и вообще)
+[Factoryboy](https://factoryboy.readthedocs.io/en/stable/) - либа для создания сущностей любой сложности для тестов (да
+и вообще)
 
 ### Да и вообще?
 
 Можно использовать factoryboy для создания данных для локальной бд и тестировать таким образом локалку (фронт поднять,
 посмотреть как выглядят данные с бека)
 
+---
+
 ## Как сгенерировать рандом?
 
 Использовать пакеты `factory.fuzzy` и `factory.faker`
 
-### Рандомный выбор из списка - `factory.fuzzy.Choice`:
+### `factory.fuzzy`
+
+#### Рандомный текст - `factory.fuzzy.FuzzyText`
+
+```python
+import factory.fuzzy
+
+factory.fuzzy.FuzzyText()
+```
+
+#### Рандомный выбор из списка - `factory.fuzzy.Choice`:
 
 ```python
 # Выбираем рандомный чойс из django-енама
@@ -22,7 +33,7 @@ date_type = factory.fuzzy.FuzzyChoice(
 )
 ```
 
-### Рандомное число - `factory.fuzzy.FuzzyInteger`
+#### Рандомное число - `factory.fuzzy.FuzzyInteger`
 
 ```python
 value = factory.fuzzy.FuzzyInteger(10)
@@ -37,6 +48,14 @@ value = factory.fuzzy.FuzzyInteger(10)
 value = factory.fuzzy.FuzzyInteger(1, 10)
 ```
 
+### `factory.Faker`
+
+```python
+address = factory.Faker('street_address', locale='ru_RU')
+```
+
+---
+
 ## Как заполнить поле, используя функцию? Напр. `datetime.now`?
 
 Использовать `LazyFunction`:
@@ -44,6 +63,36 @@ value = factory.fuzzy.FuzzyInteger(1, 10)
 ```python
 start = factory.LazyFunction(dt.datetime.utcnow)
 ```
+
+## Как заполнить поле на основе других полей?
+
+Использовать `LazyAttribute`:
+
+```python
+long_name = factory.fuzzy.FuzzyText(120)
+short_name = factory.LazyAttribute(lambda f: f.long_name[:20])
+```
+
+## Как сгенерить данные, но не передавать их в объект?
+
+Например, генерируемая сущность содержит айди другой сущности, но не саму сущность
+
+Решение - использовать `Params` вместе с `LazyAttribure`:
+
+```python
+class OrderFactory(factory.Factory):
+    class Meta:
+        model = Order
+
+    class Params:
+        venue = factory.SubFactory(VenueFactory)
+
+    venue_id = factory.LazyAttribute(lambda f: f.venue.id)
+```
+
+Фабрика `OrderFactory` создаст объект `Order` с `venue_id = VenueFactory().id`
+
+---
 
 ## Как сделать что-то после создания модели? Напр. сохранить в бд?
 
@@ -109,8 +158,123 @@ class StudyFactory(factory.django.DjangoModelFactory):
         if extracted:
             self.body_parts.set(extracted)
 
+
 StudyFactory(body_parts=[BodyParts(name='sam')])
 ```
 
 Здесь при вызове фабрики в `body_parts.extracted` поступит массив, который
 затем сеттим модельке
+
+---
+
+[//]: # (# FactoryBoy)
+
+[//]: # ()
+[//]: # (## Базовый пример)
+
+[//]: # ()
+[//]: # (```python)
+
+[//]: # (import factory)
+
+[//]: # ()
+[//]: # ()
+[//]: # (class SomeClass:)
+
+[//]: # (    def __init__&#40;self, value&#41;:)
+
+[//]: # (        self.value = value)
+
+[//]: # ()
+[//]: # ()
+[//]: # (class SomeClassFactory&#40;factory.Factory&#41;:)
+
+[//]: # (    class Meta:)
+
+[//]: # (        model = SomeClass)
+
+[//]: # ()
+[//]: # (    value = 1)
+
+[//]: # ()
+[//]: # ()
+[//]: # (cls = SomeClassFactory&#40;&#41;)
+
+[//]: # (assert cls.value == 1)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # ([//]: # &#40;## Генераторы полей ака declarations&#41;)
+[//]: # ()
+[//]: # ([//]: # &#40;- Допустим нам нужен класс, у которого будет  поле-строка, которое принимает рандомное значение, и поле-айди, которое последовательно увеличиваются - для этого нам помогут генераторы полей, из которых состоит фабрика&#41;)
+[//]: # ()
+[//]: # ([//]: # &#40;- `LazyAttribute` - &#41;)
+[//]: # ()
+[//]: # (## Создание словарей)
+
+[//]: # ()
+[//]: # (```python)
+
+[//]: # (factory.build&#40;dict, FACTORY_CLASS=UserFactory&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## `@factory.post_generation`)
+
+[//]: # ()
+[//]: # (- Полезно когда надо что-то сделать после создания сущности, напр. сохранить в бд)
+
+[//]: # ()
+[//]: # (```python)
+
+[//]: # (@factory.post_generation)
+
+[//]: # (def put&#40;obj, create, *args, **kwargs&#41;:)
+
+[//]: # (    if create:)
+
+[//]: # (        obj.put&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (- Аргументы:)
+
+[//]: # (    - `obj` - созданная сущность)
+
+[//]: # (    - `create` - был ли использована стратегия `CREATE` при создании объекта)
+
+[//]: # ()
+[//]: # (## Стратегии создания объектов)
+
+[//]: # ()
+[//]: # (- `CREATE` - создает объект и сохраняет в бд в случае ORM; используется по умолчанию)
+
+[//]: # ()
+[//]: # (```python)
+
+[//]: # (OrderFactory&#40;&#41;)
+
+[//]: # (OrderFactory.create&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (- `BUILD` - создает объект и ничего больше; удобно когда нужно сгенерить тестовые данные без вставки в бд, напр. для)
+
+[//]: # (  валидации, обновления сущностей)
+
+[//]: # ()
+[//]: # (```python)
+
+[//]: # (OrderFactory.build&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
