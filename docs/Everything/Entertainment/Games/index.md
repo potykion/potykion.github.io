@@ -2,6 +2,9 @@
 
 - [Мой стим](https://steamcommunity.com/id/potykion/)
 - [Сколько я потратил на игры](https://steamdb.info/calculator/76561198028604497/)
+- [SGG](https://gamegauntlets.com/) - ролл игор
+    - имеет смысл в настройках игр выставить оценку гг 70+
+- [howlongtobeat.com](https://howlongtobeat.com/) - сколько времени проходится игра
 
 ## [The Binding of Isaac: Rebirth](https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/)
 
@@ -35,4 +38,7 @@ Your browser does not support the video tag.
     - Есть буба
 - [Unpacking](https://store.steampowered.com/app/1135690/Unpacking/) - просто раскладываешь предметы - кайф
 - [Call of Duty 4](https://store.steampowered.com/app/7940/Call_of_Duty_4_Modern_Warfare/) - игра детства
-    - До сих пор можно скачать с торрентов, [подобрать ключ](https://www.youtube.com/watch?v=cfTXMnK_evA) (да, это ют-видео с ключами) и гонять в сетевую 
+    - До сих пор можно скачать с торрентов, [подобрать ключ](https://www.youtube.com/watch?v=cfTXMnK_evA) (да, это
+      ют-видео с ключами) и гонять в сетевую
+- [Overlord](https://store.steampowered.com/app/11450/Overlord/) - ходишь наводишь суету, сам и с помощью миньонов -
+  чилл гейминг
