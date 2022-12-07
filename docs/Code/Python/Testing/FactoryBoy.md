@@ -1,12 +1,75 @@
 # FactoryBoy (+ Faker, mimesis)
 
+## Что это?
+
 [Factoryboy](https://factoryboy.readthedocs.io/en/stable/) - либа для создания сущностей любой сложности для тестов (да
 и вообще)
 
-### Да и вообще?
+!!! note "Да и вообще?"
 
-Можно использовать factoryboy для создания данных для локальной бд и тестировать таким образом локалку (фронт поднять,
-посмотреть как выглядят данные с бека)
+    Можно использовать factoryboy для создания данных для локальной бд и тестировать таким образом локалку (фронт поднять,
+    посмотреть как выглядят данные с бека)
+
+### Базовый пример
+
+```python
+import factory
+
+
+class SomeClass:
+    def __init__(self, value):
+        self.value = value
+
+
+class SomeClassFactory(factory.Factory):
+    class Meta:
+        model = SomeClass
+
+    value = 1
+
+
+cls = SomeClassFactory()
+assert cls.value == 1
+```
+
+### Пример реальный
+
+```python
+RuFaker = partial(factory.Faker, locale='ru_RU')
+
+
+class _AgreementFactory(factory.Factory):
+    class Meta:
+        model = Agreement
+
+    now = factory.fuzzy.FuzzyDate(dt.date(2022, 1, 1))
+    app_name = RuFaker('word')
+    agreement_number = factory.LazyAttribute(
+        lambda a: f'{a.app_name[:3].upper()}/{a.now.year}/1-1'
+    )
+    address = RuFaker('address')
+    legal_address = RuFaker('address')
+    postal_address = RuFaker('address')
+    phones = factory.List([
+        RuFaker('phone_number'),
+    ])
+    services = factory.List([
+        Service.app(order_fee=[OrderFee.card(percent=3)]),
+        Service.web(order_fee=[OrderFee.cash(percent=3)]),
+        Service.vk(company_fee=100),
+        Service.tg(venue_fee=200),
+    ])
+    kpp = RuFaker('kpp')
+    okato = '45 000 000 000'
+    bank = RuFaker('bank')
+    bank_account = RuFaker('checking_account')
+    cor_account = RuFaker('correspondent_account')
+    bik = RuFaker('bic')
+    based_on = factory.fuzzy.FuzzyChoice(BasedOn.__members__.values())
+    attorney = factory.LazyAttribute(lambda a: '1488' if a.based_on == BasedOn.attorney else '')
+    tax_mode = factory.fuzzy.FuzzyChoice(TaxMode.__members__.values())
+
+```
 
 ---
 
@@ -50,11 +113,38 @@ value = factory.fuzzy.FuzzyInteger(1, 10)
 
 ### `factory.Faker`
 
+- [faker](https://faker.readthedocs.io/en/master/) - либа для генерации рандомных данных
+- Примечательно, что есть [Localized Providers](https://faker.readthedocs.io/en/master/locales.html) - локализованные
+  генераторы рандомных данных, напр. [русские](https://faker.readthedocs.io/en/master/locales/ru_RU.html)
+- В factoryboy есть встроенная интеграция с faker:
+
 ```python
 address = factory.Faker('street_address', locale='ru_RU')
 ```
 
+### Mimesis (смысла нет)
+
+- [mimesis](https://mimesis.name/en/master/) - альтернатива faker
+- Есть штуки, которых нет в факере,
+  типа [паспортных данных](https://mimesis.name/en/master/api.html#mimesis.builtins.RussiaSpecProvider.series_and_number)
+  и [даже политических координат)))](https://mimesis.name/en/master/api.html#mimesis.Person.political_views)
+- Есть [интеграция с factory_boy](https://github.com/lk-geimfari/mimesis-factory),
+  но [на нее забили](https://github.com/lk-geimfari/mimesis-factory/issues/245) => смысла в mimesis нет =\
+
+### Как сделать seed для рандома?
+
+- Устанавливая seed рандому, рандом будет предсказуемым
+- `factory.random.reseed_random('my awesome project')`
+
 ---
+
+## Как сгенерить не сущность, а словарь?
+
+```python
+
+factory.build(dict, FACTORY_CLASS=UserFactory)
+
+```
 
 ## Как заполнить поле, используя функцию? Напр. `datetime.now`?
 
@@ -112,7 +202,7 @@ def put(obj, create, *args, **kwargs):
 - FactoryBoy умеет создавать объекты в 2 режимах (strategy): `create` и `build`
 - Параметр `create` = `True`, если объект создан в режиме `create`; `False` - иначе
 
-## Режимы создания объектов
+### Режимы создания объектов
 
 - FactoryBoy хорошо интегрирован с Django
 - Так при вызове фабрики, объект сохранится в бд - это и есть режим `create`
@@ -127,7 +217,7 @@ UserFactory.create()
 UserFactory.buid()
 ```
 
-## Как еще можно использовать `post_generation`?
+### Как еще можно использовать `post_generation`?
 
 - https://factoryboy.readthedocs.io/en/stable/reference.html#extracting-parameters
 - Для проставление данных из конструкторва, через параметр `extracted`:
@@ -165,116 +255,3 @@ StudyFactory(body_parts=[BodyParts(name='sam')])
 Здесь при вызове фабрики в `body_parts.extracted` поступит массив, который
 затем сеттим модельке
 
----
-
-[//]: # (# FactoryBoy)
-
-[//]: # ()
-[//]: # (## Базовый пример)
-
-[//]: # ()
-[//]: # (```python)
-
-[//]: # (import factory)
-
-[//]: # ()
-[//]: # ()
-[//]: # (class SomeClass:)
-
-[//]: # (    def __init__&#40;self, value&#41;:)
-
-[//]: # (        self.value = value)
-
-[//]: # ()
-[//]: # ()
-[//]: # (class SomeClassFactory&#40;factory.Factory&#41;:)
-
-[//]: # (    class Meta:)
-
-[//]: # (        model = SomeClass)
-
-[//]: # ()
-[//]: # (    value = 1)
-
-[//]: # ()
-[//]: # ()
-[//]: # (cls = SomeClassFactory&#40;&#41;)
-
-[//]: # (assert cls.value == 1)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # ([//]: # &#40;## Генераторы полей ака declarations&#41;)
-[//]: # ()
-[//]: # ([//]: # &#40;- Допустим нам нужен класс, у которого будет  поле-строка, которое принимает рандомное значение, и поле-айди, которое последовательно увеличиваются - для этого нам помогут генераторы полей, из которых состоит фабрика&#41;)
-[//]: # ()
-[//]: # ([//]: # &#40;- `LazyAttribute` - &#41;)
-[//]: # ()
-[//]: # (## Создание словарей)
-
-[//]: # ()
-[//]: # (```python)
-
-[//]: # (factory.build&#40;dict, FACTORY_CLASS=UserFactory&#41;)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (---)
-
-[//]: # ()
-[//]: # (## `@factory.post_generation`)
-
-[//]: # ()
-[//]: # (- Полезно когда надо что-то сделать после создания сущности, напр. сохранить в бд)
-
-[//]: # ()
-[//]: # (```python)
-
-[//]: # (@factory.post_generation)
-
-[//]: # (def put&#40;obj, create, *args, **kwargs&#41;:)
-
-[//]: # (    if create:)
-
-[//]: # (        obj.put&#40;&#41;)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (- Аргументы:)
-
-[//]: # (    - `obj` - созданная сущность)
-
-[//]: # (    - `create` - был ли использована стратегия `CREATE` при создании объекта)
-
-[//]: # ()
-[//]: # (## Стратегии создания объектов)
-
-[//]: # ()
-[//]: # (- `CREATE` - создает объект и сохраняет в бд в случае ORM; используется по умолчанию)
-
-[//]: # ()
-[//]: # (```python)
-
-[//]: # (OrderFactory&#40;&#41;)
-
-[//]: # (OrderFactory.create&#40;&#41;)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (- `BUILD` - создает объект и ничего больше; удобно когда нужно сгенерить тестовые данные без вставки в бд, напр. для)
-
-[//]: # (  валидации, обновления сущностей)
-
-[//]: # ()
-[//]: # (```python)
-
-[//]: # (OrderFactory.build&#40;&#41;)
-
-[//]: # (```)
-
-[//]: # ()
-[//]: # (---)
