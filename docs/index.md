@@ -25,4 +25,4 @@ hide:
   из [ПростоКухня](Everything/Food/ProstoKuhnya/index.md)
 - [delilka](https://delilka.website.yandexcloud.net/) - Делит число на части, удобно когда надо распределить бабос по
   нескольким кучкам
-- [void](https://void.website.yandexcloud.net/) - прикольчик
+- [void](https://void.website.yandexcloud.net/) - прикольчик 😄
