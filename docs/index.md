@@ -28,3 +28,10 @@ hide:
 - [void](https://void.website.yandexcloud.net/) - прикольчик 😄
 - [write](https://write.website.yandexcloud.net/) - штука, чтобы писать текст абзацами, не обращая внимания на то, что
   было написано ранее
+
+## Обратная связь
+
+Обратную связь можно оставить в этой формочке:
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSca0cK6DWmBL0RvZeGk-Yl0FZ4bYS4OXnyu47w8nQoSxO3fsQ/viewform?embedded=true" width="640" height="407" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+

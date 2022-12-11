@@ -79,3 +79,6 @@ extra:
     - icon: material/mirror
       link: https://potykion.github.io/
       name: зеркало
+    - icon: material/comment
+      link: https://forms.gle/E79zYuiLPCeVYoJh6/
+      name: Обратная связь
