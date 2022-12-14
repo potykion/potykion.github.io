@@ -1,5 +1,7 @@
 # MkDocs
 
+![](mkdocs.png)
+
 ## Что это?
 
 - [MkDocs](https://www.mkdocs.org/) - топ-штука для написания Markdown документации, написанная на Python
