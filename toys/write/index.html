@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write</title>
+
+    <style>
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+
+        .container {
+            margin: 0 10px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-h-right {
+            justify-content: right;
+        }
+    </style>
+</head>
+<body>
+<script type="module">
+    import {createApp} from 'https://unpkg.com/petite-vue?module'
+
+    createApp({
+        textParts: [],
+        currentText: '',
+        doneText: '',
+        mounted() {
+            this.textParts = JSON.parse(localStorage.getItem('text') ?? '[]');
+        },
+        breakText() {
+            this.textParts = [...this.textParts, this.currentText];
+            this.currentText = '';
+            document.querySelector('#write').focus();
+            localStorage.setItem('text', JSON.stringify(this.textParts));
+        },
+        finishText() {
+            this.textParts = [...this.textParts, this.currentText];
+            this.currentText = '';
+            this.doneText = this.textParts.join('\n');
+        },
+        reset() {
+            this.textParts = [];
+            this.doneText = '';
+            document.querySelector('#write').focus();
+            localStorage.removeItem('text');
+        }
+    }).mount();
+</script>
+
+
+<div class="container" @vue:mounted="mounted">
+    <div><textarea v-model="currentText" id="write"></textarea></div>
+    <div class="flex flex-h-right">
+        <button @click="breakText">break</button>
+    </div>
+
+    <div>
+        <button @click="finishText">done</button>
+    </div>
+    <div v-if="doneText">
+        <div>
+            <textarea v-model="doneText"></textarea>
+
+        </div>
+        <div>
+            <button @click="reset">new</button>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

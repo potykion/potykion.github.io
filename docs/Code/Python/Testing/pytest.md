@@ -1,5 +1,28 @@
 # pytest
 
+- [pytest](https://docs.pytest.org/en/7.2.x/) - лучший тестовый фреймворк
+
+## Конфиг
+
+- `pytest.ini` / `setup.cfg`
+
+```ini
+[pytest]
+; Запуск доктестов
+addopts = --doctest-modules
+```
+
+### pytest-dotenv
+
+- [pytest-dotenv](https://pypi.org/project/pytest-dotenv/) - подгрузка .env для тестов
+
+```ini
+[pytest]
+env_files =
+    .env
+    .test.env
+```
+
 ## Как быть когда в ошибке трейс не отображается полностью?
 
 Пример:
@@ -18,3 +41,4 @@ ConftestImportFailure: (local('C:\\Users\\potyk\\PycharmProjects\\automation-gae
 
 1. Поставить брейкпоинт на месте ошибки: `.venv2\lib\site-packages\_pytest\config\__init__.py:470`
 2. Распечатать трейсбек руками: `traceback.extract_tb(sys.exc_traceback)`
+

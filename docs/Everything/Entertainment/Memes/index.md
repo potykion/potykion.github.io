@@ -1,8 +1,13 @@
-# ВК
+# Смешные картинки
+
+- Смешные картинки (мемы, мемчики, мемасики, мемасяндры, мемцы, приколы приколдесы, приколдобины) я люблю смотреть в вк
+- Вообще, все, на что [я](https://vk.com/id16231309) подписан вк, - годнота)))
 
 ## База
 
 ### [мемблексы от пепликсов](https://vk.com/peplix)
+
+<iframe src="https://vk.com/video_ext.php?oid=-134304854&id=456240485&hash=fcf5f2296b66c138&hd=2" width="853" height="480" allow="autoplay; encrypted-media; fullscreen; picture-in-picture;" frameborder="0" allowfullscreen></iframe>
 
 ### [МЧС](https://vk.com/men4s)
 
@@ -14,7 +19,7 @@
   }());
 </script>
 
-### [gif бумеры 2004](https://vk.com/gif_boomer) + младший брат [gif поридж](https://vk.com/gif_poridge)
+### [gif бумеры 2004](https://vk.com/gif_boomer) + младший брат (ака альт) [gif поридж](https://vk.com/gif_poridge)
 
 <div id="vk_post_-205680857_41022"></div>
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
@@ -24,16 +29,28 @@
   }());
 </script>
 
-### https://vk.com/pizdos_tut
+### [паблик для работников 5/2](https://vk.com/pizdos_tut)
 
-## Мешаперы
-
-- [#Качественный Саунд](https://vk.com/highqualitysound) - оч качественные мешапы
-- https://vk.com/cringerecords
+---
 
 ## kartinochque
 
-- https://vk.com/jesusbelike
+- Пабы с картинками различного характера
+- Картиночные пабы в целом похоже, то есть достаточно подписаться на штук 5 и у тебя уже будет актуальная картина приколов
+- [kartinochque](https://vk.com/kartinochque)
+- [Все форсы за 2022-й год](https://vk.com/allforses)
+- [The Church of St. Beobanka](https://vk.com/saintbeobanka)
+- [AИAL CONTENT](https://vk.com/aacontent)
+- [pictrip](https://vk.com/pic_trip)
+- [.justpic](https://vk.com/justp1c)
+- [manarek](https://vk.com/manarek)
+- [Moldavian Revolver](https://vk.com/moldovian_revolver)
+- [OfficeGuyPublicMemeStash](https://vk.com/officeguypublicmemestash)
+- [SHITPOSTING TRASH CANCER](https://vk.com/spazm_aticus)
+- [панк кружок после модерна](https://vk.com/pkpm148b)
+- [VECHERINKA DLYA LOHOV](https://vk.com/vecherinka_lohov)
+- [Идёт мужик держась за хуй с довольными глазами](https://vk.com/existence_shop) - этот паб здесь только за название, а так там довольно абстрактные картиночки
+- [Впусти Бога в свою жизнь † Православие † Вера](https://vk.com/jesusbelike)
 
 <div id="vk_post_-149952802_86656"></div>
 <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
@@ -43,20 +60,7 @@
   }());
 </script>
 
-- https://vk.com/picturbator
-- https://vk.com/kartinochque
-- https://vk.com/allforses
-- https://vk.com/saintbeobanka
-- https://vk.com/obkontent
-- https://vk.com/chudesa_rf
-- https://vk.com/aacontent
-- https://vk.com/manarek
-- https://vk.com/moldovian_revolver
-- https://vk.com/godnotent
-- https://vk.com/adultswimming
-- https://vk.com/lentyay_tv
-- https://vk.com/officeguypublicmemestash
-- https://vk.com/spazm_aticus
+---
 
 ## приколы по Игрушкам
 
@@ -73,6 +77,8 @@
 - https://vk.com/valvememes
 - https://vk.com/govnodev
 
+---
+
 ## Приколы про актеров
 
 ### [G O S L Y A](https://vk.com/goslyaa) и [Райан Гослинг на каждый день](https://vk.com/goslingdaily)
@@ -83,25 +89,14 @@
 
 ![Дефо](dafoe.jpg)
 
+---
+
 ## Приколы про инвестиции
 
 - https://vk.com/warningbuffet
 
 <video controls><source src="./telezhka.mp4" type="video/mp4"></video>
 
-
 - https://vk.com/fiximprofit
 
 ![Когда началась СВО, торговля в шорт была запрещена](short.jpg)
-
-
-
-## Политржач
-
-- https://vk.com/politr
-- https://vk.com/lepatrul
-
-## Старые мемы
-
-- https://vk.com/memory_memes
-- https://vk.com/memsfrom2k11

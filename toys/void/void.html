@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v o i d</title>
+
+    <style>
+
+        @keyframes flickerAnimation {
+            0% {
+                background: black;
+            }
+            50% {
+                background: #0e0e0e;
+            }
+            100% {
+                background: black;
+            }
+        }
+
+
+        .animate-flicker {
+            animation-duration: 2.5s;
+            animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+            animation-delay: 0s;
+            animation-iteration-count: infinite;
+            animation-direction: normal;
+            animation-fill-mode: none;
+            animation-play-state: running;
+            animation-name: flickerAnimation;
+        }
+
+
+    </style>
+</head>
+<body style="background: black" class="animate-flicker">
+
+<audio controls autoplay loop src="breath.wav"  id="breath">
+</audio>
+
+
+    <script>
+
+        let breath = document.querySelector('#breath');
+        breath.addEventListener(
+            'play', () => {
+                breath.style.display = 'none';
+                breath.requestFullscreen();
+            }
+        )
+
+    </script>
+</body>
+</html>

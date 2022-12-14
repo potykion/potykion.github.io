@@ -73,3 +73,17 @@ assert (
     '2022-06-05T23:59:59.999'
 )
 ```
+
+## pytest
+
+[pytest-django](https://pytest-django.readthedocs.io/en/latest/) - pytest-плагин для Джанго
+
+### Конфиг
+
+```ini
+[pytest]
+;Тестоывые настройки
+DJANGO_SETTINGS_MODULE = root.test_settings
+;Переиспользование бд, аналогично флагу keep-db
+addopts = --reuse-db
+```
