@@ -1,8 +1,9 @@
 ---
 hide:
-
 - navigation
 - toc
+
+description: Манямирок имени @potykion
 
 ---
 
@@ -10,7 +11,7 @@ hide:
 
 ## Что это?
 
-[Мой](https://t.me/potykion) манямирок
+Манямирок имени [@potykion](https://t.me/potykion)
 
 ## Писанина
 
