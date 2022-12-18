@@ -1,4 +1,4 @@
-# FactoryBoy (+ Faker, mimesis)
+# FactoryBoy
 
 ## Что это?
 
@@ -255,3 +255,37 @@ StudyFactory(body_parts=[BodyParts(name='sam')])
 Здесь при вызове фабрики в `body_parts.extracted` поступит массив, который
 затем сеттим модельке
 
+## pytest-factoryboy
+
+- [pytest-factoryboy](https://pytest-factoryboy.readthedocs.io/en/stable/) - pytest плагин для работы с factoryboy
+- Ну ето магия уже жёсткая
+- Пакет добавляет функцию `register`, в которую передаем фабрику (вызов функции с передачей фабрики делаем
+  в `conftest.py`),
+  и в любом тесте можно юзать инстанц фабрики как underscore-фикстуру
+- Типа определил фабрику `OrderFactory`, вызвал `register(OrderFactory)` в `conftest.py` и в любом тесте можно юзать
+  фабричный инстанц как фикстуру `order`
+
+### Наблюдения
+
+#### Именование
+
+- Нужно быть акуратнее с именами, иначе могут быть конфликты с фикстурами из других либ
+- Так если вызвать `register(ClientFactory)`, и использовать `pytest-flask`, то будет конфликт фикстур `client`
+- В таких ситуациях помогает вызов `register` с параметром `_name`: `register(ClientFactory, _name='mobile_client`)`
+
+#### Списки
+
+- `factory.List` [не поддерживаются](https://github.com/pytest-dev/pytest-factoryboy/issues/67)
+- Обойти это можно, используя many2many-метод: прописать `post_generation` для поля:
+
+  ```python
+    @post_generation
+    def children(self, create, extracted, **kwargs):
+        if extracted:
+            self.children = extracted
+        else:
+            self.children = [ChildFactory() for _ in range(2)]
+  ```
+
+    - В этом примере, вместо `children = factory.List([SubFactory(ChildFactory) for _ in range(2)])`
+      используем `post_generaion`
