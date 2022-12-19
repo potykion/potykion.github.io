@@ -40,3 +40,13 @@
 - Ввели, чутка ждем, появляется зеленая иконка и УРА SURFSHARK СНОВА РАБОТАЕТ!
 
   ![img_2.png](green.png)
+
+#### Гайды на другие платформы
+
+- В целом, все аналогично: так же ставим openvpn, так же качаем файлы из серфшарка
+- [ios](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-ios)
+- [android](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-android)
+- [windows](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-windows)
+- [macos](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-macos)
+- [linux](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-linux)
+
