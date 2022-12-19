@@ -7,7 +7,15 @@ description: Манямирок имени @potykion
 
 ---
 
-# `potyk.io`
+
+
+<figure markdown>
+  ![index.png](index.png)
+  <figcaption></figcaption>
+</figure>
+
+
+# 
 
 ## Что это?
 
