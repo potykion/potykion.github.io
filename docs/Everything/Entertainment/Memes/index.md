@@ -36,7 +36,8 @@
 ## kartinochque
 
 - Пабы с картинками различного характера
-- Картиночные пабы в целом похоже, то есть достаточно подписаться на штук 5 и у тебя уже будет актуальная картина приколов
+- Картиночные пабы в целом похоже, то есть достаточно подписаться на штук 5 и у тебя уже будет актуальная картина
+  приколов
 - [kartinochque](https://vk.com/kartinochque)
 - [Все форсы за 2022-й год](https://vk.com/allforses)
 - [The Church of St. Beobanka](https://vk.com/saintbeobanka)
@@ -49,7 +50,8 @@
 - [SHITPOSTING TRASH CANCER](https://vk.com/spazm_aticus)
 - [панк кружок после модерна](https://vk.com/pkpm148b)
 - [VECHERINKA DLYA LOHOV](https://vk.com/vecherinka_lohov)
-- [Идёт мужик держась за хуй с довольными глазами](https://vk.com/existence_shop) - этот паб здесь только за название, а так там довольно абстрактные картиночки
+- [Идёт мужик держась за хуй с довольными глазами](https://vk.com/existence_shop) - этот паб здесь только за название, а
+  так там довольно абстрактные картиночки
 - [Впусти Бога в свою жизнь † Православие † Вера](https://vk.com/jesusbelike)
 
 <div id="vk_post_-149952802_86656"></div>
@@ -62,7 +64,9 @@
 
 ---
 
-## приколы по Игрушкам
+## Тематические
+
+### Приколы по Игрушкам
 
 - https://vk.com/shitty_nicknames
 
@@ -79,19 +83,17 @@
 
 ---
 
-## Приколы про актеров
+### Приколы про актеров
 
-### [G O S L Y A](https://vk.com/goslyaa) и [Райан Гослинг на каждый день](https://vk.com/goslingdaily)
+- [G O S L Y A](https://vk.com/goslyaa) и [Райан Гослинг на каждый день](https://vk.com/goslingdaily)
 
-<img src="goslya.gif">
+    <img src="goslya.gif">
 
-### [Ебало Уиллема Дэфо на каждый божий день](https://vk.com/dafoe_every_day)
+- [Ебало Уиллема Дэфо на каждый божий день](https://vk.com/dafoe_every_day)
 
-![Дефо](dafoe.jpg)
+  ![Дефо](dafoe.jpg)
 
----
-
-## Приколы про инвестиции
+### Приколы про инвестиции
 
 - https://vk.com/warningbuffet
 
@@ -99,4 +101,14 @@
 
 - https://vk.com/fiximprofit
 
-![Когда началась СВО, торговля в шорт была запрещена](short.jpg)
+<figure markdown>
+![](short.jpg)
+<figcaption>Когда началась СВО, торговля в шорт была запрещена</figcaption>
+</figure>
+
+
+---
+
+## Теория мемов
+
+- [Кто такой Дугин и почему ты ДОЛЖЕН о нем знать](https://www.youtube.com/watch?v=XCmf3tyum6Q)
