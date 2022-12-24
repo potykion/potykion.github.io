@@ -2,9 +2,8 @@
 hide:
 - navigation
 - toc
-
 description: Манямирок имени @potykion
-
+cover: index.png
 ---
 
 

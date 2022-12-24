@@ -1,3 +1,7 @@
+---
+cover: Code/proto.jpg
+---
+
 # Прототипирование
 
 ![](proto.jpg)

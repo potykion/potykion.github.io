@@ -57,18 +57,21 @@
         {% if page.meta.description %}
             {% set description = page.meta.description %}
         {% endif %}
+        {% if page.meta.cover %}
+            {% set cover =  config.site_url  ~  page.meta.cover %}
+        {% endif %}
     {% endif %}
 
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ title }}"/>
     <meta property="og:description" content="{{ description }}"/>
     <meta property="og:url" content="{{ page.canonical_url }}"/>
-{#    <meta property="og:image" content=""/>#}
+    <meta property="og:image" content="{{ cover }}"/>
     <meta property="og:image:type" content="image/png"/>
     <meta property="og:image:width" content="1200"/>
     <meta property="og:image:height" content="630"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="{{ title }}"/>
     <meta name="twitter:description" content="{{ description }}"/>
-{#    <meta name="twitter:image" content="<url>"/>#}
+    <meta name="twitter:image" content="{{ cover }}"/>
 {% endblock %}

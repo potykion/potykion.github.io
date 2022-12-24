@@ -1,3 +1,7 @@
+---
+cover: Code/Python/Tools/mkdocs.png
+---
+
 # MkDocs
 
 ![](mkdocs.png)
