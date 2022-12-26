@@ -1,0 +1,11 @@
+a {
+    text-decoration: underline;
+}
+
+a.md-tabs__link {
+    text-decoration: none;
+}
+
+.md-nav__link, .md-nav__link > a, .md-footer__link {
+    text-decoration: none;
+}

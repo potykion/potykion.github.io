@@ -35,6 +35,10 @@ theme:
   font:
     text: Noto Sans
 
+# CSS
+extra_css:
+  - assets/extra.css
+
 # Плагины - для нового функционала
 plugins:
   # Включение поиска на русском и английском

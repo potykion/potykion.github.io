@@ -9,7 +9,7 @@
 - [Работа](./Work/index.md) в тч [продуктивность](Work/Productivity/index.md) и [деньги](Work/Money/index.md)
 - [Техника и технологии](Tech/index.md)
 - [Здоровье](./Health/index.md) в тч [спорт](./Health/Sport.md)
-- [Бытовуха](./Routine/Cleaning.md)
+- [Бытовуха](./Routine/Home.md)
 
 ## Что мне неинтересно (но я что-то про это знаю)
 
