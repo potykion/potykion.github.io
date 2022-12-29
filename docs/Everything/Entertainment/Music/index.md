@@ -2,16 +2,34 @@
 
 ![soundcloud be like](sc.jpg)
 
-- Я очень люблю музыку, так что она мне надоела
-- Тем не менее, я хочу о ней написать
+- Я очень люблю музыку, так, что она мне надоела
+- Тем не менее я хочу о ней написать
 - Мой [плейлист с триповыми клипами](https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q)
 - [Мемная База](https://vk.com/come_to_brazil)
 
+---
+
+
+
 ## Техно
 
-- Евро: всякие виталики и гесы
-- Рус: локеды
-- Немцы: швешельгельб
+- 🇫🇷 Vitalic, Gesaffelstein, The Hacker
+- 🇷🇺 Locked Club, Any Act, Vladimir Dubyshkin
+- 🇺🇦 Re:Drum
+- 🇩🇪 Schwefelgelb, MCR-T, DJ Gigola, DJ MELL G, DJ Fuckoff, Boys Noize, The Exaltics, Maruwa, Cyan85, Gesloten Cirkel
+- 🇦🇺 X CLUB., Partiboi69, Jensen Interceptor
+- 🇬🇧 Asquith, Lone, Simian Mobile Disco, Mall Grab, Assembler Code, Daniel Avery
+- 🇺🇸 Monolithic, Amadeezy, Dopplereffekt
+- 🇵🇹 Nørus
+- 🇵🇱 L Ʌ V Σ N
+- 🇮🇪 KETTAMA
+- 🇪🇸 DJ これからの緊急災害 (Wachita China)
+- 🇱🇹 [DM-90](https://youtu.be/N6RLKqi0Ows)
+- 🇨🇴 Dagga
+- 🇮🇸 Gusgus
+- 🇸🇸 Skin On Skin
+
+- Хороший ресурс про техно исполнителей: био, афиша, дезигн - класс: https://ra.co/
 
 ## Экспериментальный реп
 
@@ -124,8 +142,6 @@ Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</
 ### Ямузыка
 
 - Важно понимать, что музыки в Ямузыке меньше, новые релизы могут появится спустя полгода - аналогичная ситуация и в вк
--
-Есть [приятный плеер на Винду](https://apps.microsoft.com/store/detail/%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/9NBLGGH0CB6D?hl=ru-ru&gl=ru)
+- Есть [приятный плеер на Винду](https://apps.microsoft.com/store/detail/%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/9NBLGGH0CB6D?hl=ru-ru&gl=ru)
 - Реки в иногда годноту выдают
--
-Есть [плагин на скачивание музыки](https://chrome.google.com/webstore/detail/yandex-music-downloader/agkcaldeglaadeknkclfbpdojhhclfej/related?hl=ru)   
+- Есть [плагин на скачивание музыки](https://chrome.google.com/webstore/detail/yandex-music-downloader/agkcaldeglaadeknkclfbpdojhhclfej/related?hl=ru)   
