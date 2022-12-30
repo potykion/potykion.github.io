@@ -79,6 +79,10 @@ markdown_extensions:
   # Тасклисты: - [ ]
   - pymdownx.tasklist:
       custom_checkbox: true
+  # Эмоджи
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 extra:
   # Гугл аналитика
   analytics:

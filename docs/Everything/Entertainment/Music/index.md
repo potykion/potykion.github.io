@@ -19,7 +19,7 @@
 - 🇩🇪 Schwefelgelb, MCR-T, DJ Gigola, DJ MELL G, DJ Fuckoff, Boys Noize, The Exaltics, Maruwa, Cyan85, Gesloten Cirkel
 - 🇦🇺 X CLUB., Partiboi69, Jensen Interceptor
 - 🇬🇧 Asquith, Lone, Simian Mobile Disco, Mall Grab, Assembler Code, Daniel Avery
-- 🇺🇸 Monolithic, Amadeezy, Dopplereffekt
+- 🇺🇸 Monolithic, Amadeezy, Dopplereffekt, baltra
 - 🇵🇹 Nørus
 - 🇵🇱 L Ʌ V Σ N
 - 🇮🇪 KETTAMA
@@ -28,6 +28,9 @@
 - 🇨🇴 Dagga
 - 🇮🇸 Gusgus
 - 🇸🇸 Skin On Skin
+- 🇨🇦 Dj Genderfluid
+- 🇩🇰 Schacke, Niki Istrefi
+- 🇰🇷 박혜진 Park Hye Jin
 
 - Хороший ресурс про техно исполнителей: био, афиша, дезигн - класс: https://ra.co/
 

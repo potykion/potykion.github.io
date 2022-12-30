@@ -69,17 +69,7 @@ h3 {
 }
 
 
-.grid-2d {
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-column-gap: 10px;
-}
-
-
 @media (max-width: 700px) {
-  .flex {
-    flex-direction: column;
-  }
 
   .grid-2d {
     grid-template-columns: 100%;
