@@ -70,10 +70,8 @@ h3 {
 
 
 @media (max-width: 700px) {
-
-  .grid-2d {
-    grid-template-columns: 100%;
-
+  .flex {
+    flex-direction: column;
   }
 }
 
