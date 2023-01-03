@@ -1,5 +1,5 @@
 ---
-cover: /Code/Frontend/Vue/FormKit.png
+cover: Code/Frontend/Vue/FormKit.png
 ---
 
 # FormKit
