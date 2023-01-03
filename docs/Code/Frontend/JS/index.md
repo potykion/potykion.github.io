@@ -70,14 +70,14 @@ function groupBy(xs, key) {
 ## Как снять выбор с radio-button?
 
 - Нажатием на radio-button никак
-- [При использовании Vue](../Vue.md) можно сделать кнопку, которая будет для v-model выставлять null - таким образом
+- [При использовании Vue](../Vue/index.md) можно сделать кнопку, которая будет для v-model выставлять null - таким образом
   можно снять
   выбор с radio-button
 
 ## Как работать с файлами?
 
 - [База](https://developer.mozilla.org/en-US/docs/Web/API/File)
-- [При использовании Vue](../Vue.md)
+- [При использовании Vue](../Vue/index.md)
 
 ## Как скачать файл из запроса?
 
