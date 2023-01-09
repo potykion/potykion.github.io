@@ -44,7 +44,10 @@ grid-column: auto / span 2;
     transition: all .2s ease-in-out;
 }
 
-.card:hover { transform: scale(1.1); }
+.card:hover {
+    transform: scale(1.1); 
+    background: #f0f7ff;
+}
 
 .card a {
   text-decoration: none ;
