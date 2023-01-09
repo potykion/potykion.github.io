@@ -1,20 +1,37 @@
 ---
-description: Запуск программ из кода без боли
+description: Запуск программ из Python в 1 строку
+title: subprocess
 cover: Code/Python/Base/Subprocess.png
 ---
 
-# Subprocess 
+# `subprocess` { .no-margin }
+
+_Запуск программ из Python в 1 строку_
+
+
 
 <figure markdown>
 ![](Subprocess.png)
 <figcaption></figcaption>
 </figure>
 
+## TL:DR
+
+Из 15 аргументов функции `subprocess.run`, позволяющей запускать программы из Python, по факту нужно 2-3 аргумента:
+
+```python
+subprocess.run('ping potyk.io', shell=True, capture_output=True, text=True)
+```
+
+---
+
+## Что за `subprocess`?
+
 `subprocess` - модуль для вызова консольных команд / программ из кода
 
 ## `subprocess.run`
 
-`subprocess.run` - базовый метод для вызова команд, но полезно знать об альтернативах
+`subprocess.run` - базовый метод для вызова команд:
 
 ```python
 import subprocess
@@ -71,7 +88,8 @@ result = subprocess.run(['python', "-c", "print('ocean')"])
   исключение `TimeoutExpired`
 - `check: bool = False` - если `True`, то кинет исключение, если exit code != 0
 - `env: dict = None` - переменные среды, которые будут выставлены на время запуска команды
-- `encoding=None, errors=None` - хрень какая-то
+- `encoding: str = None` - кодировочка (для ру-вывода пробуем `utf-8`, `cp866`, `cp1251`)
+- `errors=None` - хрень какая-то
 
 #### Итого
 
@@ -90,7 +108,7 @@ subprocess.run(
 
 - `subprocess.run(...) -> subprocess.CompletedProcess`
 - `CompletedProcess.returncode -> int` - exit-code вызова команды
-- `CompletedProcess.stdout -> str | bytes,  CompletedProcess.stderr -> str | bytes` - вывод команды
+- `CompletedProcess.stdout -> str | bytes, CompletedProcess.stderr -> str | bytes` - вывод команды
 
 ## Как читать вывод построчно?
 
@@ -105,8 +123,9 @@ proc = subprocess.Popen(...)
 - Аргументы `subprocess.Popen` аналогичны `subprocess.run`
 - У созданного инстанца есть ряд методов:
     - `Popen.communicate() -> Tuple[bytes, bytes] | Tuple[str, str]` - ждет завершения команды и отдает stdout и strerr
-    - `Popen.wait()` - ждет завершения команды и ничо не возвращает 
-    - `Popen.stdout -> file-like` - stdout в виде file-like <- это нам пригодится далее для кейса последовательного чтения аутпута 
+    - `Popen.wait()` - ждет завершения команды и ничо не возвращает
+    - `Popen.stdout -> file-like` - stdout в виде file-like <- это нам пригодится далее для кейса последовательного
+      чтения аутпута
     - `Popen.poll() -> int | None` - вернет exit-code, если закончилось выполнение команды, `None` иначе
 
 Итак, как нам читать вывод построчно?
@@ -116,18 +135,20 @@ proc = subprocess.Popen(...)
 ```python
 proc = subprocess.Popen(...)
 while True:
-  line = proc.stdout.readline()
-  ...
-  if proc.poll() is not None:
-    break
+    line = proc.stdout.readline()
+    ...
+    if proc.poll() is not None:
+        break
 ```
 
 ## Ссылочки
 
 - https://docs.python.org/3/library/subprocess.html - дока по subprocess
 - https://janakiev.com/blog/python-shell-commands/ - с этой статьи я начал
-- https://www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3 - довольно кратенько про subprocess
-- https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-pipes - это и ниже - частые вопросы на стеке про subprocess
+- https://www.digitalocean.com/community/tutorials/how-to-use-subprocess-to-run-external-programs-in-python-3 - довольно
+  кратенько про subprocess
+- https://stackoverflow.com/questions/13332268/how-to-use-subprocess-command-with-pipes - это и ниже - частые вопросы на
+  стеке про subprocess
 - https://stackoverflow.com/questions/4760215/running-shell-command-and-capturing-the-output
 - https://stackoverflow.com/questions/2804543/read-subprocess-stdout-line-by-line
 - https://realpython.com/python-subprocess/ - оч много букаф

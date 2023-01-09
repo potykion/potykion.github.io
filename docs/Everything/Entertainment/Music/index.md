@@ -136,6 +136,8 @@ Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</
 - [СКИЛЛЗ](https://www.youtube.com/@etoskillz) - про попс
     - Стоит
       посмотреть: [про искусство похуизма](https://www.youtube.com/watch?v=QO8detn9ZGs), [про рубена](https://www.youtube.com/watch?v=V_1F9LZH_4c)
+- [БРОКЕН ДЭНС](https://www.youtube.com/channel/UCWZ57aki9Xi0ZqhVBwZ87Pw) - про попс еще
+    - Стоит посмотреть: [про salem](https://www.youtube.com/watch?v=huuGjMgcRWk)
 
 ## Где слушать музыку
 

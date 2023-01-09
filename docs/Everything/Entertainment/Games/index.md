@@ -42,3 +42,8 @@ Your browser does not support the video tag.
       ют-видео с ключами) и гонять в сетевую
 - [Overlord](https://store.steampowered.com/app/11450/Overlord/) - ходишь наводишь суету, сам и с помощью миньонов -
   чилл гейминг
+
+## Видосы про игры
+
+- [Дмитрий Бурдуков](https://www.youtube.com/@Flynn101) - топовые видики про музыку в играх
+    - Стоит посмотреть: [про gta](https://www.youtube.com/watch?v=qONeSfclMwc)

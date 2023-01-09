@@ -7,7 +7,12 @@ cover: index.png
 
 ---
 
-#  
+<style>
+
+
+</style>
+
+
 
 <figure markdown>
   ![index.png](index.png)
@@ -16,40 +21,39 @@ cover: index.png
 
 !!! note "[ИТОГИ ГОДА 2022](./n/GOTY/2022)"
 
-    
-
+#
 
 <div class="grid-2d">
 
-<a href="./Code" class="card">
+<a href="./Code" class="link-card">
   <div class="card-icon">🔮</div>
   <div class="card-title">Код</div>
 </a>
-<a href="./Everything" class="card">
+<a href="./Everything" class="link-card">
   <div class="card-icon">🚧</div>
   <div class="card-title">Все, что я знаю</div>
 </a>
-<a href="./n" class="card">
+<a href="./n" class="link-card">
   <div class="card-icon">🧑</div>
   <div class="card-title">Обо мне</div>
 </a>
-<a href="https://potyk.notion.site/potyk/d47b6c5c807a41e2a9bb145632a20a5b" class="card">
+<a href="https://potyk.notion.site/potyk/d47b6c5c807a41e2a9bb145632a20a5b" class="link-card">
   <div class="card-icon">🥘</div>
   <div class="card-title">Книга рецептов</div>
 </a>
-<a href="https://keep-board.website.yandexcloud.net/" class="card">
+<a href="https://keep-board.website.yandexcloud.net/" class="link-card">
   <div class="card-icon">📝</div>
   <div class="card-title">Ежедневник</div>
 </a>
-<a href="https://delilka.website.yandexcloud.net/" class="card">
+<a href="https://delilka.website.yandexcloud.net/" class="link-card">
   <div class="card-icon">➗</div>
   <div class="card-title">Делилка</div>
 </a>
-<a href="https://write.website.yandexcloud.net/" class="card">
+<a href="https://write.website.yandexcloud.net/" class="link-card">
   <div class="card-icon">✍</div>
   <div class="card-title">Писалка</div>
 </a>
-<a href="https://forms.gle/E79zYuiLPCeVYoJh6/" class="card">
+<a href="https://forms.gle/E79zYuiLPCeVYoJh6/" class="link-card">
   <div class="card-icon">💬</div>
   <div class="card-title">Обратная связь</div>
 </a>
