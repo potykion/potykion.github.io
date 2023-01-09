@@ -17,7 +17,7 @@ cover: Gazeta/1/cover.jpg
 @media (max-width: 700px) {
 
     .grid-3-col {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
 }
 
