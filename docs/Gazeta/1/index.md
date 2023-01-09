@@ -4,7 +4,7 @@ hide:
 - navigation
 title: Газета 📰 / Выпуск №1 от 2022-01-09
 description: Новости моего манямирка
-cover: Gazeta/1/cover.png
+cover: Gazeta/1/cover.jpg
 ---
 <style>
 
