@@ -33,8 +33,33 @@
 {% endblock %}
 
 
+
+{% block htmltitle %}
+   {% set title = page.title %}
+
+    {% set section = page %}
+    {% if section.parent %}
+        {% set section = section.parent %}
+    {% endif %}
+    {% if section.parent %}
+        {% set section = section.parent %}
+    {% endif %}
+    {% if section.parent %}
+        {% set section = section.parent %}
+    {% endif %}
+    {% set section = section.title %}
+
+    {% if section and section != title %}
+        {% set title = title ~ " / " ~ section %}
+    {% endif %}
+    {% set title = title ~ ' / ' ~ config.site_name %}
+
+
+    <title>{{ title }}</title>
+{% endblock %}
+
 {% block extrahead %}
-    {% set title = page.title %}
+   {% set title = page.title %}
 
     {% set section = page %}
     {% if section.parent %}
@@ -61,7 +86,6 @@
             {% set cover =  config.site_url  ~  page.meta.cover %}
         {% endif %}
     {% endif %}
-
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="{{ title }}"/>
     <meta property="og:description" content="{{ description }}"/>

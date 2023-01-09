@@ -2,6 +2,7 @@
 hide: 
 - toc
 - navigation
+title: Газета 📰
 ---
 
 # Газета 📰 {.no-margin}
