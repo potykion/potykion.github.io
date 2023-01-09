@@ -20,9 +20,7 @@ cover: Gazeta/1/cover.jpg
         grid-template-columns: 1fr;
     }
 
-    .card:hover {
-        transform: none; 
-    }
+
 }
 
 
@@ -63,6 +61,12 @@ grid-column: auto / span 2;
     
 }
 
+@media (max-width: 700px) {
+
+    .card:hover {
+        transform: none !important; 
+    }
+}
 
 
 </style>
