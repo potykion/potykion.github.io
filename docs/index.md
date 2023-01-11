@@ -29,8 +29,8 @@ cover: index.png
   <div class="card-title">Код</div>
 </a>
 <a href="./Everything" class="link-card">
-  <div class="card-icon">🚧</div>
-  <div class="card-title">Все, что я знаю</div>
+  <div class="card-icon">🗃️</div>
+  <div class="card-title">База</div>
 </a>
 <a href="./n" class="link-card">
   <div class="card-icon">🧑</div>
