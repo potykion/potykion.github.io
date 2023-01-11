@@ -38,6 +38,8 @@ theme:
 # CSS
 extra_css:
   - assets/extra.css
+  - assets/gazeta.css
+  - assets/utils.css
 
 # Плагины - для нового функционала
 plugins:
