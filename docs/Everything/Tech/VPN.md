@@ -50,3 +50,6 @@
 - [macos](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-macos)
 - [linux](https://surfshark.com/ru/blog/connect-to-vpn-from-countries-with-restrictions-linux)
 
+## Еще варики
+
+- [FuckRKN1](https://fuckrkn1.org/) - "_Делаем некомерческий VPN, не собирающий никаких данных._"

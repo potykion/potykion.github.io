@@ -1,5 +1,34 @@
 # Docker
 
+## Как различать релизы имеджей?
+
+> Что за buster, bullseye, stretch, jessie?
+
+Это [релизы Debian](https://hub.docker.com/_/debian), которые используются в качестве основы для большинства имеджей:
+
+- `jessie` - 8 версия Debian
+- `stretch` - 9
+- `buster` - 10
+- `bullseye` - 11
+- `bookworm` - 12
+
+> Че за alpine, slim?
+
+- `slim` - как обычный имедж, только поменьше
+- `alpine` - вообще маленький имедж, жестб - хотя с ним часто проблемы непонятные возникают, типа чето недоустановлено
+
+[Статья по теме](https://medium.com/swlh/alpine-slim-stretch-buster-jessie-bullseye-bookworm-what-are-the-differences-in-docker-62171ed4531d)
+
+## Что делать если возникают проблемы со сборкой Docker-образов?
+
+- Общий совет: если что-то перестало собираться, возможно, дело в том, что используются latest-images - image без
+  указания версии, напр. `FROM ubuntu`
+- Лечится изменением версии: откат к предыдущей версии, или апгрейд до новой
+- Какая версия является последней можно на DockerHub - ищи image с версией latest
+- Напр. [ubuntu](https://hub.docker.com/_/ubuntu): latest-версией на 2022-06-01
+  является: `22.04, jammy-20220428 jammy, latest, rolling`
+- Еще бывает такое, что latest-версия на Windows-докере отличается от Linux-докера - хз поч, но стоит иметь в виду
+
 ## Как посмотреть логи?
 
 ```shell
