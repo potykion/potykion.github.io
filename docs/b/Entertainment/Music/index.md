@@ -38,7 +38,7 @@
 
 - Грипсы
 
-<img src="../../../assets/vk/mc-ride.gif">
+<img src="../../../a/vk/mc-ride.gif">
 
 - Клиппинг
 - Jpegmafia aka Пеги

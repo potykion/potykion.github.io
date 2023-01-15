@@ -9,7 +9,7 @@
 ## [The Binding of Isaac: Rebirth](https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/)
 
 <video controls>
-  <source src="../../../assets/vk/isaac.mp4" type="video/mp4">
+  <source src="../../../a/vk/isaac.mp4" type="video/mp4">
 Your browser does not support the video tag.
 </video>
 

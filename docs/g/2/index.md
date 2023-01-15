@@ -14,7 +14,7 @@ _Новости моего манямирка_
 <div class="grid-3-col">
 
 <div class="card rows-2">
-<a href="../../Code/Python/Tools/reloadium" target="_blank">
+<a href="../../c/Python/Tools/reloadium" target="_blank">
 <img src="reloadium.gif">
 <div class="card-text">📝 <b>reloadium</b> - автоматический перезапуск PyCharm при правке кода во время дебага, не без нюансов</div>
 </a>

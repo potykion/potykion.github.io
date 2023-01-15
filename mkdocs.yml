@@ -16,9 +16,9 @@ theme:
   palette:
     primary: blue
   # Фавикон - иконка вкладки браузера
-  favicon: assets/favicon-16x16.png
+  favicon: a/favicon-16x16.png
   # Иконка в навбаре
-  logo: assets/favicon-32x32.png
+  logo: a/favicon-32x32.png
   # Директория с кастомной версткой
   # Напр. там можно прописать Yandex Metrica
   custom_dir: overrides
@@ -37,9 +37,9 @@ theme:
 
 # CSS
 extra_css:
-  - assets/extra.css
-  - assets/gazeta.css
-  - assets/utils.css
+  - a/extra.css
+  - a/gazeta.css
+  - a/utils.css
 
 # Плагины - для нового функционала
 plugins:
@@ -56,10 +56,10 @@ plugins:
 # Работает за счет awesome-pages
 nav:
   - Айоу 👋: index.md
-  - ... | Code/**/*.md
-  - ... | Everything/**/*.md
+  - ... | c/**/*.md
+  - ... | b/**/*.md
   - ... | n/**/*.md
-  - ... | Gazeta/**/*.md
+  - ... | g/**/*.md
 # Расширения маркдауна - возможность использовать новые конструкции в маркдауне
 markdown_extensions:
   # Для note-блоков

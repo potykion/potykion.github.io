@@ -73,7 +73,7 @@ _Новости моего манямирка_
 
 <div class="card rows-2"  >
 <a href="/Code/Python/Base/Subprocess" target="_blank">
-    <img src="../../Code/Python/Base/Subprocess.png">
+    <img src="../../c/Python/Base/Subprocess.png">
 
     <div class="card-text">📝 Из 15 аргументов функции <code>subprocess.run</code>, позволяющей запускать программы из Python, по факту нужно 2-3 аргумента</div>
 </a>
@@ -94,7 +94,7 @@ _Новости моего манямирка_
 
 <div class="card " >
 <a href="/Code/Frontend/Vue/FormKit" target="_blank">
-    <img src="../../Code/Frontend/Vue/FormKit.png">
+    <img src="../../c/Frontend/Vue/FormKit.png">
     <div class="card-text">📝 Скучную рутину с html-формочками решает <b>FormKit</b></div>
 </a>
 </div>
