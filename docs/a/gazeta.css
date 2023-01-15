@@ -19,6 +19,9 @@
 .cols-2 {
 grid-column: auto / span 2;
 }
+.cols-3 {
+grid-column: auto / span 3;
+}
 .rows-2 {grid-row: auto / span 2;}
 .rows-3 {grid-row: auto / span 3;}
 .rows-4 {grid-row: auto / span 4;}
