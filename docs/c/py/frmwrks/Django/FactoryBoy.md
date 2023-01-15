@@ -1,6 +1,6 @@
 # FactoryBoy
 
-- Основная статья [тут](../../Testing/FactoryBoy.md)
+- Основная статья [тут](../../test/FactoryBoy.md)
 
 ## Как сделать ManyToMany?
 
