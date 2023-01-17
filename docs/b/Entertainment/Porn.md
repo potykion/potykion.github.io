@@ -24,6 +24,8 @@
 
 ## Stash
 
+![stash](stash.png)
+
 - https://stashapp.cc/ • https://github.com/stashapp/stash
 - Очень вдохновила прога
 - Много вкусных фич
@@ -45,7 +47,7 @@
 #### О скреперах
 
 - Настройки скреперов: `Settings > Metadata Providers`
-- Запускать скреперы лучше под VPN
+- Запускать скреперы лучше под [VPN](../Tech/VPN.md)
 - Для Python-скреперов, прописываем путь к питону + ставим `requests`, `bs4`, `lxml`
 - Если при парсе получаем 403, стоит попробовать прописать UserAgent в `Scraper User
   Agent`
