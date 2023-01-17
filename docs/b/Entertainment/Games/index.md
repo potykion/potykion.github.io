@@ -30,6 +30,7 @@ Your browser does not support the video tag.
 - [Сайт со всеми предметами](https://dead-god.ru/)
 - [Рецепты Bag of Crafting для Tainted Cain](https://platinumgod.co.uk/bag-of-crafting/index.html)
 
+<!--
 ## Короткие рецензии на игры
 
 - [Dead Estate](https://store.steampowered.com/app/1484720/Dead_Estate/)
@@ -42,6 +43,7 @@ Your browser does not support the video tag.
       ют-видео с ключами) и гонять в сетевую
 - [Overlord](https://store.steampowered.com/app/11450/Overlord/) - ходишь наводишь суету, сам и с помощью миньонов -
   чилл гейминг
+-->
 
 ## Видосы про игры
 
