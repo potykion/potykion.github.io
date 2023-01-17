@@ -26,13 +26,13 @@ _кормит_
   <div class="card-title">Здоровье</div>
 </a>
 
-<a href="./Routine" class="link-card">
+<a href="./Routine/Home" class="link-card">
   <div class="card-icon">🧽</div>
   <div class="card-title">Быт</div>
 </a>
 
 
-<a href="./Stories_and_Thoughts" class="link-card">
+<a href="./Stories_and_Thoughts/HowToLive" class="link-card">
   <div class="card-icon">🤔</div>
   <div class="card-title">Истории и мысли</div>
 </a>
