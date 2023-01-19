@@ -1,5 +1,4 @@
-# potykion.github.io
-aka potyk-io
+# [potyk-io](https://potyk.io)
 
 ## Структура папок
 ### `docs`
