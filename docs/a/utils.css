@@ -9,3 +9,20 @@
 .text-black {
     color: black;
 }
+
+.flex {
+    display: flex;
+}
+.align-center {
+    align-items: center;
+}
+.justify-center {
+    justify-content: center;
+}
+
+.w-100 {
+    width: 100%;
+}
+.w-50 {
+    width: 50%;
+}
