@@ -3,7 +3,7 @@
 ![soundcloud be like](sc.jpg)
 
 - Я очень люблю музыку, так, что она мне надоела
-- Тем не менее я хочу о ней написать
+- Тем не менее, я хочу о ней написать
 - Мой [плейлист с триповыми клипами](https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q)
 - [Мемная База](https://vk.com/come_to_brazil)
 
@@ -125,19 +125,27 @@ Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</
 - [Gefalsht](https://vk.com/gefalsht) - турбомешапы,
   набирающие [миллионы просмотров](https://www.youtube.com/watch?v=k0H4GwnT5kE)
 
+---
+
 ## Видасики про музыку
 
-- [Roshi](https://www.youtube.com/MutenRoshi5137) - про экспериментальный репчик и жлектроникс
+![](nd.jpg)
+
+- [Roshi](https://www.youtube.com/MutenRoshi5137) - про экспериментальный репчик и электроникс
     - Стоит
-      посмотреть: [про пеги](https://www.youtube.com/watch?v=evy5J-1jP1g), [про грипсов](https://www.youtube.com/watch?v=_oNJmLQpUTw)
+      посмотреть: [про грипсов](https://www.youtube.com/watch?v=_oNJmLQpUTw)
 - [Дзига](https://www.youtube.com/@dziga_main) - про индюшатину
     - Стоит
-      посмотреть: [про гарден](https://www.youtube.com/watch?v=aDNJl0GzVFg), [про марку де марку](https://www.youtube.com/watch?v=KKmCsAlKBZg)
+      посмотреть: [про марку де марку](https://www.youtube.com/watch?v=KKmCsAlKBZg)
+- [spochkek](https://www.youtube.com/@spochkek) - еще про индюшатину
+    - Стоит посмотреть: [про гарден](https://youtu.be/FRfQk89cKv4)
 - [СКИЛЛЗ](https://www.youtube.com/@etoskillz) - про попс
     - Стоит
-      посмотреть: [про искусство похуизма](https://www.youtube.com/watch?v=QO8detn9ZGs), [про рубена](https://www.youtube.com/watch?v=V_1F9LZH_4c)
+      посмотреть: [про искусство похуизма](https://www.youtube.com/watch?v=QO8detn9ZGs)
 - [БРОКЕН ДЭНС](https://www.youtube.com/channel/UCWZ57aki9Xi0ZqhVBwZ87Pw) - про попс еще
     - Стоит посмотреть: [про salem](https://www.youtube.com/watch?v=huuGjMgcRWk)
+
+---
 
 ## Где слушать музыку
 
