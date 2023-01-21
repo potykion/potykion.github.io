@@ -34,6 +34,17 @@ definitions:
         script:
           - pip install -r reqs3.txt
           - mypy
+    - step: &docs
+        name: Build docs | Py3
+        image: python:3.9
+        caches:
+          - pip
+        script:
+          - pip install -r reqs3.txt
+          - cd docs/
+          - mkdocs build
+        artifacts:
+          - static/docs/**
     - step: &deploy
         name: Deploy
         image: google/cloud-sdk
@@ -61,6 +72,7 @@ pipelines:
           steps:
             - step: *test
             - step: *qa
+            - step: *docs              
       - step:
           <<: *deploy
           deployment: prod
@@ -90,6 +102,7 @@ pipelines:
 - `image` - Docker-image, в котором будут запускаться команды
 - `caches` - кеш зависимостей
 - `script` - список запускаемых команд
+- `artifacts` - делает результаты шага доступными в других шагах, полезно когда нужно сбилдить доку
 
 ##### Репортинг
 
@@ -126,3 +139,6 @@ pipelines:
     - `*{name}` - для простого использования
     - `<<: *{name}` - для использования с переопределением переменных или деплоев
 
+## Что еще?
+
+- Можно запускать [бб на своей инфре](https://support.atlassian.com/bitbucket-cloud/docs/runners/) (даже на Винде) - так можно сэкономить 
