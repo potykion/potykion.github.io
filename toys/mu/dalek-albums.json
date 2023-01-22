@@ -1,0 +1,387 @@
+{
+  "data": {
+    "artist": {
+      "discography": {
+        "albums": {
+          "totalCount": 8,
+          "items": [
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3Pnywq1sn0SjsLRvPpRWfa",
+                    "uri": "spotify:album:3Pnywq1sn0SjsLRvPpRWfa",
+                    "name": "Precipice",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2022,
+                      "isoString": "2022-04-29T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02b9b4e7b66c05a37317b8c050",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851b9b4e7b66c05a37317b8c050",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273b9b4e7b66c05a37317b8c050",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "LJ0fOWqXRYWId_uOK7NIjw",
+                      "shareUrl": "https://open.spotify.com/album/3Pnywq1sn0SjsLRvPpRWfa?si=LJ0fOWqXRYWId_uOK7NIjw"
+                    },
+                    "tracks": {
+                      "totalCount": 10
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6N4nXYj5uUocB3Wj4xeMY3",
+                    "uri": "spotify:album:6N4nXYj5uUocB3Wj4xeMY3",
+                    "name": "Endangered Philosophies",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2017,
+                      "isoString": "2017-09-01T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0227dfd1a10b0cd1beeb59f0db",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485127dfd1a10b0cd1beeb59f0db",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27327dfd1a10b0cd1beeb59f0db",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "RWwh_YqXQISlm--ehye1Nw",
+                      "shareUrl": "https://open.spotify.com/album/6N4nXYj5uUocB3Wj4xeMY3?si=RWwh_YqXQISlm--ehye1Nw"
+                    },
+                    "tracks": {
+                      "totalCount": 11
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "7MhCpYjnvvaGMIZHaXNXAF",
+                    "uri": "spotify:album:7MhCpYjnvvaGMIZHaXNXAF",
+                    "name": "Asphalt for Eden",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2016,
+                      "isoString": "2016-04-22T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e025007b0447c34030492cda147",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048515007b0447c34030492cda147",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2735007b0447c34030492cda147",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "4r3e6EqsToOTQ-oyMdww7g",
+                      "shareUrl": "https://open.spotify.com/album/7MhCpYjnvvaGMIZHaXNXAF?si=4r3e6EqsToOTQ-oyMdww7g"
+                    },
+                    "tracks": {
+                      "totalCount": 7
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "6iRx4ounyQcQuzvAYzIfoR",
+                    "uri": "spotify:album:6iRx4ounyQcQuzvAYzIfoR",
+                    "name": "Griots and Gods - Les Eurockéennes Festival Belfort",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2010,
+                      "isoString": "2010-12-10T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02860edcf1191ca21e63230af2",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851860edcf1191ca21e63230af2",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273860edcf1191ca21e63230af2",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "BpE50oSnQs-fB2USmqiGsA",
+                      "shareUrl": "https://open.spotify.com/album/6iRx4ounyQcQuzvAYzIfoR?si=BpE50oSnQs-fB2USmqiGsA"
+                    },
+                    "tracks": {
+                      "totalCount": 12
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "2MbZKO7FexnqCIcDgwtqPt",
+                    "uri": "spotify:album:2MbZKO7FexnqCIcDgwtqPt",
+                    "name": "Gutter Tactics",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2009,
+                      "isoString": "2009-01-01T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0225f3b7baa4c0a7240a710fdc",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485125f3b7baa4c0a7240a710fdc",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27325f3b7baa4c0a7240a710fdc",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "hwJlGWCnRB23SJScvf_ByA",
+                      "shareUrl": "https://open.spotify.com/album/2MbZKO7FexnqCIcDgwtqPt?si=hwJlGWCnRB23SJScvf_ByA"
+                    },
+                    "tracks": {
+                      "totalCount": 11
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3eL9FSEAbrf1N1ViC0Xt4Q",
+                    "uri": "spotify:album:3eL9FSEAbrf1N1ViC0Xt4Q",
+                    "name": "Abandoned Language",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2007,
+                      "isoString": "2007-01-01T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e02536ec0e5f0232fc80b5f8fc5",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00004851536ec0e5f0232fc80b5f8fc5",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b273536ec0e5f0232fc80b5f8fc5",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "ODdPmxlJSZaV8leRkArjNQ",
+                      "shareUrl": "https://open.spotify.com/album/3eL9FSEAbrf1N1ViC0Xt4Q?si=ODdPmxlJSZaV8leRkArjNQ"
+                    },
+                    "tracks": {
+                      "totalCount": 11
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "3DXcW4NMarpCjpP628mX4j",
+                    "uri": "spotify:album:3DXcW4NMarpCjpP628mX4j",
+                    "name": "Absence",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2005,
+                      "isoString": "2005-01-01T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e0215c4c5a7371fb7c13677501a",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000485115c4c5a7371fb7c13677501a",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b27315c4c5a7371fb7c13677501a",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "D0AS3_CySNCkyyCXAsxhyw",
+                      "shareUrl": "https://open.spotify.com/album/3DXcW4NMarpCjpP628mX4j?si=D0AS3_CySNCkyyCXAsxhyw"
+                    },
+                    "tracks": {
+                      "totalCount": 10
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "releases": {
+                "items": [
+                  {
+                    "id": "4ZifLmCPfzhOCocXAMP9Ny",
+                    "uri": "spotify:album:4ZifLmCPfzhOCocXAMP9Ny",
+                    "name": "From Filthy Tongue of Gods and Griots",
+                    "type": "ALBUM",
+                    "date": {
+                      "year": 2002,
+                      "isoString": "2002-01-01T00:00:00Z"
+                    },
+                    "coverArt": {
+                      "sources": [
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d00001e027cae373129319f8d429b64c7",
+                          "width": 300,
+                          "height": 300
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d000048517cae373129319f8d429b64c7",
+                          "width": 64,
+                          "height": 64
+                        },
+                        {
+                          "url": "https://i.scdn.co/image/ab67616d0000b2737cae373129319f8d429b64c7",
+                          "width": 640,
+                          "height": 640
+                        }
+                      ]
+                    },
+                    "playability": {
+                      "playable": true,
+                      "reason": "PLAYABLE"
+                    },
+                    "sharingInfo": {
+                      "shareId": "NMf2WcdMTNyUxjZ4n3qpug",
+                      "shareUrl": "https://open.spotify.com/album/4ZifLmCPfzhOCocXAMP9Ny?si=NMf2WcdMTNyUxjZ4n3qpug"
+                    },
+                    "tracks": {
+                      "totalCount": 11
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extensions": {
+    "cacheControl": {
+      "version": 1,
+      "hints": []
+    }
+  }
+}
