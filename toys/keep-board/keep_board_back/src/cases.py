@@ -1,4 +1,5 @@
 import json
+import datetime as dt
 from typing import Literal, Any
 
 from potyk_fp.http import HttpRes
@@ -86,3 +87,18 @@ def do_auth(token: str) -> HttpRes:
         return HttpRes.ok()
     else:
         return HttpRes.err_msg('Invalid token')
+
+
+class CreateWeeklyFromDaily:
+    def __call__(self, ):
+        cli = KeepCli.setup()
+        notes = cli.notes('daily')
+        weekly_note_texts = [
+            n.text
+            for n in notes
+            if dt.date.today() - dt.timedelta(days=6) <= n.created <= dt.date.today()
+        ]
+        weekly_text = '\n'.join(weekly_note_texts)
+        weekly_text = '\n'.join(sorted(weekly_text.split('\n'), key=lambda line: line[0]))
+
+        cli.create_note('weekly', weekly_text)
