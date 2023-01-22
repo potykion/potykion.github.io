@@ -19,11 +19,17 @@ class GKeepNote:
 
     @classmethod
     def from_gkeep(cls, gkeep_note: Note, keep: Keep):
+        text: str
+        if gkeep_note.items:
+            text = '\n'.join([li.text for li in gkeep_note.items])
+        else:
+            text = gkeep_note.text.strip()
+
         return cls(
             id=gkeep_note.server_id,
             created=gkeep_note.timestamps.created.date(),
             title=gkeep_note.title,
-            text=gkeep_note.text.strip(),
+            text=text,
             labels=[l.name for l in gkeep_note.labels.all()],
             image=keep.getMediaLink(gkeep_note.images[0]) if gkeep_note.images else None,
         )
