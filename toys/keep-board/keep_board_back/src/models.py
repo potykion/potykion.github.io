@@ -1,9 +1,9 @@
 import dataclasses
 import datetime as dt
-from typing import List, Optional, Literal
+from typing import List, Optional, Literal, Union
 
 from gkeepapi import Keep
-from gkeepapi.node import Note
+from gkeepapi.node import Note, List as ListNote
 
 NoteType = Literal['daily', 'weekly', 'monthly']
 
@@ -18,9 +18,9 @@ class GKeepNote:
     created: dt.date = dataclasses.field(default_factory=dt.date.today)
 
     @classmethod
-    def from_gkeep(cls, gkeep_note: Note, keep: Keep):
+    def from_gkeep(cls, gkeep_note: Union[Note, ListNote], keep: Keep):
         text: str
-        if gkeep_note.items:
+        if isinstance(gkeep_note, ListNote):
             text = '\n'.join([li.text for li in gkeep_note.items])
         else:
             text = gkeep_note.text.strip()
