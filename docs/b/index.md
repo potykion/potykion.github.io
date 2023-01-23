@@ -11,7 +11,7 @@ _кормит_
 
 <div class="grid-2d">
 
-<a href="./Entertainment" class="link-card">
+<a href="./fun" class="link-card">
   <div class="card-icon">🎊</div>
   <div class="card-title">Развлечения</div>
 </a>
@@ -21,7 +21,7 @@ _кормит_
   <div class="card-title">Еда</div>
 </a>
 
-<a href="./Health" class="link-card">
+<a href="./hp" class="link-card">
   <div class="card-icon">🎗️</div>
   <div class="card-title">Здоровье</div>
 </a>
@@ -32,7 +32,7 @@ _кормит_
 </a>
 
 
-<a href="./Stories_and_Thoughts/HowToLive" class="link-card">
+<a href="./mind/HowToLive" class="link-card">
   <div class="card-icon">🤔</div>
   <div class="card-title">Истории и мысли</div>
 </a>
