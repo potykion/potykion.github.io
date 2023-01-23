@@ -9,8 +9,6 @@
 
 ---
 
-
-
 ## Техно
 
 - 🇫🇷 Vitalic, Gesaffelstein, The Hacker
@@ -106,15 +104,6 @@ Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</
   даже [музтв про это статью написал](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
 - Любимые мешаперы - ниже, обо всех них я узнал из [mashupble](https://vk.com/mashupble), соответственно, начать слушать
   их лучше с сетов с этого мероприятия
-
-<div id="vk_playlist_54719589_15"></div>
-<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
-<script type="text/javascript">
-  (function() {
-    VK.Widgets.Playlist("vk_playlist_54719589_15", 54719589, 15,'f0296b6d08cc59f75e');
-  }());
-</script>
-
 - [Legaloli](https://vk.com/legaloli)
 - [sektorjazza](https://vk.com/cringerecords) - лиричные мешапы
 - [DeepSpaceAudio](https://vk.com/dspaudio) - днб мешапы
@@ -145,16 +134,3 @@ Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</
 - [БРОКЕН ДЭНС](https://www.youtube.com/channel/UCWZ57aki9Xi0ZqhVBwZ87Pw) - про попс еще
     - Стоит посмотреть: [про salem](https://www.youtube.com/watch?v=huuGjMgcRWk)
 
----
-
-## Где слушать музыку
-
-- Если страна позволяет, то конечно Спотик
-- Спотик в россее заблочен, остаётся Ямузыка
-
-### Ямузыка
-
-- Важно понимать, что музыки в Ямузыке меньше, новые релизы могут появится спустя полгода - аналогичная ситуация и в вк
-- Есть [приятный плеер на Винду](https://apps.microsoft.com/store/detail/%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%D0%BC%D1%83%D0%B7%D1%8B%D0%BA%D0%B0/9NBLGGH0CB6D?hl=ru-ru&gl=ru)
-- Реки в иногда годноту выдают
-- Есть [плагин на скачивание музыки](https://chrome.google.com/webstore/detail/yandex-music-downloader/agkcaldeglaadeknkclfbpdojhhclfej/related?hl=ru)   
