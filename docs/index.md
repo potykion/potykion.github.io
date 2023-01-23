@@ -18,7 +18,7 @@ cover: index.png
   <figcaption markdown style="font-style: normal">Манямирок имени [@potykion](https://t.me/potykion)</figcaption>
 </figure>
 
-!!! note "[Газета 📰 / Выпуск №2 от 2022-01-16](g/2)"
+!!! note "[Газета 📰 / Выпуск №3 от 2022-01-23](g/3)"
 
 #
 
