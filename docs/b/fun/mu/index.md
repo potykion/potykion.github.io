@@ -9,110 +9,64 @@
 
 ---
 
-## Техно
+## Музончик по жанрам
 
-- 🇫🇷 Vitalic, Gesaffelstein, The Hacker
-- 🇷🇺 Locked Club, Any Act, Vladimir Dubyshkin
-- 🇺🇦 Re:Drum
-- 🇩🇪 Schwefelgelb, MCR-T, DJ Gigola, DJ MELL G, DJ Fuckoff, Boys Noize, The Exaltics, Maruwa, Cyan85, Gesloten Cirkel
-- 🇦🇺 X CLUB., Partiboi69, Jensen Interceptor
-- 🇬🇧 Asquith, Lone, Simian Mobile Disco, Mall Grab, Assembler Code, Daniel Avery
-- 🇺🇸 Monolithic, Amadeezy, Dopplereffekt, baltra
-- 🇵🇹 Nørus
-- 🇵🇱 L Ʌ V Σ N
-- 🇮🇪 KETTAMA
-- 🇪🇸 DJ これからの緊急災害 (Wachita China)
-- 🇱🇹 [DM-90](https://youtu.be/N6RLKqi0Ows)
-- 🇨🇴 Dagga
-- 🇮🇸 Gusgus
-- 🇸🇸 Skin On Skin
-- 🇨🇦 Dj Genderfluid
-- 🇩🇰 Schacke, Niki Istrefi
-- 🇰🇷 박혜진 Park Hye Jin
+### Техно
 
-- Хороший ресурс про техно исполнителей: био, афиша, дезигн - класс: https://ra.co/
+Vitalic • Gesaffelstein • The Hacker • Locked Club • Any Act • Re:Drum • Schwefelgelb • MCR-T • DJ Gigola •
+DJ MELL G • DJ Fuckoff • Boys Noize • X CLUB. • Partiboi69 • Jensen Interceptor • Asquith • Assembler Code •
+Monolithic • baltra • Nørus • KETTAMA • DJ これからの緊急災害 (Wachita China)  • DM-90 • Dagga • Gusgus •
+Skin On Skin • Dj Genderfluid • Schacke • Niki Istrefi • 박혜진 Park Hye Jin • LSDXOXO
 
-## Экспериментальный реп
-
-- Грипсы
+### Экспериментальный реп
 
 <img src="../../../a/vk/mc-ride.gif">
 
-- Клиппинг
-- Jpegmafia aka Пеги
-- Кста есть видос про него
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/evy5J-1jP1g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-- Да и вообще прикольны [канальчик про рэпчик](https://www.youtube.com/@MutenRoshi5137) - подписывайтес
-- И про грипсов там, одобряю крч
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/_oNJmLQpUTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Death Grips • clipping. • JPEGMAFIA • Moodie Black • Dalek • Lil Darkie
 
-## Грайндкор
+### Хардкорчик / грайндкорчик
 
-- Хороший грайндкор - это бластбиты, шумные гитары (которые звучат как шум воды) и экстрим вокал
-- Есть поп грайнд, есть андер
-- Поп-грайнд: Nasum, Pig Destroyer
+Nasum • Pig Destroyer • Nails • Xibalba • Varials • Jesus Piece • Rolo Tomassi • Full of Hell • No Zodiac • Rotten Sound • Gulch
 
-## Эксперимантал электро
+### Sludge / Stoner / Doom
+
+Conan • Godflesh • Weedeater • Bongzilla • The Body • Thou • Primitive Man • Bongripper • Fistula
+
+### Панкуха / Рокешник
+
+The Garden • Death from Above 1979 • Sleigh Bells  
+
+### Escaperoom / Hyperpop / Experimental Electro
 
 ![](experimental-electronic-nonbinary.webp)
 
-- Sophie
-- Dorian Electra
-- Shygirl
-- Quay Dash
+Sophie • Dorian Electra • Shygirl • Quay Dash • Chari XCX • ize • 100 gecs • Lil Mariko
 
-## Drum'n'Bass
+### Drum'n'Bass / Jungle / Bassline 
 
 ![](dnb.jpg)
 
-- Ну че там, база-база - это **Pendulum, Qemists, Concord Dawn, Noisia**
+Pendulum • Qemists • Concord Dawn • Noisia • Sewerslut • Lowriderz • Smoky D • General Levy • Rene LaVice
 
-<iframe frameborder="0" style="border:none;width: 100%;height:100px;" height="100" src="https://music.yandex.ru/iframe/#track/39909586/5167263">
-Слушайте <a href='https://music.yandex.ru/album/5167263/track/39909586'>Don't Tell Me</a>
-— <a href='https://music.yandex.ru/artist/719344'>Concord Dawn</a> на Яндекс Музыке</iframe>
+### Русский рэп
 
-- Сегодня в 2к22 драмчик по-прежнему актуален, и звучит абсолютно так же как и 15 лет назад)))
+Kunteynir • уннв • d46l.o (дабл о) • Овсянкин • SLIVKO • Кровосток
 
-<iframe frameborder="0" style="border:none;width:100%;height:100px;"  height="100" src="https://music.yandex.ru/iframe/#track/101316939/21350984">
-Слушайте <a href='https://music.yandex.ru/album/21350984/track/101316939'>Burn 'Em
-Down</a> — <a href='https://music.yandex.ru/artist/3228992'>Pythius</a> на Яндекс Музыке</iframe>
+### Грустный денс
 
-<iframe frameborder="0" style="border:none;width:100%;height:100px;" height="100" src="https://music.yandex.ru/iframe/#track/52467702/7388929">
-Слушайте <a href='https://music.yandex.ru/album/7388929/track/52467702'>Push It To The
-Limit</a> — <a href='https://music.yandex.ru/artist/632210'>Qo</a> на Яндекс Музыке</iframe>
+benzii • Prince Innocence • Boy Harsher • Sassy 009 • George Clanton
 
-<iframe frameborder="0" style="border:none;width:100%;height:100px;"  height="100" src="https://music.yandex.ru/iframe/#track/50008390/6883838">
-Слушайте <a href='https://music.yandex.ru/album/6883838/track/50008390'>Jungle
-Reprezentah</a> — <a href='https://music.yandex.ru/artist/1323029'>Lowriderz</a> на Яндекс Музыке</iframe>
+### Мешапы
 
-- Хотя есть НОВАТОРСКИЕ ребята, типа ~~Северсталь~~ Sewerslut
-
-## Базовый хардкорчик
-
-- Xibalba
-- Varials
-
-## Русский рэп
-
-- Русский рэп сосет мой хуй, а мне всего лишь ~~19~~ 26
-- Энивей, из русского репа я советую реп про наркотики: Kunteynir, уннв, d46l.o (дабл о)
-- Еще, за паштетом техником [стоит лоу-фай хип-хоп](https://youtu.be/Q3eea0EUHsg) 
-
-## Мешапы
-
-- Мешапы - это когда 2+ трека миксуют и получается прикольно,
-  даже [музтв про это статью написал](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
+- Мешапы - это когда 2+ трека миксуют и получается прикольно
+- Внезапно [музтв написал норм статью про это](https://muz-tv.ru/news/smeshano-i-smeshno-chto-takoe-meshap-i-pochemu-eto-tak-veselo/)
 - Любимые мешаперы - ниже, обо всех них я узнал из [mashupble](https://vk.com/mashupble), соответственно, начать слушать
   их лучше с сетов с этого мероприятия
-- [Legaloli](https://vk.com/legaloli)
-- [sektorjazza](https://vk.com/cringerecords) - лиричные мешапы
-- [DeepSpaceAudio](https://vk.com/dspaudio) - днб мешапы
-- [MOVIESTRAIFE](https://vk.com/moviestraife_group) - мощные мешапы
-- [FinalSketch](https://vk.com/finalsketchmusic) - брейккор мешапы
-- [Zetton](https://vk.com/zetton_mashups)
-- [Качественный Саунд](https://vk.com/highqualitysound) - мультисурс мешапы, тоже днбшные
-- [Gefalsht](https://vk.com/gefalsht) - турбомешапы,
-  набирающие [миллионы просмотров](https://www.youtube.com/watch?v=k0H4GwnT5kE)
+
+[Legaloli](https://vk.com/legaloli) • [sektorjazza](https://vk.com/cringerecords) •
+[DeepSpaceAudio](https://vk.com/dspaudio) • [MOVIESTRAIFE](https://vk.com/moviestraife_group) •
+[FinalSketch](https://vk.com/finalsketchmusic) • [Zetton](https://vk.com/zetton_mashups) •
+[Качественный Саунд](https://vk.com/highqualitysound) • [Gefalsht](https://vk.com/gefalsht)
 
 ---
 
