@@ -1,11 +1,10 @@
 ---
 hide:
-- toc
-- navigation
+  - toc
+  - navigation
 title: Выпуск №3 от 2023-01-23
 description: Новости моего манямирка
 cover: g/3/cover.jpg
-
 ---
 
 # [Газета 📰](../index.md) / Выпуск №3 от 2023-01-23 {.no-margin}

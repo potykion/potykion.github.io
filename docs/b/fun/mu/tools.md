@@ -8,11 +8,12 @@
 ### Ямузыка
 
 - Важно понимать, что музыки в Ямузыке меньше, новые релизы могут появиться спустя полгода - аналогичная ситуация и в вк
+- Хотя **можно загружать свою музыку**, используя плейлисты
+    - т.е. новый релиз можно _спиратить и создать плейлист_ - и новая музыка у тебя в Яндексе
 - Есть [приятный плеер на Винду](https://apps.microsoft.com/store/detail/яндексмузыка/9NBLGGH0CB6D)
 - Реки в иногда годноту выдают
--
-Есть [плагин на скачивание музыки](https://chrome.google.com/webstore/detail/yandex-music-downloader/agkcaldeglaadeknkclfbpdojhhclfej/related?hl=ru)
-
+- Есть [
+  плагин на скачивание музыки](https://chrome.google.com/webstore/detail/yandex-music-downloader/agkcaldeglaadeknkclfbpdojhhclfej)
 
 ## Диджеинг
 

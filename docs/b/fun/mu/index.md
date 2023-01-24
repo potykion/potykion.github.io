@@ -1,3 +1,7 @@
+---
+cover: b/fun/mu/sc.jpg
+---
+
 # Музыка
 
 ![soundcloud be like](sc.jpg)

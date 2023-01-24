@@ -1,5 +1,15 @@
 # PyCharm
 
+## Экспериментальные фичи и registry
+
+- В PyCharm есть экспериментальные фичи, которые скрыты от глаз обычных юзеров
+- Чтобы включить их, нужно залезть в Registry: `Ctrl + Shift + A > Registry`
+
+![registry](registry.png)
+
+- Так `markdown.experimental.frontmatter.support.enable` включает форматирование markdown-frontmatter - yml-метадату
+  markdown
+
 ## Что делать если PyCharm рендерит html как ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ?
 
 Проставить кодировки в html:
