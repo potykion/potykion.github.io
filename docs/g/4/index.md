@@ -44,4 +44,32 @@ frontmatter (yml-метадата в markdown) больше не будет съ
 <div class="card-text">📷 Мем недели: Какой же он ебучий</div>
 </div>
 
+<div class="card">
+<a href="https://github.com/stars/potykion/lists/python-ui" target="_blank">
+<img src="flet.png">
+<div class="card-text">🔎 Раньше ui на Python можно было писать только с помощью wxPython, а теперь можно и <b>транспайл во Flutter, и в React</b></div>
+</a>
+</div>
+
+<div class="card">
+<a href="https://astro.build/blog/astro-2/" target="_blank">
+<img src="astro_v2.jfif">
+<div class="card-text">🔎 <b>Astro v2</b> - завезли ебейшие рантайм ошибки, а не <code>Cannot read property of undefined</code> </div>
+</a>
+</div>
+
+<div class="card">
+<a href="https://react.email/" target="_blank">
+<div class="card-text">🔎 Верстать письма - это тот же гемор, говорят, <b>react-email</b> выручает</div>
+</a>
+</div>
+
+<div class="card">
+<a href="https://github.com/Mokshit06/typewind" target="_blank">
+<img src="typewind.png">
+<div class="card-text">🔎 Приколюха: типизированный Tailwind CSS</div>
+</a>
+
+</div>
+
 </div>
