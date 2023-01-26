@@ -72,7 +72,7 @@ pipelines:
           steps:
             - step: *test
             - step: *qa
-            - step: *docs              
+            - step: *docs
       - step:
           <<: *deploy
           deployment: prod
@@ -109,7 +109,7 @@ pipelines:
 - При запуске тестов, можно выводить упавшие тесты
   в [раскрывающихся блоках](https://support.atlassian.com/bitbucket-cloud/docs/test-reporting-in-pipelines/):
 
-    ![test-report](test-report.png)
+  ![test-report](test-report.png)
 
 - Для этого результаты тестов нужно выводить в JUnitXML формате:
 
@@ -141,4 +141,60 @@ pipelines:
 
 ## Что еще?
 
-- Можно запускать [бб на своей инфре](https://support.atlassian.com/bitbucket-cloud/docs/runners/) (даже на Винде) - так можно сэкономить 
+- Можно запускать [бб на своей инфре](https://support.atlassian.com/bitbucket-cloud/docs/runners/) (даже на Винде) - так
+  можно сэкономить
+
+## Примеры конфигураций
+
+### Сборка через Docker и пуш в Yandex Cloud Container Registry
+
+```yaml
+definitions:
+  steps:
+    - step: &build
+        name: Build and push Docker
+        # Выставляем services, чтобы был доступ к Docker 
+        services:
+          - docker
+        # Опциональное кеширование 
+        caches:
+          - docker
+        script:
+          # >- - многострочная команда
+          - >-
+            docker build 
+            --build-arg DATABASE_URL=$DATABASE_URL 
+            -t cr.yandex/$YC_CR/$IMAGE 
+            .
+          # Логинимся в CR
+          - docker login --username oauth --password $YC_TOKEN cr.yandex
+          # Пушим в CR
+          - docker push cr.yandex/$YC_CR/$IMAGE
+```
+
+### Деплой на YC Serverless Containers
+
+На базе [деплоя через yc](../yc.md)
+
+```yaml
+definitions:
+  steps:
+    - step: &deploy
+        name: Deploty to YC SC
+          # Ставим yc cli
+          - curl -sSL https://storage.yandexcloud.net/yandexcloud-yc/install.sh | bash
+          - source "/root/.bashrc"
+          # Получаем токен
+          # https://cloud.yandex.ru/docs/cli/operations/authentication/user
+          - yc config set token $YC_TOKEN
+          # Деплой
+          - >-
+            yc serverless container revision deploy
+            --container-id $YC_SC_CONTAINER_ID
+            --image cr.yandex/$YC_CR/$IMAGE
+            --service-account-id $YC_SC_SA
+            --execution-timeout 20s
+            --memory 256MB
+            --min-instances 1
+            --environment DATABASE_URL=$DATABASE_URL
+```

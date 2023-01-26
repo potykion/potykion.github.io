@@ -58,3 +58,9 @@ docker logs --timestamps {container}
 Интересует `LogPath` - это путь к логам контейнера
 
 [Источник](https://stackoverflow.com/questions/33017329/where-is-a-log-file-with-logs-from-a-container)
+
+## `ARG`
+
+- `ARG` - инструкция в `Dockerfile`
+- `ARG` - енв, который передается на этап сборки, используя `docker build --build-arg KEY=VALUE`
+- `ARG DATABASE_URL`
