@@ -23,7 +23,7 @@ yc serverless container create --name {name}
 yc serverless container allow-unauthenticated-invoke {name}
 ```
 
-### Новая версия / ревизия
+### [Новая версия / ревизия](https://cloud.yandex.ru/docs/cli/cli-ref/managed-services/serverless/container/revision/deploy)
 
 ```shell
 yc serverless container revision deploy
