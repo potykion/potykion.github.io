@@ -45,9 +45,9 @@ title: 2023
 <div class="card-text">🎵 The Garden - Horseshit on Route 66</div>
 </div>
 
-todo video 
-todo food 
-todo image 
+<div class="card cols-2">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MPtfBeR3df0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+</div>
 
 </div>
