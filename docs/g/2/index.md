@@ -15,7 +15,7 @@ _Новости моего манямирка_
 
 <div class="card">
 <a target="_blank" href="/c/ops/bb_ppl">
-<img src="/c/ops/bb_ppl/pipelines.png">
+<img src="pipelines.png">
 <div class="card-text">
 📝 <b>BitBucket Pipelines</b> - CI/CD от BitBucket, не сложнее GitHub Actions - все в одном файлике
 </div>

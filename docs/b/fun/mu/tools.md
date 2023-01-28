@@ -40,8 +40,16 @@
 - https://github.com/KurtBestor/Hitomi-Downloader
 - https://github.com/MrS0m30n3/youtube-dl-gui
 
+## Музыкальные апишки
+
+- https://rapidapi.com/search/music - много разных апишек, без гемора и с фри-тиром, в частности есть апи спотика
+- https://www.last.fm/api/show/album.search
+- https://musicbrainz.org/doc/MusicBrainz_API
+- https://www.discogs.com/developers/
+
 ## Прочее
 
 - https://everynoise.com - все жанры мира + соответсвующее плейлисты на спотике
 - https://www.musicbutler.io/  - уведомления о новых альбомах
 - https://ra.co/ - Хороший ресурс про техно исполнителей: био, афиша, дезигн - класс
+

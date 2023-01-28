@@ -16,7 +16,7 @@ _кормит_
   <div class="card-title">Развлечения</div>
 </a>
 
-<a href="./Food" class="link-card">
+<a href="./food" class="link-card">
   <div class="card-icon">🐷</div>
   <div class="card-title">Еда</div>
 </a>

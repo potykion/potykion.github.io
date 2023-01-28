@@ -19,8 +19,20 @@ a.md-tabs__link {
 }
 
 @media (max-width: 700px) {
-
     .grid-2d {
+        grid-template-columns: 100%;
+    }
+}
+
+.grid-4d {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+@media (max-width: 700px) {
+    .grid-4d {
         grid-template-columns: 100%;
     }
 }
