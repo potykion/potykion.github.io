@@ -1,5 +1,4 @@
 
-
 .grid-3-col {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,16 +16,46 @@
 
 
 .cols-2 {
-grid-column: auto / span 2;
+    grid-column: auto / span 2;
 }
+
+@media (max-width: 700px) {
+
+    .grid-3-col {
+        grid-template-columns: 1fr;
+    }
+
+    .cols-2 {
+        grid-column: auto / span 1;
+
+    }
+
+}
+
+
 .cols-3 {
-grid-column: auto / span 3;
+    grid-column: auto / span 3;
 }
-.rows-2 {grid-row: auto / span 2;}
-.rows-3 {grid-row: auto / span 3;}
-.rows-4 {grid-row: auto / span 4;}
-.rows-5 {grid-row: auto / span 5;}
-.rows-6 {grid-row: auto / span 6;}
+
+.rows-2 {
+    grid-row: auto / span 2;
+}
+
+.rows-3 {
+    grid-row: auto / span 3;
+}
+
+.rows-4 {
+    grid-row: auto / span 4;
+}
+
+.rows-5 {
+    grid-row: auto / span 5;
+}
+
+.rows-6 {
+    grid-row: auto / span 6;
+}
 
 .card {
     display: flex;
@@ -46,7 +75,7 @@ grid-column: auto / span 3;
 }
 
 .card a {
-  text-decoration: none ;
+    text-decoration: none;
 }
 
 .card-text {
