@@ -11,5 +11,5 @@
 
 ## mid-tier
 
-- Целый [раздел про это](./mid/Standup.md)
+- Целый [раздел про это](./mid/index.md)
 - Чтение - тут сильно зависит от книги, таких простых для чтения книг как ["Кради, как художник"](https://www.mann-ivanov-ferber.ru/books/paperbook/steal-artist/) чет мало
