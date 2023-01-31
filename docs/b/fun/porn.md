@@ -15,6 +15,13 @@ cover: b/Entertainment/horse.png
 
 ![](porn.png)
 
+Откуда инфа:
+
+- Wiki - много инфы есть просто в вике, напр. по [MindGeek](https://en.wikipedia.org/wiki/MindGeek)
+- [Justia Trademarks](https://trademarks.justia.com/) - инфа о компаниях и ее дочках - те
+  же [MindGeek](https://trademarks.justia.com/870/96/mindgeek-87096705.html)
+- Дочерние сайты, представленные на основном сайте
+
 ## Где смотреть и качать?
 
 ### ВК
