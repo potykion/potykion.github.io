@@ -92,9 +92,12 @@ frontmatter (yml-метадата в markdown) больше не будет съ
 </a>
 </div>
 
-<div class="card ">
-<a href="/c/ops/bb-ci/" target="_blank">
-<div class="card-text">📝 Еще большее погружение в <b>BitBucket Pipelines</b></div>
+
+
+<div class="card rows-2">
+<a href="https://icanfly.su/">
+<img src="aerotube.jpg">
+<div class="card-text"><b>🎉 Аэротруба</b> - прикольно, но после болит все тело - ощущение, что тебя ветер отпиздил</div>
 </a>
 </div>
 
@@ -103,9 +106,15 @@ frontmatter (yml-метадата в markdown) больше не будет съ
 <div class="card-text">📹 Очень много <b>автоматов с едой</b></div>
 </div>
 
-<div class="card">
+<div class="card rows-2">
 <iframe frameborder="0" style="border:none;width:100%;height:180px;" width="100%" height="180" src="https://music.yandex.ru/iframe/#track/63544272/10120862">Слушайте <a href='https://music.yandex.ru/album/10120862/track/63544272'>Люблю я макароны</a> — <a href='https://music.yandex.ru/artist/1120270'>Эмиль Горовец</a> на Яндекс Музыке</iframe>
 <div class="card-text">🎵 База от ЯМузыки</div>
+</div>
+
+<div class="card ">
+<a href="/c/ops/bb-ci/" target="_blank">
+<div class="card-text">📝 Еще большее погружение в <b>BitBucket Pipelines</b></div>
+</a>
 </div>
 
 </div>
