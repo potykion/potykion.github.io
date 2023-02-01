@@ -1,5 +1,4 @@
 ---
-cover: b/Entertainment/horse.png
 title: Порно
 description: Как все связано, как собирать коллекцию
 preview: b/fun/horse.png
