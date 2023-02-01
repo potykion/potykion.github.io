@@ -82,8 +82,8 @@
         {% if page.meta.description %}
             {% set description = page.meta.description %}
         {% endif %}
-        {% if page.meta.cover %}
-            {% set cover =  config.site_url  ~  page.meta.cover %}
+        {% if page.meta.cover or page.meta.preview %}
+            {% set cover =  config.site_url  ~  page.meta.cover or page.meta.preview %}
         {% endif %}
     {% endif %}
     <meta property="og:type" content="website"/>

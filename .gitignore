@@ -3,3 +3,5 @@
 site
 ngrok.exe
 *.pyc
+frontmatter.json
+.frontmatter

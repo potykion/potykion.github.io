@@ -2,7 +2,7 @@
 hide:
   - toc
   - navigation
-title: 2023
+title: '2023'
 ---
 
 <style>
