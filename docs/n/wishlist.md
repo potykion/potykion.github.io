@@ -1,7 +1,11 @@
 # Вишлист
 
 - [ ] новый мощный ноут, суса какая-нибудь последняя или синкпад
-- [ ] клаву какую-нибудь пиздатую
+- [ ] клаву какую-нибудь пиздатую, напр. Logitech MX Keys
+- [ ] Маленький блокнотик и ручку, чтобы помещались в карман куртки - формат а7 крч
+
+---
+
 - [x] беспроводные науши с микро
     - [Игровые наушники SteelSeries Arctis 1 XBOX Edition, черный](https://www.ozon.ru/product/igrovye-naushniki-steelseries-arctis-1-xbox-edition-chernyy-547712950)
     - [Беспроводные наушники Sony WH-1000XM4 Bluetooth Smart с шумоподавлением](https://www.ozon.ru/product/besprovodnye-naushniki-sony-wh-1000xm4-bluetooth-smart-s-shumopodavleniem-709349875)
