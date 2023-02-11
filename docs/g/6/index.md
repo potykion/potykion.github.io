@@ -32,4 +32,6 @@ hide:
 
 <video src="literally-nothing.mp4" controls autoplay muted></video>
 
+## важная картинка
 
+![](knowledge.jpg)
