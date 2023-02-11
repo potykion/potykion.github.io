@@ -51,6 +51,11 @@ plugins:
   # Плагин для навигации
   # https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
   - awesome-pages
+  # https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
+  - tags:
+      tags_file: c/bits/index.md
+
+
 
 # Навигация: Табы > Секции > Страницы
 # Работает за счет awesome-pages
