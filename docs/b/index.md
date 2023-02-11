@@ -35,7 +35,7 @@ _кормит_
   <div class="card-subtitle">Менталочка, спорт, сон</div>
 </a>
 
-<a href="./mind/HowToLive" class="link-card">
+<a href="./mind/how" class="link-card">
   <div class="card-icon">🤔</div>
   <div class="card-title">Истории и мысли</div>
   <div class="card-subtitle">Что со мной происходит</div>
