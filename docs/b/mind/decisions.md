@@ -1,3 +1,7 @@
+---
+title: Принятие решений
+---
+
 <style>
 
 select {
@@ -29,8 +33,9 @@ input {
 <div>
 <select v-model="store.howCanIHelp">
 <option value="init" disabled>Чем помочь?</option>
-<option value="theatre">Театр</option>
-<option value="movie">Кино</option>
+<option value="theatre">Стоит ли идти в театр?</option>
+<option value="movie">Стоит ли смотреть кино?</option>
+<option value="coffee">Стоит ли брать кофе?</option>
 </select>
 </div>
 
@@ -38,6 +43,14 @@ input {
 <label>
 Сколько будет идти спектакль/фильм?
 <input min="0" type="number" v-model.number="store.hours"> часов
+</label>
+</div>
+
+<div v-if="store.howCanIHelp === 'coffee'"  >
+<label>
+Пахнет сигами?
+    <label><input type="radio" v-model="store.smellsLikeCigarettes" value='yes'>Да</label>
+    <label><input type="radio" v-model="store.smellsLikeCigarettes" value='no'>Нет</label>
 </label>
 </div>
 

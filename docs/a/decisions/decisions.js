@@ -38,10 +38,11 @@ export class Err extends Result {
 
 
 export const store = reactive({
-    /* @type {('init'|'theatre')} */
+    /* @type {('init'|'theatre'|'movie'|'coffee')} */
     howCanIHelp: 'init',
     hours: 0,
-
+    /* @type {('yes'|'no'|'???')} */
+    smellsLikeCigarettes: '???',
 
     decision() {
         switch (this.howCanIHelp) {
@@ -49,12 +50,17 @@ export const store = reactive({
                 return '???'
             case 'theatre':
             case 'movie':
-                return Result.if_(() => this.hours >= 2.5)
-                    .then('no')
-                    .or((_) => Result.if_(() => this.hours > 0)
-                        .then('yes')
-                        .else_('???'))
-                    .val;
+                return this.hours >= 2.5
+                    ? 'no'
+                    : this.hours > 0
+                        ? 'yes'
+                        : '???';
+            case 'coffee':
+                return this.smellsLikeCigarettes === 'yes'
+                    ? 'no'
+                    : this.smellsLikeCigarettes === 'no'
+                        ? 'yes'
+                        : '???';
         }
     }
 })
