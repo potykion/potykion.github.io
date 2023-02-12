@@ -16,8 +16,10 @@ jobs:
         with:
           key: ${{ github.ref }}
           path: .cache
+      - run: pip install pillow cairosvg
       - run: pip install -r requirements.txt
       - env:
           GA_KEY: ${{ secrets.GA_KEY }}
           YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
+          CARDS: true
         run: mkdocs gh-deploy --force

@@ -54,8 +54,8 @@ plugins:
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
   - tags:
       tags_file: c/bits/index.md
-  - social
-
+  - social:
+      cards: !ENV [ CARDS, false ]
 
 
 # Навигация: Табы > Секции > Страницы
