@@ -36,14 +36,18 @@ export class Err extends Result {
 
 // console.log(new Ok(1).map((i) => i + 1).val);
 
+/**
+ * @typedef {('yes'|'no'|'???')} Decision
+ */
 
 export const store = reactive({
-    /* @type {('init'|'theatre'|'movie'|'coffee')} */
+    /** @type {('init'|'theatre'|'movie'|'coffee')} */
     howCanIHelp: 'init',
     hours: 0,
-    /* @type {('yes'|'no'|'???')} */
+    /** @type {Decision} */
     smellsLikeCigarettes: '???',
 
+    /** @returns {Decision} */
     decision() {
         switch (this.howCanIHelp) {
             case "init":
