@@ -1,6 +1,8 @@
 ---
 tags:
   - flask
+hide:
+  - toc
 ---
 
 # Чем мне нравится Flask

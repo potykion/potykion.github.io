@@ -1,6 +1,8 @@
 ---
 tags:
   - rapid-dev
+hide:
+  - toc
 ---
 
 # Версии приложения

@@ -1,6 +1,8 @@
 ---
 tags:
   - flask
+hide:
+  - toc
 ---
 
 # Flask-серв в тестах

@@ -1,6 +1,8 @@
 ---
 tags:
   - web
+hide:
+  - toc
 ---
 
 # base64

@@ -10,7 +10,7 @@ hide:
 - Python Backend Developer, 7 лет опыта
 - [Telegram](http://t.me/potykion) • <a href="mailto:potykion@gmail.com">Почта</a>
 - Django/FastAPI/Flask • GoogleCloudPlatform/YandexCloud • Postgres/Mongo/Firebase/Elastic • Redis/RabbitMQ •
-  pytest/mypy
+  pytest/mypy • GitHubActions/BitBucketPipelines • Docker/Nginx/Gunicorn
 
 ## Опыт
 

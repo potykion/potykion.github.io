@@ -1,6 +1,8 @@
 ---
 tags:
   - js
+hide:
+  - toc
 ---
 
 # Тайпинги в JS без TS
