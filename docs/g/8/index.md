@@ -51,6 +51,10 @@ Dockerfile, shell, makefile, ... - все объединили в одну ту�
 
 ## 🔎 [Юзаем одноразовые телефоны для ChatGPT](https://ru.temporary-phone-number.com/TimorLeste-Phone-Number/)
 
+## 🔎 [reMarkable](https://remarkable.com/) - нихуя-струя электронный блокнот - **хотет!**
+
+![](remarkable.webp)
+
 ---
 
 ## 🖼 Важная картинка
