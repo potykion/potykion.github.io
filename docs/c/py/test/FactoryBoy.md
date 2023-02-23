@@ -122,6 +122,12 @@ value = factory.fuzzy.FuzzyInteger(1, 10)
 address = factory.Faker('street_address', locale='ru_RU')
 ```
 
+#### Текст
+
+```python
+factory.Faker('text', max_nb_chars=200)
+```
+
 ### Mimesis (смысла нет)
 
 - [mimesis](https://mimesis.name/en/master/) - альтернатива faker
@@ -196,6 +202,10 @@ def put(obj, create, *args, **kwargs):
 ```
 
 Здесь при создании объекта, будет вызываться метод объекта `put`
+
+!!! warning "ВАЖНО"
+
+    Возврат `post_generation` никак не обрабатывается => возвращать объект бессмысленно, только мутировать
 
 ### Что за параметр `create`?
 
