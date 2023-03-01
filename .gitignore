@@ -6,3 +6,4 @@ ngrok.exe
 frontmatter.json
 .frontmatter
 .obsidian
+node_modules

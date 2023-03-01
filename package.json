@@ -1,0 +1,11 @@
+{
+  "name": "potyk-io",
+  "version": "1.0.0",
+  "description": "Бложек имени @potykion",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i docs/a/tailwind-layers.css -o ./docs/a/tailwind-output.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}

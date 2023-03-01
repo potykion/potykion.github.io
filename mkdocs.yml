@@ -40,6 +40,7 @@ extra_css:
   - a/extra.css
   - a/gazeta.css
   - a/utils.css
+  - a/tailwind-output.css
 
 # Плагины - для нового функционала
 plugins:
