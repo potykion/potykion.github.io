@@ -68,10 +68,10 @@ description: Которые нужно послушать всем 😉
 </div>
 
 <div>
-    <img src="bongripper.jfif">
-    <a href="https://music.yandex.ru/album/1311233" class="font-extrabold underline">Satan Worshipping Doom</a>
+    <img src="bongripper.jpg">
+    <a href="https://music.youtube.com/playlist?list=OLAK5uy_ngNTUK7M6yaylc8xP3ibASLqAIsW1ehjY" class="font-extrabold underline">Miserable</a>
     <div class="font-semibold">Bongripper</div>
-    <div class="text-gray-400">2010 <span class="text-gray-300">·</span> Sludge</div>
+    <div class="text-gray-400">2014 <span class="text-gray-300">·</span> Sludge</div>
 </div>
 <div>
     <img src="conan.jfif">

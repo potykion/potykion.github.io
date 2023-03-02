@@ -40,9 +40,10 @@ tags:
     - хотя
       можно [извратиться](https://medium.com/@pierremriau/how-to-replace-vuetify-utility-classes-with-tailwindcss-9a3ebaa21f4f)
 
-## Тулзы
+## Тулзы / Ресурсы
 
-- [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/) 
+- [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/)
+- [Подборочка Tailwind штук](https://github.com/aniftyco/awesome-tailwindcss)
 - [DaisyUI](https://daisyui.com/) - UI на Tailwind
 - [Typewind](https://typewind.dev/) - типизированный Tailwind
 - [Tailscan](https://tailscan.com/) - интерактивный Tailwind

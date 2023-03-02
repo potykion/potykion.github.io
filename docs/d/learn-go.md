@@ -5,6 +5,11 @@ tags:
 
 # Вкат в го
 
+- https://devhints.io/go
+- https://github.com/a8m/golang-cheat-sheet
+
+---
+
 - https://roadmap.sh/golang
 - https://go.dev/doc/
 - [A Tour of Go](https://go.dev/tour/welcome/1)
