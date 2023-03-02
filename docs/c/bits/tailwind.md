@@ -22,9 +22,9 @@ tags:
   используя [Tailwind CLI](https://tailwindcss.com/docs/installation)
 - Есть интеграции с Idea и [VSCode](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 
-### FAQ
+## FAQ
 
-#### Что за `tailwind.config.js`?
+### Что за `tailwind.config.js`?
 
 - [Настройки Tailwind](https://tailwindcss.com/docs/configuration)
 - [`content`](https://tailwindcss.com/docs/content-configuration) - какие файлы чекать на предмет Tailwind-классов
@@ -32,7 +32,7 @@ tags:
 - [`theme`](https://tailwindcss.com/docs/theme) - стилизовочка
 - [`plugins`](https://tailwindcss.com/docs/plugins) - плагин для интеграции с фреймворками, плагины для Tailwind
 
-## Когда не стоит юзать Tailwind
+### Когда не стоит юзать Tailwind?
 
 - Если уже юзаешь UI-фреймворк, типа [Vuetify](https://vuetifyjs.com/en/), то может что-то поехать — лучше
   придерживаться
