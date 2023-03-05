@@ -5,6 +5,7 @@
 - Если страна позволяет, то конечно Спотик
 - Спотик в россее заблочен, остаётся Ямузыка
     - Хотя есть вар - [Зеленый Звук](https://www.green-sound.ru/)
+    - Еще говорят, если выставить VPN на Индию, то можно слушать без премиума 
 
 ### Ямузыка
 
@@ -50,7 +51,18 @@
 
 ## Прочее
 
+- https://rateyourmusic.com/ - Базовый сервис по поиску музыки
 - https://everynoise.com - все жанры мира + соответсвующее плейлисты на спотике
 - https://www.musicbutler.io/  - уведомления о новых альбомах
 - https://ra.co/ - Хороший ресурс про техно исполнителей: био, афиша, дезигн - класс
 
+## Скачиватели музла
+
+- https://github.com/yt-dlp/yt-dlp
+
+    ```
+    yt-dlp.exe https://www.youtube.com/watch?v=qOzJdFHrhB8 -x --split-chapters
+    ```
+
+- https://github.com/ytdl-org/youtube-dl
+- https://github.com/spotDL/spotify-downloader
