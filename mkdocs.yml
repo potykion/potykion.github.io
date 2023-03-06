@@ -26,7 +26,6 @@ theme:
   features:
     # Табы
     - navigation.tabs
-    - navigation.tabs.sticky
     # Кнопка "Вверх"
     - navigation.top
     # Поиск: предложения и подсветка искомого текста
