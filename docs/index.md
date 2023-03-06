@@ -1,7 +1,7 @@
 ---
 hide:
-- navigation
-- toc
+  - navigation
+  - toc
 description: Манямирок имени @potykion
 cover: index.png
 ---
@@ -39,12 +39,6 @@ cover: index.png
   <div class="card-subtitle">Все, что я посчитал интересным</div>
 </a>
 
-<a href="https://forms.gle/E79zYuiLPCeVYoJh6/" class="link-card">
-  <div class="card-icon">💬</div>
-  <div class="card-title">Обратная связь</div>
-  <div class="card-subtitle">Напиши мне!</div>
-
-</a>
 
 <a href="./n" class="link-card">
   <div class="card-icon">🧑</div>
@@ -64,11 +58,7 @@ cover: index.png
   <div class="card-subtitle">Делит число по долям</div>
 </a>
 
-<a href="https://write.website.yandexcloud.net/" class="link-card">
-  <div class="card-icon">✍</div>
-  <div class="card-title">Писалка</div>
-  <div class="card-subtitle">Пиши, не отвлекаясь</div>
-</a>
+
 
 </div>
 

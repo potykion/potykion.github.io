@@ -54,7 +54,7 @@ plugins:
   - awesome-pages
   # https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
   - tags:
-      tags_file: c/bits/index.md
+      tags_file: code/index.md
   - social:
       cards: !ENV [ CARDS, false ]
 
@@ -63,7 +63,7 @@ plugins:
 # Работает за счет awesome-pages
 nav:
   - Айоу 👋: index.md
-  - ... | c/**/*.md
+  - ... | code/**/*.md
   - ... | b/**/*.md
   - ... | g/**/*.md
   - ... | n/**/*.md

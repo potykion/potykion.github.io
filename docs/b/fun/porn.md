@@ -80,7 +80,7 @@ preview: b/fun/horse.png
 #### О скреперах
 
 - Настройки скреперов: `Settings > Metadata Providers`
-- Запускать скреперы лучше под [VPN](../../c/ware/VPN.md)
+- Запускать скреперы лучше под [VPN](../../code/vpn/index.md)
 - Для Python-скреперов, прописываем путь к питону + ставим `requests`, `bs4`, `lxml`
 - Если при парсе получаем 403, стоит попробовать прописать UserAgent в `Scraper User
   Agent`
