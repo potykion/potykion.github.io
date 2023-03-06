@@ -48,7 +48,7 @@ cover: g/5/cover.jpg
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Dream we&#39;re working towards for Tailwind CSS v4.0 — no `tailwind.config.js` file necessary, template paths are auto-detected, and your design tokens are configured in your CSS file.<br><br>(Syntax still very undecided, and all would be backwards compatible of course!) <a href="https://t.co/NwIaGnWVrX">pic.twitter.com/NwIaGnWVrX</a></p>&mdash; Adam Wathan (@adamwathan) <a href="https://twitter.com/adamwathan/status/1620261896611061760?ref_src=twsrc%5Etfw">January 31, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## 📝 Кстати о ебле: сделал картинку [**как все связано в порно**](../../b/fun/porn.md)
+## 📝 Кстати о ебле: сделал картинку [**как все связано в порно**](../../notes/porn/index.md)
 
 ![porn.png](porn.png)
 

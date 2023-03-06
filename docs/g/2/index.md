@@ -54,7 +54,7 @@ _Новости моего манямирка_
 </div>
 
 <div class="card rows-2" style="background: #3c3f41">
-<a href="../../code/py-tools/reloadium" target="_blank">
+<a href="../../notes/py-tools/reloadium" target="_blank">
 <img src="reloadium.gif">
 <div class="card-text text-white">📝 <b>reloadium</b> - автоматический перезапуск PyCharm при правке кода во время дебага<br>
 Но не без нюансов</div>

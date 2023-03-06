@@ -22,28 +22,24 @@ cover: index.png
 
 <div class="grid-2d">
 
-<a href="./code" class="link-card">
-  <div class="card-icon">🔮</div>
-  <div class="card-title">Код</div>
-  <div class="card-subtitle">Python, DevOps, Frontend</div>
-</a>
-<a href="./b" class="link-card">
+
+<a href="./notes" class="link-card">
   <div class="card-icon">🗃️</div>
-  <div class="card-title">База</div>
-  <div class="card-subtitle">Не про код</div>
+  <div class="card-title">нотес</div>
+  <div class="card-subtitle">Все, что я знаю</div>
 </a>
 
 <a href="./g" class="link-card">
   <div class="card-icon">📰</div>
-  <div class="card-title">Газета</div>
+  <div class="card-title">газета</div>
   <div class="card-subtitle">Все, что я посчитал интересным</div>
 </a>
 
 
 <a href="./n" class="link-card">
   <div class="card-icon">🧑</div>
-  <div class="card-title">Обо мне</div>
-  <div class="card-subtitle">Соцсети, вишлист, итоги года</div>
+  <div class="card-title">ми</div>
+  <div class="card-subtitle">литерали</div>
 </a>
 
 <a href="https://potyk.notion.site/potyk/d47b6c5c807a41e2a9bb145632a20a5b" class="link-card">
@@ -51,13 +47,6 @@ cover: index.png
   <div class="card-title">Книга рецептов</div>
   <div class="card-subtitle">Рецепты из ПростоКухня и не только</div>
 </a>
-
-<a href="https://delilka.website.yandexcloud.net/" class="link-card">
-  <div class="card-icon">➗</div>
-  <div class="card-title">Делилка</div>
-  <div class="card-subtitle">Делит число по долям</div>
-</a>
-
 
 
 </div>
