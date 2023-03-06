@@ -32,6 +32,16 @@ tags:
 - [`theme`](https://tailwindcss.com/docs/theme) - стилизовочка
 - [`plugins`](https://tailwindcss.com/docs/plugins) - плагин для интеграции с фреймворками, плагины для Tailwind
 
+### Как убрать сброс CSS?
+
+Нужно убрать [preflight](https://tailwindcss.com/docs/preflight)-слой:
+
+```css
+/* Удаляем это из файла с tailwind-слоями */
+@tailwind base;
+```
+
+
 ### Когда не стоит юзать Tailwind?
 
 - Если уже юзаешь UI-фреймворк, типа [Vuetify](https://vuetifyjs.com/en/), то может что-то поехать — лучше
