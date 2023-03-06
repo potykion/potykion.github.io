@@ -22,7 +22,7 @@ cover: index.png
 
 <div class="grid-2d">
 
-<a href="./c" class="link-card">
+<a href="./code" class="link-card">
   <div class="card-icon">🔮</div>
   <div class="card-title">Код</div>
   <div class="card-subtitle">Python, DevOps, Frontend</div>
