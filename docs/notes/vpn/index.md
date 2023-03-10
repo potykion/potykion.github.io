@@ -1,6 +1,6 @@
 ---
  tags:
-   - soft
+   - services
 ---
 
 # VPN
