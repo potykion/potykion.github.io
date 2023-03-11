@@ -48,7 +48,9 @@ cover: index.png
   <div class="card-subtitle">Рецепты из ПростоКухня и не только</div>
 </a>
 
-
 </div>
+
+
+- [закладочки](./notes/bookmarks.md)
 
 

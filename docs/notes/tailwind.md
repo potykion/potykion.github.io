@@ -1,6 +1,8 @@
 ---
 tags:
   - css
+hide:
+  - navigation
 ---
 
 # TailwindCSS
@@ -55,6 +57,7 @@ tags:
 - [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/)
 - [Подборочка Tailwind штук](https://github.com/aniftyco/awesome-tailwindcss)
 - [DaisyUI](https://daisyui.com/) - UI на Tailwind
+- [shadcn.ui](https://ui.shadcn.com/) - еще UI на Tailwind 
 - [Typewind](https://typewind.dev/) - типизированный Tailwind
 - [Tailscan](https://tailscan.com/) - интерактивный Tailwind
 - [Mailwind](https://github.com/soheilpro/mailwind) - письма на Tailwind

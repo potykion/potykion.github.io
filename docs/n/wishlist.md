@@ -6,9 +6,10 @@
 - [ ] Степпер, чтобы ходитб
 - [ ] **Стакан для канцелярских принадлежностей** (ручек)
 - [ ] Колоночка, ДЖБЛку там или еще че - чисто для компа и домашнего прослушивания музыки
-
+- [ ] Четки или какую-нибудь тему чтобы перебирать в руками, вместо заусенец 
 ---
 
+- [x] Фильтр для воды
 - [x] беспроводные науши с микро
     - [Игровые наушники SteelSeries Arctis 1 XBOX Edition, черный](https://www.ozon.ru/product/igrovye-naushniki-steelseries-arctis-1-xbox-edition-chernyy-547712950)
     - [Беспроводные наушники Sony WH-1000XM4 Bluetooth Smart с шумоподавлением](https://www.ozon.ru/product/besprovodnye-naushniki-sony-wh-1000xm4-bluetooth-smart-s-shumopodavleniem-709349875)

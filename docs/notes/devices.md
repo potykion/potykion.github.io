@@ -26,7 +26,10 @@ tags:
 
 ## Науши, гарнитуры, микро
 
-- Науши: [SteelSeries Arctis 1](https://beru.ru/product/kompiuternaia-garnitura-steelseries-arctis-1-chernyi/100682896786?&mda_uuid=00c6c5d9-7d58-4bf2-bea0-7661c8ce01db)
+- [Logitech G733 Lightspeed Wireless](https://www.logitechg.com/en-us/products/gaming-audio/g733-rgb-wireless-headset.html)
+    - беспроводные - о, как это пиздато!!!
+
+- 📦 [SteelSeries Arctis 1](https://beru.ru/product/kompiuternaia-garnitura-steelseries-arctis-1-chernyi/100682896786?&mda_uuid=00c6c5d9-7d58-4bf2-bea0-7661c8ce01db)
     - Цена: 4к ₽
     - Гарнитура - съёмный микро
     - Проводные - есть аналогичный беспроводной вар
