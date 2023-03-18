@@ -14,4 +14,15 @@ function cleanGmail() {
 }
 ```
 
-Спасибо [Apps Script](../../notes/apps-script/index.md) за это
+Спасибо [Apps Script](../../b/apps-script/index.md) за это
+
+
+## 🎵 10000 gecs - новый альбум от гексов
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PL259SQrrBF-Jv82X8XdKeFGZen3bLFtAo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+Все хорошо у ребят, написал [хороший отзыв](https://rateyourmusic.com/music-review/potykion/100-gecs/10_000-gecs-3/192923646)
+
+## [📝 Написал про Славик](../../b/slavik.md)
+
+![](slavik.jfif)

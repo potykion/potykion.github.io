@@ -54,7 +54,7 @@ hide:
 
 ## Тулзы / Ресурсы
 
-- [Tailwind CSS Cheat Sheet](https://tailwindcomponents.com/cheatsheet/)
+- [Читшита](https://tailwindcomponents.com/cheatsheet/), [еще одна](https://umeshmk.github.io/Tailwindcss-cheatsheet/)
 - [Подборочка Tailwind штук](https://github.com/aniftyco/awesome-tailwindcss)
 - [DaisyUI](https://daisyui.com/) - UI на Tailwind
 - [shadcn.ui](https://ui.shadcn.com/) - еще UI на Tailwind 
