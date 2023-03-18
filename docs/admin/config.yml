@@ -8,6 +8,9 @@ collections:
     label: "Blog"
     folder: "docs"
     create: true
+    nested:
+      depth: 100 # max depth to show in the collection tree
+      summary: '{{title}}'
     #      slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     slug: "{{slug}}"
     fields:
