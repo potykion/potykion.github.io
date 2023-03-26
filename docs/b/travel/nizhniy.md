@@ -32,6 +32,7 @@ tags:
 
 
 https://journal.tinkoff.ru/nnovgorod-one-day/
+https://www.tripadvisor.ru/Tourism-g298515-Nizhny_Novgorod_Nizhny_Novgorod_Oblast_Volga_District-Vacations.html 
 
 ## [ЯКарты](https://yandex.ru/maps/geo/nizhniy_novgorod/53105078/?ll=44.012646%2C56.320360&z=12.34)
 
