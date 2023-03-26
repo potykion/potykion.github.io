@@ -31,6 +31,7 @@ tags:
 - Burrito Family - буррито
 
 
+https://journal.tinkoff.ru/nnovgorod-one-day/
 
 ## [ЯКарты](https://yandex.ru/maps/geo/nizhniy_novgorod/53105078/?ll=44.012646%2C56.320360&z=12.34)
 
