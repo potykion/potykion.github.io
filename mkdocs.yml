@@ -27,7 +27,7 @@ theme:
     # Табы
     - navigation.tabs
     # Кнопка "Вверх"
-    - navigation.top
+#    - navigation.top
     # Поиск: предложения и подсветка искомого текста
     - search.suggest
     - search.highlight
