@@ -17,6 +17,8 @@ title: Выпуск 12 от 2023-03-27
 - Пилю [приложуху с музыкой](https://github.com/potykion/player), ибо в яндексе туго с новиночками + старье могут
   выпилить
 
+## 📝 Написал о [признаках bullshit-job](../../b/work/bad-job.md)
+
 ## 😮 GitHub Actions оказывается бесплатный для приват-реп
 
 ![img.png](gh-actions.png)
@@ -76,3 +78,4 @@ Mб пора на [HuGO](https://gohugo.io/) или [Astro](https://astro.build/
 ## 🔎 [Loop - Notion от Microsoft](https://www.microsoft.com/en-us/microsoft-loop)
 
 <video src="https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/WhatisLoop_video_en-us-0x720-3266k" controls></video>
+
