@@ -10,9 +10,15 @@ hide:
 
 - Хочу разобраться в пиве, мои заметки по этому поводу [тут](../../b/beer.md)
 
-## 🔎 [Новый WebStorm](https://www.jetbrains.com/webstorm/whatsnew/)
+## 🔎 [Новый WebStorm](https://www.jetbrains.com/webstorm/whatsnew/) & PyCharm
 
 ![img.png](ws.png)
+
+### 😮 Новая киллер фича в PyCharm - дефинишн переменной в попапе
+
+Оч круто! Оч удобно!
+
+![img.png](def.png)
 
 ## 🔎 [Новая IDE - Zed](https://zed.dev/)
 
