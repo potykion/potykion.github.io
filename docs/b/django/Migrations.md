@@ -1,16 +1,11 @@
 ---
 tags:
   - django
+title: Миграции в Django
+description: Как писать миграции в Django
 ---
 
-
 # Миграции в Django
-
-## Как сделать пустую миграцию?
-
-```shell
-python manage.py makemigrations {app} --empty
-```
 
 ## Как запускать код в миграции?
 
