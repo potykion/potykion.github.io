@@ -3,12 +3,12 @@ import type { Beer } from "$lib/logic/beer/beer";
 /**
  * https://beruvyhodnoy.ru/stock/index.html?id=321215
  */
-function processRows() {
+export function parseBeruVyhodnoy(doc: Document) {
     let lastCountry = '';
 
     let beers: Beer[] = [];
 
-    [...document.querySelectorAll('#bottles tr')].forEach(
+    [...doc.querySelectorAll('#bottles tr')].forEach(
         row => {
             const isCountry = row.innerHTML.includes('class="header"')
             if (isCountry) {
@@ -44,5 +44,3 @@ function parseBeerRow(row: HTMLElement): Exclude<Beer, "country"> {
         number: parseInt(rawBeer.number),
     } as Exclude<Beer, "country">;
 }
-
-console.log(processRows())
