@@ -2,7 +2,13 @@
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {}
+    extend: {
+      saturate: {
+         125: '1.25',
+         130: '1.3',
+         175: '1.75',
+       }
+    }
   },
   plugins: []
 };

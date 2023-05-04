@@ -547,6 +547,10 @@ video {
   }
 }
 
+ol li {
+  list-style-type: decimal;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
