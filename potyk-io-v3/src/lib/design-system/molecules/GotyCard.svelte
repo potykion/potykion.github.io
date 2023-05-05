@@ -32,7 +32,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
     {#if img}
         <div class="grow flex flex-col justify-center">
             <img src={img}
-                 class={` ${to ? '' : ''}   hover:backdrop-filter rounded-t-xl   ${padImg ? 'p-3' : ''}`}/>
+                 class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   ${padImg ? 'p-3' : ''}`}/>
 
         </div>
     {/if}
@@ -51,7 +51,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
     {/if}
 
     <!--${to ? 'hover:border-blue-400  border-blue-50 border-4' : 'border-none'}-->
-    <div class={`flex items-center    space-x-4  text-lg p-3   h-24
+    <div class={`flex items-center    space-x-4  text-lg p-4   h-24
 
     ${img ? 'rounded-b-xl ' : `rounded-xl ${to ? '' : ''}`}
     ${bg ? '' : finalBg}
@@ -62,7 +62,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
         {/if}
 
         {#if imgIcon}
-            <img src={imgIcon}/>
+            <img class="w-16" src={imgIcon}/>
         {/if}
 
         <div>

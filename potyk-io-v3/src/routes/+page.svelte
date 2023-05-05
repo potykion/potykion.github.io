@@ -3,5 +3,6 @@
   <li><a class="text-blue-400 hover:text-blue-500 underline" href="/goty/2023">Итоги 2023</a></li>
   <li><a class="text-blue-400 hover:text-blue-500 underline" href="/wishlist">Вишлист</a></li>
   <li><a class="text-blue-400 hover:text-blue-500 underline" href="/nizhny">Нижний</a></li>
+  <li><a class="text-blue-400 hover:text-blue-500 underline" href="/tools">Инструментарий</a></li>
 </ul>
 
