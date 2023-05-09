@@ -10,5 +10,9 @@ export default {
        }
     }
   },
+  safelist: [
+    "lg:row-span-3",
+    "lg:row-span-2",
+  ],
   plugins: []
 };
