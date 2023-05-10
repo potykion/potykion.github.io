@@ -17,10 +17,13 @@
   export let music: "tsygun" | "garden" | undefined = data?.music;
   export let bg: string | undefined = data?.bg;
   export let to: string | undefined = data?.to;
+
+  export let blank = true
 </script>
 
 
-<svelte:element this={to ? 'a' : 'div'} href={to} target="_blank"
+
+<svelte:element this={to ? 'a' : 'div'} href={to} target={blank ? "_blank" : "_self"}
                 class={` rounded-xl  border-dashed border-4  span    flex flex-col flex-
 ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
         ${extraClass}
@@ -78,7 +81,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
     {/if}
 
     <div>
-      <div class="text-lg font-bold">{title}</div>
+      <div class="text-lg font-bold"><slot>{title}</slot></div>
       <div class="text-sm font-normal">{subtitle ?? ''}</div>
     </div>
 

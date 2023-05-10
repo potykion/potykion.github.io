@@ -1,6 +1,9 @@
-<script>
+<script lang="ts">
   import H1 from "$lib/design-system/atoms/H1.svelte";
   import Breadcrumbs from "$lib/design-system/molecules/Breadcrumbs.svelte";
+  import type { Article } from "$lib/logic/articles";
+
+  export let article: Article;
 </script>
 
 <div class="flex gap-2">
@@ -9,10 +12,10 @@
   </div>
   <div class="flex flex-col gap-2">
     <H1>
-      <slot></slot>
+      <slot>{article?.title}</slot>
     </H1>
     <div class="text-base md:text-xl">
-      <slot name="desc"></slot>
+      <slot name="desc">{article?.desc ?? ""}</slot>
     </div>
     <div class="flex space-x">
       <slot name="tags"></slot>

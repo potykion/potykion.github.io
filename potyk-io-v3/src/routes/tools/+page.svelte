@@ -29,7 +29,7 @@
   import type { GotyCardData, Tag } from "$lib/logic/goty-card-data";
   import { tags } from "$lib/logic/goty-card-data";
   import { page } from "$app/stores";
-
+  import { articles } from "$lib/logic/articles";
 
   const sections: { section: string, cards: (GotyCardData & { tags: Tag[] })[] }[] = [
     {
@@ -436,9 +436,9 @@
 
 </script>
 
-<ArticleHeader>
-  Инструментарий 🔨🪚🪓🔧🪛⛏️
-  <div slot="desc">Тулзы для дизайна, разработки и прочего креатива</div>
+<ArticleHeader article={articles.tools}>
+
+  <div slot="desc"></div>
 </ArticleHeader>
 
 <div class="flex gap-2 flex-wrap items-center">

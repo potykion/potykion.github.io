@@ -1,17 +1,13 @@
-<script>
+<script lang="ts">
   import ArticleHeader from "$lib/design-system/molecules/ArticleHeader.svelte";
   import H2 from "$lib/design-system/atoms/H2.svelte";
   import A from "$lib/design-system/atoms/A.svelte";
   import Ul from "$lib/design-system/atoms/Ul.svelte";
+  import { articles } from "$lib/logic/articles";
+
 </script>
 
-<ArticleHeader>
-  Отдых и развлечения
-  <div slot="desc">
-    Чем заниматься кроме работы
-  </div>
-</ArticleHeader>
-
+<ArticleHeader article={articles.fun}></ArticleHeader>
 
 <iframe class="aspect-video w-full" src="https://whimsical.com/embed/XF2dKiC1GZd123WWAJy48W"></iframe>
 
@@ -33,7 +29,9 @@
   <li>
     Если хочется приготовить что-то в компашке, то <b>мастер-классы</b> — хороший вар
     <ul class="list-disc list-inside ml-6">
-      <li>Проходит такое в кулинарных студиях: напр. <A href="https://studio.jvcompany.ru/">Кулинарная студия Юлии Высоцкой</A> (не боись, <A href="https://youtube.com/shorts/S4YtjovXjyY?feature=share">супа из раков</A> не будет), <A href="https://igra-stolov.com/">Игра Столов</A></li>
+      <li>Проходит такое в кулинарных студиях: напр. <A href="https://studio.jvcompany.ru/">Кулинарная студия Юлии
+        Высоцкой</A> (не боись, <A href="https://youtube.com/shorts/S4YtjovXjyY?feature=share">супа из раков</A> не
+        будет), <A href="https://igra-stolov.com/">Игра Столов</A></li>
     </ul>
   </li>
 </Ul>

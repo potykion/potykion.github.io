@@ -4,12 +4,11 @@
   import IdeaRegex from "$lib/assets/regex/idea-regex.png";
   import A from "$lib/design-system/atoms/A.svelte";
   import Ul from "$lib/design-system/atoms/Ul.svelte";
+  import CodeBlock from "$lib/design-system/atoms/CodeBlock.svelte";
+  import { articles } from "$lib/logic/articles";
 </script>
 
-<ArticleHeader>
-  Регулярки
-  <div slot="desc">Особо не нужны</div>
-</ArticleHeader>
+<ArticleHeader article={articles.regex} />
 
 <Ul>
   <li>Регулярки сложно читать и сложно писать</li>
@@ -41,14 +40,14 @@
 
 <Ul>
   <li>По базе предоставляет более читаемый синтаксис чем регулярки:
-    <pre class="ml-6 bg-blue-50 p-4 m-2 rounded"><code>{`r = parse("Bring out the holy {item}", "Bring out the holy hand grenade")
+    <CodeBlock class="md:ml-6">{`r = parse("Bring out the holy {item}", "Bring out the holy hand grenade")
 print(r)
 <Result () {'item': 'hand grenade'}>
-`}</code></pre>
+`}</CodeBlock>
   </li>
 
   <li>Можно еще и делать мощные штуки: напр. парсить определенные слова в bool
-    <pre class="ml-6 bg-blue-50 p-4 m-2 rounded"><code>{`yesno_mapping = {
+    <CodeBlock class="md:ml-6">{`yesno_mapping = {
     "yes":  True,   "no":    False,
     "on":   True,   "off":   False,
     "true": True,   "false": False,
@@ -56,7 +55,7 @@ print(r)
 
 @with_pattern(r"|".join(yesno_mapping))
 def parse_yesno(text):
-    return yesno_mapping[text.lower()]`}</code></pre>
+    return yesno_mapping[text.lower()]`}</CodeBlock>
   </li>
 </Ul>
 
@@ -89,7 +88,7 @@ def parse_yesno(text):
     <Ul class="ml-6">
       <li>Напр. кол-во повторяющийся символов можно указать в скобках:
         <code>{`\\d{3}`}</code></li>
-        <li>А для матчинга любого символа нужно использовать специальный флаг — <code>{`re.DOTALL`}</code></li>
+      <li>А для матчинга любого символа нужно использовать специальный флаг — <code>{`re.DOTALL`}</code></li>
     </Ul>
   </li>
 </Ul>
