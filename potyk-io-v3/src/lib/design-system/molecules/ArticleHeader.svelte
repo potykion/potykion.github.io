@@ -11,8 +11,11 @@
     <H1>
       <slot></slot>
     </H1>
-    <div class="text-xl">
+    <div class="text-base md:text-xl">
       <slot name="desc"></slot>
+    </div>
+    <div class="flex space-x">
+      <slot name="tags"></slot>
     </div>
   </div>
 </div>

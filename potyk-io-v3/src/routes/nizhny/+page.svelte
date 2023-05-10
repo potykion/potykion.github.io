@@ -18,6 +18,7 @@
   import Fns from "$lib/assets/nizhny/fns2.jpg";
   import House from "$lib/assets/nizhny/house.jpg";
   import Volga from "$lib/assets/nizhny/volga2.jpg";
+  import Ymaps from "$lib/assets/nizhny/ymaps.png";
 
   let dark = false;
 </script>
@@ -127,4 +128,29 @@
   >
     Чилл
   </div>
+</div>
+
+<div class="relative">
+  <a href="https://yandex.ru/maps?bookmarks%5BpublicId%5D=N7wmM5Gc&utm_source=share&utm_campaign=bookmarks"
+     class="border rounded-lg flex p-6 m-6 md:p-8 md:m-8 items-center space-x-4 hover:border-amber-400">
+    <img src={Ymaps} class="w-6 ">
+
+    <div>
+      <div class="font-bold">Нижний Верифаед</div>
+      <div class="text-neutral-400">8 мест • Доступен по ссылке</div>
+
+    </div>
+  </a>
+
+  <div class="absolute left-0 -bottom-6 md:-bottom-16">
+    <div
+      class=" text-6xl md:text-9xl text-amber-100 opacity-90   font-black"
+      style=" text-shadow: black 2px 2px;"
+
+    >
+      Вкусно
+    </div>
+  </div>
+
+
 </div>

@@ -29,7 +29,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
         `}
                 style={extraStyle}>
   {#if img}
-    <div class="grow flex flex-col justify-center">
+    <div class="grow flex flex-col justify-center ">
       <img src={img}
            class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   `} />
 
@@ -59,7 +59,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
     {#if icon}
       <span class="text-xl md:text-3xl">{icon}</span>
     {/if}
-    {#if data.faIcon}
+    {#if data?.faIcon}
       <span class="text-xl md:text-3xl">
         {#if data.faIcon === 'twitter'}
           <Fa icon={faTwitter} color="#1d9bf0"></Fa>

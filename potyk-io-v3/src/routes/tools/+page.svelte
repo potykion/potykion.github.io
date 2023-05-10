@@ -28,6 +28,7 @@
   import VcRu from "$lib/assets/tools/Vc.ru-logo.png";
   import type { GotyCardData, Tag } from "$lib/logic/goty-card-data";
   import { tags } from "$lib/logic/goty-card-data";
+  import { page } from "$app/stores";
 
 
   const sections: { section: string, cards: (GotyCardData & { tags: Tag[] })[] }[] = [
@@ -430,7 +431,7 @@
       ]
     }
   ];
-  let selectedTag: Tag | null = null;
+  let selectedTag: Tag | null = $page.url.searchParams.get("tag") as Tag;
   $: tagCards = sections.flatMap(s => s.cards).filter(c => c.tags?.includes(selectedTag!));
 
 </script>
