@@ -101,6 +101,14 @@
   <GotyCard icon="👷" title="AI-тулзы" subtitle="Amazon CodeWhisperer & Phind"></GotyCard>
 </GotyGrid>
 
+<H2>Май</H2>
+
+<GotyGrid>
+  <GotyCard icon="😭" title="Сплав по Волге под Тверью" subtitle="Спать в палатке в 0° — это жестко"></GotyCard>
+  <GotyCard icon="🧀" title="Сырная Дегустация" subtitle="Сырный передоз"></GotyCard>
+
+</GotyGrid>
+
 
 
 
