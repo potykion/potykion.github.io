@@ -99,6 +99,8 @@
   <GotyCard icon="🧳" title="Нижний" subtitle="Нижний — это чилл"></GotyCard>
   <GotyCard icon="👷" title="Новые проекты" subtitle="Сковорода, плеер, блог в3"></GotyCard>
   <GotyCard icon="👷" title="AI-тулзы" subtitle="Amazon CodeWhisperer & Phind"></GotyCard>
+  <GotyCard title="Созвонческий с корешами"></GotyCard>
+  <GotyCard title="Перевод на Flask завершен!"></GotyCard>
 </GotyGrid>
 
 <H2>Май</H2>
@@ -106,7 +108,11 @@
 <GotyGrid>
   <GotyCard icon="😭" title="Сплав по Волге под Тверью" subtitle="Спать в палатке в 0° — это жестко"></GotyCard>
   <GotyCard icon="🧀" title="Сырная Дегустация" subtitle="Сырный передоз"></GotyCard>
-
+  <GotyCard icon="🍻" title="Пивной фест" subtitle="Пивной передоз"></GotyCard>
+  <GotyCard icon="♟️" title="Шахматы" subtitle="Прикольная игрушка))"></GotyCard>
+  <GotyCard icon="🍳" title="Новый диз в сковороде" subtitle="Теперь в стиле меню"></GotyCard>
+  <GotyCard icon="🪨" title="Obsidian - это любовь" subtitle="Лучший маркдаун редактор"></GotyCard>
+  <GotyCard icon="🎥" title="Artem & Eva" subtitle="Про драматичный отнашач Eva Elfie"></GotyCard>
 </GotyGrid>
 
 

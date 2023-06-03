@@ -4,7 +4,7 @@
   import { faChrome, faGithub, faTwitter, faWindows } from "@fortawesome/free-brands-svg-icons";
   import { tags } from "$lib/logic/goty-card-data";
 
-  export let data: GotyCardData | undefined;
+  export let data: GotyCardData | null = null;
 
   let extraClass: string | undefined = data?.extraClass;
   export { extraClass as class };
