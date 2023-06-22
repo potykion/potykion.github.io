@@ -14,7 +14,7 @@
 		<H1>
 			<slot>{article?.title}</slot>
 		</H1>
-		<div class="text-base md:text-xl italic">
+		<div class="text-base md:text-xl text-gray-400">
 			<slot name="desc">{article?.desc ?? ''}</slot>
 		</div>
 		<div class="flex">

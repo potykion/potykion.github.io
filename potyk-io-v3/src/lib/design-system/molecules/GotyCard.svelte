@@ -18,14 +18,13 @@
   export let bg: string | undefined = data?.bg;
   export let to: string | undefined = data?.to;
 
-  export let blank = true
+  export let blank = true;
 </script>
 
 
-
 <svelte:element this={to ? 'a' : 'div'} href={to} target={blank ? "_blank" : "_self"}
-                class={` rounded-xl  border-dashed border-4  span    flex flex-col flex-
-${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
+                class={` rounded-xl  border-dashed border-4  span    flex flex-col bg-white
+${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
         ${extraClass}
         ${data?.rows ? `lg:row-span-${data.rows}` : ''}
         ${data?.cols ? `lg:col-span-${data.cols}` : ''}
@@ -81,7 +80,9 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700' : ''}
     {/if}
 
     <div>
-      <div class="text-lg font-bold"><slot>{title}</slot></div>
+      <div class="text-lg font-bold">
+        <slot>{title}</slot>
+      </div>
       <div class="text-sm font-normal">{subtitle ?? ''}</div>
     </div>
 

@@ -18,9 +18,7 @@
   ];
 </script>
 
-<ArticleHeader>
-  Вишлист
-</ArticleHeader>
+
 
 <GotyGrid>
   {#each wishlist as data}

@@ -436,10 +436,7 @@
 
 </script>
 
-<ArticleHeader article={articles.tools}>
 
-  <div slot="desc"></div>
-</ArticleHeader>
 
 <div class="flex gap-2 flex-wrap items-center">
   {#each Object.entries(tags) as [tag, tagStr]}

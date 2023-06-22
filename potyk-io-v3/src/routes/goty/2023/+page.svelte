@@ -16,8 +16,6 @@
   import ArticleHeader from "$lib/design-system/molecules/ArticleHeader.svelte";
 </script>
 
-<ArticleHeader>GOTY • 2023 • 🍺👨‍💻🍟</ArticleHeader>
-
 <H2>Январь</H2>
 
 <GotyGrid>

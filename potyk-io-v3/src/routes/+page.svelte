@@ -7,13 +7,8 @@
   import { articles } from "$lib/logic/articles";
 </script>
 
-<div class="flex  items-center flex-col ">
-  <img src={Index}>
-  <div class="text-5xl md:text-7xl font-black">potyk.io</div>
-  <div class="text-lg md:text-2xl mt-4 ">Че в башке у <A href="https://t.me/potykion">потика</A></div>
-</div>
 
-<div class="mt-8">
+<div class="mt-2">
   <GotyGrid>
     {#each Object.entries(articles) as [articleLink, article]}
       <GotyCard blank={false} to={`/${articleLink}`} title={article.title} subtitle={article.desc}></GotyCard>
