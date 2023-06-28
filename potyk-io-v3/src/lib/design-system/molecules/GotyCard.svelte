@@ -18,6 +18,9 @@
   export let bg: string | undefined = data?.bg;
   export let to: string | undefined = data?.to;
 
+  /**
+   * Если true, то откроется в новом окне
+  */
   export let blank = true;
 </script>
 
