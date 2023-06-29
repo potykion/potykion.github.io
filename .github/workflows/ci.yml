@@ -5,21 +5,19 @@ on:
       - master
       - main
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+
+      - run: cd potyk-io-v3 && npm ci
+      - run: cd potyk-io-v3 && npm run check
+      - run: cd potyk-io-v3 && npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          python-version: 3.x
-      - uses: actions/cache@v2
-        with:
-          key: ${{ github.ref }}
-          path: .cache
-      - run: pip install pillow cairosvg
-      - run: pip install -r requirements.txt
-      - env:
-          GA_KEY: ${{ secrets.GA_KEY }}
-          YA_METRICA_KEY: ${{ secrets.YA_METRICA_KEY }}
-          CARDS: true
-        run: mkdocs gh-deploy --force
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./potyk-io-v3/build
