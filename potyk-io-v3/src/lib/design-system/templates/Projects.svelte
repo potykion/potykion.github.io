@@ -16,7 +16,7 @@
 		to="https://t.me/potyk_weekly"
 		icon="📰"
 		title="потик викли"
-		subtitle="новости от потика"
+		subtitle="Новости от потика"
 	/>
 
 	<GotyCard to="https://potyk.io/potyk-base/" icon="🪨" title="potyk-base" subtitle="База знаний" />

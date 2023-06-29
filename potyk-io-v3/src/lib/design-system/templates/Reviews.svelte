@@ -10,7 +10,6 @@
 <GotyGrid>
 	<GotyCard
 		to="https://untappd.com/user/potykion"
-		bg="#ffce0d"
 		imgIcon={Untappd}
 		title="Пивч"
 		subtitle="в Untappd"

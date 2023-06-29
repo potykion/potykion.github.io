@@ -7,6 +7,7 @@
 	import Card from '$lib/design-system/atoms/Card.svelte';
 	import Hr from '$lib/design-system/atoms/Hr.svelte';
 	import P from '$lib/design-system/atoms/P.svelte';
+	import CV from '$lib/assets/n/cv/cv.jpg';
 
 	let hadBirthdayInThisYear = new Date().getMonth() === 12 && new Date().getDay() > 18;
 	let age = new Date().getFullYear() - 1996 + (hadBirthdayInThisYear ? 0 : -1);
@@ -15,22 +16,26 @@
 
 <Card>
 	<H2>TL;DR</H2>
+	<img src={CV} class=" rounded-xl h-36 md:h-48 float-right ml-6" />
 
-	<Ul class="space-y-2">
+	<Ul>
 		<li>Лейбович Никита • {age} лет • Москва</li>
 		<li>Full Stack Developer • {exp} лет опыта</li>
-
 		<li>
-			<b>Backend:</b> Python • Django/FastAPI/Flask • Postgres/MySQL/Mongo/Firebase/Elastic • Celery/Redis/RabbitMQ
-			• pytest/mypy • Go/Gin
+			<b>Backend:</b> Python • Django/FastAPI/Flask • Postgres/MySQL/Mongo/Elastic • Celery/Redis/RabbitMQ
+			• pytest/mypy/ruff
 		</li>
-		<li><b>Frontend:</b> Svelte • TypeScript/JavaScript • Tailwind • Vue/Vuetify/Nuxt</li>
+		<li><b>Frontend:</b> Svelte • TypeScript/JavaScript • TailwindCSS • Vue/Vuetify/Nuxt</li>
 		<li>
-			<b>Ops:</b> GoogleCloudPlatform/YandexCloud • GitHubActions/BitBucketPipelines • Docker/Nginx/Gunicorn/Fabric
+			<b>Ops:</b> GoogleCloud/YandexCloud • GitHubActions/BitBucketPipelines • Docker
 		</li>
-		<li><b>Сферы:</b> Фудтех • ЭДО • Медичка • Фитнес</li>
+		<!-- <li><b>Сферы:</b> Фудтех • ЭДО • Медичка • Фитнес</li> -->
+		<li><b>Хобби:</b> Писать • Делать пет-проджекты • Слушать музыку • Пить пиво :)</li>
+		<hr />
 		<li>
-			<A href="https://t.me/potykion">Telegram</A> • <A href="mailto:potykion@gmail.com">Почта</A>
+			<b>Связаться:</b>
+			<A href="https://t.me/potykion">Telegram</A> • <A href="mailto:potykion@gmail.com">Почта</A> •
+			<A href="https://github.com/potykion">Github</A>
 		</li>
 	</Ul>
 </Card>
@@ -41,7 +46,7 @@
 	<Ul class="space-y-2">
 		<li><b>Стек:</b> Python + Django + Celery + Postgres + Redis</li>
 		<li>
-			Разрабатывал и поддерживал <A href="http://lins.ru/home/deyatelnost.html"
+			Разрабатывал и поддерживал <A href="http://lins.ru/"
 				>Радиологическую информационную систему ЛИНС</A
 			>, позволяющую проводить КТ, МРТ, УЗИ и прочее
 		</li>
