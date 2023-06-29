@@ -17,6 +17,7 @@ export interface GotyCardData {
   tags?: Tag[];
 }
 
+
 export const tags = {
   image: "Картинки",
   multi: "Мультитул",

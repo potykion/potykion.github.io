@@ -26,7 +26,7 @@
 
 <div class="relative">
 	<!-- ВОЛГА -->
-	<img class="rounded-xl" src={Volga} />
+	<img class="rounded-xl" src={Volga} alt="Волга" />
 	<div
 		class="text-5xl md:text-9xl font-black text-indigo-200 opacity-90 absolute right-2 md:right-4 bottom-0 md:bottom-4"
 		style=" text-shadow: black 2px 2px;"
@@ -37,9 +37,9 @@
 
 <div class="flex space-x-1 md:space-x-2 justify-center items-center relative">
 	<!--  ЛЕСТНИЦЫ -->
-	<img class="w-1/4 rounded" src={Stairs3} />
-	<img class="w-1/3 rounded" src={Stairs2} />
-	<img class="w-1/4 rounded" src={Stairs1} />
+	<img class="w-1/4 rounded" src={Stairs3} alt="Лестницы 1" />
+	<img class="w-1/3 rounded" src={Stairs2} alt="Лестницы 2" />
+	<img class="w-1/4 rounded" src={Stairs1} alt="Лестницы 3" />
 
 	<div class="absolute left-0 md:bottom-4 md:left-4 bottom-0">
 		<div
@@ -53,9 +53,9 @@
 
 <div class="flex space-x-1 md:space-x-2 py-4 justify-center items-center relative">
 	<!--  КОНТРАСТЫ -->
-	<img class="w-1/4 md:w-1/3 rounded" src={Fns} />
-	<img class="w-6/12 rounded" src={House} />
-	<img class="w-1/4 md:w-1/3 rounded" src={Bank} />
+	<img class="w-1/4 md:w-1/3 rounded" src={Fns} alt="Контрасты 1" />
+	<img class="w-6/12 rounded" src={House} alt="Контрасты 2" />
+	<img class="w-1/4 md:w-1/3 rounded" src={Bank} alt="Контрасты 3" />
 
 	<div class="absolute left-0 bottom-0 md:bottom-4 md:left-4">
 		<div
@@ -69,9 +69,9 @@
 
 <div class="flex space-x-1 md:space-x-2 justify-center items-center relative">
 	<!--  СТРИТ АРТ -->
-	<img class="w-1/3 rounded" src={StreetArt3} />
-	<img class="w-5/12 rounded" src={StreetArt2} />
-	<img class="w-1/3 rounded" src={StreetArt1} />
+	<img class="w-1/3 rounded" src={StreetArt3} alt="Стрит-арт 1" />
+	<img class="w-5/12 rounded" src={StreetArt2} alt="Стрит-арт 2" />
+	<img class="w-1/3 rounded" src={StreetArt1} alt="Стрит-арт 3" />
 
 	<div class="absolute left-0 md:bottom-4 md:left-4">
 		<div
@@ -85,7 +85,7 @@
 
 <div class="relative">
 	<!-- ЗАКАТ -->
-	<img class="rounded-xl" src={Zakat} />
+	<img class="rounded-xl" src={Zakat} alt="Закат" />
 	<div
 		class="text-6xl md:text-9xl font-black text-rose-100 opacity-90 absolute left-2 md:left-4 bottom-0 md:bottom-4"
 		style=" text-shadow: black 2px 2px;"
@@ -96,7 +96,9 @@
 
 <div class="flex space-x-1 md:space-x-2 justify-center relative">
 	<!--  ДРИФТ -->
-	<video src={Drift} class="w-9/12 md:w-5/12 h-96 md:h-full" controls />
+	<video src={Drift} class="w-9/12 md:w-5/12 h-96 md:h-full" controls>
+		<track kind="captions" />
+	</video>
 	<div class="absolute left-0 bottom-16 md:bottom-48 md:left-32">
 		<div
 			class="text-7xl md:text-9xl font-black text-fuchsia-200 opacity-90"
@@ -109,7 +111,7 @@
 
 <div class="relative">
 	<!--  ЧИЛЛ -->
-	<img class="rounded-xl" src={dark ? ParkNight : ParkDay} />
+	<img class="rounded-xl" src={dark ? ParkNight : ParkDay} alt="Чилл" />
 	<button
 		class="text-xl md:text-3xl absolute right-2 md:right-4 top-2 md:top-4"
 		on:click={() => (dark = !dark)}>{dark ? '🌝' : '🌚'}</button
@@ -140,13 +142,3 @@
 		</div>
 	</div>
 </div>
-
-<style>
-	.text-bw {
-		background: linear-gradient(to right, black 0%, white 100%);
-		-webkit-background-clip: text;
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		text-fill-color: transparent;
-	}
-</style>

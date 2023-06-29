@@ -7,13 +7,13 @@ import { cutBeerTitle, type Beer } from "./beer"
 
 
 function parseUntappdBeers(doc: Document) {
-    return [...doc.querySelectorAll('.beer-item')]
+    return ([...doc.querySelectorAll('.beer-item')] as HTMLElement[])
         .map(
             el => {
-                const title = el.querySelector('.name').innerText
-                const url = el.querySelector('.name a').href
-                const rating = parseFloat(el.querySelector('span.num').innerText.slice(1, -1))
-                const type = el.querySelector('.style').innerText
+                const title = (el.querySelector('.name') as HTMLElement).innerText
+                const url = (el.querySelector('.name a') as HTMLLinkElement).href
+                const rating = parseFloat((el.querySelector('span.num') as HTMLElement).innerText.slice(1, -1))
+                const type = (el.querySelector('.style') as HTMLElement).innerText
                 return { title, type, rating, url }
 
             }
@@ -33,7 +33,7 @@ interface BeerDict {
 }
 
 
-export const untapdBeers: BeerDict  = {
+export const untapdBeers: BeerDict = {
     "Stamm Brewing": [
         {
             "title": "Nevermont Magic Dust",

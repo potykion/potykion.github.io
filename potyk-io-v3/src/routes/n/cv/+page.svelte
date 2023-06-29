@@ -16,7 +16,7 @@
 
 <Card>
 	<H2>TL;DR</H2>
-	<img src={CV} class=" rounded-xl h-36 md:h-48 float-right ml-6" />
+	<img src={CV} class=" rounded-xl h-36 md:h-48 float-right ml-6" alt="Лицо" />
 
 	<Ul>
 		<li>Лейбович Никита • {age} лет • Москва</li>

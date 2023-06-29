@@ -38,11 +38,15 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 >
 	{#if img}
 		<div class="grow flex flex-col justify-center">
-			<img src={img} class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   `} />
+			<img src={img} class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   `} alt="Img" />
 		</div>
 	{/if}
 	{#if music === 'tsygun'}
-		<iframe frameborder="0" class="h-full" src="https://music.yandex.ru/iframe/#album/23426419"
+		<iframe
+			frameborder="0"
+			class="h-full"
+			src="https://music.yandex.ru/iframe/#album/23426419"
+			title="Tsygun"
 			>Слушайте <a href="https://music.yandex.ru/album/23426419">Хворь</a> —
 			<a href="https://music.yandex.ru/artist/8106971">Tsygun</a>
 			на Яндекс Музыке
@@ -52,10 +56,12 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 			frameborder="0"
 			class="h-full"
 			width="100%"
+			title="The Garden - Horseshit on Route 66"
 			src="https://music.yandex.ru/iframe/#playlist/leybovich-nikita/1087"
 			>Слушайте <a href="https://music.yandex.ru/users/leybovich-nikita/playlists/1087"
 				>The Garden - Horseshit on Route 66</a
 			>
+
 			— <a href="https://music.yandex.ru/users/leybovich-nikita">leybovich-nikita</a> на Яндекс Музыке
 		</iframe>
 	{/if}
@@ -87,7 +93,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 		{/if}
 
 		{#if imgIcon}
-			<img class="w-16 rounded-xl" src={imgIcon} />
+			<img class="w-16 rounded-xl" src={imgIcon} alt="Icon" />
 		{/if}
 
 		<div>
