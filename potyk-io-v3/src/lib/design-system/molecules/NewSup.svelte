@@ -1,0 +1,1 @@
+<sup class="px-2 py-1 bg-green-100 text-green-800 rounded-full">new</sup>

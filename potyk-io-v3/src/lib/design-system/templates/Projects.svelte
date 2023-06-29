@@ -7,17 +7,15 @@
 	import { articles } from '$lib/logic/articles';
 
 	import H2 from '../atoms/H2.svelte';
+	import NewSup from '../molecules/NewSup.svelte';
 </script>
 
 <H2>Делаю</H2>
 
 <GotyGrid>
-	<GotyCard
-		to="https://t.me/potyk_weekly"
-		icon="📰"
-		title="потик викли"
-		subtitle="Новости от потика"
-	/>
+	<GotyCard to="https://t.me/potyk_weekly" icon="📰" subtitle="Новости от потика в телеге">
+		потик викли <NewSup />
+	</GotyCard>
 
 	<GotyCard to="https://potyk.io/potyk-base/" icon="🪨" title="potyk-base" subtitle="База знаний" />
 
