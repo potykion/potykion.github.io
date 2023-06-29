@@ -21,8 +21,8 @@
 
 {#if $page.route.id === '/'}
 	<div class="flex-grow">
-		<div class="flex h-full justify-end pb-4 md:pb-12 items-center flex-col bg-white shadow">
-			<img src={Index} class="px-4 pt-4" alt="Лого" />
+		<div class="flex h-full justify-end py-6 md:py-12 items-center flex-col bg-white shadow">
+			<img src={Index} class="px-8" alt="Лого" />
 			<div class="text-5xl md:text-7xl font-black">potyk.io</div>
 			<div class="text-lg md:text-2xl mt-4 font-serif italic">
 				жизнь и страдания <A class="!font-light" href="https://t.me/potykion">потика</A>

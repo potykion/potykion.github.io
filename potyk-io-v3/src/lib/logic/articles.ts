@@ -10,7 +10,7 @@ interface Articles {
 
 export const articles: Articles = {
   ["travel/ekat"]: { title: 'Екат', desc: 'Что смотреть, где есть и пить в Екб' },
-  tools: { title: "Инструментарий 🔨🪚🪓🔧🪛⛏️", desc: "Тулзы для дизайна, разработки и прочего креатива" },
+  tools: { title: "Инструментарий 🔨🪚🪓🔧🪛⛏️", desc: "Тулзы для дизайна, разработки и прочего" },
   regex: { title: "Регулярки", desc: "Особо не нужны" },
   ["travel/nizhny"]: { title: "Нижний", desc: "Мини-фото-отчет" },
 

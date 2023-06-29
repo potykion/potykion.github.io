@@ -2,7 +2,6 @@
 	import type { GotyCardData } from '$lib/logic/goty-card-data';
 	import Fa from 'svelte-fa/src/fa.svelte';
 	import { faChrome, faGithub, faTwitter, faWindows } from '@fortawesome/free-brands-svg-icons';
-	import { tags } from '$lib/logic/goty-card-data';
 
 	export let data: GotyCardData | null = null;
 
@@ -28,7 +27,7 @@
 	this={to ? 'a' : 'div'}
 	href={to}
 	target={blank ? '_blank' : '_self'}
-	class={` rounded-xl  border-dashed border-4  span    flex flex-col bg-white
+	class={` rounded-xl  border-dashed border-2 md:border-4  span    flex flex-col bg-white
 ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
         ${extraClass}
         ${data?.rows ? `lg:row-span-${data.rows}` : ''}
@@ -72,7 +71,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 
 	<!--${to ? 'hover:border-blue-400  border-blue-50 border-4' : 'border-none'}-->
 	<div
-		class={`flex items-center    space-x-4  text-lg px-4    h-24
+		class={`flex items-center    space-x-4  text-lg px-4 h-16 md:h-24
 
     ${img ? 'rounded-b-xl ' : `rounded-xl ${to ? '' : ''}`}
 
