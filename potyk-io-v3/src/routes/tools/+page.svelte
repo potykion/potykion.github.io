@@ -30,6 +30,7 @@
 	import { tags } from '$lib/logic/goty-card-data';
 	import { page } from '$app/stores';
 	import { articles } from '$lib/logic/articles';
+	import { browser } from '$app/environment';
 
 	const sections: { section: string; cards: (GotyCardData & { tags: Tag[] })[] }[] = [
 		{
@@ -462,7 +463,7 @@
 			]
 		}
 	];
-	let selectedTag: Tag | null = $page.url.searchParams.get('tag') as Tag;
+	let selectedTag: Tag | null = browser ? ($page.url.searchParams.get('tag') as Tag) : null;
 	$: tagCards = sections.flatMap((s) => s.cards).filter((c) => c.tags?.includes(selectedTag!));
 
 	function selectTag(tag: string) {
