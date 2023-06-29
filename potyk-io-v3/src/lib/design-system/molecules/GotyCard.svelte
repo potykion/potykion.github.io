@@ -38,7 +38,11 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 >
 	{#if img}
 		<div class="grow flex flex-col justify-center">
-			<img src={img} class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   `} alt="Img" />
+			<img
+				src={img}
+				class={` ${to ? '' : ''} rounded-xl  hover:backdrop-filter  m-2   `}
+				alt="Img"
+			/>
 		</div>
 	{/if}
 	{#if music === 'tsygun'}
@@ -93,7 +97,7 @@ ${to ? 'hover:filter hover:saturate-130 hover:border-blue-700 ' : ''}
 		{/if}
 
 		{#if imgIcon}
-			<img class="w-16 rounded-xl" src={imgIcon} alt="Icon" />
+			<img class="w-8 md:w-12 rounded md:rounded-lg" src={imgIcon} alt="Icon" />
 		{/if}
 
 		<div>
