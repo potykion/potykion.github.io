@@ -1,6 +1,10 @@
 <script lang="ts">
 	import Figure from '$lib/shared/ui/Figure.svelte';
 
+	/**
+	Использовать вместе с BlockWithImg
+	*/
+
 	export let src: string;
 
 	export let caption = '';
