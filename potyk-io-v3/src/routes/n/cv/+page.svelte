@@ -1,12 +1,12 @@
 <script>
-	import ArticleHeader from '$lib/design-system/molecules/ArticleHeader.svelte';
-	import H2 from '$lib/design-system/atoms/H2.svelte';
-	import A from '$lib/design-system/atoms/A.svelte';
-	import Ul from '$lib/design-system/atoms/Ul.svelte';
-	import H3 from '$lib/design-system/atoms/H3.svelte';
-	import Card from '$lib/design-system/atoms/Card.svelte';
-	import Hr from '$lib/design-system/atoms/Hr.svelte';
-	import P from '$lib/design-system/atoms/P.svelte';
+	import ArticleHeader from '$lib/entities/article/ui/ArticleHeader.svelte';
+	import H2 from '$lib/shared/ui/H2.svelte';
+	import A from '$lib/shared/ui/A.svelte';
+	import Ul from '$lib/shared/ui/Ul.svelte';
+	import H3 from '$lib/shared/ui/H3.svelte';
+	import Card from '$lib/shared/ui/Card.svelte';
+	import Hr from '$lib/shared/ui/Hr.svelte';
+	import P from '$lib/shared/ui/P.svelte';
 	import CV from '$lib/assets/n/cv/cv.jpg';
 
 	let hadBirthdayInThisYear = new Date().getMonth() === 12 && new Date().getDay() > 18;

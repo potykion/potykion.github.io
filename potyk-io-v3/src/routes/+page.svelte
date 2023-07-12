@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Donate from '$lib/design-system/organisms/Donate.svelte';
-	import ArticlesList from '$lib/design-system/templates/ArticlesList.svelte';
-	import Projects from '$lib/design-system/templates/Projects.svelte';
-	import Reviews from '$lib/design-system/templates/Reviews.svelte';
+	import Donate from '$lib/widgets/Donate.svelte';
+	import ArticlesList from '$lib/widgets/ArticlesList.svelte';
+	import Projects from '$lib/widgets/Projects.svelte';
+	import Reviews from '$lib/widgets/Reviews.svelte';
 </script>
 
 <div class=" space-y-4">

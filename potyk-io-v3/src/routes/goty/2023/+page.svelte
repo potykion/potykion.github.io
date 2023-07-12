@@ -1,19 +1,17 @@
 <script>
-	import H1 from '$lib/design-system/atoms/H1.svelte';
-	import H2 from '$lib/design-system/atoms/H2.svelte';
-	import GotyCard from '$lib/design-system/molecules/GotyCard.svelte';
+	import H1 from '$lib/shared/ui/H1.svelte';
+	import H2 from '$lib/shared/ui/H2.svelte';
+	import GotyCard from '$lib/entities/goty/ui/GotyCard.svelte';
 	import Gazeta from '$lib/assets/goty/2023/gazeta.jpg';
 	import Alpaca from '$lib/assets/goty/2023/alpaka.jfif';
 	import Winia from '$lib/assets/goty/2023/winia.webp';
 	import Pipelines from '$lib/assets/goty/2023/pipelines.png';
-	import GotyGrid from '$lib/design-system/molecules/GotyGrid.svelte';
+	import GotyGrid from '$lib/entities/goty/ui/GotyGrid.svelte';
 	import Flask from '$lib/assets/goty/2023/flask.jpg';
 	import Bobry from '$lib/assets/goty/2023/bobry.jpeg';
 	import Puss from '$lib/assets/goty/2023/puss.jpg';
 	import PiterRebra from '$lib/assets/goty/2023/piter-rebra.webp';
 	import Untappd from '$lib/assets/goty/2023/untappd.png';
-	import Breadcrumbs from '$lib/design-system/molecules/Breadcrumbs.svelte';
-	import ArticleHeader from '$lib/design-system/molecules/ArticleHeader.svelte';
 </script>
 
 <H2>Январь</H2>

@@ -1,13 +1,12 @@
 <script>
 	import { page } from '$app/stores';
-	import ArticleHeader from '$lib/design-system/molecules/ArticleHeader.svelte';
-	import { articles } from '$lib/logic/articles';
+	import ArticleHeader from '$lib/entities/article/ui/ArticleHeader.svelte';
+	import { articles } from '$lib/entities/article/articles';
 	import '../app.css';
 	import Index from '$lib/assets/index.png';
-	import A from '$lib/design-system/atoms/A.svelte';
-	import { browser } from '$app/environment';
+	import A from '$lib/shared/ui/A.svelte';
 
-	$: articleUrl = browser ? $page.route.id?.slice(1) : null;
+	$: articleUrl = $page.route.id?.slice(1);
 	$: article = articleUrl ? articles[articleUrl] : null;
 </script>
 

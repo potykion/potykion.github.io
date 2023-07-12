@@ -1,12 +1,11 @@
 <script lang="ts">
-	import ArticleHeader from '$lib/design-system/molecules/ArticleHeader.svelte';
-	import H2 from '$lib/design-system/atoms/H2.svelte';
-	import GotyGrid from '$lib/design-system/molecules/GotyGrid.svelte';
+	import H2 from '$lib/shared/ui/H2.svelte';
+	import GotyGrid from '$lib/entities/goty/ui/GotyGrid.svelte';
 	import MagicEraser from '$lib/assets/tools/magic-eraser.gif';
 	import MagicStudio from '$lib/assets/tools/magic-studio.png';
 	import TinyWow from '$lib/assets/tools/tiny-wow.png';
 	import EraseBg from '$lib/assets/tools/erase-bg.png';
-	import GotyCard from '$lib/design-system/molecules/GotyCard.svelte';
+	import GotyCard from '$lib/entities/goty/ui/GotyCard.svelte';
 	import Mobbin from '$lib/assets/tools/mobbin.webp';
 	import Chamjo from '$lib/assets/tools/chamjo.jpg';
 	import Dribbble from '$lib/assets/tools/dribbble.png';
@@ -26,10 +25,9 @@
 	import AwsCw from '$lib/assets/tools/aws-cw.svg';
 	import Copilot from '$lib/assets/tools/copilot.png';
 	import VcRu from '$lib/assets/tools/Vc.ru-logo.png';
-	import type { GotyCardData, Tag } from '$lib/logic/goty-card-data';
-	import { tags } from '$lib/logic/goty-card-data';
+	import type { GotyCardData, Tag } from '$lib/entities/goty/goty-card-data';
+	import { tags } from '$lib/entities/goty/goty-card-data';
 	import { page } from '$app/stores';
-	import { articles } from '$lib/logic/articles';
 	import { browser } from '$app/environment';
 
 	const sections: { section: string; cards: (GotyCardData & { tags: Tag[] })[] }[] = [
