@@ -9,7 +9,11 @@
 <H2>Делаю</H2>
 
 <GotyGrid>
-	<GotyCard to="https://t.me/potyk_weekly" icon="📰" subtitle="Новости от потика в телеге">
+	<GotyCard
+		to="https://t.me/potyk_weekly"
+		icon="📰"
+		subtitle="Раз в неделю делюсь находками и приколюхами"
+	>
 		потик викли <NewSup />
 	</GotyCard>
 
