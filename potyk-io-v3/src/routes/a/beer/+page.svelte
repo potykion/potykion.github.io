@@ -4,7 +4,7 @@
 	import { beers as parsedBeers_ } from '$lib/entities/beer/beer-list';
 	import { findUntappdRating } from '$lib/entities/beer/untapd-beers';
 	import BeerFilter from './BeerFilter.svelte';
-	import { parseBeruVyhodnoy } from './parse-beru-vyhodnoy';
+	import { parseBeruVyhodnoy } from '../../../lib/entities/beer/parse-beru-vyhodnoy';
 	import H2 from '$lib/shared/ui/H2.svelte';
 	import Ul from '$lib/shared/ui/Ul.svelte';
 	import H3 from '$lib/shared/ui/H3.svelte';

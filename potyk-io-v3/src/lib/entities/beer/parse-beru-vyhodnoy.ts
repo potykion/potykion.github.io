@@ -1,4 +1,4 @@
-import type { Beer } from "$lib/logic/beer/beer";
+import type { Beer } from "./beer";
 
 /**
  * https://beruvyhodnoy.ru/stock/index.html?id=321215
