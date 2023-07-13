@@ -14,5 +14,5 @@
 <Figure>
 	<img class=" rounded-xl w-full md:w-fit max-w-sm" {src} {alt} />
 	<!-- svelte-ignore a11y-structure -->
-	<figcaption>{caption}</figcaption>
+	<figcaption><slot>{caption}</slot></figcaption>
 </Figure>

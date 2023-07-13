@@ -3,7 +3,7 @@
 	import GotyCard from '$lib/entities/goty/ui/GotyCard.svelte';
 
 	import H2 from '$lib/shared/ui/H2.svelte';
-	import NewSup from '$lib/entities/article/ui/NewSup.svelte';
+	import NewSup from '$lib/shared/ui/NewSup.svelte';
 </script>
 
 <H2>Делаю</H2>

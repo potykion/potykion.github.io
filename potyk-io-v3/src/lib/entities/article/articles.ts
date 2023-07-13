@@ -2,6 +2,7 @@ export interface Article {
   title: string;
   desc?: string;
   draft?: boolean;
+  new?: boolean;
 }
 
 interface Articles {
@@ -18,7 +19,8 @@ export const articles: Articles = {
   ["goty/2023"]: { title: "Итоги 2023", desc: "🍺👨‍💻🍟", draft: true },
   ["n/wishlist"]: { title: "Вишлист", draft: true },
   ["a/fun"]: { title: "Отдых и развлечения", desc: "Чем заниматься кроме работы", draft: true },
-  ["a/mvp"]: { title: "Как делать свои проекты?", desc: "Прототипами" },
+  ["a/mvp"]: { title: "Как делать свои проекты?", desc: "Прототипами", new: true },
+  ["a/bad-work"]: { title: "Бинго хуевой работы", desc: "Где работать не стоит", new: true },
 
   ["n/cv"]: { title: "Резюме", desc: "Меня можно нанять", draft: true },
 };
