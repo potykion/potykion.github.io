@@ -4,7 +4,7 @@
 	import { articles } from '$lib/entities/article/articles';
 
 	import H2 from '$lib/shared/ui/H2.svelte';
-	import NewSup from '$lib/shared/ui/NewSup.svelte';
+	import Sup from '$lib/shared/ui/Sup.svelte';
 </script>
 
 <H2>Пишу</H2>
@@ -13,7 +13,7 @@
 		{#if !article.draft}
 			<GotyCard blank={false} to={`/${articleLink}`} subtitle={article.desc}>
 				{article.title}
-				{#if article.new}<NewSup />{/if}
+				{#if article.status}<Sup status={article.status} />{/if}
 			</GotyCard>
 		{/if}
 	{/each}

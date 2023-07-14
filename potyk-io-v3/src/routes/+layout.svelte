@@ -11,7 +11,7 @@
 </script>
 
 {#if article}
-	<header class="flex-grow bg-white shadow">
+	<header class="bg-white shadow">
 		<div class="max-w-7xl mx-auto mt-0 md:mt-4 w-full px-4 pt-4 pb-2">
 			<ArticleHeader {article} />
 		</div>

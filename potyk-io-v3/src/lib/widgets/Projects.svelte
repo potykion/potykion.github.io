@@ -3,7 +3,7 @@
 	import GotyCard from '$lib/entities/goty/ui/GotyCard.svelte';
 
 	import H2 from '$lib/shared/ui/H2.svelte';
-	import NewSup from '$lib/shared/ui/NewSup.svelte';
+	import Sup from '$lib/shared/ui/Sup.svelte';
 </script>
 
 <H2>Делаю</H2>
@@ -14,7 +14,7 @@
 		icon="📰"
 		subtitle="Раз в неделю делюсь находками и приколюхами"
 	>
-		потик викли <NewSup />
+		потик викли <Sup status="new" />
 	</GotyCard>
 
 	<GotyCard to="https://potyk.io/potyk-base/" icon="🪨" title="potyk-base" subtitle="База знаний" />
@@ -28,7 +28,9 @@
 	<GotyCard
 		to="https://github.com/potykion/player"
 		icon="🎵"
-		title="🚧 плеер 🚧"
 		subtitle="Нормальный музыкальный сервис"
-	/>
+	>
+		плеер <Sup status="wip" />
+
+	</GotyCard>
 </GotyGrid>
