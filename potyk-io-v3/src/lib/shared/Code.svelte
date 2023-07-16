@@ -1,0 +1,1 @@
+<code class="bg-blue-50 p-1 rounded-lg"><slot></slot></code>

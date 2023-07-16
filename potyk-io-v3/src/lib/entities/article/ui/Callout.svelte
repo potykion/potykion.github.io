@@ -12,7 +12,7 @@
 
 </script>
 
-<div class={`rounded-xl shadow px-4 py-2 !my-4 md:p-4  flex space-x-2 ${bg}`}>
+<div class={`rounded-xl shadow px-4 py-2 !my-6 md:p-4  flex space-x-2 ${bg}`}>
 	<div class="py-2 text-lg md:text-xl">
 		{icon}
 	</div>
