@@ -143,7 +143,7 @@ main.py
   <H2>Почитать/посмотреть на тему</H2>
 
   <Ul>
-    <li>📝 <A>A Beginner’s Guide to Domain-centric Architectures (clean, hexagonal, …)</A> — супер статья про слоистую архитектуру
+    <li>📝 <A href="https://medium.com/codex/clean-architecture-for-dummies-df6561d42c94">A Beginner’s Guide to Domain-centric Architectures (clean, hexagonal, …)</A> — супер статья про слоистую архитектуру
     </li>
     <li>
       📹 <A href="https://youtu.be/45rk0iyTn7I">Борис Цема, Wargaming.net «Как мы уменьшили сложность наших проектов»</A> —
