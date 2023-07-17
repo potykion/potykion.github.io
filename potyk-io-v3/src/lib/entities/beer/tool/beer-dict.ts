@@ -3,7 +3,7 @@ export type Translation = ({ key: string, def: string })[];
 
 export interface Definition {
   def: string;
-  synonyms?: string[]
+  synonyms?: string[];
 }
 
 export const beerDict = {
@@ -21,6 +21,20 @@ export const beerDict = {
   },
   "hazelnut": {
     def: "С запахом/нотками ореха",
-    synonyms: ["nut", "nutty", 'ореховый']
+    synonyms: ["nut", "nutty", "ореховый"]
+  },
+  "weisse": {
+    def: "Пшеничный пивас"
+  },
+  "passion fruit": {
+    def: "Пиво с маракуей, очевидно кисленькое",
+    synonyms: ["маракуйя"]
+  },
+  "berliner": {
+    def: "Кисленькая пшеничка"
+  },
+  "ipa": {
+    def: "Indian Pale Ale - охмеленный эль, обычно горький на вкус и пахнет цитрусовыми",
+    synonyms: ["ипа", "ипашка"]
   }
 };

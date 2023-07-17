@@ -1,9 +1,8 @@
 <script>
   import Card from "$lib/shared/ui/Card.svelte";
-  import BeerQuery from "$lib/features/beer/translate/BeerQuery.svelte";
+  import BeerTranslator from "$lib/widgets/beer/translate/BeerTranslator.svelte";
 </script>
 
-<Card>
-  <BeerQuery></BeerQuery>
-
+<Card >
+  <BeerTranslator></BeerTranslator>
 </Card>

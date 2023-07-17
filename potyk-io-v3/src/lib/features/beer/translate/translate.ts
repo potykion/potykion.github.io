@@ -1,10 +1,15 @@
 import { beerDict, type Definition, type Translation } from "$lib/entities/beer/tool/beer-dict";
+import { zip } from "$lib/shared/lib/iter-utils";
 
 
 export function translateBeerQuery(beerQuery: string): Translation {
-  const tokens = beerQuery.split(" ");
 
-  return tokens.map(
+  let tokens = beerQuery.split(" ");
+  const keys = tokens.concat(
+    zip(tokens, tokens.slice(1)).map(pair => pair.join(" "))
+  );
+
+  return keys.map(
     t => {
       const tProcessed = t.toLowerCase();
 
@@ -12,7 +17,7 @@ export function translateBeerQuery(beerQuery: string): Translation {
         // @ts-ignore
         (beerDict[tProcessed] as Definition | undefined) ??
         Object.values(beerDict).find(
-          d => d.synonyms?.includes(tProcessed) ?? false
+          d => (d as Definition).synonyms?.includes(tProcessed) ?? false
         );
       if (!def) {
         return null;
