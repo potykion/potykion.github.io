@@ -22,7 +22,7 @@
   <H2>Структура папочек</H2>
 
   <CodeBlock>{`src/
-├─ shared/
+├─ core/
 │  ├─ str_utils.py
 │  ├─ sql_repo.py
 │  ├─ api_client.py
@@ -41,11 +41,11 @@
 │  ├─ ext_api/
 │  │  ├─ ext_api_client.py
 │  │  ├─ ext_api_repo.py
-├─ handlers/
+├─ views/
 │  ├─ order/
 │  │  ├─ api.py
 │  │  ├─ admin.py
-├─ config/
+├─ root/
 │  ├─ server.py
 │  ├─ ioc.py
 main.py
@@ -54,7 +54,7 @@ main.py
   <Ul>
     <li>Делаем в стиле DDD / Clean Architecture / Hexagonal</li>
 
-    <li><Code>shared</Code> / <Code>utils</Code> / <Code>core</Code> — всякий переиспользуемый код: утилитки, базовые
+    <li><Code>core</Code> / <Code>shared</Code> — всякий переиспользуемый код: утилитки, базовые
       классы для работы с бд, http-запросами
     </li>
     <li><Code>entities</Code> / <Code>models</Code> / <Code>domain</Code> — доменные сущности и логика внутри них - все
@@ -75,10 +75,10 @@ main.py
     <li><Code>infra</Code> — здесь реализуем те самые интерфейсы из <Code>ports</Code>: классы, которые отправляют
       sql-запросы, http-запросы
     </li>
-    <li><Code>handlers</Code> / <Code>endpoints</Code> / <Code>api</Code> — апи-ендпоинты: парсят данные из
+    <li><Code>views</Code> / <Code>handlers</Code> / <Code>endpoints</Code> / <Code>api</Code> — апи-ендпоинты: парсят данные из
       http-запросов, дергают бизнес логику и сериализуют результат
     </li>
-    <li><Code>config</Code> / <Code>composition_root</Code> — здесь все склеивается вместе: регистрация роутов, создание
+    <li><Code>roott</Code> / <Code>config</Code> / <Code>composition_root</Code> — здесь все склеивается вместе: регистрация роутов, создание
       классов-сервисов с конкретными зависимостями (ака IoC-Container)
     </li>
   </Ul>
