@@ -1,5 +1,7 @@
 <script lang="ts">
-  export let status: "new" | "wip";
+  import type { Status } from "$lib/entities/article/articles";
+
+  export let status: Status;
 
 
   $: statusColor = status === "new"

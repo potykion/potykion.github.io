@@ -1,8 +1,10 @@
+export type Status = "new" | "wip";
+
 export interface Article {
   title: string;
   desc?: string;
   draft?: boolean;
-  status?: "new" | "wip";
+  status?: Status;
 }
 
 interface Articles {
