@@ -13,10 +13,11 @@
   <GotyCard
     to="https://t.me/potyk_weekly"
     imgIcon={Tg}
-    subtitle="Раз в неделю делюсь находками и приколюхами в Телеге"
+    subtitle="Раз в неделю делюсь своими новостями и приколюхами в Телеге"
   >
     потик викли
   </GotyCard>
+	<GotyCard status="new" to="https://www.instagram.com/potyk.art/" icon="🖼️" subtitle="Рисую чертей в Инстухе" title="potyk.art"></GotyCard>
 
   <GotyCard to="https://potyk.io/potyk-base/" icon="🪨" title="potyk-base" subtitle="База знаний" />
 
@@ -35,7 +36,5 @@
 
   </GotyCard>
 
-	<GotyCard status="new" to="https://www.instagram.com/potyk.art/" icon="🖼️" subtitle="Рисую чертей в Инстухе" title="potyk.art"></GotyCard>
-	<GotyCard  to="https://twitter.com/PotykN66888" icon="🐦" subtitle="Лайкаю обнаженку в Тви" title="potyk.nsfw"></GotyCard>
 
 </GotyGrid>
