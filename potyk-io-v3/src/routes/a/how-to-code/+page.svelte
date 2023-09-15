@@ -21,6 +21,8 @@
 <Card>
   <H2>Структура папочек</H2>
 
+<iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/G82mYnQp5HeKVt2nXK8PUY"></iframe>
+
   <CodeBlock>{`src/
 ├─ core/
 │  ├─ str_utils.py
