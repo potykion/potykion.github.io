@@ -1,9 +1,1 @@
-.idea
-.venv
-site
-ngrok.exe
-*.pyc
-frontmatter.json
-.frontmatter
-.obsidian
 node_modules

@@ -1,3 +1,0 @@
-- [ ] Парсим https://vkusvill.ru/goods/alkogol/pivo-i-pivnye-napitki/?PAGEN_1=4
-- [ ] Парсим https://vkusvill.ru/goods/alkogol/sidr-i-medovukha/
-- [ ] Парсим https://untappd.com/StammBeer/beer
