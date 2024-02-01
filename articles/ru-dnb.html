@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>рашн днб</title>
-    <link rel="stylesheet" type="text/css" href="../styles_and_libs/main.css">
-
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-
-<main>
+{% extends 'templates/base.html' %}
+{% set title = 'Читаем книжки, гоняем по кругу мыслишки' %}
+{% block main %}
     <h1>Рашн днб</h1>
     <cite>
         14.01.2024 12:18
@@ -83,7 +69,4 @@
         <b>самописном</b> <a href="https://neuropunk.app/">приложении</a> со <b>своим биллингом</b>, и этот биллинг
         внедрен на стримы, где можно донатить через телеграм - оч технологично! </p>
 
-</main>
-
-</body>
-</html>
+{% endblock %}

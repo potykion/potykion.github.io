@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>спейс</title>
-</head>
-<body>
-
-<header>
-    <a href="/" style="padding: 10px">
-        /
-    </a>
-
-</header>
-
-<main style="max-width: 1000px; border-right: 1px solid black; padding-right: 10px">
+{% extends 'templates/base.html' %}
+{% set title = 'Читаем книжки, гоняем по кругу мыслишки' %}
+{% block main %}
     <h1>
         спейс.
     </h1>
@@ -64,8 +51,4 @@
     <p>Ладно, выходит что и мысли об организации бессмысленны, зачем организовывать то что не имеет смысла? А и в правду,
         о, это прозрение, это инсайт получается.  </p>
 
-</main>
-
-
-</body>
-</html>
+{% endblock %}

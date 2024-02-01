@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../styles_and_libs/main.css">
-    <title>необычный способ стать знаменитым</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
+{% extends 'templates/base.html' %}
+{% set title = 'Необычный способ стать знаменитым' %}
+{% block main %}
 
 <h1>Необычный способ стать знаменитым</h1>
 <cite>Создано: 14.01.2024 22:14 • Изменено: 15.01.2024 16:30</cite>
@@ -28,8 +18,8 @@
 </p>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
-    <img src="why-women-kill.png">
-    <img src="why-women-kill-2.png">
+    <img src="../static/images/why-women-kill.png">
+    <img src="../static/images/why-women-kill-2.png">
 </div>
 
 <p>
@@ -41,7 +31,7 @@
     получается)))
 </p>
 
-<img src="we-are-the-real-monsters.jpeg">
+<img src="../static/images/we-are-the-real-monsters.jpeg">
 
 <p>
 
@@ -50,7 +40,7 @@
     героя игры Диско Элизиум (или на ютубера <a href="https://www.youtube.com/@Klio_o">klio</a> хах):
 </p>
 
-<img src="black-bird.png">
+<img src="../static/images/black-bird.png">
 
 <p>Потом смотрели Mindhunters, который похож на Black Bird: челы пытаются понять почему маньяки убивают, проводя с ними
     интервью. Этот серик снял знаменитый Финчер, и у него тоже про маньяков есть пара кинолент Зодиак там, Семь. Ой еще
@@ -85,5 +75,4 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
 
-</body>
-</html>
+{% endblock %}

@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../styles_and_libs/main.css">
-    <title>желание проверять</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-
+{% extends 'templates/base.html' %}
+{% set title = 'Желание проверять' %}
+{% block main %}
 <h1>Желание проверять</h1>
 <cite>
     14.01.2024 18:59
@@ -39,7 +28,7 @@
     еще нормально выглядят (а обычно я до крови еще это все отрываю):
 </p>
 
-<img src="nails.jpg" width="300">
+<img src="../static/images/nails.jpg" width="300">
 
 <p>
     Благо, ща начал убирать кусачки в ванну, чтобы не "развлекаться" с ногтями так часто
@@ -56,7 +45,4 @@
     Причем пытался перенаправить эту штуку, на графики там смотрел, на траты начал смотреть, и как-то от частого
     просмотра мало что меняется...
 </p>
-
-
-</body>
-</html>
+{% endblock %}
