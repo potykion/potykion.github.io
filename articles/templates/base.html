@@ -23,6 +23,14 @@
     <hr>
 </header>
 <main>
+    {% if title and show_title %}
+        <h1>{{ title }}</h1>
+    {% endif %}
+    {% if created %}
+        <cite>{{ created }}</cite>
+    {% endif %}
+
+
     {% block main %}
     {% endblock %}
 </main>
