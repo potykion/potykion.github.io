@@ -1,6 +1,34 @@
-{% extends 'templates/base.html' %}
-{% set title = 'Необычный способ стать знаменитым' %}
-{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>Необычный способ стать знаменитым / потик-ио</title>
+</head>
+<body>
+<header>
+    <a href="/">потик-ио</a>
+    <hr>
+</header>
+<main>
+    <article>
+        
+        
+
+
+        
 
     <h1>Необычный способ стать знаменитым</h1>
     <cite>Создано: 14.01.2024 22:14 • Изменено: 15.01.2024 16:30</cite>
@@ -20,8 +48,8 @@
     </p>
 
     <div style="display: flex; flex-direction: column; gap: 10px">
-        <img src="{{ url_for('static', filename='images/why-women-kill.jpg')  }}" alt="Почему женщины убивают 1">
-        <img src="{{ url_for('static', filename='images/why-women-kill-2.jpg')  }}" alt="Почему женщины убивают 2">
+        <img src="/static/images/why-women-kill.jpg" alt="Почему женщины убивают 1">
+        <img src="/static/images/why-women-kill-2.jpg" alt="Почему женщины убивают 2">
     </div>
 
     <p>
@@ -34,7 +62,7 @@
         получается)))
     </p>
 
-    <img src="{{ url_for('static', filename='images/we-are-the-real-monsters.')  }}jpeg" alt="we are the real monsters
+    <img src="/static/images/we-are-the-real-monsters.jpeg" alt="we are the real monsters
     получается)))">
 
     <p>
@@ -44,7 +72,7 @@
         героя игры Диско Элизиум (или на ютубера <a href="https://www.youtube.com/@Klio_o">klio</a> хах):
     </p>
 
-    <img src="{{ url_for('static', filename='images/black-bird.jpg')  }}" alt="Маньяк из Black Bird">
+    <img src="/static/images/black-bird.jpg" alt="Маньяк из Black Bird">
 
     <p>Потом смотрели Mindhunters, который похож на Black Bird: челы пытаются понять почему маньяки убивают, проводя с
         ними
@@ -72,4 +100,32 @@
         сладок
         крч </p>
 
-{% endblock %}
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+                <a href="./tailwind.html">
+                    < Пред.
+                </a>
+            
+
+        </div>
+        <div>
+            
+                <a href="./15-01.html">
+                    След. >
+                </a>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
+
+
+
+</html>

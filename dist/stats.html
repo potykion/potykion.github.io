@@ -1,7 +1,17 @@
-{% extends 'templates/base.html' %}
-{% set title = 'Стата' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-{% block static %}
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    
     <style>
 
         .beers {
@@ -42,9 +52,23 @@
     </style>
 
 
-{% endblock %}
 
-{% block main %}
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>Стата / потик-ио</title>
+</head>
+<body>
+<header>
+    <a href="/">потик-ио</a>
+    <hr>
+</header>
+<main>
+    <article>
+        
+        
+
+
+        
 
     <h1>Стата 2024</h1>
 
@@ -80,7 +104,7 @@
 
 
 
-    <script src="{{ url_for('static', filename='js/checkins.js')  }}"></script>
+    <script src="/static/js/checkins.js"></script>
     <script>
 
         checkins.forEach(
@@ -93,4 +117,24 @@
             }
         )
     </script>
-{% endblock %}
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+
+        </div>
+        <div>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
+
+
+
+</html>

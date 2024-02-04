@@ -1,11 +1,37 @@
-{% extends 'templates/base.html' %}
-{% block static %}
-    <script type="module" src="{{ url_for('static', filename='md-block.js')  }}"></script>
-    <script src="{{ url_for('static', filename='prism.js')  }}"></script>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='prism.css')  }}">
-{% endblock %}
-{% set title = 'formkit' %}
-{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    
+    <script type="module" src="/static/md-block.js"></script>
+    <script src="/static/prism.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/prism.css">
+
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>formkit / потик-ио</title>
+</head>
+<body>
+<header>
+    <a href="/">потик-ио</a>
+    <hr>
+</header>
+<main>
+    <article>
+        
+        
+
+
+        
     <h1>FormKit</h1>
 
     <cite>
@@ -39,7 +65,7 @@
 
     <div id="how-to-custom" style="display: none; padding: 10px">
         <hr>
-        <md-block src="{{ url_for('static', filename='markdown/formkit.md')  }}"></md-block>
+        <md-block src="/static/markdown/formkit.md"></md-block>
         <hr>
     </div>
 
@@ -70,10 +96,33 @@
         итоге накрутил на дефолтычах форму:</p>
 
 
-{% endblock %}
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+                <a href="./v4.html">
+                    < Пред.
+                </a>
+            
+
+        </div>
+        <div>
+            
+                <a href="./ru-dnb.html">
+                    След. >
+                </a>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
 
 
-{% block script %}
     <script>
         document.getElementById('open-how-to-custom').addEventListener('click', function () {
             let el = document.getElementById('how-to-custom');
@@ -81,4 +130,5 @@
         });
 
     </script>
-{% endblock %}
+
+</html>

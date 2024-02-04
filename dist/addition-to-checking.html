@@ -1,6 +1,34 @@
-{% extends 'templates/base.html' %}
-{% set title = 'Желание проверять' %}
-{% block main %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    
+    
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>Желание проверять / потик-ио</title>
+</head>
+<body>
+<header>
+    <a href="/">потик-ио</a>
+    <hr>
+</header>
+<main>
+    <article>
+        
+        
+
+
+        
 <h1>Желание проверять</h1>
 <cite>
     14.01.2024 18:59
@@ -28,7 +56,7 @@
     еще нормально выглядят (а обычно я до крови еще это все отрываю):
 </p>
 
-<img src="{{ url_for('static', filename='images/nails.jpg')  }}" width="300">
+<img src="/static/images/nails.jpg" width="300">
 
 <p>
     Благо, ща начал убирать кусачки в ванну, чтобы не "развлекаться" с ногтями так часто
@@ -45,4 +73,32 @@
     Причем пытался перенаправить эту штуку, на графики там смотрел, на траты начал смотреть, и как-то от частого
     просмотра мало что меняется...
 </p>
-{% endblock %}
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+                <a href="./ru-dnb.html">
+                    < Пред.
+                </a>
+            
+
+        </div>
+        <div>
+            
+                <a href="./tailwind.html">
+                    След. >
+                </a>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
+
+
+
+</html>
