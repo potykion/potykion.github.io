@@ -23,17 +23,40 @@
     <hr>
 </header>
 <main>
-    {% if title and show_title %}
-        <h1>{{ title }}</h1>
-    {% endif %}
-    {% if created %}
-        <cite>{{ created }}</cite>
-    {% endif %}
+    <article>
+        {% if title and show_title %}
+            <h1>{{ title }}</h1>
+        {% endif %}
+        {% if created %}
+            <cite>{{ created }}</cite>
+        {% endif %}
 
 
-    {% block main %}
-    {% endblock %}
+        {% block main %}
+        {% endblock %}
+    </article>
 </main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            {% if prev %}
+                <a href="{{ prev.link }}">
+                    < Пред.
+                </a>
+            {% endif %}
+
+        </div>
+        <div>
+            {% if next %}
+                <a href="{{ next.link }}">
+                    След. >
+                </a>
+            {% endif %}
+
+        </div>
+    </div>
+
+</footer>
 </body>
 
 {% block script %}

@@ -1,0 +1,91 @@
+{% extends 'templates/base.html' %}
+{% set title = 'Стата' %}
+
+{% block static %}
+    <style>
+        .beer-img {
+            width: 100px;
+        }
+    </style>
+
+
+{% endblock %}
+
+{% block main %}
+
+    <h1>Стата</h1>
+
+    <h2>Пиво</h2>
+
+    <div class="images">
+
+    </div>
+
+{#    <a href="https://untappd.com/user/potykion/checkin/1352373835">#}
+{#        <img class="beer-img" src="https://assets.untappd.com/site/beer_logos/beer-2679841_36aad_sm.jpeg">#}
+{#    </a>#}
+{#    <a href="https://untappd.com/user/potykion/checkin/1352088486">#}
+{#        <img class="beer-img" src="https://assets.untappd.com/site/beer_logos/beer-5617816_62675_sm.jpeg">#}
+{#    </a>#}
+
+
+
+<script>
+{#    https://untappd.com/user/potykion #}
+{#    [...document.querySelectorAll('.item')].map(item => item.querySelector('div.checkin > div.top > a > img')?.src).filter(img => img)#}
+{#    #checkin_1345802199 > div.checkin > div.feedback > div.bottom > a:nth-child(2) #}
+
+
+
+[
+    "https://assets.untappd.com/site/beer_logos/beer-2679841_36aad_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5617816_62675_sm.jpeg",
+    "https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png",
+    "https://assets.untappd.com/site/beer_logos/beer-5449078_406e9_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4056932_c6d5c_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5684716_f9827_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-26210_34f4c_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-3126441_a19b7_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4804233_68e84_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-2569494_b4fb7_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-2277300_83cef_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-696382_d9013_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4725111_7914e_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5606124_59f9b_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5587449_7cc7d_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5553865_9b253_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5652700_d2975_sm.jpeg",
+    "https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png",
+    "https://assets.untappd.com/site/beer_logos/beer-21768_6bbe7_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4702_29d13_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-3842718_4e8cb_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5569043_9ab7e_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-3646829_9f180_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-3825510_fcd5c_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5488962_216f9_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5586486_74ec2_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-3869667_f0bd0_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4077826_ec9d3_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5371859_ebf08_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5419125_c8f11_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-2375266_dd24c_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4713_80e11_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4439831_12279_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-4473_1cbe8_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5382980_4ffd0_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5622564_2e02a_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5168836_5b82b_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5028573_cd1d3_sm.jpeg",
+    "https://assets.untappd.com/site/beer_logos/beer-5654393_b2175_sm.jpeg",
+    "https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png"
+].forEach(
+    img => {
+        let imgNode = document.createElement('img');
+        imgNode.src = img
+        imgNode.className='beer-img'
+
+        document.querySelector('.images').appendChild( imgNode)
+    }
+)
+    </script>
+{% endblock %}
