@@ -70,7 +70,7 @@ def get_next_article(cur_article_link: str) -> ArticleLink | None:
 def get_prev_article(cur_article_link: str) -> ArticleLink | None:
     for section_index, section in enumerate(Articles):
         for article_index, article in enumerate(section['articles']):
-            if cur_article_link.startswith(article.link):
+            if article.link.endswith(cur_article_link):
                 if article_index == len(section['articles']) - 1:
                     if section_index == len(Articles) - 1:
                         return None
