@@ -2,11 +2,10 @@ import glob
 import os
 import shutil
 from pathlib import Path
+from app import app
 
 
 def make_server():
-    from app import app
-
     return app.test_client()
 
 
@@ -22,9 +21,7 @@ def list_articles():
 
 def render_article(article, server):
     path = article_path_to_filename(article)
-    # FlaskUrl = "http://127.0.0.1:5000"
-    # return requests.get(urljoin(FlaskUrl, path)).text
-    return server.get(f'/{path}', follow_redirects=True).text
+    return server.get(f"/{path}", follow_redirects=True).text
 
 
 def article_path_to_filename(article):
@@ -33,21 +30,21 @@ def article_path_to_filename(article):
 
 def make_filename(article):
     filename = article_path_to_filename(article)
-    if filename.endswith('.md'):
-        filename = filename[:-3] + '.html'
+    if filename.endswith(".md"):
+        filename = filename[:-3] + ".html"
     return filename
 
 
 def write_article(dist, filename):
-    with open(dist / filename, 'w', encoding='utf-8') as f:
+    with open(dist / filename, "w", encoding="utf-8") as f:
         f.write(rendered)
 
 
 def copy_static(dist):
-    shutil.copytree("./static", dist / 'static', symlinks=False, ignore=None)
+    shutil.copytree("./static", dist / "static", symlinks=False, ignore=None)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     server = make_server()
 
     dist = Path("docs")
@@ -62,6 +59,6 @@ if __name__ == '__main__':
 
     print("Coping static")
     copy_static(dist)
+    shutil.copy(Path(app.static_folder) / "CNAME", dist / "CNAME")
 
-    print(f'Done! See {dist}')
-
+    print(f"Done! See {dist}")
