@@ -12,7 +12,7 @@
         <cite>{{ section.dates }}</cite>
         <ul>
             {% for article in section.articles %}
-                <li><a href="{{ article.link }}">{{ article.title }}</a></li>
+                <li><a href="/{{ article.link }}">{{ article.title }}</a></li>
             {% endfor %}
         </ul>
     {% endfor %}

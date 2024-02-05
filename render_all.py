@@ -24,7 +24,7 @@ def render_article(article, server):
     path = article_path_to_filename(article)
     # FlaskUrl = "http://127.0.0.1:5000"
     # return requests.get(urljoin(FlaskUrl, path)).text
-    return server.get(f'/{path}').text
+    return server.get(f'/{path}', follow_redirects=True).text
 
 
 def article_path_to_filename(article):
@@ -50,7 +50,7 @@ def copy_static(dist):
 if __name__ == '__main__':
     server = make_server()
 
-    dist = Path("dist")
+    dist = Path("docs")
     clean_and_create_dir(dist)
 
     articles = list_articles()
