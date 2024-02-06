@@ -5,21 +5,33 @@
     <h1>потик-ио</h1>
     <cite>блог по настроению • v4</cite>
 
-    <h2>Piss✍ssanina </h2>
+            <h2 >Piss✍ssanina </h2>
 
-    {% for section in articles %}
-        <h3>{{ section.section }}</h3>
-        <cite>{{ section.dates }}</cite>
-        <ul>
-            {% for article in section.articles %}
-                <li><a href="/{{ article.link }}">{{ article.title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endfor %}
+    <details open>
+        <summary>
+
+            <i>Спойлер для удобства</i>
+        </summary>
+
+        {% for section in articles %}
+            <h3>{{ section.section }}</h3>
+            <cite>{{ section.dates }}</cite>
+            <ul>
+                {% for article in section.articles %}
+                    <li><a href="/{{ article.link }}"
+                           {% if article.depressive %}style="text-decoration: line-through"{% endif %}>{{ article.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </details>
+
+
+
 
     <h2>Спешал</h2>
     <ul>
-    <li><a href="./stats.html">Стата 2024</a></li>
+        <li><a href="./stats.html">Стата 2024</a></li>
     </ul>
 
     <h2>Соц🕸сети</h2>

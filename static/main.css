@@ -37,3 +37,10 @@ code {
     padding: 2px 4px;
     border-radius: 5px;
 }
+
+ul {
+    padding-left: 20px;
+}
+li {
+    padding: 5px;
+}
