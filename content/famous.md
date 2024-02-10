@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+title: Необычный способ стать знаменитым
+created: 14.01.2024 22:14
+---
 
-    <!-- region Noto Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-    <!-- endregion Noto Sans Font -->
-
-    
-    
-
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-    <title>Необычный способ стать знаменитым / потик-ио</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-<main>
-    <article>
-        
-            <h1>Необычный способ стать знаменитым</h1>
-        
-        
-            <cite>14.01.2024 22:14</cite>
-        
-
-
-        <p>
+<p>
     В последнее время (последние пару лет) много смотрим кина и сериалов про маньяков, и я поймал себя на мысли
     "а чтобы стать знаменитым можно стать маньяком".
 </p>
@@ -47,8 +18,8 @@
 </p>
 
 <div style="display: flex; flex-direction: column; gap: 10px">
-    <img src="/static/images/why-women-kill.jpg" alt="Почему женщины убивают 1">
-    <img src="/static/images/why-women-kill-2.jpg" alt="Почему женщины убивают 2">
+    <img src="{{ url_for('static', filename='images/why-women-kill.jpg')  }}" alt="Почему женщины убивают 1">
+    <img src="{{ url_for('static', filename='images/why-women-kill-2.jpg')  }}" alt="Почему женщины убивают 2">
 </div>
 
 <p>
@@ -61,16 +32,17 @@
     получается)))
 </p>
 
-<p><img src="/static/images/we-are-the-real-monsters.jpeg" alt="we are the real monsters
-получается)))"></p>
+<img src="{{ url_for('static', filename='images/we-are-the-real-monsters.')  }}jpeg" alt="we are the real monsters
+получается)))">
+
 <p>
 
-<pre><code>Еще там кста
-маньяк похож на мемного
-героя игры Диско Элизиум (или на ютубера &lt;a href=&quot;https://www.youtube.com/@Klio_o&quot;&gt;klio&lt;/a&gt; хах):</code></pre>
+    Еще там кста
+    маньяк похож на мемного
+    героя игры Диско Элизиум (или на ютубера <a href="https://www.youtube.com/@Klio_o">klio</a> хах):
 </p>
 
-<img src="/static/images/black-bird.jpg" alt="Маньяк из Black Bird">
+<img src="{{ url_for('static', filename='images/black-bird.jpg')  }}" alt="Маньяк из Black Bird">
 
 <p>Потом смотрели Mindhunters, который похож на Black Bird: челы пытаются понять почему маньяки убивают, проводя с
     ними
@@ -97,25 +69,3 @@
     большинства эйчаров это красный флаг, после которого собес прекращается). Ну, не туда завернул. Запретный плод
     сладок
     крч </p>
-
-
-    </article>
-</main>
-<footer>
-    <div style="display: flex; justify-content: space-between">
-        <div>
-            
-
-        </div>
-        <div>
-            
-
-        </div>
-    </div>
-
-</footer>
-</body>
-
-
-
-</html>

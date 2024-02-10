@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+title: Рашн днб
+created: 14.01.2024 12:18
+---
 
-    <!-- region Noto Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-    <!-- endregion Noto Sans Font -->
-
-    
-    
-
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-    <title>Рашн днб / потик-ио</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-<main>
-    <article>
-        
-            <h1>Рашн днб</h1>
-        
-        
-            <cite>14.01.2024 12:18</cite>
-        
-
-
-        <p>
+<p>
     Весь прошлы год слушал рашн днб, и, оказывается, до сих очень много движухи по этой тематике.
 </p>
 
@@ -95,24 +66,3 @@
     <b>самописном</b> <a href="https://neuropunk.app/">приложении</a> со <b>своим биллингом</b>, и этот биллинг
     внедрен на стримы, где можно донатить через телеграм - оч технологично! </p>
 
-
-    </article>
-</main>
-<footer>
-    <div style="display: flex; justify-content: space-between">
-        <div>
-            
-
-        </div>
-        <div>
-            
-
-        </div>
-    </div>
-
-</footer>
-</body>
-
-
-
-</html>

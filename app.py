@@ -10,7 +10,7 @@ from potyk_io_back.articles import Articles, get_prev_article, get_next_article
 
 SUPPORTED_ARTICLE_TYPES = ('.html', '.md')
 
-app = Flask(__name__, template_folder="articles")
+app = Flask(__name__, template_folder="content")
 
 
 @app.route("/")

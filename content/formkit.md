@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+title: FormKit
+created: 13.01.2024 16:00
+---
 
-    <!-- region Noto Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-    <!-- endregion Noto Sans Font -->
-
-    
-    
-
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-    <title>FormKit / потик-ио</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-<main>
-    <article>
-        
-            <h1>FormKit</h1>
-        
-        
-            <cite>13.01.2024 16:00</cite>
-        
-
-
-        <p>
+<p>
     Открытие этой недели - <a href="https://formkit.com/">FormKit</a>
 </p>
 
@@ -55,6 +26,7 @@
     делать, тогда
     кайфанешь.
     Форм-кит с кастомными компонентами дают возможность набросать свой функциональный юай-кит, и это прям круто </p>
+
 
 <p>
     Ну и если по-началу я кайфанул с формочек в nuxt-ui, то быстро появились мелкие проблемы, напр. валидация
@@ -83,23 +55,4 @@
     итоге накрутил на дефолтычах форму:</p>
 
 
-    </article>
-</main>
-<footer>
-    <div style="display: flex; justify-content: space-between">
-        <div>
-            
 
-        </div>
-        <div>
-            
-
-        </div>
-    </div>
-
-</footer>
-</body>
-
-
-
-</html>

@@ -16,12 +16,15 @@ def clean_and_create_dir(dist):
 
 
 def list_articles():
-    return glob.glob("./articles/*.*")
+    return glob.glob(f"{app.template_folder}/*.*")
 
 
 def render_article(article, server):
     path = article_path_to_filename(article)
-    return server.get(f"/{path}", follow_redirects=True).text
+    resp = server.get(f"/{path}", follow_redirects=True)
+    if resp.status_code != 200:
+        raise RuntimeError(f"Failed to render page: {article}")
+    return resp.text
 
 
 def article_path_to_filename(article):

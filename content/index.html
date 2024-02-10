@@ -14,8 +14,7 @@
         </summary>
 
         {% for section in articles %}
-            <h3>{{ section.section }}</h3>
-            <cite>{{ section.dates }}</cite>
+            <h3>{{ section.section }} <span style="color: #b0b0b0; font-size: 16px ">({{ section.dates }})</span></h3>
             <ul>
                 {% for article in section.articles %}
                     <li><a href="/{{ article.link }}"

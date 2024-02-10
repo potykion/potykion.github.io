@@ -1,10 +1,7 @@
-{% extends 'templates/base.html' %}
-{% set title = 'Читаем книжки, гоняем по кругу мыслишки' %}
-{% block main %}
-<h1>Теилвинд лав</h1>
-<cite>
-    14.01.2024 19:13
-</cite>
+---
+title: Теилвинд лав
+created: 14.01.2024 19:13
+---
 
 <p>
     Ля люблю <a href="https://tailwindcss.com/">Tailwind CSS</a>
@@ -30,4 +27,3 @@
         title="YouTube video player" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen></iframe>
-{% endblock main %}

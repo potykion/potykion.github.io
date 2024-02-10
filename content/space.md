@@ -1,38 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+---
+title: спейс
+created: 27.01.2024
+---
 
-    <!-- region Noto Sans Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet">
-    <!-- endregion Noto Sans Font -->
-
-    
-    
-
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
-    <title>спейс / потик-ио</title>
-</head>
-<body>
-<header>
-    <a href="/">потик-ио</a>
-    <hr>
-</header>
-<main>
-    <article>
-        
-            <h1>спейс</h1>
-        
-        
-            <cite>27.01.2024</cite>
-        
-
-
-        <p>
+<p>
     Не нравится мне что интернет / данные / информация не материальны. все находится везде и нигде. Попробовать
     что-ли
     все хранить в одном месте. Но сразу тревога - а как? У меня что-то на питоне, что-то на вьюхе, что-то маркдаун,
@@ -79,24 +50,3 @@
 <p>Ладно, выходит что и мысли об организации бессмысленны, зачем организовывать то что не имеет смысла? А и в правду,
     о, это прозрение, это инсайт получается.  </p>
 
-
-    </article>
-</main>
-<footer>
-    <div style="display: flex; justify-content: space-between">
-        <div>
-            
-
-        </div>
-        <div>
-            
-
-        </div>
-    </div>
-
-</footer>
-</body>
-
-
-
-</html>

@@ -5,6 +5,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
       <excludeFolder url="file://$MODULE_DIR$/venv" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/docs" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.11 (potykion.github.io)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -13,7 +14,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/articles" />
+        <option value="$MODULE_DIR$/content" />
       </list>
     </option>
   </component>
