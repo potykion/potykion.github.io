@@ -76,6 +76,9 @@ div.desc {
 }
 
 @media (max-width: 1024px) {
+    a.link {
+        font-size: 14px;
+    }
 
     div.desc {
         font-size: 14px;
