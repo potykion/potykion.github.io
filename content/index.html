@@ -1,36 +1,20 @@
 {% extends "templates/base.html" %}
 {% set title = 'Домашняя' %}
 
+{% from "templates/components/note-list.html" import note_section %}
+
 {% block main %}
     <h1>потик-ио</h1>
     <cite>блог по настроению • v4</cite>
 
-            <h2 >Piss✍ssanina </h2>
+    <h2>Заметки</h2>
 
-    <details open>
-        <summary>
-
-            <i>Спойлер для удобства</i>
-        </summary>
-
-        {% for section in articles %}
-            <h3>{{ section.section }} <span style="color: #b0b0b0; font-size: 16px ">({{ section.dates }})</span></h3>
-            <ul>
-                {% for article in section.articles %}
-                    <li><a href="/{{ article.link }}"
-                           {% if article.depressive %}style="text-decoration: line-through"{% endif %}>{{ article.title }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% endfor %}
-    </details>
-
-
-
+    {% set section =  note_sections[0] %}
+    {{ note_section(section) }}
 
     <h2>Спешал</h2>
     <ul>
-        <li><a href="./stats.html">Стата 2024</a></li>
+        <li><a href="special/stats.html">Стата 2024</a></li>
     </ul>
 
     <h2>Соц🕸сети</h2>

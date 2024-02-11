@@ -1,3 +1,8 @@
+# server
 Flask
+# md > html
 mistune
+# md frontmatter
 python-frontmatter
+# date parse
+python-dateutil

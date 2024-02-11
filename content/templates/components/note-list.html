@@ -1,0 +1,17 @@
+{% macro note_section(section) %}
+    <h3>
+        {{ section.title }}
+
+        {% if section.dates %}<span style="color: #c5c5c5; font-size: 16px ">({{ section.dates }})</span>{% endif %}
+    </h3>
+    <ul>
+        {% for note in section.notes %}
+
+            <li>
+                <a style="font-weight: 600" href="/notes/{{ note.key }}">{{ note.title }}</a>
+                <div style="color: #9a9999">{{ note.desc }}</div>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endmacro %}

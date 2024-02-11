@@ -20,6 +20,7 @@
 <body>
 <header>
     <a href="/">потик-ио</a>
+    <a href="/notes">заметки</a>
     <hr>
 </header>
 <main>
@@ -40,7 +41,7 @@
     <div style="display: flex; justify-content: space-between">
         <div>
             {% if prev %}
-                <a href="/{{ prev.link }}">
+                <a href="/notes/{{ prev }}">
                     < Пред.
                 </a>
             {% endif %}
@@ -48,7 +49,7 @@
         </div>
         <div>
             {% if next %}
-                <a href="/{{ next.link }}">
+                <a href="/notes/{{ next }}">
                     След. >
                 </a>
             {% endif %}
