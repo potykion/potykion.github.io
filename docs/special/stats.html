@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    
+    <style>
+
+        .beers {
+            display: grid;
+            grid-template-columns: repeat(9, minmax(0, 1fr));
+            gap: 5px;
+        }
+
+        .movies {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 5px;
+        }
+
+
+        .games {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 5px;
+        }
+
+
+        @media (max-width: 1024px) {
+
+            .movies {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+
+            .games {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .beers {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+
+    </style>
+
+
+
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+    <title>Стата / потик-ио</title>
+</head>
+<body>
+<header>
+    <a class="link" href="/">потик-ио</a>
+    <a class="link" href="/notes">заметки</a>
+    <a class="link" href="/special">спешал</a>
+    <hr>
+</header>
+<main>
+    <article>
+        
+        
+
+
+        
+
+    <h1>Стата 2024</h1>
+                <div style="color: #9a9999">Что читал, что смотрел, во что играл и что пил за 2024 г.</div>
+
+    <h2>Книги</h2>
+    <div class="movies">
+        <a href="https://bookmate.ru/books/rujGEZSJ">
+            <img src="https://assets-ru.bookmate.yandex.net/assets/books-covers/c1/ec/rujGEZSJ-ipad.jpeg?image_hash=c5570424f5bd253359e4df8cd593bd7e">
+        </a>
+    </div>
+
+    <h2>Кино и сериалы</h2>
+    <div class="movies">
+        <a href="https://www.kinopoisk.ru/film/1115471/"><img class="film-img"
+                                                              src="https://avatars.mds.yandex.net/get-kinopoisk-image/10592371/56d4e2fb-f71c-419e-845e-d667e57f92ad/600x900"></a>
+        <a href="https://www.kinopoisk.ru/film/1345158/"><img class="film-img"
+                                                              src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/a8cf8b09-d5a9-455b-b282-e680222d459a/600x900"></a>
+
+
+    </div>
+
+
+    <h2>Игры</h2>
+    <div class="games">
+        <a href="https://store.steampowered.com/app/1328350/Turbo_Overkill/">
+            <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/1328350/header.jpg?t=1701886460">
+        </a>  <a href="https://store.steampowered.com/app/1970580/Backpack_Hero/">
+            <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/1970580/header.jpg?t=1704666031">
+        </a>
+        </a>  <a href="https://store.steampowered.com/app/214730/Space_Rangers_HD_A_War_Apart/">
+            <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/214730/header_russian.jpg?t=1681218954">
+        </a>
+    </div>
+
+
+    <h2>Пиво</h2>
+
+    <div class="beers"></div>
+
+
+
+    <script src="/static/js/checkins.js"></script>
+    <script>
+
+        checkins.forEach(
+            ([img, link]) => {
+                let linkNode = document.createElement('a');
+                linkNode.href = link
+                linkNode.innerHTML = `<img src="${img}" class="beer-img">`
+
+                document.querySelector('.beers').appendChild(linkNode)
+            }
+        )
+    </script>
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+
+        </div>
+        <div>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
+
+
+
+</html>
