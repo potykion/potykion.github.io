@@ -44,3 +44,8 @@ ul {
 li {
     padding: 6px;
 }
+
+
+a.link {
+    font-weight: 600
+}

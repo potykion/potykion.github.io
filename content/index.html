@@ -7,21 +7,25 @@
     <h1>потик-ио</h1>
     <cite>блог по настроению • v4</cite>
 
-    <h2>Заметки</h2>
+    <h2><a href="/notes">Заметки</a></h2>
 
     {% set section =  note_sections[0] %}
     {{ note_section(section) }}
 
-    <h2>Спешал</h2>
+    <h2><a href="/special">Спешал</a></h2>
     <ul>
-        <li><a href="special/stats.html">Стата 2024</a></li>
+        <li>
+            <a class="link" href="special/stats.html">Стата 2024</a>
+                <div style="color: #9a9999">Что читал, что смотрел, во что играл и что пил за 2024 г.</div>
+
+        </li>
     </ul>
 
     <h2>Соц🕸сети</h2>
     <ul>
-        <li><a href="https://www.instagram.com/potyk.art">Рисовашки</a></li>
-        <li><a href="https://untappd.com/user/potykion">Выпивашки</a></li>
-        <li><a href="https://rateyourmusic.com/~potykion">Музыкашки</a></li>
+        <li><a class="link" href="https://www.instagram.com/potyk.art">Рисовашки</a></li>
+        <li><a class="link" href="https://untappd.com/user/potykion">Выпивашки</a></li>
+        <li><a class="link" href="https://rateyourmusic.com/~potykion">Музыкашки</a></li>
     </ul>
 
 {% endblock %}
