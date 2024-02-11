@@ -16,7 +16,13 @@ what_to_render = [
         ]
     ],
     ("/special", "special/index.html"),
-    ("/special/stats", "special/stats.html"),
+    *[
+        (f"/special/{note_key}", f"special/{note_key}.html")
+        for note_key in [
+            os.path.basename(note).rsplit(".")[0]
+            for note in glob.glob(f"{app.template_folder}/special/**/*.*", recursive=True)
+        ]
+    ],
 ]
 
 

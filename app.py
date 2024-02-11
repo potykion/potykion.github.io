@@ -1,4 +1,5 @@
 import dataclasses
+import os
 from pathlib import Path
 
 import frontmatter
@@ -50,14 +51,25 @@ def get_note(note_key: str):
 
     note = _find_note(note_key)
 
-    raw_md = render_template(note.template_path)
-    md = frontmatter.loads(raw_md)
-    html = mistune.html(md.content)
-
     ctx = {
         "show_title": True,
         **dataclasses.asdict(note),
     }
+
+    html = _render_md_as_html(note.template_path)
+
+    return _wrap_html_to_base_template(html, ctx)
+
+
+def _render_md_as_html(md_template):
+    raw_md = render_template(md_template)
+    md = frontmatter.loads(raw_md)
+    html = mistune.html(md.content)
+    return html
+
+
+def _wrap_html_to_base_template(html, ctx=None):
+    ctx = ctx or {}
     return render_template_string(
         "{% extends 'templates/base.html' %}"
         "{% block main %}" + html + "{% endblock %}",
@@ -67,6 +79,21 @@ def get_note(note_key: str):
 
 @app.route("/special/<page_key>")
 def get_special(page_key: str):
-    if not page_key.endswith(".html"):
-        page_key = f"{page_key}.html"
-    return render_template(f"special/{page_key}")
+    template = make_article_template_name(f"special/{page_key}")
+    if template.endswith(".md"):
+        html = _render_md_as_html(template)
+        return _wrap_html_to_base_template(html)
+    else:
+        return render_template(template)
+
+
+def make_article_template_name(article):
+    if article.endswith(SUPPORTED_ARTICLE_TYPES):
+        return article
+
+    for ext in SUPPORTED_ARTICLE_TYPES:
+        article_template_name = article + ext
+        if os.path.exists(Path(app.template_folder) / article_template_name):
+            return article_template_name
+
+    return None
