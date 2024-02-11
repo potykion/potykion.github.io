@@ -1,14 +1,11 @@
 import dataclasses
-import os.path
 from pathlib import Path
 
-import flask
 import frontmatter
 import mistune
 from flask import Flask, render_template, render_template_string, g
 from werkzeug.local import LocalProxy
 
-from potyk_io_back.articles import get_prev_article, get_next_article
 from potyk_io_back.notes import read_notes, NoteSection
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
