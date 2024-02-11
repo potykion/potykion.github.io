@@ -14,7 +14,7 @@ p {
 }
 
 main, footer {
-    padding: 5px;
+    padding: 8px;
 }
 
 iframe {
@@ -41,6 +41,7 @@ code {
 ul {
     padding-left: 20px;
 }
+
 li {
     padding: 6px;
 }
@@ -60,10 +61,23 @@ blockquote {
 
 table {
     width: 100%;
-      border-collapse: collapse;
+    border-collapse: collapse;
 
 }
-td, th{
+
+td, th {
     border: 1px solid black;
     padding: 10px;
+}
+
+div.desc {
+    color: #9a9999;
+    padding: 5px 0;
+}
+
+@media (max-width: 1024px) {
+
+    div.desc {
+        font-size: 14px;
+    }
 }
