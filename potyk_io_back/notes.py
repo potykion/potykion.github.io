@@ -8,29 +8,34 @@ from dateutil.parser import parse
 
 
 SectionSettings = {
-"5-ok":     {
+    "6-content": {
+        "title": "Про контент",
+        "dates": "10.01 - 11.02",
+    },
+    "5-ok": {
         "title": "Пока нормально",
         "dates": "06.02",
     },
-"4-depressive":     {
+    "4-depressive": {
         "title": "Депрессивный эпизод",
         "dates": "04.02 - 05.02",
     },
-"3-motivation":     {
+    "3-motivation": {
         "title": "Работа и мотивация",
         "dates": "31.01 - 02.02",
     },
-"2-break":     {
+    "2-break": {
         "title": "Перерывчик в две недели, хех, эксперименты с Кипом, ТГ, новым репо",
         "dates": "24.01, 27.01 - 29.01",
     },
-"1-again":     {
+    "1-again": {
         "title": "Проснулось желание делать блог, снова",
         "dates": "13.01 - 14.01, 15.01 - 16.01",
     },
 }
 
-def smart_truncate(text, max_chars=210, suffix='...'):
+
+def smart_truncate(text, max_chars=210, suffix="..."):
     """
     Smartly truncates the given text to fit within max_chars, ensuring not to split words.
     :param text: str - The input text to be truncated.
@@ -41,8 +46,7 @@ def smart_truncate(text, max_chars=210, suffix='...'):
     if len(text) <= max_chars:
         return text
     else:
-        return text[:max_chars].rsplit(' ',  1)[0] + suffix
-
+        return text[:max_chars].rsplit(" ", 1)[0] + suffix
 
 
 @dataclasses.dataclass
@@ -57,7 +61,9 @@ class Note:
     prev: str | None = None
 
     def __post_init__(self):
-        if not isinstance(self.created, (datetime.datetime, datetime.date)):
+        if isinstance(self.created, datetime.date):
+            self.created = datetime.datetime.combine(self.created, datetime.time())
+        if not isinstance(self.created, datetime.datetime):
             self.created = parse(self.created)
 
 
