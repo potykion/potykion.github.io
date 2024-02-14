@@ -9,8 +9,7 @@
 
     <h2><a href="/notes">Заметки</a></h2>
 
-    {% set section =  note_sections[0] %}
-    {{ note_section(section) }}
+    {{ note_section(last_note_section) }}
 
     <h2><a href="/special">Спешл</a></h2>
     <ul>

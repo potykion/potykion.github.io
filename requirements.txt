@@ -8,3 +8,7 @@ python-frontmatter
 python-dateutil
 # extract text from html
 beautifulsoup4
+# storing note index in json
+tinydb
+# serialization
+pydantic

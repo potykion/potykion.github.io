@@ -2,8 +2,10 @@ import glob
 import os
 import shutil
 from pathlib import Path
-from app import app
 
+from app import create_app
+
+app = create_app()
 
 what_to_render = [
     ("/", "index.html"),

@@ -1,4 +1,3 @@
-import dataclasses
 import datetime
 import os
 from pathlib import Path
@@ -8,7 +7,8 @@ import frontmatter
 import mistune
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
-
+from pydantic import BaseModel, Field, ConfigDict
+from tinydb import TinyDB, Query
 
 SectionSettings = {
     "7-days": {
@@ -56,8 +56,7 @@ def smart_truncate(text, max_chars=210, suffix="..."):
         return text[:max_chars].rsplit(" ", 1)[0] + suffix
 
 
-@dataclasses.dataclass
-class Note:
+class Note(BaseModel):
     key: str
     template_path: str
     # path: str
@@ -74,16 +73,23 @@ class Note:
             self.created = parse(self.created)
 
 
-@dataclasses.dataclass
-class NoteSection:
+class NoteSection(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
     key: str
-    notes: list[Note] = dataclasses.field(default_factory=list)
+    notes: list[Note] = Field(default_factory=list)
     title: str = ""
     dates: str = ""
 
     def __post_init__(self):
         if not self.title:
             self.title = self.key
+
+
+def make_note_index(notes_dir, db: TinyDB):
+    sections = read_notes(notes_dir)
+    db.truncate()
+    db.insert_multiple([sec.model_dump(mode='json') for sec in sections])
+    return db
 
 
 def read_notes(notes_dir: str | Path) -> list[NoteSection]:
@@ -93,7 +99,7 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
     sections = []
 
     for section_index, section_key in enumerate(section_keys):
-        section = NoteSection(section_key, **SectionSettings[section_key])
+        section = NoteSection(key=section_key, **SectionSettings[section_key])
 
         dir_, __, filenames = next(tree)
 
@@ -154,5 +160,22 @@ def _set_notes_next_and_prev(sections):
                 note.prev = prev_note.key
 
 
-if __name__ == "__main__":
-    read_notes(Path("../content/notes").resolve())
+class NoteDb:
+    def __init__(self, db: TinyDB):
+        self.db = db
+
+    def list_all(self) -> list[NoteSection]:
+        return [NoteSection.model_validate(sec) for sec in self.db.all()]
+
+    def get_last_section(self) -> NoteSection:
+        SectionQ = Query()
+        return NoteSection.model_validate(self.db.get(SectionQ.key == list(SectionSettings)[0]))
+
+    def get_note_by_key(self, note_key) -> Note:
+        SectionQ = Query()
+        NoteQ = Query()
+        raw_section = self.db.get(SectionQ.notes.any(NoteQ.key == note_key))
+        section = NoteSection.model_validate(raw_section)
+        note = next(note for note in section.notes if note.key == note_key)
+        return note
+

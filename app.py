@@ -1,100 +1,88 @@
-import dataclasses
 import os
 from pathlib import Path
 
 import frontmatter
 import mistune
-from flask import Flask, render_template, render_template_string, g
-from werkzeug.local import LocalProxy
+from flask import Flask, render_template, render_template_string
+from tinydb import TinyDB
+from tinydb.storages import MemoryStorage
 
-from potyk_io_back.notes import read_notes, NoteSection
+from potyk_io_back.notes import make_note_index, NoteDb
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
-app = Flask(__name__, template_folder="content")
 
+def create_app():
+    app = Flask(__name__, template_folder="content")
+    app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
+    with app.app_context():
+        db = TinyDB(
+            # "notes.json",
+            storage=MemoryStorage,
+        )
+        db = make_note_index(Path(app.template_folder) / "notes", db)
+        note_db = NoteDb(db)
 
-def read_notes_flask():
-    if "notes" not in g:
-        g.notes = read_notes(Path(app.template_folder) / "notes")
-    return g.notes
+    @app.route("/")
+    def index():
+        return render_template(
+            "index.html", last_note_section=note_db.get_last_section()
+        )
 
+    @app.route("/notes")
+    def notes():
+        return render_template("notes/index.html", note_sections=note_db.list_all())
 
-note_sections: list[NoteSection] = LocalProxy(read_notes_flask)
+    @app.route("/special")
+    def special():
+        return render_template("special/index.html")
 
+    @app.route("/notes/<note_key>")
+    def get_note(note_key: str):
+        note = note_db.get_note_by_key(note_key)
 
-@app.route("/")
-def index():
-    return render_template("index.html", note_sections=note_sections)
+        ctx = {
+            "show_title": True,
+            **note.model_dump(),
+        }
 
+        html = _render_md_as_html(note.template_path)
 
-@app.route("/notes")
-def notes():
-    return render_template("notes/index.html", note_sections=note_sections)
+        return _wrap_html_to_base_template(html, ctx)
 
+    def _render_md_as_html(md_template):
+        raw_md = render_template(md_template)
+        md = frontmatter.loads(raw_md)
+        html = mistune.html(md.content)
+        return html
 
-@app.route("/special")
-def special():
-    return render_template(
-        "special/index.html",
-    )
+    def _wrap_html_to_base_template(html, ctx=None):
+        ctx = ctx or {}
+        return render_template_string(
+            "{% extends 'templates/base.html' %}"
+            "{% block main %}" + html + "{% endblock %}",
+            **ctx,
+        )
 
+    @app.route("/special/<page_key>")
+    def get_special(page_key: str):
+        template = make_article_template_name(f"special/{page_key}")
+        if template.endswith(".md"):
+            html = _render_md_as_html(template)
+            return _wrap_html_to_base_template(html)
+        else:
+            return render_template(template)
 
-@app.route("/notes/<note_key>")
-def get_note(note_key: str):
+    def make_article_template_name(article):
+        if article.endswith(SUPPORTED_ARTICLE_TYPES):
+            return article
 
-    def _find_note(note_key):
-        for section in note_sections:
-            for note in section.notes:
-                if note.key == note_key:
-                    return note
+        for ext in SUPPORTED_ARTICLE_TYPES:
+            article_template_name = article + ext
+            if os.path.exists(Path(app.template_folder) / article_template_name):
+                return article_template_name
 
-    note = _find_note(note_key)
+        return None
 
-    ctx = {
-        "show_title": True,
-        **dataclasses.asdict(note),
-    }
-
-    html = _render_md_as_html(note.template_path)
-
-    return _wrap_html_to_base_template(html, ctx)
-
-
-def _render_md_as_html(md_template):
-    raw_md = render_template(md_template)
-    md = frontmatter.loads(raw_md)
-    html = mistune.html(md.content)
-    return html
-
-
-def _wrap_html_to_base_template(html, ctx=None):
-    ctx = ctx or {}
-    return render_template_string(
-        "{% extends 'templates/base.html' %}"
-        "{% block main %}" + html + "{% endblock %}",
-        **ctx,
-    )
-
-
-@app.route("/special/<page_key>")
-def get_special(page_key: str):
-    template = make_article_template_name(f"special/{page_key}")
-    if template.endswith(".md"):
-        html = _render_md_as_html(template)
-        return _wrap_html_to_base_template(html)
-    else:
-        return render_template(template)
-
-
-def make_article_template_name(article):
-    if article.endswith(SUPPORTED_ARTICLE_TYPES):
-        return article
-
-    for ext in SUPPORTED_ARTICLE_TYPES:
-        article_template_name = article + ext
-        if os.path.exists(Path(app.template_folder) / article_template_name):
-            return article_template_name
-
-    return None
+    return app
