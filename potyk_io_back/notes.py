@@ -8,9 +8,13 @@ from dateutil.parser import parse
 
 
 SectionSettings = {
+    "7-days": {
+        "title": "Будни",
+        "dates": "14.02",
+    },
     "6-content": {
         "title": "Про контент",
-        "dates": "10.01 - 11.02",
+        "dates": "10.02 - 11.02",
     },
     "5-ok": {
         "title": "Пока нормально",
