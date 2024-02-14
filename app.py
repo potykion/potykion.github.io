@@ -54,7 +54,7 @@ def create_app():
     def _render_md_as_html(md_template):
         raw_md = render_template(md_template)
         md = frontmatter.loads(raw_md)
-        html = mistune.html(md.content)
+        html = mistune.html(md.content.replace('iframe width="560" height="315"', 'iframe'))
         return html
 
     def _wrap_html_to_base_template(html, ctx=None):
