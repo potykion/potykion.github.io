@@ -3,7 +3,10 @@ import datetime
 import os
 from pathlib import Path
 
+import flask
 import frontmatter
+import mistune
+from bs4 import BeautifulSoup
 from dateutil.parser import parse
 
 
@@ -95,15 +98,21 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
         dir_, __, filenames = next(tree)
 
         for file_ in filenames:
+            note_key = file_.rsplit(".")[0]
             path = Path(dir_) / file_
+
             md = frontmatter.load(path)
+            template_path = f"{notes_dir.name}/{section_key}/{note_key}.md"
+            rendered_md = flask.render_template_string(md.content)
+            html = mistune.html(rendered_md)
+            soup = BeautifulSoup(html, features="html.parser")
+            text = soup.get_text()
             note = Note(
-                key=(note_key := file_.rsplit(".")[0]),
-                # path=(note_path := f"{section_key}/{note_key}"),
-                template_path=f"{os.path.basename(notes_dir)}/{section_key}/{note_key}.md",
+                key=note_key,
+                template_path=template_path,
                 title=md["title"],
                 created=md["created"],
-                desc=smart_truncate(md.content),
+                desc=smart_truncate(text),
             )
             section.notes.append(note)
 

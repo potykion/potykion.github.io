@@ -14,6 +14,7 @@ SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 app = Flask(__name__, template_folder="content")
 
 
+
 def read_notes_flask():
     if "notes" not in g:
         g.notes = read_notes(Path(app.template_folder) / "notes")
