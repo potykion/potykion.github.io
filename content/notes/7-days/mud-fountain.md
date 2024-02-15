@@ -3,7 +3,7 @@ title: Фонтан грязи
 created: 2024-02-15 09:30
 ---
 
-![]({{ url_for('static', filename='images/mud-fountain.png')  }})
+![]({{ url_for('static', filename='images/mud-fountain.jpg')  }})
 
 
 Вчера, когда ко мне в очередной приставали в ночи, у меня бомбануло, потому что единственное, что я хочу ночью, - это
