@@ -47,7 +47,7 @@ def create_app():
             **note.model_dump(),
         }
 
-        html = _render_md_as_html(note.template_path)
+        html, _ = _render_md_as_html(note.template_path)
 
         return _wrap_html_to_base_template(html, ctx)
 
@@ -55,7 +55,8 @@ def create_app():
         raw_md = render_template(md_template)
         md = frontmatter.loads(raw_md)
         html = mistune.html(md.content.replace('iframe width="560" height="315"', 'iframe'))
-        return html
+        ctx = dict(md.metadata)
+        return html, ctx
 
     def _wrap_html_to_base_template(html, ctx=None):
         ctx = ctx or {}
@@ -67,12 +68,16 @@ def create_app():
 
     @app.route("/special/<page_key>")
     def get_special(page_key: str):
+        ctx = {"show_title": True, "show_desc": True}
+
         template = make_article_template_name(f"special/{page_key}")
         if template.endswith(".md"):
-            html = _render_md_as_html(template)
-            return _wrap_html_to_base_template(html)
+
+            html, md_ctx = _render_md_as_html(template)
+            ctx.update(md_ctx)
+            return _wrap_html_to_base_template(html, ctx)
         else:
-            return render_template(template)
+            return render_template(template, **ctx)
 
     def make_article_template_name(article):
         if article.endswith(SUPPORTED_ARTICLE_TYPES):

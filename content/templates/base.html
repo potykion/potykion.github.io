@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- region SEO -->
+    <title>{{ title }} / потик-ио</title>
+    <meta name="description" content="{{ desc }}"/>
+    <!-- endregion SEO -->
+
+    <!-- region Styles -->
     <!-- region Noto Sans Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +17,11 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
     {% block static %}
     {% endblock %}
-
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
-    <title>{{ title }} / потик-ио</title>
+    <!-- endregion Styles -->
 </head>
 <body>
 <header>
@@ -39,7 +45,9 @@
         {% if created %}
             <cite>{{ created }}</cite>
         {% endif %}
-
+        {% if desc and show_desc %}
+            <div class="desc">{{ desc }}</div>
+        {% endif %}
 
         {% block main %}
         {% endblock %}
