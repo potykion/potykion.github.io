@@ -13,7 +13,7 @@ from tinydb import TinyDB, Query
 SectionSettings = {
     "7-days": {
         "title": "Будни",
-        "dates": "14.02",
+        "dates": "14.02 - 15.02",
     },
     "6-content": {
         "title": "Про контент",
