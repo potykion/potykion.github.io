@@ -83,4 +83,8 @@ div.desc {
     div.desc {
         font-size: 14px;
     }
+
+    small {
+        font-size: 10px;
+    }
 }

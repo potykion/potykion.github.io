@@ -1,3 +1,4 @@
+// see scripts/parse-untappd.js
 const checkins =[
     [
         "https://assets.untappd.com/site/beer_logos/beer-3869661_68ad6_sm.jpeg",
