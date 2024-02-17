@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+import flask
 import frontmatter
 import mistune
 from flask import Flask, render_template, render_template_string
@@ -8,6 +9,7 @@ from tinydb import TinyDB
 from tinydb.storages import MemoryStorage
 
 from potyk_io_back.notes import make_note_index, NoteDb
+from potyk_io_back.todo import Task, TodoRepo
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
@@ -18,11 +20,12 @@ def create_app():
 
     with app.app_context():
         db = TinyDB(
-            # "notes.json",
-            storage=MemoryStorage,
+            "db.json",
         )
         db = make_note_index(Path(app.template_folder) / "notes", db)
         note_db = NoteDb(db)
+
+        task_db = TodoRepo(db)
 
     @app.route("/")
     def index():
@@ -54,7 +57,9 @@ def create_app():
     def _render_md_as_html(md_template):
         raw_md = render_template(md_template)
         md = frontmatter.loads(raw_md)
-        html = mistune.html(md.content.replace('iframe width="560" height="315"', 'iframe'))
+        html = mistune.html(
+            md.content.replace('iframe width="560" height="315"', "iframe")
+        )
         ctx = dict(md.metadata)
         return html, ctx
 
@@ -89,5 +94,39 @@ def create_app():
                 return article_template_name
 
         return None
+
+    tasks = [
+        Task(id=1, title="Обзор на Рыцари Справедливости", category="Что писать"),
+        Task(id=2, title="Обзор на Мастер и Маргарита", category="Что писать"),
+    ]
+
+    @app.get("/todo")
+    def todo():
+        tasks = task_db.list_all()
+        return render_template("todo/index.html", tasks=tasks)
+
+    @app.post("/todo")
+    def create_todo():
+        title = flask.request.form.get("title")
+        task = task_db.create(title)
+        return render_template("templates/components/todo-task.html", task=task)
+
+    @app.post("/todo/<int:task_id>")
+    def change_todo_done(task_id):
+        done = bool(flask.request.form.get(f"done"))
+
+        task = task_db.get_by_id(task_id)
+        task.done = done
+        task_db.update(task)
+
+        return render_template("templates/components/todo-task.html", task=task)
+    @app.delete("/todo/<int:task_id>")
+    def delete_todo(task_id):
+
+
+        task = task_db.get_by_id(task_id)
+        task_db.delete(task)
+
+        return ""
 
     return app
