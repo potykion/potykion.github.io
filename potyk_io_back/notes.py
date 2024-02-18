@@ -5,41 +5,12 @@ from pathlib import Path
 import flask
 import frontmatter
 import mistune
+import yaml
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
 from pydantic import BaseModel, Field, ConfigDict
 from tinydb import TinyDB, Query
-
-SectionSettings = {
-    "7-days": {
-        "title": "Будни",
-        "dates": "14.02 - 15.02",
-    },
-    "6-content": {
-        "title": "Про контент",
-        "dates": "10.02 - 11.02",
-    },
-    "5-ok": {
-        "title": "Пока нормально",
-        "dates": "06.02",
-    },
-    "4-depressive": {
-        "title": "Депрессивный эпизод",
-        "dates": "04.02 - 05.02",
-    },
-    "3-motivation": {
-        "title": "Работа и мотивация",
-        "dates": "31.01 - 02.02",
-    },
-    "2-break": {
-        "title": "Перерывчик в две недели, хех, эксперименты с Кипом, ТГ, новым репо",
-        "dates": "24.01, 27.01 - 29.01",
-    },
-    "1-again": {
-        "title": "Проснулось желание делать блог, снова",
-        "dates": "13.01 - 14.01, 15.01 - 16.01",
-    },
-}
+from yaml import Loader
 
 
 def smart_truncate(text, max_chars=210, suffix="..."):
@@ -99,9 +70,17 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
     sections = []
 
     for section_index, section_key in enumerate(section_keys):
-        section = NoteSection(key=section_key, **SectionSettings[section_key])
-
         dir_, __, filenames = next(tree)
+
+        if 'meta.yml' in filenames:
+            filenames = [file for file in filenames if file != 'meta.yml']
+            with open(Path(dir_) / "meta.yml", encoding="utf-8") as f:
+                section_settings = yaml.load(f, Loader=Loader)
+        else:
+            section_settings = {}
+
+        section = NoteSection(key=section_key, **section_settings)
+
 
         for file_ in filenames:
             note_key = file_.rsplit(".")[0]
@@ -168,8 +147,7 @@ class NoteDb:
         return [NoteSection.model_validate(sec) for sec in self.db.all()]
 
     def get_last_section(self) -> NoteSection:
-        SectionQ = Query()
-        return NoteSection.model_validate(self.db.get(SectionQ.key == list(SectionSettings)[0]))
+        return NoteSection.model_validate(self.db.all()[0])
 
     def get_note_by_key(self, note_key) -> Note:
         SectionQ = Query()
