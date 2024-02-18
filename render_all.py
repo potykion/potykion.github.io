@@ -14,7 +14,8 @@ what_to_render = [
         (f"/notes/{note_key}", f"notes/{note_key}.html")
         for note_key in [
             os.path.basename(note).rsplit(".")[0]
-            for note in glob.glob(f"{app.template_folder}/notes/**/*.*")
+            for note in glob.glob(f"{app.template_folder}/notes/**/*.md")
+            + glob.glob(f"{app.template_folder}/notes/**/*.html")
         ]
     ],
     ("/special", "special/index.html"),
@@ -22,7 +23,10 @@ what_to_render = [
         (f"/special/{note_key}", f"special/{note_key}.html")
         for note_key in [
             os.path.basename(note).rsplit(".")[0]
-            for note in glob.glob(f"{app.template_folder}/special/**/*.*", recursive=True)
+            for note in glob.glob(
+                f"{app.template_folder}/special/**/*.md", recursive=True
+            )
+            + glob.glob(f"{app.template_folder}/special/**/*.html", recursive=True)
         ]
     ],
 ]
