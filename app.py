@@ -95,14 +95,30 @@ def create_app():
 
         return None
 
-    tasks = [
-        Task(id=1, title="Обзор на Рыцари Справедливости", category="Что писать"),
-        Task(id=2, title="Обзор на Мастер и Маргарита", category="Что писать"),
-    ]
+    @app.get("/stuff")
+    def stuff():
+        return render_template("stuff/index.html")
+
+    @app.get("/stuff/recipes")
+    def stuff_recipes():
+        return render_template("stuff/recipes/index.html")
+
+    @app.get("/stuff/recipes/<page_key>")
+    def stuff_recipe(page_key: str):
+        ctx = {"show_title": True, "show_desc": True}
+
+        template = make_article_template_name(f"stuff/recipes/{page_key}")
+        if template.endswith(".md"):
+
+            html, md_ctx = _render_md_as_html(template)
+            ctx.update(md_ctx)
+            return _wrap_html_to_base_template(html, ctx)
+        else:
+            return render_template(template, **ctx)
 
     @app.get("/todo")
     def todo():
-        tasks = task_db.list_all()
+        tasks = reversed(task_db.list_all())
         return render_template("todo/index.html", tasks=tasks)
 
     @app.post("/todo")
@@ -120,9 +136,9 @@ def create_app():
         task_db.update(task)
 
         return render_template("templates/components/todo-task.html", task=task)
+
     @app.delete("/todo/<int:task_id>")
     def delete_todo(task_id):
-
 
         task = task_db.get_by_id(task_id)
         task_db.delete(task)

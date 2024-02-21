@@ -8,7 +8,7 @@
     <h1>Задачки</h1>
 
     <h2>Форма таски</h2>
-    <form hx-post="/todo" hx-target="ul" hx-swap="beforeend" hx-on::after-request="this.reset()">
+    <form hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
         <div style="display: flex; flex-direction: column">
             <div>
                 <label for="title" style="font-weight: 600; margin-bottom: 4px; ">

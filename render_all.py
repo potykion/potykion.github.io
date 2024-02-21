@@ -29,6 +29,9 @@ what_to_render = [
             + glob.glob(f"{app.template_folder}/special/**/*.html", recursive=True)
         ]
     ],
+    ("/stuff", "stuff/index.html"),
+    ("/stuff/recipes", "stuff/recipes/index.html"),
+    ("/stuff/recipes/lavash-hotdog", "stuff/recipes/lavash-hotdog.html"),
 ]
 
 
