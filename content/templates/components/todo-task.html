@@ -1,17 +1,23 @@
 {% macro todo_task(task) %}
     <li>
-        <div style="display: flex" >
+        <div style="display: flex">
 
-            <input name="done" id="done_{{ task.id }}"  type="checkbox" {% if task.done %}checked {% endif %}
+            <input name="done" id="done_{{ task.id }}" type="checkbox" {% if task.done %}checked {% endif %}
                    hx-post="/todo/{{ task.id }}"
                    hx-trigger="click"
                    hx-swap="outerHTML"
                    hx-target="closest li"
             >
-            <label for="done_{{ task.id }}" style="flex-grow: 1; {% if task.done %}text-decoration: line-through {% endif %}">
+            <label for="done_{{ task.id }}"
+                   style="flex-grow: 1; {% if task.done %}text-decoration: line-through {% endif %}">
                 {{ task.title }}
             </label>
-            <button style="background: none; border: none" hx-delete="/todo/{{ task.id }}" hx-swap="delete" hx-target="closest li">❌</button>
+            <button style="background: none; border: none" hx-get="/todo/{{ task.id }}/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/{{ task.id }}" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
         </div>
     </li>
 {% endmacro %}

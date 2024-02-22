@@ -1,0 +1,18 @@
+{% macro todo_edit_task_form(task) %}
+    <li>
+        <form style="display: flex; align-items: center">
+
+            <input name="title" style="flex-grow: 1" value="{{ task.title }}">
+
+            <button style="background: none; border: none" hx-post="/todo/{{ task.id }}/edit" hx-target="closest li" hx-swap="outerHTML">💾
+            </button>
+            <button style="background: none; border: none" hx-get="/todo/{{ task.id }}" hx-swap="outerHTML"
+                    hx-target="closest li">✖️
+            </button>
+        </form>
+    </li>
+{% endmacro %}
+
+{% if task %}
+    {{ todo_edit_task_form(task) }}
+{% endif %}

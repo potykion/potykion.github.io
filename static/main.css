@@ -75,6 +75,10 @@ div.desc {
     padding: 5px 0;
 }
 
+input {
+    padding: 10px; border-radius: 10px;
+}
+
 @media (max-width: 1024px) {
     a.link {
         font-size: 14px;

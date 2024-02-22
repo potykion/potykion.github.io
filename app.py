@@ -136,12 +136,33 @@ def create_app():
         task = task_db.create(title)
         return render_template("templates/components/todo-task.html", task=task)
 
+    @app.get("/todo/<int:task_id>/edit")
+    def get_todo_form(task_id):
+        task = task_db.get_by_id(task_id)
+
+        return render_template("templates/components/todo-edit-task.html", task=task)
+
+    @app.get("/todo/<int:task_id>")
+    def get_task(task_id):
+        task = task_db.get_by_id(task_id)
+
+        return render_template("templates/components/todo-task.html", task=task)
+
     @app.post("/todo/<int:task_id>")
     def change_todo_done(task_id):
         done = bool(flask.request.form.get(f"done"))
 
         task = task_db.get_by_id(task_id)
         task.done = done
+        task_db.update(task)
+
+        return render_template("templates/components/todo-task.html", task=task)
+    @app.post("/todo/<int:task_id>/edit")
+    def change_todo_title(task_id):
+        title = flask.request.form.get(f"title")
+
+        task = task_db.get_by_id(task_id)
+        task.title = title
         task_db.update(task)
 
         return render_template("templates/components/todo-task.html", task=task)

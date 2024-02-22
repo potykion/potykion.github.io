@@ -10,10 +10,10 @@
     <hr>
     <details>
         <summary>
-            <h2 style="display: inline-block">Форма таски</h2>
+            <h2 style="display: inline-block">Создание таски</h2>
         </summary>
 
-        <form hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
+        <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
             <div style="display: flex; flex-direction: column">
                 <div>
                     <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
@@ -21,7 +21,7 @@
                     </label>
                 </div>
 
-                <input id="title" name="title" style="padding: 10px; border-radius: 10px; margin-bottom: 10px; ">
+                <input id="title" name="title" >
             </div>
 
             <div style="display: flex; justify-content: end">
