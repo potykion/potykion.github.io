@@ -87,6 +87,11 @@ div.desc {
     small {
         font-size: 10px;
     }
+
+    .hide-on-mobile {
+        display: none !important;
+    }
+
 }
 
 button.btn {
