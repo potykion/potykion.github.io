@@ -119,7 +119,16 @@ def create_app():
     @app.get("/todo")
     def todo():
         tasks = reversed(task_db.list_all())
-        return render_template("todo/index.html", tasks=tasks)
+
+        hide_done = flask.request.args.get("hide_done")
+        if hide_done:
+            tasks = [task for task in tasks if not task.done]
+
+        return render_template(
+            "todo/index.html",
+            tasks=tasks,
+            hide_done=hide_done,
+        )
 
     @app.post("/todo")
     def create_todo():
