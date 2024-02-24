@@ -14,3 +14,7 @@ tinydb
 pydantic
 # yaml parse
 pyyaml
+
+
+# formatting
+black

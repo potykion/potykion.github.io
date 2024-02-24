@@ -7,25 +7,40 @@
 {% block main %}
     <h1>Задачки</h1>
 
-    <h2>Форма таски</h2>
-    <form hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
-        <div style="display: flex; flex-direction: column">
-            <div>
-                <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
-                    Название
-                </label>
+    <hr>
+    <details>
+        <summary>
+            <h2 style="display: inline-block">Создание таски</h2>
+        </summary>
+
+        <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
+            <div style="display: flex; flex-direction: column">
+                <div>
+                    <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
+                        Название
+                    </label>
+                </div>
+
+                <input id="title" name="title" >
             </div>
 
-            <input id="title" name="title" style="padding: 10px; border-radius: 10px; margin-bottom: 10px; ">
-        </div>
+            <div style="display: flex; justify-content: end">
+                <button class="btn" type="submit">
+                    Создать
+                </button>
+            </div>
+        </form>
+    </details>
 
-        <div style="display: flex; justify-content: end">
-            <button class="btn" type="submit">
-                Создать
-            </button>
-        </div>
-    </form>
     <hr>
+
+    <div style="display: flex; justify-content: end">
+        {% if hide_done %}
+            <a href="/todo">Показать выполненные</a>
+        {% else %}
+            <a href="/todo?hide_done=true" class="btn" type="button">Скрыть выполненные</a>
+        {% endif %}
+    </div>
 
     <ul style="list-style: none; padding-left: 0">
         {% for task in tasks %}

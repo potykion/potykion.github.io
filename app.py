@@ -138,12 +138,33 @@ def create_app():
     @app.get("/stuff/todo")
     def todo():
         tasks = reversed(task_db.list_all())
-        return render_template("stuff/todo/index.html", tasks=tasks)
+
+        hide_done = flask.request.args.get("hide_done")
+        if hide_done:
+            tasks = [task for task in tasks if not task.done]
+
+        return render_template(
+            "stuff/todo/index.html",
+            tasks=tasks,
+            hide_done=hide_done,
+        )
 
     @app.post("/todo")
     def create_todo():
         title = flask.request.form.get("title")
         task = task_db.create(title)
+        return render_template("templates/components/todo-task.html", task=task)
+
+    @app.get("/todo/<int:task_id>/edit")
+    def get_todo_form(task_id):
+        task = task_db.get_by_id(task_id)
+
+        return render_template("templates/components/todo-edit-task.html", task=task)
+
+    @app.get("/todo/<int:task_id>")
+    def get_task(task_id):
+        task = task_db.get_by_id(task_id)
+
         return render_template("templates/components/todo-task.html", task=task)
 
     @app.post("/todo/<int:task_id>")
@@ -152,6 +173,15 @@ def create_app():
 
         task = task_db.get_by_id(task_id)
         task.done = done
+        task_db.update(task)
+
+        return render_template("templates/components/todo-task.html", task=task)
+    @app.post("/todo/<int:task_id>/edit")
+    def change_todo_title(task_id):
+        title = flask.request.form.get(f"title")
+
+        task = task_db.get_by_id(task_id)
+        task.title = title
         task_db.update(task)
 
         return render_template("templates/components/todo-task.html", task=task)
