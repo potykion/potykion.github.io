@@ -3,47 +3,20 @@
 {% set desc = 'Блог по настроению' %}
 
 {% from "templates/components/note-list.html" import note_section %}
+{% from "templates/components/sections.html" import link_section %}
 
 {% block main %}
     <h1>потик-ио</h1>
     <div class="desc">блог по настроению • v4</div>
 
-    <h2><a href="/notes">Заметки</a></h2>
+{#    {{ page_section(content.notes, subsections='last', index='link', section_title_as='h2') }}#}
+{##}
+{#    {{ page_section(content.special, index='link', section_title_as='h2') }}#}
+{##}
+{#    {{ page_section(content.stuff, index='link', section_title_as='h2') }}#}
 
-    {{ note_section(last_note_section) }}
+    {{ link_section(links.soc, section_title="Соц🕸сети", section_title_as='h2') }}
 
-    <h2><a href="/special">Спешл</a></h2>
-    <ul>
-        <li>
-            <a class="link" href="/special/stats">Стата 2024</a>
-            <div class="desc">Что пил, что смотрел, что читал, во что играл, что слушал в 2024 г.</div>
 
-        </li>
-        <li>
-            <a class="link" href="/special/beer">Опять нечего пить</a>
-            <div class="desc">Разбираемся где пить и что пить (пиво)</div>
-
-        </li>
-    </ul>
-
-    <h2><a href="/stuff">Штучки</a></h2>
-    <ul>
-        <li>
-            <a class="link" href="/todo">Тудушки</a>
-
-        </li>
-        <li>
-            <a class="link" href="/stuff/recipes">Рецептики</a>
-
-        </li>
-    </ul>
-
-    <h2>Соц🕸сети</h2>
-    <ul>
-        <li><a class="link" href="https://t.me/potykion">Телега</a></li>
-        <li><a class="link" href="https://www.instagram.com/potyk.art">Рисовашки</a></li>
-        <li><a class="link" href="https://untappd.com/user/potykion">Выпивашки</a></li>
-        <li><a class="link" href="https://rateyourmusic.com/~potykion">Музыкашки</a></li>
-    </ul>
 
 {% endblock %}

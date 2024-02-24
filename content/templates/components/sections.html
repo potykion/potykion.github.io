@@ -1,0 +1,12 @@
+{#{% macro page_section(content.notes, subsections='last', index='link', section_title_as='h2') %}#}
+{#{% endmacro %}#}
+
+
+{% macro link_section(links, section_title, section_title_as='h2') %}
+    <{{ section_title_as }}>{{ section_title }}</{{ section_title_as }}>
+    <ul>
+        {% for link in links %}
+            <li><a class="link" href="{{ link.url }}">{{ link.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endmacro %}

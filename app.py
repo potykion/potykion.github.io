@@ -1,3 +1,4 @@
+import dataclasses
 import os
 from pathlib import Path
 
@@ -6,12 +7,17 @@ import frontmatter
 import mistune
 from flask import Flask, render_template, render_template_string
 from tinydb import TinyDB
-from tinydb.storages import MemoryStorage
 
 from potyk_io_back.notes import make_note_index, NoteDb
-from potyk_io_back.todo import Task, TodoRepo
+from potyk_io_back.todo import TodoRepo
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
+
+
+@dataclasses.dataclass
+class Link:
+    url: str
+    name: str
 
 
 def create_app():
@@ -30,7 +36,16 @@ def create_app():
     @app.route("/")
     def index():
         return render_template(
-            "index.html", last_note_section=note_db.get_last_section()
+            "index.html",
+            last_note_section=note_db.get_last_section(),
+            links=dict(
+                soc=[
+                    Link("https://t.me/potykion", "Телега"),
+                    Link("https://www.instagram.com/potyk.art", "Рисовашки"),
+                    Link("https://untappd.com/user/potykion", "Выпивашки"),
+                    Link("https://rateyourmusic.com/~potykion", "Музыкашки"),
+                ]
+            ),
         )
 
     @app.route("/notes")
