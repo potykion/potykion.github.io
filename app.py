@@ -8,6 +8,7 @@ import mistune
 from flask import Flask, render_template, render_template_string
 from tinydb import TinyDB
 
+from potyk_io_back.content import read_content
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.todo import TodoRepo
 
@@ -25,6 +26,8 @@ def create_app():
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
     with app.app_context():
+        content = read_content(Path(app.template_folder))
+
         db = TinyDB(
             "db.json",
         )
@@ -37,7 +40,8 @@ def create_app():
     def index():
         return render_template(
             "index.html",
-            last_note_section=note_db.get_last_section(),
+            # last_note_section=note_db.get_last_section(),
+            content=content,
             links=dict(
                 soc=[
                     Link("https://t.me/potykion", "Телега"),
@@ -131,10 +135,10 @@ def create_app():
         else:
             return render_template(template, **ctx)
 
-    @app.get("/todo")
+    @app.get("/stuff/todo")
     def todo():
         tasks = reversed(task_db.list_all())
-        return render_template("todo/index.html", tasks=tasks)
+        return render_template("stuff/todo/index.html", tasks=tasks)
 
     @app.post("/todo")
     def create_todo():

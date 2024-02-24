@@ -1,5 +1,50 @@
-{#{% macro page_section(content.notes, subsections='last', index='link', section_title_as='h2') %}#}
-{#{% endmacro %}#}
+{% macro page_section(section, subsections=None, index='link', section_title_as='h2') %}
+    {% set subsection_title_as = 'h3' if section_title_as == 'h2' else 'div' %}
+
+
+    <{{ section_title_as }}>
+    {% if index == 'link' %}
+        <a href="/{{ section.key }}">{{ section.title }}</a>
+    {% else %}
+        {{ section.title }}
+    {% endif %}
+
+    {% if section.dates %}<span style="color: #c5c5c5; font-size: 16px ">({{ section.dates }})</span>{% endif %}
+
+    </{{ section_title_as }}>
+
+    {% if section.pages %}
+        <ul>
+            {% for page in section.pages %}
+                <li>
+                    <a class="link" href="{{ page.url }}">{{ page.title }}</a>
+                    <div class="desc">{{ page.desc }}</div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if section.subsections %}
+        {% if subsections == 'last' %}
+            {% for subsection in [section.subsections[-1]] %}
+                {{ page_section(subsection, index=None, section_title_as=subsection_title_as ) }}
+            {% endfor %}
+        {% elif subsections == 'index' %}
+            <ul>
+                {% for subsection in section.subsections %}
+                    <li>
+                        <a class="link" href="{{ subsection.url }}">{{ subsection.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+             {% for subsection in section.subsections %}
+                {{ page_section(subsection, index=None, section_title_as=subsection_title_as ) }}
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+
+{% endmacro %}
 
 
 {% macro link_section(links, section_title, section_title_as='h2') %}

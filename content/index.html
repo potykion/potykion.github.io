@@ -1,19 +1,18 @@
 {% extends "templates/base.html" %}
 {% set title = 'Домашняя' %}
-{% set desc = 'Блог по настроению' %}
+{% set desc = 'блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4' %}
 
-{% from "templates/components/note-list.html" import note_section %}
-{% from "templates/components/sections.html" import link_section %}
+{% from "templates/components/sections.html" import link_section,page_section %}
 
 {% block main %}
     <h1>потик-ио</h1>
-    <div class="desc">блог по настроению • v4</div>
+    <div class="desc">блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4</div>
 
-{#    {{ page_section(content.notes, subsections='last', index='link', section_title_as='h2') }}#}
-{##}
-{#    {{ page_section(content.special, index='link', section_title_as='h2') }}#}
-{##}
-{#    {{ page_section(content.stuff, index='link', section_title_as='h2') }}#}
+    {{ page_section(content.get_subsection('notes'), subsections='last') }}
+
+    {{ page_section(content.get_subsection('special') ) }}
+
+    {{ page_section(content.get_subsection('stuff'), subsections='index' ) }}
 
     {{ link_section(links.soc, section_title="Соц🕸сети", section_title_as='h2') }}
 
