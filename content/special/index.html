@@ -1,23 +1,11 @@
 
 {% extends "templates/base.html" %}
-{% set title = 'Спешал' %}
 
-{% from "templates/components/note-list.html" import note_section %}
+{% from "templates/components/sections.html" import link_section,page_section %}
 
 {% block main %}
-    <h1>Спешл</h1>
-    <ul>
-        <li>
-            <a class="link" href="/special/stats">Стата 2024</a>
-                <div class="desc">Что читал, что смотрел, во что играл и что пил за 2024 г.</div>
+        {{ page_section(special, index=None, section_title_as='h1') }}
 
-        </li>
-     <li>
-            <a class="link" href="/special/beer">Опять нечего пить</a>
-                <div class="desc">Разбираемся где пить и что пить (пиво)</div>
-
-        </li>
-    </ul>
 
 
 

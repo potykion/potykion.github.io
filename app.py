@@ -54,11 +54,11 @@ def create_app():
 
     @app.route("/notes")
     def notes():
-        return render_template("notes/index.html", note_sections=note_db.list_all())
+        return render_template("notes/index.html", notes=content.get_subsection('notes'))
 
     @app.route("/special")
     def special():
-        return render_template("special/index.html")
+        return render_template("special/index.html", special=content.get_subsection('special'))
 
     @app.route("/notes/<note_key>")
     def get_note(note_key: str):
@@ -116,7 +116,7 @@ def create_app():
 
     @app.get("/stuff")
     def stuff():
-        return render_template("stuff/index.html")
+        return render_template("stuff/index.html", stuff=content.get_subsection('stuff'))
 
     @app.get("/stuff/recipes")
     def stuff_recipes():

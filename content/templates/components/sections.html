@@ -1,5 +1,13 @@
-{% macro page_section(section, subsections=None, index='link', section_title_as='h2') %}
-    {% set subsection_title_as = 'h3' if section_title_as == 'h2' else 'div' %}
+{# section: Секция с подсекциями/страницами, напр. Спешл #}
+{# subsections: Как выводить подсекции: links - как ссылки на подразделы, last - только посл. подсекцию, None (по умол.) - page_section рекурсивно (подсекции и страницы)  #}
+{% macro page_section(section,subsections=None,index='link',section_title_as='h2') %}
+
+    {% set subsection_title_as = 'div' %}
+    {% if section_title_as == 'h1' %}
+        {% set subsection_title_as = 'h2' %}
+    {% elif section_title_as == 'h2' %}
+        {% set subsection_title_as = 'h3' %}
+    {% endif %}
 
 
     <{{ section_title_as }}>
@@ -29,7 +37,7 @@
             {% for subsection in [section.subsections[-1]] %}
                 {{ page_section(subsection, index=None, section_title_as=subsection_title_as ) }}
             {% endfor %}
-        {% elif subsections == 'index' %}
+        {% elif subsections == 'links' %}
             <ul>
                 {% for subsection in section.subsections %}
                     <li>
@@ -38,7 +46,7 @@
                 {% endfor %}
             </ul>
         {% else %}
-             {% for subsection in section.subsections %}
+            {% for subsection in section.subsections %}
                 {{ page_section(subsection, index=None, section_title_as=subsection_title_as ) }}
             {% endfor %}
         {% endif %}
