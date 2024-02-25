@@ -34,7 +34,7 @@
 
     {% if section.subsections %}
         {% if subsections == 'last' %}
-            {% for subsection in [section.subsections[-1]] %}
+            {% for subsection in [section.subsections[0]] %}
                 {{ page_section(subsection, index=None, section_title_as=subsection_title_as ) }}
             {% endfor %}
         {% elif subsections == 'links' %}

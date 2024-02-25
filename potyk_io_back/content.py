@@ -74,11 +74,11 @@ def _parse_section(key, walk, content_path):
         url=make_relative_path(path, content_path),
         title=title,
         dates=dates,
-        pages=files and _parse_files(files, path, content_path),
+        pages=(files and _parse_files(files, path, content_path))[::-1],
         subsections=[
             _parse_section(sub_section, walk, content_path)
             for sub_section in sub_sections
-        ],
+        ][::-1],
     )
 
     return section
