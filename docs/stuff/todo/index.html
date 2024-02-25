@@ -20,7 +20,8 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/output.css">
 
     
     
@@ -33,26 +34,26 @@
 
 
     <header>
-        <div style="display: flex; align-items: center; padding: 0 3px ">
-            <a class="link" href="/">потик.ио</a>
+        <div class="flex p-1 md:p-2 ">
+            <a class="btn btn-sm md:btn-md  btn-link " href="/">потик.ио</a>
 
 
             <div style="display: flex; align-items: center" class="hide-on-mobile">
-                |
-                <a class="link" href="/notes">заметки</a>|
-                <a class="link" href="/special">спешл</a> |
-                <a class="link" href="/stuff">штучки</a>
+                
+                <a class="btn btn-link" href="/notes">заметки</a>
+                <a class="btn btn-link" href="/special">спешл</a> 
+                <a class="btn btn-link" href="/stuff">штучки</a>
             </div>
 
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
-               style="text-decoration: none; padding: 5px 10px; border-radius: 10px; color: white; background: rebeccapurple"
-               class="link">Помоги мне</a>
+
+               class="btn btn-sm md:btn-md btn-primary">Помоги мне</a>
         </div>
-        <hr>
+    <hr>
     </header>
 
-<main>
+<main class="prose md:prose-xl  max-w-none p-4 md:p-6">
     <article>
         
         
@@ -95,6 +96,102 @@
     </div>
 
     <ul style="list-style: none; padding-left: 0">
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_17" type="checkbox" 
+                   hx-post="/todo/17"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_17"
+                   style="flex-grow: 1; ">
+                Список блюд, которые ел (Типа аджапсандал - это закуска из баклажанов)
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/17/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/17" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_16" type="checkbox" 
+                   hx-post="/todo/16"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_16"
+                   style="flex-grow: 1; ">
+                Нормальный вишлист пива
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/16/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/16" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_15" type="checkbox" 
+                   hx-post="/todo/15"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_15"
+                   style="flex-grow: 1; ">
+                Спешал: рейты рестиков и снеков, а также раздел обзоров на еду
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/15/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/15" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_14" type="checkbox" 
+                   hx-post="/todo/14"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_14"
+                   style="flex-grow: 1; ">
+                #potyk-io-front: daisyui
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/14/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/14" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
         
             
     <li>
@@ -412,7 +509,7 @@
 
     </article>
 </main>
-<footer>
+<footer class="px-4 md:px-6">
     <div style="display: flex; justify-content: space-between">
         <div>
             

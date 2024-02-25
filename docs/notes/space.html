@@ -24,7 +24,8 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/output.css">
 
     
     
@@ -37,32 +38,32 @@
 
 
     <header>
-        <div style="display: flex; align-items: center; padding: 0 3px ">
-            <a class="link" href="/">потик.ио</a>
+        <div class="flex p-1 md:p-2 ">
+            <a class="btn btn-sm md:btn-md  btn-link " href="/">потик.ио</a>
 
 
             <div style="display: flex; align-items: center" class="hide-on-mobile">
-                |
-                <a class="link" href="/notes">заметки</a>|
-                <a class="link" href="/special">спешл</a> |
-                <a class="link" href="/stuff">штучки</a>
+                
+                <a class="btn btn-link" href="/notes">заметки</a>
+                <a class="btn btn-link" href="/special">спешл</a> 
+                <a class="btn btn-link" href="/stuff">штучки</a>
             </div>
 
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
-               style="text-decoration: none; padding: 5px 10px; border-radius: 10px; color: white; background: rebeccapurple"
-               class="link">Помоги мне</a>
+
+               class="btn btn-sm md:btn-md btn-primary">Помоги мне</a>
         </div>
-        <hr>
+    <hr>
     </header>
 
-<main>
+<main class="prose md:prose-xl  max-w-none p-4 md:p-6">
     <article>
         
             <h1>спейс</h1>
         
         
-            <cite>2024-01-27 00:00:00</cite>
+            <cite >2024-01-27 00:00:00</cite>
         
         
 
@@ -104,11 +105,11 @@ potyk-life я пытаюсь так делать - я сложил в одну �
 
     </article>
 </main>
-<footer>
+<footer class="px-4 md:px-6">
     <div style="display: flex; justify-content: space-between">
         <div>
             
-                <a href="/notes/galera">
+                <a class="btn btn-link" href="/notes/galera">
                     < Пред.
                 </a>
             
@@ -116,7 +117,7 @@ potyk-life я пытаюсь так делать - я сложил в одну �
         </div>
         <div>
             
-                <a href="/notes/useful">
+                <a class="btn btn-link" href="/notes/useful">
                     След. >
                 </a>
             

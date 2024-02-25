@@ -24,7 +24,8 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
-    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/output.css">
 
     
     
@@ -37,32 +38,32 @@
 
 
     <header>
-        <div style="display: flex; align-items: center; padding: 0 3px ">
-            <a class="link" href="/">потик.ио</a>
+        <div class="flex p-1 md:p-2 ">
+            <a class="btn btn-sm md:btn-md  btn-link " href="/">потик.ио</a>
 
 
             <div style="display: flex; align-items: center" class="hide-on-mobile">
-                |
-                <a class="link" href="/notes">заметки</a>|
-                <a class="link" href="/special">спешл</a> |
-                <a class="link" href="/stuff">штучки</a>
+                
+                <a class="btn btn-link" href="/notes">заметки</a>
+                <a class="btn btn-link" href="/special">спешл</a> 
+                <a class="btn btn-link" href="/stuff">штучки</a>
             </div>
 
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
-               style="text-decoration: none; padding: 5px 10px; border-radius: 10px; color: white; background: rebeccapurple"
-               class="link">Помоги мне</a>
+
+               class="btn btn-sm md:btn-md btn-primary">Помоги мне</a>
         </div>
-        <hr>
+    <hr>
     </header>
 
-<main>
+<main class="prose md:prose-xl  max-w-none p-4 md:p-6">
     <article>
         
             <h1>Рашн днб</h1>
         
         
-            <cite>2024-01-14 12:18:00</cite>
+            <cite >2024-01-14 12:18:00</cite>
         
         
 
@@ -117,11 +118,11 @@ Nais, Teddy Killers - все наши. И все в днб среде друг-�
 
     </article>
 </main>
-<footer>
+<footer class="px-4 md:px-6">
     <div style="display: flex; justify-content: space-between">
         <div>
             
-                <a href="/notes/formkit">
+                <a class="btn btn-link" href="/notes/formkit">
                     < Пред.
                 </a>
             
@@ -129,7 +130,7 @@ Nais, Teddy Killers - все наши. И все в днб среде друг-�
         </div>
         <div>
             
-                <a href="/notes/addition-to-checking">
+                <a class="btn btn-link" href="/notes/addition-to-checking">
                     След. >
                 </a>
             
