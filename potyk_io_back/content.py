@@ -9,7 +9,7 @@ import mistune
 import yaml
 from bs4 import BeautifulSoup
 from dateutil.parser import parse
-from pydantic import BaseModel, Field, root_validator, validator
+from pydantic import BaseModel, Field
 
 from potyk_io_back.notes import smart_truncate
 
@@ -65,6 +65,8 @@ def _parse_section(key, walk, content_path):
             meta = yaml.load(f, Loader=yaml.Loader)
         title = meta.get("title") or key
         dates = meta.get("dates", "")
+        if meta.get("ignore"):
+            return None
     else:
         title = key
         dates = ""
@@ -75,10 +77,10 @@ def _parse_section(key, walk, content_path):
         title=title,
         dates=dates,
         pages=(files and _parse_files(files, path, content_path))[::-1],
-        subsections=[
+        subsections=list(filter(None, [
             _parse_section(sub_section, walk, content_path)
             for sub_section in sub_sections
-        ][::-1],
+        ]))[::-1],
     )
 
     return section

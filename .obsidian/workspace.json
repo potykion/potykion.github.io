@@ -4,19 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "b4ae41379e78f695",
+        "id": "b23e533cec04ef41",
         "type": "tabs",
         "children": [
           {
-            "id": "7edc9d9c6a01c1b0",
+            "id": "2cdbf4a1a1c761db",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "content/notes/7-days/mud-fountain.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -85,7 +81,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "content/notes/7-days/mud-fountain.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +97,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "content/notes/7-days/mud-fountain.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +118,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "content/notes/7-days/mud-fountain.md"
-              }
+              "state": {}
             }
           }
         ]
@@ -146,8 +138,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7edc9d9c6a01c1b0",
+  "active": "2cdbf4a1a1c761db",
   "lastOpenFiles": [
+    "content/notes/7-days/mud-fountain.md",
+    "content/special/beer.md",
+    "content/special/beer/wishlist.md",
+    "content/special/beer/meta.yml",
+    "content/special/beer",
     "docs/CNAME",
     "docs/static/main.css",
     "docs/static/js/htmx.min.js",
@@ -166,9 +163,6 @@
     "docs/static/images/table.png",
     "docs/static/images/recipes",
     "docs/static/CNAME",
-    "docs/static/images",
-    "docs/static",
-    "docs/stuff/todo/index.html",
     "content/stuff/recipes/lavash-hotdog.md",
     "content/special/beer/mead.md",
     "content/notes/8-days/fantasies.md",
@@ -178,7 +172,6 @@
     "potyk_io_back/days-days-days.md",
     "content/notes/7-days/deleteme.md",
     "content/notes/7-days/boredom-offer.md",
-    "content/notes/7-days/mud-fountain.md",
     "content/notes/7-days/watch-later-1.md",
     "content/notes/1-again/15-01.md",
     "{{.md"
