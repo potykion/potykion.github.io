@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+    body {
+        @apply max-w-screen-2xl;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    h1 {
+        @apply !mb-0
+    }
+
+    h2 {
+        @apply !my-4
+    }
+
+    h3 {
+        @apply !my-2
+    }
+
+
+    iframe {
+        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 16/9
+    }
+
+    img {
+        width: 100%;
+        border-radius: 4px;
+        @apply !my-0
+    }
+
+
+    code {
+        background: #f3f3f3;
+        padding: 2px 4px;
+        border-radius: 5px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+
+    a.link {
+        font-weight: 600
+    }
+
+    blockquote {
+        margin-left: 0;
+        border-left: 2px solid black;
+        padding: 5px 25px;
+        font-style: italic;
+        background: #f8f8f8;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+    }
+
+    td, th {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    div.desc {
+        @apply text-gray-400 py-1;
+    }
+
+    cite {
+        @apply text-gray-400 py-1;
+
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 1024px) {
+        a.link {
+            font-size: 14px;
+        }
+
+        div.desc {
+            font-size: 14px;
+        }
+
+        small {
+            font-size: 10px;
+        }
+
+        .hide-on-mobile {
+            display: none !important;
+        }
+
+    }
+
+
+}

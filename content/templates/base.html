@@ -20,7 +20,8 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+{#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">#}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='output.css') }}">
 
     {% block static %}
     {% endblock %}
@@ -32,13 +33,13 @@
 {% from 'templates/components/header.html' import header %}
 
 {{ header() }}
-<main>
+<main class="prose md:prose-xl  max-w-none p-4 md:p-6">
     <article>
         {% if title and show_title %}
             <h1>{{ title }}</h1>
         {% endif %}
         {% if created %}
-            <cite>{{ created }}</cite>
+            <cite >{{ created }}</cite>
         {% endif %}
         {% if desc and show_desc %}
             <div class="desc">{{ desc }}</div>
@@ -48,11 +49,11 @@
         {% endblock %}
     </article>
 </main>
-<footer>
+<footer class="px-4 md:px-6">
     <div style="display: flex; justify-content: space-between">
         <div>
             {% if prev %}
-                <a href="/notes/{{ prev }}">
+                <a class="btn btn-link" href="/notes/{{ prev }}">
                     < Пред.
                 </a>
             {% endif %}
@@ -60,7 +61,7 @@
         </div>
         <div>
             {% if next %}
-                <a href="/notes/{{ next }}">
+                <a class="btn btn-link" href="/notes/{{ next }}">
                     След. >
                 </a>
             {% endif %}
