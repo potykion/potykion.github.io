@@ -1,38 +1,15 @@
 import glob
 import os
 import shutil
+from itertools import chain
 from pathlib import Path
+from urllib.parse import urljoin
+
+import flask
 
 from app import create_app
 
 app = create_app()
-
-what_to_render = [
-    ("/", "index.html"),
-    ("/notes", "notes/index.html"),
-    *[
-        (f"/notes/{note_key}", f"notes/{note_key}.html")
-        for note_key in [
-            os.path.basename(note).rsplit(".")[0]
-            for note in glob.glob(f"{app.template_folder}/notes/**/*.md")
-            + glob.glob(f"{app.template_folder}/notes/**/*.html")
-        ]
-    ],
-    ("/special", "special/index.html"),
-    *[
-        (f"/special/{note_key}", f"special/{note_key}.html")
-        for note_key in [
-            os.path.basename(note).rsplit(".")[0]
-            for note in glob.glob(
-                f"{app.template_folder}/special/**/*.md", recursive=True
-            )
-            + glob.glob(f"{app.template_folder}/special/**/*.html", recursive=True)
-        ]
-    ],
-    ("/stuff", "stuff/index.html"),
-    ("/stuff/recipes", "stuff/recipes/index.html"),
-    ("/stuff/recipes/lavash-hotdog", "stuff/recipes/lavash-hotdog.html"),
-]
 
 
 def make_server():
@@ -64,7 +41,7 @@ def make_filename(article):
 
 
 def write_article(dist, filename):
-    path = dist / filename
+    path = dist / filename.strip('/')
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     with open(path, "w", encoding="utf-8") as f:
@@ -75,11 +52,33 @@ def copy_static(dist):
     shutil.copytree("./static", dist / "static", symlinks=False, ignore=None)
 
 
+def _add_section_to_render(section, with_section=True):
+    return [
+        *(
+            [(section.url, section.url + "/index.html")]
+            if with_section
+            else []
+        ),
+        *((page.url, f"{page.url}.html") for page in section.pages),
+        *chain.from_iterable(
+            (
+                _add_section_to_render(sub, with_section=section.key != "notes")
+                for sub in section.subsections
+            )
+        ),
+    ]
+
+
 if __name__ == "__main__":
     server = make_server()
 
     dist = Path("docs")
     clean_and_create_dir(dist)
+
+    with app.app_context():
+        content_section = app.config["CONTENT"]
+
+    what_to_render = _add_section_to_render(content_section)
 
     for index, route_and_path in enumerate(what_to_render):
         route, path = route_and_path

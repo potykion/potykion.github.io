@@ -3,6 +3,6 @@
 
 {% block main %}
 
-        {{ page_section(notes, index=None, section_title_as='h1' ) }}
+        {{ page_section(content.get_subsection('notes'), index=None, section_title_as='h1' ) }}
 
 {% endblock %}

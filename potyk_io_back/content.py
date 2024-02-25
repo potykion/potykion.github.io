@@ -93,7 +93,7 @@ def parse_dt(raw):
 
 
 def make_relative_path(path, root) -> str:
-    return path[len(str(root)) :].replace("\\", "/")
+    return path[len(str(root)) :].replace("\\", "/") or '/'
 
 
 def _parse_files(files, dir_path, content_path):

@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region SEO -->
+    <title>todo / потик-ио</title>
+    <meta name="description" content=""/>
+
+    <meta property="og:title" content="todo">
+    <meta property="og:description" content="">
+    <!-- endregion SEO -->
+
+    <!-- region Styles -->
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    <link rel="stylesheet" type="text/css" href="/static/main.css">
+
+    
+    
+    <!-- endregion Styles -->
+</head>
+<body>
+
+
+
+
+
+    <header>
+        <div style="display: flex; align-items: center; padding: 0 3px ">
+            <a class="link" href="/">потик.ио</a>
+
+
+            <div style="display: flex; align-items: center" class="hide-on-mobile">
+                |
+                <a class="link" href="/notes">заметки</a>|
+                <a class="link" href="/special">спешл</a> |
+                <a class="link" href="/stuff">штучки</a>
+            </div>
+
+            <div style="flex-grow: 1"></div>
+            <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
+               style="text-decoration: none; padding: 5px 10px; border-radius: 10px; color: white; background: rebeccapurple"
+               class="link">Помоги мне</a>
+        </div>
+        <hr>
+    </header>
+
+<main>
+    <article>
+        
+        
+        
+
+        
+    <h1>Задачки</h1>
+
+    <hr>
+    <details>
+        <summary>
+            <h2 style="display: inline-block">Создание таски</h2>
+        </summary>
+
+        <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
+            <div style="display: flex; flex-direction: column">
+                <div>
+                    <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
+                        Название
+                    </label>
+                </div>
+
+                <input id="title" name="title" >
+            </div>
+
+            <div style="display: flex; justify-content: end">
+                <button class="btn" type="submit">
+                    Создать
+                </button>
+            </div>
+        </form>
+    </details>
+
+    <hr>
+
+    <div style="display: flex; justify-content: end">
+        
+            <a href="/stuff/todo?hide_done=true" class="btn" type="button">Скрыть выполненные</a>
+        
+    </div>
+
+    <ul style="list-style: none; padding-left: 0">
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_13" type="checkbox" 
+                   hx-post="/todo/13"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_13"
+                   style="flex-grow: 1; ">
+                #potyk-io-back replace relative static links to images to {{ url_for }}
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/13/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/13" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_12" type="checkbox" 
+                   hx-post="/todo/12"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_12"
+                   style="flex-grow: 1; ">
+                #todo: # auto complete
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/12/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/12" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_11" type="checkbox" 
+                   hx-post="/todo/11"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_11"
+                   style="flex-grow: 1; ">
+                #todo: categories
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/11/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/11" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_10" type="checkbox" checked 
+                   hx-post="/todo/10"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_10"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                #todo: editing eee
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/10/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/10" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_9" type="checkbox" 
+                   hx-post="/todo/9"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_9"
+                   style="flex-grow: 1; ">
+                #potyk-io-back: habit tracker
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/9/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/9" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_8" type="checkbox" checked 
+                   hx-post="/todo/8"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_8"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                #potyk-io-back: content-tree, auto page discovery
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/8/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/8" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_7" type="checkbox" 
+                   hx-post="/todo/7"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_7"
+                   style="flex-grow: 1; ">
+                #potyk-io-back: tags
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/7/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/7" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_6" type="checkbox" checked 
+                   hx-post="/todo/6"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_6"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                #todo: hide done
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/6/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/6" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_5" type="checkbox" 
+                   hx-post="/todo/5"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_5"
+                   style="flex-grow: 1; ">
+                #todo: sqlite?
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/5/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/5" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_4" type="checkbox" checked 
+                   hx-post="/todo/4"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_4"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                #todo: created dt + sort desc
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/4/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/4" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_3" type="checkbox" 
+                   hx-post="/todo/3"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_3"
+                   style="flex-grow: 1; ">
+                #potyk-io-back: blueprints: content, todo, recipes-form
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/3/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/3" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_2" type="checkbox" checked 
+                   hx-post="/todo/2"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_2"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                Обзор на Рыцари Справедливости
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/2/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/2" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+            
+    <li>
+        <div style="display: flex">
+
+            <input name="done" id="done_1" type="checkbox" checked 
+                   hx-post="/todo/1"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+            >
+            <label for="done_1"
+                   style="flex-grow: 1; text-decoration: line-through ">
+                Обзор на Мастер и Маргариту
+            </label>
+            <button style="background: none; border: none" hx-get="/todo/1/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button style="background: none; border: none" hx-delete="/todo/1" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+        
+    </ul>
+
+    </article>
+</main>
+<footer>
+    <div style="display: flex; justify-content: space-between">
+        <div>
+            
+
+        </div>
+        <div>
+            
+
+        </div>
+    </div>
+
+</footer>
+</body>
+
+
+    <script src="/static/js/htmx.min.js"
+            integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+            crossorigin="anonymous"></script>
+
+
+</html>

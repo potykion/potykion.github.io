@@ -26,7 +26,7 @@ def create_app():
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
     with app.app_context():
-        content = read_content(Path(app.template_folder))
+        app.config['CONTENT'] = read_content(Path(app.template_folder))
 
         db = TinyDB(
             "db.json",
@@ -36,12 +36,14 @@ def create_app():
 
         task_db = TodoRepo(db)
 
+    @app.context_processor
+    def inject_ctx():
+        return dict(content=app.config['CONTENT'])
+
     @app.route("/")
     def index():
         return render_template(
             "index.html",
-            # last_note_section=note_db.get_last_section(),
-            content=content,
             links=dict(
                 soc=[
                     Link("https://t.me/potykion", "Телега"),
@@ -54,15 +56,18 @@ def create_app():
 
     @app.route("/notes")
     def notes():
-        return render_template("notes/index.html", notes=content.get_subsection('notes'))
+        return render_template("notes/index.html", )
 
     @app.route("/special")
     def special():
-        return render_template("special/index.html", special=content.get_subsection('special'))
+        return render_template("special/index.html", )
 
     @app.route("/notes/<note_key>")
     def get_note(note_key: str):
-        note = note_db.get_note_by_key(note_key)
+        try:
+            note = note_db.get_note_by_key(note_key)
+        except StopIteration:
+            flask.abort(404)
 
         ctx = {
             "show_title": True,
@@ -116,7 +121,7 @@ def create_app():
 
     @app.get("/stuff")
     def stuff():
-        return render_template("stuff/index.html", stuff=content.get_subsection('stuff'))
+        return render_template("stuff/index.html", )
 
     @app.get("/stuff/recipes")
     def stuff_recipes():
