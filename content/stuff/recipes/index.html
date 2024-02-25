@@ -1,17 +1,12 @@
 {% extends "templates/base.html" %}
 
 {% set title = 'Рецептики' %}
+
+{% from "templates/components/sections.html" import link_section,page_section %}
+
 {% block main %}
 
-    <h1>Рецептики</h1>
 
-    <ul>
-        <li>
-            <a href="/stuff/recipes/lavash-hotdog">Хот-дог в лаваше</a>
-        </li>
-        <li>
-            <a href="/stuff/recipes/berlin-liver">Печень по-берлински</a>
-        </li>
-    </ul>
+            {{ page_section(content.get_subsection('stuff').get_subsection('recipes'), index=None, section_title_as='h1') }}
 
 {% endblock %}

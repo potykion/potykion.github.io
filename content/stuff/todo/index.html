@@ -1,44 +1,48 @@
 {% extends 'templates/base.html' %}
 
 {% from 'templates/components/todo-task.html' import todo_task %}
+{% from 'templates/components/icons.html' import chevron_down %}
 
 {% set title='todo' %}
 
 {% block main %}
     <h1>Задачки</h1>
 
-    <hr>
-    <details>
-        <summary>
-            <h2 style="display: inline-block">Создание таски</h2>
-        </summary>
+    <div class="collapse collapse-arrow bg-neutral-50 my-4">
+        <input type="checkbox"/>
+        <div class="collapse-title text-xl font-medium flex items-center space-x-2  " >
+            <span>Создание таски</span>
+        </div>
+        <div class="collapse-content">
+            <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul"
+                  hx-swap="afterbegin" hx-on::after-request="this.reset()">
+                <div style="display: flex; flex-direction: column">
+                    <div>
+                        <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
+                            Название
+                        </label>
+                    </div>
 
-        <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul" hx-swap="afterbegin" hx-on::after-request="this.reset()">
-            <div style="display: flex; flex-direction: column">
-                <div>
-                    <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
-                        Название
-                    </label>
+                    <input id="title" required name="title" class="input input-bordered ">
                 </div>
 
-                <input id="title" name="title" >
-            </div>
+                <div style="display: flex; justify-content: end">
+                    <button class="btn btn-primary" type="submit">
+                        Создать
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-            <div style="display: flex; justify-content: end">
-                <button class="btn" type="submit">
-                    Создать
-                </button>
-            </div>
-        </form>
-    </details>
 
-    <hr>
+
 
     <div style="display: flex; justify-content: end">
         {% if hide_done %}
-            <a href="/stuff/todo">Показать выполненные</a>
+            <a href="/stuff/todo" class="btn btn-sm">🙉 Показать выполненные</a>
         {% else %}
-            <a href="/stuff/todo?hide_done=true" class="btn" type="button">Скрыть выполненные</a>
+            <a href="/stuff/todo?hide_done=true" class="btn btn-sm" type="button">🙈 Скрыть выполненные</a>
         {% endif %}
     </div>
 

@@ -107,6 +107,18 @@ def create_app():
             return _wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
+    @app.route("/special/beer/<page_key>")
+    def get_beer(page_key: str):
+        ctx = {"show_title": True, "show_desc": True}
+
+        template = make_article_template_name(f"special/beer/{page_key}")
+        if template.endswith(".md"):
+
+            html, md_ctx = _render_md_as_html(template)
+            ctx.update(md_ctx)
+            return _wrap_html_to_base_template(html, ctx)
+        else:
+            return render_template(template, **ctx)
 
     def make_article_template_name(article):
         if article.endswith(SUPPORTED_ARTICLE_TYPES):

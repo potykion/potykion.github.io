@@ -62,7 +62,7 @@ def _add_section_to_render(section, with_section=True):
         *((page.url, f"{page.url}.html") for page in section.pages),
         *chain.from_iterable(
             (
-                _add_section_to_render(sub, with_section=section.key != "notes")
+                _add_section_to_render(sub, with_section=section.key != "notes" and section.key != 'special')
                 for sub in section.subsections
             )
         ),

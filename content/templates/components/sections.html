@@ -42,6 +42,8 @@
                 {% for subsection in section.subsections %}
                     <li>
                         <a class="link" href="{{ subsection.url }}">{{ subsection.title }}</a>
+                    {% if subsection.desc %}<div class="desc">{{ subsection.desc }}</div>{% endif %}
+
                     </li>
                 {% endfor %}
             </ul>

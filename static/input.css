@@ -60,15 +60,13 @@
     }
 
     table {
-        width: 100%;
-        border-collapse: collapse;
-
+        @apply table table-zebra
+    }
+    td {
+        @apply !p-1
     }
 
-    td, th {
-        border: 1px solid black;
-        padding: 10px;
-    }
+
 
     div.desc {
         @apply text-gray-400 py-1;

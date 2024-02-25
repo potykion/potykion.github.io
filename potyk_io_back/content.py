@@ -2,6 +2,7 @@ import datetime
 import enum
 import os
 from pathlib import Path
+from typing import Literal
 
 import flask
 import frontmatter
@@ -36,6 +37,7 @@ class Section(BaseModel):
     key: str
     url: str
     title: str
+    desc: str | None = None
     dates: str
     subsections: list["Section"] = Field(default_factory=list)
     pages: list[Page] = Field(default_factory=list)
@@ -56,7 +58,7 @@ def _parse_section(key, walk, content_path):
     while "templates" in path:
         path, sub_sections, files = next(walk)
 
-    files = [file for file in files if file != "index.html"]
+    files = [file for file in files if file != "index.html" and file != "index.md"]
 
     meta_yml = any(file == "meta.yml" for file in files)
     if meta_yml:
@@ -67,21 +69,31 @@ def _parse_section(key, walk, content_path):
         dates = meta.get("dates", "")
         if meta.get("ignore"):
             return None
+        order = meta.get('order')
+        desc = meta.get('desc')
     else:
         title = key
         dates = ""
+        order=None
+        desc = ''
 
     section = Section(
         key=key,
+        desc=desc,
         url=make_relative_path(path, content_path),
         title=title,
         dates=dates,
-        pages=(files and _parse_files(files, path, content_path))[::-1],
+        pages=(files and _parse_files(files, path, content_path)),
         subsections=list(filter(None, [
             _parse_section(sub_section, walk, content_path)
             for sub_section in sub_sections
-        ]))[::-1],
+        ])),
     )
+    if order == 'desc':
+        section.pages = section.pages[::-1]
+        section.subsections = section.subsections[::-1]
+
+
 
     return section
 
