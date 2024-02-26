@@ -1,6 +1,10 @@
 ---
 title: Посмотреть позже 2
 created: 2024-02-22 18:09
+tags:
+  - books
+  - yt
+  - music
 ---
 
 

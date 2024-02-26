@@ -31,6 +31,7 @@ class Page(BaseModel):
     desc: str
     url: str
     created: datetime.datetime
+    tags: list[str] = Field(default_factory=list)
 
 
 class Section(BaseModel):
@@ -135,13 +136,13 @@ def _parse_files(files, dir_path, content_path):
                 desc = smart_truncate(soup.get_text())
                 if md.get("created"):
                     created = parse_dt(md.get("created"))
-
+            tags = md.get('tags') or []
         elif ext == PageExt.html:
             html = flask.render_template(template_path)
             soup = BeautifulSoup(html, "html.parser")
             title = soup.find("meta", property="og:title").get("content")
             desc = soup.find("meta", property="og:description").get("content")
-
+            tags= []
         else:
             raise ValueError(f"Cannot parse file with such ext: {ext}")
 
@@ -154,6 +155,7 @@ def _parse_files(files, dir_path, content_path):
                 desc=desc,
                 created=created,
                 url=url,
+                tags=tags,
             )
         )
     return pages

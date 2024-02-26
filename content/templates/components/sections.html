@@ -25,7 +25,15 @@
         <ul>
             {% for page in section.pages %}
                 <li>
+                <div>
+
                     <a class="link" href="{{ page.url }}">{{ page.title }}</a>
+                    {% for tag in page.tags %}
+                        <sup class="badge badge-primary">{{ tag }}</sup>
+
+                        {% endfor %}
+                </div>
+
                     <div class="desc">{{ page.desc }}</div>
                 </li>
             {% endfor %}

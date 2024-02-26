@@ -20,7 +20,7 @@
           rel="stylesheet">
     <!-- endregion Noto Sans Font -->
 
-{#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">#}
+    {#    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">#}
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='output.css') }}">
 
     {% block static %}
@@ -38,9 +38,15 @@
         {% if title and show_title %}
             <h1>{{ title }}</h1>
         {% endif %}
+        <div>
+            {% for tag in note_tags %}
+                <span class="badge badge-lg badge-primary">{{ tag }}</span>
+            {% endfor %}
+        </div>
         {% if created %}
-            <cite >{{ created }}</cite>
+            <cite>{{ created }}</cite>
         {% endif %}
+
         {% if desc and show_desc %}
             <div class="desc">{{ desc }}</div>
         {% endif %}

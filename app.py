@@ -76,6 +76,7 @@ def create_app():
         ctx = {
             "show_title": True,
             **note.model_dump(),
+            "note_tags": note.tags,
         }
 
         html, _ = _render_md_as_html(note.template_path)

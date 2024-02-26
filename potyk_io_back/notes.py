@@ -36,6 +36,7 @@ class Note(BaseModel):
     desc: str
     next: str | None = None
     prev: str | None = None
+    tags: list[str] = Field(default_factory=list)
 
     def __post_init__(self):
         if isinstance(self.created, datetime.date):
@@ -98,6 +99,7 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
                 title=md["title"],
                 created=md["created"],
                 desc=smart_truncate(text),
+                tags=md.get('tags') or [],
             )
             section.notes.append(note)
 
