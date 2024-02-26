@@ -26,7 +26,7 @@ def create_app():
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
     with app.app_context():
-        app.config['CONTENT'] = read_content(Path(app.template_folder))
+        app.config["CONTENT"] = read_content(Path(app.template_folder))
 
         db = TinyDB(
             "db.json",
@@ -38,7 +38,7 @@ def create_app():
 
     @app.context_processor
     def inject_ctx():
-        return dict(content=app.config['CONTENT'])
+        return dict(content=app.config["CONTENT"])
 
     @app.route("/")
     def index():
@@ -56,11 +56,15 @@ def create_app():
 
     @app.route("/notes")
     def notes():
-        return render_template("notes/index.html", )
+        return render_template(
+            "notes/index.html",
+        )
 
     @app.route("/special")
     def special():
-        return render_template("special/index.html", )
+        return render_template(
+            "special/index.html",
+        )
 
     @app.route("/notes/<note_key>")
     def get_note(note_key: str):
@@ -107,6 +111,7 @@ def create_app():
             return _wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
+
     @app.route("/special/beer/<page_key>")
     def get_beer(page_key: str):
         ctx = {"show_title": True, "show_desc": True}
@@ -133,7 +138,9 @@ def create_app():
 
     @app.get("/stuff")
     def stuff():
-        return render_template("stuff/index.html", )
+        return render_template(
+            "stuff/index.html",
+        )
 
     @app.get("/stuff/recipes")
     def stuff_recipes():
@@ -156,7 +163,7 @@ def create_app():
     def todo():
         tasks = reversed(task_db.list_all())
 
-        hide_done = flask.request.args.get("hide_done")
+        hide_done = flask.request.args.get("hide_done", "true") == "true"
         if hide_done:
             tasks = [task for task in tasks if not task.done]
 
@@ -193,6 +200,7 @@ def create_app():
         task_db.update(task)
 
         return render_template("templates/components/todo-task.html", task=task)
+
     @app.post("/todo/<int:task_id>/edit")
     def change_todo_title(task_id):
         title = flask.request.form.get(f"title")
@@ -210,5 +218,32 @@ def create_app():
         task_db.delete(task)
 
         return ""
+
+    @app.get("/stuff/habits")
+    def habits_index():
+        habits = [
+            "жить без дешевого дофамина",
+            "не держаться за хуй, не дергать заусенцы",
+            "почитать",
+            "творить (рисовать/писать)",
+            "Завести рецепт",
+            "Делать сложные задачи (рбкн)",
+            "Делать сложные задачи (аг)",
+            "спортик",
+            "взвеситься",
+            "медитация",
+            "Погулять 30 мин (выходить на улицу)",
+            "есть овоща (хотя бы 1 раз в день)",
+            "есть белок (хотя бы 1 раз в день)",
+            "есть сложные углеводы (хотя бы 1 раз в день)",
+            "Помыть 1 предмет посуды / поставить в посудомойку",
+            "творить (кодить не по работе)",
+            "Отмечать что меня увлекает",
+        ]
+
+        return render_template(
+            "stuff/habits/index.html",
+            habits=habits,
+        )
 
     return app

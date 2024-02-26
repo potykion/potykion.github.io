@@ -27,7 +27,7 @@
     {% endblock %}
     <!-- endregion Styles -->
 </head>
-<body>
+<body class="{% if fullwidth %}{% else %}max-w-screen-2xl{% endif %}">
 
 
 {% from 'templates/components/header.html' import header %}

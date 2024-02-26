@@ -5,7 +5,6 @@
 
 @layer base {
     body {
-        @apply max-w-screen-2xl;
         margin-left: auto;
         margin-right: auto;
     }
@@ -60,10 +59,10 @@
     }
 
     table {
-        @apply table table-zebra
+        @apply table table-zebra table-sm
     }
     td {
-        @apply !p-1
+        @apply !px-2
     }
 
 

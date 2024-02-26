@@ -40,7 +40,7 @@
 
     <div style="display: flex; justify-content: end">
         {% if hide_done %}
-            <a href="/stuff/todo" class="btn btn-sm">🙉 Показать выполненные</a>
+            <a href="/stuff/todo?hide_done=false" class="btn btn-sm">🙉 Показать выполненные</a>
         {% else %}
             <a href="/stuff/todo?hide_done=true" class="btn btn-sm" type="button">🙈 Скрыть выполненные</a>
         {% endif %}

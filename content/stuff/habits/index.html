@@ -1,0 +1,44 @@
+{% extends 'templates/base.html' %}
+
+{% from 'templates/scripts.html' import htmx %}
+
+{% set title='habits' %}
+{% set fullwidth=True %}
+
+{% block main %}
+    <h1>Привычки</h1>
+
+    <div class="overflow-auto">
+
+        <table class="table-fixed w-fit">
+            <thead>
+            <tr>
+                <th class="w-28">Дата / Привычка</th>
+                {% for habit in habits %}
+                    <th class="w-32 text-wrap ">{{ habit }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+            {% for date in range(10) %}
+
+            <tr>
+                <td class="">2024-02-25</td>
+                {% for habit in habits %}
+                    <td class="bg-green-200 text-center  border-neutral-400 border  relative ">
+                        <span >➕</span>
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 opacity-0 hover:opacity-100">➖</button>
+                    </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    {{ htmx() }}
+{% endblock %}
