@@ -27,7 +27,7 @@
     
     <!-- endregion Styles -->
 </head>
-<body>
+<body class="max-w-screen-2xl">
 
 
 
@@ -94,7 +94,7 @@
 
     <div style="display: flex; justify-content: end">
         
-            <a href="/stuff/todo?hide_done=true" class="btn btn-sm" type="button">🙈 Скрыть выполненные</a>
+            <a href="/stuff/todo?hide_done=false" class="btn btn-sm">🙉 Показать выполненные</a>
         
     </div>
 
@@ -130,32 +130,6 @@
     <li>
         <div class="flex items-center space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_16" type="checkbox" checked 
-                   hx-post="/todo/16"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_16"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                Нормальный вишлист пива
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/16/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/16" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
             <input class="checkbox checkbox-sm" name="done" id="done_15" type="checkbox" 
                    hx-post="/todo/15"
                    hx-trigger="click"
@@ -172,32 +146,6 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/15" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_14" type="checkbox" checked 
-                   hx-post="/todo/14"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_14"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                #potyk-io-front: daisyui
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/14/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/14" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -286,32 +234,6 @@
     <li>
         <div class="flex items-center space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_10" type="checkbox" checked 
-                   hx-post="/todo/10"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_10"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                #todo: editing eee
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/10/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/10" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
             <input class="checkbox checkbox-sm" name="done" id="done_9" type="checkbox" 
                    hx-post="/todo/9"
                    hx-trigger="click"
@@ -328,32 +250,6 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/9" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_8" type="checkbox" checked 
-                   hx-post="/todo/8"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_8"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                #potyk-io-back: content-tree, auto page discovery
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/8/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/8" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -390,32 +286,6 @@
     <li>
         <div class="flex items-center space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_6" type="checkbox" checked 
-                   hx-post="/todo/6"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_6"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                #todo: hide done
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/6/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/6" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
             <input class="checkbox checkbox-sm" name="done" id="done_5" type="checkbox" 
                    hx-post="/todo/5"
                    hx-trigger="click"
@@ -442,32 +312,6 @@
     <li>
         <div class="flex items-center space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_4" type="checkbox" checked 
-                   hx-post="/todo/4"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_4"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                #todo: created dt + sort desc
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/4/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/4" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
             <input class="checkbox checkbox-sm" name="done" id="done_3" type="checkbox" 
                    hx-post="/todo/3"
                    hx-trigger="click"
@@ -484,58 +328,6 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/3" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_2" type="checkbox" checked 
-                   hx-post="/todo/2"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_2"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                Обзор на Рыцари Справедливости
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/2/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/2" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_1" type="checkbox" checked 
-                   hx-post="/todo/1"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_1"
-                   class="text-sm"
-                   style="flex-grow: 1; text-decoration: line-through ">
-                Обзор на Мастер и Маргариту
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/1/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/1" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
