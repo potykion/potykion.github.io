@@ -20,12 +20,12 @@ class TodoRepo:
         raw_tasks = self.table.all()
         return [Task.model_validate(task) for task in raw_tasks]
 
-    def create(self, title):
+    def create(self, title, category):
         try:
             last_id = self.table.all()[-1]["id"]
         except IndexError:
             last_id = 0
-        task = Task(id=last_id + 1, title=title)
+        task = Task(id=last_id + 1, title=title, category=category)
         self.table.insert(task.model_dump())
         return task
 

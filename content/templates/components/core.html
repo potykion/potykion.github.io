@@ -1,0 +1,8 @@
+{% macro text_input(name, label, required=True, value='') %}
+    <label class="form-control w-full ">
+        <div class="label">
+            <span class="label-text">{{ label }}</span>
+        </div>
+        <input {% if required %}required{% endif %} value="{{ value }}" name="{{ name }}" class="input input-bordered ">
+    </label>
+{% endmacro %}

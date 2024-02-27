@@ -1,14 +1,25 @@
+{% from 'templates/components/core.html' import text_input %}
+
+
+
 {% macro todo_edit_task_form(task) %}
     <li>
-        <form style="display: flex; align-items: center">
+        <form class="space-y-2">
 
-            <input name="title" style="flex-grow: 1" value="{{ task.title }}">
+                {{ text_input('title', 'Название', value=task.title) }}
+                {{ text_input('category', 'Категория', value=task.category) }}
 
-            <button style="background: none; border: none" hx-post="/todo/{{ task.id }}/edit" hx-target="closest li" hx-swap="outerHTML">💾
-            </button>
-            <button style="background: none; border: none" hx-get="/todo/{{ task.id }}" hx-swap="outerHTML"
-                    hx-target="closest li">✖️
-            </button>
+
+            <div class="flex justify-end space-x-2">
+
+                <button class="btn btn-sm " hx-get="/todo/{{ task.id }}" hx-swap="outerHTML"
+                        hx-target="closest li">✖️ Отменить
+                </button>
+
+                 <button class="btn btn-sm " hx-post="/todo/{{ task.id }}/edit" hx-target="closest li"
+                        hx-swap="outerHTML">💾 Сохранить
+                </button>
+            </div>
         </form>
     </li>
 {% endmacro %}

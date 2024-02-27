@@ -1,5 +1,6 @@
 import dataclasses
 import os
+from itertools import groupby
 from pathlib import Path
 
 import flask
@@ -162,22 +163,30 @@ def create_app():
 
     @app.get("/stuff/todo")
     def todo():
-        tasks = reversed(task_db.list_all())
+        tasks = list(reversed(task_db.list_all()))
 
         hide_done = flask.request.args.get("hide_done", "true") == "true"
         if hide_done:
             tasks = [task for task in tasks if not task.done]
 
+        categories = {task.category for task in tasks if task.category}
+
+        tasks_by_category = groupby(
+            sorted(tasks, key=(key := lambda task: task.category), reverse=True), key
+        )
+
         return render_template(
             "stuff/todo/index.html",
-            tasks=tasks,
             hide_done=hide_done,
+            categories=categories,
+            tasks_by_category=tasks_by_category,
         )
 
     @app.post("/todo")
     def create_todo():
         title = flask.request.form.get("title")
-        task = task_db.create(title)
+        category = flask.request.form.get("category")
+        task = task_db.create(title, category)
         return render_template("templates/components/todo-task.html", task=task)
 
     @app.get("/todo/<int:task_id>/edit")
@@ -203,11 +212,13 @@ def create_app():
         return render_template("templates/components/todo-task.html", task=task)
 
     @app.post("/todo/<int:task_id>/edit")
-    def change_todo_title(task_id):
+    def edit_todo(task_id):
         title = flask.request.form.get(f"title")
+        category = flask.request.form.get(f"category")
 
         task = task_db.get_by_id(task_id)
         task.title = title
+        task.category = category
         task_db.update(task)
 
         return render_template("templates/components/todo-task.html", task=task)

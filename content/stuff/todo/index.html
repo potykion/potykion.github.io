@@ -2,6 +2,7 @@
 
 {% from 'templates/components/todo-task.html' import todo_task %}
 {% from 'templates/components/icons.html' import chevron_down %}
+{% from 'templates/components/core.html' import text_input %}
 
 {% set title='todo' %}
 
@@ -10,21 +11,28 @@
 
     <div class="collapse collapse-arrow bg-neutral-50 my-4">
         <input type="checkbox"/>
-        <div class="collapse-title text-xl font-medium flex items-center space-x-2  " >
+        <div class="collapse-title text-xl font-medium flex items-center space-x-2  ">
             <span>Создание таски</span>
         </div>
         <div class="collapse-content">
             <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul"
                   hx-swap="afterbegin" hx-on::after-request="this.reset()">
-                <div style="display: flex; flex-direction: column">
-                    <div>
-                        <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
-                            Название
-                        </label>
-                    </div>
 
-                    <input id="title" required name="title" class="input input-bordered ">
-                </div>
+                {{ text_input('title', 'Название') }}
+
+
+                <label class="form-control w-full ">
+                    <div class="label">
+                        <span class="label-text">Категория</span>
+                    </div>
+                    <input required name="category" class="input input-bordered ">
+                    <div class="label justify-start space-x-2">
+                        {% for cat in categories %}
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = '{{ cat }}';">{{ cat }}</button>
+                        {% endfor %}
+                    </div>
+                </label>
 
                 <div style="display: flex; justify-content: end">
                     <button class="btn btn-primary" type="submit">
@@ -47,8 +55,11 @@
     </div>
 
     <ul style="list-style: none; padding-left: 0">
-        {% for task in tasks %}
-            {{ todo_task(task) }}
+        {% for category, tasks in tasks_by_category %}
+            <h2>{{ category or "*без категории*" }}</h2>
+            {% for task in tasks %}
+                {{ todo_task(task) }}
+            {% endfor %}
         {% endfor %}
     </ul>
 {% endblock %}
