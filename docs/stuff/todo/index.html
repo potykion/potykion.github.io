@@ -68,21 +68,41 @@
 
     <div class="collapse collapse-arrow bg-neutral-50 my-4">
         <input type="checkbox"/>
-        <div class="collapse-title text-xl font-medium flex items-center space-x-2  " >
+        <div class="collapse-title text-xl font-medium flex items-center space-x-2  ">
             <span>Создание таски</span>
         </div>
         <div class="collapse-content">
             <form style="display: flex; flex-direction: column; gap: 10px" hx-post="/todo" hx-target="ul"
                   hx-swap="afterbegin" hx-on::after-request="this.reset()">
-                <div style="display: flex; flex-direction: column">
-                    <div>
-                        <label for="title" style="font-weight: 600; margin-bottom: 4px; ">
-                            Название
-                        </label>
-                    </div>
 
-                    <input id="title" required name="title" class="input input-bordered ">
-                </div>
+                
+    <label class="form-control w-full ">
+        <div class="label">
+            <span class="label-text">Название</span>
+        </div>
+        <input required value="" name="title" class="input input-bordered ">
+    </label>
+
+
+
+                <label class="form-control w-full ">
+                    <div class="label">
+                        <span class="label-text">Категория</span>
+                    </div>
+                    <input required name="category" class="input input-bordered ">
+                    <div class="label justify-start space-x-2">
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                    </div>
+                </label>
 
                 <div style="display: flex; justify-content: end">
                     <button class="btn btn-primary" type="submit">
@@ -104,7 +124,9 @@
 
     <ul style="list-style: none; padding-left: 0">
         
+            <h2>пишем</h2>
             
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -118,7 +140,7 @@
             <label for="done_19"
                    class="text-sm"
                    style="flex-grow: 1; ">
-                пишем: книгу (гайд / полотно текста) Профессия Веб Разработчик
+                книгу (гайд / полотно текста) Профессия Веб Разработчик
             </label>
             <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/19/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
@@ -129,8 +151,66 @@
         </div>
     </li>
 
-        
             
+        
+            <h2>todo-tracker</h2>
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_21" type="checkbox" 
+                   hx-post="/todo/21"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_21"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                insert new to to matching category (endp should return layout with h2 if no cat)
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/21/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/21" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_20" type="checkbox" 
+                   hx-post="/todo/20"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_20"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                done tasks to Archive category
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/20/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/20" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+        
+            <h2>potyk-io-back</h2>
+            
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -144,7 +224,7 @@
             <label for="done_18"
                    class="text-sm"
                    style="flex-grow: 1; ">
-                #potyk-io-back auto route generation w overwriting
+                auto route generation w overwriting
             </label>
             <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/18/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
@@ -155,8 +235,63 @@
         </div>
     </li>
 
-        
             
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_13" type="checkbox" 
+                   hx-post="/todo/13"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_13"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                replace relative static links to images to {{ url_for }}
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/13/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/13" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_3" type="checkbox" 
+                   hx-post="/todo/3"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_3"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                blueprints: content, todo, recipes-form
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/3/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/3" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+        
+            <h2>*без категории*</h2>
+            
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -181,8 +316,8 @@
         </div>
     </li>
 
-        
             
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -207,86 +342,8 @@
         </div>
     </li>
 
-        
             
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_13" type="checkbox" 
-                   hx-post="/todo/13"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_13"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-                #potyk-io-back replace relative static links to images to {{ url_for }}
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/13/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/13" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_12" type="checkbox" 
-                   hx-post="/todo/12"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_12"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-                #todo: # auto complete
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/12/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/12" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_11" type="checkbox" 
-                   hx-post="/todo/11"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_11"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-                #todo: categories!!!!!!!!!!
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/11/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/11" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-        
-            
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -311,8 +368,8 @@
         </div>
     </li>
 
-        
             
+                
     <li>
         <div class="flex items-center space-x-2">
 
@@ -337,32 +394,7 @@
         </div>
     </li>
 
-        
             
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_3" type="checkbox" 
-                   hx-post="/todo/3"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_3"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-                #potyk-io-back: blueprints: content, todo, recipes-form
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/3/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/3" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
         
     </ul>
 

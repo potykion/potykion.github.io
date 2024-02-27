@@ -29,7 +29,7 @@
 
                     <a class="link" href="{{ page.url }}">{{ page.title }}</a>
                     {% for tag in page.tags %}
-                        <sup class="badge badge-primary">{{ tag }}</sup>
+                        <sup class="badge {% if tag == 'gold' %}badge-warning{% else %}badge-primary{% endif %}">{{ tag }}</sup>
 
                         {% endfor %}
                 </div>
