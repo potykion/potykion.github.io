@@ -48,7 +48,7 @@
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
 
-               class="btn btn-sm md:btn-md btn-primary">Помоги мне</a>
+               class="btn btn-sm md:btn-md btn-secondary">Помоги мне</a>
         </div>
     <hr>
     </header>
@@ -103,6 +103,32 @@
     </div>
 
     <ul style="list-style: none; padding-left: 0">
+        
+            
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_19" type="checkbox" 
+                   hx-post="/todo/19"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_19"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                пишем: книгу (гайд / полотно текста) Профессия Веб Разработчик
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/19/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/19" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
         
             
     <li>
@@ -248,7 +274,7 @@
             <label for="done_11"
                    class="text-sm"
                    style="flex-grow: 1; ">
-                #todo: categories
+                #todo: categories!!!!!!!!!!
             </label>
             <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/11/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
