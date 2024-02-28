@@ -114,7 +114,7 @@
 
     <h2>Книги</h2>
     <div class="movies" x-data="{opened: false, opened2: false}" style="align-items: start">
-{#
+        {#
 
 
 #}
@@ -132,8 +132,8 @@
         </button>
 
         <div style="grid-column: span 4; padding: 10px" x-show="opened" x-transition
-                @mouseover="opened = true"
-                @mouseleave="opened = false"
+             @mouseover="opened = true"
+             @mouseleave="opened = false"
 
         >
             <b>Фредрик Бакман — Тревожные люди</b>
@@ -206,7 +206,7 @@
     <h2>
         Музыка
     </h2>
-    <div class="movies">
+    <div class="grid grid-cols-4 md:grid-cols-5 gap-3">
         <a class="game" href="https://rateyourmusic.com/release/album/отваал/хоровод/">
             <img src="https://e.snmc.io/i/600/w/c91a6b16de7a87b932150c073110f2c8/11579194/%D0%BE%D1%82%D0%B2%D0%B0%D0%B0%D0%BB-otvaal-%D1%85%D0%BE%D1%80%D0%BE%D0%B2%D0%BE%D0%B4-Cover-Art.jpg">
             {{ tags(['Glitch Pop']) }}
@@ -228,7 +228,50 @@
             <img src="https://e.snmc.io/i/600/w/ff3588367696499eec2657588a4153c5/11487042/dizzee-rascal-dont-take-it-personal-Cover-Art.jpg">
             {{ tags(['Grime']) }}
         </a>
+
+        <button class="relative hover:border-4 rounded-lg border-primary" onclick="my_modal_1.showModal()"><img
+                src="https://avatars.yandex.net/get-music-content/5678677/e65ac697.a.20353282-1/m1000x1000">
+            {{ tags(['Juke']) }}
+        </button>
     </div>
+
+    <dialog id="my_modal_1" class="modal">
+        <div class="modal-box max-w-screen-lg">
+            <h3>N95 — РУССКИЙ ДЖУК 2 </h3>
+             <a href="https://music.yandex.ru/album/20353282" target="_blank" class="btn btn-sm btn-warning">
+                    Яндекс
+                    Музыка
+                </a>
+            <p>
+                Несколько лет назад Патибой69 хайпанул в ютубах совершив гетто-тех ревайвал, в число которых входит
+                Джук, я тогда ознакомился со всякими Dj Assault, Dj Deeon, Dj Rashad. А тут чел сделал гениальное: взял
+                и соединил Джук с АК-47 нахуй ахаха.
+            </p>
+            <p>
+                То есть всякие заедание вокала, специфичные колотушки и трещетки детройских клубов смешивают с Я люблю
+                драгс, сортов особо прущих, Понаставляли домофонов — негде плана покурить, Посажали всех барыг — негде
+                плана замутить - пизда ржака.
+            </p>
+            <p>
+                Ну и как понятно из названия - это вторая часть, а на первой части Джук мешают с На сука на сука получай
+                сука довела меня, бля ахаха.
+            </p>
+            <p>
+                Ну и выходя за рамки ипихи, N95 не только джуком балуется, а хорошо раздает и прочей электроники,
+                например амен брейки на треке Мышка-сосиска, хаус ремикс на Сквирт Шампанского в лицо. Крч чел, подобно
+                всяким Локед Клабам, замешивает мемы с качевой электроникой, а эта формула ебет
+
+            </p>
+
+
+            <div class="modal-action ">
+                <form method="dialog">
+                    <button class="btn">Закрыть</button>
+                </form>
+            </div>
+
+        </div>
+    </dialog>
 
 
     <h2>Пиво</h2>

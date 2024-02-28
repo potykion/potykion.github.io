@@ -11,7 +11,7 @@ from tinydb import TinyDB
 
 from potyk_io_back.content import read_content
 from potyk_io_back.notes import make_note_index, NoteDb
-from potyk_io_back.todo import TodoRepo
+from potyk_io_back.todo import TodoRepo, make_todo_blueprint
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
@@ -20,6 +20,7 @@ SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 class Link:
     url: str
     name: str
+    desc: str = ""
 
 
 def create_app():
@@ -29,13 +30,13 @@ def create_app():
     with app.app_context():
         app.config["CONTENT"] = read_content(Path(app.template_folder))
 
-        db = TinyDB(
-            "db.json",
-        )
+        db = TinyDB("db.json")
         db = make_note_index(Path(app.template_folder) / "notes", db)
         note_db = NoteDb(db)
 
         task_db = TodoRepo(db)
+
+    app.register_blueprint(make_todo_blueprint(task_db))
 
     @app.context_processor
     def inject_ctx():
@@ -47,10 +48,26 @@ def create_app():
             "index.html",
             links=dict(
                 soc=[
-                    Link("https://t.me/potykion", "Телега"),
-                    Link("https://www.instagram.com/potyk.art", "Рисовашки"),
-                    Link("https://untappd.com/user/potykion", "Выпивашки"),
-                    Link("https://rateyourmusic.com/~potykion", "Музыкашки"),
+                    Link(
+                        "https://t.me/potykion",
+                        "Телега",
+                        "Напиши мне все, что обо мне думаешь",
+                    ),
+                    Link(
+                        "https://www.instagram.com/potyk.art",
+                        "Рисовашки",
+                        "Рисую чертей по фану",
+                    ),
+                    Link(
+                        "https://untappd.com/user/potykion",
+                        "Выпивашки",
+                        "Пью пивчик, иногда вкусный",
+                    ),
+                    Link(
+                        "https://rateyourmusic.com/~potykion",
+                        "Музыкашки",
+                        "Иногда слушаю музыку и реагирую на нее",
+                    ),
                 ]
             ),
         )
@@ -160,76 +177,6 @@ def create_app():
             return _wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
-
-    @app.get("/stuff/todo")
-    def todo():
-        tasks = list(reversed(task_db.list_all()))
-
-        hide_done = flask.request.args.get("hide_done", "true") == "true"
-        if hide_done:
-            tasks = [task for task in tasks if not task.done]
-
-        categories = {task.category for task in tasks if task.category}
-
-        tasks_by_category = groupby(
-            sorted(tasks, key=(key := lambda task: task.category), reverse=True), key
-        )
-
-        return render_template(
-            "stuff/todo/index.html",
-            hide_done=hide_done,
-            categories=categories,
-            tasks_by_category=tasks_by_category,
-        )
-
-    @app.post("/todo")
-    def create_todo():
-        title = flask.request.form.get("title")
-        category = flask.request.form.get("category")
-        task = task_db.create(title, category)
-        return render_template("templates/components/todo-task.html", task=task)
-
-    @app.get("/todo/<int:task_id>/edit")
-    def get_todo_form(task_id):
-        task = task_db.get_by_id(task_id)
-
-        return render_template("templates/components/todo-edit-task.html", task=task)
-
-    @app.get("/todo/<int:task_id>")
-    def get_task(task_id):
-        task = task_db.get_by_id(task_id)
-
-        return render_template("templates/components/todo-task.html", task=task)
-
-    @app.post("/todo/<int:task_id>")
-    def change_todo_done(task_id):
-        done = bool(flask.request.form.get(f"done"))
-
-        task = task_db.get_by_id(task_id)
-        task.done = done
-        task_db.update(task)
-
-        return render_template("templates/components/todo-task.html", task=task)
-
-    @app.post("/todo/<int:task_id>/edit")
-    def edit_todo(task_id):
-        title = flask.request.form.get(f"title")
-        category = flask.request.form.get(f"category")
-
-        task = task_db.get_by_id(task_id)
-        task.title = title
-        task.category = category
-        task_db.update(task)
-
-        return render_template("templates/components/todo-task.html", task=task)
-
-    @app.delete("/todo/<int:task_id>")
-    def delete_todo(task_id):
-
-        task = task_db.get_by_id(task_id)
-        task_db.delete(task)
-
-        return ""
 
     @app.get("/stuff/habits")
     def habits_index():

@@ -96,10 +96,10 @@
                                     onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
                         
                     </div>
                 </label>
@@ -154,6 +154,32 @@
             
         
             <h2>todo-tracker</h2>
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_25" type="checkbox" 
+                   hx-post="/todo/25"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_25"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                desc
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/25/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/25" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
             
                 
     <li>
@@ -214,6 +240,84 @@
     <li>
         <div class="flex items-center space-x-2">
 
+            <input class="checkbox checkbox-sm" name="done" id="done_27" type="checkbox" 
+                   hx-post="/todo/27"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_27"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                blueprints: recipes-form
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/27/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/27" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_26" type="checkbox" 
+                   hx-post="/todo/26"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_26"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                blueprints: content
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/26/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/26" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_24" type="checkbox" 
+                   hx-post="/todo/24"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_24"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                drafts category (+ customizable ignorance of dirs)
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/24/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/24" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
             <input class="checkbox checkbox-sm" name="done" id="done_18" type="checkbox" 
                    hx-post="/todo/18"
                    hx-trigger="click"
@@ -256,32 +360,6 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/13" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-            
-                
-    <li>
-        <div class="flex items-center space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_3" type="checkbox" 
-                   hx-post="/todo/3"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_3"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-                blueprints: content, todo, recipes-form
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/3/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/3" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
