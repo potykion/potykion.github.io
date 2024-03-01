@@ -92,12 +92,12 @@
         }
 
     </style>
-
-
 {% endblock %}
 
 {% set title = 'Стата 2024' %}
 {% set desc = 'Что пил, что смотрел, что читал, во что играл, что слушал в 2024 г.' %}
+
+{% from "templates/components/icons.html" import bookmate %}
 
 {% macro tags(tag_list, floating=True) %}
     <div style="{% if floating %}position: absolute; left: 5px; bottom: -10px;  display: flex; gap: 5px{% endif %}">
@@ -113,53 +113,48 @@
 
 
     <h2>Книги</h2>
-    <div class="movies" x-data="{opened: false, opened2: false}" style="align-items: start">
-        {#
+    <div class="grid grid-cols-4 md:grid-cols-6 gap-2">
+
+        {% for book in books %}
+            <button class=" hover:border-4 rounded-lg border-primary relative "
+                    onclick="modal_{{ book.id }}.showModal()">
+                <img class="h-full {% if book.drop %}opacity-25{% endif %} {% if book.wip %}opacity-75{% endif %} " src="{{ book.img }}">
+                {% if book.done %}
+                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-green-100 rounded-lg">✅ Прочитано</span>
+                {% endif %}
+                {% if book.drop %}
+                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-red-100 rounded-lg">❌ Дроп</span>
+                {% endif %}
+                {% if book.wip %}
+                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-amber-100 rounded-lg">🚧 WIP</span>
+                {% endif %}
+            </button>
+
+            <dialog id="modal_{{ book.id }}" class="modal">
+                <div class="modal-box max-w-screen-lg relative">
+                    <form method="dialog">
+      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+    </form>
+
+                    <h3>{{ book.full_title }}</h3>
+                    <a href="{{ book.url }}" target="_blank" class="btn btn-sm ">{{ bookmate() }} Букмейт</a>
+
+                    {{ book.review_html | safe }}
 
 
-#}
-        <button
-                class="game"
-                @mouseover="opened = true"
-                @mouseleave="opened = false"
-                @click="opened = !opened"
-                :class="opened && 'bordered'"
-        >
+                    <div class="modal-action ">
+                        <form method="dialog">
+                            <button class="btn">Закрыть</button>
+                        </form>
+                    </div>
 
-            <img src="https://assets-ru.bookmate.yandex.net/assets/books-covers/c1/ec/rujGEZSJ-ipad.jpeg?image_hash=c5570424f5bd253359e4df8cd593bd7e">
-
-
-        </button>
-
-        <div style="grid-column: span 4; padding: 10px" x-show="opened" x-transition
-             @mouseover="opened = true"
-             @mouseleave="opened = false"
-
-        >
-            <b>Фредрик Бакман — Тревожные люди</b>
-            <a href="https://bookmate.ru/books/rujGEZSJ" target="_blank"
-               style="width: 20px; height: 20px; display: inline-block" class="logo logo_kind-default"
-               data-fallback="true"><span class="SVGInline"><svg class="SVGInline-svg" viewBox="124 126.5 40 40"
-                                                                 xmlns="http://www.w3.org/2000/svg"><path
-                    d="m154 126.5-15 11-15-11v40h30z" fill="#9d7760"></path><path
-                    d="m148.9 148.8h10.8c-.5 3.2-3 5.1-5.8 5.1-3-.1-4.8-1.6-5-5.1zm-15.7 0h10.6c-.2 3.5-2 5.1-5 5.1-2.7-.1-5.1-2-5.6-5.1zm-4.4-3.2v1.2c0 6.3 4.3 10.5 10.2 10.5 2.9 0 5.7-1.4 7.5-4.4 2 3.1 4.6 4.4 7.5 4.4 5.8 0 10.2-4.2 10.2-10.5v-1.1z"
-                    fill="#020302"></path></svg></span></a>
-            <ul>
-                <li>Книга - сеанс групповой терапии: все друг с другом общаются, притираются, потом выкладывают какую-то
-                    свою боль и вместе находят решения
-                </li>
-                <li>Интересное повествование: все время кидает то в другое время, то к другому персонажу, в итоге
-                    сидишь-собираешь пазл, все переплетено
-                </li>
-                <li>Читается легко, главы бывают по 1 странице</li>
-            </ul>
-        </div>
-
-
+                </div>
+            </dialog>
+        {% endfor %}
     </div>
 
     <h2>Кино и сериалы</h2>
-    <div class="movies">
+    <div class="grid grid-cols-4 md:grid-cols-6 gap-2">
         <a class="game" href="https://www.kinopoisk.ru/film/1345158/">
             <img class="film-img"
                  src="https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/a8cf8b09-d5a9-455b-b282-e680222d459a/600x900">
@@ -174,7 +169,7 @@
     </div>
 
     <h2>Игры</h2>
-    <div class="games">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
         <a class="game golden" href="https://store.steampowered.com/app/1328350/Turbo_Overkill/">
             <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/1328350/header.jpg?t=1701886460">
             {{ tags(['Топовый мясной FPS']) }}
@@ -238,10 +233,10 @@
     <dialog id="my_modal_1" class="modal">
         <div class="modal-box max-w-screen-lg">
             <h3>N95 — РУССКИЙ ДЖУК 2 </h3>
-             <a href="https://music.yandex.ru/album/20353282" target="_blank" class="btn btn-sm btn-warning">
-                    Яндекс
-                    Музыка
-                </a>
+            <a href="https://music.yandex.ru/album/20353282" target="_blank" class="btn btn-sm btn-warning">
+                Яндекс
+                Музыка
+            </a>
             <p>
                 Несколько лет назад Патибой69 хайпанул в ютубах совершив гетто-тех ревайвал, в число которых входит
                 Джук, я тогда ознакомился со всякими Dj Assault, Dj Deeon, Dj Rashad. А тут чел сделал гениальное: взял

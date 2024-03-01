@@ -27,13 +27,13 @@
     {% endblock %}
     <!-- endregion Styles -->
 </head>
-<body class="{% if fullwidth %}{% else %}max-w-screen-2xl{% endif %}">
+<body class="{% if fullwidth %}{% else %}max-w-screen-xl{% endif %}">
 
 
 {% from 'templates/components/header.html' import header %}
 
 {{ header() }}
-<main class="prose md:prose-xl  max-w-none p-4 md:p-6">
+<main class="prose md:prose-lg  max-w-none p-4 md:p-6">
     <article>
         {% if title and show_title %}
             <h1>{{ title }}</h1>

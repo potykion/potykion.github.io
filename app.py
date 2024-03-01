@@ -11,6 +11,7 @@ from tinydb import TinyDB
 
 from potyk_io_back.content import read_content
 from potyk_io_back.notes import make_note_index, NoteDb
+from potyk_io_back.stats import stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
@@ -37,6 +38,7 @@ def create_app():
         task_db = TodoRepo(db)
 
     app.register_blueprint(make_todo_blueprint(task_db))
+    app.register_blueprint(stats_blueprint)
 
     @app.context_processor
     def inject_ctx():
