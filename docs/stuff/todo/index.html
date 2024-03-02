@@ -93,13 +93,16 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                     </div>
                 </label>
@@ -146,6 +149,35 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/19" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+        
+            <h2>личное</h2>
+            
+                
+    <li>
+        <div class="flex items-center space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_28" type="checkbox" 
+                   hx-post="/todo/28"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_28"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+                новый раздел - Личное - туда стату, всякую инфу о себе типа какой шмот ношу
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/28/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/28" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>

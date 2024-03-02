@@ -60,7 +60,7 @@ class NoteSection(BaseModel):
 def make_note_index(notes_dir, db: TinyDB):
     sections = read_notes(notes_dir)
     db.truncate()
-    db.insert_multiple([sec.model_dump(mode='json') for sec in sections])
+    db.insert_multiple([sec.model_dump(mode="json") for sec in sections])
     return db
 
 
@@ -73,15 +73,14 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
     for section_index, section_key in enumerate(section_keys):
         dir_, __, filenames = next(tree)
 
-        if 'meta.yml' in filenames:
-            filenames = [file for file in filenames if file != 'meta.yml']
+        if "meta.yml" in filenames:
+            filenames = [file for file in filenames if file != "meta.yml"]
             with open(Path(dir_) / "meta.yml", encoding="utf-8") as f:
                 section_settings = yaml.load(f, Loader=Loader)
         else:
             section_settings = {}
 
         section = NoteSection(key=section_key, **section_settings)
-
 
         for file_ in filenames:
             note_key = file_.rsplit(".")[0]
@@ -93,13 +92,15 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
             html = mistune.html(rendered_md)
             soup = BeautifulSoup(html, features="html.parser")
             text = soup.get_text()
+            file_created = datetime.datetime.fromtimestamp(path.stat().st_ctime)
+
             note = Note(
                 key=note_key,
                 template_path=template_path,
                 title=md["title"],
-                created=md["created"],
+                created=md.get("created", file_created),
                 desc=smart_truncate(text),
-                tags=md.get('tags') or [],
+                tags=md.get("tags") or [],
             )
             section.notes.append(note)
 
@@ -158,4 +159,3 @@ class NoteDb:
         section = NoteSection.model_validate(raw_section)
         note = next(note for note in section.notes if note.key == note_key)
         return note
-
