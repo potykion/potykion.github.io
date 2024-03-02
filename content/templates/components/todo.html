@@ -1,9 +1,9 @@
-{% from 'templates/components/core.html' import text_input %}
+{% from 'templates/components/core.html' import text_input, textarea %}
 
 
 {% macro todo_task(task) %}
     <li>
-        <div class="flex items-center space-x-2">
+        <div class="flex items-start space-x-2">
 
             <input class="checkbox checkbox-sm" name="done" id="done_{{ task.id }}" type="checkbox"
                    {% if task.done %}checked {% endif %}
@@ -16,7 +16,11 @@
             <label for="done_{{ task.id }}"
                    class="text-sm"
                    style="flex-grow: 1; {% if task.done %}text-decoration: line-through {% endif %}">
+            <span>
                 {{ task.title }}
+            </span>
+
+            <div class="desc">{{ task.desc }}</div>
             </label>
             <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/{{ task.id }}/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
@@ -34,6 +38,7 @@
         <form class="space-y-2">
 
             {{ text_input('title', 'Название', value=task.title) }}
+            {{ textarea('desc', 'Детали', value=task.desc) }}
             {{ text_input('category', 'Категория', value=task.category) }}
 
 

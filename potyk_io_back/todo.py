@@ -1,3 +1,4 @@
+from collections import defaultdict
 from itertools import groupby
 
 import flask
@@ -11,6 +12,7 @@ class Task(BaseModel):
 
     id: int
     title: str
+    desc: str = ''
     category: str = ""
     done: bool = False
 
@@ -24,12 +26,12 @@ class TodoRepo:
         raw_tasks = self.table.all()
         return [Task.model_validate(task) for task in raw_tasks]
 
-    def create(self, title, category):
+    def create(self, title, category, desc):
         try:
             last_id = self.table.all()[-1]["id"]
         except IndexError:
             last_id = 0
-        task = Task(id=last_id + 1, title=title, category=category)
+        task = Task(id=last_id + 1, title=title, category=category, desc=desc)
         self.table.insert(task.model_dump())
         return task
 
@@ -53,22 +55,22 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
     )
 
     @todo_blueprint.get("/stuff/todo")
-    def todo():
+    def todo_list():
         tasks = list(reversed(task_db.list_all()))
-
-        hide_done = flask.request.args.get("hide_done", "true") == "true"
-        if hide_done:
-            tasks = [task for task in tasks if not task.done]
 
         categories = {task.category for task in tasks if task.category}
 
-        tasks_by_category = groupby(
-            sorted(tasks, key=(key := lambda task: task.category), reverse=True), key
-        )
+        tasks_by_category = defaultdict(list)
+        for task in tasks:
+            if task.done:
+                continue
+            tasks_by_category[task.category].append(task)
+        tasks_by_category["DONE"] = [task for task in tasks if task.done]
+
+        tasks_by_category = list(tasks_by_category.items())
 
         return render_template(
             "stuff/todo/index.html",
-            hide_done=hide_done,
             categories=categories,
             tasks_by_category=tasks_by_category,
         )
@@ -77,7 +79,8 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
     def create_todo():
         title = flask.request.form.get("title")
         category = flask.request.form.get("category")
-        task = task_db.create(title, category)
+        desc = flask.request.form.get("desc")
+        task = task_db.create(title, category, desc)
         return render_template_string(
             "{% from 'templates/components/todo.html' import todo_task %} {{ todo_task(task) }}",
             task=task,
@@ -87,13 +90,19 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
     def get_todo_form(task_id):
         task = task_db.get_by_id(task_id)
 
-        return render_template("templates/components/todo-edit-task.html", task=task)
+        return render_template_string(
+            "{% from 'templates/components/todo.html' import todo_edit_task_form %} {{ todo_edit_task_form(task) }}",
+            task=task,
+        )
 
     @todo_blueprint.get("/todo/<int:task_id>")
     def get_task(task_id):
         task = task_db.get_by_id(task_id)
 
-        return render_template("templates/components/todo-task.html", task=task)
+        return render_template_string(
+            "{% from 'templates/components/todo.html' import todo_task %} {{ todo_task(task) }}",
+            task=task,
+        )
 
     @todo_blueprint.post("/todo/<int:task_id>")
     def change_todo_done(task_id):
@@ -103,19 +112,27 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
         task.done = done
         task_db.update(task)
 
-        return render_template("templates/components/todo-task.html", task=task)
+        return render_template_string(
+            "{% from 'templates/components/todo.html' import todo_task %} {{ todo_task(task) }}",
+            task=task,
+        )
 
     @todo_blueprint.post("/todo/<int:task_id>/edit")
     def edit_todo(task_id):
         title = flask.request.form.get(f"title")
         category = flask.request.form.get(f"category")
+        desc = flask.request.form.get(f"desc")
 
         task = task_db.get_by_id(task_id)
         task.title = title
         task.category = category
+        task.desc = desc
         task_db.update(task)
 
-        return render_template("templates/components/todo-task.html", task=task)
+        return render_template_string(
+            "{% from 'templates/components/todo.html' import todo_task %} {{ todo_task(task) }}",
+            task=task,
+        )
 
     @todo_blueprint.delete("/todo/<int:task_id>")
     def delete_todo(task_id):

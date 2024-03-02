@@ -1,8 +1,8 @@
 {% extends 'templates/base.html' %}
 
-{% from 'templates/components/todo-task.html' import todo_task %}
+{% from 'templates/components/todo.html' import todo_task %}
 {% from 'templates/components/icons.html' import chevron_down %}
-{% from 'templates/components/core.html' import text_input %}
+{% from 'templates/components/core.html' import text_input, textarea %}
 
 {% set title='todo' %}
 
@@ -19,6 +19,7 @@
                   hx-swap="afterbegin" hx-on::after-request="this.reset()">
 
                 {{ text_input('title', 'Название') }}
+                {{ textarea('desc', 'Детали', required=False) }}
 
 
                 <label class="form-control w-full ">
@@ -46,13 +47,6 @@
 
 
 
-    <div style="display: flex; justify-content: end">
-        {% if hide_done %}
-            <a href="/stuff/todo?hide_done=false" class="btn btn-sm">🙉 Показать выполненные</a>
-        {% else %}
-            <a href="/stuff/todo?hide_done=true" class="btn btn-sm" type="button">🙈 Скрыть выполненные</a>
-        {% endif %}
-    </div>
 
     <ul style="list-style: none; padding-left: 0">
         {% for category, tasks in tasks_by_category %}
