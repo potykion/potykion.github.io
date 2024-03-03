@@ -50,7 +50,7 @@
 
     <ul style="list-style: none; padding-left: 0">
         {% for category, tasks in tasks_by_category %}
-            <h2>{{ category or "*без категории*" }}</h2>
+            <h2>{{ category }}</h2>
             {% for task in tasks %}
                 {{ todo_task(task) }}
             {% endfor %}

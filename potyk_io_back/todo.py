@@ -12,7 +12,7 @@ class Task(BaseModel):
 
     id: int
     title: str
-    desc: str = ''
+    desc: str = ""
     category: str = ""
     done: bool = False
 
@@ -62,9 +62,12 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
 
         tasks_by_category = defaultdict(list)
         for task in tasks:
-            if task.done:
+            if task.done or not task.category:
                 continue
             tasks_by_category[task.category].append(task)
+        tasks_by_category["*без категории*"] = [
+            task for task in tasks if not task.category and not task.done
+        ]
         tasks_by_category["DONE"] = [task for task in tasks if task.done]
 
         tasks_by_category = list(tasks_by_category.items())
@@ -80,10 +83,21 @@ def make_todo_blueprint(task_db: TodoRepo) -> Blueprint:
         title = flask.request.form.get("title")
         category = flask.request.form.get("category")
         desc = flask.request.form.get("desc")
-        task = task_db.create(title, category, desc)
+        new_task = task_db.create(title, category, desc)
+
+        tasks = task_db.list_all()
+        categories = {task.category for task in tasks} - {new_task.category}
+        if new_task.category not in categories:
+            return render_template_string(
+                "{% from 'templates/components/todo.html' import todo_task %} "
+                + f"<h2>{new_task.category}</h2> "
+                + "{{ todo_task(task) }}",
+                task=new_task,
+            )
+
         return render_template_string(
             "{% from 'templates/components/todo.html' import todo_task %} {{ todo_task(task) }}",
-            task=task,
+            task=new_task,
         )
 
     @todo_blueprint.get("/todo/<int:task_id>/edit")
