@@ -13,6 +13,23 @@
         <div class="label">
             <span class="label-text">{{ label }}</span>
         </div>
-        <textarea class="textarea textarea-bordered" {% if required %}required{% endif %} name="{{ name }}">{{ value }}</textarea>
+        <textarea class="textarea textarea-bordered" {% if required %}required{% endif %}
+                  name="{{ name }}">{{ value }}</textarea>
+    </label>
+{% endmacro %}
+
+{% macro select(name, label, options=None, simple_options=None, required=True, value='') %}
+    <label class="form-control w-full ">
+        <div class="label">
+            <span class="label-text">{{ label }}</span>
+        </div>
+        <select {% if required %}required{% endif %} name="{{ name }}" class="select select-bordered">
+            {% for opt in options or [] %}
+                <option value="{{ opt.val }}">{{ opt.label }}</option>
+            {% endfor %}
+            {% for opt in simple_options or [] %}
+                <option value="{{ opt }}">{{ opt }}</option>
+            {% endfor %}
+        </select>
     </label>
 {% endmacro %}

@@ -59,7 +59,7 @@
     }
 
     table {
-        @apply table table-zebra table-sm
+        @apply table table-zebra table-sm !my-0
     }
 
     td {

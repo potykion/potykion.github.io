@@ -2,6 +2,7 @@
 
 {% from 'templates/scripts.html' import htmx %}
 {% from 'templates/components/habits.html' import habit_table %}
+{% from 'templates/components/core.html' import select, toggle %}
 
 {% set title='habits' %}
 {% set fullwidth=True %}
@@ -9,7 +10,41 @@
 {% block main %}
     <h1>Привычки</h1>
 
-    <div class="flex justify-end">
+    <details class="collapse collapse-arrow bg-neutral-50 my-4  overflow-visible">
+        <summary class="collapse-title text-xl font-medium flex items-center space-x-2  ">
+            Сегодня
+        </summary>
+        <div class="collapse-content">
+            <form style="display: flex; flex-direction: column; gap: 10px" id="myForm">
+                {{ select('habit', 'Привычка', simple_options=habits) }}
+
+                <div class="form-control">
+                    <label class="label cursor-pointer justify-start gap-2">
+                        <span class="label-text">Статус</span>
+                        <span class="label-text">Сделал</span>
+                        <input type="radio" name="status" value="+" class="radio " checked/>
+                        <span class="label-text">Не сделал</span>
+                        <input type="radio" name="status" value="-" class="radio " checked/>
+
+                    </label>
+                </div>
+
+                <div class="flex justify-end">
+
+                    <button class="btn ">
+                        Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </details>
+
+
+
+
+    <div class="flex justify-between">
+        <h2>Прогресс</h2>
+
         <button class="btn " hx-post="/habits/sync" hx-target="#habit_table">
             <span class="loading loading-spinner loading-xs htmx-indicator"></span>
             Синхронизировать
@@ -20,10 +55,25 @@
         {{ habit_table(habits, habit_statuses) }}
     </div>
 
-    <h2>Сегодня</h2>
 
 {% endblock %}
 
 {% block script %}
     {{ htmx() }}
+
+    <script>
+        const myForm = document.getElementById("myForm"); // Replace with your form's ID
+
+        myForm.addEventListener("submit", function (event) {
+            // Prevent default form submission
+            event.preventDefault();
+
+            const formData = new FormData(event.target); // Use FormData for complex forms
+
+            for (const [key, value] of formData.entries()) {
+                console.log(key, ":", value);
+            }
+
+        });
+    </script>
 {% endblock %}
