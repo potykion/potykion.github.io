@@ -10,6 +10,7 @@ from flask import Flask, render_template, render_template_string
 from tinydb import TinyDB
 
 from potyk_io_back.content import read_content
+from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.stats import stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
@@ -36,9 +37,11 @@ def create_app():
         note_db = NoteDb(db)
 
         task_db = TodoRepo(db)
+        habit_repo = HabitRepo(db)
 
     app.register_blueprint(make_todo_blueprint(task_db))
     app.register_blueprint(stats_blueprint)
+    app.register_blueprint(make_habits_blueprint(habit_repo))
 
     @app.context_processor
     def inject_ctx():
@@ -179,32 +182,5 @@ def create_app():
             return _wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
-
-    @app.get("/stuff/habits")
-    def habits_index():
-        habits = [
-            "жить без дешевого дофамина",
-            "не держаться за хуй, не дергать заусенцы",
-            "почитать",
-            "творить (рисовать/писать)",
-            "Завести рецепт",
-            "Делать сложные задачи (рбкн)",
-            "Делать сложные задачи (аг)",
-            "спортик",
-            "взвеситься",
-            "медитация",
-            "Погулять 30 мин (выходить на улицу)",
-            "есть овоща (хотя бы 1 раз в день)",
-            "есть белок (хотя бы 1 раз в день)",
-            "есть сложные углеводы (хотя бы 1 раз в день)",
-            "Помыть 1 предмет посуды / поставить в посудомойку",
-            "творить (кодить не по работе)",
-            "Отмечать что меня увлекает",
-        ]
-
-        return render_template(
-            "stuff/habits/index.html",
-            habits=habits,
-        )
 
     return app

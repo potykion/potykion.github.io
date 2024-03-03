@@ -61,10 +61,10 @@
     table {
         @apply table table-zebra table-sm
     }
+
     td {
         @apply !px-2
     }
-
 
 
     div.desc {
@@ -91,7 +91,6 @@
         }
 
 
-
         .hide-on-mobile {
             display: none !important;
         }
@@ -99,4 +98,18 @@
     }
 
 
+}
+
+@layer components {
+    .htmx-indicator {
+        display: none;
+    }
+
+    .htmx-request .htmx-indicator {
+        display: inline;
+    }
+
+    .htmx-request.htmx-indicator {
+        display: inline;
+    }
 }
