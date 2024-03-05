@@ -63,6 +63,7 @@ def create_app():
         return dict(
             content=app.config["CONTENT"],
             youtube_embed=youtube_embed,
+            is_prod=os.getenv("FLASK_ENV") == "prod",
         )
 
     @app.route("/")

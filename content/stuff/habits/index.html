@@ -2,7 +2,7 @@
 
 {% from 'templates/scripts.html' import htmx %}
 {% from 'templates/components/habits.html' import habit_table %}
-{% from 'templates/components/core.html' import select, toggle %}
+{% from 'templates/components/core.html' import select, toggle, text_input %}
 
 {% set title='habits' %}
 {% set fullwidth=True %}
@@ -18,16 +18,20 @@
             <form style="display: flex; flex-direction: column; gap: 10px" id="myForm">
                 {{ select('habit', 'Привычка', simple_options=habits) }}
 
-                <div class="form-control">
-                    <label class="label cursor-pointer justify-start gap-2">
+                <label class="form-control">
+                    <div class="label cursor-pointer justify-start  gap-2">
                         <span class="label-text">Статус</span>
+                    </div>
+                    <div class="w-full flex gap-2 p-1">
                         <span class="label-text">Сделал</span>
                         <input type="radio" name="status" value="+" class="radio " checked/>
                         <span class="label-text">Не сделал</span>
                         <input type="radio" name="status" value="-" class="radio " checked/>
+                    </div>
+                </label>
 
-                    </label>
-                </div>
+                {{ text_input('date', 'Дата', type='date') }}
+
 
                 <div class="flex justify-end">
 

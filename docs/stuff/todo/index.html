@@ -29,36 +29,51 @@
 </head>
 
 <!-- region GA & YaMetrika -->
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-5WTE0KE6PT');
-</script>
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
-   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-   m[i].l=1*new Date();
-   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-   ym(82960681, "init", {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true
-   });
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-5WTE0KE6PT');
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(82960681, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
 <!-- endregion GA & YaMetrika -->
 
 
-
-<body class="max-w-screen-xl">
+<body class="max-w-[1100px]">
 
 
 
@@ -79,7 +94,7 @@
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
 
-               class="btn btn-sm md:btn-md btn-secondary">Помоги мне</a>
+               class="btn btn-sm md:btn-md btn-secondary uppercase">Дай фидбек плиз</a>
         </div>
     <hr>
     </header>
@@ -111,7 +126,7 @@
         <div class="label">
             <span class="label-text">Название</span>
         </div>
-        <input required value="" name="title" class="input input-bordered ">
+        <input type="text" required value="" name="title" class="input input-bordered ">
     </label>
 
                 
@@ -133,16 +148,16 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
                         
                     </div>
                 </label>
@@ -354,40 +369,6 @@
 
             
         
-            <h2>todo-tracker</h2>
-            
-                
-    <li>
-        <div class="flex items-start space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_21" type="checkbox"
-                   
-                   hx-post="/todo/21"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_21"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-            <span>
-                insert new to to matching category (endp should return layout with h2 if no cat)
-            </span>
-
-            <div class="desc"></div>
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/21/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/21" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-            
-        
             <h2>пишем</h2>
             
                 
@@ -576,6 +557,37 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/25" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_21" type="checkbox"
+                   checked 
+                   hx-post="/todo/21"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_21"
+                   class="text-sm"
+                   style="flex-grow: 1; text-decoration: line-through ">
+            <span>
+                insert new to to matching category (endp should return layout with h2 if no cat)
+            </span>
+
+            <div class="desc"></div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/21/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/21" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -1002,6 +1014,7 @@
         </div>
     </div>
 
+    
 </footer>
 </body>
 

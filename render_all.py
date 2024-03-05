@@ -13,6 +13,7 @@ app = create_app()
 
 
 def make_server():
+    os.environ['FLASK_ENV'] = 'prod'
     return app.test_client()
 
 

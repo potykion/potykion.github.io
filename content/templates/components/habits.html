@@ -16,9 +16,6 @@
                 {% for status in habit_statuses.values() %}
                     <td class="{% if status == '+' %}bg-green-200{% elif status == '-' %}bg-red-200{% endif %} text-center  border-neutral-400 border  relative ">
                         <span>{% if status == '+' %}➕{% elif status == '-' %}➖{% endif %}</span>
-                        {#                            <button class="btn btn-sm btn-circle btn-ghost absolute right-0 top-0 opacity-0 hover:opacity-100">#}
-                        {#                                ➖#}
-                        {#                            </button>#}
                     </td>
                 {% endfor %}
             </tr>
