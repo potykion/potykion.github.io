@@ -1,7 +1,9 @@
 import dataclasses
 import os
+import re
 from itertools import groupby
 from pathlib import Path
+from urllib.parse import urlparse
 
 import flask
 import frontmatter
@@ -25,6 +27,19 @@ class Link:
     desc: str = ""
 
 
+def youtube_embed(link: str):
+    """
+    >>> youtube_embed('https://youtu.be/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R')
+    '<iframe src="https://www.youtube.com/embed/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+    """
+
+    if re.match(r"https://youtu.be/(.+)?si=(.+)", link):
+        id = link.rsplit("/", 1)[1]
+    else:
+        return ""
+    return f'<iframe src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+
+
 def create_app():
     app = Flask(__name__, template_folder="content")
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
@@ -45,7 +60,10 @@ def create_app():
 
     @app.context_processor
     def inject_ctx():
-        return dict(content=app.config["CONTENT"])
+        return dict(
+            content=app.config["CONTENT"],
+            youtube_embed=youtube_embed,
+        )
 
     @app.route("/")
     def index():
