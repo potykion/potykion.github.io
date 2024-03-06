@@ -1,6 +1,6 @@
 {% extends 'templates/base.html' %}
 
-{% from 'templates/scripts.html' import htmx %}
+{% from 'templates/scripts.html' import htmx, alpinejs %}
 {% from 'templates/components/habits.html' import habit_table %}
 {% from 'templates/components/core.html' import select, toggle, text_input %}
 
@@ -11,35 +11,67 @@
     <h1>Привычки</h1>
 
     <details class="collapse collapse-arrow bg-neutral-50 my-4  overflow-visible">
-        <summary class="collapse-title text-xl font-medium flex items-center space-x-2  ">
-            Сегодня
+        <summary class="collapse-title    ">
+            <h2> Управление привычками</h2>
         </summary>
-        <div class="collapse-content">
-            <form style="display: flex; flex-direction: column; gap: 10px" id="myForm">
+        <div class="collapse-content" x-data="habits">
+
+            <h3>Добавление</h3>
+            <form style="display: flex; flex-direction: column; gap: 10px" id="habit-form" @submit="submitHabitForm">
                 {{ select('habit', 'Привычка', simple_options=habits) }}
 
-                <label class="form-control">
+                <div class="form-control">
                     <div class="label cursor-pointer justify-start  gap-2">
                         <span class="label-text">Статус</span>
                     </div>
                     <div class="w-full flex gap-2 p-1">
-                        <span class="label-text">Сделал</span>
-                        <input type="radio" name="status" value="+" class="radio " checked/>
-                        <span class="label-text">Не сделал</span>
-                        <input type="radio" name="status" value="-" class="radio " checked/>
+                        <label class="btn btn-outline btn-success btn-wide">
+                            Сделал
+                            <input type="radio" name="status" value="+" class="radio radio-success " checked/>
+                        </label>
+                        <label class="btn btn-outline btn-error btn-wide">
+                            Не сделал
+                            <input type="radio" name="status" value="-" class="radio radio-error "/>
+                        </label>
                     </div>
-                </label>
+                </div>
 
                 {{ text_input('date', 'Дата', type='date') }}
 
 
-                <div class="flex justify-end">
-
+                <div class="flex justify-end gap-2">
                     <button class="btn ">
-                        Сохранить
+                        Добавить выполнение
                     </button>
                 </div>
             </form>
+
+
+            <h3>Хранилище</h3>
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Привычка</th>
+                    <th>Статус</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template x-for="perf in habits">
+                    <tr>
+                        <td x-text="perf.date"></td>
+                        <td x-text="perf.habit"></td>
+                        <td x-text="perf.status"></td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+
+            <div class="flex justify-end gap-2 pt-2">
+                <button class="btn" @click="exportHabits">Скопировать в буфер</button>
+            </div>
         </div>
     </details>
 
@@ -64,20 +96,34 @@
 
 {% block script %}
     {{ htmx() }}
+    {{ alpinejs() }}
 
     <script>
-        const myForm = document.getElementById("myForm"); // Replace with your form's ID
+        document.querySelector('[name=date]').valueAsDate = new Date();
 
-        myForm.addEventListener("submit", function (event) {
-            // Prevent default form submission
-            event.preventDefault();
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('habits', function () {
+                return {
+                    habits: this.$persist([]),
 
-            const formData = new FormData(event.target); // Use FormData for complex forms
+                    submitHabitForm(event) {
+                        event.preventDefault();
 
-            for (const [key, value] of formData.entries()) {
-                console.log(key, ":", value);
-            }
+                        const formData = new FormData(event.target);
+                        {% raw %}/** @type {{habit: string, status: '+' | '-', date: string }} */{% endraw %}
+                        let newHabitPerf = Object.fromEntries(formData.entries());
 
-        });
+                        this.habits = this.habits
+                            .filter(h => !(h.habit === newHabitPerf.habit && h.date === newHabitPerf.date))
+                            .concat(newHabitPerf)
+                    },
+
+                    exportHabits() {
+                        navigator.clipboard.writeText(JSON.stringify(this.habits))
+                    }
+                };
+            })
+        })
+
     </script>
 {% endblock %}

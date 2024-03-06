@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- region SEO -->
-    <title>habits / потик-ио</title>
+    <title>habits / потик.ио</title>
     <meta name="description" content=""/>
 
     <meta property="og:title" content="habits">
@@ -113,11 +113,13 @@
     <h1>Привычки</h1>
 
     <details class="collapse collapse-arrow bg-neutral-50 my-4  overflow-visible">
-        <summary class="collapse-title text-xl font-medium flex items-center space-x-2  ">
-            Сегодня
+        <summary class="collapse-title    ">
+            <h2> Управление привычками</h2>
         </summary>
-        <div class="collapse-content">
-            <form style="display: flex; flex-direction: column; gap: 10px" id="myForm">
+        <div class="collapse-content" x-data="habits">
+
+            <h3>Добавление</h3>
+            <form style="display: flex; flex-direction: column; gap: 10px" id="habit-form" @submit="submitHabitForm">
                 
     <label class="form-control w-full ">
         <div class="label">
@@ -126,67 +128,71 @@
         <select required name="habit" class="select select-bordered">
             
             
-                <option value="почитать">почитать</option>
-            
-                <option value="творить (рисовать/писать)">творить (рисовать/писать)</option>
-            
-                <option value="творить (кодить не по работе)">творить (кодить не по работе)</option>
-            
-                <option value="Погулять 30 мин (выходить на улицу)">Погулять 30 мин (выходить на улицу)</option>
-            
-                <option value="есть овоща (хотя бы 1 раз в день)">есть овоща (хотя бы 1 раз в день)</option>
-            
-                <option value="есть белок (хотя бы 1 раз в день)">есть белок (хотя бы 1 раз в день)</option>
-            
-                <option value="есть сложные углеводы (хотя бы 1 раз в день)">есть сложные углеводы (хотя бы 1 раз в день)</option>
-            
-                <option value="не держаться за хуй, не дергать заусенцы">не держаться за хуй, не дергать заусенцы</option>
-            
-                <option value="взвеситься">взвеситься</option>
-            
-                <option value="спортик">спортик</option>
-            
-                <option value="медитация">медитация</option>
-            
-                <option value="Помыть 1 предмет посуды / поставить в посудомойку">Помыть 1 предмет посуды / поставить в посудомойку</option>
+                <option value="Делать сложные задачи (аг)">Делать сложные задачи (аг)</option>
             
                 <option value="Делать сложные задачи (рбкн)">Делать сложные задачи (рбкн)</option>
             
-                <option value="Делать сложные задачи (аг)">Делать сложные задачи (аг)</option>
-            
                 <option value="Завести рецепт / перенести из skvrd-2/1">Завести рецепт / перенести из skvrd-2/1</option>
-            
-                <option value="Синхрон заметок (перенести все в блог)">Синхрон заметок (перенести все в блог)</option>
-            
-                <option value="Отмечать что меня увлекает">Отмечать что меня увлекает</option>
             
                 <option value="Записывать проблемы">Записывать проблемы</option>
             
-                <option value="Придумывать решение проблем">Придумывать решение проблем</option>
-            
                 <option value="Какие людские проблемы я могу решить / нанести пользу">Какие людские проблемы я могу решить / нанести пользу</option>
             
-                <option value="собирать рецепты по одной теме в кодинге (htmx)">собирать рецепты по одной теме в кодинге (htmx)</option>
+                <option value="Отмечать что меня увлекает">Отмечать что меня увлекает</option>
+            
+                <option value="Погулять 30 мин (выходить на улицу)">Погулять 30 мин (выходить на улицу)</option>
+            
+                <option value="Помыть 1 предмет посуды / поставить в посудомойку">Помыть 1 предмет посуды / поставить в посудомойку</option>
+            
+                <option value="Придумывать решение проблем">Придумывать решение проблем</option>
+            
+                <option value="Синхрон заметок (перенести все в блог)">Синхрон заметок (перенести все в блог)</option>
+            
+                <option value="Что можно делать в телефоне (полезного, чтобы привычки закрывать)">Что можно делать в телефоне (полезного, чтобы привычки закрывать)</option>
+            
+                <option value="взвеситься">взвеситься</option>
+            
+                <option value="есть белок (хотя бы 1 раз в день)">есть белок (хотя бы 1 раз в день)</option>
+            
+                <option value="есть овоща (хотя бы 1 раз в день)">есть овоща (хотя бы 1 раз в день)</option>
+            
+                <option value="есть сложные углеводы (хотя бы 1 раз в день)">есть сложные углеводы (хотя бы 1 раз в день)</option>
             
                 <option value="жить без дешевого дофамина">жить без дешевого дофамина</option>
             
-                <option value="Что можно делать в телефоне (полезного, чтобы привычки закрывать)">Что можно делать в телефоне (полезного, чтобы привычки закрывать)</option>
+                <option value="медитация">медитация</option>
+            
+                <option value="не держаться за хуй, не дергать заусенцы">не держаться за хуй, не дергать заусенцы</option>
+            
+                <option value="почитать">почитать</option>
+            
+                <option value="собирать рецепты по одной теме в кодинге (htmx)">собирать рецепты по одной теме в кодинге (htmx)</option>
+            
+                <option value="спортик">спортик</option>
+            
+                <option value="творить (кодить не по работе)">творить (кодить не по работе)</option>
+            
+                <option value="творить (рисовать/писать)">творить (рисовать/писать)</option>
             
         </select>
     </label>
 
 
-                <label class="form-control">
+                <div class="form-control">
                     <div class="label cursor-pointer justify-start  gap-2">
                         <span class="label-text">Статус</span>
                     </div>
                     <div class="w-full flex gap-2 p-1">
-                        <span class="label-text">Сделал</span>
-                        <input type="radio" name="status" value="+" class="radio " checked/>
-                        <span class="label-text">Не сделал</span>
-                        <input type="radio" name="status" value="-" class="radio " checked/>
+                        <label class="btn btn-outline btn-success btn-wide">
+                            Сделал
+                            <input type="radio" name="status" value="+" class="radio radio-success " checked/>
+                        </label>
+                        <label class="btn btn-outline btn-error btn-wide">
+                            Не сделал
+                            <input type="radio" name="status" value="-" class="radio radio-error "/>
+                        </label>
                     </div>
-                </label>
+                </div>
 
                 
     <label class="form-control w-full ">
@@ -198,13 +204,39 @@
 
 
 
-                <div class="flex justify-end">
-
+                <div class="flex justify-end gap-2">
                     <button class="btn ">
-                        Сохранить
+                        Добавить выполнение
                     </button>
                 </div>
             </form>
+
+
+            <h3>Хранилище</h3>
+
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Дата</th>
+                    <th>Привычка</th>
+                    <th>Статус</th>
+                </tr>
+                </thead>
+                <tbody>
+                <template x-for="perf in habits">
+                    <tr>
+                        <td x-text="perf.date"></td>
+                        <td x-text="perf.habit"></td>
+                        <td x-text="perf.status"></td>
+                    </tr>
+                </template>
+                </tbody>
+            </table>
+
+            <div class="flex justify-end gap-2 pt-2">
+                <button class="btn" @click="exportHabits">Скопировать в буфер</button>
+            </div>
         </div>
     </details>
 
@@ -228,51 +260,51 @@
         <tr>
             <th class="w-28">Дата / Привычка</th>
             
-                <th class="w-32 text-wrap ">почитать</th>
-            
-                <th class="w-32 text-wrap ">творить (рисовать/писать)</th>
-            
-                <th class="w-32 text-wrap ">творить (кодить не по работе)</th>
-            
-                <th class="w-32 text-wrap ">Погулять 30 мин (выходить на улицу)</th>
-            
-                <th class="w-32 text-wrap ">есть овоща (хотя бы 1 раз в день)</th>
-            
-                <th class="w-32 text-wrap ">есть белок (хотя бы 1 раз в день)</th>
-            
-                <th class="w-32 text-wrap ">есть сложные углеводы (хотя бы 1 раз в день)</th>
-            
-                <th class="w-32 text-wrap ">не держаться за хуй, не дергать заусенцы</th>
-            
-                <th class="w-32 text-wrap ">взвеситься</th>
-            
-                <th class="w-32 text-wrap ">спортик</th>
-            
-                <th class="w-32 text-wrap ">медитация</th>
-            
-                <th class="w-32 text-wrap ">Помыть 1 предмет посуды / поставить в посудомойку</th>
+                <th class="w-32 text-wrap ">Делать сложные задачи (аг)</th>
             
                 <th class="w-32 text-wrap ">Делать сложные задачи (рбкн)</th>
             
-                <th class="w-32 text-wrap ">Делать сложные задачи (аг)</th>
-            
                 <th class="w-32 text-wrap ">Завести рецепт / перенести из skvrd-2/1</th>
-            
-                <th class="w-32 text-wrap ">Синхрон заметок (перенести все в блог)</th>
-            
-                <th class="w-32 text-wrap ">Отмечать что меня увлекает</th>
             
                 <th class="w-32 text-wrap ">Записывать проблемы</th>
             
-                <th class="w-32 text-wrap ">Придумывать решение проблем</th>
-            
                 <th class="w-32 text-wrap ">Какие людские проблемы я могу решить / нанести пользу</th>
             
-                <th class="w-32 text-wrap ">собирать рецепты по одной теме в кодинге (htmx)</th>
+                <th class="w-32 text-wrap ">Отмечать что меня увлекает</th>
+            
+                <th class="w-32 text-wrap ">Погулять 30 мин (выходить на улицу)</th>
+            
+                <th class="w-32 text-wrap ">Помыть 1 предмет посуды / поставить в посудомойку</th>
+            
+                <th class="w-32 text-wrap ">Придумывать решение проблем</th>
+            
+                <th class="w-32 text-wrap ">Синхрон заметок (перенести все в блог)</th>
+            
+                <th class="w-32 text-wrap ">Что можно делать в телефоне (полезного, чтобы привычки закрывать)</th>
+            
+                <th class="w-32 text-wrap ">взвеситься</th>
+            
+                <th class="w-32 text-wrap ">есть белок (хотя бы 1 раз в день)</th>
+            
+                <th class="w-32 text-wrap ">есть овоща (хотя бы 1 раз в день)</th>
+            
+                <th class="w-32 text-wrap ">есть сложные углеводы (хотя бы 1 раз в день)</th>
             
                 <th class="w-32 text-wrap ">жить без дешевого дофамина</th>
             
-                <th class="w-32 text-wrap ">Что можно делать в телефоне (полезного, чтобы привычки закрывать)</th>
+                <th class="w-32 text-wrap ">медитация</th>
+            
+                <th class="w-32 text-wrap ">не держаться за хуй, не дергать заусенцы</th>
+            
+                <th class="w-32 text-wrap ">почитать</th>
+            
+                <th class="w-32 text-wrap ">собирать рецепты по одной теме в кодинге (htmx)</th>
+            
+                <th class="w-32 text-wrap ">спортик</th>
+            
+                <th class="w-32 text-wrap ">творить (кодить не по работе)</th>
+            
+                <th class="w-32 text-wrap ">творить (рисовать/писать)</th>
             
         </tr>
         </thead>
@@ -3703,21 +3735,40 @@
     
     <script src="/static/js/htmx.min.js"></script>
 
+    
+    <!-- Alpine Plugins -->
+    <script defer src="/static/js/alpinejs-plugins.min.js"></script>
+    <!-- Alpine Core -->
+    <script defer src="/static/js/alpinejs.min.js"></script>
+
 
     <script>
-        const myForm = document.getElementById("myForm"); // Replace with your form's ID
+        document.querySelector('[name=date]').valueAsDate = new Date();
 
-        myForm.addEventListener("submit", function (event) {
-            // Prevent default form submission
-            event.preventDefault();
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('habits', function () {
+                return {
+                    habits: this.$persist([]),
 
-            const formData = new FormData(event.target); // Use FormData for complex forms
+                    submitHabitForm(event) {
+                        event.preventDefault();
 
-            for (const [key, value] of formData.entries()) {
-                console.log(key, ":", value);
-            }
+                        const formData = new FormData(event.target);
+                        /** @type {{habit: string, status: '+' | '-', date: string }} */
+                        let newHabitPerf = Object.fromEntries(formData.entries());
 
-        });
+                        this.habits = this.habits
+                            .filter(h => !(h.habit === newHabitPerf.habit && h.date === newHabitPerf.date))
+                            .concat(newHabitPerf)
+                    },
+
+                    exportHabits() {
+                        navigator.clipboard.writeText(JSON.stringify(this.habits))
+                    }
+                };
+            })
+        })
+
     </script>
 
 </html>

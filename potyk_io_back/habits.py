@@ -41,7 +41,7 @@ def make_habits_blueprint(habit_repo: HabitRepo):
     def habits_index():
         habit_statuses = habit_repo.get_data()
         if habit_statuses:
-            habits = list(list(habit_statuses.values())[0].keys())
+            habits = sorted(list(habit_statuses.values())[0].keys())
         else:
             habits = []
 

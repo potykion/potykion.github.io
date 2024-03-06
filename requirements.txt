@@ -14,8 +14,8 @@ tinydb
 pydantic
 # yaml parse
 pyyaml
-
+# google sheets
+gspread
 
 # formatting
 black
-gspread
