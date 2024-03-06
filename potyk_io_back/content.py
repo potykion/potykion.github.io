@@ -70,13 +70,13 @@ def _parse_section(key, walk, content_path):
         dates = meta.get("dates", "")
         if meta.get("ignore"):
             return None
-        order = meta.get('order')
-        desc = meta.get('desc')
+        order = meta.get("order")
+        desc = meta.get("desc")
     else:
         title = key
         dates = ""
-        order=None
-        desc = ''
+        order = None
+        desc = ""
 
     section = Section(
         key=key,
@@ -84,17 +84,21 @@ def _parse_section(key, walk, content_path):
         url=make_relative_path(path, content_path),
         title=title,
         dates=dates,
-        pages=(files and _parse_files(files, path, content_path)),
-        subsections=list(filter(None, [
-            _parse_section(sub_section, walk, content_path)
-            for sub_section in sub_sections
-        ])),
+        pages=sorted(files and _parse_files(files, path, content_path), key=lambda page: page.created, reverse=True),
+        subsections=sorted(
+            filter(
+                None,
+                [
+                    _parse_section(sub_section, walk, content_path)
+                    for sub_section in sub_sections
+                ],
+            ),
+            key=lambda sec: int(key_num) if (key_num := sec.key.split('-')[0]).isdigit() else sec.key
+        ),
     )
-    if order == 'desc':
+    if order == "desc":
         section.pages = section.pages[::-1]
         section.subsections = section.subsections[::-1]
-
-
 
     return section
 
@@ -108,7 +112,7 @@ def parse_dt(raw):
 
 
 def make_relative_path(path, root) -> str:
-    return path[len(str(root)) :].replace("\\", "/") or '/'
+    return path[len(str(root)) :].replace("\\", "/") or "/"
 
 
 def _parse_files(files, dir_path, content_path):
@@ -136,13 +140,13 @@ def _parse_files(files, dir_path, content_path):
                 desc = smart_truncate(soup.get_text())
                 if md.get("created"):
                     created = parse_dt(md.get("created"))
-            tags = md.get('tags') or []
+            tags = md.get("tags") or []
         elif ext == PageExt.html:
             html = flask.render_template(template_path)
             soup = BeautifulSoup(html, "html.parser")
             title = soup.find("meta", property="og:title").get("content")
             desc = soup.find("meta", property="og:description").get("content")
-            tags= []
+            tags = []
         else:
             raise ValueError(f"Cannot parse file with such ext: {ext}")
 

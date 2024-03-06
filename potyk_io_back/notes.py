@@ -1,6 +1,7 @@
 import datetime
 import os
 from pathlib import Path
+from typing import List
 
 import flask
 import frontmatter
@@ -68,7 +69,7 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
     tree = os.walk(notes_dir)
     _, section_keys, __ = next(tree)
 
-    sections = []
+    sections: list[NoteSection] = []
 
     for section_index, section_key in enumerate(section_keys):
         dir_, __, filenames = next(tree)
@@ -110,7 +111,15 @@ def read_notes(notes_dir: str | Path) -> list[NoteSection]:
 
         sections.append(section)
 
-    sections = list(reversed(sections))
+    sections = list(
+        reversed(
+            sorted(
+                sections,
+                key=lambda sec: int(sec.key.split("-")[0]),
+                reverse=True,
+            )
+        )
+    )
     _set_notes_next_and_prev(sections)
 
     return sections

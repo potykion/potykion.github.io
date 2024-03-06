@@ -1,9 +1,7 @@
 import dataclasses
 import os
 import re
-from itertools import groupby
 from pathlib import Path
-from urllib.parse import urlparse
 
 import flask
 import frontmatter
@@ -31,10 +29,15 @@ def youtube_embed(link: str):
     """
     >>> youtube_embed('https://youtu.be/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R')
     '<iframe src="https://www.youtube.com/embed/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+    >>> youtube_embed('https://www.youtube.com/watch?v=j9cPe8Y7Rzk')
+    '<iframe src="https://www.youtube.com/embed/j9cPe8Y7Rzk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+
     """
 
     if re.match(r"https://youtu.be/(.+)?si=(.+)", link):
         id = link.rsplit("/", 1)[1]
+    elif re.match(r"https://www\.youtube\.com/watch\?v=(.+)", link):
+        id = link.rsplit("=")[1]
     else:
         return ""
     return f'<iframe src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
@@ -43,6 +46,13 @@ def youtube_embed(link: str):
 def create_app():
     app = Flask(__name__, template_folder="content")
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
+
+    @app.context_processor
+    def inject_functions():
+        return dict(
+            youtube_embed=youtube_embed,
+        )
+
 
     with app.app_context():
         app.config["CONTENT"] = read_content(Path(app.template_folder))
@@ -62,7 +72,6 @@ def create_app():
     def inject_ctx():
         return dict(
             content=app.config["CONTENT"],
-            youtube_embed=youtube_embed,
             is_prod=os.getenv("FLASK_ENV") == "prod",
         )
 
