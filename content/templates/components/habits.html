@@ -1,20 +1,20 @@
 {% macro habit_table(habits, habit_rows) %}
 
-    <table class="table-fixed w-fit">
+    <table class="table-fixed  w-fit " id="habit-table">
         <thead>
         <tr>
-            <th class="w-28">Дата / Привычка</th>
+            <th class="w-[100px] text-center"> Привычка 👉 <br> Дата 👇</th>
             {% for habit in habits %}
-                <th class="w-32 text-wrap ">{{ habit }}</th>
+                <th class="w-[100px] text-wrap ">{{ habit }}</th>
             {% endfor %}
         </tr>
         </thead>
         <tbody>
         {% for date_, habit_statuses in habit_rows.items() %}
-            <tr>
-                <td class="">{{ date_ }}</td>
+            <tr class="text-center">
+                <td class="!p-0">{{ date_ }}</td>
                 {% for status in habit_statuses.values() %}
-                    <td class="{% if status == '+' %}bg-green-200{% elif status == '-' %}bg-red-200{% endif %} text-center  border-neutral-400 border  relative ">
+                    <td class="!p-0 {% if status == '+' %}bg-green-200{% elif status == '-' %}bg-red-200{% endif %} text-center  border-neutral-400 border  relative ">
                         <span>{% if status == '+' %}➕{% elif status == '-' %}➖{% endif %}</span>
                     </td>
                 {% endfor %}
@@ -24,3 +24,53 @@
         </tbody>
     </table>
 {% endmacro %}
+
+
+{% macro habit_card(habit, overall_max_streak, overall_total_performings, overall_current_streak) %}
+    <div class="card card-bordered card-compact  shadow-lg habit-card">
+        <div class="card-body gap-2">
+            <div>
+                <h2 class=" !my-0">{{ habit.title }}</h2>
+                <div class="desc">{{ habit.desc }}
+                </div>
+            </div>
+
+            <div class="stats   stats-vertical grow">
+
+                <div class="stat px-0">
+                    <div class="stat-title">Макс. стрик</div>
+                    <div class="stat-value {% if habit.max_streak == overall_max_streak %}text-primary{% endif %}">{{ habit.max_streak }}</div>
+                    <div class="stat-desc {% if habit.max_streak == overall_max_streak %}text-primary{% endif %}">
+                        {% if habit.max_streak == overall_max_streak %}Самый большой стрик!{% endif %}</div>
+                </div>
+                <div class="stat px-0">
+                    <div class="stat-title">Всего выполнено</div>
+                    <div class="stat-value {% if habit.total_performings == overall_total_performings %}text-secondary{% endif %} ">{{ habit.total_performings }}</div>
+                    <div class="stat-desc  {% if habit.total_performings == overall_total_performings %}text-secondary{% endif %}">
+                        {% if habit.total_performings == overall_total_performings %}Больше всего
+                            выполнений!{% endif %}</div>
+                </div>
+                <div class="stat px-0">
+                    <div class="stat-title">Текущий стрик</div>
+                    <div class="stat-value {% if habit.current_streak == overall_current_streak %}text-accent{% endif %} ">{{ habit.current_streak }}</div>
+                    <div class="stat-desc {% if habit.current_streak == overall_current_streak %}text-accent{% endif %}">
+                        {% if habit.current_streak == overall_current_streak %}Самый большой текущий стрик!{% else %}По-тихонечку{% endif %}</div>
+                </div>
+
+            </div>
+
+            <div class="card-actions flex-nowrap   ">
+                <button class="btn btn-sm grow btn-error {% if habit.current_status != '-' %}btn-outline{% endif %}"
+                        type="button" hx-post="/habits/{{ habit.id }}/perform" hx-swap="outerHTML"
+                        hx-target="closest .habit-card" name="status" value="-">Проебал
+                </button>
+                <button class="btn btn-sm grow btn-success {% if habit.current_status != '+' %}btn-outline{% endif %}"
+                        type="button" hx-post="/habits/{{ habit.id }}/perform" hx-swap="outerHTML"
+                        hx-target="closest .habit-card" name="status" value="+">Сделал
+                </button>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
+
+

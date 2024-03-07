@@ -1,0 +1,39 @@
+{% extends 'templates/base.html' %}
+
+{% from 'templates/scripts.html' import htmx, alpinejs %}
+{% from 'templates/components/habits.html' import habit_table, habit_card %}
+{% from 'templates/components/core.html' import select, toggle, text_input %}
+
+{% set title='habits' %}
+{% set fullwidth=True %}
+
+
+{% block main %}
+    <div class="flex justify-between">
+
+        <h1 class="inline-block">Привычки v2</h1>
+        <a class="btn" href="/stuff/habits-v2?hide_done={% if hide_done %}false{% else %}true{% endif %}">
+            {% if hide_done %}
+                🙉 Показать выполненные
+            {% else %}
+                🙈 Скрыть выполненные
+            {% endif %}
+        </a>
+    </div>
+
+    <div class="grid grid-cols-5 gap-2 py-4 overflow-x-auto">
+
+
+        {% for habit in habits %}
+            {{ habit_card(habit, overall_max_streak, overall_total_performings, overall_current_streak) }}
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    {{ htmx() }}
+    {{ alpinejs() }}
+
+
+{% endblock %}

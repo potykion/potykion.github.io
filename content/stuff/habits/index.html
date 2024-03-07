@@ -81,10 +81,13 @@
     <div class="flex justify-between">
         <h2>Прогресс</h2>
 
-        <button class="btn " hx-post="/habits/sync" hx-target="#habit_table">
-            <span class="loading loading-spinner loading-xs htmx-indicator"></span>
-            Синхронизировать
-        </button>
+        <div>
+            <button class="btn " hx-post="/habits/sync" hx-target="#habit_table">
+                <span class="loading loading-spinner loading-xs htmx-indicator"></span>
+                Синхронизировать
+            </button>
+
+        </div>
     </div>
 
     <div class="overflow-auto" id="habit_table">
@@ -122,7 +125,10 @@
                         navigator.clipboard.writeText(JSON.stringify(this.habits))
                     }
                 };
-            })
+            });
+
+
+
         })
 
     </script>

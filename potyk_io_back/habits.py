@@ -1,4 +1,7 @@
+import dataclasses
 import datetime
+import sqlite3
+from collections import deque
 
 import flask
 from dateutil.parser import parse
@@ -6,6 +9,7 @@ from flask import Blueprint
 from typing import Dict, List
 
 import gspread
+from pydantic import BaseModel, Field, computed_field
 from tinydb import TinyDB
 
 from potyk_io_back.core import BASE_DIR
@@ -34,8 +38,136 @@ class HabitRepo:
             return {}
 
 
-def make_habits_blueprint(habit_repo: HabitRepo):
+class HabitPerforming(BaseModel):
+    id: int
+    habit_id: int
+    # '+' | '-' | ''
+    status: str
+    date: datetime.date
+
+
+class Habit(BaseModel):
+    id: int
+    title: str
+    desc: str
+
+    performings: list[HabitPerforming] = Field(default_factory=list)
+
+    @computed_field
+    @property
+    def total_performings(self) -> int:
+        return sum(1 for perf in self.performings if perf.status == "+")
+
+    @computed_field
+    @property
+    def max_streak(self) -> int:
+        max_streak_ = 0
+        streak = 0
+        for perf in sorted(self.performings, key=lambda perf: perf.date):
+            if perf.status == "+":
+                streak += 1
+            else:
+                streak = 0
+            max_streak_ = max(max_streak_, streak)
+        return max_streak_
+
+    @computed_field
+    @property
+    def current_streak(self) -> int:
+        streak = 0
+        queue_ = deque(
+            sorted(self.performings, key=lambda perf: perf.date, reverse=True)
+        )
+        while queue_:
+            perf = queue_.popleft()
+            if perf.status == "":
+                continue
+            elif perf.status == "-":
+                return 0
+            else:
+                streak = 1
+                break
+
+        while queue_:
+            perf = queue_.popleft()
+            if perf.status == "+":
+                streak += 1
+            else:
+                break
+
+        return streak
+
+    @computed_field()
+    @property
+    def current_status(self) -> str:
+        try:
+            return next(
+                perf for perf in self.performings if perf.date == datetime.date.today()
+            ).status
+        except StopIteration:
+            return ""
+
+    def has_performing(self, date: datetime.date) -> bool:
+        return (
+            next((perf for perf in self.performings if perf.date == date), None)
+            is not None
+        )
+
+    @computed_field()
+    @property
+    def done_today(self) -> bool:
+        date = datetime.date.today()
+        perf = next((perf for perf in self.performings if perf.date == date), None)
+        return perf is not None and perf.status == "+"
+
+
+class HabitSqliteStorage:
+    def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
+        self.sqlite_cur = sqlite_cur
+
+    def list_all(self):
+        raw_habits = self.sqlite_cur.execute("select * from habits").fetchall()
+        habits = [
+            Habit(id=id, title=title, desc=desc or "") for id, title, desc in raw_habits
+        ]
+        habit_index = {habit.id: habit for habit in habits}
+
+        raw_habit_performings = self.sqlite_cur.execute(
+            "select * from habit_performings"
+        ).fetchall()
+        habit_performings = [
+            HabitPerforming(id=id, habit_id=habit_id, status=status, date=date)
+            for id, habit_id, status, date in raw_habit_performings
+        ]
+        for perf in habit_performings:
+            habit_index[perf.habit_id].performings.append(perf)
+        return habits
+
+    def get_by_id(self, habit_id) -> Habit:
+        id, title, desc = self.sqlite_cur.execute(
+            "select id, title, desc from habits where id = ?", (habit_id,)
+        ).fetchone()
+        habit = Habit(id=id, title=title, desc=desc or "")
+
+        raw_habit_performings = self.sqlite_cur.execute(
+            "select id, habit_id, status, date from habit_performings where habit_id = ?",
+            (habit_id,),
+        ).fetchall()
+        habit_performings = [
+            HabitPerforming(id=id, habit_id=habit_id, status=status, date=date)
+            for id, habit_id, status, date in raw_habit_performings
+        ]
+        for perf in habit_performings:
+            habit.performings.append(perf)
+        return habit
+
+
+def make_habits_blueprint(
+    habit_repo: HabitRepo,
+    sqlite_cur: sqlite3.Cursor,
+):
     habits_blueprint = Blueprint("habits_blueprint", __name__)
+    storage = HabitSqliteStorage(sqlite_cur)
 
     @habits_blueprint.get("/stuff/habits")
     def habits_index():
@@ -49,6 +181,27 @@ def make_habits_blueprint(habit_repo: HabitRepo):
             "stuff/habits/index.html",
             habits=habits,
             habit_statuses=habit_statuses,
+        )
+
+    @habits_blueprint.get("/stuff/habits/v2")
+    def habits_v2_index():
+        hide_done = flask.request.args.get("hide_done") == "true"
+
+        habits = storage.list_all()
+        overall_max_streak = max(habit.max_streak for habit in habits)
+        overall_total_performings = max(habit.total_performings for habit in habits)
+        overall_current_streak = max(habit.current_streak for habit in habits)
+
+        if hide_done:
+            habits = [habit for habit in habits if not habit.done_today]
+
+        return flask.render_template(
+            "stuff/habits/v2.html",
+            hide_done=hide_done,
+            habits=habits,
+            overall_max_streak=overall_max_streak,
+            overall_total_performings=overall_total_performings,
+            overall_current_streak=overall_current_streak,
         )
 
     @habits_blueprint.post("/habits/sync")
@@ -65,9 +218,16 @@ def make_habits_blueprint(habit_repo: HabitRepo):
                 A dictionary where keys are dates and values are dictionaries containing
                 habit titles as keys and their statuses (+ or -) as values.
             """
-            gc = gspread.service_account(
-                BASE_DIR / "poty-blog-8ecdcdc42b5e.json"
-            )  # Authenticate with Google Sheets API
+
+            gc_key = next(
+                BASE_DIR / key
+                for key in [
+                    "poty-blog-ce81c322c37e.json",
+                    "poty-blog-8ecdcdc42b5e.json",
+                ]
+                if (BASE_DIR / key).exists()
+            )
+            gc = gspread.service_account(gc_key)
 
             # Open the spreadsheet and the first worksheet
             sheet = gc.open_by_key(sheet_url).sheet1
@@ -109,4 +269,61 @@ def make_habits_blueprint(habit_repo: HabitRepo):
             habit_data=habit_data,
         )
 
+    @habits_blueprint.post("/habits/<int:habit_id>/perform")
+    def habits_perform_endp(habit_id: int):
+        status = flask.request.form.get("status", "")
+
+        habit: Habit = storage.get_by_id(habit_id)
+
+        date = datetime.date.today()
+        if habit.has_performing(date):
+            sqlite_cur.execute(
+                "update habit_performings set status = ? where habit_id = ? and date = ?;",
+                (status, habit_id, date),
+            )
+        else:
+            sqlite_cur.execute(
+                'insert into habit_performings (habit_id, status, "date") values (?, ?, ?);',
+                (habit_id, status, date),
+            )
+        sqlite_cur.connection.commit()
+        habit: Habit = storage.get_by_id(habit_id)
+
+        return flask.render_template_string(
+            "{% from 'templates/components/habits.html' import habit_card %} "
+            "{{ habit_card(habit) }}",
+            habit=habit,
+        )
+
     return habits_blueprint
+
+
+import csv
+
+
+def export_performings_from_csv(csv_file, sqlite_cur):
+    """
+    >>> sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False) # doctest: +SKIP
+    >>> sqlite_cur = sqlite_conn.cursor() # doctest: +SKIP
+    >>> export_performings_from_csv(BASE_DIR / "привычки - трекер.csv", sqlite_cur) # doctest: +SKIP
+    """
+    with open(csv_file, "r", encoding="utf-8") as file:
+        reader = csv.reader(file)
+
+        rows = list(reader)[1:]
+
+        performings = []
+        for row in rows:
+            date_, *statuses = row
+            if parse(date_).date() >= datetime.date.today():
+                break
+            performings.extend(
+                [(index + 1, date_, status) for index, status in enumerate(statuses)]
+            )
+
+    for habit_id, date, status in performings:
+        sqlite_cur.execute(
+            'insert into habit_performings (habit_id, status, "date") values (?, ?, ?);',
+            (habit_id, status, date),
+        )
+    sqlite_cur.connection.commit()

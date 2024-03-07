@@ -1,6 +1,7 @@
 import dataclasses
 import os
 import re
+import sqlite3
 from pathlib import Path
 
 import flask
@@ -10,6 +11,7 @@ from flask import Flask, render_template, render_template_string
 from tinydb import TinyDB
 
 from potyk_io_back.content import read_content
+from potyk_io_back.core import BASE_DIR
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.stats import stats_blueprint
@@ -53,7 +55,6 @@ def create_app():
             youtube_embed=youtube_embed,
         )
 
-
     with app.app_context():
         app.config["CONTENT"] = read_content(Path(app.template_folder))
 
@@ -64,9 +65,12 @@ def create_app():
         task_db = TodoRepo(db)
         habit_repo = HabitRepo(db)
 
+    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
+    sqlite_cur = sqlite_conn.cursor()
+
     app.register_blueprint(make_todo_blueprint(task_db))
     app.register_blueprint(stats_blueprint)
-    app.register_blueprint(make_habits_blueprint(habit_repo))
+    app.register_blueprint(make_habits_blueprint(habit_repo, sqlite_cur))
 
     @app.context_processor
     def inject_ctx():
