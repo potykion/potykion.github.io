@@ -1,5 +1,6 @@
 ---
 title: Детский сад для неупокоенных душ 
+created: 2024-03-07
 ---
 
 <img src="{{ url_for('static', filename='images/kindergarden.jpg')  }}" >

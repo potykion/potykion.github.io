@@ -1,99 +1,33 @@
 {% extends 'templates/base.html' %}
 
 {% from 'templates/scripts.html' import htmx, alpinejs %}
-{% from 'templates/components/habits.html' import habit_table %}
+{% from 'templates/components/habits.html' import habit_table, habit_card %}
 {% from 'templates/components/core.html' import select, toggle, text_input %}
 
 {% set title='habits' %}
 {% set fullwidth=True %}
 
+
 {% block main %}
-    <h1>Привычки</h1>
+    <div class="flex justify-between flex-wrap gap-2">
 
-    <details class="collapse collapse-arrow bg-neutral-50 my-4  overflow-visible">
-        <summary class="collapse-title    ">
-            <h2> Управление привычками</h2>
-        </summary>
-        <div class="collapse-content" x-data="habits">
-
-            <h3>Добавление</h3>
-            <form style="display: flex; flex-direction: column; gap: 10px" id="habit-form" @submit="submitHabitForm">
-                {{ select('habit', 'Привычка', simple_options=habits) }}
-
-                <div class="form-control">
-                    <div class="label cursor-pointer justify-start  gap-2">
-                        <span class="label-text">Статус</span>
-                    </div>
-                    <div class="w-full flex gap-2 p-1">
-                        <label class="btn btn-outline btn-success btn-wide">
-                            Сделал
-                            <input type="radio" name="status" value="+" class="radio radio-success " checked/>
-                        </label>
-                        <label class="btn btn-outline btn-error btn-wide">
-                            Не сделал
-                            <input type="radio" name="status" value="-" class="radio radio-error "/>
-                        </label>
-                    </div>
-                </div>
-
-                {{ text_input('date', 'Дата', type='date') }}
-
-
-                <div class="flex justify-end gap-2">
-                    <button class="btn ">
-                        Добавить выполнение
-                    </button>
-                </div>
-            </form>
-
-
-            <h3>Хранилище</h3>
-
-
-            <table>
-                <thead>
-                <tr>
-                    <th>Дата</th>
-                    <th>Привычка</th>
-                    <th>Статус</th>
-                </tr>
-                </thead>
-                <tbody>
-                <template x-for="perf in habits">
-                    <tr>
-                        <td x-text="perf.date"></td>
-                        <td x-text="perf.habit"></td>
-                        <td x-text="perf.status"></td>
-                    </tr>
-                </template>
-                </tbody>
-            </table>
-
-            <div class="flex justify-end gap-2 pt-2">
-                <button class="btn" @click="exportHabits">Скопировать в буфер</button>
-            </div>
-        </div>
-    </details>
-
-
-
-
-    <div class="flex justify-between">
-        <h2>Прогресс</h2>
-
-        <div>
-            <button class="btn " hx-post="/habits/sync" hx-target="#habit_table">
-                <span class="loading loading-spinner loading-xs htmx-indicator"></span>
-                Синхронизировать
-            </button>
-
-        </div>
+        <h1 class="inline-block">Привычки v2</h1>
+        <a class="btn btn-sm md:btn-md" href="?hide_done={% if hide_done %}false{% else %}true{% endif %}">
+            {% if hide_done %}
+                🙉 Показать выполненные
+            {% else %}
+                🙈 Скрыть выполненные
+            {% endif %}
+        </a>
     </div>
 
-    <div class="overflow-auto" id="habit_table">
-        {{ habit_table(habits, habit_statuses) }}
-    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-2 py-4 ">
 
+
+        {% for habit in habits %}
+            {{ habit_card(habit, overall_max_streak, overall_total_performings, overall_current_streak) }}
+        {% endfor %}
+    </div>
 
 {% endblock %}
 
@@ -101,35 +35,5 @@
     {{ htmx() }}
     {{ alpinejs() }}
 
-    <script>
-        document.querySelector('[name=date]').valueAsDate = new Date();
 
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('habits', function () {
-                return {
-                    habits: this.$persist([]),
-
-                    submitHabitForm(event) {
-                        event.preventDefault();
-
-                        const formData = new FormData(event.target);
-                        {% raw %}/** @type {{habit: string, status: '+' | '-', date: string }} */{% endraw %}
-                        let newHabitPerf = Object.fromEntries(formData.entries());
-
-                        this.habits = this.habits
-                            .filter(h => !(h.habit === newHabitPerf.habit && h.date === newHabitPerf.date))
-                            .concat(newHabitPerf)
-                    },
-
-                    exportHabits() {
-                        navigator.clipboard.writeText(JSON.stringify(this.habits))
-                    }
-                };
-            });
-
-
-
-        })
-
-    </script>
 {% endblock %}

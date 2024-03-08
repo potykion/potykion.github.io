@@ -42,7 +42,7 @@ class HabitPerforming(BaseModel):
     id: int
     habit_id: int
     # '+' | '-' | ''
-    status: str
+    status: str = ""
     date: datetime.date
 
 
@@ -113,6 +113,16 @@ class Habit(BaseModel):
             is not None
         )
 
+    def get_performing(self, date: datetime.date) -> HabitPerforming:
+        return next(
+            (perf for perf in self.performings if perf.date == date), None
+        ) or HabitPerforming(
+            id=0,
+            habit_id=self.id,
+            status="",
+            date=date,
+        )
+
     @computed_field()
     @property
     def done_today(self) -> bool:
@@ -169,7 +179,7 @@ def make_habits_blueprint(
     habits_blueprint = Blueprint("habits_blueprint", __name__)
     storage = HabitSqliteStorage(sqlite_cur)
 
-    @habits_blueprint.get("/stuff/habits")
+    @habits_blueprint.get("/stuff/habits/v1")
     def habits_index():
         habit_statuses = habit_repo.get_data()
         if habit_statuses:
@@ -178,12 +188,12 @@ def make_habits_blueprint(
             habits = []
 
         return flask.render_template(
-            "stuff/habits/index.html",
+            "stuff/habits/v1.html",
             habits=habits,
             habit_statuses=habit_statuses,
         )
 
-    @habits_blueprint.get("/stuff/habits/v2")
+    @habits_blueprint.get("/stuff/habits")
     def habits_v2_index():
         hide_done = flask.request.args.get("hide_done") == "true"
 
@@ -196,7 +206,7 @@ def make_habits_blueprint(
             habits = [habit for habit in habits if not habit.done_today]
 
         return flask.render_template(
-            "stuff/habits/v2.html",
+            "stuff/habits/index.html",
             hide_done=hide_done,
             habits=habits,
             overall_max_streak=overall_max_streak,

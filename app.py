@@ -1,4 +1,5 @@
 import dataclasses
+import datetime
 import os
 import re
 import sqlite3
@@ -45,15 +46,22 @@ def youtube_embed(link: str):
     return f'<iframe src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
 
 
+def today_shift(shift_days: int) -> datetime.date:
+    return datetime.date.today() + datetime.timedelta(days=shift_days)
+
+
 def create_app():
     app = Flask(__name__, template_folder="content")
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
-    @app.context_processor
-    def inject_functions():
-        return dict(
+    app.jinja_env.globals.update(
+        dict(
             youtube_embed=youtube_embed,
+            today_shift=today_shift,
+            today_day=datetime.date.today().weekday(),
+            today_date=datetime.date.today(),
         )
+    )
 
     with app.app_context():
         app.config["CONTENT"] = read_content(Path(app.template_folder))

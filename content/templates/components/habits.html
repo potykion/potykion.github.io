@@ -1,3 +1,6 @@
+{% from 'templates/components/icons.html' import chart_bar %}
+
+
 {% macro habit_table(habits, habit_rows) %}
 
     <table class="table-fixed  w-fit " id="habit-table">
@@ -27,15 +30,24 @@
 
 
 {% macro habit_card(habit, overall_max_streak, overall_total_performings, overall_current_streak) %}
-    <div class="card card-bordered card-compact  shadow-lg habit-card">
+    <div class="card card-bordered card-compact   shadow habit-card" x-data="{showStats: false}">
         <div class="card-body gap-2">
-            <div>
-                <h2 class=" !my-0">{{ habit.title }}</h2>
-                <div class="desc">{{ habit.desc }}
+            <div class=" flex-1">
+
+                <div class="flex">
+                    <div class="grow">
+                        <h3 class=" !my-0">{{ habit.title }}</h3>
+
+                    </div>
+                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
+                        {{ chart_bar('w-4 h-4') }}
+                    </button>
                 </div>
+
+                <div class="desc !py-0">{{ habit.desc }}</div>
             </div>
 
-            <div class="stats   md:stats-vertical grow">
+            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
 
                 <div class="stat md:px-0">
                     <div class="stat-title">Макс. стрик</div>
@@ -54,9 +66,23 @@
                     <div class="stat-title">Текущий стрик</div>
                     <div class="stat-value {% if habit.current_streak == overall_current_streak %}text-accent{% endif %} ">{{ habit.current_streak }}</div>
                     <div class="stat-desc {% if habit.current_streak == overall_current_streak %}text-accent{% endif %}">
-                        {% if habit.current_streak == overall_current_streak %}Самый большой текущий стрик!{% else %}По-тихонечку{% endif %}</div>
+                        {% if habit.current_streak == overall_current_streak %}Самый большой текущий стрик!{% else %}
+                            По-тихонечку{% endif %}</div>
                 </div>
 
+            </div>
+
+            <div class="pulse grid grid-cols-12 gap-1">
+                {% set weeks = 12 %}
+                {% for i in range(weeks*7) %}
+                    {% set date_ = today_shift(7-(today_day) -weeks*7 + i%weeks*7 + i//weeks) %}
+                    {% set status = habit.get_performing(date_).status %}
+
+                    <div class="tooltip" data-tip="{{ date_ }}">
+{#                    {% elif status == '-' %}bg-error/40#}
+                        <div class="h-5 w-5 rounded {% if date_ > today_date %}invisible{% endif %}  {% if status == '+' %}bg-success/20{% else %}bg-neutral-50{% endif %}"></div>
+                    </div>
+                {% endfor %}
             </div>
 
             <div class="card-actions flex-nowrap   ">
