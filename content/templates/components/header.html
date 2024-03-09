@@ -3,20 +3,23 @@
 {% macro header() %}
     <header>
         <div class="flex p-1 md:p-2 ">
-            <a class="btn btn-sm md:btn-md  btn-link " href="/">потик.ио</a>
+            <a class="btn btn-sm md:btn-md   btn-link  " href="/">
+                потик.ио
+            </a>
 
 
             <div style="display: flex; align-items: center" class="hide-on-mobile">
-                
+
                 <a class="btn btn-link" href="/notes">заметки</a>
-                <a class="btn btn-link" href="/special">спешл</a> 
+                <a class="btn btn-link" href="/special">спешл</a>
                 <a class="btn btn-link" href="/stuff">штучки</a>
+                <a class="btn btn-link text-gray-50" href="/drafts">черновики</a>
             </div>
 
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
 
-               class="btn btn-sm md:btn-md btn-secondary uppercase">{{ list_bullet() }} Дай фидбек плиз</a>
+               class="btn btn-sm md:btn-md btn-secondary uppercase animate-bounce">Дай фидбек блэт</a>
         </div>
     <hr>
     </header>

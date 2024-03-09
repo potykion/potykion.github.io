@@ -75,7 +75,9 @@
 
 
 {% macro link_section(links, section_title, section_title_as='h2') %}
+    {% if section_title_as %}
     <{{ section_title_as }}>{{ section_title }}</{{ section_title_as }}>
+    {% endif %}
     <ul>
         {% for link in links %}
             <li><a class="link" href="{{ link.url }}">{{ link.name }}</a>

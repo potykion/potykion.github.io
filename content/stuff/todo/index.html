@@ -7,8 +7,11 @@
 {% set title='todo' %}
 
 {% block main %}
-    <h1>Задачки</h1>
-
+    <div class="flex ">
+        <h1 class="inline-block">Задачки</h1>
+        {% if is_prod %}
+            <div class=" badge badge-ghost">● offline</div>{% endif %}
+    </div>
     <div class="collapse collapse-arrow bg-neutral-50 my-4">
         <input type="checkbox"/>
         <div class="collapse-title text-xl font-medium flex items-center space-x-2  ">

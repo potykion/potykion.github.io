@@ -52,12 +52,13 @@ def read_content(content_path) -> Section:
     return content_section
 
 
-def _parse_section(key, walk, content_path):
+def _parse_section(key, walk, content_path, ignore_dirs=('templates', )):
     path, sub_sections, files = next(walk)
 
-    sub_sections = [sec for sec in sub_sections if sec != "templates"]
-    while "templates" in path:
-        path, sub_sections, files = next(walk)
+    if ignore_dirs:
+        sub_sections = [sec for sec in sub_sections if sec not in ignore_dirs]
+        while any(dir_ in path for dir_ in ignore_dirs):
+            path, sub_sections, files = next(walk)
 
     files = [file for file in files if file != "index.html" and file != "index.md"]
 
@@ -155,7 +156,7 @@ def _parse_files(files, dir_path, content_path):
                 key=key,
                 ext=ext,
                 template_path=template_path,
-                title=title,
+                title=title or key,
                 desc=desc,
                 created=created,
                 url=url,

@@ -281,11 +281,15 @@ def make_habits_blueprint(
 
     @habits_blueprint.post("/habits/<int:habit_id>/perform")
     def habits_perform_endp(habit_id: int):
+        date = flask.request.values.get("date")
+        if date:
+            date = parse_date(date)
+        else:
+            date = datetime.date.today()
         status = flask.request.form.get("status", "")
 
         habit: Habit = storage.get_by_id(habit_id)
 
-        date = datetime.date.today()
         if habit.has_performing(date):
             sqlite_cur.execute(
                 "update habit_performings set status = ? where habit_id = ? and date = ?;",

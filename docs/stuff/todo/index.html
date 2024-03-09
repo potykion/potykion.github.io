@@ -81,25 +81,23 @@
 
     <header>
         <div class="flex p-1 md:p-2 ">
-            <a class="btn btn-sm md:btn-md  btn-link " href="/">потик.ио</a>
+            <a class="btn btn-sm md:btn-md   btn-link  " href="/">
+                потик.ио
+            </a>
 
 
             <div style="display: flex; align-items: center" class="hide-on-mobile">
-                
+
                 <a class="btn btn-link" href="/notes">заметки</a>
-                <a class="btn btn-link" href="/special">спешл</a> 
+                <a class="btn btn-link" href="/special">спешл</a>
                 <a class="btn btn-link" href="/stuff">штучки</a>
+                <a class="btn btn-link text-gray-50" href="/drafts">черновики</a>
             </div>
 
             <div style="flex-grow: 1"></div>
             <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
 
-               class="btn btn-sm md:btn-md btn-secondary uppercase">
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
-</svg>
-
- Дай фидбек плиз</a>
+               class="btn btn-sm md:btn-md btn-secondary uppercase animate-bounce">Дай фидбек блэт</a>
         </div>
     <hr>
     </header>
@@ -115,8 +113,11 @@
         
 
         
-    <h1>Задачки</h1>
-
+    <div class="flex ">
+        <h1 class="inline-block">Задачки</h1>
+        
+            <div class=" badge badge-ghost">● offline</div>
+    </div>
     <div class="collapse collapse-arrow bg-neutral-50 my-4">
         <input type="checkbox"/>
         <div class="collapse-title text-xl font-medium flex items-center space-x-2  ">
@@ -153,13 +154,13 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
@@ -336,37 +337,6 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/26" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-            
-                
-    <li>
-        <div class="flex items-start space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_24" type="checkbox"
-                   
-                   hx-post="/todo/24"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_24"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-            <span>
-                drafts category (+ customizable ignorance of dirs)
-            </span>
-
-            <div class="desc"></div>
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/24/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/24" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -562,6 +532,37 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/25" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_24" type="checkbox"
+                   checked 
+                   hx-post="/todo/24"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_24"
+                   class="text-sm"
+                   style="flex-grow: 1; text-decoration: line-through ">
+            <span>
+                drafts category (+ customizable ignorance of dirs)
+            </span>
+
+            <div class="desc"></div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/24/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/24" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
