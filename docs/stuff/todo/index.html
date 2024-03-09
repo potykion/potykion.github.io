@@ -79,7 +79,7 @@
 
 
 
-    <header>
+    <header class="pt-2">
         <div class="flex p-1 md:p-2 ">
             <a class="btn btn-sm md:btn-md   btn-link  " href="/">
                 потик.ио
@@ -154,6 +154,9 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                             <button class="btn btn-sm" type="button"
@@ -161,9 +164,6 @@
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                     </div>
                 </label>
