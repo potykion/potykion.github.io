@@ -72,18 +72,24 @@
 
             </div>
 
-            {% set weeks = 12 %}
-            <div class="pulse grid grid-cols-12 gap-1">
-                {% for i in range(weeks*7) %}
-                    {% set date_ = today_shift(7-(today_day) -weeks*7 + i%weeks*7 + i//weeks) %}
-                    {% set perf = habit.get_performing(date_) %}
-                    {% set status = perf.status %}
-                    {% set nextStatus = '-' if status == '' else ('+' if status == '-' else '') %}
+            <div>
+                {% set weeks = 14 %}
+                {% for day in range(7) %}
+                    <div class="flex gap-1">
+                        {% for week in range(weeks) %}
+                            {% set i = day*weeks+week %}
+                            {% set date_ = today_shift(7-(today_day) -weeks*7 + i%weeks*7 + i//weeks) %}
+                            {% set perf = habit.get_performing(date_) %}
+                            {% set status = perf.status %}
+                            {% set nextStatus = '-' if status == '' else ('+' if status == '-' else '') %}
 
-                    <div class="tooltip" data-tip="{{ date_ }}">
+                            <div class="tooltip w-full" data-tip="{{ date_ }}">
 
-                        <button hx-post="/habits/{{ habit.id }}/perform?date={{ date_ }}" hx-swap="outerHTML"
-                        hx-target="closest .habit-card" name="status" value="{{ nextStatus }}" class="aspect-square w-full rounded {% if date_ > today_date %}invisible{% endif %}  {% if status == '+' %}bg-success/20{% elif status == '-' %}bg-error/10{% else %}bg-neutral-50{% endif %}"></button>
+                                <button hx-post="/habits/{{ habit.id }}/perform?date={{ date_ }}" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="{{ nextStatus }}"
+                                        class="aspect-square w-full rounded {% if date_ > today_date %}invisible{% endif %}  {% if status == '+' %}bg-success/20{% elif status == '-' %}bg-error/10{% else %}bg-neutral-50{% endif %}"></button>
+                            </div>
+                        {% endfor %}
                     </div>
                 {% endfor %}
             </div>

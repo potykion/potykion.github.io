@@ -9,13 +9,14 @@
 
 
 {% block main %}
-    <div class="flex justify-between  flex-wrap gap-2">
+    <div class="flex ">
+        <h1 class="inline-block">Привычки v2</h1>
+        {% if is_prod %}
+            <div class=" badge badge-ghost">● offline</div>{% endif %}
+    </div>
 
+    <div class="flex mt-4  flex-wrap gap-2">
 
-        <div class="flex ">
-            <h1 class="inline-block">Привычки v2</h1>
-            {% if is_prod %}<div class=" badge badge-ghost">● offline</div>{% endif %}
-        </div>
 
         <a class="btn btn-sm md:btn-md" href="?hide_done={% if hide_done %}false{% else %}true{% endif %}">
             {% if hide_done %}
@@ -25,6 +26,7 @@
             {% endif %}
         </a>
     </div>
+
 
 
 

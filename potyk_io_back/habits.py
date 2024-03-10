@@ -136,18 +136,19 @@ class HabitSqliteStorage:
         self.sqlite_cur = sqlite_cur
 
     def list_all(self):
-        raw_habits = self.sqlite_cur.execute("select * from habits").fetchall()
+        raw_habits = self.sqlite_cur.execute("select id, title, desc from habits").fetchall()
         habits = [
             Habit(id=id, title=title, desc=desc or "") for id, title, desc in raw_habits
         ]
         habit_index = {habit.id: habit for habit in habits}
 
         raw_habit_performings = self.sqlite_cur.execute(
-            "select * from habit_performings"
+            "select id, habit_id, status, date from habit_performings"
         ).fetchall()
         habit_performings = [
             HabitPerforming(id=id, habit_id=habit_id, status=status, date=date)
             for id, habit_id, status, date in raw_habit_performings
+            if habit_id in habit_index
         ]
         for perf in habit_performings:
             habit_index[perf.habit_id].performings.append(perf)
