@@ -13,7 +13,7 @@ app = create_app()
 
 
 def make_server():
-    os.environ['FLASK_ENV'] = 'prod'
+    os.environ["FLASK_ENV"] = "prod"
     return app.test_client()
 
 
@@ -42,7 +42,7 @@ def make_filename(article):
 
 
 def write_article(dist, filename):
-    path = dist / filename.strip('/')
+    path = dist / filename.strip("/")
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
     with open(path, "w", encoding="utf-8") as f:
@@ -55,19 +55,46 @@ def copy_static(dist):
 
 def _add_section_to_render(section, with_section=True):
     return [
-        *(
-            [(section.url, section.url + "/index.html")]
-            if with_section
-            else []
-        ),
+        *([(section.url, section.url + "/index.html")] if with_section else []),
         *((page.url, f"{page.url}.html") for page in section.pages),
         *chain.from_iterable(
             (
-                _add_section_to_render(sub, with_section=section.key != "notes" and section.key != 'special')
+                _add_section_to_render(
+                    sub,
+                    with_section=section.key != "notes" and section.key != "special",
+                )
                 for sub in section.subsections
             )
         ),
     ]
+
+
+def make_sitemap(routes, save_dir):
+    import xmltodict
+
+    # Example list of URLs
+    urls = [
+        urljoin('https://potyk.io', route)
+        for route in routes
+    ]
+
+    # Prepare the sitemap structure
+    sitemap = {
+        "urlset": {"@xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9", "url": []}
+    }
+
+    # Populate the sitemap with URLs
+    for url in urls:
+        sitemap["urlset"]["url"].append({"loc": url})
+
+    # Convert the sitemap dictionary to XML
+    sitemap_xml = xmltodict.unparse(sitemap, pretty=True)
+
+    # Save the sitemap to a file
+    with open(save_dir / "sitemap.xml", "w") as f:
+        f.write(sitemap_xml)
+
+    print("Sitemap generated successfully.")
 
 
 if __name__ == "__main__":
@@ -86,6 +113,8 @@ if __name__ == "__main__":
         rendered = render(route, server)
         write_article(dist, path)
         print(f"Rendering articles: Progress: {index + 1} / {len(what_to_render)}")
+
+    make_sitemap([route for route, path in what_to_render], dist)
 
     print("Coping static")
     copy_static(dist)

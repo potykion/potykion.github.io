@@ -16,6 +16,8 @@ pydantic
 pyyaml
 # google sheets
 gspread
+# xml (sitemap) creation
+xmltodict
 
 # formatting
 black
