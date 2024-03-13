@@ -3754,10 +3754,6 @@ details.collapse summary::-webkit-details-marker {
   margin-right: 0.5rem;
 }
 
-.mt-2 {
-  margin-top: 0.5rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
@@ -3873,10 +3869,6 @@ details.collapse summary::-webkit-details-marker {
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.grid-cols-12 {
-  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .grid-cols-2 {
@@ -4046,6 +4038,10 @@ details.collapse summary::-webkit-details-marker {
   padding-top: 0.5rem;
 }
 
+.\!pb-0 {
+  padding-bottom: 0px !important;
+}
+
 .text-center {
   text-align: center;
 }
@@ -4062,6 +4058,10 @@ details.collapse summary::-webkit-details-marker {
 
 .font-medium {
   font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
 }
 
 .uppercase {

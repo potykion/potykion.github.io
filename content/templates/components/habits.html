@@ -42,9 +42,13 @@
 
                 </div>
 
-                <div class="desc !py-0">{{ habit.desc }}</div>
+                {% if habit.dod %}
+                    <div class="desc !pb-0"><span class="font-semibold">dod</span>:{{ habit.dod }}</div>{% endif %}
+                {% if habit.desc and habit.desc != habit.dod %}
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:{{ habit.desc }}</div>{% endif %}
+                {% if habit.goal %}
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: {{ habit.goal }}</div>{% endif %}
             </div>
-
 
 
             <div>

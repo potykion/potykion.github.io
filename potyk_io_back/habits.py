@@ -50,6 +50,8 @@ class Habit(BaseModel):
     id: int
     title: str
     desc: str
+    dod: str
+    goal: str
 
     performings: list[HabitPerforming] = Field(default_factory=list)
 
@@ -135,10 +137,14 @@ class HabitSqliteStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
         self.sqlite_cur = sqlite_cur
 
-    def list_all(self):
-        raw_habits = self.sqlite_cur.execute("select id, title, desc from habits").fetchall()
+    def list_all(self, filter_=None, filter_params=None) -> List[Habit]:
+        q = "select id, title, desc, dod, goal from habits"
+        if filter_:
+            q += " where {}".format(filter_)
+        raw_habits = self.sqlite_cur.execute(q, filter_params or ()).fetchall()
         habits = [
-            Habit(id=id, title=title, desc=desc or "") for id, title, desc in raw_habits
+            Habit(id=id, title=title, desc=desc or "", dod=dod or "", goal=goal or "")
+            for id, title, desc, dod, goal in raw_habits
         ]
         habit_index = {habit.id: habit for habit in habits}
 
@@ -155,22 +161,7 @@ class HabitSqliteStorage:
         return habits
 
     def get_by_id(self, habit_id) -> Habit:
-        id, title, desc = self.sqlite_cur.execute(
-            "select id, title, desc from habits where id = ?", (habit_id,)
-        ).fetchone()
-        habit = Habit(id=id, title=title, desc=desc or "")
-
-        raw_habit_performings = self.sqlite_cur.execute(
-            "select id, habit_id, status, date from habit_performings where habit_id = ?",
-            (habit_id,),
-        ).fetchall()
-        habit_performings = [
-            HabitPerforming(id=id, habit_id=habit_id, status=status, date=date)
-            for id, habit_id, status, date in raw_habit_performings
-        ]
-        for perf in habit_performings:
-            habit.performings.append(perf)
-        return habit
+        return self.list_all("id = ?", (habit_id,))[0]
 
 
 def make_habits_blueprint(
