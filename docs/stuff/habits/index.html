@@ -132,7 +132,7 @@
 
 
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 py-4 ">
+    <div class="grid md:grid-cols-2 gap-2 py-4 ">
 
 
         
@@ -146,44 +146,16 @@
                         <h3 class=" !my-0">Чтение</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">Почитать хотя бы одну (1!) страничку</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">dod</span>:Почитать хотя бы одну (1!) страничку</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: 5 книг за год</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value text-primary">31</div>
-                    <div class="stat-desc text-primary">
-                        Самый большой стрик!</div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value text-secondary ">38</div>
-                    <div class="stat-desc  text-secondary">
-                        Больше всего
-                            выполнений!</div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">2</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -368,8 +340,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/1/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -554,8 +526,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/1/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -740,8 +712,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/1/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -1497,7 +1469,7 @@
                         type="button" hx-post="/habits/1/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/1/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -1516,43 +1488,16 @@
                         <h3 class=" !my-0">Писать/рисовать</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">Творить крч</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:Творить крч</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Заполнять блог? Но зачем?</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">10</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">34</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">6</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -1737,8 +1682,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/2/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -1923,8 +1868,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/2/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -2109,8 +2054,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/2/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -2862,7 +2807,7 @@
             </div>
 
             <div class="card-actions flex-nowrap   ">
-                <button class="btn btn-sm grow btn-error btn-outline"
+                <button class="btn btn-sm grow btn-error "
                         type="button" hx-post="/habits/2/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
@@ -2885,43 +2830,15 @@
                         <h3 class=" !my-0">Кодить не по работе</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Заполнять блог? Но зачем?</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">9</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">31</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">5</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -3106,8 +3023,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/3/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -3292,8 +3209,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/3/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -3478,8 +3395,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/3/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -4209,8 +4126,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-10">
 
                                 <button hx-post="/habits/3/perform?date=2024-03-10" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                             
@@ -4235,7 +4152,7 @@
                         type="button" hx-post="/habits/3/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/3/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -4254,42 +4171,15 @@
                         <h3 class=" !my-0">Выходить на улицу</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Мощно двигаться по жизни, а не гнить в постельке</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">28</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">28</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value text-accent ">28</div>
-                    <div class="stat-desc text-accent">
-                        Самый большой текущий стрик!</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -4474,8 +4364,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/4/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -4660,8 +4550,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/4/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -4846,8 +4736,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/4/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -5603,7 +5493,7 @@
                         type="button" hx-post="/habits/4/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/4/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -5622,43 +5512,16 @@
                         <h3 class=" !my-0">ППшиться</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">Овоща, белок, сложные углеводы</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:Овоща, белок, сложные углеводы</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Сбросить вес до 80</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">9</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">26</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">2</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -5843,8 +5706,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/5/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -6029,8 +5892,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/5/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -6215,8 +6078,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/5/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -6972,7 +6835,7 @@
                         type="button" hx-post="/habits/5/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/5/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -6991,43 +6854,16 @@
                         <h3 class=" !my-0">Поменьше суетиться</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">не дергать заусенцы, не держаться за хуй, не стучать ногами</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:не дергать заусенцы, не держаться за хуй, не стучать ногами</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">14</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">17</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -7212,8 +7048,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/8/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -7398,8 +7234,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/8/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -7584,8 +7420,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/8/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -8337,7 +8173,7 @@
             </div>
 
             <div class="card-actions flex-nowrap   ">
-                <button class="btn btn-sm grow btn-error btn-outline"
+                <button class="btn btn-sm grow btn-error "
                         type="button" hx-post="/habits/8/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
@@ -8360,43 +8196,15 @@
                         <h3 class=" !my-0">взвеситься</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Сбросить вес до 80</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">21</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">2</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -8581,8 +8389,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/9/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -8767,8 +8575,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/9/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -8953,8 +8761,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/9/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -9706,7 +9514,7 @@
             </div>
 
             <div class="card-actions flex-nowrap   ">
-                <button class="btn btn-sm grow btn-error btn-outline"
+                <button class="btn btn-sm grow btn-error "
                         type="button" hx-post="/habits/9/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
@@ -9729,43 +9537,15 @@
                         <h3 class=" !my-0">спортик</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Сбросить вес до 80</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">19</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -9950,8 +9730,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/10/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -10136,8 +9916,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/10/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -10322,8 +10102,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/10/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -11075,7 +10855,7 @@
             </div>
 
             <div class="card-actions flex-nowrap   ">
-                <button class="btn btn-sm grow btn-error btn-outline"
+                <button class="btn btn-sm grow btn-error "
                         type="button" hx-post="/habits/10/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
@@ -11098,43 +10878,15 @@
                         <h3 class=" !my-0">медитация</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">6</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">17</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -11319,8 +11071,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/11/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -11505,8 +11257,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/11/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -11691,8 +11443,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/11/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -12444,7 +12196,7 @@
             </div>
 
             <div class="card-actions flex-nowrap   ">
-                <button class="btn btn-sm grow btn-error btn-outline"
+                <button class="btn btn-sm grow btn-error "
                         type="button" hx-post="/habits/11/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
@@ -12467,43 +12219,15 @@
                         <h3 class=" !my-0">Помыть посуду</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">или хотя бы в посудомойку</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:или хотя бы в посудомойку</div>
+                
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">7</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">16</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">3</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -12688,8 +12412,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/12/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -12874,8 +12598,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/12/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -13061,7 +12785,7 @@
 
                                 <button hx-post="/habits/12/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -13836,43 +13560,15 @@
                         <h3 class=" !my-0">Делать сложные задачи 1</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Кайфовать от работы эгейн</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">14</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -14429,8 +14125,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/13/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -15186,7 +14882,7 @@
                         type="button" hx-post="/habits/13/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/13/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -15205,43 +14901,15 @@
                         <h3 class=" !my-0">Делать сложные задачи 2</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Кайфовать от работы эгейн</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">5</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">9</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -15799,7 +15467,7 @@
 
                                 <button hx-post="/habits/14/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -16574,43 +16242,16 @@
                         <h3 class=" !my-0">Завести рецепт</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">или перенести из skvrd-2/1</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:или перенести из skvrd-2/1</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Книга рецептов и не думать о том что приготовить</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">9</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -16795,8 +16436,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/15/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -16981,8 +16622,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/15/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -17167,8 +16808,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/15/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -17924,7 +17565,7 @@
                         type="button" hx-post="/habits/15/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/15/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -17943,43 +17584,16 @@
                         <h3 class=" !my-0">Синхрон заметок</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">перенести все в блог</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:перенести все в блог</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Сделать так чтобы заметок не было</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">3</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">9</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -18164,8 +17778,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-11">
 
                                 <button hx-post="/habits/16/perform?date=2024-03-11" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -18350,8 +17964,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-12">
 
                                 <button hx-post="/habits/16/perform?date=2024-03-12" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value="+"
+                                        class="aspect-square w-full rounded   bg-error/10"></button>
                             </div>
                         
                     </div>
@@ -18536,8 +18150,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/16/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -19293,7 +18907,7 @@
                         type="button" hx-post="/habits/16/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/16/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -19312,43 +18926,15 @@
                         <h3 class=" !my-0">Отмечать что меня увлекает</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">9</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -19906,7 +19492,7 @@
 
                                 <button hx-post="/habits/17/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -20681,43 +20267,15 @@
                         <h3 class=" !my-0">Записывать проблемы</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">11</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -21275,7 +20833,7 @@
 
                                 <button hx-post="/habits/18/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -22050,43 +21608,15 @@
                         <h3 class=" !my-0">Придумывать решение проблем</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">4</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">10</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -22644,7 +22174,7 @@
 
                                 <button hx-post="/habits/19/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -23419,43 +22949,16 @@
                         <h3 class=" !my-0">Какие людские проблемы я могу решить</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">нанести пользу</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:нанести пользу</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Сделать что-то нужное, и получить за это благодарочку</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">3</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">7</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -24013,7 +23516,7 @@
 
                                 <button hx-post="/habits/20/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -24788,43 +24291,17 @@
                         <h3 class=" !my-0">собирать рецепты по одной теме в кодинге</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">htmx</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">dod</span>:Рецепт, решение проблемы (hx-swap=outer - если нужно заменить содержимое)</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:htmx</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Упростить разработку, не тратя время на поиск типовых задач</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">2</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -25382,7 +24859,7 @@
 
                                 <button hx-post="/habits/21/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -26157,43 +25634,16 @@
                         <h3 class=" !my-0">жить без дешевого дофамина</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">не заходить в соцсети</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:не заходить в соцсети</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Получать радость своими силами</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">11</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">14</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -26751,7 +26201,7 @@
 
                                 <button hx-post="/habits/22/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -27526,43 +26976,15 @@
                         <h3 class=" !my-0">Что можно делать в телефоне</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">полезного, чтобы привычки закрывать</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:полезного, чтобы привычки закрывать</div>
+                
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">2</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -28120,7 +27542,7 @@
 
                                 <button hx-post="/habits/23/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -28895,43 +28317,15 @@
                         <h3 class=" !my-0">Не смешивать фантазию с реальностью</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -29489,7 +28883,7 @@
 
                                 <button hx-post="/habits/24/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -30264,43 +29658,15 @@
                         <h3 class=" !my-0">Обозначать реальность</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">Писать как обстоят дела без фантазий</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:Писать как обстоят дела без фантазий</div>
+                
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -30857,8 +30223,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/25/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -31614,7 +30980,7 @@
                         type="button" hx-post="/habits/25/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/25/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -31633,43 +30999,15 @@
                         <h3 class=" !my-0">Радоваться мелочам</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -32226,8 +31564,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/26/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -32983,7 +32321,7 @@
                         type="button" hx-post="/habits/26/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/26/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
@@ -33002,43 +32340,15 @@
                         <h3 class=" !my-0">Упрощать жизнь</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0"></div>
+                
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Жить беспечно и только кайфовать</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">0</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">0</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -33596,7 +32906,7 @@
 
                                 <button hx-post="/habits/27/perform?date=2024-03-13" hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
                             </div>
                         
                     </div>
@@ -34371,43 +33681,16 @@
                         <h3 class=" !my-0">Отмечать что меня бустит</h3>
 
                     </div>
-                    <button class="btn btn-ghost btn-sm" @click="showStats = !showStats">
-                        
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" >
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
-</svg>
 
-
-
-                    </button>
                 </div>
 
-                <div class="desc !py-0">Заряжает / дает энергию</div>
+                
+                
+                    <div class="desc !pb-0"><span class="font-semibold">desc</span>:Заряжает / дает энергию</div>
+                
+                    <div class="desc !pb-0"><span class="font-semibold">goal</span>: Мощно двигаться по жизни, а не гнить в постельке</div>
             </div>
 
-            <div class="stats   stats-vertical grow" x-cloak x-show="showStats">
-
-                <div class="stat md:px-0">
-                    <div class="stat-title">Макс. стрик</div>
-                    <div class="stat-value ">1</div>
-                    <div class="stat-desc ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Всего выполнено</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc  ">
-                        </div>
-                </div>
-                <div class="stat md:px-0">
-                    <div class="stat-title">Текущий стрик</div>
-                    <div class="stat-value  ">1</div>
-                    <div class="stat-desc ">
-                        
-                            По-тихонечку</div>
-                </div>
-
-            </div>
 
             <div>
                 
@@ -34964,8 +34247,8 @@
                             <div class="tooltip w-full" data-tip="2024-03-13">
 
                                 <button hx-post="/habits/28/perform?date=2024-03-13" hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="-"
-                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                                        hx-target="closest .habit-card" name="status" value=""
+                                        class="aspect-square w-full rounded   bg-success/20"></button>
                             </div>
                         
                     </div>
@@ -35721,8 +35004,1348 @@
                         type="button" hx-post="/habits/28/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="-">Проебал
                 </button>
-                <button class="btn btn-sm grow btn-success btn-outline"
+                <button class="btn btn-sm grow btn-success "
                         type="button" hx-post="/habits/28/perform" hx-swap="outerHTML"
+                        hx-target="closest .habit-card" name="status" value="+">Сделал
+                </button>
+            </div>
+        </div>
+    </div>
+
+        
+            
+    <div class="card card-bordered card-compact   shadow habit-card" x-data="{showStats: false}">
+        <div class="card-body gap-2">
+            <div class=" flex-1">
+
+                <div class="flex">
+                    <div class="grow">
+                        <h3 class=" !my-0">Не испытывать вину и стыд</h3>
+
+                    </div>
+
+                </div>
+
+                
+                
+                
+            </div>
+
+
+            <div>
+                
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-11">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-11" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-18">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-18" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-25">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-25" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-01">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-01" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-08">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-08" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-15">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-15" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-22">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-22" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-29">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-29" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-05">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-05" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-12">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-12" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-19">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-19" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-26">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-26" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-04">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-04" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-11">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-11" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-12">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-12" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-19">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-19" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-26">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-26" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-02">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-02" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-09">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-09" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-16">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-16" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-23">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-23" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-30">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-30" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-06">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-06" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-13">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-13" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-20">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-20" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-27">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-27" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-05">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-05" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-12">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-12" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-13">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-13" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-20">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-20" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-27">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-27" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-03">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-03" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-10">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-10" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-17">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-17" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-24">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-24" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-31">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-31" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-07">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-07" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-14">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-14" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-21">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-21" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-28">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-28" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-06">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-06" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-13">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-13" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-14">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-14" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-21">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-21" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-28">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-28" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-04">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-04" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-11">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-11" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-18">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-18" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-25">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-25" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-01">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-01" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-08">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-08" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-15">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-15" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-22">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-22" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-29">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-29" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-07">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-07" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-14">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-14" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-15">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-15" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-22">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-22" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-29">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-29" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-05">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-05" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-12">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-12" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-19">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-19" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-26">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-26" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-02">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-02" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-09">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-09" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-16">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-16" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-23">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-23" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-01">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-01" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-08">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-08" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-15">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-15" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-16">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-16" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-23">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-23" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-30">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-30" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-06">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-06" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-13">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-13" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-20">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-20" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-27">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-27" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-03">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-03" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-10">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-10" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-17">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-17" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-24">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-24" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-02">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-02" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-09">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-09" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-16">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-16" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+                    <div class="flex gap-1">
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-17">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-17" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-24">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-24" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2023-12-31">
+
+                                <button hx-post="/habits/29/perform?date=2023-12-31" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-07">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-07" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-14">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-14" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-21">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-21" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-01-28">
+
+                                <button hx-post="/habits/29/perform?date=2024-01-28" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-04">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-04" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-11">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-11" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-18">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-18" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-02-25">
+
+                                <button hx-post="/habits/29/perform?date=2024-02-25" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-03">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-03" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-10">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-10" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded   bg-neutral-50"></button>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            
+
+                            <div class="tooltip w-full" data-tip="2024-03-17">
+
+                                <button hx-post="/habits/29/perform?date=2024-03-17" hx-swap="outerHTML"
+                                        hx-target="closest .habit-card" name="status" value="-"
+                                        class="aspect-square w-full rounded invisible  bg-neutral-50"></button>
+                            </div>
+                        
+                    </div>
+                
+            </div>
+
+            <div class="card-actions flex-nowrap   ">
+                <button class="btn btn-sm grow btn-error btn-outline"
+                        type="button" hx-post="/habits/29/perform" hx-swap="outerHTML"
+                        hx-target="closest .habit-card" name="status" value="-">Проебал
+                </button>
+                <button class="btn btn-sm grow btn-success btn-outline"
+                        type="button" hx-post="/habits/29/perform" hx-swap="outerHTML"
                         hx-target="closest .habit-card" name="status" value="+">Сделал
                 </button>
             </div>

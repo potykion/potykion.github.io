@@ -154,9 +154,6 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                             <button class="btn btn-sm" type="button"
@@ -164,6 +161,15 @@
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
                         
                     </div>
                 </label>
@@ -183,33 +189,67 @@
 
     <ul style="list-style: none; padding-left: 0">
         
-            <h2>личное</h2>
+            <h2>еда</h2>
             
                 
     <li>
         <div class="flex items-start space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_30" type="checkbox"
+            <input class="checkbox checkbox-sm" name="done" id="done_34" type="checkbox"
                    
-                   hx-post="/todo/30"
+                   hx-post="/todo/34"
                    hx-trigger="click"
                    hx-swap="outerHTML"
                    hx-target="closest li"
                    class="mr-2"
             >
-            <label for="done_30"
+            <label for="done_34"
                    class="text-sm"
                    style="flex-grow: 1; ">
             <span>
-                музыкальные штуки
+                Кулинарные принципы
             </span>
 
-            <div class="desc">плейлисты, в тч ют и ямузыка</div>
+            <div class="desc">Типа к столу балансируем сладостью</div>
             </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/30/edit" hx-swap="outerHTML"
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/34/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
             </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/30" hx-swap="delete"
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/34" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+        
+            <h2>habits</h2>
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_33" type="checkbox"
+                   
+                   hx-post="/todo/33"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_33"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                Глобальная стата
+            </span>
+
+            <div class="desc">Типа давно не делал привычку + сделать шаблон привычки на странице, а не просто в кипе, ну и импорт</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/33/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/33" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -220,27 +260,27 @@
     <li>
         <div class="flex items-start space-x-2">
 
-            <input class="checkbox checkbox-sm" name="done" id="done_28" type="checkbox"
+            <input class="checkbox checkbox-sm" name="done" id="done_32" type="checkbox"
                    
-                   hx-post="/todo/28"
+                   hx-post="/todo/32"
                    hx-trigger="click"
                    hx-swap="outerHTML"
                    hx-target="closest li"
                    class="mr-2"
             >
-            <label for="done_28"
+            <label for="done_32"
                    class="text-sm"
                    style="flex-grow: 1; ">
             <span>
-                новый раздел - Личное
+                Комментарий у выполнения привычки
             </span>
 
-            <div class="desc">туда стату, всякую инфу о себе типа какой шмот ношу</div>
+            <div class="desc"></div>
             </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/28/edit" hx-swap="outerHTML"
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/32/edit" hx-swap="outerHTML"
                     hx-target="closest li">✏️
             </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/28" hx-swap="delete"
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/32" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -249,6 +289,37 @@
             
         
             <h2>potyk-io-back</h2>
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_31" type="checkbox"
+                   
+                   hx-post="/todo/31"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_31"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                складывать картинки прям в папку с заметкой
+            </span>
+
+            <div class="desc"> и на этапе рендера переносить ее в статику (и заменяю пути)</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/31/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/31" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
             
                 
     <li>
@@ -399,6 +470,71 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/13" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+        
+            <h2>личное</h2>
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_30" type="checkbox"
+                   
+                   hx-post="/todo/30"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_30"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                музыкальные штуки
+            </span>
+
+            <div class="desc">плейлисты, в тч ют и ямузыка</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/30/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/30" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_28" type="checkbox"
+                   
+                   hx-post="/todo/28"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_28"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                новый раздел - Личное
+            </span>
+
+            <div class="desc">туда стату, всякую инфу о себе типа какой шмот ношу</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/28/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/28" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
