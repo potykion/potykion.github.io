@@ -1,5 +1,6 @@
 import dataclasses
 import datetime
+import locale
 import sqlite3
 from collections import deque
 
@@ -197,10 +198,15 @@ def make_habits_blueprint(
         if hide_done:
             habits = [habit for habit in habits if not habit.done_today]
 
+        habit_template = "\n\n".join(f"{habit.id}. {habit.title}" for habit in habits)
+
+        locale.setlocale(locale.LC_TIME, "ru_RU")
+
         return flask.render_template(
             "stuff/habits/index.html",
             hide_done=hide_done,
             habits=habits,
+            habit_template=habit_template,
             overall_max_streak=overall_max_streak,
             overall_total_performings=overall_total_performings,
             overall_current_streak=overall_current_streak,
