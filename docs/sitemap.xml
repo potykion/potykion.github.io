@@ -7,6 +7,15 @@
 		<loc>https://potyk.io/drafts</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/drafts/aneki</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/boost</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/simple</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/drafts/value-to-people</loc>
 	</url>
 	<url>
@@ -212,6 +221,12 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/bliny-hachapuri</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/ramen</loc>

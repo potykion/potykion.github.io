@@ -91,7 +91,7 @@
                 <a class="btn btn-link" href="/notes">заметки</a>
                 <a class="btn btn-link" href="/special">спешл</a>
                 <a class="btn btn-link" href="/stuff">штучки</a>
-                <a class="btn btn-link text-gray-50" href="/drafts">черновики</a>
+                <a class="btn btn-link text-neutral-50 dark:text-neutral-700" href="/drafts">черновики</a>
             </div>
 
             <div style="flex-grow: 1"></div>
@@ -115,6 +115,14 @@
         <ul>
 <li>замена сордимого ответом</li>
 </ul>
+<p>Написать что-то про htmx
+Типовой юзкейс отправка запроса и замена хтмл ответом</p>
+<form hx-post="/todo/create" hx-target=".todo-list" hx-swap="appendChild">
+<input name="title">
+<button>create</button>
+</form>
+
+<p>https://stackoverflow.com/questions/70043237/how-do-we-make-a-htmx-response-trigger-a-form-reset</p>
 
     </article>
 </main>

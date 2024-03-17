@@ -1,6 +1,78 @@
 // see scripts/parse-untappd.js
 const checkins =[
     [
+        "https://assets.untappd.com/site/beer_logos/beer-4711460_b3171_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1364021079"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-411903_b6d68_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1363916088"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-1790286_92715_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1363908674"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4932231_69043_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1363548285"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5239653_04077_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361752761"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-2523298_00a15_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361735238"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5738445_5e046_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361726223"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5711664_d111f_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361725242"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4374109_be8ea_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361713804"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5149664_3d8d3_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361711323"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5613080_ebe83_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1361005218"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-882424_775bc_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1360714810"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5535469_14486_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1360378780"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-8451_5270b_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1359862981"
+    ],
+    [
+        "https://assets.untappd.com/site/assets/images/temp/badge-beer-default.png",
+        "https://untappd.com/user/potykion/checkin/1359862673"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4374109_be8ea_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1359671591"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4588544_90dd0_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1359663365"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4325043_b8e95_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1359204061"
+    ],
+    [
         "https://assets.untappd.com/site/beer_logos/beer-1092950_2a5a6_sm.jpeg",
         "https://untappd.com/user/potykion/checkin/1358055497"
     ],
@@ -259,5 +331,33 @@ const checkins =[
     [
         "https://assets.untappd.com/site/beer_logos/beer-5606127_718e4_sm.jpeg",
         "https://untappd.com/user/potykion/checkin/1341927626"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-221_9d86c_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1341890570"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-4313949_b8b24_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1340714410"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5370441_e040b_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1340230734"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-2586109_79bf0_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1339094345"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-358_e2305_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1338532030"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5587280_12484_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1338305722"
+    ],
+    [
+        "https://assets.untappd.com/site/beer_logos/beer-5255438_85348_sm.jpeg",
+        "https://untappd.com/user/potykion/checkin/1336609020"
     ]
 ]
