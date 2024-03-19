@@ -9,9 +9,13 @@
 
     <h2>Пиво</h2>
 
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="flex flex-wrap gap-1 md:gap-2 mb-4">
         {% for store, store_label in stores %}
-            <button class="btn btn-sm beer-store-filter" data-store="{{ store }}">{{ store_label }}</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="{{ store }}" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="{{ store }}">{{ store_label }}
+            </label>
+
         {% endfor %}
     </div>
 
@@ -31,9 +35,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="{{ url_for('static', filename=beer.img) }}">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="{{ url_for('static', filename=beer.img) }}">
                         </div>
                         <div>
 
@@ -111,34 +115,23 @@
     <script>
 
         document.querySelectorAll('.beer-store-filter').forEach(function (btn) {
+
             btn.addEventListener('click', function () {
 
-                let activeClass = 'btn-outline';
 
 
+                const stores = [...document.querySelectorAll('.beer-store-filter')].filter(cb => cb.checked).map(cb => cb.getAttribute('data-store'));
 
-                const store = this.getAttribute('data-store');
-                const isActive = this.classList.contains(activeClass);
 
                 // Reset all beers to visible
                 document.querySelectorAll('.beer').forEach(function (beer) {
                     beer.style.display = 'block';
                 });
-
-                // If the button is already active, reset the filter
-                if (isActive) {
-                    this.classList.remove(activeClass);
-                } else {
-                    // Apply the filter by hiding beers not matching the store
-                    document.querySelectorAll('.beer').forEach(function (beer) {
-                        const beerStores = beer.getAttribute('data-store').split(' ');
-                        if (!beerStores.includes(store)) {
-                            beer.style.display = 'none';
-                        }
-                    });
-                    // Mark the button as active
-                    this.classList.add(activeClass);
-                }
+                // Apply the filter by hiding beers not matching the store
+                document.querySelectorAll('.beer').forEach(function (beer) {
+                    const beerStores = beer.getAttribute('data-store').split(' ');
+                        beer.style.display = stores.every(store => beerStores.includes(store)) ? 'block' : 'none';
+                });
             });
         });
 
