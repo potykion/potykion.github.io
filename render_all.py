@@ -9,13 +9,14 @@ import flask
 
 from app import create_app
 
+# os.environ["FLASK_ENV"] = "prod"
+os.environ["FLASK_ENV"] = "development"
+os.environ["FLASK_DEBUG"] = "1"
 app = create_app()
 
 
 def make_server():
-    # os.environ["FLASK_ENV"] = "prod"
-    os.environ["FLASK_ENV"] = "development"
-    os.environ["FLASK_DEBUG"] = "1"
+
     return app.test_client()
 
 
@@ -77,10 +78,7 @@ def make_sitemap(routes, save_dir):
     import xmltodict
 
     # Example list of URLs
-    urls = [
-        urljoin('https://potyk.io', route)
-        for route in routes
-    ]
+    urls = [urljoin("https://potyk.io", route) for route in routes]
 
     # Prepare the sitemap structure
     sitemap = {
