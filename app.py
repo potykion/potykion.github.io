@@ -17,6 +17,7 @@ from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.stats import stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
+from potyk_io_back.wishlist import make_wishlist_blueprint
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
@@ -80,6 +81,7 @@ def create_app():
     app.register_blueprint(make_todo_blueprint(task_db))
     app.register_blueprint(stats_blueprint)
     app.register_blueprint(make_habits_blueprint(habit_repo, sqlite_cur))
+    app.register_blueprint(make_wishlist_blueprint(sqlite_cur))
 
     @app.context_processor
     def inject_ctx():
