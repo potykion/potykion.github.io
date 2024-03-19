@@ -13,7 +13,9 @@ app = create_app()
 
 
 def make_server():
-    os.environ["FLASK_ENV"] = "prod"
+    # os.environ["FLASK_ENV"] = "prod"
+    os.environ["FLASK_ENV"] = "development"
+    os.environ["FLASK_DEBUG"] = "1"
     return app.test_client()
 
 
@@ -26,6 +28,8 @@ def clean_and_create_dir(dist):
 def render(route, server):
     resp = server.get(route, follow_redirects=True)
     if resp.status_code != 200:
+        if resp.status_code == 500 and os.environ["FLASK_DEBUG"]:
+            print(resp.text)
         raise RuntimeError(f"Failed to render page: {route}")
     return resp.text
 

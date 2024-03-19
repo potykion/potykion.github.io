@@ -174,6 +174,7 @@ def make_habits_blueprint(
 
     @habits_blueprint.get("/stuff/habits/v1")
     def habits_index():
+        
         habit_statuses = habit_repo.get_data()
         if habit_statuses:
             habits = sorted(list(habit_statuses.values())[0].keys())
@@ -188,6 +189,7 @@ def make_habits_blueprint(
 
     @habits_blueprint.get("/stuff/habits")
     def habits_v2_index():
+        raise RuntimeError('ass')
         hide_done = flask.request.args.get("hide_done") == "true"
 
         habits = storage.list_all()
