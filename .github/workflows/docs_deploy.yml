@@ -3,7 +3,7 @@ name: Generate and Push Docs
 on:
  push:
     branches:
-      - main
+      - master
 
 jobs:
  build-and-deploy:
