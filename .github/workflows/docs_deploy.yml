@@ -1,12 +1,12 @@
 name: Generate and Push Docs
 
 on:
-  push:
+ push:
     branches:
       - master
 
 jobs:
-  build-and-deploy:
+ build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Set Locale
@@ -14,14 +14,12 @@ jobs:
           sudo apt-get update && sudo apt-get install -y language-pack-ru
           sudo locale-gen ru_RU
           sudo localectl set-locale LANG="ru_RU"
-          export LANG="ru_RU"   
+          export LANG="ru_RU"
 
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Pull latest changes from gh-pages
-        run: |
-          git pull origin gh-pages
+        with:
+          fetch-depth: 0 # Fetch all history for the gh-pages branch
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -31,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt 
+          pip install -r requirements.txt
 
       - name: Run Python script to generate docs
         run: python render_all.py
@@ -41,9 +39,19 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Push to gh-pages branch
+      - name: Checkout gh-pages branch
         run: |
-          git checkout -b gh-pages
+          git checkout gh-pages || git checkout -b gh-pages
+
+      - name: Pull latest changes from gh-pages
+        run: |
+          git pull origin gh-pages --allow-unrelated-histories
+
+      - name: Add and commit changes
+        run: |
           git add docs/
           git commit -m "Update docs"
+
+      - name: Push to gh-pages branch
+        run: |
           git push origin gh-pages
