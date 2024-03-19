@@ -154,22 +154,25 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'идеи';">идеи</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                     </div>
                 </label>
@@ -188,6 +191,40 @@
 
 
     <ul style="list-style: none; padding-left: 0">
+        
+            <h2>идеи</h2>
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_35" type="checkbox"
+                   
+                   hx-post="/todo/35"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_35"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                 галерея тулзов
+            </span>
+
+            <div class="desc">Можно сделать что-то типа арсенала: типа вот кнопка с тултипом, использует вью флоатинг</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/35/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/35" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
         
             <h2>еда</h2>
             

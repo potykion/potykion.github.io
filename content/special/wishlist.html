@@ -1,0 +1,77 @@
+{% extends 'templates/base.html' %}
+
+
+{% set title = 'Вишлист' %}
+{% set desc = 'Все что меня заинтересовало, но руки еще не дошли' %}
+
+
+{% block main %}
+
+<h2>Пиво</h2>
+    <div class="flex flex-wrap items-baseline gap-[2px]">
+
+
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/schneider-weisse-tap7.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/schneider-weisse-tap1.png')   }}"></button>
+
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/hofbrau.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/hofbrau-weisse.png')   }}"></button>
+
+
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/weihenstephan-hefeweissbier.png')   }}"></button>
+
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/will-braeu-hefeweizen.png')   }}"></button>
+
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/Kurpfalzbrau.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/Kurpfalzbrau-ur-weizen.png')   }}"></button>
+
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/lauterbacher_naturhell.png')   }}"></button>
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/lauterbacher_naturweizen.png')   }}"></button>
+
+
+
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/ayinger-jahrhundert.png')   }}"></button>
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/ayinger_oktober_fest_marzen.png')   }}"></button>
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/ayinger-maibock.png')   }}"></button>
+
+
+<button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/la-trappe-tripel.png')   }}"></button>
+
+        <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/Trappistes-Rochefort-8.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/Trappistes-Rochefort-triple-extra.png')   }}"></button>
+
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/chimay-tripel-wit.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/chimay-blue.png')   }}"></button>
+
+
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/pilsner-urquell.png')   }}"></button>
+    <button><img class="w-[50px] hover:border-blue-700 border-white border-2 " src="{{  url_for('static', filename='images/wishlist/palm.png')   }}"></button>
+    </div>
+
+
+    <h2>Credits</h2>
+    <h3>Качественные картинки пива</h3>
+    <ul>
+    <li>
+        <a href="https://www.lauterbacher.de/">https://www.lauterbacher.de/</a>
+    </li> <li>
+        <a href="https://merchantduvin.com/">https://merchantduvin.com/</a>
+    </li>
+    <li>
+        <a href="https://schneider-weisse.de/">https://schneider-weisse.de/</a>
+
+    </li>
+        <li>
+        <a href="https://kurpfalzbraeu.de/">https://kurpfalzbraeu.de/</a>
+
+    </li><li>
+        <a href="https://www.belgianbeerfactory.com/">https://www.belgianbeerfactory.com/</a>
+
+    </li><li>
+        <a href="https://bishopscellar.com/">https://bishopscellar.com/</a>
+
+    </li>
+    </ul>
+
+
+{% endblock %}
