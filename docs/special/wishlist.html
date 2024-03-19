@@ -30,46 +30,6 @@
 
 <!-- region GA & YaMetrika -->
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-5WTE0KE6PT');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(82960681, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
-
 <!-- endregion GA & YaMetrika -->
 
 
@@ -120,19 +80,43 @@
 
     <h2>Пиво</h2>
 
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="flex flex-wrap gap-1 md:gap-2 mb-4">
         
-            <button class="btn btn-sm beer-store-filter" data-store="vkusvill">ВВ</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="vkusvill" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="vkusvill">ВВ
+            </label>
+
         
-            <button class="btn btn-sm beer-store-filter" data-store="winelab">Винлаб</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="winelab" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="winelab">Винлаб
+            </label>
+
         
-            <button class="btn btn-sm beer-store-filter" data-store="perekrestok">Перек</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="perekrestok" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="perekrestok">Перек
+            </label>
+
         
-            <button class="btn btn-sm beer-store-filter" data-store="av">АВ</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="av" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="av">АВ
+            </label>
+
         
-            <button class="btn btn-sm beer-store-filter" data-store="beruvyhodnoy">Беру Выходной</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="beruvyhodnoy" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="beruvyhodnoy">Беру Выходной
+            </label>
+
         
-            <button class="btn btn-sm beer-store-filter" data-store="am">АМ</button>
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="am" class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="am">АМ
+            </label>
+
         
     </div>
 
@@ -152,9 +136,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/schneider-weisse-tap7.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/schneider-weisse-tap7.png">
                         </div>
                         <div>
 
@@ -199,9 +183,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/schneider-weisse-tap1.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/schneider-weisse-tap1.png">
                         </div>
                         <div>
 
@@ -238,7 +222,7 @@
                 </div>
             </dialog>
         
-            <button class="beer" data-store="winelab perekrestok am av" title="Hofbräu Original"
+            <button class="beer" data-store="perekrestok winelab am av" title="Hofbräu Original"
 
                     onclick="modal_beer_3.showModal()"
             ><img class="w-[50px] hover:border-blue-700 border-white border-2 "
@@ -251,9 +235,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/hofbrau.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/hofbrau.png">
                         </div>
                         <div>
 
@@ -300,7 +284,7 @@
                 </div>
             </dialog>
         
-            <button class="beer" data-store="winelab perekrestok av" title="Hofbräu Münchner Weisse"
+            <button class="beer" data-store="perekrestok winelab av" title="Hofbräu Münchner Weisse"
 
                     onclick="modal_beer_4.showModal()"
             ><img class="w-[50px] hover:border-blue-700 border-white border-2 "
@@ -313,9 +297,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/hofbrau-weisse.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/hofbrau-weisse.png">
                         </div>
                         <div>
 
@@ -328,12 +312,12 @@
                                    href="https://untappd.com/b/staatliches-hofbrauhaus-munchen-hofbrau-munchner-weisse-munchner-kindl-hefe-weizen/7834">Untappd</a>
                                 
                                     <a target="_blank"
-                                       class="btn btn-sm " href="https://www.winelab.ru/product/1022887">Винлаб
+                                       class="btn btn-sm " href="https://www.perekrestok.ru/cat/9/p/pivo-hofbrau-munhner-vajs-svetloe-pasterizovannoe-nefiltrovannoe-neosvetlennoe-5-1-500ml-4176327">Перек
                                         - 260 ₽</a>
 
                                 
                                     <a target="_blank"
-                                       class="btn btn-sm " href="https://www.perekrestok.ru/cat/9/p/pivo-hofbrau-munhner-vajs-svetloe-pasterizovannoe-nefiltrovannoe-neosvetlennoe-5-1-500ml-4176327">Перек
+                                       class="btn btn-sm " href="https://www.winelab.ru/product/1022887">Винлаб
                                         - 260 ₽</a>
 
                                 
@@ -370,9 +354,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/weihenstephan-hefeweissbier.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/weihenstephan-hefeweissbier.png">
                         </div>
                         <div>
 
@@ -417,9 +401,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/will-braeu-hefeweizen.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/will-braeu-hefeweizen.png">
                         </div>
                         <div>
 
@@ -464,9 +448,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/Kurpfalzbrau.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/Kurpfalzbrau.png">
                         </div>
                         <div>
 
@@ -511,9 +495,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/Kurpfalzbrau-ur-weizen.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/Kurpfalzbrau-ur-weizen.png">
                         </div>
                         <div>
 
@@ -553,9 +537,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/lauterbacher_naturhell.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/lauterbacher_naturhell.png">
                         </div>
                         <div>
 
@@ -600,9 +584,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/lauterbacher_naturweizen.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/lauterbacher_naturweizen.png">
                         </div>
                         <div>
 
@@ -647,9 +631,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/ayinger-jahrhundert.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/ayinger-jahrhundert.png">
                         </div>
                         <div>
 
@@ -694,9 +678,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/ayinger_oktober_fest_marzen.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/ayinger_oktober_fest_marzen.png">
                         </div>
                         <div>
 
@@ -736,9 +720,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/ayinger-maibock.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/ayinger-maibock.png">
                         </div>
                         <div>
 
@@ -778,9 +762,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/la-trappe-tripel.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/la-trappe-tripel.png">
                         </div>
                         <div>
 
@@ -820,9 +804,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/Trappistes-Rochefort-8.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/Trappistes-Rochefort-8.png">
                         </div>
                         <div>
 
@@ -862,9 +846,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/Trappistes-Rochefort-triple-extra.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/Trappistes-Rochefort-triple-extra.png">
                         </div>
                         <div>
 
@@ -904,9 +888,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/chimay-tripel-wit.png%20%20%20%20%20%20%20%20">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/chimay-tripel-wit.png%20%20%20%20%20%20%20%20">
                         </div>
                         <div>
 
@@ -956,9 +940,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/chimay-blue.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/chimay-blue.png">
                         </div>
                         <div>
 
@@ -995,7 +979,7 @@
                 </div>
             </dialog>
         
-            <button class="beer" data-store="winelab beruvyhodnoy av am perekrestok" title="Pilsner Urquell"
+            <button class="beer" data-store="av beruvyhodnoy winelab perekrestok am" title="Pilsner Urquell"
 
                     onclick="modal_beer_19.showModal()"
             ><img class="w-[50px] hover:border-blue-700 border-white border-2 "
@@ -1008,9 +992,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/pilsner-urquell.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/pilsner-urquell.png">
                         </div>
                         <div>
 
@@ -1075,9 +1059,9 @@
                         <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
 
-                    <div class="flex ">
-                        <div class="w-64 h-64 flex justify-center">
-                            <img class="h-full w-auto" src="/static/images/wishlist/palm.png">
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/wishlist/palm.png">
                         </div>
                         <div>
 
@@ -1165,6 +1149,8 @@
     </div>
 
     
+        <code>is_prod = False</code>
+    
 </footer>
 </body>
 
@@ -1172,34 +1158,23 @@
     <script>
 
         document.querySelectorAll('.beer-store-filter').forEach(function (btn) {
+
             btn.addEventListener('click', function () {
 
-                let activeClass = 'btn-outline';
 
 
+                const stores = [...document.querySelectorAll('.beer-store-filter')].filter(cb => cb.checked).map(cb => cb.getAttribute('data-store'));
 
-                const store = this.getAttribute('data-store');
-                const isActive = this.classList.contains(activeClass);
 
                 // Reset all beers to visible
                 document.querySelectorAll('.beer').forEach(function (beer) {
                     beer.style.display = 'block';
                 });
-
-                // If the button is already active, reset the filter
-                if (isActive) {
-                    this.classList.remove(activeClass);
-                } else {
-                    // Apply the filter by hiding beers not matching the store
-                    document.querySelectorAll('.beer').forEach(function (beer) {
-                        const beerStores = beer.getAttribute('data-store').split(' ');
-                        if (!beerStores.includes(store)) {
-                            beer.style.display = 'none';
-                        }
-                    });
-                    // Mark the button as active
-                    this.classList.add(activeClass);
-                }
+                // Apply the filter by hiding beers not matching the store
+                document.querySelectorAll('.beer').forEach(function (beer) {
+                    const beerStores = beer.getAttribute('data-store').split(' ');
+                        beer.style.display = stores.every(store => beerStores.includes(store)) ? 'block' : 'none';
+                });
             });
         });
 

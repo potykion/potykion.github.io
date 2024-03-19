@@ -30,46 +30,6 @@
 
 <!-- region GA & YaMetrika -->
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-5WTE0KE6PT');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(82960681, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
-
 <!-- endregion GA & YaMetrika -->
 
 
@@ -116,7 +76,6 @@
     <div class="flex ">
         <h1 class="inline-block">Задачки</h1>
         
-            <div class=" badge badge-ghost">● offline</div>
     </div>
     <div class="collapse collapse-arrow bg-neutral-50 my-4">
         <input type="checkbox"/>
@@ -154,13 +113,10 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'идеи';">идеи</button>
+                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
+                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
@@ -169,10 +125,13 @@
                                     onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
+                                    onclick="document.querySelector('[name=category]').value = 'идеи';">идеи</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                     </div>
                 </label>
@@ -1255,6 +1214,8 @@
         </div>
     </div>
 
+    
+        <code>is_prod = False</code>
     
 </footer>
 </body>
