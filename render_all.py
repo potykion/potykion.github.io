@@ -9,9 +9,9 @@ import flask
 
 from app import create_app
 
-# os.environ["FLASK_ENV"] = "prod"
-os.environ["FLASK_ENV"] = "development"
-os.environ["FLASK_DEBUG"] = "1"
+os.environ["FLASK_ENV"] = "prod"
+# os.environ["FLASK_ENV"] = "development"
+# os.environ["FLASK_DEBUG"] = "1"
 app = create_app()
 
 
