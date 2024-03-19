@@ -19,6 +19,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Pull latest changes from gh-pages
+        run: |
+          git pull origin gh-pages
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
