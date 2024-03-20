@@ -157,13 +157,7 @@
                                     onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'идеи';">идеи</button>
@@ -172,7 +166,13 @@
                                     onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
                         
                     </div>
                 </label>
@@ -253,6 +253,37 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/34" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_17" type="checkbox"
+                   
+                   hx-post="/todo/17"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_17"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                Список блюд, которые ел (Типа аджапсандал - это закуска из баклажанов)
+            </span>
+
+            <div class="desc">Сделать раздел &#34;Еда&#34; (или в разделе где есть сделать подраздел &#34;что есть&#34;)</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/17/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/17" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>
@@ -615,68 +646,6 @@
         
             <h2>*без категории*</h2>
             
-                
-    <li>
-        <div class="flex items-start space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_17" type="checkbox"
-                   
-                   hx-post="/todo/17"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_17"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-            <span>
-                Список блюд, которые ел (Типа аджапсандал - это закуска из баклажанов)
-            </span>
-
-            <div class="desc">Сделать раздел &#34;Еда&#34;</div>
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/17/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/17" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-            
-                
-    <li>
-        <div class="flex items-start space-x-2">
-
-            <input class="checkbox checkbox-sm" name="done" id="done_15" type="checkbox"
-                   
-                   hx-post="/todo/15"
-                   hx-trigger="click"
-                   hx-swap="outerHTML"
-                   hx-target="closest li"
-                   class="mr-2"
-            >
-            <label for="done_15"
-                   class="text-sm"
-                   style="flex-grow: 1; ">
-            <span>
-                Спешал: рейты рестиков и снеков, а также раздел обзоров на еду
-            </span>
-
-            <div class="desc">Карточки сделать, назвать &#34;Где есть в Москве&#34;, теги там, фильтры, подборочки</div>
-            </label>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/15/edit" hx-swap="outerHTML"
-                    hx-target="closest li">✏️
-            </button>
-            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/15" hx-swap="delete"
-                    hx-target="closest li">❌
-            </button>
-        </div>
-    </li>
-
-            
         
             <h2>DONE</h2>
             
@@ -829,6 +798,37 @@
                     hx-target="closest li">✏️
             </button>
             <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/16" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_15" type="checkbox"
+                   checked 
+                   hx-post="/todo/15"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_15"
+                   class="text-sm"
+                   style="flex-grow: 1; text-decoration: line-through ">
+            <span>
+                Спешал: рейты рестиков и снеков, а также раздел обзоров на еду
+            </span>
+
+            <div class="desc">Карточки сделать, назвать &#34;Где есть в Москве&#34;, теги там, фильтры, подборочки</div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/15/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/15" hx-swap="delete"
                     hx-target="closest li">❌
             </button>
         </div>

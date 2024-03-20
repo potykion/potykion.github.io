@@ -199,16 +199,13 @@
 		<loc>https://potyk.io/special</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/stats</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/special/where-to-eat</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/wishlist</loc>
+		<loc>https://potyk.io/special/stats</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/beer/wishlist</loc>
+		<loc>https://potyk.io/special/wishlist</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/beer/guide</loc>
@@ -227,9 +224,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/ground-beef-tortillas</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/ramyun</loc>
@@ -257,6 +251,9 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/bliny-hachapuri</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/almond-lingonberry-pie</loc>
