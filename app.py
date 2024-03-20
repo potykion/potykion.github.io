@@ -15,6 +15,7 @@ from potyk_io_back.content import read_content
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
+from potyk_io_back.restaurants import make_restaurants_blueprint
 from potyk_io_back.stats import stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
 from potyk_io_back.wishlist import make_wishlist_blueprint
@@ -82,6 +83,7 @@ def create_app():
     app.register_blueprint(stats_blueprint)
     app.register_blueprint(make_habits_blueprint(habit_repo, sqlite_cur))
     app.register_blueprint(make_wishlist_blueprint(sqlite_cur))
+    app.register_blueprint(make_restaurants_blueprint(sqlite_cur))
 
     @app.context_processor
     def inject_ctx():
