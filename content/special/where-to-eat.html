@@ -7,9 +7,7 @@
 
 
     <h2>КГ 🟠</h2>
-    <blockquote>
-        <p>(в китай город я также включаю Лубянку, чистые пруды, Сретенский бульвар)</p>
-    </blockquote>
+    <div class="desc">(в китай город я также включаю Лубянку, чистые пруды, Сретенский бульвар)</div>
     <h3>Китайки и азиатки</h3>
     <p>Где есть на Китай городе? - в <strong>китайках</strong> конечно же, ведь значение Китай города про это же, да?
     </p>
@@ -154,8 +152,14 @@
                     <td>{{ rest.name }}</td>
                     <td>{{ rest.score }}</td>
                     <td class="whitespace-pre-wrap">{{ rest.comment or '' }}</td>
-                    <td><div class="flex flex-wrap gap-1">{% for tag in rest.tags %}<span class="badge badge-sm">{{ tag }}</span>{% endfor %}</div> </td>
-                    <td><div class="flex flex-wrap gap-1">{% for loc in rest.location %}<span class="badge badge-sm">{{ loc }}</span>{% endfor %}</div></td>
+                    <td>
+                        <div class="flex flex-wrap gap-1">{% for tag in rest.tags %}
+                            <span class="badge badge-sm">{{ tag }}</span>{% endfor %}</div>
+                    </td>
+                    <td>
+                        <div class="flex flex-wrap gap-1">{% for loc in rest.location %}
+                            <span class="badge badge-sm">{{ loc }}</span>{% endfor %}</div>
+                    </td>
                     <td>{{ rest.price_range }}</td>
                 </tr>
             {% endfor %}
