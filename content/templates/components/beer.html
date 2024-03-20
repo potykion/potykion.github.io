@@ -1,0 +1,97 @@
+{% macro beer_list(beers, stores) %}
+    <div class="flex flex-wrap gap-1 md:gap-2 mb-4">
+        {% for store, store_label in stores %}
+            <label class="label label-text gap-1">
+                <input type="checkbox" name="beer-store-filter" value="{{ store }}"
+                       class="checkbox checkbox-sm md:checkbox-md beer-store-filter"
+                       data-store="{{ store }}">{{ store_label }}
+            </label>
+
+        {% endfor %}
+    </div>
+
+    <div class="flex flex-wrap items-baseline gap-[2px]">
+
+        {% for beer in beers %}
+            <button class="beer" data-store="{{ beer.stores | join(' ') }}" title="{{ beer.title }}"
+
+                    onclick="modal_beer_{{ beer.id }}.showModal()"
+            ><img class="w-[50px] hover:border-blue-700 border-transparent border-2 "
+                  src="{{ url_for('static', filename=beer.img) }}"></button>
+
+
+            <dialog id="modal_beer_{{ beer.id }}" class="modal">
+                <div class="modal-box max-w-screen-lg relative">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square md:min-w-64 flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="{{ url_for('static', filename=beer.img) }}">
+                        </div>
+                        <div>
+
+
+                            <h3>{{ beer.title }}</h3>
+
+                            <div class="flex flex-wrap gap-2">
+                                <a target="_blank"
+                                   class="btn btn-sm btn-warning"
+                                   href="{{ beer.untappd_url }}">Untappd</a>
+
+                            </div>
+
+                            <h4>Цены</h4>
+
+                            <div class="flex flex-wrap gap-2">
+
+                                {% for price in beer.last_prices %}
+                                    <a target="_blank"
+                                       class="btn btn-sm " href="{{ price.url }}">{{ price.store_label }}
+                                        - {{ price.price }} ₽</a>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-action ">
+                        <form method="dialog">
+                            <button class="btn btn-sm">Закрыть</button>
+                        </form>
+                    </div>
+
+                </div>
+            </dialog>
+        {% endfor %}
+
+
+    </div>
+
+    <script>
+
+        document.querySelectorAll('.beer-store-filter').forEach(function (btn) {
+
+            btn.addEventListener('click', function () {
+
+
+                const stores = [...document.querySelectorAll('.beer-store-filter')].filter(cb => cb.checked).map(cb => cb.getAttribute('data-store'));
+
+
+                // Reset all beers to visible
+                document.querySelectorAll('.beer').forEach(function (beer) {
+                    beer.style.display = 'block';
+                });
+                // Apply the filter by hiding beers not matching the store
+                document.querySelectorAll('.beer').forEach(function (beer) {
+                    const beerStores = beer.getAttribute('data-store').split(' ');
+                    beer.style.display = stores.every(store => beerStores.includes(store)) ? 'block' : 'none';
+                });
+            });
+        });
+
+    </script>
+{% endmacro %}

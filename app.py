@@ -6,21 +6,23 @@ import sqlite3
 from pathlib import Path
 
 import flask
-import frontmatter
-import mistune
-from flask import Flask, render_template, render_template_string
+from flask import Flask, render_template
 from tinydb import TinyDB
 
+from potyk_io_back.beer import make_beer_blueprint
 from potyk_io_back.content import read_content
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.core import (
+    BASE_DIR,
+    render_md_as_html,
+    wrap_html_to_base_template,
+    make_article_template_name,
+)
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.restaurants import make_restaurants_blueprint
 from potyk_io_back.stats import stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
 from potyk_io_back.wishlist import make_wishlist_blueprint
-
-SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
 
 @dataclasses.dataclass
@@ -84,6 +86,7 @@ def create_app():
     app.register_blueprint(make_habits_blueprint(habit_repo, sqlite_cur))
     app.register_blueprint(make_wishlist_blueprint(sqlite_cur))
     app.register_blueprint(make_restaurants_blueprint(sqlite_cur))
+    app.register_blueprint(make_beer_blueprint(sqlite_cur))
 
     @app.context_processor
     def inject_ctx():
@@ -147,37 +150,20 @@ def create_app():
             "note_tags": note.tags,
         }
 
-        html, _ = _render_md_as_html(note.template_path)
+        html, _ = render_md_as_html(note.template_path)
 
-        return _wrap_html_to_base_template(html, ctx)
-
-    def _render_md_as_html(md_template):
-        raw_md = render_template(md_template)
-        md = frontmatter.loads(raw_md)
-        html = mistune.html(
-            md.content.replace('iframe width="560" height="315"', "iframe")
-        )
-        ctx = dict(md.metadata)
-        return html, ctx
-
-    def _wrap_html_to_base_template(html, ctx=None):
-        ctx = ctx or {}
-        return render_template_string(
-            "{% extends 'templates/base.html' %}"
-            "{% block main %}" + html + "{% endblock %}",
-            **ctx,
-        )
+        return wrap_html_to_base_template(html, ctx)
 
     @app.route("/special/<page_key>")
     def get_special(page_key: str):
         ctx = {"show_title": True, "show_desc": True}
 
-        template = make_article_template_name(f"special/{page_key}")
+        template = make_article_template_name(f"special/{page_key}", app)
         if template.endswith(".md"):
 
-            html, md_ctx = _render_md_as_html(template)
+            html, md_ctx = render_md_as_html(template)
             ctx.update(md_ctx)
-            return _wrap_html_to_base_template(html, ctx)
+            return wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
 
@@ -194,35 +180,11 @@ def create_app():
         template = make_article_template_name(f"drafts/{page_key}")
         if template.endswith(".md"):
 
-            html, md_ctx = _render_md_as_html(template)
+            html, md_ctx = render_md_as_html(template)
             ctx.update(md_ctx)
-            return _wrap_html_to_base_template(html, ctx)
+            return wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
-
-    @app.route("/special/beer/<page_key>")
-    def get_beer(page_key: str):
-        ctx = {"show_title": True, "show_desc": True}
-
-        template = make_article_template_name(f"special/beer/{page_key}")
-        if template.endswith(".md"):
-
-            html, md_ctx = _render_md_as_html(template)
-            ctx.update(md_ctx)
-            return _wrap_html_to_base_template(html, ctx)
-        else:
-            return render_template(template, **ctx)
-
-    def make_article_template_name(article):
-        if article.endswith(SUPPORTED_ARTICLE_TYPES):
-            return article
-
-        for ext in SUPPORTED_ARTICLE_TYPES:
-            article_template_name = article + ext
-            if os.path.exists(Path(app.template_folder) / article_template_name):
-                return article_template_name
-
-        return None
 
     @app.get("/stuff")
     def stuff():
@@ -238,12 +200,12 @@ def create_app():
     def stuff_recipe(page_key: str):
         ctx = {"show_title": True, "show_desc": True}
 
-        template = make_article_template_name(f"stuff/recipes/{page_key}")
+        template = make_article_template_name(f"stuff/recipes/{page_key}", app)
         if template.endswith(".md"):
 
-            html, md_ctx = _render_md_as_html(template)
+            html, md_ctx = render_md_as_html(template)
             ctx.update(md_ctx)
-            return _wrap_html_to_base_template(html, ctx)
+            return wrap_html_to_base_template(html, ctx)
         else:
             return render_template(template, **ctx)
 

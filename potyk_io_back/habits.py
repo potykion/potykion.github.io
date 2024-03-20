@@ -53,6 +53,9 @@ class Habit(BaseModel):
     desc: str
     dod: str
     goal: str
+    archive: bool
+    feedback: str
+    fixed: bool
 
     performings: list[HabitPerforming] = Field(default_factory=list)
 
@@ -139,13 +142,22 @@ class HabitSqliteStorage:
         self.sqlite_cur = sqlite_cur
 
     def list_all(self, filter_=None, filter_params=None) -> List[Habit]:
-        q = "select id, title, desc, dod, goal from habits"
+        q = "select id, title, desc, dod, goal, archive, feedback, fixed from habits"
         if filter_:
             q += " where {}".format(filter_)
         raw_habits = self.sqlite_cur.execute(q, filter_params or ()).fetchall()
         habits = [
-            Habit(id=id, title=title, desc=desc or "", dod=dod or "", goal=goal or "")
-            for id, title, desc, dod, goal in raw_habits
+            Habit(
+                id=id,
+                title=title,
+                desc=desc or "",
+                dod=dod or "",
+                goal=goal or "",
+                archive=archive or False,
+                feedback=feedback or "",
+                fixed=fixed or False,
+            )
+            for id, title, desc, dod, goal, archive, feedback, fixed in raw_habits
         ]
         habit_index = {habit.id: habit for habit in habits}
 
@@ -174,7 +186,7 @@ def make_habits_blueprint(
 
     @habits_blueprint.get("/stuff/habits/v1")
     def habits_index():
-        
+
         habit_statuses = habit_repo.get_data()
         if habit_statuses:
             habits = sorted(list(habit_statuses.values())[0].keys())
@@ -199,6 +211,10 @@ def make_habits_blueprint(
         if hide_done:
             habits = [habit for habit in habits if not habit.done_today]
 
+        archived_habits = [habit for habit in habits if habit.archive]
+        fixed_habits = [habit for habit in habits if habit.fixed]
+        habits = [habit for habit in habits if not habit.archive and not habit.fixed]
+
         habit_template = "\n\n".join(f"{habit.id}. {habit.title}" for habit in habits)
 
         locale.setlocale(locale.LC_TIME, "ru_RU")
@@ -207,6 +223,8 @@ def make_habits_blueprint(
             "stuff/habits/index.html",
             hide_done=hide_done,
             habits=habits,
+            archived_habits=archived_habits,
+            fixed_habits=fixed_habits,
             habit_template=habit_template,
             overall_max_streak=overall_max_streak,
             overall_total_performings=overall_total_performings,

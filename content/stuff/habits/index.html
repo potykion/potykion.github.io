@@ -34,15 +34,28 @@
     </div>
 
 
+    <h3>Закрепленные</h3>
+      <div class="grid md:grid-cols-2 gap-4 py-4 ">
+        {% for habit in fixed_habits %}
+            {{ habit_card(habit) }}
+        {% endfor %}
+    </div>
 
-
-    <div class="grid md:grid-cols-2 gap-4 py-4 ">
-
-
+    <h3>Текущие</h3>
+      <div class="grid md:grid-cols-2 gap-4 py-4 ">
         {% for habit in habits %}
             {{ habit_card(habit) }}
         {% endfor %}
     </div>
+
+    <h3>Архив</h3>
+      <div class="grid md:grid-cols-2 gap-4 py-4 ">
+        {% for habit in archived_habits %}
+            {{ habit_card(habit) }}
+        {% endfor %}
+    </div>
+
+
 
 {% endblock %}
 

@@ -8,13 +8,11 @@
     <h1>потик.ио</h1>
     <div class="desc">блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4</div>
 
-    {{ page_section(content.get_subsection('notes'), subsections='last') }}
 
     {{ page_section(content.get_subsection('special') ) }}
 
     {{ page_section(content.get_subsection('stuff'), subsections='links' ) }}
-
-    {{ link_section(links.soc, section_title="Соц🕸сети", section_title_as='h2') }}
+    {{ page_section(content.get_subsection('notes'), subsections='last') }}
 
 
 
