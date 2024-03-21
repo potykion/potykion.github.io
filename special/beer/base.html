@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- region SEO -->
-    <title>Вишлист / потик.ио</title>
-    <meta name="description" content="Все что меня заинтересовало, но руки еще не дошли"/>
+    <title>База пива / потик.ио</title>
+    <meta name="description" content="Собираю бутылочки и цены на них"/>
 
-    <meta property="og:title" content="Вишлист">
-    <meta property="og:description" content="Все что меня заинтересовало, но руки еще не дошли">
+    <meta property="og:title" content="База пива">
+    <meta property="og:description" content="Собираю бутылочки и цены на них">
     <!-- endregion SEO -->
 
     <!-- region Styles -->
@@ -105,7 +105,7 @@
 <main class="prose md:prose-lg  max-w-none p-4 md:p-6">
     <article>
         
-            <h1>Вишлист</h1>
+            <h1>База пива</h1>
         
         <div>
             
@@ -113,13 +113,10 @@
         
 
         
-            <div class="desc">Все что меня заинтересовало, но руки еще не дошли</div>
+            <div class="desc">Собираю бутылочки и цены на них</div>
         
 
         
-
-    <h2>Пиво</h2>
-
     
     <div class="flex flex-wrap gap-1 md:gap-2 mb-4">
         
@@ -1322,6 +1319,60 @@
                 </div>
             </dialog>
         
+            <button class="beer" data-store="winestyle" title="St.Bernardus Tripel"
+
+                    onclick="modal_beer_21.showModal()"
+            ><img class="w-[50px] hover:border-blue-700 border-transparent border-2 "
+                  src="/static/images/beer/st-bernardus-tripel.png"></button>
+
+
+            <dialog id="modal_beer_21" class="modal">
+                <div class="modal-box max-w-screen-lg relative">
+                    <form method="dialog">
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+
+                    <div class="flex flex-col md:flex-row ">
+                        <div class="aspect-square md:min-w-64 flex justify-center items-center">
+                            <img class="max-h-80 md:h-full w-auto" src="/static/images/beer/st-bernardus-tripel.png">
+                        </div>
+                        <div>
+
+
+                            <h3>St.Bernardus Tripel</h3>
+
+                            <div class="flex flex-wrap gap-2">
+                                <a target="_blank"
+                                   class="btn btn-sm btn-warning"
+                                   href="https://untappd.com/b/brouwerij-st-bernardus-tripel/481">Untappd</a>
+
+                            </div>
+
+                            <h4>Цены</h4>
+
+                            <div class="flex flex-wrap gap-2">
+
+                                
+                                    <a target="_blank"
+                                       class="btn btn-sm " href="https://winestyle.ru/products/St-Bernardus-Tripel.html">Winestyle
+                                        - 350 ₽</a>
+
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="modal-action ">
+                        <form method="dialog">
+                            <button class="btn btn-sm">Закрыть</button>
+                        </form>
+                    </div>
+
+                </div>
+            </dialog>
+        
 
 
     </div>
@@ -1352,8 +1403,42 @@
 
 
 
+    <div class="collapse collapse-arrow bg-neutral-50 dark:bg-neutral-700 my-4">
+        <input type="checkbox"/>
+        <div class="collapse-title text-xl font-medium flex items-center space-x-2  ">
+            <span>Credits</span>
+        </div>
+        <div class="collapse-content">
+            <h3>Качественные картинки пива</h3>
+            <ul>
+                <li>
+                    <a href="https://www.lauterbacher.de/">https://www.lauterbacher.de/</a>
+                </li>
+                <li>
+                    <a href="https://merchantduvin.com/">https://merchantduvin.com/</a>
+                </li>
+                <li>
+                    <a href="https://schneider-weisse.de/">https://schneider-weisse.de/</a>
 
+                </li>
+                <li>
+                    <a href="https://kurpfalzbraeu.de/">https://kurpfalzbraeu.de/</a>
 
+                </li>
+                <li>
+                    <a href="https://www.belgianbeerfactory.com/">https://www.belgianbeerfactory.com/</a>
+
+                </li>
+                <li>
+                    <a href="https://bishopscellar.com/">https://bishopscellar.com/</a>
+
+                </li>  <li>
+                    <a href="https://winestyle.ru/">https://winestyle.ru/</a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
 
 
     </article>
@@ -1373,7 +1458,6 @@
     
 </footer>
 </body>
-
 
 
 
