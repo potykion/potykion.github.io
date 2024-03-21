@@ -19,5 +19,8 @@ gspread
 # xml (sitemap) creation
 xmltodict
 
+# (опц.) удаление бекграунда
+# rembg
+
 # formatting
 black

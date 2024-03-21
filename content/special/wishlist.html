@@ -3,7 +3,7 @@
 {% from "templates/components/beer.html" import beer_list %}
 
 {% set title = 'Вишлист' %}
-{% set desc = 'Все что меня заинтересовало, но руки еще не дошли' %}
+{% set desc = 'Хотелки + все что меня заинтересовало, но руки еще не дошли' %}
 
 
 {% block main %}
@@ -11,6 +11,47 @@
     <h2>Пиво</h2>
 
     {{ beer_list(beers, stores) }}
+
+    <h3>Наборы</h3>
+
+    <a href="https://rusbeershop.ru/catalog/beer-63090/"
+       class="rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+        <img class="max-w-64" src="{{ url_for('static', filename='images/wishlist/trappistes_rochefort_nabor.png') }}">
+    </a>
+
+    <h2>Дорогие штучки </h2>
+
+    <div class="flex items-baseline flex-wrap gap-2">
+        <a href="https://www.ozon.ru/product/pozis-holodilnaya-vitrina-sviyaga-513-6-belyy-1078193559/"
+           class="rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+            <img class="max-w-56" src="{{ url_for('static', filename='images/wishlist/pozis.png') }}">
+
+
+        </a>
+
+
+        <a href="https://www.ozon.ru/product/logitech-klaviatura-besprovodnaya-mx-keys-krupnaya-gravirovka-russkaya-raskladka-seryy-chernyy-966745938"
+           class="  rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+            <img class="max-w-24 " src="{{ url_for('static', filename='images/wishlist/mx-keys.png') }}">
+        </a>
+        <a href="https://www.ozon.ru/product/remarkable-graficheskiy-planshet-remarkable-2-format-a4-seryy-1411205561/"
+           class="rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+            <img class="max-w-32" src="{{ url_for('static', filename='images/wishlist/remarkable-2.png') }}">
+        </a>
+        <a href="https://neiry.ru/mindtracker"
+           class="rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+            <img class="max-w-28" src="{{ url_for('static', filename='images/wishlist/neiry.png') }}">
+        </a>
+    </div>
+
+    <h2>Недорогие штучки</h2>
+
+    <a href="https://www.ozon.ru/product/logitech-web-kamera-pro-stream-c922-chernyy-679048932/"
+       class="rounded hover:border-primary border-2 border-transparent inline-block" target="_blank">
+        <img class="max-w-64 " src="{{ url_for('static', filename='images/wishlist/logitech-cam.png') }}">
+
+
+    </a>
 
 
 
