@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 
+import flask
 import frontmatter
 import mistune
 from flask import render_template, render_template_string
@@ -9,7 +10,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SUPPORTED_ARTICLE_TYPES = (".html", ".md")
 
-def make_article_template_name(article, app):
+def make_article_template_name(article, app=None):
+    app = app or flask.current_app
     if article.endswith(SUPPORTED_ARTICLE_TYPES):
         return article
 
