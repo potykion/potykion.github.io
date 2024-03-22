@@ -13,10 +13,10 @@
     <div class="flex flex-wrap items-baseline gap-[2px]">
 
         {% for beer in beers %}
-            <button class="beer" data-store="{{ beer.stores | join(' ') }}" title="{{ beer.title }}"
+            <button class="beer blue-border-hover-link" data-store="{{ beer.stores | join(' ') }}" title="{{ beer.title }}"
 
                     onclick="modal_beer_{{ beer.id }}.showModal()"
-            ><img class="w-[50px] hover:border-blue-700 border-transparent border-2 "
+            ><img class="w-[50px]  "
                   src="{{ url_for('static', filename=beer.img) }}"></button>
 
 
