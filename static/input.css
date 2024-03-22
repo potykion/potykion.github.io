@@ -113,6 +113,12 @@
         display: inline;
     }
 
-    [x-cloak] { display: none !important; }
+    [x-cloak] {
+        display: none !important;
+    }
 
+
+    .blue-border-hover-link {
+        @apply rounded-lg hover:border-primary border-2 border-transparent inline-block;
+    }
 }
