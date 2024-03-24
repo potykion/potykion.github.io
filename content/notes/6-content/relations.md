@@ -7,4 +7,4 @@ created: 2024-02-11 18:06
 
 Все-таки здорово творить - просто из головы я могу создавать что-то новое, жаль что пока это только тюремные камеры ⛓️
 
-![]({{ url_for('static', filename='images/cage.png')  }})
+![]({{ url_for('static', filename='images/cage.webp')  }})
