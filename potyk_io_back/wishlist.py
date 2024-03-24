@@ -17,7 +17,7 @@ def make_wishlist_blueprint(
         beers = beer_storage.list_all("wishlist = 1")
         stores = beer_storage.list_stores()
 
-        albums = mu_storage.list_all()
+        albums = mu_storage.list_all("wishlist = 1")
 
         return render_template(
             f"special/wishlist.html",
