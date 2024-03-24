@@ -80,22 +80,14 @@ class Beer(BaseModel):
 class BeerStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
         self.sqlite_cur = sqlite_cur
+        self.sqlite_cur.row_factory = sqlite3.Row
 
     def list_all(self, filters=None):
-        q = "select id, title, img,untappd_url, wishlist from beers"
+        q = "select id, title, img, untappd_url, wishlist from beers"
         if filters is not None:
             q += f" where {filters}"
         raw_beers = self.sqlite_cur.execute(q).fetchall()
-        beers = [
-            Beer(
-                id=id,
-                title=title,
-                img=img,
-                untappd_url=untappd_url,
-                wishlist=wishlist or False,
-            )
-            for id, title, img, untappd_url, wishlist in raw_beers
-        ]
+        beers = [Beer(**beer) for beer in raw_beers]
 
         raw_beer_prices = self.sqlite_cur.execute(
             "select id, beer_id, price, store, date, url from beers_prices order by beer_id"
