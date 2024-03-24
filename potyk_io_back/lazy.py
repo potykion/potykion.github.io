@@ -8,9 +8,11 @@ class SimpleStorage:
 
         self.sqlite_cur.row_factory = sqlite3.Row
 
-    def list_all(self, filter: str = None) -> list:
+    def list_all(self, where: str = None, order_by=None) -> list:
         q = f"select * from {self.table}"
-        if filter is not None:
-            q += f" where {filter}"
+        if where is not None:
+            q += f" where {where}"
+        if order_by is not None:
+            q += f" order by {order_by}"
         rows = self.sqlite_cur.execute(q).fetchall()
         return rows

@@ -20,7 +20,7 @@ from potyk_io_back.core import (
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.restaurants import make_restaurants_blueprint
-from potyk_io_back.stats import stats_blueprint
+from potyk_io_back.stats import make_stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
 from potyk_io_back.wishlist import make_wishlist_blueprint
 
@@ -82,7 +82,7 @@ def create_app():
     sqlite_cur = sqlite_conn.cursor()
 
     app.register_blueprint(make_todo_blueprint(task_db))
-    app.register_blueprint(stats_blueprint)
+    app.register_blueprint(make_stats_blueprint(sqlite_cur))
     app.register_blueprint(make_habits_blueprint(habit_repo, sqlite_cur))
     app.register_blueprint(make_wishlist_blueprint(sqlite_cur))
     app.register_blueprint(make_restaurants_blueprint(sqlite_cur))

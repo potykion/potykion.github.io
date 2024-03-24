@@ -9,5 +9,6 @@
             title: item.querySelector('a').innerText,
             vote: item.querySelector('.myVote').innerText,
             date: item.querySelector('.date').innerText,
+            nameEng: item.querySelector('.nameEng')?.innerText,
         })
     )
