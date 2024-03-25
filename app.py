@@ -178,6 +178,8 @@ def create_app():
         ctx = {"show_title": True, "show_desc": True}
 
         template = make_article_template_name(f"drafts/{page_key}")
+        assert template, f"Draft not found: {page_key}"
+
         if template.endswith(".md"):
 
             html, md_ctx = render_md_as_html(template)

@@ -29,7 +29,7 @@ def clean_and_create_dir(dist):
 def render(route, server):
     resp = server.get(route, follow_redirects=True)
     if resp.status_code != 200:
-        if resp.status_code == 500 and os.environ["FLASK_DEBUG"]:
+        if resp.status_code == 500 and os.environ.get("FLASK_DEBUG"):
             print(resp.text)
         raise RuntimeError(f"Failed to render page: {route}")
     return resp.text
