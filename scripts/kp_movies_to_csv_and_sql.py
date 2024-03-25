@@ -20,8 +20,7 @@ def to_kinorium_csv(kp_movies):
         # https://www.kinopoisk.ru/film/4540126/ > 4540126
         id = urlparse(movie["url"]).path.split("/")[-2]
 
-        date, time = movie["date"].replace(",", "").split()
-        date = f"{date.replace('.', '-')} {time + ':00'}"
+        date = datetime.datetime.strptime(movie["date"], "%d.%m.%Y, %H:%M")
 
         status = movie["vote"]
 
@@ -96,50 +95,47 @@ class MovieWithoutId(BaseModel):
     def poster_filename(self):
 
         title = (self.title_eng or self.title).lower()
-        for char in ":'?!,&.-+()":
+        for char in ":'?!,&.-+()/–*":
             title = title.replace(char, "")
 
         title = re.sub(r"\s+", " ", title)
         title = title.replace(" ", "-")
+        title = re.sub(r"-+", "-", title)
 
         return f"{title}-{str(self.year)}"
 
 
-if __name__ == "__main__":
-    with open("kp_movies.json", encoding="utf-8") as f:
-        kp_movies = json.load(f)
-
-    directory_path = (
-        r"C:\Users\GANSOR\PycharmProjects\potykion.github.io\scripts\images"
+def insert_to_sql(kp_movies):
+    in_img_path = Path(
+        r"C:\Users\admin\PycharmProjects\potykion.github.io\scripts\images"
     )
-    images = sorted(os.listdir(directory_path), key=lambda x: int(x.split(".")[0]))
+
+    images = sorted(os.listdir(in_img_path), key=lambda x: int(x.split(".")[0]))
 
     movies = []
     for raw_movie, image in zip(kp_movies, images):
-        title, raw_year = raw_movie["title"].rsplit(" ", maxsplit=1)
-        year = int(raw_year.strip("(").strip(")"))
+        title, raw_year = raw_movie["title"].rsplit("(", maxsplit=1)
+        year = int(''.join(ch for ch in raw_year if ch.isdigit())[:4])
 
         watched_dt = datetime.datetime.strptime(raw_movie["date"], "%d.%m.%Y, %H:%M")
 
         movie = MovieWithoutId(
-            title=title,
+            title=title.strip(),
             title_eng=raw_movie["nameEng"].strip(),
             kp_url=raw_movie["url"],
             watched_dt=watched_dt,
             vote=raw_movie["vote"],
             wishlist=False,
-            is_series=False,
+            is_series=True,
             poster=image,
             review="",
             year=year,
+
         )
         movies.append(movie)
 
-    in_img_path = Path(
-        r"C:\Users\GANSOR\PycharmProjects\potykion.github.io\scripts\images"
-    )
-    out_img_path = Path(
-        r"C:\Users\GANSOR\PycharmProjects\potykion.github.io\static\images\movies"
+    out_img_path = (
+        BASE_DIR / r"static/images/movies"
     )
     for movie in movies:
         new_poster = movie.poster_filename + ".jpg"
@@ -166,4 +162,12 @@ if __name__ == "__main__":
         )
     sqlite_cur.connection.commit()
 
-    pass
+
+if __name__ == "__main__":
+    with open("kp_movies.json", encoding="utf-8") as f:
+        kp_movies = json.load(f)
+
+    # to_kinorium_csv(kp_movies)
+
+    # download_kinorium_images()
+    insert_to_sql(kp_movies)
