@@ -118,7 +118,8 @@
         {% for book in books %}
             <button class=" hover:border-4 rounded-lg border-primary relative "
                     onclick="modal_{{ book.id }}.showModal()">
-                <img class="h-full {% if book.drop %}opacity-25{% endif %} {% if book.wip %}opacity-75{% endif %} " src="{{ book.img }}">
+                <img class="h-full {% if book.drop %}opacity-25{% endif %} {% if book.wip %}opacity-75{% endif %} "
+                     src="{{ book.img }}">
                 {% if book.done %}
                     <span class="absolute bottom-1 p-1 text-sm  left-1 bg-green-100 rounded-lg">✅ Прочитано</span>
                 {% endif %}
@@ -133,8 +134,8 @@
             <dialog id="modal_{{ book.id }}" class="modal">
                 <div class="modal-box max-w-screen-lg relative">
                     <form method="dialog">
-      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-    </form>
+                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
 
                     <h3>{{ book.full_title }}</h3>
                     <a href="{{ book.url }}" target="_blank" class="btn btn-sm ">{{ bookmate() }} Букмейт</a>
@@ -157,7 +158,7 @@
     <div class="grid grid-cols-4 md:grid-cols-10 gap-1">
         {% for movie in movies %}
             <a target="_blank" href="{{ movie.kp_url }}" class="blue-border-hover-link">
-            <img src="{{ url_for('static', filename=movie.poster) }}">
+                <img src="{{ url_for('static', filename=movie.poster) }}">
             </a>
         {% endfor %}
     </div>
@@ -196,71 +197,55 @@
         Музыка
     </h2>
     <div class="grid grid-cols-4 md:grid-cols-6 gap-3">
-        <a class="game" href="https://rateyourmusic.com/release/album/отваал/хоровод/">
-            <img src="https://e.snmc.io/i/600/w/c91a6b16de7a87b932150c073110f2c8/11579194/%D0%BE%D1%82%D0%B2%D0%B0%D0%B0%D0%BB-otvaal-%D1%85%D0%BE%D1%80%D0%BE%D0%B2%D0%BE%D0%B4-Cover-Art.jpg">
-            {{ tags(['Glitch Pop']) }}
 
-        </a>
-        <a class="game" href="https://rateyourmusic.com/release/mixtape/babii/screamer/">
-            <img src="https://e.snmc.io/i/600/w/3ba844c553a7fb82aa5872c17b368824/10099763/babii-screamer-Cover-Art.jpg">
-            {{ tags(['Bassline']) }}
-        </a>
-        <a class="game" href="https://rateyourmusic.com/release/album/neggy-gemmy/cbd-reiki-moonbeam/">
-            <img src="https://e.snmc.io/i/600/w/5531a443e3982e6c5ddae707375dac02/10672138/neggy-gemmy-cbd-reiki-moonbeam-Cover-Art.jpg">
-            {{ tags(['House']) }}
-        </a>
-        <a class="game" href="https://rateyourmusic.com/release/album/escuela-grind/memory-theater/">
-            <img src="https://e.snmc.io/i/600/w/67501102d3f69a32bdd891378b00c6a1/10080031/escuela-grind-memory-theater-Cover-Art.jpg">
-            {{ tags(['Grindcore']) }}
-        </a>
-        <a class="game" href="https://rateyourmusic.com/release/album/dizzee-rascal/dont-take-it-personal/">
-            <img src="https://e.snmc.io/i/600/w/ff3588367696499eec2657588a4153c5/11487042/dizzee-rascal-dont-take-it-personal-Cover-Art.jpg">
-            {{ tags(['Grime']) }}
-        </a>
+        {% for album in albums %}
+            <button class="relative hover:border-4 rounded-lg border-primary"
+                    onclick="modal_album_{{ album.id }}.showModal()">
+                <img src="{{ url_for('static', filename=album.cover) }}">
+            </button>
 
-        <button class="relative hover:border-4 rounded-lg border-primary" onclick="my_modal_1.showModal()"><img
-                src="https://avatars.yandex.net/get-music-content/5678677/e65ac697.a.20353282-1/m1000x1000">
-            {{ tags(['Juke']) }}
-        </button>
+            <dialog id="modal_album_{{ album.id }}" class="modal">
+                <div class="modal-box max-w-screen-lg">
+                    <h3>{{ album.artist }} — {{ album.album }} </h3>
+
+                    <div class="flex flex-wrap gap-1 items-center">
+                        {% if album.year %}
+                            <span class="text-sm text-gray-500">{{ album.year }}</span> <span class="text-gray-300">•</span>
+                        {% endif %}
+                        {% if album.genre %}
+                            <span class="text-sm text-gray-500">{{ album.genre }}</span> <span class="text-gray-300">•</span>
+                        {% endif %}
+                        {% if album.yandex %}
+                            <a href="{{ album.yandex }}" target="_blank" class="text-sm">
+                                Яндекс
+                                Музыка
+                            </a>
+                        {% endif %}
+                        {% if album.rym %}
+                            <a href="{{ album.rym }}" target="_blank" class="text-sm">
+                                RYM
+                            </a>
+                        {% endif %}
+                    </div>
+
+
+                    {{ (album.review_md or '') | safe }}
+
+
+                    <div class="modal-action ">
+                        <form method="dialog">
+                            <button class="btn">Закрыть</button>
+                        </form>
+                    </div>
+
+                </div>
+            </dialog>
+        {% endfor %}
+
+
     </div>
 
-    <dialog id="my_modal_1" class="modal">
-        <div class="modal-box max-w-screen-lg">
-            <h3>N95 — РУССКИЙ ДЖУК 2 </h3>
-            <a href="https://music.yandex.ru/album/20353282" target="_blank" class="btn btn-sm btn-warning">
-                Яндекс
-                Музыка
-            </a>
-            <p>
-                Несколько лет назад Патибой69 хайпанул в ютубах совершив гетто-тех ревайвал, в число которых входит
-                Джук, я тогда ознакомился со всякими Dj Assault, Dj Deeon, Dj Rashad. А тут чел сделал гениальное: взял
-                и соединил Джук с АК-47 нахуй ахаха.
-            </p>
-            <p>
-                То есть всякие заедание вокала, специфичные колотушки и трещетки детройских клубов смешивают с Я люблю
-                драгс, сортов особо прущих, Понаставляли домофонов — негде плана покурить, Посажали всех барыг — негде
-                плана замутить - пизда ржака.
-            </p>
-            <p>
-                Ну и как понятно из названия - это вторая часть, а на первой части Джук мешают с На сука на сука получай
-                сука довела меня, бля ахаха.
-            </p>
-            <p>
-                Ну и выходя за рамки ипихи, N95 не только джуком балуется, а хорошо раздает и прочей электроники,
-                например амен брейки на треке Мышка-сосиска, хаус ремикс на Сквирт Шампанского в лицо. Крч чел, подобно
-                всяким Локед Клабам, замешивает мемы с качевой электроникой, а эта формула ебет
 
-            </p>
-
-
-            <div class="modal-action ">
-                <form method="dialog">
-                    <button class="btn">Закрыть</button>
-                </form>
-            </div>
-
-        </div>
-    </dialog>
 
 
     <h2>Пиво</h2>
