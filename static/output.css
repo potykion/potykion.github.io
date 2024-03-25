@@ -4224,6 +4224,16 @@ details.collapse summary::-webkit-details-marker {
   color: var(--fallback-su,oklch(var(--su)/var(--tw-text-opacity)));
 }
 
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
 .line-through {
   text-decoration-line: line-through;
 }

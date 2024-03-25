@@ -3291,14 +3291,15 @@ bg-neutral-50 dark:bg-gray-700"></button>
 
                     </div>
                     <div class="flex flex-col gap-1">
-                        <button class="btn btn-sm  btn-circle group  btn-success btn-ghost hover:btn-outline"
+                        <button class="btn btn-sm  btn-circle group  btn-success btn-outline hover:btn-error"
                                 type="button" hx-post="/habits/30/perform" hx-swap="outerHTML"
                                 hx-target="closest .habit-card" name="status"
-                                value="+">
+                                value="">
                             <div class="group-hover:block transition hidden">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
 </svg>
+
 </div>
                             <div class="group-hover:hidden block ">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -3535,9 +3536,9 @@ bg-neutral-50 dark:bg-gray-700"></button>
 
                                 <button hx-post="/habits/30/perform?date=2024-03-25"
                                         hx-swap="outerHTML"
-                                        hx-target="closest .habit-card" name="status" value="+"
+                                        hx-target="closest .habit-card" name="status" value=""
                                         class="aspect-square w-full rounded 
-bg-neutral-50 dark:bg-gray-700"></button>
+bg-success/20 dark:bg-success/90"></button>
                             </div>
                         
                     </div>

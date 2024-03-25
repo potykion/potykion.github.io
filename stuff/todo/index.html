@@ -154,7 +154,16 @@
                     <div class="label justify-start space-x-2">
                         
                             <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
+                        
+                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'пиво';">пиво</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'tech';">tech</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'идеи';">идеи</button>
@@ -163,19 +172,13 @@
                                     onclick="document.querySelector('[name=category]').value = 'еда';">еда</button>
                         
                             <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'пишем';">пишем</button>
-                        
-                            <button class="btn btn-sm" type="button"
-                                    onclick="document.querySelector('[name=category]').value = 'habits';">habits</button>
-                        
-                            <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'личное';">личное</button>
                         
                             <button class="btn btn-sm" type="button"
                                     onclick="document.querySelector('[name=category]').value = 'potyk-io-back';">potyk-io-back</button>
+                        
+                            <button class="btn btn-sm" type="button"
+                                    onclick="document.querySelector('[name=category]').value = 'todo-tracker';">todo-tracker</button>
                         
                     </div>
                 </label>
@@ -194,6 +197,40 @@
 
 
     <ul style="list-style: none; padding-left: 0">
+        
+            <h2>tech</h2>
+            
+                
+    <li>
+        <div class="flex items-start space-x-2">
+
+            <input class="checkbox checkbox-sm" name="done" id="done_37" type="checkbox"
+                   
+                   hx-post="/todo/37"
+                   hx-trigger="click"
+                   hx-swap="outerHTML"
+                   hx-target="closest li"
+                   class="mr-2"
+            >
+            <label for="done_37"
+                   class="text-sm"
+                   style="flex-grow: 1; ">
+            <span>
+                alpinejs
+            </span>
+
+            <div class="desc"></div>
+            </label>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-get="/todo/37/edit" hx-swap="outerHTML"
+                    hx-target="closest li">✏️
+            </button>
+            <button class="btn btn-sm btn-circle btn-ghost" hx-delete="/todo/37" hx-swap="delete"
+                    hx-target="closest li">❌
+            </button>
+        </div>
+    </li>
+
+            
         
             <h2>пиво</h2>
             
