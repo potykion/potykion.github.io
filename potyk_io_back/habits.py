@@ -55,7 +55,7 @@ class Habit(BaseModel):
     goal: str
     archive: bool
     feedback: str
-    fixed: bool
+    pinned: bool
 
     performings: list[HabitPerforming] = Field(default_factory=list)
 
@@ -140,25 +140,14 @@ class Habit(BaseModel):
 class HabitSqliteStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
         self.sqlite_cur = sqlite_cur
+        self.sqlite_cur.row_factory = sqlite3.Row
 
     def list_all(self, filter_=None, filter_params=None) -> List[Habit]:
-        q = "select id, title, desc, dod, goal, archive, feedback, fixed from habits"
+        q = "select * from habits"
         if filter_:
             q += " where {}".format(filter_)
         raw_habits = self.sqlite_cur.execute(q, filter_params or ()).fetchall()
-        habits = [
-            Habit(
-                id=id,
-                title=title,
-                desc=desc or "",
-                dod=dod or "",
-                goal=goal or "",
-                archive=archive or False,
-                feedback=feedback or "",
-                fixed=fixed or False,
-            )
-            for id, title, desc, dod, goal, archive, feedback, fixed in raw_habits
-        ]
+        habits = [Habit(**habit) for habit in raw_habits]
         habit_index = {habit.id: habit for habit in habits}
 
         raw_habit_performings = self.sqlite_cur.execute(
@@ -212,8 +201,8 @@ def make_habits_blueprint(
             habits = [habit for habit in habits if not habit.done_today]
 
         archived_habits = [habit for habit in habits if habit.archive]
-        fixed_habits = [habit for habit in habits if habit.fixed]
-        habits = [habit for habit in habits if not habit.archive and not habit.fixed]
+        fixed_habits = [habit for habit in habits if habit.pinned]
+        habits = [habit for habit in habits if not habit.archive and not habit.pinned]
 
         habit_template = "\n\n".join(f"{habit.id}. {habit.title}" for habit in habits)
 
