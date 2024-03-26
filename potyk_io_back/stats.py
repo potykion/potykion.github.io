@@ -17,12 +17,12 @@ def make_stats_blueprint(sqlite_cur):
     def get_special():
         movies = movies_storage.list_all(
             where="datetime(watched_dt) >= datetime('2024-01-01')",
-            order_by="datetime(watched_dt)",
+            order_by="datetime(watched_dt) desc",
         )
 
         albums = music_storage.list_all(
             where="datetime(listened_dt) and datetime(listened_dt) >= datetime('2024-01-01')",
-            order_by="datetime(listened_dt)",
+            order_by="datetime(listened_dt) desc",
         )
 
 

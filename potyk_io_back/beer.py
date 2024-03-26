@@ -82,10 +82,12 @@ class BeerStorage:
         self.sqlite_cur = sqlite_cur
         self.sqlite_cur.row_factory = sqlite3.Row
 
-    def list_all(self, filters=None):
+    def list_all(self, filters=None, order_by=None) -> list[Beer]:
         q = "select id, title, img, untappd_url, wishlist from beers"
         if filters is not None:
             q += f" where {filters}"
+        if order_by is not None:
+            q += f" order by {order_by}"
         raw_beers = self.sqlite_cur.execute(q).fetchall()
         beers = [Beer(**beer) for beer in raw_beers]
 
@@ -135,7 +137,7 @@ def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
             "special/beer/base.html",
             show_title=True,
             show_desc=True,
-            beers=beer_storage.list_all(),
+            beers=beer_storage.list_all(order_by="title"),
             stores=beer_storage.list_stores(),
         )
 
