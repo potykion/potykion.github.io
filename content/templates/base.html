@@ -73,12 +73,13 @@
 <!-- endregion GA & YaMetrika -->
 
 
-<body class="{% if fullwidth %}{% else %}max-w-[1100px]{% endif %}">
+<body class="{% if fullwidth %}{% else %}max-w-[1000px]{% endif %}">
 
 
 {% from 'templates/components/header.html' import header %}
 
 {{ header() }}
+
 <main class="prose md:prose-lg  max-w-none p-4 md:p-6">
     <article>
         {% if title and show_title %}
@@ -121,9 +122,9 @@
         </div>
     </div>
 
-    {% if not is_prod %}
-        <code>is_prod = False</code>
-    {% endif %}
+{#    {% if not is_prod %}#}
+{#        <code>is_prod = False</code>#}
+{#    {% endif %}#}
 </footer>
 </body>
 

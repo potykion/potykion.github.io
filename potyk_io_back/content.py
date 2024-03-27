@@ -23,7 +23,7 @@ class PageExt(enum.StrEnum):
 
 
 class Page(BaseModel):
-    # key: str
+    key: str = ''
     ext: PageExt
     # abs_path=r"C:\Users\GANSOR\PycharmProjects\potykion.github.io\content\notes\1-again\15-01.md",
     # ="notes/1-again/15-01.md",
@@ -31,19 +31,22 @@ class Page(BaseModel):
     # ="Что в твоей тарелке 15.01",
     title: str
     desc: str
-    # url: str
+    url: str = ''
     created: datetime.datetime
     tags: list[str] = Field(default_factory=list)
 
     @classmethod
     def parse_from_template(cls, template_path: str, full_path: Path) -> "Page":
-        file_created = datetime.datetime.fromtimestamp(full_path.stat().st_ctime)
+        title, ext = os.path.basename(template_path).rsplit(".", maxsplit=1)
+        defaults = {
+            "created": datetime.datetime.fromtimestamp(full_path.stat().st_ctime),
+            "title": title,
+        }
 
-        ext = template_path.rsplit(".", maxsplit=1)[-1]
         if ext == PageExt.html:
-            return Page.parse_from_html_template(template_path, created=file_created)
+            return Page.parse_from_html_template(template_path, **defaults)
         if ext == PageExt.md:
-            return Page.parse_from_md_template(template_path, created=file_created)
+            return Page.parse_from_md_template(template_path, **defaults)
 
     @classmethod
     def parse_from_html_template(cls, html_template_path: str, **defaults) -> "Page":
@@ -53,9 +56,11 @@ class Page(BaseModel):
         title = soup.find("meta", property="og:title").get("content") or defaults.get(
             "title"
         )
-        desc = soup.find("meta", property="og:description").get(
-            "content"
-        ) or defaults.get("desc")
+        desc = (
+            soup.find("meta", property="og:description").get("content")
+            or defaults.get("desc")
+            or ""
+        )
         created = defaults.get("created")
         tags = []
 
@@ -248,24 +253,76 @@ class PageStorage:
         self.sqlite3_cursor = sqlite3_cursor
         self.simple_storage = SimpleStorage(sqlite3_cursor, "pages")
 
+    def sync(self, pages):
+        existing_templates = [
+            row[0]
+            for row in self.sqlite3_cursor.execute(
+                "select template_path from pages"
+            ).fetchall()
+        ]
 
-def sync_pages(pages_dir_path: Path) -> None:
-    all_files = []
+        existing_pages = []
+        new_pages = []
+        for page in pages:
+            if page.template_path in existing_templates:
+                existing_pages.append(page)
+            else:
+                new_pages.append(page)
+
+        for page in new_pages:
+            self.sqlite3_cursor.execute(
+                "insert into pages (template_path, title, desc, created) values (?, ?, ?, ?)",
+                (page.template_path, page.title, page.desc, page.created),
+            )
+        for page in existing_pages:
+            self.sqlite3_cursor.execute(
+                'update pages set title = ?, desc = ?, created = ? where template_path = ?',
+                (page.title, page.desc, page.created, page.template_path)
+            )
+
+        self.sqlite3_cursor.connection.commit()
+
+
+def sync_pages(
+    sqlite3_cursor: sqlite3.Cursor,
+    pages_dir_path: Path,
+    ignore_dirs=("templates",),
+    ignore_pages=("index.html",),
+) -> None:
+    storage = PageStorage(sqlite3_cursor)
+
+    page_files = []
     for dir_, __, files in os.walk(pages_dir_path):
+
         for file in files:
             if not file.endswith((".html", ".md")):
                 continue
 
-            # content\drafts\2024-03-24.md
+
+            # content\\drafts\\2024-03-24.md
             full_path = Path(dir_) / file
             # drafts/2024-03-24.md
             template_path = str(full_path)[len(str(pages_dir_path)) + 1 :].replace(
                 "\\", "/"
             )
-            page = Page.parse_from_template(template_path, full_path)
 
-            all_files.append()
-    pass
+            if template_path.startswith(ignore_dirs):
+                continue
+
+            if template_path.endswith(ignore_pages):
+                continue
+
+            page_files.append((full_path, template_path))
+
+    all_pages = [
+        Page.parse_from_template(
+            template_path,
+            full_path,
+        )
+        for full_path, template_path in page_files
+    ]
+
+    storage.sync(all_pages)
 
 
 if __name__ == "__main__":

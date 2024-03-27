@@ -58,7 +58,7 @@ class Beer(BaseModel):
     img: str
     untappd_url: str | None
     wishlist: bool
-
+    review: str | None
     prices: list[BeerPrice] = Field(default_factory=list)
 
     @property
@@ -83,7 +83,7 @@ class BeerStorage:
         self.sqlite_cur.row_factory = sqlite3.Row
 
     def list_all(self, filters=None, order_by=None) -> list[Beer]:
-        q = "select id, title, img, untappd_url, wishlist from beers"
+        q = "select * from beers"
         if filters is not None:
             q += f" where {filters}"
         if order_by is not None:
@@ -117,6 +117,9 @@ class BeerStorage:
             (store, store_enum.label)
             for store, store_enum in BeerStore.__members__.items()
         ]
+
+    def get_by_id(self, id):
+        return self.list_all(f'id = {id}')[0]
 
 
 def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:

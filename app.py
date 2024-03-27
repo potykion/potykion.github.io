@@ -9,7 +9,7 @@ import flask
 from flask import Flask, render_template
 from tinydb import TinyDB
 
-from potyk_io_back.beer import make_beer_blueprint
+from potyk_io_back.beer import make_beer_blueprint, BeerStorage
 from potyk_io_back.content import read_content, sync_pages
 from potyk_io_back.core import (
     BASE_DIR,
@@ -68,8 +68,11 @@ def create_app():
         )
     )
 
+    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
+    sqlite_cur = sqlite_conn.cursor()
+
     with app.app_context():
-        sync_pages(Path(app.template_folder))
+        sync_pages(sqlite_cur, Path(app.template_folder))
 
         app.config["CONTENT"] = read_content(Path(app.template_folder))
 
@@ -79,9 +82,6 @@ def create_app():
 
         task_db = TodoRepo(db)
         habit_repo = HabitRepo(db)
-
-    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
-    sqlite_cur = sqlite_conn.cursor()
 
     app.register_blueprint(make_todo_blueprint(task_db))
     app.register_blueprint(make_stats_blueprint(sqlite_cur))
@@ -101,30 +101,7 @@ def create_app():
     def index():
         return render_template(
             "index.html",
-            links=dict(
-                soc=[
-                    Link(
-                        "https://t.me/potykion",
-                        "Телега",
-                        "Напиши мне все, что обо мне думаешь",
-                    ),
-                    Link(
-                        "https://www.instagram.com/potyk.art",
-                        "Рисовашки",
-                        "Рисую чертей по фану",
-                    ),
-                    Link(
-                        "https://untappd.com/user/potykion",
-                        "Выпивашки",
-                        "Пью пивчик, иногда вкусный",
-                    ),
-                    Link(
-                        "https://rateyourmusic.com/~potykion",
-                        "Музыкашки",
-                        "Иногда слушаю музыку и реагирую на нее",
-                    ),
-                ]
-            ),
+            beer=BeerStorage(sqlite_cur).get_by_id(21),
         )
 
     @app.route("/notes")
