@@ -73,34 +73,92 @@
 <!-- endregion GA & YaMetrika -->
 
 
-<body class="max-w-[1100px]">
+<body class="max-w-[1000px]">
 
 
 
 
 
     <header class="pt-2">
-        <div class="flex p-1 md:p-2 ">
-            <a class="btn btn-sm md:btn-md   btn-link  " href="/">
+        <div class="flex justify-between  p-1 md:p-2 ">
+            <a class="  btn no-underline btn-sm md:btn-md   btn-link   " href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                </svg>
+                <span >
                 потик.ио
+
+                </span>
+
+
             </a>
 
+            <div class="flex gap-2">
 
-            <div style="display: flex; align-items: center" class="hide-on-mobile">
 
-                <a class="btn btn-link" href="/special">спешл</a>
-                <a class="btn btn-link" href="/stuff">штучки</a>
-                <a class="btn btn-link text-neutral-50 dark:text-neutral-700" href="/notes">заметки</a>
-                <a class="btn btn-link text-neutral-50 dark:text-neutral-700" href="/drafts">черновики</a>
+
+
+
+
+
+                <div class="btn btn-ghost btn-sm md:btn-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+
+                    </svg>
+
+                    2024-03-27
+
+                </div>
+
+
+
+
+
+
             </div>
 
-            <div style="flex-grow: 1"></div>
-            <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
+            <button class="btn btn-ghost btn-square btn-sm md:btn-md" onclick="fortune()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+</svg>
 
-               class="btn btn-sm md:btn-md btn-secondary uppercase animate-bounce">Дай фидбек блэт</a>
+            </button>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
         </div>
-    <hr>
     </header>
+
+    <script>
+    function fortune() {
+        const items = [
+"YOU ARE THROWING YOUR LIFE AWAY",
+"GIVE UP!",
+"YOU WILL DIE ALONE",
+"YOU WERE BORN WRONG",
+"YOU ARE DARK INSIDE",
+"YOU WILL NEVER BE FORGIVEN",
+"YOU WILL DIE",
+"MAY YOUR TROUBLES BE MANY",
+"BLAME NOBODY BUT YOURSELF",
+        ]
+        alert(items[Math.floor(Math.random() * items.length)])
+    }
+    </script>
+
 
 <main class="prose md:prose-lg  max-w-none p-4 md:p-6">
     <article>
@@ -113,177 +171,145 @@
         
 
         
-    <h1>потик.ио</h1>
-    <div class="desc">блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4</div>
+
+    <div class="grid md:grid-cols-3 gap-2">
+
+        <div class="rounded-xl shadow p-4 border-neutral border flex flex-col items-center">
+            <button class="btn btn-square btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z"/>
+                </svg>
+
+            </button>
+            <h4>Че пацаны новая главная</h4>
+        </div>
+
+        <a href="https://www.kinopoisk.ru/film/51439/"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">
+
+            <div class="font-semibold text-center   ">Что посмотреть</div>
+            <img class="border-y border-neutral rounded-none"
+                 src="https://www.kinopoisk.ru/1Dc52H235/3aa34f2dZ/PzrqzTQwjh3uQ2rewSkW28KmAz3jd2noGUGJAivicvVsBtVjQ3gJHkqwi95enZNnPQO4Px6sKpPnDBcX9D5CbA4y_oxpTaZEmxYSrqkkf6qfpz5clmpcyVRR_U9qmw5JrKYdxovg9b7KAQ7TU6HyGkxquR5zyT_3mgUa3mhe-vU3-kYFWLDvTQJfxzKdub5XXgvTZSNGHcixmCnuF-LqBXwqAZ4ftCWW3g3qWyNU9oKAShU2K423Uhp5XvZJfg7dp0LWISjQ54HWy_OGdc2OU9Lb66UzCuHs2Vz57heybhUAZpWWR4QdhkptphPXbNY-wEbRtnexE_rKYX6mGcJmaTPCOok8YP_5lhejyvHpMvfOAz_tc-bBWJWsYc6DxgIliDYRfvPg5aKyNZrrB1DeKsienZqLheOaQt36Cp36BvkPZmpVZFhPRYo7x97l6RKLjqM_RXP2-VyB3IF2N3aOlRyyMa4n0CXa6pWaV180woLwWsFml_FTypp96nKhCm4FE4o6ReDUd4neAz9iLbXqY5aTozF7gv34HaRpzjMybi0UlkXaw4y1Ht6FituDSHIuqGJVatsJ525qma7mXW7m6aPuJtngJJdl4jOryuG5BhM-w7flXyp1FF2gKYrfBtIVYKaVJkuUAY7OwTLbizjSjjQyuTorxTtKEhkOOjluBl2z0vLBiDwr8eZb5_5pZapDRu9_ZTuS9Vjp9N2OL2Lm-fy6XQZDiLWKSr2uU8u0Roow8in-V7Ezlv4BcooBCtKBvwp-WZggC4X2u0e6NemCi-4TvznfDvFsPRQxmofyYhVkjh1WP-AtIkatqsMfvFomwJop7geNV56WZeZ-9dL2LQM2dpV01JeF5jtregHFtkMak4uxow7lvGUI_UqnYgIdXApFlt_UNQ4CdW4rO5hq9kxGsRJr1a8C5hlWcrlyOs0zTuI1eJwbvWY7D16tMbb_hvvfNTvi2Ty93LHqw8LeLUz60Xp7cJUKFsUyq2cUBhKIguH-e1Gv3mZZyga5Pm65A1bSzVj04wUOG5fuqf0qq8Ivgzn7Ip3chRxd9m_WDtXwwrGWpzj1CnYhblNbbEIWfHY5YucpX-rmUeZ-fR7SSWPeTrkYyAOR0odP4mlNitsWb28pL-qRWO3MVXqfHtI54Goh4qNsBQIa7Xpr52ACZnT2TUKTMScSltEefgnmUrUTskoZZPyHnRoTP3ZtSeaHhn__Qct6EaC91PmiP14Gbeh6-QqvTGEKTiFiU9dIFpK46iHaw90zvg7xAm4Ztv7JY_YGseCY_6lyX-NyhWVKV4Z_rxlTjg3AZVgVYtOW1mnEhl0uxwAh_hY9Ah8HwM6OJNphmm9lN9I-bdaGAR6GeZfC9tnsNEu9btsjtoXJJp9uz5sR-7JRYGmsJQpXDlr5uPI5wkdg1aq28bpPx5R6-lhOvRJTPceeEm0usrlmOm1vLrLVaOTzTV5fTwaBYY5nwldrKedCTfyZMOGSK27ecXSWNSZ79PEu6s2mR6PgahKgCh1244Vjgn6Jdu6hvkKtm0Ii_RA8y5XySxeizRmGc3pr5xEXKuFQHYjdutMCSh3UFrHSS8At-kox0p9H6P7mKJ4pmht5t8LqFfYWgdLmfTOmuiUI5G8phlvPyjGhgt8K5w9Ve-55FL3UlX4rhqr5ABbNSrsAZZJeHXbrL7Qu8kA6nUYfeVs-xunu7oVWDslfPvbBUCTTLQJf504NleLbTkNbiVvy6fglPDmm63pGrVzmAcKvnKHaAkESv8t0qtY85rHmS_3rZjLd6voZBmYlb276mYSY13G6g_d6OWEyQ-4f7ylrPgXYCRwtlmee_r30ap3is4jxohb9viPXzO6OXDI9BmfFd3oGxW4SVT56WSNa0r2APA99Bhcj8nW18uM2J_fl57bhxDEsJfKbXmIxBLK5Hsu0dQayveLLp2Aqnlz-UUKPvZPyOtVqNgXaAkVrpjaZNMR3NYbPi7aJxQbH9h-PPf9CTdC5MHGiLxYmCbD2sUb_gAWikj1SR6ecHvrEwt1yj92_dkbdHiqdbn6lp3aiqZg8czXWnxc2IT3mc74Dl-3vDt1cnQCtRp_ywg1Uiln-z4D1DnI1bocz8JJifE5F_i_xs_oOxZoy_Xr27RPOenl4MN-V-gdjjgWFlvdSmw-14yL1NDF4sZYDeipR3DYlevNItV7ahYIb22jO7vxOkf5_jTdW6q3a8vVistGr1taZkCwX_ZZ3H04dvZYbQvOnMc9CxWSx0O0GA-Z6Zdxu-RY71JmqbjV6ry845urc9gFmS-Gb6mLRenoR1oqNbzI6kSToB5HiSyt6dZnKB57fh1VDallg0SwV-p9G6q1gvkn2o1AFjlodhh8n3BLyRPLN_kfZm14m6cbi2Ur20XvaivmI_J8xsgO33vU1dutu-wtN1-I1YAWIgc63vuptCBZJWq_gmap6Cf6zR5QKasi2EYLLtb-6Zt0q9gWKzn1jqsolnGRrhQJnP_ppRXoP0l9rFZ9O8bBpAI22h2ZaGRR2VZpjGHnWEk0aA6OsVpZs2hFGE6VH1orBjgYhZsr1t85OLShUS7UK2wP2oQ0S6xpvXxnDTtk4zcTZNktW1t30Sn0Or_ytgnIdlhvD2MKapNodfpulR57mURoSiYL-qSeuDtk0QPd9fgNvds0VYhOCa_Ndn6rdwMHcgT7bMhZ1dD4RemN0raq-cRpbz-wiotxy5QZ3YTu6hvVShjUS_umDtsZNcMSD6eKbg2KpMT6fhtePmZeyQciBgN2SUxaSfRC-2VL_eBXO3j2OVyeg9uYk1iFCr-nHVjZRkrJZnmbdc3r6qbQ8-4UCt_PyKUVKA3oXY43jtplEzUixSquC0gXIel0KX3wNHjKh7p_PcJ4iZJapDnNpU-I6dQYqRZI-aaNWzglg5M_xjoNr0mkBvo_S5-dVO5LdNKlM8Yqz6h5xSP6dln84-QZKDRY_a0Tmerj6QToX5cMyBhWA">
+            <div class="font-semibold text-center border-neutral border-b ">Поцелуй на вылет — 2005
+            </div>
+            <div class=" text-sm font-normal p-2">Фильм - амфетаминовый: все происходит быстро, сумбурно, а потом и
+                вовсе в бред переходит; кинцо с ебанцой - такое мы любим
+            </div>
+        </a>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral">
+            <div class="font-semibold text-center  ">Трек месяца</div>
+            <img class="rounded-none border-y border-neutral"
+                 src="https://avatars.yandex.net/get-music-content/9838169/67869af3.a.29498811-1/m1000x1000">
+            <div class="flex flex-col justify-center grow">
+                <div class="font-semibold text-center border-neutral border-b ">ioneweb, iskrit — Golos</div>
+                <audio controls class="w-full"
+                       src="/static/audio/ioneweb-Golos.mp3"></audio>
+            </div>
+        </div>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-2 text-neutral ">
+            <div class="font-semibold text-center border-b border-neutral">Мысли</div>
+            <div class="p-4 text-sm">
+                Делать не блог, а реально свой интернет. Главная страница - самая важная страница, на ней должны быть
+                все последние обновления: посмотрел фильм - пару слов о нем и на главную, послушал что-то - на главную
+                (можно просто любимый трек дня), ну и конечно техно блок сделать, короче сделать сайт живым, напихать
+                анимашек, приколов, самости
+
+            </div>
+        </div>
+
+        <a href="https://www.kinopoisk.ru/film/51439/"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-2 shadow ">
+
+            <div class="font-semibold text-center border-b border-neutral ">Еда дня</div>
+            <img class="p-2"
+                 src="/static/images/gif/sandwich.gif">
+            <div class="font-semibold text-center border-y border-neutral ">
+                Subway — Итальянский БМТ
+            </div>
+            <div class=" text-sm font-normal p-2">Это классика, это брать надо
+            </div>
+        </a>
+
+        <a href="https://untappd.com/b/brouwerij-st-bernardus-tripel/481"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3    shadow ">
+
+            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>
+            <div class="border-y border-neutral flex justify-center">
+                <img class="w-20 p-2 "
+                     src="/static/images/beer/st-bernardus-tripel.png">
+            </div>
+            <div class="font-semibold text-center border-b border-neutral ">St. Bernardus  — Tripel
+            </div>
+
+
+            <div class=" text-sm font-normal p-2">Вкусняшка: хлебушек, фруктики, алко не ощущается. А то что это можно в любом переке - вообще кайф
+            </div>
+        </a>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex  text-neutral ">
+            <div class="font-semibold text-center  border-neutral border-b ">Рабочий момент</div>
+            <div class=" text-sm font-normal p-2">
+                Раньше такого не замечал, но теперь мне, походу, каждый день
+                надо часа 2 поебланить, чтобы "распердолится" и начать работать
+            </div>
+        </div>
+
+    </div>
 
 
     
-
     
     
-        
-    
-
-
-    <h2 class="!mb-0">
-    
-        <a href="/special">Спешл</a>
-    
-
-    
-
-    </h2>
-
-    
-        <div class="desc">Всякое техническое, полезное, не лирическое</div>
-
-
-    
-        <ul>
-            
-                <li>
-                    <div>
-
-                        <a class="link" href="/special/where-to-eat">Где поесть в Москве</a>
-                        
-                    </div>
-
-                    <div class="desc">Вкусные места в мск + база посещенных рестиков</div>
-                </li>
-            
-                <li>
-                    <div>
-
-                        <a class="link" href="/special/stats">Стата 2024</a>
-                        
-                    </div>
-
-                    <div class="desc">Что пил, что смотрел, что читал, во что играл, что слушал в 2024 г.</div>
-                </li>
-            
-                <li>
-                    <div>
-
-                        <a class="link" href="/special/wishlist">Вишлист</a>
-                        
-                    </div>
-
-                    <div class="desc">Хотелки + все что меня заинтересовало, но руки еще не дошли</div>
-                </li>
-            
-        </ul>
-    
-
-    
-        
-            
-                
-
     
     
-
-
-    <h3 >
     
-        ПИВО
-    
-
-    
-
-    </h3>
-
-    
-
-
-    
-        <ul>
-            
-                <li>
-                    <div>
-
-                        <a class="link" href="/special/beer/guide">Опять нечего пить</a>
-                        
-                    </div>
-
-                    <div class="desc">Разбираемся где пить и что пить (пиво)</div>
-                </li>
-            
-                <li>
-                    <div>
-
-                        <a class="link" href="/special/beer/base">База пива</a>
-                        
-                    </div>
-
-                    <div class="desc">Собираю бутылочки и цены на них</div>
-                </li>
-            
-        </ul>
-    
-
-    
-
-
-            
-        
-    
-
-
-
     
 
     
     
-        
+    
     
 
+    <div class="flex items-center gap-4 py-2">
+        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
+        <h2 class=" inline-block text-center">штучки</h2>
+        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
+    </div>
 
-    <h2 class="!mb-0">
-    
-        <a href="/stuff">Штучки</a>
-    
+    <div class="grid  md:grid-cols-3 gap-2">
 
-    
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+            </svg>
+            Рецепты
+        </a>
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/>
+            </svg>
 
-    </h2>
-
-    
-        <div class="desc">Тулзы, помогающие мне жить и творить</div>
-
-
-    
-
-    
-        
-            <ul>
-                
-                    <li>
-                        <a class="link" href="/stuff/habits">Привычки</a>
-                        
-                            <div class="desc">Стараюсь жить лучшую жизнь</div>
-
-                    </li>
-                
-                    <li>
-                        <a class="link" href="/stuff/recipes">Рецептики</a>
-                        
-                            <div class="desc">Проверенные, вкусные рецептики</div>
-
-                    </li>
-                
-                    <li>
-                        <a class="link" href="/stuff/todo">Тудушки</a>
-                        
-                            <div class="desc">Что хочу сделать в рамках блога</div>
-
-                    </li>
-                
-            </ul>
-        
-    
+            Тудушки
+        </a>
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+            </svg>
 
 
-
+            Привычки
+        </a>
+    </div>
 
 
 
@@ -301,7 +327,9 @@
         </div>
     </div>
 
-    
+
+
+
 </footer>
 </body>
 

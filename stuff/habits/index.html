@@ -73,34 +73,92 @@
 <!-- endregion GA & YaMetrika -->
 
 
-<body class="max-w-[1100px]">
+<body class="max-w-[1000px]">
 
 
 
 
 
     <header class="pt-2">
-        <div class="flex p-1 md:p-2 ">
-            <a class="btn btn-sm md:btn-md   btn-link  " href="/">
+        <div class="flex justify-between  p-1 md:p-2 ">
+            <a class="  btn no-underline btn-sm md:btn-md   btn-link   " href="/">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+                </svg>
+                <span >
                 потик.ио
+
+                </span>
+
+
             </a>
 
+            <div class="flex gap-2">
 
-            <div style="display: flex; align-items: center" class="hide-on-mobile">
 
-                <a class="btn btn-link" href="/special">спешл</a>
-                <a class="btn btn-link" href="/stuff">штучки</a>
-                <a class="btn btn-link text-neutral-50 dark:text-neutral-700" href="/notes">заметки</a>
-                <a class="btn btn-link text-neutral-50 dark:text-neutral-700" href="/drafts">черновики</a>
+
+
+
+
+
+                <div class="btn btn-ghost btn-sm md:btn-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+
+                    </svg>
+
+                    2024-03-27
+
+                </div>
+
+
+
+
+
+
             </div>
 
-            <div style="flex-grow: 1"></div>
-            <a href="https://forms.gle/fXZVKCjDxqfpE6Tz8"
+            <button class="btn btn-ghost btn-square btn-sm md:btn-md" onclick="fortune()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z" />
+</svg>
 
-               class="btn btn-sm md:btn-md btn-secondary uppercase animate-bounce">Дай фидбек блэт</a>
+            </button>
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
         </div>
-    <hr>
     </header>
+
+    <script>
+    function fortune() {
+        const items = [
+"YOU ARE THROWING YOUR LIFE AWAY",
+"GIVE UP!",
+"YOU WILL DIE ALONE",
+"YOU WERE BORN WRONG",
+"YOU ARE DARK INSIDE",
+"YOU WILL NEVER BE FORGIVEN",
+"YOU WILL DIE",
+"MAY YOUR TROUBLES BE MANY",
+"BLAME NOBODY BUT YOURSELF",
+        ]
+        alert(items[Math.floor(Math.random() * items.length)])
+    }
+    </script>
+
 
 <main class="prose md:prose-lg  max-w-none p-4 md:p-6">
     <article>
@@ -835,7 +893,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/15/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -2399,7 +2457,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/16/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -3290,15 +3348,14 @@ bg-neutral-50 dark:bg-gray-700"></button>
 
                     </div>
                     <div class="flex flex-col gap-1">
-                        <button class="btn btn-sm  btn-circle group  btn-success btn-outline hover:btn-error"
+                        <button class="btn btn-sm  btn-circle group  btn-success btn-ghost hover:btn-outline"
                                 type="button" hx-post="/habits/30/perform" hx-swap="outerHTML"
                                 hx-target="closest .habit-card" name="status"
-                                value="">
+                                value="+">
                             <div class="group-hover:block transition hidden">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
 </svg>
-
 </div>
                             <div class="group-hover:hidden block ">
    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -3964,7 +4021,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/30/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -5533,7 +5590,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/8/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -7095,7 +7152,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/9/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -8657,7 +8714,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/10/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -10219,7 +10276,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/11/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -11781,7 +11838,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/13/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -13343,7 +13400,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/14/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -14905,7 +14962,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/17/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -16467,7 +16524,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/18/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -18029,7 +18086,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/19/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -19593,7 +19650,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/20/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -21157,7 +21214,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/21/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -22719,7 +22776,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/23/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -24281,7 +24338,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/24/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -25843,7 +25900,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/25/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -27405,7 +27462,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/26/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -28967,7 +29024,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/27/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -30531,7 +30588,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/28/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -32091,7 +32148,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/29/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -33660,7 +33717,7 @@ bg-success/20 dark:bg-success/90"></button>
                                 <button hx-post="/habits/1/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -35224,7 +35281,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/2/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -36786,7 +36843,7 @@ bg-success/20 dark:bg-success/90"></button>
                                 <button hx-post="/habits/3/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -38348,7 +38405,7 @@ bg-success/20 dark:bg-success/90"></button>
                                 <button hx-post="/habits/4/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -39912,7 +39969,7 @@ bg-success/20 dark:bg-success/90"></button>
                                 <button hx-post="/habits/5/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -41474,7 +41531,7 @@ bg-success/20 dark:bg-success/90"></button>
                                 <button hx-post="/habits/12/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -43038,7 +43095,7 @@ bg-neutral-50 dark:bg-gray-700"></button>
                                 <button hx-post="/habits/22/perform?date=2024-03-27"
                                         hx-swap="outerHTML"
                                         hx-target="closest .habit-card" name="status" value="+"
-                                        class="aspect-square w-full rounded invisible
+                                        class="aspect-square w-full rounded 
 bg-neutral-50 dark:bg-gray-700"></button>
                             </div>
                         
@@ -43926,7 +43983,9 @@ bg-neutral-50 dark:bg-gray-700"></button>
         </div>
     </div>
 
-    
+
+
+
 </footer>
 </body>
 
