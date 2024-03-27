@@ -10,7 +10,7 @@ from flask import Flask, render_template
 from tinydb import TinyDB
 
 from potyk_io_back.beer import make_beer_blueprint
-from potyk_io_back.content import read_content
+from potyk_io_back.content import read_content, sync_pages
 from potyk_io_back.core import (
     BASE_DIR,
     render_md_as_html,
@@ -69,6 +69,8 @@ def create_app():
     )
 
     with app.app_context():
+        sync_pages(Path(app.template_folder))
+
         app.config["CONTENT"] = read_content(Path(app.template_folder))
 
         db = TinyDB("db.json")
