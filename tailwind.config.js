@@ -5,8 +5,10 @@ module.exports = {
     fontFamily: {
       "sans": ["Noto Sans"],
     },
+
     extend: {},
   },
+  darkMode: false,
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
 }
 
