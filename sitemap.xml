@@ -7,6 +7,9 @@
 		<loc>https://potyk.io/drafts</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/drafts/simple</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/drafts/value-to-people</loc>
 	</url>
 	<url>
@@ -28,9 +31,6 @@
 		<loc>https://potyk.io/drafts/phone-activities</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/simple</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/drafts/htmx</loc>
 	</url>
 	<url>
@@ -38,6 +38,12 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/aneki</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-27</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes</loc>
@@ -205,10 +211,10 @@
 		<loc>https://potyk.io/special/where-to-eat</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/wishlist</loc>
+		<loc>https://potyk.io/special/stats</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/stats</loc>
+		<loc>https://potyk.io/special/wishlist</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/beer/base</loc>
