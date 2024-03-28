@@ -112,6 +112,11 @@ if __name__ == "__main__":
 
     for index, route_and_path in enumerate(what_to_render):
         route, path = route_and_path
+
+        if route == '/feed':
+            route = '/feed/2024-03-27'
+            path = '/feed/2024-03-27.html'
+
         rendered = render(route, server)
         write_article(dist, path)
         print(f"Rendering articles: Progress: {index + 1} / {len(what_to_render)}")
