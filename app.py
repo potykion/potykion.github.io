@@ -17,6 +17,7 @@ from potyk_io_back.core import (
     wrap_html_to_base_template,
     make_article_template_name,
 )
+from potyk_io_back.feed import make_feed_blueprint
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.restaurants import make_restaurants_blueprint
@@ -89,6 +90,7 @@ def create_app():
     app.register_blueprint(make_wishlist_blueprint(sqlite_cur))
     app.register_blueprint(make_restaurants_blueprint(sqlite_cur))
     app.register_blueprint(make_beer_blueprint(sqlite_cur))
+    app.register_blueprint(make_feed_blueprint(sqlite_cur))
 
     @app.context_processor
     def inject_ctx():
@@ -97,12 +99,6 @@ def create_app():
             is_prod=os.getenv("FLASK_ENV") == "prod",
         )
 
-    @app.route("/")
-    def index():
-        return render_template(
-            "index.html",
-            beer=BeerStorage(sqlite_cur).get_by_id(21),
-        )
 
     @app.route("/notes")
     def notes():

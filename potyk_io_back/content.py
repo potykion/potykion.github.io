@@ -4,6 +4,7 @@ import os
 import sqlite3
 from pathlib import Path
 from typing import Literal
+from unittest import mock
 
 import flask
 import frontmatter
@@ -50,7 +51,7 @@ class Page(BaseModel):
 
     @classmethod
     def parse_from_html_template(cls, html_template_path: str, **defaults) -> "Page":
-        html = flask.render_template(html_template_path)
+        html = flask.render_template(html_template_path, beer=mock.MagicMock())
         soup = BeautifulSoup(html, "html.parser")
 
         title = soup.find("meta", property="og:title").get("content") or defaults.get(
@@ -225,7 +226,7 @@ def _parse_files(files, dir_path, content_path):
                     created = parse_dt(md.get("created"))
             tags = md.get("tags") or []
         elif ext == PageExt.html:
-            html = flask.render_template(template_path)
+            html = flask.render_template(template_path, beer=mock.MagicMock())
             soup = BeautifulSoup(html, "html.parser")
             title = soup.find("meta", property="og:title").get("content")
             desc = soup.find("meta", property="og:description").get("content")

@@ -1,0 +1,180 @@
+{% extends "templates/base.html" %}
+{% set title = '2024-03-27' %}
+{% set desc = 'блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4' %}
+
+{% from "templates/components/sections.html" import link_section,page_section %}
+
+{% block main %}
+
+
+    <div class="flex justify-between mb-2">
+
+
+
+            <a href="/" class=" invisible btn btn-square btn-ghost btn-sm md:btn-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                </svg>
+            </a>
+            <div class="btn btn-ghost btn-sm md:btn-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
+
+                </svg>
+
+                {{ feed_date or today_date }}
+
+            </div>
+            <a href="/" class="btn btn-square btn-ghost btn-sm md:btn-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+                </svg>
+            </a>
+
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-2">
+
+        <div class="rounded-xl shadow p-4 border-neutral border flex flex-col items-center">
+            <button class="btn btn-square btn-ghost">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                     stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                          d="M15.182 15.182a4.5 4.5 0 0 1-6.364 0M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0ZM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75Zm-.375 0h.008v.015h-.008V9.75Z"/>
+                </svg>
+
+            </button>
+            <h4>Че пацаны новая главная</h4>
+        </div>
+
+        <a href="https://www.kinopoisk.ru/film/51439/"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">
+
+            <div class="font-semibold text-center   ">Что посмотреть</div>
+            <img class="border-y border-neutral rounded-none"
+                 src="{{ url_for('static', filename='images/movies/kiss-kiss-bang-bang.webp') }}">
+            <div class="font-semibold text-center border-neutral border-b ">Поцелуй на вылет — 2005
+            </div>
+            <div class=" text-sm font-normal p-2">Фильм - амфетаминовый: все происходит быстро, сумбурно, а потом и
+                вовсе в бред переходит; кинцо с ебанцой - такое мы любим
+            </div>
+        </a>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral">
+            <div class="font-semibold text-center  ">Трек месяца</div>
+            <img class="rounded-none border-y border-neutral"
+                 src="https://avatars.yandex.net/get-music-content/9838169/67869af3.a.29498811-1/m1000x1000">
+            <div class="flex flex-col justify-center grow">
+                <div class="font-semibold text-center border-neutral border-b ">ioneweb, iskrit — Golos</div>
+                <audio controls class="w-full"
+                       src="{{ url_for('static', filename='audio/ioneweb-Golos.mp3') }}"></audio>
+            </div>
+        </div>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-2 text-neutral ">
+            <div class="font-semibold text-center border-b border-neutral">Мысли</div>
+            <div class="p-4 text-sm">
+                Делать не блог, а реально свой интернет. Главная страница - самая важная страница, на ней должны быть
+                все последние обновления: посмотрел фильм - пару слов о нем и на главную, послушал что-то - на главную
+                (можно просто любимый трек дня), ну и конечно техно блок сделать, короче сделать сайт живым, напихать
+                анимашек, приколов, самости
+
+            </div>
+        </div>
+
+        <a href="https://www.kinopoisk.ru/film/51439/"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-2 shadow ">
+
+            <div class="font-semibold text-center border-b border-neutral ">Еда дня</div>
+            <img class="p-2"
+                 src="{{ url_for('static', filename='images/gif/sandwich.gif') }}">
+            <div class="font-semibold text-center border-y border-neutral ">
+                Subway — Итальянский БМТ
+            </div>
+            <div class=" text-sm font-normal p-2">Это классика, это брать надо
+            </div>
+        </a>
+
+        <a href="{{ beer.untappd_url }}"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3    shadow ">
+
+            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>
+            <div class="border-y border-neutral flex justify-center">
+                <img class="w-20 p-2 "
+                     src="{{ url_for('static', filename=beer.img) }}">
+            </div>
+            <div class="font-semibold text-center border-b border-neutral ">St. Bernardus — Tripel
+            </div>
+
+
+            <div class=" text-sm font-normal p-2">{{ beer.review }}
+            </div>
+        </a>
+
+        <div class="rounded-xl shadow  border-neutral border flex-col flex  text-neutral ">
+            <div class="font-semibold text-center  border-neutral border-b ">Рабочий момент</div>
+            <div class=" text-sm font-normal p-2">
+                Раньше такого не замечал, но теперь мне, походу, каждый день
+                надо часа 2 поебланить, чтобы "распердолится" и начать работать
+            </div>
+        </div>
+
+    </div>
+
+
+    {#    <div class="flex justify-between items-center">#}
+    {#        <div>#}
+    {#            <h1 class="inline-block">потик.ио</h1>#}
+    {#            <div class="desc">wой wаленький интернет • v4.1</div>#}
+    {#        </div>#}
+    {##}
+    {#    </div>#}
+
+    {##}
+    {#    {{ page_section(content.get_subsection('special') ) }}#}
+    {##}
+    {#    {{ page_section(content.get_subsection('stuff'), subsections='links' ) }}#}
+
+    <div class="flex items-center gap-4 py-2">
+        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
+        <h2 class=" inline-block text-center">штучки</h2>
+        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
+    </div>
+
+    <div class="grid  md:grid-cols-3 gap-2">
+
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
+            </svg>
+            Рецепты
+        </a>
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/>
+            </svg>
+
+            Тудушки
+        </a>
+        <a class="btn w-full  btn-outline " href="/stuff/recipes">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                 stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
+            </svg>
+
+
+            Привычки
+        </a>
+    </div>
+
+
+{% endblock %}
