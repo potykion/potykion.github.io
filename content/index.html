@@ -7,7 +7,7 @@
 {% block main %}
 
     <div class="flex justify-between mb-2">
-        <a href="/feed/2024-03-27" class="btn btn-square btn-ghost btn-sm md:btn-md">
+        <a href="/feed/2024-03-28" class="btn btn-square btn-ghost btn-sm md:btn-md">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
@@ -33,143 +33,98 @@
     </div>
 
     <div class="hidden text-white dark:block ">
-    брах, пока без темной темы
+        брах, пока без темной темы
     </div>
 
     <div class="grid md:grid-cols-3 gap-2">
 
 
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral ">
+        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-1 text-neutral ">
             <div class="font-semibold text-center border-b border-neutral">Мысли</div>
             <div class="p-4 text-sm">
-                Новая главная - красивая, в духе газеты, но теперь хочется каждый день такое делать - где взять время,
-                желание и контент на каждый день???
-                <br><br>
-                Первая мысль - упрощать, делать все шаблонно: блок под кино, блок под музыку - как щас, только брать
-                данные из базы и рендерить джинжей.
-                <br><br>
-                Ну окей это сэкономит время и силы, а с контентом что? Если ничего не произошло за день, просто
-                день-пердень - что тогда?
-                <br><br>
-                Ну, жить интересную жизнь можно хех мда.
+                Зачем вообще фид? Идея проста - прожитый день как-то материализовать (хотя скорее виртуализировать).
+                Идея перенести себя в иной мир, в мир фантазий, в мир интернета, ведь любое творчество живёт отдельно от
+                автора, и все что в интернете редко похоже на реальность, в интернете все так преувеличено, не
+                естественно. Мои дни будут не просто протекать впустую, а превращаться в проекцию, которую каждый будет
+                читать по-своему, то есть прикинь не просто комп-телик-кровать, а творчество, художественное оформление!
+
             </div>
         </div>
 
         <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral">
             <div class="font-semibold text-center italic  ">#pizdalupasit</div>
-            <img class="rounded-none border-y border-neutral"
-                 src="{{ url_for('static', filename='images/mu/Serum-Aint-No-Way-2024.png') }}">
-            <div class="flex flex-col justify-center grow">
-                <div class="font-semibold text-center border-neutral border-b ">Serum, The Riddler — Ain't No Way 2024
-                </div>
-                <audio controls class="w-full"
-                       src="{{ url_for('static', filename='audio/Serum-Aint-No-Way-2024.mp3') }}"></audio>
+
+            <iframe height="500" src="https://www.youtube.com/embed/Uivp-hvk-nk?si=A47fXstiPAR_3HBA"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="font-semibold text-center border-y border-neutral ">
+                Venjent — Open the Door
             </div>
+            <div class=" text-sm font-normal p-2">
+                Чел семплирует бытовые звучки с драмчиком - индастриал днб получается 🤔
+            </div>
+
         </div>
 
 
-        {#        <a href="https://www.kinopoisk.ru/film/51439/"#}
-        {#           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">#}
-        {##}
-        {#            <div class="font-semibold text-center   ">Что посмотреть</div>#}
-        {#            <img class="border-y border-neutral rounded-none"#}
-        {#                 src="{{ url_for('static', filename='images/movies/kiss-kiss-bang-bang.webp') }}">#}
-        {#            <div class="font-semibold text-center border-neutral border-b ">Поцелуй на вылет — 2005#}
-        {#            </div>#}
-        {#            <div class=" text-sm font-normal p-2">Фильм - амфетаминовый: все происходит быстро, сумбурно, а потом и#}
-        {#                вовсе в бред переходит; кинцо с ебанцой - такое мы любим#}
-        {#            </div>#}
-        {#        </a>#}
-
-
-        <a href=""
+        <a href="/stuff/recipes/pasta-salmon"
            class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-2 shadow ">
 
-            <div class="font-semibold text-center border-b border-neutral ">Еда дня</div>
+            <div class="font-semibold text-center border-b border-neutral ">Рецепт дня</div>
             <img class="p-2"
-                 src="{{ url_for('static', filename='images/food/kom-rang-bo.png') }}">
+                 src="{{ url_for('static', filename='images/food/pasta-salmon.png') }}">
             <div class="font-semibold text-center border-y border-neutral ">
-                Ком 1989 — Ком Ранг Бо
-            </div>
-            <div class=" text-sm font-normal p-2">Большая порция ебейшего жареного рисика с говяжкой, горошком,
-                морковкой и яичком, а со
-                шрирачей еще кайфовее
-            </div>
-        </a>
-
-        <a href=""
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">
-
-            <div class="font-semibold text-center border-b border-neutral ">Видео дня</div>
-
-            <iframe src="https://www.youtube.com/embed/pdlDxSJcuwY?si=YU948rPFA_Kmk4wd" title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-            <div class="font-semibold text-center border-y border-neutral ">
-                Как волчистость рушит карьеру?
+                Спагетти с лососем в сливочном соусе
             </div>
             <div class=" text-sm font-normal p-2">
-                Гость нелепейший: тупа пухляш, который из-за двойного стресса на работе переедал, покуривая калик - мда.
-                А работать не из дома, а например из коковоркинга, где еды просто нет - не пробовал? Жесть, чел ебашить
-                по 12-14 может, а ворк-лайф баланс не может, мдааа. <br>Но конечно нужно больше подобных видосов: когда
-                я вижу слабаков, которые спустя год ливают, - это радует
+                Эх, рецептики - самое легкое, что можно в блог закидывать, уже несколько раз это топ пасту делал, а все
+                не записал в рецы - пора бы
             </div>
         </a>
 
-        {#        <a href="{{ beer.untappd_url }}"#}
-        {#           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3    shadow ">#}
-        {#            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>#}
-        {#            <div class="border-y border-neutral flex justify-center">#}
-        {#                <img class="w-20 p-2 "#}
-        {#                     src="{{ url_for('static', filename=beer.img) }}">#}
-        {#            </div>#}
-        {#            <div class="font-semibold text-center border-b border-neutral ">St. Bernardus  — Tripel#}
-        {#            </div>#}
-        {##}
-        {##}
-        {#            <div class=" text-sm font-normal p-2">{{ beer.review }}#}
-        {#            </div>#}
-        {#        </a>#}
+
+        <a href="https://www.tinkoff.ru/invest/help/situation/844/"
+           class="rounded-xl shadow  border-neutral border flex-col no-underline hover:bg-neutral-50 flex row-span-2 text-neutral ">
+            <div class="font-semibold text-center  border-neutral border-b ">Новости финансов</div>
+            <img class="p-2"
+                 src="{{ url_for('static', filename='images/feed/tink-sell-blocked.png') }}">
+
+            <div class=" text-sm font-normal p-2">
+                Ооо наконец-то можно потихоньку продавать финекс за нормальный прайс урааа
+            </div>
+        </a>
 
         <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-2 text-neutral ">
             <div class="font-semibold text-center  border-neutral border-b ">Рабочий момент</div>
             <div class=" text-sm font-normal p-2">
-                Бля я ещё помимо ежедневного фида хочу после каждого бага делать пост-мортем в виде
-                документации, но если с фидом ещё можно что-то придумать (в телефоне там писать), то как на мобиле
-                название классов писать - пока непонятно 🤔
+                Мда, как же все сломано на работке, а в предрелизье - так тем более: инфра деплой не может починить,
+                тимлид проебывается со встречами, тестирование ебет мозги, а ПМ в облаках витает, и все это
+                сопровождается лютым сумбуром - ахуенно #воттакоевотайти #всемьевседолжнобытьпоровну
             </div>
         </div>
 
-        <a href=""
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">
 
-            <div class="font-semibold text-center border-b border-neutral ">Фото дня</div>
-            <img class=""
-                 src="{{ url_for('static', filename='images/feed/chemodan.jpg') }}">
-            <div class=" text-sm font-normal p-2">
+        <a href="{{ beer.untappd_url }}"
+           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3    shadow ">
 
-                Пришло время попрощаться с чемоданчиком<br>
-                Лишь один человек знал о его содержимом😏
+            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>
+            <div class="border-y border-neutral flex justify-center">
+                <img class="w-20 p-2 "
+                     src="{{ url_for('static', filename=beer.img) }}">
+            </div>
+            <div class="font-semibold text-center border-b border-neutral ">{{ beer.title }}
+            </div>
+
+
+            <div class=" text-sm font-normal p-2">{{ beer.review }}
             </div>
         </a>
+
 
     </div>
 
 
-    {#    <div class="flex justify-between items-center">#}
-    {#        <div>#}
-    {#            <h1 class="inline-block">потик.ио</h1>#}
-    {#            <div class="desc">wой wаленький интернет • v4.1</div>#}
-    {#        </div>#}
-    {##}
-    {#    </div>#}
-
-    {##}
-    {#    {{ page_section(content.get_subsection('special') ) }}#}
-    {##}
-    {#    {{ page_section(content.get_subsection('stuff'), subsections='links' ) }}#}
 
     <div class="flex items-center gap-4 py-2">
         <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>

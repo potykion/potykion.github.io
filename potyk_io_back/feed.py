@@ -15,16 +15,23 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
     def index():
         return render_template(
             "index.html",
-            beer=BeerStorage(sqlite_cur).get_by_id(21),
+            beer=BeerStorage(sqlite_cur).get_by_id(38),
         )
 
 
     @feed_blueprint.route("/feed/2024-03-27")
-    def yesterday():
+    def two_days_ago():
         return render_template(
             "feed/2024-03-27.html",
             beer=BeerStorage(sqlite_cur).get_by_id(21),
             feed_date='2024-03-27',
+        )
+    @feed_blueprint.route("/feed/2024-03-28")
+    def yesterday():
+        return render_template(
+            "feed/2024-03-28.html",
+            beer=BeerStorage(sqlite_cur).get_by_id(21),
+            feed_date='2024-03-28',
         )
 
     return feed_blueprint
