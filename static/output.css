@@ -3863,6 +3863,10 @@ details.collapse summary::-webkit-details-marker {
   grid-row: span 4 / span 4;
 }
 
+.row-span-1 {
+  grid-row: span 1 / span 1;
+}
+
 .\!my-0 {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
@@ -5027,6 +5031,16 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(250 250 250 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-neutral:hover {
+  --tw-bg-opacity: 1;
+  background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
+}
+
+.hover\:bg-neutral-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
 .group:hover .group-hover\:block {
   display: block;
 }
@@ -5111,8 +5125,8 @@ details.collapse summary::-webkit-details-marker {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:visible {
-    visibility: visible;
+  .dark\:block {
+    display: block;
   }
 
   .dark\:bg-gray-700 {
