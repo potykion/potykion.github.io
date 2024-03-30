@@ -3,6 +3,7 @@ import sqlite3
 from flask import Blueprint, render_template
 
 from potyk_io_back.beer import BeerStorage
+from potyk_io_back.lazy import SimpleStorage
 
 
 def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
@@ -11,11 +12,14 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
         __name__,
     )
 
+    tech_storage = SimpleStorage(sqlite_cur, 'tech_tools')
+
     @feed_blueprint.route("/")
     def index():
         return render_template(
             "index.html",
             beer=BeerStorage(sqlite_cur).get_by_id(39),
+            tech_tool=tech_storage.get_by_id(8),
         )
 
     @feed_blueprint.route("/feed/2024-03-30")

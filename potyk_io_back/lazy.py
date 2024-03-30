@@ -16,3 +16,6 @@ class SimpleStorage:
             q += f" order by {order_by}"
         rows = self.sqlite_cur.execute(q).fetchall()
         return rows
+
+    def get_by_id(self, id: int) -> sqlite3.Row:
+        return self.list_all(where=f"id= {id}")[0]
