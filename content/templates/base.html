@@ -80,52 +80,63 @@
 
 {{ header(feed_date) }}
 
-<main class="prose md:prose-lg  max-w-none p-4 md:p-6">
-    <article>
-        {% if title and show_title %}
-            <h1>{{ title }}</h1>
-        {% endif %}
-        <div>
-            {% for tag in note_tags %}
-                <span class="badge badge-lg badge-primary">{{ tag }}</span>
-            {% endfor %}
-        </div>
-        {% if created %}
-            <cite>{{ created }}</cite>
-        {% endif %}
+<div class="prose md:prose-lg max-w-none p-4 md:p-6">
 
-        {% if desc and show_desc %}
-            <div class="desc">{{ desc }}</div>
-        {% endif %}
 
-        {% block main %}
-        {% endblock %}
-    </article>
-</main>
-<footer class="px-4 md:px-6">
-    <div style="display: flex; justify-content: space-between">
-        <div>
-            {% if prev %}
-                <a class="btn btn-link" href="/notes/{{ prev }}">
-                    < Пред.
-                </a>
+    <main class="">
+        <article>
+            {% if title and show_title %}
+                <h1>{{ title }}</h1>
+            {% endif %}
+            <div>
+                {% for tag in note_tags %}
+                    <span class="badge badge-lg badge-primary">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% if created %}
+                <cite>{{ created }}</cite>
             {% endif %}
 
-        </div>
-        <div>
-            {% if next %}
-                <a class="btn btn-link" href="/notes/{{ next }}">
-                    След. >
-                </a>
+            {% if desc and show_desc %}
+                <div class="desc">{{ desc }}</div>
             {% endif %}
 
-        </div>
-    </div>
+            {% block main %}
+            {% endblock %}
+        </article>
+    </main>
+    <footer>
 
-{#    {% if not is_prod %}#}
-{#        <code>is_prod = False</code>#}
-{#    {% endif %}#}
-</footer>
+        {% block footer %}{% endblock %}
+
+        <div class="">
+            <div style="display: flex; justify-content: space-between">
+                <div>
+                    {% if prev %}
+                        <a class="btn btn-link" href="/notes/{{ prev }}">
+                            < Пред.
+                        </a>
+                    {% endif %}
+
+                </div>
+                <div>
+                    {% if next %}
+                        <a class="btn btn-link" href="/notes/{{ next }}">
+                            След. >
+                        </a>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+
+
+        {#    {% if not is_prod %}#}
+        {#        <code>is_prod = False</code>#}
+        {#    {% endif %}#}
+    </footer>
+
+</div>
 </body>
 
 {% block script %}
