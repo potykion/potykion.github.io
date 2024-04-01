@@ -58,6 +58,7 @@ class Page(BaseModel):
             feed_date=mock.MagicMock(),
             prev_date=mock.MagicMock(),
             next_date=mock.MagicMock(),
+            feed_items=mock.MagicMock(),
         )
         soup = BeautifulSoup(html, "html.parser")
 
@@ -240,6 +241,7 @@ def _parse_files(files, dir_path, content_path):
                 feed_date=mock.MagicMock(),
                 prev_date=mock.MagicMock(),
                 next_date=mock.MagicMock(),
+                feed_items=mock.MagicMock(),
             )
             soup = BeautifulSoup(html, "html.parser")
             title = soup.find("meta", property="og:title").get("content")
