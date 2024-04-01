@@ -41,7 +41,7 @@
 
         {% if desc %}
             <div class=" text-sm font-normal {% if desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t border-neutral ">
-                {{ desc }}
+                {{ desc | safe }}
             </div>
         {% endif %}
 

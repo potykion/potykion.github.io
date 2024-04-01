@@ -1,41 +1,9 @@
-{% extends "templates/base.html" %}
-{% set title = '2024-03-27' %}
-{% set desc = 'блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4' %}
+{% extends "templates/feed/feed_base.html" %}
 
-{% from "templates/components/sections.html" import link_section,page_section %}
+{% from 'templates/feed/feed_card.html' import feed_card %}
 
 {% block main %}
-
-
-    <div class="flex justify-between mb-2">
-
-
-
-            <a href="/" class=" invisible btn btn-square btn-ghost btn-sm md:btn-md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-                </svg>
-            </a>
-            <div class="btn btn-ghost btn-sm md:btn-md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/>
-
-                </svg>
-
-                {{ feed_date or today_date }}
-
-            </div>
-            <a href="/feed/2024-03-28" class="btn btn-square btn-ghost btn-sm md:btn-md">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-                </svg>
-            </a>
-
-    </div>
+    {{ super() }}
 
     <div class="grid md:grid-cols-3 gap-2">
 
@@ -124,57 +92,4 @@
         </div>
 
     </div>
-
-
-    {#    <div class="flex justify-between items-center">#}
-    {#        <div>#}
-    {#            <h1 class="inline-block">потик.ио</h1>#}
-    {#            <div class="desc">wой wаленький интернет • v4.1</div>#}
-    {#        </div>#}
-    {##}
-    {#    </div>#}
-
-    {##}
-    {#    {{ page_section(content.get_subsection('special') ) }}#}
-    {##}
-    {#    {{ page_section(content.get_subsection('stuff'), subsections='links' ) }}#}
-
-    <div class="flex items-center gap-4 py-2">
-        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
-        <h2 class=" inline-block text-center">штучки</h2>
-        <div class="flex-1 h-[1px] bg-neutral-300 w-full inline-block"></div>
-    </div>
-
-    <div class="grid  md:grid-cols-3 gap-2">
-
-        <a class="btn w-full  btn-outline " href="/stuff/recipes">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/>
-            </svg>
-            Рецепты
-        </a>
-        <a class="btn w-full  btn-outline " href="/stuff/recipes">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"/>
-            </svg>
-
-            Тудушки
-        </a>
-        <a class="btn w-full  btn-outline " href="/stuff/recipes">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/>
-            </svg>
-
-
-            Привычки
-        </a>
-    </div>
-
-
 {% endblock %}
