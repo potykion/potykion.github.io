@@ -177,9 +177,14 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
 
     @feed_blueprint.route("/feed/2024-03-27")
     def feed_1():
+        feed_items = feed_storage.list_by_date("2024-03-27")
+        feed_items = [
+            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
+        ]
+
         return render_template(
             "feed/2024-03-27.html",
-            beer=BeerStorage(sqlite_cur).get_by_id(21),
+            feed_items=feed_items,
             feed_date="2024-03-27",
             prev_date=None,
             next_date="2024-03-28",

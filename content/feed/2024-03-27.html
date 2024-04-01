@@ -19,77 +19,8 @@
             <h4>Че пацаны новая главная</h4>
         </div>
 
-        <a href="https://www.kinopoisk.ru/film/51439/"
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-4 shadow ">
-
-            <div class="font-semibold text-center   ">Что посмотреть</div>
-            <img class="border-y border-neutral rounded-none"
-                 src="{{ url_for('static', filename='images/movies/kiss-kiss-bang-bang.webp') }}">
-            <div class="font-semibold text-center border-neutral border-b ">Поцелуй на вылет — 2005
-            </div>
-            <div class=" text-sm font-normal p-2">Фильм - амфетаминовый: все происходит быстро, сумбурно, а потом и
-                вовсе в бред переходит; кинцо с ебанцой - такое мы любим
-            </div>
-        </a>
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral">
-            <div class="font-semibold text-center  ">Трек месяца</div>
-            <img class="rounded-none border-y border-neutral"
-                 src="https://avatars.yandex.net/get-music-content/9838169/67869af3.a.29498811-1/m1000x1000">
-            <div class="flex flex-col justify-center grow">
-                <div class="font-semibold text-center border-neutral border-b ">ioneweb, iskrit — Golos</div>
-                <audio controls class="w-full"
-                       src="{{ url_for('static', filename='audio/ioneweb-Golos.mp3') }}"></audio>
-            </div>
-        </div>
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-2 text-neutral ">
-            <div class="font-semibold text-center border-b border-neutral">Мысли</div>
-            <div class="p-4 text-sm">
-                Делать не блог, а реально свой интернет. Главная страница - самая важная страница, на ней должны быть
-                все последние обновления: посмотрел фильм - пару слов о нем и на главную, послушал что-то - на главную
-                (можно просто любимый трек дня), ну и конечно техно блок сделать, короче сделать сайт живым, напихать
-                анимашек, приколов, самости
-
-            </div>
-        </div>
-
-        <a href="https://www.kinopoisk.ru/film/51439/"
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-2 shadow ">
-
-            <div class="font-semibold text-center border-b border-neutral ">Еда дня</div>
-            <img class="p-2"
-                 src="{{ url_for('static', filename='images/gif/sandwich.gif') }}">
-            <div class="font-semibold text-center border-y border-neutral ">
-                Subway — Итальянский БМТ
-            </div>
-            <div class=" text-sm font-normal p-2">Это классика, это брать надо
-            </div>
-        </a>
-
-        <a href="{{ beer.untappd_url }}"
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3    shadow ">
-
-            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>
-            <div class="border-y border-neutral flex justify-center">
-                <img class="w-20 p-2 "
-                     src="{{ url_for('static', filename=beer.img) }}">
-            </div>
-            <div class="font-semibold text-center border-b border-neutral ">St. Bernardus — Tripel
-            </div>
-
-
-            <div class=" text-sm font-normal p-2">{{ beer.review }}
-            </div>
-        </a>
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex  text-neutral ">
-            <div class="font-semibold text-center  border-neutral border-b ">Рабочий момент</div>
-            <div class=" text-sm font-normal p-2">
-                Раньше такого не замечал, но теперь мне, походу, каждый день
-                надо часа 2 поебланить, чтобы "распердолится" и начать работать
-            </div>
-        </div>
-
+            {% for feed_item in feed_items %}
+                {{ feed_card(**feed_item) }}
+            {% endfor %}
     </div>
 {% endblock %}
