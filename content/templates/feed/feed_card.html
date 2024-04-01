@@ -1,4 +1,4 @@
-{% macro feed_card(category, image=None, image_width=0, image_padding=0, title=None, audio=None, desc=None, desc_padding=0, row_span=1, url=None, youtube=None, video=None) %}
+{% macro feed_card(category, image=None, image_width=0, image_padding=0, title=None, audio=None, desc=None, desc_padding=0, row_span=1, url=None, youtube=None, video=None, youtube_height=None) %}
 
     <{% if url %}a href="{{ url }}"{% else %}div{% endif %} class="no-underline rounded-xl shadow  border-neutral border flex-col flex
 
@@ -9,7 +9,7 @@
      {% else %}row-span-1{% endif %}
 
      text-neutral">
-        <div class="font-semibold text-center  border-neutral">{{ category }}</div>
+        <div class="font-semibold text-center  border-neutral {% if category.startswith('#') %}italic{% endif %}">{{ category }}</div>
 
         {% if image %}
             <div class=" flex justify-center border-t border-neutral">
@@ -23,7 +23,7 @@
         {% endif %}
 
         {% if youtube %}
-            {{ youtube_embed(youtube) | safe }}
+            {{ youtube_embed(youtube, youtube_height) | safe }}
     {% endif %}
 
 

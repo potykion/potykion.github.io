@@ -33,7 +33,7 @@ class Link:
     desc: str = ""
 
 
-def youtube_embed(link: str):
+def youtube_embed(link: str, height: int | None = None):
     """
     >>> youtube_embed('https://youtu.be/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R')
     '<iframe src="https://www.youtube.com/embed/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
@@ -48,7 +48,13 @@ def youtube_embed(link: str):
         id = link.rsplit("=")[1]
     else:
         return ""
-    return f'<iframe src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+
+    if height:
+        height_tag = f'height="{height}"'
+    else:
+        height_tag = ""
+
+    return f'<iframe {height_tag} src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
 
 
 def today_shift(shift_days: int) -> datetime.date:
@@ -98,7 +104,6 @@ def create_app():
             content=app.config["CONTENT"],
             is_prod=os.getenv("FLASK_ENV") == "prod",
         )
-
 
     @app.route("/notes")
     def notes():
