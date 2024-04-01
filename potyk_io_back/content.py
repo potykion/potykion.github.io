@@ -24,7 +24,7 @@ class PageExt(enum.StrEnum):
 
 
 class Page(BaseModel):
-    key: str = ''
+    key: str = ""
     ext: PageExt
     # abs_path=r"C:\Users\GANSOR\PycharmProjects\potykion.github.io\content\notes\1-again\15-01.md",
     # ="notes/1-again/15-01.md",
@@ -32,7 +32,7 @@ class Page(BaseModel):
     # ="Что в твоей тарелке 15.01",
     title: str
     desc: str
-    url: str = ''
+    url: str = ""
     created: datetime.datetime
     tags: list[str] = Field(default_factory=list)
 
@@ -51,7 +51,14 @@ class Page(BaseModel):
 
     @classmethod
     def parse_from_html_template(cls, html_template_path: str, **defaults) -> "Page":
-        html = flask.render_template(html_template_path, beer=mock.MagicMock())
+        html = flask.render_template(
+            html_template_path,
+            beer=mock.MagicMock(),
+            tech_tool=mock.MagicMock(),
+            feed_date=mock.MagicMock(),
+            prev_date=mock.MagicMock(),
+            next_date=mock.MagicMock(),
+        )
         soup = BeautifulSoup(html, "html.parser")
 
         title = soup.find("meta", property="og:title").get("content") or defaults.get(
@@ -226,7 +233,14 @@ def _parse_files(files, dir_path, content_path):
                     created = parse_dt(md.get("created"))
             tags = md.get("tags") or []
         elif ext == PageExt.html:
-            html = flask.render_template(template_path, beer=mock.MagicMock())
+            html = flask.render_template(
+                template_path,
+                beer=mock.MagicMock(),
+                tech_tool=mock.MagicMock(),
+                feed_date=mock.MagicMock(),
+                prev_date=mock.MagicMock(),
+                next_date=mock.MagicMock(),
+            )
             soup = BeautifulSoup(html, "html.parser")
             title = soup.find("meta", property="og:title").get("content")
             desc = soup.find("meta", property="og:description").get("content")
@@ -277,8 +291,8 @@ class PageStorage:
             )
         for page in existing_pages:
             self.sqlite3_cursor.execute(
-                'update pages set title = ?, desc = ?, created = ? where template_path = ?',
-                (page.title, page.desc, page.created, page.template_path)
+                "update pages set title = ?, desc = ?, created = ? where template_path = ?",
+                (page.title, page.desc, page.created, page.template_path),
             )
 
         self.sqlite3_cursor.connection.commit()
@@ -298,7 +312,6 @@ def sync_pages(
         for file in files:
             if not file.endswith((".html", ".md")):
                 continue
-
 
             # content\\drafts\\2024-03-24.md
             full_path = Path(dir_) / file
