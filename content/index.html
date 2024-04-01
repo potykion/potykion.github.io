@@ -2,6 +2,7 @@
 {% set title = 'Домашняя' %}
 {% set desc = 'блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4' %}
 
+{% from 'templates/feed/feed_card.html' import feed_card %}
 
 {% block main %}
 
@@ -37,111 +38,22 @@
 
     <div class="grid md:grid-cols-3 gap-2">
 
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-1 text-neutral ">
-            <div class="font-semibold text-center border-b border-neutral">Мысли</div>
-            <div class="p-2 text-sm">
-                Хм, да, телефон сильно упрощает формирование фида: тупа пришла мысля - записал, и потом просто решаешь
-                включать в фид иди нет
-
-            </div>
-        </div>
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-3 text-neutral">
-            <div class="font-semibold text-center  ">Музыкальная новиночка</div>
-            <img class="rounded-none border-y border-neutral"
-                 src="{{ url_for('static', filename='images/mu/biicla-hyper-house.jpg') }}">
-            <div class="flex flex-col justify-center grow">
-                <div class="font-semibold text-center border-neutral border-b ">Biicla — HYPER HOUSE</div>
-                <audio controls class="w-full"
-                       src="{{ url_for('static', filename='audio/Biicla GAS (4.19).mp3') }}"></audio>
-            </div>
-            <div class=" text-sm font-normal p-2 border-t border-neutral">
-                Новиночка от Biicla - молодой наш пацан делает музон в британском стиле: хаусец, техно, бейслайн -
-                хорош, ну и без вдохновления от фред эгейна не обошлось
-            </div>
-
-        </div>
-        <a href="{{ beer.untappd_url }}"
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-2    shadow ">
-
-            <div class="font-semibold text-center  border-neutral  ">Рекомендую пивас</div>
-            <div class="border-y border-neutral flex justify-center">
-                <img class="w-20 p-2 "
-                     src="{{ url_for('static', filename=beer.img) }}">
-            </div>
-            <div class="font-semibold text-center border-b border-neutral ">{{ beer.title }}
-            </div>
-
-
-            <div class=" text-sm font-normal p-2">{{ beer.review }}
-            </div>
-        </a>
-
-        <a href=""
-           class="no-underline border-neutral border hover:bg-neutral-50 rounded-xl row-span-3 shadow ">
-
-            <div class="font-semibold text-center border-b border-neutral ">Еда дня</div>
-            <img class="p-2"
-                 src="{{ url_for('static', filename='images/food/udon.png') }}">
-            <div class="font-semibold text-center border-y border-neutral ">
-                Udon Noodle Bar — Лапша удон с мраморной говядиной и говяжьим бульоном
-            </div>
-            <div class=" text-sm font-normal p-2">
-                Попробовали новую хайповую лапшичку из Краснодара - не зря хвалят, добротная: крепкий бульон, хорошая
-                лапша, вкусная говяжка - зачет
-            </div>
-        </a>
-
-        <a href="{{ tech_tool.url }}"
-           class="rounded-xl shadow no-underline  border-neutral border flex-col flex row-span-1 text-neutral ">
-            <div class="font-semibold text-center  border-neutral border-b ">Тулза дня</div>
-            <img class="p-4"
-                 src="{{ url_for('static', filename=tech_tool.img) }}">
-            <div class="font-semibold text-center border-y border-neutral ">
-                {{ tech_tool.title }}
-            </div>
-
-            <div class=" text-sm font-normal p-2">
-                {{ tech_tool.desc }}
-            </div>
-        </a>
-
-        <a href="https://www.tinkoff.ru/invest/help/situation/844/"
-           class="rounded-xl shadow  border-neutral border flex-col no-underline hover:bg-neutral-50 flex row-span-2 text-neutral ">
-            <div class="font-semibold text-center  border-neutral border-b ">Тех контент</div>
-
-            <div class=" text-sm font-normal p-4">
-                Самый большой тех прорыв на работе соу фар - мониторинг и возможность расследовать инциденты. Гугл
+        {{ feed_card(category='Мысли', desc='Хм, да, телефон сильно упрощает формирование фида: тупа пришла мысля - записал, и потом просто решаешь включать в фид иди нет') }}
+        {{ feed_card(category='Музыкальная новиночка', row_span=3, image=url_for('static', filename='images/mu/biicla-hyper-house.jpg'), title='Biicla — HYPER HOUSE', audio=url_for('static', filename='audio/Biicla GAS (4.19).mp3'), desc='Новиночка от Biicla - молодой наш пацан делает музон в британском стиле: хаусец, техно, бейслайн - хорош, ну и без вдохновления от фред эгейна не обошлось') }}
+        {{ feed_card(category='Рекомендую пивас', row_span=2, url=beer.untappd_url, image=url_for('static', filename=beer.img), image_padding=2, image_width=20, title=beer.title, desc=beer.review) }}
+        {{ feed_card(category='Еда дня', row_span=3, image=url_for('static', filename='images/food/udon.png'), image_padding=2, title='Udon Noodle Bar — Лапша удон с мраморной говядиной и говяжьим бульоном', desc='Попробовали новую хайповую лапшичку из Краснодара - не зря хвалят, добротная: крепкий бульон, хорошая лапша, вкусная говяжка - зачет' ) }}
+        {{ feed_card(category='Тулза дня', image=url_for('static', filename=tech_tool.img), image_padding=4, title=tech_tool.title, desc=tech_tool.desc, url=tech_tool.url) }}
+        {{ feed_card(category='Тех контент', desc='Самый большой тех прорыв на работе соу фар - мониторинг и возможность расследовать инциденты. Гугл
                 облако все ещё ебет и не знаю давно ли, но логи можно обрабатывать с помощью big query SQL. А в логи-то
                 можно всю ценную информацию сложить, а это по сути просто строки с метадатой. И таким образом делая пару
                 простых запросов с использованием строковых функций, груп бай и ордер бай, можно находить узкие места:
-                каких запросов больше всего, что пожирает больше ресурсов - кайф короче, приятное ощущение контроля
-            </div>
-        </a>
+                каких запросов больше всего, что пожирает больше ресурсов - кайф короче, приятное ощущение контроля', desc_padding=4, row_span=2) }}
 
-
-        <div class="rounded-xl shadow  border-neutral border flex-col flex row-span-2 text-neutral ">
-            <div class="font-semibold text-center  border-neutral border-b ">Рабочий момент</div>
-            <div class=" text-sm font-normal p-4">
-                Ох, пятница - день тяжёлый: и плавание все силы забирает, и рабочий день начинается позже - гораздо
+        {{ feed_card(category='Рабочий момент', desc='Ох, пятница - день тяжёлый: и плавание все силы забирает, и рабочий день начинается позже - гораздо
                 больше хотел успеть, но не судьба, надо с ЖЕНОЙ идти кушать. С другой стороны, главные/важные дела, типа
                 блога, сделал - может так и надо свое время тратить? Задвигать что не важно до самого конца, а что важно
-                - кровь из носу должно быть сделано
-            </div>
-        </div>
-
-
-
+                - кровь из носу должно быть сделано', desc_padding=4, row_span=2) }}
 
 
     </div>
-
-
-
-
-
-
-
-
 {% endblock %}
