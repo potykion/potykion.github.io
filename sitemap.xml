@@ -55,6 +55,9 @@
 		<loc>https://potyk.io/feed/2024-03-27</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/feed/2024-04-01</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/feed/2024-03-28</loc>
 	</url>
 	<url>
@@ -247,25 +250,10 @@
 		<loc>https://potyk.io/stuff/recipes</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/stuff/recipes/ground-beef-tortillas</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/stuff/recipes/ramyun</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/stuff/recipes/miso-ramen</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/stuff/recipes/ramen</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/crab-cakes</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/lavash-hotdog</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/scallop-pasta</loc>
@@ -281,6 +269,21 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/ground-beef-tortillas</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/miso-ramen</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/crab-cakes</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/lavash-hotdog</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/chicken-tapaka</loc>
