@@ -1,0 +1,15 @@
+{% extends "templates/feed/feed_base.html" %}
+
+{% from 'templates/feed/feed_card.html' import feed_card %}
+
+{% block main %}
+    {{ super() }}
+
+
+
+    <div class="grid md:grid-cols-3 gap-2">
+        {% for feed_item in feed_items %}
+            {{ feed_card(**feed_item) }}
+        {% endfor %}
+    </div>
+{% endblock %}

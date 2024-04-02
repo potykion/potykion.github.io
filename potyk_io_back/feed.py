@@ -98,96 +98,30 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
 
     @feed_blueprint.route("/")
     def index():
-        return feed_6()
+        return feed(str(datetime.date.today()))
 
-    @feed_blueprint.route("/feed/2024-04-01")
-    def feed_6():
-        feed_items = feed_storage.list_by_date("2024-04-01")
+    @feed_blueprint.route("/feed/<date>")
+    def feed(date: str):
+        date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
+        feed_items = feed_storage.list_by_date(date)
         feed_items = [
             item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
         ]
 
         return render_template(
-            "index.html",
-            feed_date="2024-04-01",
-            prev_date="2024-03-31",
-            next_date=None,
+            f'feed/{date}.html',
+            feed_date=date,
+            prev_date=(
+                date - datetime.timedelta(days=1)
+                if date > datetime.date(2024, 3, 27)
+                else None
+            ),
+            next_date=(
+                date + datetime.timedelta(days=1)
+                if date < datetime.date.today()
+                else None
+            ),
             feed_items=feed_items,
-        )
-
-    @feed_blueprint.route("/feed/2024-03-31")
-    def feed_5():
-        feed_items = feed_storage.list_by_date("2024-03-31")
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
-
-        return render_template(
-            "feed/2024-03-31.html",
-            feed_date="2024-03-31",
-            prev_date="2024-03-30",
-            next_date="2024-04-01",
-            feed_items=feed_items,
-        )
-
-    @feed_blueprint.route("/feed/2024-03-30")
-    def feed_4():
-        feed_items = feed_storage.list_by_date("2024-03-30")
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
-
-        return render_template(
-            "feed/2024-03-30.html",
-            feed_items=feed_items,
-            feed_date="2024-03-30",
-            prev_date="2024-03-29",
-            next_date="2024-03-31",
-        )
-
-    @feed_blueprint.route("/feed/2024-03-29")
-    def feed_3():
-        feed_items = feed_storage.list_by_date("2024-03-29")
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
-
-        return render_template(
-            "feed/2024-03-29.html",
-            feed_items=feed_items,
-            feed_date="2024-03-29",
-            prev_date="2024-03-28",
-            next_date="2024-03-30",
-        )
-
-    @feed_blueprint.route("/feed/2024-03-28")
-    def feed_2():
-        feed_items = feed_storage.list_by_date("2024-03-28")
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
-
-        return render_template(
-            "feed/2024-03-28.html",
-            feed_items=feed_items,
-            feed_date="2024-03-28",
-            prev_date="2024-03-27",
-            next_date="2024-03-29",
-        )
-
-    @feed_blueprint.route("/feed/2024-03-27")
-    def feed_1():
-        feed_items = feed_storage.list_by_date("2024-03-27")
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
-
-        return render_template(
-            "feed/2024-03-27.html",
-            feed_items=feed_items,
-            feed_date="2024-03-27",
-            prev_date=None,
-            next_date="2024-03-28",
         )
 
     return feed_blueprint
