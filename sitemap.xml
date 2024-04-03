@@ -256,6 +256,9 @@
 		<loc>https://potyk.io/stuff/recipes</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/stuff/recipes/asian-fried-rice</loc>
 	</url>
 	<url>
@@ -272,9 +275,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/scallop-pasta</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/ramyun</loc>
