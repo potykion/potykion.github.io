@@ -112,146 +112,173 @@
 {% block main %}
 
 
-    <h2>Книги</h2>
-    <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+    <div class="flex flex-col gap-4">
 
-        {% for book in books %}
-            <button class=" hover:border-4 rounded-lg border-primary relative "
-                    onclick="modal_{{ book.id }}.showModal()">
-                <img class="h-full {% if book.drop %}opacity-25{% endif %} {% if book.wip %}opacity-75{% endif %} "
-                     src="{{ book.img }}">
-                {% if book.done %}
-                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-green-100 rounded-lg">✅ Прочитано</span>
-                {% endif %}
-                {% if book.drop %}
-                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-red-100 rounded-lg">❌ Дроп</span>
-                {% endif %}
-                {% if book.wip %}
-                    <span class="absolute bottom-1 p-1 text-sm  left-1 bg-amber-100 rounded-lg">🚧 WIP</span>
-                {% endif %}
-            </button>
-
-            <dialog id="modal_{{ book.id }}" class="modal">
-                <div class="modal-box max-w-screen-lg relative">
-                    <form method="dialog">
-                        <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-
-                    <h3>{{ book.full_title }}</h3>
-                    <a href="{{ book.url }}" target="_blank" class="btn btn-sm ">{{ bookmate() }} Букмейт</a>
-
-                    {{ book.review_html | safe }}
-
-
-                    <div class="modal-action ">
-                        <form method="dialog">
-                            <button class="btn">Закрыть</button>
-                        </form>
-                    </div>
-
-                </div>
-            </dialog>
-        {% endfor %}
-    </div>
-
-    <h2>Кино и сериалы</h2>
-    <div class="grid grid-cols-4 md:grid-cols-10 gap-1">
-        {% for movie in movies %}
-            <a target="_blank" href="{{ movie.kp_url }}" class="blue-border-hover-link">
-                <img src="{{ url_for('static', filename=movie.poster) }}">
-            </a>
-        {% endfor %}
-    </div>
-
-    <h2>Игры</h2>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-2">
-        <a class="game golden" href="https://store.steampowered.com/app/1328350/Turbo_Overkill/">
-            <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/1328350/header.jpg?t=1701886460">
-            {{ tags(['Топовый мясной FPS']) }}
-
-
-        </a>
-        <a class="game" href="https://store.steampowered.com/app/1970580/Backpack_Hero/">
-            <img class="game-img" src="https://cdn.akamai.steamstatic.com/steam/apps/1970580/header.jpg?t=1704666031">
-            {{ tags(['Inventory Management Рогалик']) }}
-
-
-        </a>
-        <a class="game" href="https://store.steampowered.com/app/214730/Space_Rangers_HD_A_War_Apart/">
-            <img class="game-img"
-                 src="https://cdn.akamai.steamstatic.com/steam/apps/214730/header_russian.jpg?t=1681218954">
-            {{ tags(['Хардкор Стратегия-Квест']) }}
-
-        </a>
-        <a href="https://store.steampowered.com/app/1942280/Brotato/"
-           class="game">
-            <img class="game-img"
-                 src="https://cdn.cloudflare.steamstatic.com/steam/apps/1942280/header.jpg?t=1701867264">
-
-            {{ tags(['Reverse Bullet Hell']) }}
-
-        </a>
-    </div>
-
-    <h2>
-        Музыка
-    </h2>
-    <div class="grid grid-cols-4 md:grid-cols-6 gap-3">
-
-        {% for album in albums %}
-            <button class="relative hover:border-4 rounded-lg border-primary"
-                    onclick="modal_album_{{ album.id }}.showModal()">
-                <img src="{{ url_for('static', filename=album.cover) }}">
-            </button>
-
-            <dialog id="modal_album_{{ album.id }}" class="modal">
-                <div class="modal-box max-w-screen-lg">
-                    <h3>{{ album.artist }} — {{ album.album }} </h3>
-
-                    <div class="flex flex-wrap gap-1 items-center">
-                        {% if album.year %}
-                            <span class="text-sm text-gray-500">{{ album.year }}</span> <span class="text-gray-300">•</span>
+        <div>
+            <h2>Книги</h2>
+            <div class="grid grid-cols-4 md:grid-cols-8 gap-2">
+                {% for book in books %}
+                    <button class=" hover:border-4 rounded-lg border-primary relative "
+                            onclick="modal_{{ book.id }}.showModal()">
+                        <img class="h-full {% if book.drop %}opacity-25{% endif %} {% if book.wip %}opacity-75{% endif %} "
+                             src="{{ book.img }}">
+                        {% if book.done %}
+                            <span class="absolute bottom-1 p-1 text-sm  left-1 bg-green-100 rounded-lg">✅ Прочитано</span>
                         {% endif %}
-                        {% if album.genre %}
-                            <span class="text-sm text-gray-500">{{ album.genre }}</span> <span class="text-gray-300">•</span>
+                        {% if book.drop %}
+                            <span class="absolute bottom-1 p-1 text-sm  left-1 bg-red-100 rounded-lg">❌ Дроп</span>
                         {% endif %}
-                        {% if album.yandex %}
-                            <a href="{{ album.yandex }}" target="_blank" class="text-sm">
-                                Яндекс
-                                Музыка
-                            </a>
+                        {% if book.wip %}
+                            <span class="absolute bottom-1 p-1 text-sm  left-1 bg-amber-100 rounded-lg">🚧 WIP</span>
                         {% endif %}
-                        {% if album.rym %}
-                            <a href="{{ album.rym }}" target="_blank" class="text-sm">
-                                RYM
-                            </a>
-                        {% endif %}
-                    </div>
+                    </button>
+
+                    <dialog id="modal_{{ book.id }}" class="modal">
+                        <div class="modal-box max-w-screen-lg relative">
+                            <form method="dialog">
+                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+
+                            <h3>{{ book.full_title }}</h3>
+                            <a href="{{ book.url }}" target="_blank" class="btn btn-sm ">{{ bookmate() }} Букмейт</a>
+
+                            {{ book.review_html | safe }}
 
 
-                    {{ (album.review_md or '') | safe }}
+                            <div class="modal-action ">
+                                <form method="dialog">
+                                    <button class="btn">Закрыть</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </dialog>
+                {% endfor %}
+            </div>
+        </div>
 
 
-                    <div class="modal-action ">
-                        <form method="dialog">
-                            <button class="btn">Закрыть</button>
-                        </form>
-                    </div>
+        <div>
 
-                </div>
-            </dialog>
-        {% endfor %}
-
-
-    </div>
-
+            <h2>Кино и сериалы</h2>
+            <div class="grid grid-cols-4 md:grid-cols-10 gap-1">
+                {% for movie in movies %}
+                    <a target="_blank" href="{{ movie.kp_url }}" class="blue-border-hover-link">
+                        <img src="{{ url_for('static', filename=movie.poster) }}">
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
 
 
+        <div>
+            <h2>Игры</h2>
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-1">
+                {% for game in games %}
+                    <button onclick="modal_game_{{ game.id }}.showModal()" class="blue-border-hover-link">
+                        <img class="game-img"
+                             src="{{ url_for('static', filename=game.img) }}">
 
-    <h2>Пиво</h2>
 
-    <div class="beers">
-        <!-- checkins -->
+                    </button>
+
+                    <dialog id="modal_game_{{ game.id }}" class="modal">
+                        <div class="modal-box max-w-screen-lg">
+                            <h3>{{ game.title }}</h3>
+
+                            <div class="flex flex-wrap gap-1 items-center">
+
+                                <span class="text-sm text-gray-500">{{ game.genre }}</span>
+                                <span class="text-gray-300">•</span>
+
+                                <a href="{{ game.steam }}" target="_blank" class="text-sm">
+                                    Steam
+                                </a>
+
+                            </div>
+
+                            <div class="text-md">
+                                {{ game.review | render_md | safe }}
+                            </div>
+
+
+                            <div class="modal-action ">
+                                <form method="dialog">
+                                    <button class="btn">Закрыть</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </dialog>
+                {% endfor %}
+            </div>
+        </div>
+        <div>
+            <h2>
+                Музыка
+            </h2>
+            <div class="grid grid-cols-4 md:grid-cols-6 gap-3">
+
+                {% for album in albums %}
+                    <button class="relative hover:border-4 rounded-lg border-primary"
+                            onclick="modal_album_{{ album.id }}.showModal()">
+                        <img src="{{ url_for('static', filename=album.cover) }}">
+                    </button>
+
+                    <dialog id="modal_album_{{ album.id }}" class="modal">
+                        <div class="modal-box max-w-screen-lg">
+                            <h3>{{ album.artist }} — {{ album.album }} </h3>
+
+                            <div class="flex flex-wrap gap-1 items-center">
+                                {% if album.year %}
+                                    <span class="text-sm text-gray-500">{{ album.year }}</span>
+                                    <span class="text-gray-300">•</span>
+                                {% endif %}
+                                {% if album.genre %}
+                                    <span class="text-sm text-gray-500">{{ album.genre }}</span>
+                                    <span class="text-gray-300">•</span>
+                                {% endif %}
+                                {% if album.yandex %}
+                                    <a href="{{ album.yandex }}" target="_blank" class="text-sm">
+                                        Яндекс
+                                        Музыка
+                                    </a>
+                                {% endif %}
+                                {% if album.rym %}
+                                    <a href="{{ album.rym }}" target="_blank" class="text-sm">
+                                        RYM
+                                    </a>
+                                {% endif %}
+                            </div>
+
+
+                            <div class="text-md">
+                                {{ (album.review_md or '') | safe }}
+                            </div>
+
+
+                            <div class="modal-action ">
+                                <form method="dialog">
+                                    <button class="btn">Закрыть</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </dialog>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+
+        <div>
+            <h2>Пиво</h2>
+            <div class="beers">
+                <!-- checkins -->
+            </div>
+        </div>
+
     </div>
 
 

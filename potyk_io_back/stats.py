@@ -12,6 +12,7 @@ def make_stats_blueprint(sqlite_cur):
 
     movies_storage = SimpleStorage(sqlite_cur, "movies")
     music_storage = SimpleStorage(sqlite_cur, "music_albums")
+    game_store = SimpleStorage(sqlite_cur, "games")
 
     @stats_blueprint.route("/special/stats")
     def get_special():
@@ -25,6 +26,8 @@ def make_stats_blueprint(sqlite_cur):
             order_by="datetime(listened_dt) desc",
         )
 
+        games = game_store.list_all(order_by='played_date desc')
+
 
         return render_template(
             f"special/stats.html",
@@ -33,6 +36,7 @@ def make_stats_blueprint(sqlite_cur):
             books=Books,
             movies=movies,
             albums=albums,
+            games=games,
         )
 
     return stats_blueprint

@@ -6,6 +6,7 @@ import sqlite3
 from pathlib import Path
 
 import flask
+import mistune
 from flask import Flask, render_template
 from tinydb import TinyDB
 
@@ -72,6 +73,11 @@ def create_app():
             today_shift=today_shift,
             today_day=datetime.date.today().weekday(),
             today_date=datetime.date.today(),
+        )
+    )
+    app.jinja_env.filters.update(
+        dict(
+            render_md=mistune.html,
         )
     )
 
