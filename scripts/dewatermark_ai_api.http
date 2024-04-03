@@ -1,0 +1,10 @@
+# https://dewatermark.ai/
+
+POST https://be-prod-1.snapedit.app/api/object_removal/v5/erase_watermark
+Content-Type: multipart/form-data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJpZ25vcmUiLCJwbGF0Zm9ybSI6IndlYiIsImV4cCI6MTcxMjEzOTg5MjQ5Mn0.vwmzf3RxMz3g-yAzlIKsfclwLfqbYIPFEck_0vj4NvA
+
+original_preview_image=*image_file*
+zoom_factor=2
+
+### get edited_image.image

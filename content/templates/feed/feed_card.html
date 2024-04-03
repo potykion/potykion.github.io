@@ -1,6 +1,6 @@
 {% macro feed_card(category, image=None, image_width=0, image_padding=0, title=None, audio=None, desc=None, desc_padding=0, row_span=1, url=None, youtube=None, video=None, youtube_height=None) %}
 
-    <{% if url %}a href="{{ url }}"{% else %}div{% endif %} class="no-underline rounded-xl shadow  border-neutral border flex-col flex
+    <{% if url %}a href="{{ url }}"{% else %}div{% endif %} class="no-underline {% if url %}hover:bg-neutral-100{% endif %} rounded-xl shadow  border-neutral border flex-col flex
 
      {% if row_span == 1 %}row-span-1
      {% elif row_span == 2 %}row-span-2
