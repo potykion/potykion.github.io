@@ -2,6 +2,11 @@
 {% set title = 'Домашняя' %}
 {% set desc = 'блог по настроению • свалка мыслей, пет проджекты, обзоры на всё и вся • v4' %}
 
+{% block static %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='air-datepicker.css') }}">
+
+{% endblock %}
+
 {% from "templates/components/sections.html" import link_section,page_section %}
 
 {% block main %}
@@ -10,10 +15,12 @@
            class="{% if not prev_date %}invisible{% endif %} btn btn-square btn-ghost btn-sm md:btn-md">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-6 h-6">
+                2
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
             </svg>
         </a>
-        <div class="btn btn-ghost btn-sm md:btn-md">
+        <div class="btn btn-ghost btn-sm md:btn-md" onclick="toggleCalendar()">
+            <input hidden="" id="date">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -87,4 +94,37 @@
     </div>
 
 
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for("static", filename="js/air-datepicker.js") }}"></script>
+    <script>
+        let dateToStr = (date) => new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())).toISOString().slice(0, 10)
+
+        let calendar = new AirDatepicker('#date', {
+                // /feed/2024-03-28 > 2024-03-28
+                startDate: new URL(window.location.href).pathname.split('/')[2] ?? new Date(),
+                isMobile: true,
+                autoClose: true,
+                onSelect({date}) {
+                    window.location.href = `/feed/${dateToStr(date)}`
+                },
+                onRenderCell: ({date}) => {
+                    if (dateToStr(date) < '2024-03-27') {
+                        return {
+                            disabled: true
+                        }
+                    }
+                },
+
+            })
+        ;
+
+        function toggleCalendar() {
+
+            calendar.visible ? calendar.hide() : calendar.show();
+
+        }
+
+    </script>
 {% endblock %}
