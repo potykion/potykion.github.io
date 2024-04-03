@@ -1,18 +1,17 @@
 {% macro feed_card(category, image=None, image_width=0, image_padding=0, title=None, audio=None, desc=None, desc_padding=0, row_span=1, url=None, youtube=None, video=None, youtube_height=None) %}
 
-    <{% if url %}a href="{{ url }}"{% else %}div{% endif %} class="no-underline {% if url %}hover:bg-neutral-100{% endif %} rounded-xl shadow  border-neutral border flex-col flex
+    {% set border_color = 'border-neutral dark:border-gray-300' %}
+    {% set bg_color = 'dark:bg-gray-800 ' + ('hover:dark:bg-gray-900 hover:bg-gray-50' if url else ' ') %}
+    {% set text_color = 'dark:text-gray-200' %}
+    {% set row_span_cls = 'row-span-1' if row_span == 1 else ('row-span-2' if row_span == 2 else ('row-span-3' if row_span == 3 else ('row-span-4' if row_span == 4 else 'row-span-1'))) %}
 
-     {% if row_span == 1 %}row-span-1
-     {% elif row_span == 2 %}row-span-2
-     {% elif row_span == 3 %}row-span-3
-     {% elif row_span == 4 %}row-span-4
-     {% else %}row-span-1{% endif %}
+    <{% if url %}a href="{{ url }}"{% else %}div{% endif %}
+                   class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border flex-col flex {{ border_color }} {{ row_span_cls }}">
 
-     text-neutral">
-        <div class="font-semibold text-center  border-neutral {% if category.startswith('#') %}italic{% endif %}">{{ category }}</div>
+        <div class="font-semibold text-center {% if category.startswith('#') %}italic{% endif %}">{{ category }}</div>
 
         {% if image %}
-            <div class=" flex justify-center border-t border-neutral">
+            <div class=" flex justify-center border-t {{ border_color }}">
                 <img class="rounded-none  {% if image_width == 20 %}w-20{% endif %} {% if image_padding == 2 %}p-2{% elif image_padding == 4 %}p-4{% endif %}"
                      src="{{ image }}">
             </div>
@@ -24,23 +23,23 @@
 
         {% if youtube %}
             {{ youtube_embed(youtube, youtube_height) | safe }}
-    {% endif %}
+        {% endif %}
 
 
         {% if title %}
             <div class="flex flex-col justify-center ">
 
-                <div class="font-semibold text-center border-neutral border-t ">{{ title }}</div>
+                <div class="font-semibold text-center  border-t {{ border_color }}">{{ title }}</div>
 
                 {% if audio %}
-                    <audio controls class="w-full border-neutral border-t  "
+                    <audio controls class="w-full   border-t  "
                            src="{{ audio }}"></audio>
                 {% endif %}
             </div>
         {% endif %}
 
         {% if desc %}
-            <div class=" text-sm font-normal {% if desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t border-neutral ">
+            <div class=" text-sm font-normal {% if desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t {{ border_color }} ">
                 {{ desc | safe }}
             </div>
         {% endif %}
