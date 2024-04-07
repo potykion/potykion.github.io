@@ -11,7 +11,7 @@ from flask import Flask, render_template
 from tinydb import TinyDB
 
 from potyk_io_back.beer import make_beer_blueprint, BeerStorage
-from potyk_io_back.content import read_content, sync_pages
+from potyk_io_back.content import read_content, sync_pages, Page
 from potyk_io_back.core import (
     BASE_DIR,
     render_md_as_html,
@@ -20,6 +20,7 @@ from potyk_io_back.core import (
 )
 from potyk_io_back.feed import make_feed_blueprint
 from potyk_io_back.habits import make_habits_blueprint, HabitRepo
+from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.restaurants import make_restaurants_blueprint
 from potyk_io_back.stats import make_stats_blueprint
@@ -103,6 +104,14 @@ def create_app():
     app.register_blueprint(make_restaurants_blueprint(sqlite_cur))
     app.register_blueprint(make_beer_blueprint(sqlite_cur))
     app.register_blueprint(make_feed_blueprint(sqlite_cur))
+
+    @app.route("/all")
+    def all_pages():
+        pages: list[Page] = [
+            Page(**raw_page, ext=raw_page['template_path'].rsplit(".")[-1])
+            for raw_page in SimpleStorage(sqlite_cur, "pages").list_all(order_by='url')
+        ]
+        return flask.render_template("all.html", pages=pages)
 
     @app.context_processor
     def inject_ctx():

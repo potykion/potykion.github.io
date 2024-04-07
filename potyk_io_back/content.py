@@ -3,7 +3,6 @@ import enum
 import os
 import sqlite3
 from pathlib import Path
-from typing import Literal
 from unittest import mock
 
 import flask
@@ -80,6 +79,7 @@ class Page(BaseModel):
             desc=desc,
             tags=tags,
             created=created,
+            url=html_template_path.rsplit('.', 1)[0],
         )
 
     @classmethod
@@ -106,6 +106,7 @@ class Page(BaseModel):
             desc=desc,
             tags=tags,
             created=created,
+            url=md_template_path.rsplit('.', 1)[0],
         )
 
     def render(self, ctx: dict):
@@ -288,8 +289,8 @@ class PageStorage:
 
         for page in new_pages:
             self.sqlite3_cursor.execute(
-                "insert into pages (template_path, title, desc, created) values (?, ?, ?, ?)",
-                (page.template_path, page.title, page.desc, page.created),
+                "insert into pages (template_path, title, desc, created, url) values (?, ?, ?, ?, ?)",
+                (page.template_path, page.title, page.desc, page.created, page.url),
             )
         for page in existing_pages:
             self.sqlite3_cursor.execute(
