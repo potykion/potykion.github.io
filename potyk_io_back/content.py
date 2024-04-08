@@ -215,6 +215,8 @@ def _parse_files(files, dir_path, content_path):
         relative_path = make_relative_path(dir_path, content_path)
         template_path = f"{relative_path}/{file}"
         url = f"{relative_path}/{key}"
+        if url.startswith('//'):
+            url = url[1:]
         if relative_path.startswith("/notes"):
             url = f"/notes/{key}"
 

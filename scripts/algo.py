@@ -12,6 +12,7 @@ from tinkoff.invest import (
     OrderType,
     Account,
     PortfolioPosition,
+    InstrumentType,
 )
 from tinkoff.invest.services import Services
 from tinkoff.invest.utils import quotation_to_decimal, decimal_to_quotation
@@ -19,6 +20,7 @@ from tinkoff.invest.utils import quotation_to_decimal, decimal_to_quotation
 from potyk_io_back.core import BASE_DIR
 
 TMOS_FIGI = "BBG333333333"
+TMRU_FIGI = "TCS00A1039N1"
 RUB_FIGI = "RUB000UTSTOM"
 
 
@@ -37,6 +39,7 @@ class Bot:
     @classmethod
     def init(cls, client, update_portfolio=True):
         response = client.users.get_accounts()
+
         account: Account
         account, *_ = response.accounts
         account_id = account.id
@@ -60,6 +63,10 @@ class Bot:
         return self
 
     # endregion init
+
+    def find_figi_by_ticker(self, ticker: str):
+        return client.instruments.find_instrument(query='TBRU')
+
 
     def get_portfolio_position(self, figi) -> PortfolioPosition | None:
         return next((pos for pos in self.portfolio_positions if pos.figi == figi), None)
@@ -119,6 +126,7 @@ class Bot:
     def update_portfolio_until_position(self, *, exists: bool):
         while True:
             pos = bot.get_portfolio_position(self.default_figi)
+            print(f"Position: {pos}")
 
             if exists and pos or (not exists and not pos):
                 return pos
@@ -135,65 +143,81 @@ class Bot:
             time.sleep(self.default_wait)
 
 
-load_dotenv(BASE_DIR / ".env")
-TOKEN = os.getenv("TINK_TOKEN")
+def algo():
+    if not tmos:
+        print(f"No {bot.default_figi}, will buy {bot.default_quantity} lots")
 
-with Client(TOKEN) as client:
-    bot = (
-        Bot.init(client, update_portfolio=False)
-        .set_figi(TMOS_FIGI)
-        .set_quantity(100)
-        .set_wait(5)
-    )
+        # current_price = bot.get_price()
+        current_price = decimal.Decimal("6.91")
+        print(f"Current price: {current_price} - lets buy some...")
 
-    bought_price = None
-    status: Literal["sell_wip", "buy_wip"] | None = None
+        resp = bot.buy_limit(price=current_price)
+        print(f"Buy limit order: {resp}")
 
-    while True:
+        print("Waiting for order...")
+        tmos = bot.update_portfolio_until_position(exists=True)
+        print(f"{bot.default_figi} bought: {tmos}")
+
+        # todo get actual bought price from ops
+        #   ops = client.operations.get_operations(account_id=account_id, figi=figi)
+        bought_price = current_price
+        print("Bought price:", bought_price)
+
+    if bought_price:
+        print(f"{bot.default_figi} bought, will sell it")
+
+        current_price = bot.get_price_until(
+            lambda current_price: current_price - bought_price >= Decimal("0.01")
+        )
+        print(f"Current price > bought price: {current_price} - lets sell it...")
+
+        resp = bot.sell_limit(price=current_price)
+        print(f"Sell limit order: {resp}")
+
+        bot.update_portfolio_until_position(exists=False)
+        portfolio_cash = bot.get_portfolio_cash()
+        print(f"{bot.default_figi} sold, portfolio cash: {portfolio_cash}")
+
+
+if __name__ == "__main__":
+
+    load_dotenv(BASE_DIR / ".env")
+    TOKEN = os.getenv("TINK_TOKEN")
+
+    with Client(TOKEN) as client:
+        bot = (
+            Bot.init(client, update_portfolio=False)
+            .set_figi(TMOS_FIGI)
+            .set_quantity(100)
+            .set_wait(5)
+        )
+
+        bought_price = None
+        status: Literal["sell_wip", "buy_wip"] | None = None
+
         bot.update_portfolio()
-        tmos = bot.get_portfolio_position(TMOS_FIGI)
+        sell_price = decimal.Decimal("6.92")
+        buy_price = decimal.Decimal("6.91")
+        quantity = 1361
 
-        if not tmos:
-            print(f"No {bot.default_figi}, will buy {bot.default_quantity} lots")
+        # resp = bot.sell_limit(price=sell_price, quantity=quantity)
+        resp = bot.buy_limit(price=buy_price, quantity=quantity)
+        # tmos = bot.get_portfolio_position(TMOS_FIGI)
+        # if tmos:
+        #     resp = bot.sell_limit(price=sell_price, quantity=quantity)
+        # else:
+        #     resp = bot.buy_limit(price=buy_price, quantity=quantity)
 
-            current_price = bot.get_price()
-            print(f"Current price: {current_price} - lets buy some...")
+        # print(resp)
 
-            resp = bot.buy_limit(price=current_price)
-            print(f"Buy limit order: {resp}")
+        # # Напр. купили за 100
+        # ops = client.operations.get_operations(account_id=account_id, figi=figi)
+        # # todo filter buy ops
+        # buy_price = ops[0]
 
-            print("Waiting for order...")
-            tmos = bot.update_portfolio_until_position(exists=True)
-            print(f"{bot.default_figi} bought: {tmos}")
-
-            # todo get actual bought price from ops
-            #   ops = client.operations.get_operations(account_id=account_id, figi=figi)
-            bought_price = current_price
-            print("Bought price:", bought_price)
-
-        if bought_price:
-            print(f"{bot.default_figi} bought, will sell it")
-
-            current_price = bot.get_price_until(
-                lambda current_price: current_price - bought_price >= Decimal("0.01")
-            )
-            print(f"Current price > bought price: {current_price} - lets sell it...")
-
-            resp = bot.sell_limit(price=current_price)
-            print(f"Sell limit order: {resp}")
-
-            bot.update_portfolio_until_position(exists=False)
-            portfolio_cash = bot.get_portfolio_cash()
-            print(f"{bot.default_figi} sold, portfolio cash: {portfolio_cash}")
-
-    # # Напр. купили за 100
-    # ops = client.operations.get_operations(account_id=account_id, figi=figi)
-    # # todo filter buy ops
-    # buy_price = ops[0]
-
-    # # Текущая цена = 100.01
-    # current_price = bot.get_price()
-    #
-    # # 100.01 - 100 >= 0.01 => продаем
-    # if current_price - buy_price >= Decimal("0.01"):
-    #     resp = bot.sell_limit(price=current_price)
+        # # Текущая цена = 100.01
+        # current_price = bot.get_price()
+        #
+        # # 100.01 - 100 >= 0.01 => продаем
+        # if current_price - buy_price >= Decimal("0.01"):
+        #     resp = bot.sell_limit(price=current_price)
