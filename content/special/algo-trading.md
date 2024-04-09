@@ -18,6 +18,8 @@
         - Percentage of Volume (POV)
         - [Implementation Shortfall](https://www.investopedia.com/terms/i/implementation-shortfall.asp)
 
+## Технические метрики
+
 ### [Moving average](https://www.investopedia.com/terms/m/movingaverage.asp)
 
 - Moving average (MA) - avg in time range
@@ -27,7 +29,14 @@
 - Ema - чем ближе день к настоящему, тем больше у него вес
 - Показывает тренд
 
-## [Типы заявок](https://www.tinkoff.ru/invest/help/brokerage/account/trade-on-bs/bids/)
+### MACD
+
+- разность двух ema
+- работает на дневном фрейме
+- пересечение - начало/конец тренда
+- важно учитывать и другие индикаторы
+
+## [Типы заявок на бирже](https://www.tinkoff.ru/invest/help/brokerage/account/trade-on-bs/bids/)
 
 - Биржевые
     - В течение дня
