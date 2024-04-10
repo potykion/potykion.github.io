@@ -98,7 +98,7 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
 
     @feed_blueprint.route("/")
     def index():
-        return feed(str(datetime.date.today()))
+        return feed('2024-04-09')
 
     @feed_blueprint.route("/feed/<date>")
     def feed(date: str):
