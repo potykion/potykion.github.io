@@ -10,6 +10,12 @@
 		<loc>https://potyk.io/drafts</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/drafts/simple</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/value-to-people</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/drafts/reality</loc>
 	</url>
 	<url>
@@ -17,9 +23,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/aneki</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/simple</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/2024-03-24</loc>
@@ -40,19 +43,28 @@
 		<loc>https://potyk.io/drafts/dishes</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/value-to-people</loc>
+		<loc>https://potyk.io/feed</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/feed</loc>
+		<loc>https://potyk.io/feed/2024-03-27</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-07</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/feed/2024-03-28</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/feed/2024-04-02</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/feed/2024-03-29</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/feed/2024-04-06</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-31</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-04</loc>
@@ -64,6 +76,9 @@
 		<loc>https://potyk.io/feed/2024-04-01</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/feed/2024-03-30</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/feed/2024-04-05</loc>
 	</url>
 	<url>
@@ -71,21 +86,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-03</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-27</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-28</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-29</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-31</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-30</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes</loc>
@@ -253,16 +253,16 @@
 		<loc>https://potyk.io/special/wishlist</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/where-to-eat</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/special/algo-trading</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/special/nsk-2024</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/stats</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/where-to-eat</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/invest</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/beer/guide</loc>
