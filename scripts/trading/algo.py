@@ -181,27 +181,27 @@ def algo():
 
 if __name__ == "__main__":
 
-    load_dotenv(BASE_DIR / ".env")
-    TOKEN = os.getenv("TINK_TOKEN")
-
-    with Client(TOKEN) as client:
-        bot = (
-            Bot.init(client, update_portfolio=False)
-            .set_figi(TMOS_FIGI)
-            .set_quantity(100)
-            .set_wait(5)
-        )
-
-        bought_price = None
-        status: Literal["sell_wip", "buy_wip"] | None = None
-
-        bot.update_portfolio()
-        sell_price = decimal.Decimal("6.92")
-        buy_price = decimal.Decimal("6.91")
-        quantity = 1361
+    # load_dotenv(BASE_DIR / ".env")
+    # TOKEN = os.getenv("TINK_TOKEN")
+    #
+    # with Client(TOKEN) as client:
+    #     bot = (
+    #         Bot.init(client, update_portfolio=False)
+    #         .set_figi(TMOS_FIGI)
+    #         .set_quantity(100)
+    #         .set_wait(5)
+    #     )
+    #
+    #     bought_price = None
+    #     status: Literal["sell_wip", "buy_wip"] | None = None
+    #
+    #     bot.update_portfolio()
+    #     sell_price = decimal.Decimal("6.92")
+    #     buy_price = decimal.Decimal("6.91")
+    #     quantity = 1361
 
         # resp = bot.sell_limit(price=sell_price, quantity=quantity)
-        resp = bot.buy_limit(price=buy_price, quantity=quantity)
+        # resp = bot.buy_limit(price=buy_price, quantity=quantity)
         # tmos = bot.get_portfolio_position(TMOS_FIGI)
         # if tmos:
         #     resp = bot.sell_limit(price=sell_price, quantity=quantity)

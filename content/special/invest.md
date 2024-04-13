@@ -67,10 +67,43 @@
 - пересечение - начало/конец тренда
 - важно учитывать и другие индикаторы
 
+#### RSI / Relative Strength Index / Индекс относительной силы
+
+- Изменение цены в процентах, показывает перекупленность/перепроданность
+- RSI > 70 - перекупленность
+- RSI < 30 - перепроданность
+- 2 вершины - паттерн разворота
+
+#### Перекупленность / Перепроданность / Overbought / oversold
+
+- Перекупленность - цена акции выросла слишком сильно - меньше покупок, больше продаж
+- Перепроданность - наоборот
+
 #### STOCH / Stochastic / Стохастик
 
 - Колебания минимальной/максимальной цены
 - Входим в акцию (покупаем) когда движение снизу вверх
+
+#### скорости изменений / Rate of change / Momentum
+
+- не очень тк сильная зависимость от прошлых цен
+
+#### Индикатор среднего истинного диапазона (ATR)
+
+- показывает волатильность
+
+#### Индекс направленного движения (Direction Movement Index)
+
+- показывает тренд
+
+#### Осциллятор Чайкина
+
+- определяет дивергенцию
+- но запаздывает
+
+#### Дивергенция
+
+- когда цена акции растет все выше, а значение осциллятора ниже предыдущего максимума
 
 ### Алго-трейдинг
 
@@ -99,8 +132,9 @@
     - [Moving Average (MA): Purpose, Uses, Formula, and Examples](https://www.investopedia.com/terms/m/movingaverage.asp)
     - [What Is MACD?](https://www.investopedia.com/terms/m/macd.asp)
 - Тинькофф Инвестиции
-  - [Выставлять биржевые заявки](https://www.tinkoff.ru/invest/help/brokerage/account/trade-on-bs/bids/) 
-  - [Основы трейдинга и технического анализа](https://www.tinkoff.ru/invest/help/educate/trading/about/basics/)
-  - [Стохастический осциллятор (Stochastic)](https://www.tinkoff.ru/invest/help/educate/trading/about/stochastic/)
+    - [Выставлять биржевые заявки](https://www.tinkoff.ru/invest/help/brokerage/account/trade-on-bs/bids/)
+    - [Основы трейдинга и технического анализа](https://www.tinkoff.ru/invest/help/educate/trading/about/basics/)
+    - [Стохастический осциллятор (Stochastic)](https://www.tinkoff.ru/invest/help/educate/trading/about/stochastic/)
+    - [Индекс относительной силы (RSI) в трейдинге](https://www.tinkoff.ru/invest/help/educate/trading/about/rsi/)
 - https://www.phind.com/search?cache=nulubl53ft0pfobkqjt9mfox
 - https://github.com/RussianInvestments/invest-python?tab=readme-ov-file
