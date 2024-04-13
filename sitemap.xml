@@ -10,22 +10,13 @@
 		<loc>https://potyk.io/drafts</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/simple</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/value-to-people</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/drafts/reality</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/problems</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/aneki</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/2024-03-24</loc>
+		<loc>https://potyk.io/drafts/simple</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/boost</loc>
@@ -41,6 +32,15 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/dishes</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/value-to-people</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/aneki</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/2024-03-24</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed</loc>
@@ -251,6 +251,9 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/special/wishlist</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/yarik-2024</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/nsk-2024</loc>
