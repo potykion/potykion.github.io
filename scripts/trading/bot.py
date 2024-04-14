@@ -1,9 +1,9 @@
 import dataclasses
+import datetime
 import decimal
 import io
 import os
 from functools import partial
-from itertools import groupby
 from urllib.parse import urlencode
 
 import requests
@@ -194,8 +194,17 @@ class PortfolioItem:
         else:
             return f"{profit}%"
 
+    @property
+    def time_to_sell(self):
+        return self.recommendation_1h not in ("BUY", "STRONG_BUY")
 
-def main():
+
+def main(force=False):
+    if not force:
+        now_utc = datetime.datetime.utcnow()
+        if not ((10 - 3) <= now_utc.hour <= (18 - 3)):
+            return
+
     tg_message_stream = io.StringIO()
     print_to_stream = partial(print, file=tg_message_stream)
 
@@ -280,8 +289,37 @@ def main():
             ),
         ]
         print_to_stream(tabulate_pre(table))
-
         print_to_stream()
+
+        portfolio_items_to_sell = [pos for pos in portfolio_items if pos.time_to_sell]
+        time_to_sell = False
+        if portfolio_items_to_sell:
+            time_to_sell = True
+            print("<b>TIME TO SELL 📉</b>")
+            table = [
+                [
+                    "",
+                    "avg_price",
+                    "cur_price",
+                    "profit",
+                    "rec_1h",
+                    "rec_1d",
+                ],
+                *(
+                    (
+                        pos.ticker,
+                        pos.avg_price,
+                        pos.current_price,
+                        pos.profit_str,
+                        pos.recommendation_1h.replace("STRONG_BUY", "BUY_STR"),
+                        pos.recommendation_1d.replace("STRONG_BUY", "BUY_STR"),
+                    )
+                    for pos in portfolio_items_to_sell
+                ),
+            ]
+            print_to_stream(tabulate_pre(table))
+            print_to_stream()
+
         print_to_stream("<b>Ideas</b>", file=tg_message_stream)
 
         tickers_with_exchange = list(
@@ -313,7 +351,7 @@ def main():
                 hour.replace("STRONG_BUY", "BUY_STR"),
             )
             for ticker, day, hour in tickers_with_recs
-            if day in ("BUY", "STRONG_BUY") and hour in ("STRONG_BUY",)
+            if day in ("BUY", "STRONG_BUY") and hour in ("STRONG_BUY", "BUY")
         ]
         tickers_with_recs = sorted(
             tickers_with_recs,
@@ -330,19 +368,28 @@ def main():
         TOKEN = os.getenv("TG_BOT_TOKEN")
         chat_id = os.getenv("TG_BOT_CHAT_ID")
         message = tg_message_stream.getvalue()
-        message = (
-            message
-            # .replace(".", "\\.")
-            # .replace("-", "\\-")
-            # .replace(">", "\\>")
-            # .replace("(", "\\(")
-            # .replace(")", "\\)")
+        message = message
+        params = dict(
+            chat_id=chat_id,
+            text=message,
+            parse_mode="HTML",
+            disable_notification=not time_to_sell,
         )
-        params = dict(chat_id=chat_id, text=message, parse_mode="HTML")
+        # https://core.telegram.org/bots/api#sendmessage
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?{urlencode(params)}"
         resp = requests.get(url)
         print(resp.json())  # this sends the message
 
 
-if __name__ == "__main__":
+def handler(event, context):
     main()
+    return {
+        "statusCode": 200,
+        "body": "Hello World!",
+    }
+
+
+# if __name__ == "__main__":
+#     while True:
+#         main()
+#         sleep(60 * 60)

@@ -20,6 +20,13 @@ gspread
 xmltodict
 # ascii tables
 tabulate
+# .env
+python-dotenv
+# http requests
+requests
+# trading
+tinkoff-investments
+tradingview-ta
 
 # (опц.) удаление бекграунда
 # rembg
