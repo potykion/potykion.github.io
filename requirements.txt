@@ -18,6 +18,8 @@ pyyaml
 gspread
 # xml (sitemap) creation
 xmltodict
+# ascii tables
+tabulate
 
 # (опц.) удаление бекграунда
 # rembg
