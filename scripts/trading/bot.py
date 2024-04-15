@@ -9,7 +9,7 @@ from urllib.parse import urlencode
 import requests
 from dotenv import load_dotenv
 from tabulate import tabulate
-from tinkoff.invest import Client, InstrumentIdType
+from tinkoff.invest import Client, InstrumentIdType, InstrumentType
 from tinkoff.invest.utils import money_to_decimal
 from tradingview_ta import get_multiple_analysis, Interval
 
@@ -169,12 +169,13 @@ TICKERS = [
 
 @dataclasses.dataclass
 class PortfolioItem:
-    ticker: str
-    figi: str
-    avg_price: decimal.Decimal
-    current_price: decimal.Decimal
+    ticker: str = ""
+    figi: str = ""
+    avg_price: decimal.Decimal = decimal.Decimal(0)
+    current_price: decimal.Decimal = decimal.Decimal(0)
     recommendation_1h: str = ""
     recommendation_1d: str = ""
+    ask_amount: int = 0
 
     @property
     def ticker_with_exchange(self):
@@ -226,10 +227,14 @@ def main(force=False):
 
         portfolio_items = []
         for pos in portfolio:
-            ticker = client.instruments.get_instrument_by(
+            instrument = client.instruments.get_instrument_by(
                 id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_FIGI,
                 id=pos.figi,
-            ).instrument.ticker
+            )
+            ticker = instrument.instrument.ticker
+
+            order_book = client.market_data.get_order_book(figi=pos.figi, depth=50)
+            ask_amount = sum((order.quantity for order in order_book.asks))
 
             portfolio_item = PortfolioItem(
                 ticker,
@@ -238,6 +243,7 @@ def main(force=False):
                     decimal.Decimal("0.01")
                 ),
                 money_to_decimal(pos.current_price).quantize(decimal.Decimal("0.01")),
+                ask_amount=ask_amount,
             )
             portfolio_items.append(portfolio_item)
 
@@ -275,6 +281,7 @@ def main(force=False):
                 "profit",
                 "rec_1h",
                 "rec_1d",
+                "asks",
             ],
             *(
                 (
@@ -284,6 +291,7 @@ def main(force=False):
                     pos.profit_str,
                     pos.recommendation_1h.replace("STRONG_BUY", "BUY_STR"),
                     pos.recommendation_1d.replace("STRONG_BUY", "BUY_STR"),
+                    pos.ask_amount,
                 )
                 for pos in portfolio_items
             ),
@@ -345,21 +353,42 @@ def main(force=False):
                 )
             )
         tickers_with_recs = [
-            (
-                ticker[5:],
-                day.replace("STRONG_BUY", "BUY_STR"),
-                hour.replace("STRONG_BUY", "BUY_STR"),
+            PortfolioItem(
+                ticker=ticker[5:],
+                recommendation_1d=day.replace("STRONG_BUY", "BUY_STR"),
+                recommendation_1h=hour.replace("STRONG_BUY", "BUY_STR"),
             )
             for ticker, day, hour in tickers_with_recs
-            if day in ("BUY", "STRONG_BUY") and hour in ("STRONG_BUY", "BUY")
+            if {day, hour} & {"STRONG_BUY"}
         ]
+
+        for pos in tickers_with_recs:
+            instrument = client.instruments.get_instrument_by(
+                id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER,
+                class_code="TQBR",
+                id=pos.ticker,
+            )
+            pos.figi = instrument.instrument.figi
+
+            order_book = client.market_data.get_order_book(figi=pos.figi, depth=50)
+            ask_amount = sum((order.quantity for order in order_book.asks))
+            pos.ask_amount = ask_amount
+
         tickers_with_recs = sorted(
-            tickers_with_recs,
-            key=(key_func := lambda item: (item[1], item[2])),
+            [
+                (
+                    pos.ticker,
+                    pos.recommendation_1d,
+                    pos.recommendation_1h,
+                    pos.ask_amount,
+                )
+                for pos in tickers_with_recs
+            ],
+            key=(key_func := lambda item: (item[1], item[2], item[3])),
             reverse=True,
         )
         tickers_with_recs = [
-            ["", "rec_1d", "rec_1h"],
+            ["", "rec_1d", "rec_1h", "asks"],
             *tickers_with_recs,
         ]
 
@@ -389,7 +418,5 @@ def handler(event, context):
     }
 
 
-# if __name__ == "__main__":
-#     while True:
-#         main()
-#         sleep(60 * 60)
+if __name__ == "__main__":
+    main()
