@@ -197,7 +197,7 @@ class PortfolioItem:
 
     @property
     def time_to_sell(self):
-        return self.recommendation_1h not in ("BUY", "STRONG_BUY")
+        return self.recommendation_1d not in ("STRONG_BUY",)
 
 
 def main(force=False):
@@ -303,7 +303,7 @@ def main(force=False):
         time_to_sell = False
         if portfolio_items_to_sell:
             time_to_sell = True
-            print("<b>TIME TO SELL 📉</b>")
+            print_to_stream("<b>TIME TO SELL 📉</b>")
             table = [
                 [
                     "",
@@ -359,7 +359,7 @@ def main(force=False):
                 recommendation_1h=hour.replace("STRONG_BUY", "BUY_STR"),
             )
             for ticker, day, hour in tickers_with_recs
-            if {day, hour} & {"STRONG_BUY"}
+            if {day, hour} & {"STRONG_BUY"} and {day, hour} & {"BUY"}
         ]
 
         for pos in tickers_with_recs:
