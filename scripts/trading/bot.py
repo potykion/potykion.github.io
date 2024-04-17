@@ -1,6 +1,7 @@
 import dataclasses
 import datetime
 import decimal
+import enum
 import io
 import os
 from functools import partial
@@ -167,15 +168,89 @@ TICKERS = [
 ]
 
 
+class Recommendation(enum.StrEnum):
+    STR_BUY = "STR_BUY"
+    BUY = "BUY"
+    NEUTRAL = "NEUTRAL"
+    SELL = "SELL"
+    STR_SELL = "STR_SELL"
+
+
+@dataclasses.dataclass(kw_only=True)
+class ShareAnalysis:
+    recommendation_1d: Recommendation | str = ""
+    recommendation_1h: Recommendation | str = ""
+    recommendation_15m: Recommendation | str = ""
+    recommendation_1m: Recommendation | str = ""
+
+    @classmethod
+    def display_fields(cls):
+        return [field.name.replace("recommendation", "rec") for field in dataclasses.fields(cls)]
+
+    def as_tuple(self):
+        return dataclasses.astuple(self)
+
+
+class TradingViewService:
+    exchange = "MOEX"
+
+    def get_analysis_for_tickers(self, tickers: list[str]) -> dict[str, ShareAnalysis]:
+        tickers_w_exchange = []
+        for ticker in tickers:
+            if ticker.startswith(self.exchange):
+                tickers_w_exchange.append(ticker)
+            else:
+                tickers_w_exchange.append(f"{self.exchange}:{ticker}")
+
+        day_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_1_DAY,
+            symbols=tickers_w_exchange,
+        )
+        hour_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_1_HOUR,
+            symbols=tickers_w_exchange,
+        )
+        fifteen_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_15_MINUTES,
+            symbols=tickers_w_exchange,
+        )
+        minute_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_1_MINUTE,
+            symbols=tickers_w_exchange,
+        )
+
+        analysis = {}
+        for ticker in tickers_w_exchange:
+            analysis[ticker] = self._make_analysis(
+                recommendation_1d=day_analysis[ticker].summary["RECOMMENDATION"],
+                recommendation_1h=hour_analysis[ticker].summary["RECOMMENDATION"],
+                recommendation_15m=fifteen_analysis[ticker].summary["RECOMMENDATION"],
+                recommendation_1m=minute_analysis[ticker].summary["RECOMMENDATION"],
+            )
+        return analysis
+
+    def _make_analysis(
+        self, *, recommendation_1d, recommendation_1h, recommendation_15m, recommendation_1m
+    ) -> ShareAnalysis:
+        return ShareAnalysis(
+            recommendation_1d=Recommendation(recommendation_1d.replace("STRONG", "STR")),
+            recommendation_1h=Recommendation(recommendation_1h.replace("STRONG", "STR")),
+            recommendation_15m=Recommendation(recommendation_15m.replace("STRONG", "STR")),
+            recommendation_1m=Recommendation(recommendation_1m.replace("STRONG", "STR")),
+        )
+
+
 @dataclasses.dataclass(kw_only=True)
 class PortfolioItem:
     ticker: str = ""
     figi: str = ""
     avg_price: decimal.Decimal = decimal.Decimal(0)
     current_price: decimal.Decimal = decimal.Decimal(0)
-    recommendation_1h: str = ""
-    recommendation_1d: str = ""
-    recommendation_1w: str = ""
+    analysis: ShareAnalysis = dataclasses.field(default_factory=ShareAnalysis)
     ask_amount: int = 0
 
     @property
@@ -198,11 +273,11 @@ class PortfolioItem:
 
     @property
     def time_to_sell(self):
-        return self.recommendation_1d not in ("STRONG_BUY",)
+        return self.analysis.recommendation_1d not in (Recommendation.STR_BUY,)
 
 
-def main(force=False):
-    if not force:
+def main(ignore_schedule=False):
+    if not ignore_schedule:
         now_utc = datetime.datetime.utcnow()
         if not ((10 - 3) <= now_utc.hour <= (18 - 3)):
             return
@@ -210,9 +285,7 @@ def main(force=False):
     tg_message_stream = io.StringIO()
     print_to_stream = partial(print, file=tg_message_stream)
 
-    tabulate_pre = (
-        lambda data: f"<pre>{tabulate(data, headers='firstrow', tablefmt='plain')}</pre>"
-    )
+    tabulate_pre = lambda data: f"<pre>{tabulate(data, headers='firstrow', tablefmt='plain')}</pre>"
 
     load_dotenv(BASE_DIR / ".env")
     TOKEN = os.getenv("TINK_TOKEN")
@@ -240,39 +313,20 @@ def main(force=False):
             portfolio_item = PortfolioItem(
                 ticker=ticker,
                 figi=pos.figi,
-                avg_price=money_to_decimal(pos.average_position_price).quantize(
-                    decimal.Decimal("0.01")
-                ),
-                current_price=money_to_decimal(pos.current_price).quantize(
-                    decimal.Decimal("0.01")
-                ),
+                avg_price=money_to_decimal(pos.average_position_price).quantize(decimal.Decimal("0.01")),
+                current_price=money_to_decimal(pos.current_price).quantize(decimal.Decimal("0.01")),
                 ask_amount=ask_amount,
             )
             portfolio_items.append(portfolio_item)
 
         my_tickers_with_exchange = [pos.ticker_with_exchange for pos in portfolio_items]
         if my_tickers_with_exchange:
-            day_analysis = get_multiple_analysis(
-                screener="russia",
-                interval=Interval.INTERVAL_1_DAY,
-                symbols=my_tickers_with_exchange,
-            )
-            hour_analysis = get_multiple_analysis(
-                screener="russia",
-                interval=Interval.INTERVAL_1_HOUR,
-                symbols=my_tickers_with_exchange,
-            )
-            for pos in portfolio_items:
-                pos.recommendation_1d = day_analysis[pos.ticker_with_exchange].summary[
-                    "RECOMMENDATION"
-                ]
-                pos.recommendation_1h = hour_analysis[pos.ticker_with_exchange].summary[
-                    "RECOMMENDATION"
-                ]
+            analysis = TradingViewService().get_analysis_for_tickers(my_tickers_with_exchange)
 
-        portfolio_items = sorted(
-            portfolio_items, key=lambda item: item.profit, reverse=True
-        )
+            for pos in portfolio_items:
+                pos.analysis = analysis[pos.ticker_with_exchange]
+
+        portfolio_items = sorted(portfolio_items, key=lambda item: item.profit, reverse=True)
 
         print_to_stream("<b>Portfolio</b>")
 
@@ -282,8 +336,7 @@ def main(force=False):
                 "avg_price",
                 "cur_price",
                 "profit",
-                "rec_1h",
-                "rec_1d",
+                *(ShareAnalysis.display_fields()),
                 "asks",
             ],
             *(
@@ -292,8 +345,7 @@ def main(force=False):
                     pos.avg_price,
                     pos.current_price,
                     pos.profit_str,
-                    pos.recommendation_1h.replace("STRONG_BUY", "BUY_STR"),
-                    pos.recommendation_1d.replace("STRONG_BUY", "BUY_STR"),
+                    *pos.analysis.as_tuple(),
                     pos.ask_amount,
                 )
                 for pos in portfolio_items
@@ -313,8 +365,7 @@ def main(force=False):
                     "avg_price",
                     "cur_price",
                     "profit",
-                    "rec_1h",
-                    "rec_1d",
+                    *(ShareAnalysis.display_fields()),
                 ],
                 *(
                     (
@@ -322,8 +373,7 @@ def main(force=False):
                         pos.avg_price,
                         pos.current_price,
                         pos.profit_str,
-                        pos.recommendation_1h.replace("STRONG_BUY", "BUY_STR"),
-                        pos.recommendation_1d.replace("STRONG_BUY", "BUY_STR"),
+                        *pos.analysis.as_tuple(),
                     )
                     for pos in portfolio_items_to_sell
                 ),
@@ -364,47 +414,22 @@ def make_ideas(
 ):
     print_to_stream("<b>Ideas</b>", file=tg_message_stream)
 
-    tickers_with_exchange = list(
-        {f"MOEX:{symbol}" for symbol in TICKERS} - set(my_tickers_with_exchange)
-    )
-    week_analysis = get_multiple_analysis(
-        screener="russia",
-        interval=Interval.INTERVAL_1_WEEK,
-        symbols=tickers_with_exchange,
-    )
-    day_analysis = get_multiple_analysis(
-        screener="russia",
-        interval=Interval.INTERVAL_1_DAY,
-        symbols=tickers_with_exchange,
-    )
-    hour_analysis = get_multiple_analysis(
-        screener="russia",
-        interval=Interval.INTERVAL_1_HOUR,
-        symbols=tickers_with_exchange,
-    )
+    tickers_with_exchange = list({f"MOEX:{symbol}" for symbol in TICKERS} - set(my_tickers_with_exchange))
     tickers_with_recs = []
+
+    analysis = TradingViewService().get_analysis_for_tickers(tickers_with_exchange)
+
     for ticker in tickers_with_exchange:
-        day = day_analysis[ticker].summary["RECOMMENDATION"]
-        hour = hour_analysis[ticker].summary["RECOMMENDATION"]
-
-        if not week_analysis[ticker]:
-            continue
-
-        week = week_analysis[ticker].summary["RECOMMENDATION"]
-
+        ticker_analysis = analysis[ticker]
         if (
-            week == "STRONG_BUY"
-            and day == "STRONG_BUY"
-            and hour in ("BUY", "STRONG_BUY")
-        ):
-            tickers_with_recs.append(
-                PortfolioItem(
-                    ticker=ticker[5:],
-                    recommendation_1d=day.replace("STRONG_BUY", "BUY_STR"),
-                    recommendation_1h=hour.replace("STRONG_BUY", "BUY_STR"),
-                    recommendation_1w=week.replace("STRONG_BUY", "BUY_STR"),
-                )
+            ticker_analysis.recommendation_1d == Recommendation.STR_BUY
+            and ticker_analysis.recommendation_1h
+            in (
+                Recommendation.BUY,
+                Recommendation.STR_BUY,
             )
+        ):
+            tickers_with_recs.append(PortfolioItem(ticker=ticker[5:], analysis=ticker_analysis))
 
     for pos in tickers_with_recs:
         instrument = client.instruments.get_instrument_by(
@@ -422,18 +447,16 @@ def make_ideas(
         [
             (
                 pos.ticker,
-                pos.recommendation_1w,
-                pos.recommendation_1d,
-                pos.recommendation_1h,
+                *pos.analysis.as_tuple(),
                 pos.ask_amount,
             )
             for pos in tickers_with_recs
         ],
-        key=(key_func := lambda item: (item[1], item[2], item[3], item[4])),
+        key=(key_func := lambda item: item[1:]),
         reverse=True,
     )
     tickers_with_recs = [
-        ["", "rec_1w", "rec_1d", "rec_1h", "asks"],
+        ["", *(ShareAnalysis.display_fields()), "asks"],
         *tickers_with_recs,
     ]
 
@@ -449,4 +472,4 @@ def handler(event, context):
 
 
 if __name__ == "__main__":
-    main(force=True)
+    main(ignore_schedule=True)
