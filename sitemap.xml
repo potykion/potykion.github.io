@@ -10,16 +10,31 @@
 		<loc>https://potyk.io/drafts</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/reality</loc>
+		<loc>https://potyk.io/drafts/phone-activities</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/problems</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/aneki</loc>
+		<loc>https://potyk.io/drafts/dishes</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/simple</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/htmx</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/cheap-dop</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/reality</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/value-to-people</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/aneki</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/2024-03-24</loc>
@@ -28,64 +43,49 @@
 		<loc>https://potyk.io/drafts/boost</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/htmx</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/phone-activities</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/cheap-dop</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/dishes</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/value-to-people</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/feed</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/feed/2024-03-27</loc>
+		<loc>https://potyk.io/feed/2024-04-03</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-07</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/feed/2024-03-28</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-04-02</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-29</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-04-06</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-31</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/feed/2024-04-04</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-04-09</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-04-01</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/feed/2024-03-30</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-05</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/feed/2024-03-29</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-31</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-04-06</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-30</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-04-01</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-27</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/feed/2024-04-08</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/feed/2024-04-03</loc>
+		<loc>https://potyk.io/feed/2024-04-02</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-28</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-04-09</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes</loc>
@@ -160,13 +160,13 @@
 		<loc>https://potyk.io/notes/ok-dump</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/notes/gamification-nuance</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/notes/invisible</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes/gazeta2</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/notes/gamification-nuance</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes/work</loc>
@@ -181,10 +181,10 @@
 		<loc>https://potyk.io/notes/ghostwriting</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/notes/anxious-gossips</loc>
+		<loc>https://potyk.io/notes/smooth-criminal</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/notes/smooth-criminal</loc>
+		<loc>https://potyk.io/notes/anxious-gossips</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes/motivation-gamification</loc>
@@ -253,19 +253,19 @@
 		<loc>https://potyk.io/special/wishlist</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/yarik-2024</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/special/nsk-2024</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/stats</loc>
+		<loc>https://potyk.io/special/invest</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/where-to-eat</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/invest</loc>
+		<loc>https://potyk.io/special/yarik-2024</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/stats</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/beer/guide</loc>
@@ -286,67 +286,67 @@
 		<loc>https://potyk.io/stuff/recipes</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/stuff/recipes/shepherds-pie</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/asian-fried-rice</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/pasta-salmon</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/stuff/recipes/gratin</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/ground-beef-tortillas</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/bliny-hachapuri</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/parmegiano-eggplant</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/ramyun</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/ramen</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/chicken-tapaka</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/solyanka-soup-sauerkraut</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/crab-cakes</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/lavash-hotdog</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/stuff/recipes/pasta-scallop</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/almond-lingonberry-pie</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/stuff/recipes/miso-ramen</loc>
+		<loc>https://potyk.io/stuff/recipes/toast-tuna</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/stuff/recipes/toast-tuna</loc>
+		<loc>https://potyk.io/stuff/recipes/asian-fried-rice</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/chicken-tapaka</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/lavash-hotdog</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/ground-beef-tortillas</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/shepherds-pie</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/ramen</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/parmegiano-eggplant</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/pasta-salmon</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/pasta-scallop</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/miso-ramen</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/toast-shrimp</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/stuff/recipes/berlin-liver</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/ramyun</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/tuna-salad</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/solyanka-soup-sauerkraut</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/stuff/recipes/pasta-squid</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/crab-cakes</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/bliny-hachapuri</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/todo</loc>
