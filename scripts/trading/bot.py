@@ -27,27 +27,27 @@ TICKERS = [
     "AMEZ",
     "APTK",
     "AQUA",
-    "ASTR",
+    # "ASTR",
     "BANE",
     "BANEP",
     "BELU",
     "BLNG",
     "BSPB",
-    "CARM",
+    # "CARM",
     "CBOM",
     "CHMF",
     "CHMK",
     "CIAN",
     "CNTL",
     "CNTLP",
-    "DELI",
-    "DIAS",
+    # "DELI",
+    # "DIAS",
     "DSKY",
     "DVEC",
     "ELFV",
     "ENPG",
     "ETLN",
-    "EUTR",
+    # "EUTR",
     "FEES",
     "FESH",
     "FIXP",
@@ -60,7 +60,7 @@ TICKERS = [
     "GMKN",
     "GTRK",
     "HHRU",
-    "HNFG",
+    # "HNFG",
     "HYDR",
     "IRAO",
     "IRKT",
@@ -82,7 +82,7 @@ TICKERS = [
     "LSRG",
     "MAGN",
     "MDMG",
-    "MGKL",
+    # "MGKL",
     "MGNT",
     "MGTSP",
     "MOEX",
@@ -138,10 +138,10 @@ TICKERS = [
     "SMLT",
     "SNGS",
     "SNGSP",
-    "SOFL",
+    # "SOFL",
     "SPBE",
     "SVAV",
-    "SVCB",
+    # "SVCB",
     "TATN",
     "TATNP",
     "TCSG",
@@ -152,7 +152,7 @@ TICKERS = [
     "TRMK",
     "TRNFP",
     "TTLK",
-    "UGLD",
+    # "UGLD",
     "UNAC",
     "UNKL",
     "UPRO",
@@ -178,6 +178,8 @@ class Recommendation(enum.StrEnum):
 
 @dataclasses.dataclass(kw_only=True)
 class ShareAnalysis:
+    recommendation_1mo: Recommendation | str = ""
+    recommendation_1w: Recommendation | str = ""
     recommendation_1d: Recommendation | str = ""
     recommendation_1h: Recommendation | str = ""
     recommendation_15m: Recommendation | str = ""
@@ -185,10 +187,24 @@ class ShareAnalysis:
 
     @classmethod
     def display_fields(cls):
-        return [field.name.replace("recommendation", "rec") for field in dataclasses.fields(cls)]
+        return [
+            "rec_1mo",
+            "rec_1w",
+            "rec_1d",
+            "rec_1h",
+            "rec_15m",
+            "rec_1m",
+        ]
 
     def as_tuple(self):
-        return dataclasses.astuple(self)
+        return [
+            self.recommendation_1mo,
+            self.recommendation_1w,
+            self.recommendation_1d,
+            self.recommendation_1h,
+            self.recommendation_15m,
+            self.recommendation_1m,
+        ]
 
 
 class TradingViewService:
@@ -202,6 +218,16 @@ class TradingViewService:
             else:
                 tickers_w_exchange.append(f"{self.exchange}:{ticker}")
 
+        month_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_1_MONTH,
+            symbols=tickers_w_exchange,
+        )
+        week_analysis = get_multiple_analysis(
+            screener="russia",
+            interval=Interval.INTERVAL_1_WEEK,
+            symbols=tickers_w_exchange,
+        )
         day_analysis = get_multiple_analysis(
             screener="russia",
             interval=Interval.INTERVAL_1_DAY,
@@ -225,18 +251,32 @@ class TradingViewService:
 
         analysis = {}
         for ticker in tickers_w_exchange:
-            analysis[ticker] = self._make_analysis(
-                recommendation_1d=day_analysis[ticker].summary["RECOMMENDATION"],
-                recommendation_1h=hour_analysis[ticker].summary["RECOMMENDATION"],
-                recommendation_15m=fifteen_analysis[ticker].summary["RECOMMENDATION"],
-                recommendation_1m=minute_analysis[ticker].summary["RECOMMENDATION"],
-            )
+            try:
+                analysis[ticker] = self._make_analysis(
+                    recommendation_1mo=month_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_1w=week_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_1d=day_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_1h=hour_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_15m=fifteen_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_1m=minute_analysis[ticker].summary["RECOMMENDATION"],
+                )
+            except AttributeError:
+                print("Failed to get analysis for {}".format(ticker))
         return analysis
 
     def _make_analysis(
-        self, *, recommendation_1d, recommendation_1h, recommendation_15m, recommendation_1m
+        self,
+        *,
+        recommendation_1mo,
+        recommendation_1w,
+        recommendation_1d,
+        recommendation_1h,
+        recommendation_15m,
+        recommendation_1m,
     ) -> ShareAnalysis:
         return ShareAnalysis(
+            recommendation_1mo=Recommendation(recommendation_1mo.replace("STRONG", "STR")),
+            recommendation_1w=Recommendation(recommendation_1w.replace("STRONG", "STR")),
             recommendation_1d=Recommendation(recommendation_1d.replace("STRONG", "STR")),
             recommendation_1h=Recommendation(recommendation_1h.replace("STRONG", "STR")),
             recommendation_15m=Recommendation(recommendation_15m.replace("STRONG", "STR")),
@@ -273,7 +313,7 @@ class PortfolioItem:
 
     @property
     def time_to_sell(self):
-        return self.analysis.recommendation_1d not in (Recommendation.STR_BUY,)
+        return self.analysis.recommendation_1d not in (Recommendation.STR_BUY, Recommendation.BUY)
 
 
 def main(ignore_schedule=False):
@@ -422,12 +462,10 @@ def make_ideas(
     for ticker in tickers_with_exchange:
         ticker_analysis = analysis[ticker]
         if (
-            ticker_analysis.recommendation_1d == Recommendation.STR_BUY
-            and ticker_analysis.recommendation_1h
-            in (
-                Recommendation.BUY,
-                Recommendation.STR_BUY,
-            )
+            ticker_analysis.recommendation_1mo == Recommendation.STR_BUY
+            and ticker_analysis.recommendation_1w == Recommendation.STR_BUY
+            and ticker_analysis.recommendation_1d in (Recommendation.BUY, Recommendation.STR_BUY)
+            and ticker_analysis.recommendation_1h in (Recommendation.BUY, Recommendation.STR_BUY)
         ):
             tickers_with_recs.append(PortfolioItem(ticker=ticker[5:], analysis=ticker_analysis))
 
