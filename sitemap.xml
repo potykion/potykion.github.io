@@ -19,7 +19,16 @@
 		<loc>https://potyk.io/drafts/dishes</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/drafts/aneki</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/drafts/simple</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/2024-03-24</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/boost</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/htmx</loc>
@@ -32,15 +41,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/value-to-people</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/aneki</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/2024-03-24</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/boost</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed</loc>
@@ -73,9 +73,6 @@
 		<loc>https://potyk.io/feed/2024-04-01</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/feed/2024-03-27</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/feed/2024-04-08</loc>
 	</url>
 	<url>
@@ -86,6 +83,9 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/feed/2024-04-09</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/feed/2024-03-27</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/notes</loc>
@@ -253,12 +253,6 @@
 		<loc>https://potyk.io/special/wishlist</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/special/nsk-2024</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/special/invest</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/special/where-to-eat</loc>
 	</url>
 	<url>
@@ -266,6 +260,12 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/special/stats</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/nsk-2024</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/special/invest</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/special/beer/guide</loc>
