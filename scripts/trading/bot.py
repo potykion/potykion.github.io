@@ -462,9 +462,9 @@ def make_ideas(
     for ticker in tickers_with_exchange:
         ticker_analysis = analysis[ticker]
         if (
-            ticker_analysis.recommendation_1mo == Recommendation.STR_BUY
-            and ticker_analysis.recommendation_1w == Recommendation.STR_BUY
-            and ticker_analysis.recommendation_1d in (Recommendation.BUY, Recommendation.STR_BUY)
+            # ticker_analysis.recommendation_1mo == Recommendation.STR_BUY
+            ticker_analysis.recommendation_1w in (Recommendation.BUY, Recommendation.STR_BUY)
+            and ticker_analysis.recommendation_1d in (Recommendation.STR_BUY,)
             and ticker_analysis.recommendation_1h in (Recommendation.BUY, Recommendation.STR_BUY)
         ):
             tickers_with_recs.append(PortfolioItem(ticker=ticker[5:], analysis=ticker_analysis))
@@ -490,7 +490,7 @@ def make_ideas(
             )
             for pos in tickers_with_recs
         ],
-        key=(key_func := lambda item: item[1:]),
+        key=(key_func := lambda item: item[1:5]),
         reverse=True,
     )
     tickers_with_recs = [
