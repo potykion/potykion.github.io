@@ -21,6 +21,10 @@ class BeerStore(enum.StrEnum):
     beruvyhodnoy = "beruvyhodnoy"
     am = "am"
     winestyle = "winestyle"
+    litra = "litra"
+    citycraft = "citycraft"
+    rusbeer = "rusbeer"
+    superkhmel = "superkhmel"
 
     @property
     def label(self):
@@ -36,6 +40,15 @@ class BeerStore(enum.StrEnum):
             return "Беру Выходной"
         if self == BeerStore.am:
             return "АМ"
+        if self == BeerStore.litra:
+            return "Лит.ра"
+        if self == BeerStore.citycraft:
+            return "Сити Крафт"
+        if self == BeerStore.rusbeer:
+            return "РусБир"
+        if self == BeerStore.superkhmel:
+            return "СуперХмель"
+
         return cast(str, self.value).title()
 
 
@@ -66,8 +79,7 @@ class Beer(BaseModel):
         price_by_dates = sorted(self.prices, key=lambda price: price.date, reverse=True)
         stores = {price.store for price in self.prices if price.store}
         store_prices = [
-            next((price for price in price_by_dates if price.store == store), None)
-            for store in stores
+            next((price for price in price_by_dates if price.store == store), None) for store in stores
         ]
         store_prices = sorted(store_prices, key=lambda price: price.price)
         return store_prices
@@ -95,17 +107,13 @@ class BeerStorage:
             "select id, beer_id, price, store, date, url from beers_prices order by beer_id"
         )
         beer_prices = [
-            BeerPrice(
-                id=id, beer_id=beer_id, price=price, store=store, date=date, url=url
-            )
+            BeerPrice(id=id, beer_id=beer_id, price=price, store=store, date=date, url=url)
             for id, beer_id, price, store, date, url in raw_beer_prices
         ]
 
         beer_prices_by_beer_id = {
             beer_id: list(beer_id_prices)
-            for beer_id, beer_id_prices in groupby(
-                beer_prices, lambda price: price.beer_id
-            )
+            for beer_id, beer_id_prices in groupby(beer_prices, lambda price: price.beer_id)
         }
         for beer in beers:
             beer.prices = beer_prices_by_beer_id.get(beer.id, [])
@@ -113,13 +121,10 @@ class BeerStorage:
         return beers
 
     def list_stores(self):
-        return [
-            (store, store_enum.label)
-            for store, store_enum in BeerStore.__members__.items()
-        ]
+        return [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
 
     def get_by_id(self, id):
-        return self.list_all(f'id = {id}')[0]
+        return self.list_all(f"id = {id}")[0]
 
 
 def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
