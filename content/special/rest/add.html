@@ -1,0 +1,15 @@
+{% extends 'templates/base.html' %}
+{% block main %}
+    <h1>Добавление рестика</h1>
+
+    <form method="POST" action="/" class="flex flex-col gap-2">
+        {{ form.csrf_token }}
+
+        <div>{{ form.name.label }} {{ form.name() }}</div>
+
+        <div class="flex justify-end ">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+
+{% endblock %}

@@ -2,7 +2,11 @@ import datetime
 import sqlite3
 
 from flask import Blueprint, render_template
+from flask_wtf import FlaskForm
+from markupsafe import Markup
 from pydantic import BaseModel
+from wtforms.fields.simple import StringField
+from wtforms.validators import InputRequired
 
 
 class Restaurant(BaseModel):
@@ -47,6 +51,20 @@ class RestaurantStorage:
         return restaurants
 
 
+class AddRestForm(FlaskForm):
+    name = StringField(
+        Markup(
+            """
+        <div class="label">
+                <span class="label-text">Name</span>
+            </div>
+        """
+        ),
+        validators=[InputRequired()],
+        render_kw={"class": "input input-bordered w-full"},
+    )
+
+
 def make_restaurants_blueprint(
     sqlite_cur: sqlite3.Cursor,
 ):
@@ -56,7 +74,7 @@ def make_restaurants_blueprint(
 
     @restaurants_blueprint.route("/special/where-to-eat")
     def get_where_to_eat():
-        restaurants = storage.list_all('visited = 1')
+        restaurants = storage.list_all("visited = 1")
         restaurants = sorted(restaurants, key=lambda r: r.score, reverse=True)
 
         return render_template(
@@ -65,5 +83,11 @@ def make_restaurants_blueprint(
             show_desc=True,
             restaurants=restaurants,
         )
+
+    @restaurants_blueprint.route("/special/rest/add")
+    def rest_add():
+        form = AddRestForm()
+
+        return render_template("special/rest/add.html", form=form)
 
     return restaurants_blueprint

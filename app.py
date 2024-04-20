@@ -66,6 +66,8 @@ def today_shift(shift_days: int) -> datetime.date:
 def create_app():
     app = Flask(__name__, template_folder="content")
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
+
+    app.config['SECRET_KEY'] = os.urandom(24)
     # app.config["SERVER_NAME"] = "192.168.1.8:5000"
 
     app.jinja_env.globals.update(
