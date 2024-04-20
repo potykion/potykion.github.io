@@ -319,7 +319,7 @@ class PortfolioItem:
 def main(ignore_schedule=False):
     if not ignore_schedule:
         now_utc = datetime.datetime.utcnow()
-        if not ((10 - 3) <= now_utc.hour <= (18 - 3)):
+        if not ((10 - 3) <= now_utc.hour <= (18 - 3) and now_utc.weekday() not in (5, 6)):
             return
 
     tg_message_stream = io.StringIO()

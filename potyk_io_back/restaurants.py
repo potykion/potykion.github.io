@@ -1,24 +1,72 @@
 import datetime
+import enum
 import sqlite3
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect
 from flask_wtf import FlaskForm
-from markupsafe import Markup
-from pydantic import BaseModel
-from wtforms.fields.simple import StringField
+from pydantic import BaseModel, Field
+from wtforms.fields.choices import SelectMultipleField
+from wtforms.fields.numeric import IntegerRangeField, DecimalRangeField
+from wtforms.fields.simple import StringField, BooleanField, URLField, TextAreaField
 from wtforms.validators import InputRequired
 
 
+class PriceRange(enum.IntEnum):
+    LOW = 0
+    AVG = 1
+    HIGH = 2
+
+
+class RestTag(enum.StrEnum):
+    # Азия
+    Chinese = "Китайка🀄"
+    Viet = "Вьетнамка🥋"
+    Korean = "Корейка👘"
+    # Рамен, Удон
+    Noodles = "Лапша🍜"
+    Sushi = "Суши🍣"
+    Indian = "Индийка 🪷"
+    # Пицца, паста, салатики
+    Italia = "Италия 💶"
+    # Пельмени, Чебуреки
+    Russian = "Русская"
+    # Плескавицы
+    Serbian = "Сербия"
+    # Шаурма, Бургеры
+    StreetFood = "Стритфуд🥙"
+    Soup = "Супы🍲"
+    # Израильская, Турецкая, Кебабы, Хумусы
+    MiddleEast = "Восточная🧆"
+    # Хинкали, хачапури
+    Georgian = "Грузинка"
+    # Узбекская: манты, лагман, шурпа
+    Chaihona = "Чайхана🍖"
+    Sweets = "Десерты🍮"
+    Gastro = "Гастро-бар 🍷"
+    Beer = "Пивнуха 🍺"
+    Brandy = "Настойки🍷"
+    # Рыба, креветки, мидии
+    Seafood = "Морские гады🐟"
+    # Стейки, шашлыки
+    Meat = "Мясо🍖"
+    Lunch = "Обед / Столовка"
+    FixPrice = "Фикс-прайс"
+    FoodCourt = "Фуд-Корт"
+    Chain = "Сетевуха🕸"
+    Company = "Для компании🍻"
+    Wtf = "Дичь"
+
+
 class Restaurant(BaseModel):
-    id: int
+    id: int | None = None
     name: str
     score: float | None
-    created: datetime.datetime
+    created: datetime.datetime = Field(default_factory=datetime.datetime.now)
     url: str | None
     visited: bool
     location: list[str]
-    price_range: str | None
-    tags: list[str]
+    price_range: str | PriceRange | None
+    tags: list[str | RestTag]
     comment: str | None
 
 
@@ -50,19 +98,48 @@ class RestaurantStorage:
         ]
         return restaurants
 
+    def insert(self, rest: Restaurant):
+        rest_values = (
+            rest.name,
+            rest.score,
+            rest.created,
+            rest.url,
+            rest.visited,
+            ",".join(rest.location),
+            rest.price_range,
+            ",".join(rest.tags),
+            rest.comment,
+        )
+        self.sqlite_cur.execute(
+            """
+                insert into restaurants (name, score, created, url, visited, location, price_range, tags, comment)
+                values (?, ?, ?, ?, ?, ?, ?, ?, ?);
+                """,
+            rest_values,
+        )
+        self.sqlite_cur.connection.commit()
+
 
 class AddRestForm(FlaskForm):
-    name = StringField(
-        Markup(
-            """
-        <div class="label">
-                <span class="label-text">Name</span>
-            </div>
-        """
-        ),
+    name = StringField("Название", validators=[InputRequired()], render_kw=dict(placeholder='Тхали и Карри'))
+    score = DecimalRangeField(
+        "Оценка",
         validators=[InputRequired()],
-        render_kw={"class": "input input-bordered w-full"},
+        render_kw={"min": 0, "max": 10, "step": 0.5, 'class': 'range-primary'},
+        default=7.5,
     )
+    url = URLField("Ссылка", render_kw={'placeholder': 'https://yandex.ru/maps/org/tkhali_i_karri/154048393265'})
+    visited = BooleanField("Были?", default=True)
+    location = StringField("Место", validators=[InputRequired()], render_kw={'placeholder': 'Пушка'})
+    price_range = IntegerRangeField(
+        "Цены", render_kw={"min": 0, "max": 2, "steps": ["Низкие", "Средние", "Высокие"], 'class': 'range-accent'}
+    )
+    tags = SelectMultipleField(
+        "Теги",
+        validators=[InputRequired()],
+        choices=RestTag.__members__.values(),
+    )
+    comment = TextAreaField("Коммент", validators=[InputRequired()], render_kw={'placeholder': 'Неплохая индийка'})
 
 
 def make_restaurants_blueprint(
@@ -84,9 +161,16 @@ def make_restaurants_blueprint(
             restaurants=restaurants,
         )
 
-    @restaurants_blueprint.route("/special/rest/add")
+    @restaurants_blueprint.route("/special/rest/add", methods=["GET", "POST"])
     def rest_add():
         form = AddRestForm()
+
+        if form.validate_on_submit():
+            form_data = form.data
+            form_data["location"] = [form_data["location"]]
+            rest = Restaurant(**form_data)
+            storage.insert(rest)
+            return redirect("/special/where-to-eat")
 
         return render_template("special/rest/add.html", form=form)
 

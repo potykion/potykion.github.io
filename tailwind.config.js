@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./content/**/*.{html,md}"],
+  content: ["./content/**/*.{html,md}", "./potyk_io_back/**/*.py"],
   theme: {
     fontFamily: {
       "sans": ["Noto Sans"],

@@ -121,4 +121,11 @@
     .blue-border-hover-link {
         @apply rounded-lg hover:border-primary border-2 border-transparent inline-block;
     }
+
+    input {
+        @apply placeholder-neutral-500
+    }
+    textarea {
+        @apply placeholder-neutral-500
+    }
 }
