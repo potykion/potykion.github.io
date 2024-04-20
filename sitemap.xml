@@ -19,13 +19,7 @@
 		<loc>https://potyk.io/drafts/dishes</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/drafts/aneki</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/drafts/simple</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/drafts/2024-03-24</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/boost</loc>
@@ -41,6 +35,12 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/drafts/value-to-people</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/aneki</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/drafts/2024-03-24</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/feed</loc>
@@ -274,6 +274,9 @@
 		<loc>https://potyk.io/special/beer/base</loc>
 	</url>
 	<url>
+		<loc>https://potyk.io/special/rest/add</loc>
+	</url>
+	<url>
 		<loc>https://potyk.io/stuff</loc>
 	</url>
 	<url>
@@ -314,6 +317,9 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/parmegiano-eggplant</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/stuff/recipes/chicken-shkmeruli</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/stuff/recipes/pasta-salmon</loc>
