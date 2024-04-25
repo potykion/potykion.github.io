@@ -1,3 +1,8 @@
+{#
+Usage:
+{% from 'templates/feed/feed_card.html' import feed_card %}
+#}
+
 {% macro feed_card(category, image=None, image_width=0, image_padding=0, title=None, audio=None, desc=None, desc_padding=0, row_span=1, url=None, youtube=None, video=None, youtube_height=None) %}
 
     {% set border_color = 'border-neutral dark:border-gray-300' %}

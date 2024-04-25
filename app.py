@@ -25,6 +25,7 @@ from potyk_io_back.notes import make_note_index, NoteDb
 from potyk_io_back.restaurants import make_restaurants_blueprint
 from potyk_io_back.stats import make_stats_blueprint
 from potyk_io_back.todo import TodoRepo, make_todo_blueprint
+from potyk_io_back.travel import make_travel_blueprint
 from potyk_io_back.wishlist import make_wishlist_blueprint
 
 
@@ -67,7 +68,7 @@ def create_app():
     app = Flask(__name__, template_folder="content")
     app.config["SERVER_NAME"] = "127.0.0.1:5000"
 
-    app.config['SECRET_KEY'] = os.urandom(24)
+    app.config["SECRET_KEY"] = os.urandom(24)
     # app.config["SERVER_NAME"] = "192.168.1.8:5000"
 
     app.jinja_env.globals.update(
@@ -106,12 +107,14 @@ def create_app():
     app.register_blueprint(make_restaurants_blueprint(sqlite_cur))
     app.register_blueprint(make_beer_blueprint(sqlite_cur))
     app.register_blueprint(make_feed_blueprint(sqlite_cur))
+    app.register_blueprint(make_travel_blueprint(sqlite_cur))
+
 
     @app.route("/all")
     def all_pages():
         pages: list[Page] = [
-            Page(**raw_page, ext=raw_page['template_path'].rsplit(".")[-1])
-            for raw_page in SimpleStorage(sqlite_cur, "pages").list_all(order_by='url')
+            Page(**raw_page, ext=raw_page["template_path"].rsplit(".")[-1])
+            for raw_page in SimpleStorage(sqlite_cur, "pages").list_all(order_by="url")
         ]
         return flask.render_template("all.html", pages=pages)
 
