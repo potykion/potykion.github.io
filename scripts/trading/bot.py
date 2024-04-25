@@ -5,6 +5,7 @@ import enum
 import io
 import os
 from functools import partial
+from unittest import mock
 from urllib.parse import urlencode
 
 import requests
@@ -253,12 +254,24 @@ class TradingViewService:
         for ticker in tickers_w_exchange:
             try:
                 analysis[ticker] = self._make_analysis(
-                    recommendation_1mo=month_analysis[ticker].summary["RECOMMENDATION"],
-                    recommendation_1w=week_analysis[ticker].summary["RECOMMENDATION"],
-                    recommendation_1d=day_analysis[ticker].summary["RECOMMENDATION"],
-                    recommendation_1h=hour_analysis[ticker].summary["RECOMMENDATION"],
-                    recommendation_15m=fifteen_analysis[ticker].summary["RECOMMENDATION"],
-                    recommendation_1m=minute_analysis[ticker].summary["RECOMMENDATION"],
+                    recommendation_1mo=(
+                        month_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
+                    recommendation_1w=(
+                        week_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
+                    recommendation_1d=(
+                        day_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
+                    recommendation_1h=(
+                        hour_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
+                    recommendation_15m=(
+                        fifteen_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
+                    recommendation_1m=(
+                        minute_analysis[ticker] or mock.Mock(summary={"RECOMMENDATION": "NEUTRAL"})
+                    ).summary["RECOMMENDATION"],
                 )
             except AttributeError:
                 print("Failed to get analysis for {}".format(ticker))
