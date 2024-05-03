@@ -1,7 +1,7 @@
 {% extends "layouts/base.html" %}
 
 {% block breadcrumbs %}
-    <li><a href="/recipes">рецептики</a></li>
+    <li><a href="/recipes">Рецептики</a></li>
     <li>Бань Ми</li>
 {% endblock %}
 
@@ -15,11 +15,14 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-    <h3>Ингредиенты</h3>
-    <ul>
+    <div class="flex justify-between">
+        <h3 class="inline-block">Ингредиенты</h3>
+        <button class="btn btn-sm" onclick="copy('#ingredients')">скопировать</button>
+    </div>
+    <ul id="ingredients">
         <li>Батон / Лаваш - 1 шт</li>
         <li>Печень куриная / индейки - 500 г</li>
-        <li>Лук репчатый - 1 шт</li>
+    <li>Лук репчатый - 1 шт</li>
         <li>Сливочное масло - 50 г</li>
         <li>Морковка - 2 шт</li>
         <li>Огурец - 1 шт</li>
@@ -64,5 +67,14 @@
         <li>Остатки печени нарезаем</li>
         <li>Делаем сендвич / ролл: паштет > печень > соус > овощи > соус</li>
     </ul>
+
+    <script>
+        async function copy(from) {
+            const el = document.querySelector(from);
+            let textToCopy = el.textContent;
+            textToCopy = textToCopy.trim().split('\n').map(line => line.trim()).join('\n')
+            await navigator.clipboard.writeText(textToCopy);
+        }
+    </script>
 
 {% endblock %}

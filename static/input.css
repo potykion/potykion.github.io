@@ -25,7 +25,8 @@
     iframe {
         max-width: 100%;
         width: 100%;
-        aspect-ratio: 16/9
+        aspect-ratio: 16/9;
+        @apply pb-4;
     }
 
     img {
@@ -125,6 +126,7 @@
     input {
         @apply placeholder-neutral-500
     }
+
     textarea {
         @apply placeholder-neutral-500
     }
