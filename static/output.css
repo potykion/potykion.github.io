@@ -4189,6 +4189,28 @@ textarea::placeholder {
   color: rgb(115 115 115 / var(--tw-placeholder-opacity));
 }
 
+ul.li-plus {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
+ul.li-plus li:before {
+  /*content: "+";*/
+  content: "➕";
+  margin-right: 8px;
+}
+
+ul.li-minus {
+  list-style: none;
+  padding-left: 0 !important;
+}
+
+ul.li-minus li:before {
+  /*content: "–";*/
+  content: "➖";
+  margin-right: 8px;
+}
+
 .visible {
   visibility: visible;
 }
@@ -4470,6 +4492,10 @@ textarea::placeholder {
   cursor: pointer;
 }
 
+.cursor-help {
+  cursor: help;
+}
+
 .grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -4610,6 +4636,10 @@ textarea::placeholder {
 
 .border-t {
   border-top-width: 1px;
+}
+
+.border-dotted {
+  border-style: dotted;
 }
 
 .border-neutral {

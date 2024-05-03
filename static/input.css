@@ -130,4 +130,26 @@
     textarea {
         @apply placeholder-neutral-500
     }
+
+    ul.li-plus {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    ul.li-plus li:before {
+        /*content: "+";*/
+        content: "➕";
+        margin-right: 8px;
+    }
+
+    ul.li-minus {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    ul.li-minus li:before {
+        /*content: "–";*/
+        content: "➖";
+        margin-right: 8px;
+    }
 }

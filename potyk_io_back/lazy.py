@@ -20,6 +20,7 @@ class SimpleStorage:
         self,
         *,
         where: str = None,
+        # where="date = ?", where_params=(date,)
         where_params: list | tuple = (),
         order_by=None,
     ) -> list:
@@ -35,3 +36,7 @@ class SimpleStorage:
 
     def get_by_id(self, id: int) -> sqlite3.Row:
         return self.list_all(where=f"id= {id}")[0]
+
+    def first_where(self, **kwargs):
+        where = " and ".join((f"{key}='{val}'" for key, val in kwargs.items()))
+        return self.list_all(where=where)[0]
