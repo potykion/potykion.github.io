@@ -49,9 +49,7 @@ class FeedStorage:
         self.tech_storage = SimpleStorage(sqlite_cur, "tech_tools", model=TechTool)
 
     def list_by_date(self, date: datetime.date | str) -> list[FeedCard]:
-        feed_items = self.simple_storage.list_all(
-            where="date = ?", where_params=(date,)
-        )
+        feed_items = self.simple_storage.list_all(where="date = ?", where_params=(date,))
         feed_items = [FeedCard(**item) for item in feed_items]
 
         for item in feed_items:
@@ -96,31 +94,17 @@ def make_feed_blueprint(sqlite_cur: sqlite3.Cursor):
 
     feed_storage = FeedStorage(sqlite_cur)
 
-    @feed_blueprint.route("/")
-    def index():
-        return feed('2024-04-09')
-
     @feed_blueprint.route("/feed/<date>")
     def feed(date: str):
         date = datetime.datetime.strptime(date, "%Y-%m-%d").date()
         feed_items = feed_storage.list_by_date(date)
-        feed_items = [
-            item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items
-        ]
+        feed_items = [item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items]
 
         return render_template(
-            f'feed/{date}.html',
+            f"feed/{date}.html",
             feed_date=date,
-            prev_date=(
-                date - datetime.timedelta(days=1)
-                if date > datetime.date(2024, 3, 27)
-                else None
-            ),
-            next_date=(
-                date + datetime.timedelta(days=1)
-                if date < datetime.date.today()
-                else None
-            ),
+            prev_date=(date - datetime.timedelta(days=1) if date > datetime.date(2024, 3, 27) else None),
+            next_date=(date + datetime.timedelta(days=1) if date < datetime.date.today() else None),
             feed_items=feed_items,
         )
 

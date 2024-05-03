@@ -110,6 +110,11 @@ def create_app():
     app.register_blueprint(make_travel_blueprint(sqlite_cur))
 
 
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+
     @app.route("/all")
     def all_pages():
         pages: list[Page] = [
@@ -197,6 +202,7 @@ def create_app():
     @app.get("/stuff/recipes")
     def stuff_recipes():
         return render_template("stuff/recipes/index.html")
+
 
     @app.get("/stuff/recipes/<page_key>")
     def stuff_recipe(page_key: str):

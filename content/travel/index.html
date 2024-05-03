@@ -2,19 +2,6 @@
 
 {% from 'templates/feed/feed_card.html' import feed_card %}
 
-{% macro card(title, content, cls = '') %}
-    {% set border_style = 'border-neutral ' %}
-
-    <div class="border-2 rounded-lg {{ border_style }} {{ cls }}">
-        <div class="border-b-2 text-sm font-semibold {{ border_style }} p-2">
-            {{ title }}
-        </div>
-        <div class="p-2 text-sm">
-            {{ content | safe }}
-
-        </div>
-    </div>
-{% endmacro %}
 
 {% block main %}
     <h1>Путешествия</h1>
@@ -23,51 +10,77 @@
 
     <div class="grid grid-cols-3  gap-2">
 
-        {{ card('Билетики ✈️',
-            '''
-            <ul class=" !my-0 ">
-                <li>
-                    <a href="https://www.aviasales.ru/">Авиасейлз</a><br>
-                    <span>Первое, что приходит в голову</span>
-                </li>
-                <li>
-                    <a href="https://www.kupibilet.ru/">Купи Билет</a><br>
-                    <span>Второе, что приходит в голову</span>
-                </li>
-                <li>
-                    <a href="https://www.tinkoff.ru/travel/flights/">Тикькофф</a><br>
-                    <span>Может быть кешбек</span>
-                </li>
-                <li>
-                    <a href="https://www.ozon.ru/travel/">Озон</a><br>
-                    <span>Неожиданный, но вариант</span>
-                </li>
-                <li>
-                    <a href="https://travel.yandex.ru/avia/">Яндекс.Путешествия</a><br>
-                    <span>И у Яндекса конечно свой сервис есть</span>
-                </li>
-            </ul>
-            ''', 'row-span-2') }}
+        {% set border_style = 'border-neutral ' %}
+        {% set card_container = border_style + 'border-2 rounded-lg ' %}
+        {% set card_title = border_style + 'border-b-2 text-sm font-semibold p-2' %}
+        {% set card_content = 'p-2 text-sm' %}
 
-        {{ card('Где были 🌍',
-            '''
-<div class="flex flex-wrap gap-2" >
-<li class="!my-0 !py-0"> <a>Спб</a> </li>
-<li class="!my-0 !py-0"> <a>Нижний</a> </li>
-<li class="!my-0 !py-0"> <a>Казань</a> </li>
-<li class="!my-0 !py-0"> <a>Тула</a> </li>
-<li class="!my-0 !py-0"> <a>Екат</a> </li>
-<li class="!my-0 !py-0"> <a>Мурманск</a> </li>
-<li class="!my-0 !py-0"> <a>Дагестан</a> </li>
-<li class="!my-0 !py-0"> <a>Чечня</a> </li>
-<li class="!my-0 !py-0"> <a>Армения</a> </li>
-<li class="!my-0 !py-0">  <a>Белоруссия</a> </li>
-<li class="!my-0 !py-0"> <a>Сочи</a> </li>
-<li class="!my-0 !py-0"> <a>Сергиев-Посад</a> </li>
-<li class="!my-0 !py-0"> <a>Подольск</a> </li>
-<li class="!my-0 !py-0"> <a>Клин</a> </li>
-</div>
-''') }}
+        <div class="{{ card_container }} row-span-2">
+            <div class="{{ card_title }}">
+                Билетики ✈️
+            </div>
+            <div class="{{ card_content }}">
+                <ul class=" !my-0 ">
+                    <li>
+                        <a href="https://www.aviasales.ru/">Авиасейлз</a><br>
+                        <span>Первое, что приходит в голову</span>
+                    </li>
+                    <li>
+                        <a href="https://www.kupibilet.ru/">Купи Билет</a><br>
+                        <span>Второе, что приходит в голову</span>
+                    </li>
+                    <li>
+                        <a href="https://www.tinkoff.ru/travel/flights/">Тикькофф</a><br>
+                        <span>Может быть кешбек</span>
+                    </li>
+                    <li>
+                        <a href="https://www.ozon.ru/travel/">Озон</a><br>
+                        <span>Неожиданный, но вариант</span>
+                    </li>
+                    <li>
+                        <a href="https://travel.yandex.ru/avia/">Яндекс.Путешествия</a><br>
+                        <span>И у Яндекса конечно свой сервис есть</span>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="{{ card_container }} row-span-2">
+            <div class="border-b-2 text-sm font-semibold {{ border_style }} p-2">
+                Где были 🌍
+            </div>
+            <div class="{{ card_content }}">
+                <div class="flex flex-wrap gap-2">
+                    <a>Серпухов (2.2022)</a> •
+                    <a>Подольск (3.2022)</a> •
+                    <a>Казань (4.2022)</a> •
+                    <a>Верея/Марфино (5.2022)</a> •
+                    <a>Белорусб (6.2022)</a> •
+                    <a>Тула (8.2022)</a> •
+                    <a>Сочи (Лазаревское) (8.2022)</a> •
+                    <a>Дагестан 9.22</a>
+                    <a>Муром 9.22</a>
+                    <a>СПб 9.22</a>
+                    <a>Подоходкино 1.23</a>
+                    <a>СПб 2.23</a>
+                    <a>Нижний 4.23</a>
+                    <a>Сплав по Волге 5.23</a>
+                    <a>Клин 5.23</a>
+                    <a>Екат 6.23</a>
+                    <a>Чеч 6.23</a>
+                    <a>Сергиев посад 7.23</a>
+                    <a>Истра 8.23</a>
+                    <a>Арм 8.23</a>
+                    <a>Тула 11.23</a>
+                    <a>Ярик 4.23</a>
+
+                </div>
+
+
+            </div>
+        </div>
 
 
     </div>

@@ -9,7 +9,7 @@
 
 {% from "templates/components/sections.html" import link_section,page_section %}
 
-{% block main %}
+{% macro dates() %}
     <div class="flex justify-between mb-2">
         <a href="/feed/{{ prev_date }}"
            class="{% if not prev_date %}invisible{% endif %} btn btn-square btn-ghost btn-sm md:btn-md">
@@ -41,6 +41,10 @@
         </a>
     </div>
 
+{% endmacro %}
+
+{% block main %}
+    {{ dates }}
 
 
 {% endblock %}
