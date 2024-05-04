@@ -38,5 +38,13 @@ class SimpleStorage:
         return self.list_all(where=f"id= {id}")[0]
 
     def first_where(self, **kwargs):
-        where = " and ".join((f"{key}='{val}'" for key, val in kwargs.items()))
-        return self.list_all(where=where)[0]
+        params = list(kwargs.items())
+
+        where = " and ".join((f"{key}=?" for key, val in params))
+        try:
+            return self.list_all(
+                where=where,
+                where_params=[val for _, val in params],
+            )[0]
+        except IndexError:
+            raise LookupError(f"Failed to find row with {kwargs}")

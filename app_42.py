@@ -29,6 +29,10 @@ class Deps:
         return SimpleStorage(self.sqlite_cursor, "travel_places")
 
     @property
+    def books_table(self):
+        return SimpleStorage(self.sqlite_cursor, "books")
+
+    @property
     def page_store(self):
         return BlogPageStore(self.sqlite_cursor)
 
@@ -107,7 +111,7 @@ def create_app():
     def index_page():
         return render_template(
             "index.html",
-            pages=deps.page_store.list_where_url_in(["/recipes", "/travel"]),
+            pages=deps.page_store.list_where_url_in(["/recipes", "/travel", "/books"]),
             page=deps.page,
         )
 
@@ -120,6 +124,7 @@ def create_app():
 
     @app.route("/recipes/<recipe_key>")
     def recipe_page(recipe_key):
+        # noinspection PyUnresolvedReferences
         return render_template(
             f"recipes/{recipe_key}.html",
             page=deps.page,
@@ -132,6 +137,27 @@ def create_app():
             f"travel/index.html",
             page=deps.page,
             places=places,
+        )
+
+    @app.route("/books")
+    def books_page():
+        books = deps.books_table.list_all()
+
+        return render_template(
+            f"books/index.html",
+            page=deps.page,
+            books=books,
+        )
+
+    @app.route("/books/<book_key>")
+    def book_page(book_key):
+        book = deps.books_table.first_where(url=flask.request.path)
+
+        # noinspection PyUnresolvedReferences
+        return render_template(
+            f"books/{book_key}.html",
+            page=deps.page,
+            book=book,
         )
 
     render_pages(app, deps)
