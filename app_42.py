@@ -1,8 +1,9 @@
 import dataclasses
 import sqlite3
+from pathlib import Path
 
 import flask
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from pydantic import BaseModel, Field
 
 from potyk_io_back.core import BASE_DIR
@@ -90,11 +91,17 @@ def render_pages(app, deps: Deps):
 
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+    )
     deps = Deps(
         sqlite_conn=(sqlite_conn := sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)),
         sqlite_cursor=sqlite_conn.cursor(),
     )
+
+    @app.route("/<path:path>")
+    def serve_file(path):
+        return flask.send_file(path)
 
     @app.route("/")
     def index_page():
