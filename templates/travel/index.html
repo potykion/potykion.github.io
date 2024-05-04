@@ -1,8 +1,24 @@
 {% extends "layouts/base.html" %}
 
+{% block static %}
+    {#    <link rel="stylesheet" href="{{ url_for('static', filename='css/autoComplete.min.css') }}">#}
+
+{% endblock %}
+
 {% block breadcrumbs %}
     <li>Тревел</li>
 {% endblock %}
+
+{% macro input(label, placeholder, type='text', id='', container_cls='', value='', required=True) %}
+    <label class="form-control w-full {{ container_cls }}">
+        <div class="label ">
+            <span class="label-text">{{ label }}</span>
+        </div>
+        <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" value="{{ value }}"
+               {% if required %}required{% endif %}
+               class="input input-sm input-bordered w-full    "/>
+    </label>
+{% endmacro %}
 
 {% block main %}
     <ul>
@@ -23,6 +39,26 @@
     </div>
 
     <h2 id="tickets">Билеты 🎫</h2>
+
+    <div class="border rounded-lg border-neutral shadow px-4 py-2">
+        <h3>Агрегатор над агрегаторами</h3>
+        <cite class="block">Ищет биллы сразу по нескольким сайтам: авиасейлз, купибилет, тиньк, яндекс, озон</cite>
+        <cite class="block">Важно: Нужно отключить блокировку всплывашек</cite>
+
+        <form class="flex gap-2 items-end " onsubmit="openLinks(params)">
+            {{ input('Откуда', 'IATA', id='fromIata', container_cls='dropdown', value='Москва - MOW') }}
+            {{ input('Куда', 'IATA', id='toIata', container_cls='dropdown') }}
+            {{ input('Когда туда', '',   id='fromDate', type='date') }}
+            {{ input('Когда оттуда', '', id='toDate' ,type= 'date') }}
+            <button class="btn btn-primary btn-sm ">Го</button>
+        </form>
+    </div>
+
+    {##}
+
+
+
+    <h3>Где брать?</h3>
     <div>
         <ul>
             <li>Билеты — одна из самых дорогих вещей при путешествии</li>
@@ -138,5 +174,129 @@
             <li>Принцип тот же - <b>тупа сравниваем варики</b></li>
         </ul>
     </div>
-    
+
+
+    <script src="{{ url_for('static', filename='js/autoComplete.min.js') }}"></script>
+    <script>
+        let params = {
+            fromIata: 'MOW',
+            toIata: 'OVB',
+            fromDate: new Date('2024-05-05'),
+            toDate: new Date('2024-05-10'),
+        }
+
+        const makeAutocomplete = (selector, callback) => {
+            return new autoComplete({
+                selector,
+                data: {
+                    src: async (query) => {
+                        try {
+                            const source = await fetch(`https://autocomplete.travelpayouts.com/places2?locale=ru&types[]=city&types[]=airport&term=${query}`);
+                            let data = await source.json();
+                            data = data.map(item => ({
+                                value: item.code,
+                                label: `${item.name} - ${item.code}`
+                            }))
+                            return data;
+                        } catch (error) {
+                            return error;
+                        }
+                    },
+                    keys: ["label"],
+                },
+                resultsList: {
+                    tag: 'ul',
+                    class: 'dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
+                },
+                resultItem: {
+                    class: 'not-prose',
+                    element: (item, data) => {
+                        item.innerHTML = `<a>${data.match}</a>`
+                    },
+                },
+
+                events: {
+                    input: {
+                        selection: (event) => {
+                            const selection = event.detail.selection.value;
+                            event.target.value = selection.label;
+                            callback(selection.value)
+                        }
+                    }
+                }
+            });
+        };
+
+        const fromIataAutoComplete = makeAutocomplete('#fromIata', value => params.fromIata = value);
+        const toIataAutoComplete = makeAutocomplete('#toIata', value => params.toIata = value);
+
+        function openLinks(params) {
+            params.fromDate = new Date(document.querySelector('#fromDate').value);
+            params.toDate = new Date(document.querySelector('#toDate').value);
+
+            function format_date(date, service) {
+                const isoDate = date.toISOString().split('T')[0]
+                const [year, month, day] = isoDate.split('-')
+                switch (service) {
+                    case 'aviasales':
+                        return `${day}${month}`
+                    case 'tink':
+                        return `${month}-${day}`
+                    case 'kupibilet':
+                    case 'ozon':
+                        return isoDate
+                }
+            }
+
+
+            const avisales = (params) => {
+                let from = params.fromIata + format_date(params.fromDate, 'aviasales');
+                let to = params.toIata + format_date(params.toDate, 'aviasales');
+                return `https://www.aviasales.ru/search/${from}${to}2`
+            }
+
+            const kupibilet = (params) => {
+                let fromDate = format_date(params.fromDate, 'kupibilet');
+                let toDate = format_date(params.toDate, 'kupibilet');
+                const route0 = `iatax:${params.fromIata}_${fromDate}_date_${fromDate}_iatax:${params.toIata}`;
+                const route1 = `iatax:${params.toIata}_${toDate}_date_${toDate}_iatax:${params.fromIata}`
+                return `https://www.kupibilet.ru/search?adult=2&cabinClass=Y&child=0&childrenAges=[]&infant=0&route[0]=${route0}&route[1]=${route1}&v=2`
+            }
+
+            const tink = (params) => {
+                let fromRoute = `${params.fromIata}-${params.toIata}`
+                let fromDate = format_date(params.fromDate, 'tink');
+                let toRoute = `${params.toIata}-${params.fromIata}`
+                let toDate = format_date(params.toDate, 'tink');
+                return `https://www.tinkoff.ru/travel/flights/multi-way/${fromRoute}/${fromDate}/${toRoute}/${toDate}/?adults=2&children=0&infants=0&cabin=Y&composite=0`
+            }
+            const yandex = (params) => `https://travel.yandex.ru/avia/`
+            const ozon = (params) => {
+                let fromDate = format_date(params.fromDate, 'ozon')
+                let toDate = format_date(params.toDate, 'ozon')
+                let route = `${params.fromIata}${params.toIata}${params.toIata}${params.fromIata}`.toLowerCase();
+                return `https://www.ozon.ru/travel/flight/search?Children=0&Dlts=2&Infants=0&ServiceClass=ECONOMY&dates=d${fromDate}d${toDate}&route=${route}&step=search&travelSearchType=simpleAvia`
+            }
+
+            [
+                avisales,
+                kupibilet,
+                tink,
+                yandex,
+                ozon,
+            ].forEach((service, index) => {
+                let url = service(params)
+                console.log(url)
+
+
+                // let link = document.createElement('a');
+                // link.href = url;
+                // link.target = '_blank';
+                // link.click();
+
+                window.open(url, '_blank' + index)
+
+            })
+        }
+    </script>
 {% endblock %}

@@ -97,9 +97,9 @@
             {% for page in page.breadcrumbs %}
                 <li>
                     {% if loop.last %}
-                        {{ page.title }}
+                        {{ page.breadcrumbs_title }}
                     {% else %}
-                        <a href="{{ page.url }}">{{ page.title }}</a>
+                        <a href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
                     {% endif %}
                 </li>
             {% endfor %}

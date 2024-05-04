@@ -17,6 +17,7 @@ class BlogPage(BaseModel):
     desc: str | None = ""
 
     breadcrumbs: list["BlogPage"] = Field(default_factory=list)
+    breadcrumbs_title: str | None = ""
 
 
 @dataclasses.dataclass
@@ -60,19 +61,29 @@ class BlogPageStore:
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
 
-    def list_all(self):
-        return self.store.list_all()
+    def list_all(self, breadcrumbs=False, **kwargs):
+        pages = self.store.list_all(**kwargs)
+        return [self._row_to_page(page, breadcrumbs=breadcrumbs) for page in pages]
 
-    def list_where_url_in(self, urls):
+    def list_where_url_in(self, urls, breadcrumbs=False):
         placeholders = ", ".join("?" for _ in urls)
         where = f"url in ({placeholders})"
-
-        return self.store.list_all(where=where, where_params=urls, order_by="url")
+        pages = self.list_all(where=where, where_params=urls, order_by="url", breadcrumbs=breadcrumbs)
+        return pages
 
     def get_by_url(self, url) -> BlogPage:
-        page: BlogPage = self.store.first_where(url=url)
-        subpaths = generate_subpaths(page.url)
-        page.breadcrumbs = self.list_where_url_in(urls=subpaths)
+        page: BlogPage = self.list_where_url_in([url], breadcrumbs=True)[0]
+        return page
+
+    def _row_to_page(self, row_or_page, *, breadcrumbs=False):
+        page = row_or_page
+
+        if breadcrumbs:
+            subpaths = generate_subpaths(page.url)
+            page.breadcrumbs = self.list_where_url_in(urls=subpaths)
+
+        page.breadcrumbs_title = page.breadcrumbs_title or page.title
+
         return page
 
 
