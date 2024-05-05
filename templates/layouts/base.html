@@ -84,13 +84,6 @@
 
 <body class="{% if fullwidth %}{% else %}max-w-[1000px]{% endif %}">
 
-<!--
-<header class="p-1 border-b border-neutral block">
-    <a class="font-semibold hover:bg-neutral py-1 px-2 rounded" href="/">потик.ио</a> •
-    <span class="py-1 px-2 font-semibold">🚧v4.2🚧</span>
-</header>
--->
-
 <header class="text-sm breadcrumbs border-neutral border-b">
     <ul class="!pl-2">
         {% if page %}
@@ -112,7 +105,7 @@
 <main class="prose  max-w-none p-2">
     {% if page %}
         <h1>{{ page.title }}</h1>
-        <cite>{{ page.desc or '' }}</cite>
+        <cite class="block">{{ page.desc or '' }}</cite>
     {% endif %}
 
     {% block main %}{% endblock %}

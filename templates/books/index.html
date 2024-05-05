@@ -1,14 +1,25 @@
 {% extends "layouts/base.html" %}
 
+
+{% macro list_books(books) %}
+    <div class="flex flex-col gap-2">
+        {% for book in books %}
+            <div class="text-sm ">
+                <div>
+                    <a href="{{ book.url }}">{{ book.author }} — {{ book.title }}</a>
+                </div>
+                <div>{{ book.desc }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}
+
 {% block main %}
 
-    {% for book in books %}
-        <div class="text-sm">
-            <div>
-                <a href="{{ book.url }}">{{ book.author }} — {{ book.title }}</a>
-            </div>
-            <div>{{ book.desc }}</div>
-        </div>
+    <h2>Сейчас читаю</h2>
+    {{ list_books(wip_books) }}
 
-    {% endfor %}
+    <h2>Почитать позже</h2>
+    {{ list_books(wishlist_books) }}
+
 {% endblock %}

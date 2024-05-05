@@ -1,12 +1,14 @@
 import dataclasses
 import sqlite3
 from pathlib import Path
+from typing import Literal
 
 import flask
+import mistune
 from flask import Flask, render_template, send_from_directory
 from pydantic import BaseModel, Field
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
 
 
@@ -20,26 +22,18 @@ class BlogPage(BaseModel):
     breadcrumbs_title: str | None = ""
 
 
-@dataclasses.dataclass
-class Deps:
-    sqlite_conn: sqlite3.Connection
-    sqlite_cursor: sqlite3.Cursor
+class Book(BaseModel):
+    title: str | None
+    author: str | None
+    desc: str | None = ""
+    pdf: str | None = ""
+    bookmate: str | None = ""
+    summary: str | None = ""
+    title_en: str | None = ""
+    url: str | None = ""
+    status: Literal["wip", "wishlist"] = "wishlist"
 
-    @property
-    def places_table(self):
-        return SimpleStorage(self.sqlite_cursor, "travel_places")
-
-    @property
-    def books_table(self):
-        return SimpleStorage(self.sqlite_cursor, "books")
-
-    @property
-    def page_store(self):
-        return BlogPageStore(self.sqlite_cursor)
-
-    @property
-    def page(self):
-        return self.page_store.get_by_url(flask.request.path)
+    summary_html: str = ""
 
 
 def generate_subpaths(path):
@@ -85,6 +79,46 @@ class BlogPageStore:
         page.breadcrumbs_title = page.breadcrumbs_title or page.title
 
         return page
+
+
+class BookStore:
+    def __init__(self, sqlite_cursor):
+        self.sqlite_cursor = sqlite_cursor
+        self.store = SimpleStorage(self.sqlite_cursor, "books", Book)
+
+    def first_by_url(self, url):
+        book: Book = self.store.first_where(url=url)
+        book.summary_html = mistune.html(book.summary or "")
+        return book
+
+    def list_all(self) -> list[Book]:
+        return self.store.list_all()
+
+
+@dataclasses.dataclass
+class Deps:
+    sqlite_conn: sqlite3.Connection
+    sqlite_cursor: sqlite3.Cursor
+
+    @property
+    def places_table(self):
+        return SimpleStorage(self.sqlite_cursor, "travel_places")
+
+    @property
+    def books_table(self):
+        return SimpleStorage(self.sqlite_cursor, "books")
+
+    @property
+    def book_store(self):
+        return BookStore(self.sqlite_cursor)
+
+    @property
+    def page_store(self):
+        return BlogPageStore(self.sqlite_cursor)
+
+    @property
+    def page(self):
+        return self.page_store.get_by_url(flask.request.path)
 
 
 def render_pages(app, deps: Deps):
@@ -152,21 +186,29 @@ def create_app():
 
     @app.route("/books")
     def books_page():
-        books = deps.books_table.list_all()
+        wip_books = []
+        wishlist_books = []
+
+        books = deps.book_store.list_all()
+        for book in books:
+            if book.status == "wip":
+                wip_books.append(book)
+            if book.status == "wishlist":
+                wishlist_books.append(book)
 
         return render_template(
             f"books/index.html",
             page=deps.page,
-            books=books,
+            wip_books=wip_books,
+            wishlist_books=wishlist_books,
         )
 
     @app.route("/books/<book_key>")
     def book_page(book_key):
-        book = deps.books_table.first_where(url=flask.request.path)
+        book = deps.book_store.first_by_url(url=flask.request.path)
 
-        # noinspection PyUnresolvedReferences
         return render_template(
-            f"books/{book_key}.html",
+            f"books/book.html",
             page=deps.page,
             book=book,
         )

@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+
+{% block main %}
+    {% if book.title_en %}
+        <cite class="block">Eng: {{ book.title_en }}</cite>
+    {% endif %}
+
+    {% if book.pdf %}
+        <a class="btn btn-sm" href="{{ book.pdf }}">pdf</a>
+    {% endif %}
+
+    <h2>Чем интересна</h2>
+    <div>
+        {{ book.desc }}
+    </div>
+
+    <h2>Саммари</h2>
+    <div>
+        {{ book.summary_html | safe }}
+    </div>
+
+{% endblock %}
