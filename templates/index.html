@@ -2,12 +2,14 @@
 
 {% block main %}
 
-    {% for page in pages %}
-        <div>
-            <a href="{{ page.url }}">{{ page.title }}</a>
-            -
-            {{ page.desc | lower }}
-        </div>
-    {% endfor %}
+    <div class="flex flex-col gap-2">
+        {% for page in pages %}
+            <div>
+                <a href="{{ page.url }}">{{ page.title }}</a>
+                -
+                {{ page.desc | lower }}
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

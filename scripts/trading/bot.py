@@ -28,27 +28,22 @@ TICKERS = [
     "AMEZ",
     "APTK",
     "AQUA",
-    # "ASTR",
     "BANE",
     "BANEP",
     "BELU",
     "BLNG",
     "BSPB",
-    # "CARM",
     "CBOM",
     "CHMF",
     "CHMK",
     "CIAN",
     "CNTL",
     "CNTLP",
-    # "DELI",
-    # "DIAS",
     "DSKY",
     "DVEC",
     "ELFV",
     "ENPG",
     "ETLN",
-    # "EUTR",
     "FEES",
     "FESH",
     "FIXP",
@@ -61,7 +56,6 @@ TICKERS = [
     "GMKN",
     "GTRK",
     "HHRU",
-    # "HNFG",
     "HYDR",
     "IRAO",
     "IRKT",
@@ -83,7 +77,6 @@ TICKERS = [
     "LSRG",
     "MAGN",
     "MDMG",
-    # "MGKL",
     "MGNT",
     "MGTSP",
     "MOEX",
@@ -139,10 +132,8 @@ TICKERS = [
     "SMLT",
     "SNGS",
     "SNGSP",
-    # "SOFL",
     "SPBE",
     "SVAV",
-    # "SVCB",
     "TATN",
     "TATNP",
     "TCSG",
@@ -153,7 +144,6 @@ TICKERS = [
     "TRMK",
     "TRNFP",
     "TTLK",
-    # "UGLD",
     "UNAC",
     "UNKL",
     "UPRO",
@@ -166,6 +156,16 @@ TICKERS = [
     "WUSH",
     "YAKG",
     "YNDX",
+    "ASTR",
+    "CARM",
+    "DELI",
+    "DIAS",
+    "EUTR",
+    "HNFG",
+    "MGKL",
+    "SOFL",
+    "SVCB",
+    "UGLD",
 ]
 
 
@@ -211,13 +211,17 @@ class ShareAnalysis:
 class TradingViewService:
     exchange = "MOEX"
 
-    def get_analysis_for_tickers(self, tickers: list[str]) -> dict[str, ShareAnalysis]:
+    def make_ticker_w_exchange(self, tickers):
         tickers_w_exchange = []
         for ticker in tickers:
-            if ticker.startswith(self.exchange):
+            if ticker.startswith(self.exchange + ':'):
                 tickers_w_exchange.append(ticker)
             else:
                 tickers_w_exchange.append(f"{self.exchange}:{ticker}")
+        return tickers_w_exchange
+
+    def get_analysis_for_tickers(self, tickers: list[str]) -> dict[str, ShareAnalysis]:
+        tickers_w_exchange = self.make_ticker_w_exchange(tickers)
 
         month_analysis = get_multiple_analysis(
             screener="russia",

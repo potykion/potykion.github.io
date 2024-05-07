@@ -156,10 +156,11 @@ def create_app():
     def index_page():
         return render_template(
             "index.html",
-            pages=deps.page_store.list_where_url_in(["/recipes", "/travel", "/books"]),
+            pages=deps.page_store.list_all(where="include_in_index=1"),
             page=deps.page,
         )
 
+    # region recipes
     @app.route("/recipes")
     def recipes_page():
         return render_template(
@@ -175,6 +176,9 @@ def create_app():
             page=deps.page,
         )
 
+    # endregion recipes
+
+    # region travel
     @app.route("/travel")
     def travel_page():
         places = deps.places_table.list_all()
@@ -184,6 +188,9 @@ def create_app():
             places=places,
         )
 
+    # endregion travel
+
+    # region books
     @app.route("/books")
     def books_page():
         wip_books = []
@@ -212,6 +219,29 @@ def create_app():
             page=deps.page,
             book=book,
         )
+
+    # endregion books
+
+    # region beer
+    @app.route("/beer")
+    def beer_page():
+        return render_template("beer/index.html", page=deps.page)
+
+    # endregion beer
+
+    # region money
+    @app.route("/money")
+    def money_page():
+        return render_template("money/index.html", page=deps.page)
+
+    # endregion money
+
+    # region wishlist
+    @app.route("/wishlist")
+    def wishlist_page():
+        return render_template("wishlist/index.html", page=deps.page)
+
+    # endregion wishlist
 
     render_pages(app, deps)
 
