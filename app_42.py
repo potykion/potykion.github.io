@@ -243,6 +243,14 @@ def create_app():
 
     # endregion wishlist
 
+
+    # region wishlist
+    @app.route("/mu")
+    def mu_page():
+        return render_template("mu/index.html", page=deps.page)
+
+    # endregion wishlist
+
     render_pages(app, deps)
 
     return app
