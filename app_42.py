@@ -11,6 +11,7 @@ from pydantic import BaseModel, Field
 
 from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.tools import ToolStore, ToolTag, ToolType
 
 
 class Game(BaseModel):
@@ -148,6 +149,10 @@ class Deps:
     def game_store(self):
         return GameStore(self.sqlite_cursor)
 
+    @property
+    def tool_store(self):
+        return ToolStore(self.sqlite_cursor)
+
 
 def render_pages(app, deps: Deps):
     print("Rendering...")
@@ -213,7 +218,7 @@ def create_app():
     # region travel
     @app.route("/travel")
     def travel_page():
-        places = deps.places_table.list_all(order_by='date desc')
+        places = deps.places_table.list_all(order_by="date desc")
         return render_template(
             f"travel/index.html",
             page=deps.page,
@@ -275,12 +280,12 @@ def create_app():
 
     # endregion wishlist
 
-    # region wishlist
+    # region mu
     @app.route("/mu")
     def mu_page():
         return render_template("mu/index.html", page=deps.page)
 
-    # endregion wishlist
+    # endregion mu
 
     # region games
     @app.route("/games")
@@ -295,6 +300,25 @@ def create_app():
         )
 
     # endregion games
+
+    # region tools
+    @app.route("/tools")
+    def tools_page():
+        tools = deps.tool_store.list_all()
+        image_tools = [tool for tool in tools if ToolTag.image_proc in tool.tags]
+        python_tools = [tool for tool in tools if ToolType.python == tool.type]
+
+        tools = set(tools) - set(image_tools) - set(python_tools)
+
+        return render_template(
+            "tools/index.html",
+            page=deps.page,
+            tools=tools,
+            image_tools=image_tools,
+            python_tools=python_tools,
+        )
+
+    # endregion tools
 
     render_pages(app, deps)
 
