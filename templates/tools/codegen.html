@@ -1,0 +1,42 @@
+{% extends "_layouts/base.html" %}
+
+{% from "_components/input.html" import input, textarea %}
+
+{% block main %}
+    <h2>route-gen</h2>
+    {{ input('slug', 'mu', id='slug') }}
+
+    {% set placeholder="""# region {slug}
+@app.route('/{slug}')
+def {slug}_page():
+  return render_template('{slug}/index.html', page=deps.page)
+
+# endregion {slug}""" %}
+
+    {{ textarea('route', id='route', readonly=True,textarea_cls='font-mono',  placeholder=placeholder) }}
+
+    <script>
+        document.querySelector('#slug').addEventListener(
+            'input', (e) => {
+                const slug = e.target.value;
+
+                let route;
+                if (!slug) {
+                    route = ''
+                } else {
+                    route = `# region ${slug}
+@app.route('/${slug}')
+def ${slug}_page():
+  return render_template("${slug}/index.html", page=deps.page)
+
+# endregion ${slug}`
+                }
+
+                document.querySelector('#route').value = route;
+            }
+        )
+    </script>
+
+{% endblock %}
+
+

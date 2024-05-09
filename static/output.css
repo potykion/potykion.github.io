@@ -135,7 +135,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -5081,6 +5081,10 @@ ul.li-minus li:before {
 
 .text-center {
   text-align: center;
+}
+
+.font-mono {
+  font-family: monospace;
 }
 
 .text-2xl {

@@ -318,6 +318,13 @@ def create_app():
             python_tools=python_tools,
         )
 
+    @app.route("/tools/codegen")
+    def codegen_page():
+        return render_template(
+            "tools/codegen.html",
+            page=deps.page,
+        )
+
     # endregion tools
 
     render_pages(app, deps)
