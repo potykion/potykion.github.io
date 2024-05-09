@@ -4,10 +4,9 @@
 
     <div class="flex flex-col gap-2">
         {% for page in pages %}
-            <div>
-                <a href="{{ page.url }}">{{ page.title }}</a>
-                -
-                {{ page.desc | lower }}
+            <div class="text-sm">
+                <div><a href="{{ page.url }}">{{ page.title }}</a></div>
+                <div>{{ page.desc }}</div>
             </div>
         {% endfor %}
     </div>

@@ -27,7 +27,7 @@
         {% for place in places %}
             <span {% if place.comment %}title="{{ place.comment }}"
                   class="border-b-2 border-dotted cursor-help border-neutral"{% endif %}>
-                {{ place.city }} ({{ place.date }})
+                {{ place.city }} ({{ place.date[:7] }})
             </span>
             {% if not loop.last %}•{% endif %}
         {% endfor %}

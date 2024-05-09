@@ -1,4 +1,5 @@
 import dataclasses
+import datetime
 import sqlite3
 from pathlib import Path
 from typing import Literal
@@ -10,6 +11,29 @@ from pydantic import BaseModel, Field
 
 from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
+
+
+class Game(BaseModel):
+    id: int
+    title: str
+    img: str
+    genre: str
+    steam: str
+    review: str
+    played_date: datetime.date
+
+
+class GameStore:
+    def __init__(self, sqlite_cursor: sqlite3.Cursor):
+        self.sqlite_cursor = sqlite_cursor
+        self.store = SimpleStorage(sqlite_cursor, "games", Game)
+
+    def list_all(self, order_by=None):
+        return self.store.list_all(order_by=order_by)
+
+    def get_current(self):
+        raw_game = self.sqlite_cursor.execute("select * from games order by played_date desc ").fetchone()
+        return Game(**raw_game)
 
 
 class BlogPage(BaseModel):
@@ -120,6 +144,10 @@ class Deps:
     def page(self):
         return self.page_store.get_by_url(flask.request.path)
 
+    @property
+    def game_store(self):
+        return GameStore(self.sqlite_cursor)
+
 
 def render_pages(app, deps: Deps):
     print("Rendering...")
@@ -147,6 +175,10 @@ def create_app():
         sqlite_conn=(sqlite_conn := sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)),
         sqlite_cursor=sqlite_conn.cursor(),
     )
+
+    @app.template_filter("render_md")
+    def render_md(md):
+        return mistune.html(md)
 
     @app.route("/<path:path>")
     def serve_file(path):
@@ -181,7 +213,7 @@ def create_app():
     # region travel
     @app.route("/travel")
     def travel_page():
-        places = deps.places_table.list_all()
+        places = deps.places_table.list_all(order_by='date desc')
         return render_template(
             f"travel/index.html",
             page=deps.page,
@@ -243,13 +275,26 @@ def create_app():
 
     # endregion wishlist
 
-
     # region wishlist
     @app.route("/mu")
     def mu_page():
         return render_template("mu/index.html", page=deps.page)
 
     # endregion wishlist
+
+    # region games
+    @app.route("/games")
+    def games_page():
+        games = deps.game_store.list_all(order_by="played_date desc")
+        current = deps.game_store.get_current()
+        return render_template(
+            "games/index.html",
+            page=deps.page,
+            games=games,
+            current=current,
+        )
+
+    # endregion games
 
     render_pages(app, deps)
 
