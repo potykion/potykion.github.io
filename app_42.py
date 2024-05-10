@@ -306,6 +306,7 @@ def create_app():
     def tools_page():
         tools = deps.tool_store.list_all()
         image_tools = [tool for tool in tools if ToolTag.image_proc in tool.tags]
+        ai_tools = [tool for tool in tools if ToolTag.ai in tool.tags]
         python_tools = [tool for tool in tools if ToolType.python == tool.type]
 
         tools = set(tools) - set(image_tools) - set(python_tools)
@@ -315,6 +316,7 @@ def create_app():
             page=deps.page,
             tools=tools,
             image_tools=image_tools,
+            ai_tools=ai_tools,
             python_tools=python_tools,
         )
 
@@ -330,6 +332,15 @@ def create_app():
         )
 
     # endregion tools
+
+    # region drafts
+    @app.route("/drafts/<key>")
+    def drafts_page(key):
+        return render_template(
+            f"_drafts/{key}.html",
+        )
+
+    # endregion drafts
 
     render_pages(app, deps)
 

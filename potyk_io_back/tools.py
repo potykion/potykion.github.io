@@ -8,6 +8,7 @@ from potyk_io_back.lazy import SimpleStorage
 
 class ToolTag(enum.StrEnum):
     image_proc = "image-proc"
+    ai = "ai"
 
 
 class ToolType(enum.StrEnum):

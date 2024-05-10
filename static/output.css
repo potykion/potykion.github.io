@@ -5871,6 +5871,18 @@ ul.li-minus li:before {
     height: 100%;
   }
 
+  .md\:w-32 {
+    width: 8rem;
+  }
+
+  .md\:w-48 {
+    width: 12rem;
+  }
+
+  .md\:w-52 {
+    width: 13rem;
+  }
+
   .md\:min-w-64 {
     min-width: 16rem;
   }
@@ -5925,6 +5937,10 @@ ul.li-minus li:before {
 
   .md\:gap-2 {
     gap: 0.5rem;
+  }
+
+  .md\:gap-4 {
+    gap: 1rem;
   }
 
   .md\:p-2 {
