@@ -6,10 +6,10 @@ import sqlite3
 import pandas as pd
 import tradingview_ta
 from pydantic import BaseModel
-from sklearn.linear_model import LinearRegression
-from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression, ElasticNet
+from sklearn.svm import SVR
 from tradingview_ta import get_multiple_analysis, Interval
-from yfinance import ticker
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.lazy import SimpleStorage
@@ -149,20 +149,33 @@ def predict(repo: AnalysisRepo):
     X = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_train],
         columns=indicators,
-    )
+    ).fillna(0)
     y = pd.DataFrame([anal.y for anal in analysis_to_train], columns=["change_next"])
-    model = LinearRegression()
-    model.fit(X, y)
-
     X_predict = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_predict],
         columns=indicators,
-    )
+    ).fillna(0)
 
-    predictions = model.predict(X_predict)
+    models = [
+        ElasticNet(),
+        RandomForestRegressor(),
+        SVR(),
+    ]
 
-    for anal, prediction in zip(analysis_to_predict, predictions):
-        anal.change_predict = prediction
+    predictions = []
+    for model in models:
+        model.fit(X, y)
+
+        prediction = model.predict(X_predict)
+        if isinstance(model, LinearRegression):
+            prediction = prediction[:, 0]
+
+        predictions.append(prediction.tolist())
+
+    predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
+
+    for index, anal in enumerate(analysis_to_predict):
+        anal.change_predict = predictions[index]
         sqlite_cursor.execute(
             "update ta_indicators_1d set change_predict = ? where id = ?", (anal.change_predict, anal.id)
         )
@@ -174,6 +187,6 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    # load_sample(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    predict()
+    load_sample(AnalysisRepo(sqlite_cursor))
+    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    predict(AnalysisRepo(sqlite_cursor))

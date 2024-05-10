@@ -35,6 +35,11 @@ class SimpleStorage:
         where_params: list | tuple = (),
         order_by=None,
     ) -> list:
+        if not where_params:
+            where_params = ()
+        if not isinstance(where_params, tuple):
+            where_params = (where_params,)
+
         q = f"select * from {self.table}"
         if where is not None:
             q += f" where {where}"
