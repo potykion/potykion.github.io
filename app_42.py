@@ -318,8 +318,12 @@ def create_app():
             python_tools=python_tools,
         )
 
-    @app.route("/tools/codegen")
+    @app.route("/tools/codegen", methods=["GET", "POST"])
     def codegen_page():
+        if flask.request.method == "POST":
+            md = flask.request.form["md"]
+            return mistune.escape(mistune.html(md))
+
         return render_template(
             "tools/codegen.html",
             page=deps.page,
