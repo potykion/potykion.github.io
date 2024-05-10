@@ -1,5 +1,5 @@
 import sqlite3
-from typing import Type
+from typing import Type, Any, Callable
 
 from pydantic import BaseModel
 
@@ -10,11 +10,22 @@ class SimpleStorage:
         sqlite_cur: sqlite3.Cursor,
         table: str,
         model: Type[BaseModel] | None = None,
+        model_factory: Callable[[sqlite3.Row], Any] | None = None,
     ) -> None:
         self.sqlite_cur = sqlite_cur
         self.table = table
         self.model = model
+        self.model_factory = model_factory
         self.sqlite_cur.row_factory = sqlite3.Row
+
+    def fetch_all(self, q, params=None):
+        return self.sqlite_cur.execute(q, params).fetchall()
+
+    def fetch_one(self, q, params=None):
+        return self.sqlite_cur.execute(q, params).fetchone()
+
+    def scalar(self, q, params=None):
+        return self.fetch_one(q, params)[0]
 
     def list_all(
         self,
@@ -29,9 +40,14 @@ class SimpleStorage:
             q += f" where {where}"
         if order_by is not None:
             q += f" order by {order_by}"
+
         rows = self.sqlite_cur.execute(q, where_params).fetchall()
+
         if self.model:
             return [self.model(**row) for row in rows]
+        if self.model_factory:
+            return [self.model_factory(row) for row in rows]
+
         return rows
 
     def get_by_id(self, id: int) -> sqlite3.Row:

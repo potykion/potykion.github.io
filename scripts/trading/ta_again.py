@@ -12,6 +12,7 @@ from tradingview_ta import get_multiple_analysis, Interval
 from yfinance import ticker
 
 from potyk_io_back.core import BASE_DIR
+from potyk_io_back.lazy import SimpleStorage
 from scripts.trading.bot import TICKERS, TradingViewService
 
 
@@ -35,9 +36,24 @@ class Analysis(BaseModel):
         return self.change_next
 
 
+def analysis_from_row(row: sqlite3.Row) -> Analysis:
+    return Analysis(
+        id=row["id"],
+        ticker=row["ticker"],
+        dt=row["dt"],
+        interval=row["interval"],
+        indicators=json.loads(row["indicators"]),
+        change=row["change"],
+        change_next=row["change_next"],
+        change_predict=row["change_predict"],
+        sample=row["sample"],
+    )
+
+
 class AnalysisRepo:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
+        self.store = SimpleStorage(self.sqlite_cursor, "ta_indicators_1d", model_factory=analysis_from_row)
 
     def insert_samples(self, samples):
         for analysis in samples:
@@ -57,31 +73,21 @@ class AnalysisRepo:
             )
         sqlite_cursor.connection.commit()
 
-    def list_samples(self, q, params: tuple):
-        return [
-            Analysis(
-                id=id,
-                ticker=ticker,
-                dt=dt,
-                sample=sample,
-                interval=interval,
-                change=change,
-                change_next=change_next,
-            )
-            for id, ticker, dt, sample, interval, indicators, change, change_next in sqlite_cursor.execute(
-                q, params
-            ).fetchall()
-        ]
+    def list_all(self, *, where: str = None, where_params: tuple = None):
+        return self.store.list_all(where=where, where_params=where_params)
 
-    def list_by_sample(self, sample):
-        return self.list_samples(
-            'select id, ticker, dt, sample, "interval", indicators, change, change_next from ta_indicators_1d where sample = ?',
-            (sample,),
-        )
+    def fetch_one(self, q, params=None):
+        return self.store.fetch_one(q, params)
+
+    def scalar(self, q, params=None):
+        return self.store.scalar(q, params)
+
+    def fetch_all(self, q, params=None):
+        return self.store.fetch_all(q, params)
 
 
-def load_sample(sqlite_cursor, repo: AnalysisRepo):
-    last_sample = sqlite_cursor.execute("select max(sample) from ta_indicators_1d").fetchone()[0] or 0
+def load_sample(repo: AnalysisRepo):
+    last_sample = repo.scalar("select max(sample) from ta_indicators_1d") or 0
 
     now = datetime.datetime.now()
 
@@ -111,42 +117,15 @@ def load_sample(sqlite_cursor, repo: AnalysisRepo):
     repo.insert_samples(analysis_samples)
 
 
-def set_change_next():
-    last_sample = sqlite_cursor.execute("select max(sample) from ta_indicators_1d").fetchone()[0] or 0
+def set_change_next(sqlite_cursor, repo: AnalysisRepo):
+    last_sample = repo.scalar("select max(sample) from ta_indicators_1d") or 0
 
     for sample in range(last_sample):
-        sample_analysis = [
-            Analysis(
-                id=id,
-                ticker=ticker,
-                dt=dt,
-                sample=sample,
-                interval=interval,
-                change=change,
-                change_next=change_next,
-            )
-            for id, ticker, dt, sample, interval, indicators, change, change_next in sqlite_cursor.execute(
-                'select id, ticker, dt, sample, "interval", indicators, change, change_next from ta_indicators_1d where sample = ? ',
-                sample,
-            ).fetchall()
-        ]
+        sample_analysis = repo.list_all(where="sample = ?", where_params=(sample,))
         if all(anal.change_next for anal in sample_analysis):
             continue
 
-        next_sample_analysis = [
-            Analysis(
-                ticker=ticker,
-                dt=dt,
-                sample=sample,
-                interval=interval,
-                change=change,
-                change_next=change_next,
-            )
-            for ticker, dt, sample, interval, indicators, change, change_next in sqlite_cursor.execute(
-                'select ticker, dt, sample, "interval", indicators, change, change_next from ta_indicators_1d where sample = ? ',
-                sample + 1,
-            ).fetchall()
-        ]
+        next_sample_analysis = repo.list_all(where="sample = ?", where_params=(sample + 1,))
         if not next_sample_analysis:
             break
 
@@ -161,36 +140,10 @@ def set_change_next():
         sqlite_cursor.connection.commit()
 
 
-def predict():
-    analysis_to_train = [
-        Analysis(
-            id=id,
-            ticker=ticker,
-            dt=dt,
-            sample=sample,
-            interval=interval,
-            change=change,
-            change_next=change_next,
-        )
-        for id, ticker, dt, sample, interval, indicators, change, change_next in sqlite_cursor.execute(
-            'select id, ticker, dt, sample, "interval", indicators, change, change_next from ta_indicators_1d where change_next is not null ',
-        ).fetchall()
-    ]
+def predict(repo: AnalysisRepo):
+    analysis_to_train = repo.list_all(where="change_next is not null")
 
-    analysis_to_predict = [
-        Analysis(
-            id=id,
-            ticker=ticker,
-            dt=dt,
-            sample=sample,
-            interval=interval,
-            change=change,
-            change_next=change_next,
-        )
-        for id, ticker, dt, sample, interval, indicators, change, change_next in sqlite_cursor.execute(
-            'select id, ticker, dt, sample, "interval", indicators, change, change_next from ta_indicators_1d where change_next is null ',
-        ).fetchall()
-    ]
+    analysis_to_predict = repo.list_all(where="change_next is null ")
 
     indicators = tradingview_ta.TA_Handler.indicators
     X = pd.DataFrame(
@@ -222,5 +175,5 @@ if __name__ == "__main__":
 
     # run at 5 pm every day
     # load_sample(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    set_change_next()
-    # predict()
+    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    predict()
