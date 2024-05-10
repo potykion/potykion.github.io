@@ -114,7 +114,7 @@ def load_sample(sqlite_cursor, repo: AnalysisRepo):
 def set_change_next():
     last_sample = sqlite_cursor.execute("select max(sample) from ta_indicators_1d").fetchone()[0] or 0
 
-    for sample in last_sample:
+    for sample in range(last_sample):
         sample_analysis = [
             Analysis(
                 id=id,
@@ -221,6 +221,6 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    # load_sample(sqlite_cursor)
-    # set_change_next()
+    # load_sample(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    set_change_next()
     # predict()
