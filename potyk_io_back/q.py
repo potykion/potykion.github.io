@@ -17,23 +17,17 @@ class Q:
     )
     q = BookQ(sqlite_cur)
 
-    q.q(...)
-    q.q_all(...)
     q.select_all(sql)
     q.select_all(sql, as=...)
     q.select_one(sql)
     q.select_val(sql)
-    q.sel_all(...)
-    q.sel_val(...)
-    q.val(...)
 
     q.execute(sql)
     q.execute(sql, commit=True)
     q.commit(sql)
     with q.commit_after():
-      q.exec(...)
-      q.exec(...)
-    ---
+      q.execute(...)
+      q.execute(...)
 
     class BookQ:
       def __init__(sqlite_cur):
@@ -43,8 +37,7 @@ class Q:
         return self.q.select_all('select * from books where status = "wip"')
 
     book_q.q.select_all('select * from books')
-    book_q.q.val('select count(*) from books')
-
+    book_q.q.select_val('select count(*) from books')
     """
 
     def __init__(
@@ -91,20 +84,14 @@ class Q:
         row = self._apply_as(row, as_)
         return row
 
-    one = select_one
-
     def select_val(self, sql, params=()) -> Any:
         return self.sqlite_cur.execute(sql, params).fetchone()[0]
-
-    val = select_val
 
     def execute(self, sql, params=(), commit=False):
         self.sqlite_cur.execute(sql, params)
 
         if commit:
             self.commit()
-
-    exec = execute
 
     def commit(self):
         self.sqlite_cur.connection.commit()
