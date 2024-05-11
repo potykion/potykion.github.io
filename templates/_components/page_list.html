@@ -1,0 +1,11 @@
+{% macro page_list(pages) %}
+    <div class="flex flex-col gap-2">
+        {% for page in pages %}
+            <div class="text-sm">
+                <div><a href="{{ page.url }}">{{ page.title }}</a></div>
+                <div>{{ page.desc }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endmacro %}

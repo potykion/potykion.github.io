@@ -1,10 +1,7 @@
 {% extends "_layouts/base.html" %}
 
-{% block breadcrumbs %}
-    <li>Рецептики</li>
-{% endblock %}
+{% from '_components/page_list.html' import page_list %}
 
 {% block main %}
-    <h2>Завтраки</h2>
-    <div><a href="/recipes/banh-mi">Бань Ми</a> - вьетнамский сендвич на домашний манер</div>
+    {{ page_list(recipe_pages) }}
 {% endblock %}

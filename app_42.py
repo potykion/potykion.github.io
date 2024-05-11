@@ -5,12 +5,15 @@ from pathlib import Path
 from typing import Literal
 
 import flask
+import frontmatter
 import mistune
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, render_template_string
+from jinja2 import TemplateNotFound
 from pydantic import BaseModel, Field
 
 from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.q import Q
 from potyk_io_back.tools import ToolStore, ToolTag, ToolType
 
 
@@ -79,6 +82,7 @@ class BlogPageStore:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
+        self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
 
     def list_all(self, breadcrumbs=False, **kwargs):
         pages = self.store.list_all(**kwargs)
@@ -200,18 +204,36 @@ def create_app():
     # region recipes
     @app.route("/recipes")
     def recipes_page():
+        recipe_pages = deps.page_store.q.select_all("select * from blog_pages where url like '/recipes/%'")
+
         return render_template(
             "recipes/index.html",
             page=deps.page,
+            recipe_pages=recipe_pages,
         )
 
     @app.route("/recipes/<recipe_key>")
     def recipe_page(recipe_key):
-        # noinspection PyUnresolvedReferences
-        return render_template(
-            f"recipes/{recipe_key}.html",
-            page=deps.page,
+        try:
+            # noinspection PyUnresolvedReferences
+            return render_template(
+                f"recipes/{recipe_key}.html",
+                page=deps.page,
+            )
+        except TemplateNotFound:
+            return _render_md_as_html_template(
+                f"recipes/{recipe_key}.md",
+                page=deps.page,
+            )
+
+    def _render_md_as_html_template(template, **kwargs):
+        md = render_template(template)
+        md = frontmatter.loads(md).content
+        html = render_template_string(
+            '{% extends "_layouts/base.html" %}{% block main %}' + render_md(md) + "{% endblock %}",
+            **kwargs,
         )
+        return html
 
     # endregion recipes
 
