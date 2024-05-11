@@ -68,45 +68,33 @@ class Q:
     def factory(
         cls,
         select_all_as: As | None = None,
+        select_one_as: As | None = None,
     ):
         def new(
             sqlite_conn_or_cursor: sqlite3.Connection | sqlite3.Cursor,
         ):
-            return cls(sqlite_conn_or_cursor, select_all_as=select_all_as)
+            return cls(
+                sqlite_conn_or_cursor,
+                select_all_as=select_all_as,
+                select_one_as=select_one_as,
+            )
 
         return new
 
-    def select_all(self, sql, as_: As | None = None) -> list:
-        rows = self.sqlite_cur.execute(sql).fetchall()
+    def select_all(self, sql, params=(), as_: As | None = None) -> list:
+        rows = self.sqlite_cur.execute(sql, params).fetchall()
         rows = self._apply_as(rows, as_)
         return rows
 
-    def _apply_as(self, row_or_rows, as_: As | None = None):
-        as_ = as_ or self._select_all_as
-        if not as_:
-            return row_or_rows
-
-        is_func = inspect.isfunction(as_)
-        is_list = isinstance(row_or_rows, (list, tuple))
-
-        if is_func and is_list:
-            return [as_(row) for row in row_or_rows]
-        elif is_func and not is_list:
-            return as_(row_or_rows)
-        elif not is_func and is_list:
-            return [as_(**row) for row in row_or_rows]
-        else:
-            return as_(**row_or_rows)
-
-    def select_one(self, sql, as_: As | None = None) -> Any:
-        row = self.sqlite_cur.execute(sql).fetchone()
+    def select_one(self, sql, params=(), as_: As | None = None) -> Any:
+        row = self.sqlite_cur.execute(sql, params).fetchone()
         row = self._apply_as(row, as_)
         return row
 
     one = select_one
 
-    def select_val(self, sql) -> Any:
-        return self.sqlite_cur.execute(sql).fetchone()[0]
+    def select_val(self, sql, params=()) -> Any:
+        return self.sqlite_cur.execute(sql, params).fetchone()[0]
 
     val = select_val
 
@@ -125,3 +113,20 @@ class Q:
     def commit_after(self):
         yield
         self.commit()
+
+    def _apply_as(self, row_or_rows, as_: As | None = None):
+        as_ = as_ or self._select_all_as
+        if not as_:
+            return row_or_rows
+
+        is_func = inspect.isfunction(as_)
+        is_list = isinstance(row_or_rows, (list, tuple))
+
+        if is_func and is_list:
+            return [as_(row) for row in row_or_rows]
+        elif is_func and not is_list:
+            return as_(row_or_rows)
+        elif not is_func and is_list:
+            return [as_(**row) for row in row_or_rows]
+        else:
+            return as_(**row_or_rows)
