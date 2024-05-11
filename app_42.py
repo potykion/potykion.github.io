@@ -1,5 +1,6 @@
 import dataclasses
 import datetime
+import os
 import sqlite3
 from pathlib import Path
 from typing import Literal
@@ -83,6 +84,9 @@ class BlogPageStore:
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
         self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
+
+    def list_recipe_pages(self) -> list[BlogPage]:
+        return self.q.select_all("select * from blog_pages where url like '/recipes/%'")
 
     def list_all(self, breadcrumbs=False, **kwargs):
         pages = self.store.list_all(**kwargs)
@@ -204,7 +208,7 @@ def create_app():
     # region recipes
     @app.route("/recipes")
     def recipes_page():
-        recipe_pages = deps.page_store.q.select_all("select * from blog_pages where url like '/recipes/%'")
+        recipe_pages = deps.page_store.list_recipe_pages()
 
         return render_template(
             "recipes/index.html",
@@ -345,8 +349,45 @@ def create_app():
     @app.route("/tools/codegen", methods=["GET", "POST"])
     def codegen_page():
         if flask.request.method == "POST":
-            md = flask.request.form["md"]
-            return mistune.escape(mistune.html(md))
+            action = flask.request.form["action"]
+            if action == "md_to_html":
+                md = flask.request.form["md"]
+                return mistune.escape(mistune.html(md))
+
+            if action == "sync_recipes":
+                recipes_dir = BASE_DIR / "templates" / "recipes"
+                _, __, recipe_pages = os.walk(recipes_dir)
+
+                existing_recipe_pages = {
+                    page.html_path.split("/")[-1] for page in deps.page_store.list_recipe_pages()
+                }
+
+                new_pages = []
+
+                for page in recipe_pages:
+                    fm = frontmatter.load(recipes_dir / page)
+                    title = fm.get("title")
+                    desc = fm.get("desc")
+
+                    recipe_key = os.path.basename(page)
+
+                    if recipe_key in existing_recipe_pages:
+                        continue
+
+                    new_page = BlogPage(
+                        url=f"/recipes/{recipe_key}",
+                        html_path=f"recipes/{recipe_key}.html",
+                        title=title,
+                        desc=desc,
+                    )
+                    new_pages.append(new_page)
+
+                with deps.page_store.q.commit_after():
+                    for page in new_pages:
+                        deps.page_store.q.execute(
+                            'insert into blog_pages (url, html_path, title, "desc") values (?, ?, ?, ?)',
+                            (page.url, page.html_path, page.title, page.desc)
+                        )
 
         return render_template(
             "tools/codegen.html",
