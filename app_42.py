@@ -1,6 +1,7 @@
 import dataclasses
 import datetime
 import os
+import re
 import sqlite3
 from pathlib import Path
 from typing import Literal
@@ -193,6 +194,32 @@ def create_app():
     def render_md(md):
         return mistune.html(md)
 
+    @app.template_filter("youtube_embed")
+    def youtube_embed(link: str, height: int | None = None):
+        """
+        >>> youtube_embed('https://youtu.be/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R')
+        '<iframe src="https://www.youtube.com/embed/PJPzhXXBMV8?si=5ZtyJ7ibg9Aa_j4R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        >>> youtube_embed('https://www.youtube.com/watch?v=j9cPe8Y7Rzk')
+        '<iframe src="https://www.youtube.com/embed/j9cPe8Y7Rzk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+
+        """
+
+        if re.match(r"https://youtu.be/(.+)?si=(.+)", link):
+            id = link.rsplit("/", 1)[1]
+        elif re.match(r"https://www\.youtube\.com/watch\?v=(.+)", link):
+            id = link.rsplit("=")[1]
+        elif re.match('https://www.youtube.com/embed/(.+)?si=(.+)', link):
+            id = link.rsplit("/", 1)[1]
+        else:
+            return ""
+
+        if height:
+            height_tag = f'height="{height}"'
+        else:
+            height_tag = ""
+
+        return f'<iframe {height_tag} src="https://www.youtube.com/embed/{id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+
     @app.route("/<path:path>")
     def serve_file(path):
         return flask.send_file(path)
@@ -356,23 +383,28 @@ def create_app():
 
             if action == "sync_recipes":
                 recipes_dir = BASE_DIR / "templates" / "recipes"
-                _, __, recipe_pages = os.walk(recipes_dir)
+                _, __, recipe_pages = next(os.walk(recipes_dir))
 
                 existing_recipe_pages = {
-                    page.html_path.split("/")[-1] for page in deps.page_store.list_recipe_pages()
+                    page.html_path.split("/")[-1].rsplit(".", 1)[0]
+                    for page in deps.page_store.list_recipe_pages()
                 }
+                existing_recipe_pages |= {"index"}
 
                 new_pages = []
 
                 for page in recipe_pages:
-                    fm = frontmatter.load(recipes_dir / page)
-                    title = fm.get("title")
-                    desc = fm.get("desc")
-
-                    recipe_key = os.path.basename(page)
+                    recipe_key = page.rsplit(".", 1)[0]
 
                     if recipe_key in existing_recipe_pages:
                         continue
+
+                    fm = frontmatter.load(recipes_dir / page)
+                    title = fm.get("title")
+                    if not title:
+                        raise ValueError(f"{page} has no title!")
+
+                    desc = fm.get("desc")
 
                     new_page = BlogPage(
                         url=f"/recipes/{recipe_key}",
@@ -386,8 +418,10 @@ def create_app():
                     for page in new_pages:
                         deps.page_store.q.execute(
                             'insert into blog_pages (url, html_path, title, "desc") values (?, ?, ?, ?)',
-                            (page.url, page.html_path, page.title, page.desc)
+                            (page.url, page.html_path, page.title, page.desc),
                         )
+
+                return "ok"
 
         return render_template(
             "tools/codegen.html",

@@ -110,8 +110,8 @@ class Q:
 
     val = select_val
 
-    def execute(self, sql, commit=False):
-        self.sqlite_cur.execute(sql)
+    def execute(self, sql, params=(), commit=False):
+        self.sqlite_cur.execute(sql, params)
 
         if commit:
             self.commit()

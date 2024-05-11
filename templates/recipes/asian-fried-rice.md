@@ -23,7 +23,7 @@ desc: 'Наипростейшая азиаточка: тупа все что е�
 
 ## Приготовление 
 
-{{ youtube_embed('https://www.youtube.com/watch?v=JVuRTRrnIkw') }}
+{{ 'https://www.youtube.com/watch?v=JVuRTRrnIkw' | youtube_embed }}
 
 
 - Варим рис 

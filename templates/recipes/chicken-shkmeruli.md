@@ -18,7 +18,7 @@ desc: Курица в чесночно-сливочном соусе со све
 
 ## Приготовление
 
-{{ youtube_embed('https://youtu.be/YGaoLNdRNWw?si=jXX8LRr_JRRVbhGs') }}
+{{ 'https://youtu.be/YGaoLNdRNWw?si=jXX8LRr_JRRVbhGs' | youtube_embed }}
 
 - Курицу солим
 - Жарим до золотистой корочки

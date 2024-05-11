@@ -41,13 +41,20 @@ def ${slug}_page():
 
     <h2>md-renderer</h2>
 
-    <form hx-post hx-target="#html" >
+    <form hx-post hx-target="#html">
 
         {{ textarea('md', id='md',textarea_cls='font-mono',  placeholder='# Title', name='md', required=True) }}
         <div class="flex justify-end pt-2">
             <button class="btn" type="submit" name="action" value="md_to_html">md > html</button>
         </div>
         {{ textarea('html', id='html', readonly=True,textarea_cls='font-mono',  placeholder='<h1>Title</h1>') }}
+    </form>
+
+    <h2>sync recipes</h2>
+
+    <form hx-post hx-target="#result">
+        <button class="btn" type="submit" name="action" value="sync_recipes">sync</button>
+        <div>result: <span id="result"></span></div>
     </form>
 
     {{ htmx() }}
