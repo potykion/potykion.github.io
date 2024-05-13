@@ -3,12 +3,11 @@
 {% block main %}
 
     <ul>
-    <li><a href="#cal">Пивной календарь</a></li>
-    <li><a href="#drink">Где пить?</a></li>
-    <li><a href="#buy">Где покупать?</a></li>
+        <li><a href="#cal">Пивной календарь</a></li>
+        <li><a href="#drink">Где пить?</a></li>
+        <li><a href="#buy">Где покупать?</a></li>
+        <li><a href="#craft">Пару слов о крафте</a></li>
     </ul>
-
-
 
     <h2 id="cal">Пивной календарь</h2>
     <ul>
@@ -159,11 +158,120 @@
                 </li>
 
             </ul>
-
         </li>
     </ul>
 
+    <h2 class="!mb-0" id="breweries">Пивоварни</h2>
+    <cite class="block mb-2">Любимые и заинтересовавшие</cite>
 
+    {% for brewery in breweries %}
+        <div class="flex gap-4 items-center border border-neutral rounded-lg p-2 md:p-4 ">
+            <div>
+                <img src="{{ url_for('static', filename= brewery.img) }}">
+            </div>
+            <div>
+                <div class="text-xl font-bold">{{ brewery.title }}</div>
+                <div><span class="text-sm font-semibold">Страна:</span> {{ brewery.country }} </div>
+                <div><span class="text-sm font-semibold">Стили:</span> {{ brewery.styles | join(' • ') }} </div>
+                <div>
+                    <a class="btn btn-warning btn-sm" href="{{ brewery.untappd_url }}">Untappd</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-2 md:py-4">
+            {% for beer in brewery.beers %}
+                <button class="beer blue-border-hover-link" data-store="{{ beer.stores | join(' ') }}"
+                        title="{{ beer.title }}"
+
+                        onclick="modal_beer_{{ beer.id }}.showModal()"
+                ><img class="w-[50px]  "
+                      src="{{ url_for('static', filename=beer.img) }}"></button>
+
+
+                <dialog id="modal_beer_{{ beer.id }}" class="modal">
+                    <div class="modal-box max-w-screen-lg relative">
+                        <form method="dialog">
+                            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+
+                        <div class="flex flex-col md:flex-row ">
+                            <div class="aspect-square md:min-w-64 flex justify-center items-center">
+                                <img class="max-h-80 md:h-full w-auto" src="{{ url_for('static', filename=beer.img) }}">
+                            </div>
+                            <div>
+
+
+                                <h3>{{ beer.title }}</h3>
+
+                                <div class="flex flex-wrap gap-2">
+                                    <a target="_blank"
+                                       class="btn btn-sm btn-warning"
+                                       href="{{ beer.untappd_url }}">Untappd</a>
+
+                                </div>
+
+                                <h4>Цены</h4>
+
+                                <div class="flex flex-wrap gap-2">
+
+                                    {% for price in beer.last_prices %}
+                                        <a target="_blank"
+                                           class="btn btn-sm " href="{{ price.url }}">{{ price.store_label }}
+                                            - {{ price.price }} ₽</a>
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="modal-action ">
+                            <form method="dialog">
+                                <button class="btn btn-sm">Закрыть</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </dialog>
+            {% endfor %}
+
+
+        </div>
+
+    {% endfor %}
+
+    <h2 class="!mb-0" id="styles">Стили</h2>
+    <cite class="block mb-2">Такие разные и одинаковые пивасы</cite>
+
+    <div>
+        {% for style in styles %}
+            <div class="border border-neutral rounded-lg p-2 md:p-4 flex flex-col gap-1">
+                <div class="text-xl font-bold ">{{ style.title }}</div>
+                <div class="text-sm">{{ style.desc }}</div>
+                <div class="text-sm">
+                    <span class="font-semibold">Подвиды:</span>
+                    {% for style in style.sub_styles %}
+                        <span title="{{ style.desc }}" class="border-b-2 border-dotted border-neutral">{{ style.title }}</span>
+                        {% if not loop.last %}•{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <h2 id="craft">Пару слов о крафте</h2>
+
+    <figure>
+        <audio src="/templates/beer/Brыkaisya%20-%20Крафтовый%20мудак.mp3" controls class="w-full"></audio>
+        <figcaption>Brыkaisya — Крафтовый мудак</figcaption>
+    </figure>
+
+    {{ 'https://youtu.be/Q7N-khLo1xc?si=EFfGFodKDWNK8cjJ' | youtube_embed | safe }}
+
+    <div>Чем больше пью его, тем больше разочарования от него...</div>
 
 
 {% endblock %}

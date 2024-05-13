@@ -5,12 +5,20 @@ from itertools import groupby
 from typing import cast
 
 from flask import Blueprint, render_template
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, fields
 
 from potyk_io_back.core import (
     render_md_as_html,
     wrap_html_to_base_template,
 )
+
+
+class BeerStyle(BaseModel):
+    id: int
+    title: str
+    desc: str
+    parent_style: int | None = None
+    sub_styles: list[str] = Field(default_factory=list)
 
 
 class BeerStore(enum.StrEnum):
@@ -72,6 +80,7 @@ class Beer(BaseModel):
     untappd_url: str | None
     wishlist: bool
     review: str | None
+    brewery_id: int | None = None
     prices: list[BeerPrice] = Field(default_factory=list)
 
     @property
@@ -87,6 +96,16 @@ class Beer(BaseModel):
     @property
     def stores(self) -> list[BeerStore]:
         return {price.store for price in self.prices}
+
+
+class Brewery(BaseModel):
+    id: int
+    title: str
+    untappd_url: str
+    img: str
+    country: str
+    styles: list[str]
+    beers: list[Beer] = Field(default_factory=list)
 
 
 class BeerStorage:

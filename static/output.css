@@ -5079,6 +5079,10 @@ ul.li-minus li:before {
   padding-top: 0.5rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -5105,6 +5109,10 @@ ul.li-minus li:before {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .font-medium {
@@ -5871,18 +5879,6 @@ ul.li-minus li:before {
     height: 100%;
   }
 
-  .md\:w-32 {
-    width: 8rem;
-  }
-
-  .md\:w-48 {
-    width: 12rem;
-  }
-
-  .md\:w-52 {
-    width: 13rem;
-  }
-
   .md\:min-w-64 {
     min-width: 16rem;
   }
@@ -5949,6 +5945,19 @@ ul.li-minus li:before {
 
   .md\:p-6 {
     padding: 1.5rem;
+  }
+
+  .md\:p-4 {
+    padding: 1rem;
+  }
+
+  .md\:py-4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .md\:pt-4 {
+    padding-top: 1rem;
   }
 }
 

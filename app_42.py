@@ -3,6 +3,8 @@ import datetime
 import os
 import re
 import sqlite3
+from itertools import groupby
+from operator import attrgetter
 from pathlib import Path
 from typing import Literal
 
@@ -13,6 +15,7 @@ from flask import Flask, render_template, send_from_directory, render_template_s
 from jinja2 import TemplateNotFound
 from pydantic import BaseModel, Field
 
+from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle
 from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
@@ -135,6 +138,10 @@ class Deps:
     sqlite_cursor: sqlite3.Cursor
 
     @property
+    def q(self):
+        return Q(self.sqlite_cursor)
+
+    @property
     def places_table(self):
         return SimpleStorage(self.sqlite_cursor, "travel_places")
 
@@ -208,7 +215,7 @@ def create_app():
             id = link.rsplit("/", 1)[1]
         elif re.match(r"https://www\.youtube\.com/watch\?v=(.+)", link):
             id = link.rsplit("=")[1]
-        elif re.match('https://www.youtube.com/embed/(.+)?si=(.+)', link):
+        elif re.match("https://www.youtube.com/embed/(.+)?si=(.+)", link):
             id = link.rsplit("/", 1)[1]
         else:
             return ""
@@ -315,7 +322,57 @@ def create_app():
     # region beer
     @app.route("/beer")
     def beer_page():
-        return render_template("beer/index.html", page=deps.page)
+        beers = deps.q.select_all("select * from beers order by brewery_id", as_=Beer)
+
+        beer_prices = deps.q.select_all(
+            "select * from beers_prices order by beer_id",
+            as_=BeerPrice,
+        )
+        beer_prices_by_beer_id = {
+            beer_id: list(beer_id_prices)
+            for beer_id, beer_id_prices in groupby(beer_prices, lambda price: price.beer_id)
+        }
+        beers = [
+            beer.model_copy(update={"prices": beer_prices_by_beer_id.get(beer.id, [])}) for beer in beers
+        ]
+
+        beers_by_brewery = {
+            brewery_id: list(beers) for brewery_id, beers in groupby(beers, attrgetter("brewery_id"))
+        }
+        breweries: list[Brewery] = deps.q.select_all(
+            "select * from beer_breweries",
+            as_=lambda row: Brewery(
+                **{
+                    **row,
+                    "styles": list(map(str.strip, row["styles"].split(","))),
+                }
+            ),
+        )
+        breweries = [
+            brew.model_copy(update={"beers": beers_by_brewery.get(brew.id, [])}) for brew in breweries
+        ]
+
+        styles: list[BeerStyle] = deps.q.select_all(
+            "select * from beer_styles order by parent_style", as_=BeerStyle
+        )
+        parent_styles = [style for style in styles if not style.parent_style]
+        child_styles_by_parent = {
+            parent_id: list(styles)
+            for parent_id, styles in groupby(
+                [style for style in styles if style.parent_style], attrgetter("parent_style")
+            )
+        }
+        styles = [
+            style.model_copy(update={"sub_styles": child_styles_by_parent.get(style.id, [])})
+            for style in parent_styles
+        ]
+
+        return render_template(
+            "beer/index.html",
+            page=deps.page,
+            breweries=breweries,
+            styles=styles,
+        )
 
     # endregion beer
 
