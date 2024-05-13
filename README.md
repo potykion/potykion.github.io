@@ -7,7 +7,7 @@
   крошками + `blog_pages.title`, `blog_pages.desc`:
 
   ```html
-  {% extends "layouts/base.html" %}
+  {% extends "_layouts/base.html" %}
   
   {% block main %}
   <!-- Тут содержимое страницы -->

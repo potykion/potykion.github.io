@@ -10,6 +10,8 @@ from wtforms.fields.numeric import IntegerRangeField, DecimalRangeField
 from wtforms.fields.simple import StringField, BooleanField, URLField, TextAreaField
 from wtforms.validators import InputRequired
 
+from potyk_io_back.q import Q
+
 
 class PriceRange(enum.IntEnum):
     LOW = 0
@@ -65,38 +67,54 @@ class Restaurant(BaseModel):
     url: str | None
     visited: bool
     location: list[str]
-    price_range: str | PriceRange | None
+    price_range: PriceRange | str | None
     tags: list[str | RestTag]
     comment: str | None
+
+    @property
+    def price_range_str(self):
+        if self.price_range is None:
+            return "-"
+
+        if isinstance(self.price_range, str):
+            return self.price_range
+
+        if self.price_range == PriceRange.LOW:
+            return "Низкие (до 2.5к ₽)"
+        if self.price_range == PriceRange.AVG:
+            return "Средние (~ 2.5к ₽)"
+        if self.price_range == PriceRange.HIGH:
+            return "Высокие (> 2.5к ₽)"
+
+
+def rest_from_row(row: sqlite3.Row) -> Restaurant:
+
+    price_range = row["price_range"]
+    try:
+        price_range = PriceRange(int(price_range))
+    except (TypeError, ValueError):
+        pass
+
+    return Restaurant(
+        id=row["id"],
+        name=row["name"],
+        score=row["score"],
+        created=row["created"],
+        url=row["url"],
+        visited=row["visited"],
+        location=row["location"].split(","),
+        price_range=price_range,
+        tags=row["tags"].split(","),
+        comment=row["comment"],
+    )
 
 
 class RestaurantStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
-        self.sqlite_cur = sqlite_cur
+        self.q = Q(sqlite_cur, select_all_as=rest_from_row)
 
-    def list_all(self, filters=None):
-        q = "select id, name, score, created, url, visited, location, price_range, tags, comment from restaurants"
-
-        if filters is not None:
-            q += f" where {filters}"
-
-        raw_restaurants = self.sqlite_cur.execute(q).fetchall()
-        restaurants = [
-            Restaurant(
-                id=id,
-                name=name,
-                score=score,
-                created=created,
-                url=url,
-                visited=visited,
-                location=location.split(","),
-                price_range=price_range,
-                tags=tags.split(","),
-                comment=comment,
-            )
-            for id, name, score, created, url, visited, location, price_range, tags, comment in raw_restaurants
-        ]
-        return restaurants
+    def list_all(self):
+        return self.q.select_all("select * from restaurants order by score desc")
 
     def insert(self, rest: Restaurant):
         rest_values = (
@@ -110,36 +128,41 @@ class RestaurantStorage:
             ",".join(rest.tags),
             rest.comment,
         )
-        self.sqlite_cur.execute(
+        self.q.execute(
             """
                 insert into restaurants (name, score, created, url, visited, location, price_range, tags, comment)
                 values (?, ?, ?, ?, ?, ?, ?, ?, ?);
                 """,
             rest_values,
+            commit=True,
         )
-        self.sqlite_cur.connection.commit()
 
 
 class AddRestForm(FlaskForm):
-    name = StringField("Название", validators=[InputRequired()], render_kw=dict(placeholder='Тхали и Карри'))
+    name = StringField("Название", validators=[InputRequired()], render_kw=dict(placeholder="Тхали и Карри"))
     score = DecimalRangeField(
         "Оценка",
         validators=[InputRequired()],
-        render_kw={"min": 0, "max": 10, "step": 0.5, 'class': 'range-primary'},
+        render_kw={"min": 0, "max": 10, "step": 0.5, "class": "range-primary"},
         default=7.5,
     )
-    url = URLField("Ссылка", render_kw={'placeholder': 'https://yandex.ru/maps/org/tkhali_i_karri/154048393265'})
+    url = URLField(
+        "Ссылка", render_kw={"placeholder": "https://yandex.ru/maps/org/tkhali_i_karri/154048393265"}
+    )
     visited = BooleanField("Были?", default=True)
-    location = StringField("Место", validators=[InputRequired()], render_kw={'placeholder': 'Пушка'})
+    location = StringField("Место", validators=[InputRequired()], render_kw={"placeholder": "Пушка"})
     price_range = IntegerRangeField(
-        "Цены", render_kw={"min": 0, "max": 2, "steps": ["Низкие", "Средние", "Высокие"], 'class': 'range-accent'}
+        "Цены",
+        render_kw={"min": 0, "max": 2, "steps": ["Низкие", "Средние", "Высокие"], "class": "range-accent"},
     )
     tags = SelectMultipleField(
         "Теги",
         validators=[InputRequired()],
         choices=RestTag.__members__.values(),
     )
-    comment = TextAreaField("Коммент", validators=[InputRequired()], render_kw={'placeholder': 'Неплохая индийка'})
+    comment = TextAreaField(
+        "Коммент", validators=[InputRequired()], render_kw={"placeholder": "Неплохая индийка"}
+    )
 
 
 def make_restaurants_blueprint(
@@ -151,7 +174,7 @@ def make_restaurants_blueprint(
 
     @restaurants_blueprint.route("/special/where-to-eat")
     def get_where_to_eat():
-        restaurants = storage.list_all("visited = 1")
+        restaurants = storage.list_all()
         restaurants = sorted(restaurants, key=lambda r: r.score, reverse=True)
 
         return render_template(

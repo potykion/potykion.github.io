@@ -46,6 +46,7 @@ class Q:
         *,
         select_all_as: As | None = None,
         select_one_as: As | None = None,
+        table: str | None = None,
     ):
         if isinstance(sqlite_conn_or_cursor, sqlite3.Connection):
             self.sqlite_cur = sqlite_conn_or_cursor.cursor()
@@ -56,12 +57,14 @@ class Q:
 
         self._select_all_as = select_all_as
         self._select_one_as = select_one_as
+        self._table = table
 
     @classmethod
     def factory(
         cls,
         select_all_as: As | None = None,
         select_one_as: As | None = None,
+        table: str | None = None,
     ):
         def new(
             sqlite_conn_or_cursor: sqlite3.Connection | sqlite3.Cursor,
@@ -70,24 +73,34 @@ class Q:
                 sqlite_conn_or_cursor,
                 select_all_as=select_all_as,
                 select_one_as=select_one_as,
+                table=table,
             )
 
         return new
 
-    def select_all(self, sql, params=(), as_: As | None = None) -> list:
+    def list_all(self, *, table: str | None = None, as_: As | None = None):
+        table = table or self._table
+        assert table, "{table} param should be set"
+        return self.select_all(f"select * from {table}", as_=as_)
+
+    def select_all(self, sql, params=(), *, as_: As | None = None) -> list:
         rows = self.sqlite_cur.execute(sql, params).fetchall()
         rows = self._apply_as(rows, as_)
         return rows
 
-    def select_one(self, sql, params=(), as_: As | None = None) -> Any:
+    def select_one(self, sql, params=(), *, as_: As | None = None) -> Any:
         row = self.sqlite_cur.execute(sql, params).fetchone()
         row = self._apply_as(row, as_)
         return row
 
-    def select_val(self, sql, params=()) -> Any:
+    def select_val(
+        self,
+        sql,
+        params=(),
+    ) -> Any:
         return self.sqlite_cur.execute(sql, params).fetchone()[0]
 
-    def execute(self, sql, params=(), commit=False):
+    def execute(self, sql, params=(), *, commit=False):
         self.sqlite_cur.execute(sql, params)
 
         if commit:

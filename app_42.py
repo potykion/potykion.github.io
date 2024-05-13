@@ -19,6 +19,7 @@ from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle
 from potyk_io_back.core import BASE_DIR, render_md_as_html
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
+from potyk_io_back.restaurants import rest_from_row, AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.tools import ToolStore, ToolTag, ToolType
 
 
@@ -169,6 +170,10 @@ class Deps:
     def tool_store(self):
         return ToolStore(self.sqlite_cursor)
 
+    @property
+    def restaurant_store(self):
+        return RestaurantStorage(self.sqlite_cursor)
+
 
 def render_pages(app, deps: Deps):
     print("Rendering...")
@@ -196,6 +201,9 @@ def create_app():
         sqlite_conn=(sqlite_conn := sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)),
         sqlite_cursor=sqlite_conn.cursor(),
     )
+    # RuntimeError: A secret key is required to use CSRF.
+    app.config["SECRET_KEY"] = os.urandom(24)
+
 
     @app.template_filter("render_md")
     def render_md(md):
@@ -415,16 +423,19 @@ def create_app():
     @app.route("/tools")
     def tools_page():
         tools = deps.tool_store.list_all()
+
+        pinned_tools = [tool for tool in tools if tool.pinned]
         image_tools = [tool for tool in tools if ToolTag.image_proc in tool.tags]
         ai_tools = [tool for tool in tools if ToolTag.ai in tool.tags]
         python_tools = [tool for tool in tools if ToolType.python == tool.type]
 
-        tools = set(tools) - set(image_tools) - set(python_tools)
+        tools = set(tools) - set(image_tools) - set(python_tools) - set(pinned_tools)
 
         return render_template(
             "tools/index.html",
             page=deps.page,
             tools=tools,
+            pinned_tools=pinned_tools,
             image_tools=image_tools,
             ai_tools=ai_tools,
             python_tools=python_tools,
@@ -495,6 +506,35 @@ def create_app():
         )
 
     # endregion drafts
+
+    # region rest
+
+    @app.route("/rest")
+    def rest_page():
+        return render_template(
+            "rest/index.html",
+            page=deps.page,
+            restaurants=deps.restaurant_store.list_all(),
+        )
+
+    @app.route("/rest/add", methods=['GET','POST'])
+    def rest_add_page():
+        form = AddRestForm()
+
+        if form.validate_on_submit():
+            form_data = form.data
+            form_data["location"] = [form_data["location"]]
+            rest = Restaurant(**form_data)
+            deps.restaurant_store.insert(rest)
+            return flask.redirect("/rest")
+
+        return render_template(
+            "rest/add.html",
+            page=deps.page,
+            form=form,
+        )
+
+    # endregion rest
 
     render_pages(app, deps)
 

@@ -4,6 +4,7 @@ import sqlite3
 from pydantic import BaseModel, ConfigDict
 
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.q import Q
 
 
 class ToolTag(enum.StrEnum):
@@ -25,6 +26,7 @@ class Tool(BaseModel):
     desc: str
     url: str
     img: str | None
+    pinned: bool
 
 
 def tool_from_sql(tool_sql: sqlite3.Row) -> Tool:
@@ -36,14 +38,11 @@ def tool_from_sql(tool_sql: sqlite3.Row) -> Tool:
         desc=tool_sql["desc"],
         url=tool_sql["url"],
         img=tool_sql["img"],
+        pinned=tool_sql["pinned"] or False,
     )
 
 
-class ToolStore:
-    def __init__(self, sqlite_cur: sqlite3.Cursor):
-        self.sqlite_cur = sqlite_cur
-        self.store = SimpleStorage(sqlite_cur, "tech_tools")
-
-    def list_all(self) -> list[Tool]:
-        rows = self.sqlite_cur.execute("select * from tech_tools")
-        return [tool_from_sql(row) for row in rows]
+ToolStore = Q.factory(
+    select_all_as=tool_from_sql,
+    table="tech_tools",
+)

@@ -1,4 +1,4 @@
-{% extends 'templates/base.html' %}
+{% extends '_layouts/base.html' %}
 
 {% macro input(field) %}
     <label class="form-control w-full">
@@ -6,13 +6,20 @@
             <span class="label-text">{{ field.label }}</span>
         </div>
 
-        {% set cls =
-            'input input-bordered w-full' if field.type == 'StringField' or field.type == 'URLField' else
-            'select select-bordered !h-32' if field.type == 'SelectMultipleField' else
-                'range' if field.type in ('IntegerRangeField', 'DecimalRangeField') else
-                'checkbox checkbox-primary' if field.type == 'BooleanField' else
-                'textarea textarea-bordered h-48' if field.type == 'TextAreaField' else
-                '' %}
+        {% if field.type == 'StringField' or field.type == 'URLField' %}
+            {% set cls = 'input input-bordered w-full' %}
+        {% elif field.type == 'SelectMultipleField' %}
+            {% set cls = 'select select-bordered !h-48' %}
+        {% elif field.type in ('IntegerRangeField', 'DecimalRangeField') %}
+            {% set cls = 'range' %}
+        {% elif field.type == 'BooleanField' %}
+            {% set cls = 'checkbox checkbox-primary' %}
+        {% elif field.type == 'TextAreaField' %}
+            {% set cls = 'textarea textarea-bordered h-48' %}
+        {% else %}
+            {% set cls = '' %}
+        {% endif %}
+
         {% set cls = cls + ' ' + (field.render_kw['class'] or '') %}
 
         {{ field(class=cls) }}
