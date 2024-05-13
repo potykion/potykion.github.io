@@ -13,6 +13,7 @@ from tradingview_ta import get_multiple_analysis, Interval
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.q import Q
 from scripts.trading.bot import TICKERS, TradingViewService
 
 
@@ -54,6 +55,7 @@ class AnalysisRepo:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(self.sqlite_cursor, "ta_indicators_1d", model_factory=analysis_from_row)
+        self.q = Q(self.sqlite_cursor)
 
     def insert_samples(self, samples):
         for analysis in samples:
@@ -87,7 +89,7 @@ class AnalysisRepo:
 
 
 def load_sample(repo: AnalysisRepo):
-    last_sample = repo.scalar("select max(sample) from ta_indicators_1d") or 0
+    last_sample = repo.q.select_val("select max(sample) from ta_indicators_1d") or 0
 
     now = datetime.datetime.now()
 
@@ -118,7 +120,7 @@ def load_sample(repo: AnalysisRepo):
 
 
 def set_change_next(sqlite_cursor, repo: AnalysisRepo):
-    last_sample = repo.scalar("select max(sample) from ta_indicators_1d") or 0
+    last_sample = repo.q.select_val("select max(sample) from ta_indicators_1d") or 0
 
     for sample in range(last_sample):
         sample_analysis = repo.list_all(where="sample = ?", where_params=(sample,))
@@ -135,7 +137,7 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
             next_anal = next_sample_analysis_by_ticker[anal.ticker]
             anal.change_next = next_anal.change
             sqlite_cursor.execute(
-                "update ta_indicators_1d set change_next = ? where id = ?", (anal.change_next, anal.id)
+                "update ta_indicators_1d set change_next = ? where id = ?", (str(anal.change_next), anal.id)
             )
         sqlite_cursor.connection.commit()
 
