@@ -8,6 +8,8 @@ import tradingview_ta
 from pydantic import BaseModel
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression, ElasticNet
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 from sklearn.svm import SVR
 from tradingview_ta import get_multiple_analysis, Interval
 
@@ -142,7 +144,7 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
         sqlite_cursor.connection.commit()
 
 
-def predict(repo: AnalysisRepo):
+def predict(repo: AnalysisRepo, save_to_db=True):
     analysis_to_train = repo.list_all(where="change_next is not null")
 
     analysis_to_predict = repo.list_all(where="change_next is null ")
@@ -158,6 +160,8 @@ def predict(repo: AnalysisRepo):
         columns=indicators,
     ).fillna(0)
 
+    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+
     models = [
         ElasticNet(),
         RandomForestRegressor(),
@@ -165,23 +169,28 @@ def predict(repo: AnalysisRepo):
     ]
 
     predictions = []
+
     for model in models:
-        model.fit(X, y)
+        model.fit(X_train, y_train)
+
+        val_predictions = model.predict(X_val)
+
+        mse_score = mean_squared_error(y_val, val_predictions)
+        print(f'model: {model.__class__.__name__} mse: {mse_score}')
 
         prediction = model.predict(X_predict)
-        if isinstance(model, LinearRegression):
-            prediction = prediction[:, 0]
 
         predictions.append(prediction.tolist())
 
     predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
 
-    for index, anal in enumerate(analysis_to_predict):
-        anal.change_predict = predictions[index]
-        sqlite_cursor.execute(
-            "update ta_indicators_1d set change_predict = ? where id = ?", (anal.change_predict, anal.id)
-        )
-    sqlite_cursor.connection.commit()
+    if save_to_db:
+        for index, anal in enumerate(analysis_to_predict):
+            anal.change_predict = predictions[index]
+            sqlite_cursor.execute(
+                "update ta_indicators_1d set change_predict = ? where id = ?", (anal.change_predict, anal.id)
+            )
+        sqlite_cursor.connection.commit()
 
 
 if __name__ == "__main__":
@@ -189,6 +198,12 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    load_sample(AnalysisRepo(sqlite_cursor))
-    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    predict(AnalysisRepo(sqlite_cursor))
+    # print("load_sample...")
+    # load_sample(AnalysisRepo(sqlite_cursor))
+    # print("set_change_next...")
+    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    print("predict...")
+    # predict(AnalysisRepo(sqlite_cursor))
+    predict(AnalysisRepo(sqlite_cursor), save_to_db=False)
+
+    print("Done!")
