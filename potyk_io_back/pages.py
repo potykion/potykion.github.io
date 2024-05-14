@@ -12,6 +12,13 @@ class BlogPageSection(enum.StrEnum):
     work = auto()
     food = auto()
 
+    recipes_sweet = auto()
+    recipes_asian = auto()
+    recipes_main = auto()
+    recipes_breakfast = auto()
+    recipes_pasta = auto()
+    recipes_soup = auto()
+
     def to_str(self):
         match self:
             case BlogPageSection.fun:
@@ -20,6 +27,20 @@ class BlogPageSection(enum.StrEnum):
                 return "Работка"
             case BlogPageSection.food:
                 return "Еда"
+
+            case BlogPageSection.recipes_sweet:
+                return 'Сладости'
+            case BlogPageSection.recipes_asian:
+                return 'Азиатка'
+            case BlogPageSection.recipes_main:
+                return 'Основное'
+            case BlogPageSection.recipes_breakfast:
+                return 'Завтрак'
+            case BlogPageSection.recipes_pasta:
+                return 'Паста'
+            case BlogPageSection.recipes_soup:
+                return 'Суп'
+
 
 
 class BlogPage(BaseModel):
@@ -57,7 +78,7 @@ class BlogPageStore:
         return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")
 
     def list_recipe_pages(self) -> list[BlogPage]:
-        return self.q.select_all("select * from blog_pages where url like '/recipes/%'")
+        return self.q.select_all("select * from blog_pages where url like '/recipes/%' order by section")
 
     def list_all(self, breadcrumbs=False, **kwargs):
         pages = self.store.list_all(**kwargs)

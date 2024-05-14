@@ -194,11 +194,11 @@ def create_app():
     @app.route("/recipes")
     def recipes_page():
         recipe_pages = deps.page_store.list_recipe_pages()
-
+        pages_by_section = groupby_dict(recipe_pages, attrgetter("section"))
         return render_template(
             "recipes/index.html",
             page=deps.page,
-            recipe_pages=recipe_pages,
+            pages_by_section=pages_by_section,
         )
 
     @app.route("/recipes/<recipe_key>")
