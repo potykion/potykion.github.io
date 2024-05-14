@@ -5,21 +5,22 @@ import re
 import sqlite3
 from itertools import groupby
 from operator import attrgetter
-from pathlib import Path
 from typing import Literal
 
 import flask
 import frontmatter
 import mistune
-from flask import Flask, render_template, send_from_directory, render_template_string
+from flask import Flask, render_template, render_template_string
 from jinja2 import TemplateNotFound
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle
-from potyk_io_back.core import BASE_DIR, render_md_as_html
+from potyk_io_back.core import BASE_DIR
+from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.pages import BlogPageStore, BlogPage
 from potyk_io_back.q import Q
-from potyk_io_back.restaurants import rest_from_row, AddRestForm, Restaurant, RestaurantStorage
+from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.tools import ToolStore, ToolTag, ToolType
 
 
@@ -46,16 +47,6 @@ class GameStore:
         return Game(**raw_game)
 
 
-class BlogPage(BaseModel):
-    url: str
-    html_path: str
-    title: str
-    desc: str | None = ""
-
-    breadcrumbs: list["BlogPage"] = Field(default_factory=list)
-    breadcrumbs_title: str | None = ""
-
-
 class Book(BaseModel):
     title: str | None
     author: str | None
@@ -68,55 +59,6 @@ class Book(BaseModel):
     status: Literal["wip", "wishlist"] = "wishlist"
 
     summary_html: str = ""
-
-
-def generate_subpaths(path):
-    """
-    >>> generate_subpaths('/recipes/banh-mi')
-    ['/', '/recipes', '/recipes/banh-mi']
-    """
-    subpaths = ["/"]
-    current_path = ""
-    for segment in path.split("/"):
-        if segment:  # Ignore empty segments
-            current_path += "/" + segment
-            subpaths.append(current_path)
-    return subpaths
-
-
-class BlogPageStore:
-    def __init__(self, sqlite_cursor):
-        self.sqlite_cursor = sqlite_cursor
-        self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
-        self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
-
-    def list_recipe_pages(self) -> list[BlogPage]:
-        return self.q.select_all("select * from blog_pages where url like '/recipes/%'")
-
-    def list_all(self, breadcrumbs=False, **kwargs):
-        pages = self.store.list_all(**kwargs)
-        return [self._row_to_page(page, breadcrumbs=breadcrumbs) for page in pages]
-
-    def list_where_url_in(self, urls, breadcrumbs=False):
-        placeholders = ", ".join("?" for _ in urls)
-        where = f"url in ({placeholders})"
-        pages = self.list_all(where=where, where_params=urls, order_by="url", breadcrumbs=breadcrumbs)
-        return pages
-
-    def get_by_url(self, url) -> BlogPage:
-        page: BlogPage = self.list_where_url_in([url], breadcrumbs=True)[0]
-        return page
-
-    def _row_to_page(self, row_or_page, *, breadcrumbs=False):
-        page = row_or_page
-
-        if breadcrumbs:
-            subpaths = generate_subpaths(page.url)
-            page.breadcrumbs = self.list_where_url_in(urls=subpaths)
-
-        page.breadcrumbs_title = page.breadcrumbs_title or page.title
-
-        return page
 
 
 class BookStore:
@@ -204,7 +146,6 @@ def create_app():
     # RuntimeError: A secret key is required to use CSRF.
     app.config["SECRET_KEY"] = os.urandom(24)
 
-
     @app.template_filter("render_md")
     def render_md(md):
         return mistune.html(md)
@@ -241,9 +182,11 @@ def create_app():
 
     @app.route("/")
     def index_page():
+        pages = deps.page_store.list_index()
+        pages_by_section = groupby_dict(pages, attrgetter("section"))
         return render_template(
             "index.html",
-            pages=deps.page_store.list_all(where="include_in_index=1"),
+            pages_by_section=pages_by_section,
             page=deps.page,
         )
 
@@ -517,7 +460,7 @@ def create_app():
             restaurants=deps.restaurant_store.list_all(),
         )
 
-    @app.route("/rest/add", methods=['GET','POST'])
+    @app.route("/rest/add", methods=["GET", "POST"])
     def rest_add_page():
         form = AddRestForm()
 
