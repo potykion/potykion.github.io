@@ -81,6 +81,10 @@ class Deps:
     sqlite_cursor: sqlite3.Cursor
 
     @property
+    def movie_storage(self):
+        return SimpleStorage(self.sqlite_cursor, "movies")
+
+    @property
     def q(self):
         return Q(self.sqlite_cursor)
 
@@ -478,6 +482,27 @@ def create_app():
         )
 
     # endregion rest
+
+    # region movies
+    @app.route("/movies")
+    def movies_page():
+
+        year_movies = deps.movie_storage.list_all(
+            where="datetime(watched_dt) >= datetime('2024-01-01')",
+            order_by="datetime(watched_dt) desc",
+        )
+        all_movies = deps.movie_storage.list_all(
+            order_by="datetime(watched_dt) desc",
+        )
+
+        return render_template(
+            "movies/index.html",
+            page=deps.page,
+            year_movies=year_movies,
+            all_movies=all_movies,
+        )
+
+    # endregion movies
 
     render_pages(app, deps)
 
