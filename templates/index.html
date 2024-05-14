@@ -6,7 +6,7 @@
     <div class="flex flex-col gap-4 pt-2">
         {% for section,pages in pages_by_section.items() %}
             <div class="border border-neutral rounded-lg ">
-                <div class="border-neutral border-b px-2">{{ section.to_str() }}</div>
+                <div class="border-neutral border-b px-2 ">{{ section.to_str() }}</div>
                 <div class="p-4">
                     {{ page_list(pages) }}
 

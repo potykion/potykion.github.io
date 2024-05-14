@@ -253,11 +253,19 @@
                 <div class="text-xl font-bold ">{{ style.title }}</div>
                 <div class="text-sm">{{ style.desc }}</div>
                 <div class="text-sm">
-                    <span class="font-semibold">Подвиды:</span>
-                    {% for style in style.sub_styles %}
-                        <span title="{{ style.desc }}" class="border-b-2 border-dotted border-neutral">{{ style.title }}</span>
-                        {% if not loop.last %}•{% endif %}
-                    {% endfor %}
+                    <div class="flex flex-wrap gap-y-1 gap-x-2">
+
+                        <span class="font-semibold">Подвиды:</span>
+
+                        {% for style in style.sub_styles %}
+                            <span class="tooltip" data-tip="{{ style.desc }}">
+                            <span class="border-b-2 border-dotted border-neutral">{{ style.title }}</span>
+                        </span>
+
+                            <span>{% if not loop.last %}•{% endif %}</span>
+                        {% endfor %}
+                    </div>
+
                 </div>
             </div>
         {% endfor %}
@@ -268,7 +276,9 @@
     <hr>
     <h2 id="craft">Пару слов о крафте</h2>
 
-    <div class="p-4 rounded-lg border border-neutral text-2xl font-semibold text-center">Чем больше пьешь крафт, тем больше разочарования от него</div>
+    <div class="p-4 rounded-lg border border-neutral text-2xl font-semibold text-center">Чем больше пьешь крафт, тем
+        больше разочарования от него
+    </div>
 
     <figure>
         <audio src="/templates/beer/Brыkaisya%20-%20Крафтовый%20мудак.mp3" controls class="w-full"></audio>
