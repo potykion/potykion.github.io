@@ -2,21 +2,20 @@ import datetime
 import decimal
 import json
 import sqlite3
+from tabnanny import verbose
 
-import pandas as pd
 import tradingview_ta
 from pydantic import BaseModel
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.linear_model import LinearRegression, ElasticNet
-from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVR
 from tradingview_ta import get_multiple_analysis, Interval
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
 from scripts.trading.bot import TICKERS, TradingViewService
+import pandas as pd
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestRegressor
 
 
 class Analysis(BaseModel):
@@ -144,53 +143,81 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
         sqlite_cursor.connection.commit()
 
 
-def predict(repo: AnalysisRepo, save_to_db=True):
-    analysis_to_train = repo.list_all(where="change_next is not null")
+# Assuming AnalysisRepo and sqlite_cursor are defined elsewhere in your code
 
+
+def predict(repo: AnalysisRepo, save_to_db=True):
+    # region PREPARE DATA
+    analysis_to_train = repo.list_all(where="change_next is not null")
     analysis_to_predict = repo.list_all(where="change_next is null ")
 
     indicators = tradingview_ta.TA_Handler.indicators
-    X = pd.DataFrame(
+    X_train = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_train],
         columns=indicators,
-    ).fillna(0)
-    y = pd.DataFrame([anal.y for anal in analysis_to_train], columns=["change_next"])
+    )
+    X_train = X_train.fillna(0)
+    y_train = pd.DataFrame([anal.y for anal in analysis_to_train], columns=["change_next"])
+    y_train = y_train[
+        "change_next"
+    ].values.ravel()  # Using.values to get a numpy array and.ravel() to flatten it
+
     X_predict = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_predict],
         columns=indicators,
-    ).fillna(0)
+    )
+    X_predict = X_predict.fillna(0)
 
-    X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
+    # Feature scaling
+    scaler = StandardScaler()
+    X_train = scaler.fit_transform(X_train)
+    X_predict = scaler.transform(X_predict)
+    # endregion PREPARE DATA
 
-    models = [
-        ElasticNet(),
-        RandomForestRegressor(),
-        SVR(),
-    ]
+    # region TRAIN
 
-    predictions = []
+    # model = param_tuning(
+    #     model=RandomForestRegressor(),
+    #     param_grid={
+    #         "n_estimators": [100, 200, 300],
+    #         "max_depth": [None, 10, 20, 30],
+    #         "min_samples_split": [2, 5, 10],
+    #     },
+    #     X_train=X_train,
+    #     y_train=y_train,
+    # )
 
-    for model in models:
-        model.fit(X_train, y_train)
+    best_params = {"max_depth": 10, "min_samples_split": 2, "n_estimators": 300}
+    model = RandomForestRegressor(**best_params)
+    model.fit(X_train, y_train)
 
-        val_predictions = model.predict(X_val)
+    # endregion TRAIN
 
-        mse_score = mean_squared_error(y_val, val_predictions)
-        print(f'model: {model.__class__.__name__} mse: {mse_score}')
-
-        prediction = model.predict(X_predict)
-
-        predictions.append(prediction.tolist())
-
-    predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
+    # region PREDICT
+    # Predictions using the best model
+    predictions = model.predict(X_predict)
+    predictions = predictions.tolist()
+    # predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
+    # endregion PREDICT
 
     if save_to_db:
         for index, anal in enumerate(analysis_to_predict):
             anal.change_predict = predictions[index]
             sqlite_cursor.execute(
-                "update ta_indicators_1d set change_predict = ? where id = ?", (anal.change_predict, anal.id)
+                "update ta_indicators_1d set change_predict_2 =? where id =?", (anal.change_predict, anal.id)
             )
         sqlite_cursor.connection.commit()
+
+
+def param_tuning(model, param_grid, X_train, y_train):
+    grid_search = GridSearchCV(model, param_grid, cv=5, scoring="neg_mean_squared_error", verbose=10)
+    grid_search.fit(X_train, y_train)
+    print(grid_search.best_params_)
+    return grid_search.best_estimator_
+
+
+# Example usage
+# predict(repo_instance, save_to_db=True)
 
 
 if __name__ == "__main__":
@@ -203,7 +230,7 @@ if __name__ == "__main__":
     # print("set_change_next...")
     # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
     print("predict...")
-    # predict(AnalysisRepo(sqlite_cursor))
-    predict(AnalysisRepo(sqlite_cursor), save_to_db=False)
+    predict(AnalysisRepo(sqlite_cursor))
+    # predict(AnalysisRepo(sqlite_cursor), save_to_db=False)
 
     print("Done!")
