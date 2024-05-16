@@ -2,13 +2,16 @@ import datetime
 import decimal
 import json
 import sqlite3
+import string
 from tabnanny import verbose
 
 import tradingview_ta
 from pydantic import BaseModel
+from sklearn.feature_selection import mutual_info_regression, SelectKBest
 from sklearn.linear_model import ElasticNet
 from sklearn.svm import SVR
 from tradingview_ta import get_multiple_analysis, Interval
+from xgboost import XGBRegressor
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.lazy import SimpleStorage
@@ -17,7 +20,7 @@ from scripts.trading.bot import TICKERS, TradingViewService
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 
 
 class Analysis(BaseModel):
@@ -152,11 +155,13 @@ def predict(repo: AnalysisRepo, save_to_db=True):
     # region PREPARE DATA
     analysis_to_train = repo.list_all(where="change_next is not null")
     analysis_to_predict = repo.list_all(where="change_next is null ")
+    # analysis_to_predict = repo.list_all(where="sample != 6")
 
-    indicators = tradingview_ta.TA_Handler.indicators
+    indicators = tradingview_ta.TA_Handler.indicators  # = 90 features
+    str_indicators = [''.join(ch  for ch in ind if ch not in '[]<') for ind in indicators]
     X_train = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_train],
-        columns=indicators,
+        columns=str_indicators,
     )
     X_train = X_train.fillna(0)
     y_train = pd.DataFrame([anal.y for anal in analysis_to_train], columns=["change_next"])
@@ -166,14 +171,19 @@ def predict(repo: AnalysisRepo, save_to_db=True):
 
     X_predict = pd.DataFrame(
         [[anal.X[ind] for ind in indicators] for anal in analysis_to_predict],
-        columns=indicators,
+        columns=str_indicators,
     )
     X_predict = X_predict.fillna(0)
 
+    # Feature selection
+    # selector = SelectKBest(mutual_info_regression, k=20)
+    # X_train = selector.fit_transform(X_train, y_train)
+    # X_predict = selector.transform(X_predict)
+
     # Feature scaling
-    scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_predict = scaler.transform(X_predict)
+    # scaler = StandardScaler()
+    # X_train = scaler.fit_transform(X_train)
+    # X_predict = scaler.transform(X_predict)
     # endregion PREPARE DATA
 
     # region TRAIN
@@ -195,9 +205,9 @@ def predict(repo: AnalysisRepo, save_to_db=True):
     # ]
 
     models = [
-        ElasticNet(),
-        RandomForestRegressor(),
-        SVR(),
+        # RandomForestRegressor(),
+        # GradientBoostingRegressor(),
+        XGBRegressor(),
     ]
 
     for model in models:
@@ -234,11 +244,11 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    print("load_sample...")
-    load_sample(AnalysisRepo(sqlite_cursor))
-
-    print("set_change_next...")
-    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    # print("load_sample...")
+    # load_sample(AnalysisRepo(sqlite_cursor))
+    #
+    # print("set_change_next...")
+    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
 
     print("predict...")
     predict(AnalysisRepo(sqlite_cursor))
