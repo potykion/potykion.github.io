@@ -10,7 +10,7 @@
                 {% if show_tags %}
                     <div class="flex flex-wrap gap-1">
                         {% for tag in tool.tags %}
-                            <div><i>{{ tag }}</i></div> {% if not loop.last %}•{% endif %}
+                            <div><i>#{{ tag }}</i></div>
                         {% endfor %}
                     </div>
                 {% endif %}
@@ -19,20 +19,23 @@
     </div>
 {% endmacro %}
 
+
+{% macro tool_section(section, tools, show_tags=False) %}
+    <div class="border border-neutral rounded-lg ">
+        <div class="border-neutral border-b px-2 ">{{ section }}</div>
+        <div class="p-4">
+            {{ list_tools(tools, show_tags) }}
+        </div>
+    </div>
+{% endmacro %}
+
+
 {% block main %}
-    <h2>Закреп 📌</h2>
-    {{ list_tools(pinned_tools) }}
-
-    <h2>Обработка изображений / Image Processing</h2>
-    {{ list_tools(image_tools) }}
-
-    <h2>AI</h2>
-    {{ list_tools(ai_tools) }}
-
-    <h2>Python</h2>
-    {{ list_tools(python_tools) }}
-
-    <h2>Прочее</h2>
-    {{ list_tools(tools, show_tags=True) }}
-
+    <div class="flex flex-col gap-4 pt-2">
+        {{ tool_section('Закреп 📌', pinned_tools) }}
+        {{ tool_section('Обработка изображений / Image Processing', image_tools) }}
+        {{ tool_section('AI', ai_tools) }}
+        {{ tool_section('Python', python_tools) }}
+        {{ tool_section('Прочее', tools, show_tags=True) }}
+    </div>
 {% endblock %}
