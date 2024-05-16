@@ -84,6 +84,8 @@ class Q:
         return self.select_all(f"select * from {table}", as_=as_)
 
     def select_all(self, sql, params=(), *, as_: As | None = None) -> list:
+        if not isinstance(params, (list, tuple)):
+            params = (params,)
         rows = self.sqlite_cur.execute(sql, params).fetchall()
         rows = self._apply_as(rows, as_)
         return rows
