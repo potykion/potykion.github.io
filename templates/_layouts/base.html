@@ -1,0 +1,122 @@
+{#
+Базовый лейаут.
+Тут выставляются seo-meta-теги, грузятся шрифты, стили, аналитика.
+Из верстки тут header и main.s
+#}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region SEO -->
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ desc }}"/>
+
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ desc }}">
+    <!-- endregion SEO -->
+
+    <!-- region Styles -->
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    <!-- region Tailwind Compiled Styles -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='output.css') }}">
+    <!-- endregion Tailwind Compiled Styles -->
+
+    <!-- region Custom styles -->
+    {% block static %}{% endblock %}
+    <!-- endregion Custom styles -->
+
+    <!-- endregion Styles -->
+</head>
+
+<!-- region GA & YaMetrika -->
+{% if is_prod %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-5WTE0KE6PT');
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(82960681, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+{% endif %}
+<!-- endregion GA & YaMetrika -->
+
+<body class="{% if fullwidth %}{% else %}max-w-[1000px]{% endif %}">
+
+<header class="text-sm breadcrumbs border-neutral border-b">
+    <ul class="!pl-2">
+        {% if page %}
+            {% for page in page.breadcrumbs %}
+                <li>
+                    {% if loop.last %}
+                        {{ page.breadcrumbs_title }}
+                    {% else %}
+                        <a href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>
+                <a href="/">потик.ио</a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+</header>
+
+<main class="prose  max-w-none p-2">
+    {% if page %}
+        <h1>{{ page.title }}</h1>
+        <cite class="block">{{ (page.desc or '') | safe }}</cite>
+    {% endif %}
+
+    {% block main %}{% endblock %}
+</main>
+
+</body>
+
+{% block script %}
+{% endblock %}
+</html>

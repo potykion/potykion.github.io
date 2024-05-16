@@ -1,0 +1,62 @@
+{% extends "_layouts/base.html" %}
+
+{% macro modal(id) %}
+    <dialog id="{{ id }}" class="modal">
+        <div class="modal-box max-w-screen-lg">
+
+            {{ caller() }}
+
+            <div class="modal-action ">
+                <form method="dialog">
+                    <button class="btn">Закрыть</button>
+                </form>
+            </div>
+
+        </div>
+    </dialog>
+
+{% endmacro %}
+
+{% macro movie_grid(movies, prefix) %}
+    <div class="grid grid-cols-4 md:grid-cols-10 gap-1">
+        {% for movie in movies %}
+            <button onclick="modal_movie_{{ prefix }}_{{ movie.id }}.showModal()" class="blue-border-hover-link">
+                <img src="{{ url_for('static', filename=movie.poster) }}">
+            </button>
+
+            {% call modal('modal_movie_' + prefix + '_' + movie.id | string) %}
+                <h3>{{ movie.title }} ({{ movie.year }})</h3>
+                <div>{{ movie.title_eng }}</div>
+
+                <div class="flex flex-wrap gap-1 items-center">
+
+                    <span class="text-sm text-gray-500">{{ movie.vote }} / 10</span>
+                    <span class="text-gray-300">•</span>
+
+                    <a href="{{ movie.kp_url }}" target="_blank" class="text-sm">
+                        КП
+                    </a>
+
+                </div>
+
+                <div class="text-md">
+                    {{ movie.review | render_md | safe }}
+                </div>
+
+
+            {% endcall %}
+
+
+
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% block main %}
+    <h2>За этот год</h2>
+    {{ movie_grid(year_movies, 'year') }}
+
+    <h2>За все время</h2>
+    {{ movie_grid(all_movies, 'all') }}
+
+{% endblock %}

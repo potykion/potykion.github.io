@@ -1,0 +1,23 @@
+{% macro input(label, placeholder, type='text', id='', container_cls='', value='', required=True) %}
+    <label class="form-control w-full {{ container_cls }}">
+        <div class="label ">
+            <span class="label-text">{{ label }}</span>
+        </div>
+        <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" value="{{ value }}"
+               {% if required %}required{% endif %}
+               class="input input-sm input-bordered w-full    "/>
+    </label>
+{% endmacro %}
+
+
+{% macro textarea(label, placeholder='', id='', readonly=False, textarea_cls='', name='', required=False) %}
+    <label class="form-control">
+        <div class="label">
+            <span class="label-text">{{ label }}</span>
+        </div>
+
+        <textarea {% if required %}required{% endif %} {% if readonly %}readonly{% endif %} id="{{ id }}"
+                  name="{{ name }}" class="textarea textarea-bordered {{ textarea_cls }}" rows="6"
+                  placeholder="{{ placeholder }}"></textarea>
+    </label>
+{% endmacro %}

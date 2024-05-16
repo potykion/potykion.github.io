@@ -1,0 +1,28 @@
+{% extends "_layouts/base.html" %}
+{% from '_components/link_and_section.html' import link, section_card %}
+
+{% macro list_tools(tools, show_tags=False) %}
+    <div class="link-list">
+        {% for tool in tools %}
+            {{ link(tool.url, tool.title, tool.desc, tool.tags if show_tags else []) }}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+
+{% macro tool_section(section, tools, show_tags=False) %}
+    {% call section_card(section) %}
+        {{ list_tools(tools, show_tags) }}
+    {% endcall %}
+{% endmacro %}
+
+
+{% block main %}
+    <div class="section-list">
+        {{ tool_section('Закреп 📌', pinned_tools) }}
+        {{ tool_section('Обработка изображений / Image Processing', image_tools) }}
+        {{ tool_section('AI', ai_tools) }}
+        {{ tool_section('Python', python_tools) }}
+        {{ tool_section('Прочее', tools, show_tags=True) }}
+    </div>
+{% endblock %}

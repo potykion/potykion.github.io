@@ -25,7 +25,8 @@
     iframe {
         max-width: 100%;
         width: 100%;
-        aspect-ratio: 16/9
+        aspect-ratio: 16/9;
+        @apply pb-4;
     }
 
     img {
@@ -68,7 +69,7 @@
 
 
     div.desc {
-        @apply text-gray-400 py-1;
+        @apply text-gray-400 py-1 dark:text-gray-500;
     }
 
     cite {
@@ -125,7 +126,40 @@
     input {
         @apply placeholder-neutral-500
     }
+
     textarea {
         @apply placeholder-neutral-500
+    }
+
+    ul.li-plus {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    ul.li-plus li:before {
+        /*content: "+";*/
+        content: "➕";
+        margin-right: 8px;
+    }
+
+    ul.li-minus {
+        list-style: none;
+        padding-left: 0 !important;
+    }
+
+    ul.li-minus li:before {
+        /*content: "–";*/
+        content: "➖";
+        margin-right: 8px;
+    }
+
+    .rounded-border {
+        @apply border border-neutral rounded-lg;
+    }
+    .link-list {
+        @apply flex flex-col gap-2;
+    }
+    .section-list {
+        @apply flex flex-col gap-4 pt-2;
     }
 }

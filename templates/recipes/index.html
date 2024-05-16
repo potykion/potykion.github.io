@@ -1,0 +1,9 @@
+{% extends "_layouts/base.html" %}
+
+{% from '_components/page_list.html' import page_list, page_sections %}
+
+
+{% block main %}
+        {{ page_sections(pages_by_section) }}
+
+{% endblock %}

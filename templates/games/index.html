@@ -1,0 +1,15 @@
+{% extends "_layouts/base.html" %}
+
+{% block main %}
+
+    <h2>Сейчас играю</h2>
+
+    <img src="{{ url_for('static', filename=current.img) }}" class="w-fit">
+    <h3>{{ current.title }}</h3>
+    <div>{{ current.review | safe }}</div>
+
+    <h2>Стата 2024</h2>
+    {% include '_components/game_grid.html' %}
+
+
+{% endblock %}

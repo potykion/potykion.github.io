@@ -1,0 +1,295 @@
+{% extends "_layouts/base.html" %}
+
+{% block breadcrumbs %}
+    <li>Тревел</li>
+{% endblock %}
+
+{% macro input(label, placeholder, type='text', id='', container_cls='', value='', required=True) %}
+    <label class="form-control w-full {{ container_cls }}">
+        <div class="label ">
+            <span class="label-text">{{ label }}</span>
+        </div>
+        <input id="{{ id }}" type="{{ type }}" placeholder="{{ placeholder }}" value="{{ value }}"
+               {% if required %}required{% endif %}
+               class="input input-sm input-bordered w-full    "/>
+    </label>
+{% endmacro %}
+
+{% block main %}
+    <ul>
+        <li><a href="#places">Где были 🌍</a></li>
+        <li><a href="#tickets">Билеты 🎫</a></li>
+        <li><a href="#live">Где жить 🏨</a></li>
+    </ul>
+
+    <h2 id="places">Где были 🌍</h2>
+    <div class="flex flex-wrap gap-1  md:gap-2">
+        {% for place in places %}
+            <span {% if place.comment %}title="{{ place.comment }}"
+                  class="border-b-2 border-dotted cursor-help border-neutral"{% endif %}>
+                {{ place.city }} ({{ place.date[:7] }})
+            </span>
+            {% if not loop.last %}•{% endif %}
+        {% endfor %}
+    </div>
+
+    <h2 id="tickets">Билеты 🎫</h2>
+
+    <div class="border rounded-lg border-neutral shadow px-4 py-2">
+        <h3>Агрегатор над агрегаторами</h3>
+        <cite class="block">Ищет биллы сразу по нескольким сайтам: авиасейлз, купибилет, тиньк, яндекс, озон</cite>
+        <cite class="block">Важно: Нужно отключить блокировку всплывашек</cite>
+
+        <form class="flex flex-wrap gap-2 items-end " onsubmit="openLinks(params)">
+            {{ input('Откуда', 'IATA', id='fromIata', container_cls='dropdown', value='Москва - MOW') }}
+            {{ input('Куда', 'IATA', id='toIata', container_cls='dropdown') }}
+            {{ input('Когда туда', '',   id='fromDate', type='date') }}
+            {{ input('Когда оттуда', '', id='toDate' ,type= 'date') }}
+            <button class="btn btn-primary btn-sm ">Го</button>
+        </form>
+    </div>
+
+    {##}
+
+
+
+    <h3>Где брать?</h3>
+    <div>
+        <p>Билеты — одна из самых дорогих вещей при путешествии</p>
+        <blockquote>Пожалуйста, не надо покупать билеты импульсивно / в последний момент / тупа на авиасейлз</blockquote>
+        <p>
+            И все же, самые простые варики:
+            <a href="https://www.aviasales.ru/">Авиасейлз</a>,
+            <a href="https://www.kupibilet.ru/">Купибилет</a>
+        </p>
+        <p>
+            <b>А где еще?</b> Да везде:
+            <a href="https://www.tinkoff.ru/travel/flights/">Тиньк</a>,
+            <a href="https://travel.yandex.ru/avia/">Яндекс</a>,
+            <a href="https://www.ozon.ru/travel/">Озон</a>
+        </p>
+
+        <p>А смысл? Смысл в том, что наверняка каждый из этих сервисов предоставит кешбек или другие плюшки
+            и
+            стоит все их прочекать, вдруг хорошие варики
+        </p>
+        <p>
+            Вот авиасейлз: <img src="/templates/travel/aviasales.png">
+        </p>
+        <p>
+            А вот те же биллы в тиньке: <img src="/templates/travel/tink.png">
+
+            То есть и дешевле, и кешбек, а кешбек может выпасть в категориях на месяц, а еще можно премиум
+            подключить, и все это в привычном приложении без дополнительных телодвижений - крч кайфы
+        </p>
+        <p>
+            Или опять же яндекс: <img src="/templates/travel/ya.png">
+
+            Тоже варик дешевле всех
+        </p>
+        <p>
+            А озон и самый дешевый и самый большой кешбек: <img src="/templates/travel/ozon.png">
+        </p>
+        <p>
+            Крч еще раз <b>билетных сервисов до пизды, стоит посравнивать варики</b>
+        </p>
+
+
+        <p><b>Че попробовать в будущем?</b>
+        <ul>
+            <li><i><b>Карта Тиньк All Airlines</b></i> - по идее кешбек будет капать как мили, а мили можно
+                тратить
+                на
+                биллы, <i>но надо Тиньк Премиум или 2к/мес.</i></li>
+        </ul>
+        </p>
+
+        <h3>Самолетики ✈️</h3>
+
+        <h4>Аэрофлот 🩵</h4>
+
+        <ul class="li-plus">
+            <li>Онлайн рега за день</li>
+            <li>Расстояние между креслами - большое, комфортное</li>
+            <li>Ручная кладь</li>
+            <li>Питание (при полете 4ч+)</li>
+            <li>Подставка для телефона</li>
+        </ul>
+
+        <ul class="li-minus">
+            <li>Цена</li>
+        </ul>
+
+        <h4>Якутия</h4>
+        <ul class="li-plus">
+            <li>Питание (при полете 4ч+)</li>
+            <li>Цена</li>
+            <li>Ручная кладь</li>
+        </ul>
+        <ul class="li-minus">
+            <li>Расстояние между креслами - впритык</li>
+            <li>Рега в аэропорту</li>
+            <li>Нет держалки</li>
+        </ul>
+
+        <h4>Победа</h4>
+        <ul class="li-minus">
+            <li>Просто треш, обходить стороной, все что угодно, но не Победа</li>
+        </ul>
+
+
+    </div>
+
+    <h2 id="live">Где жить 🏨</h2>
+    <div>
+        <ul>
+            <li>
+                <a href="https://sutochno.ru/">Суточно</a> - аренда хаты посуточно
+            </li>
+            <li>
+                <a href="https://ostrovok.ru/?sid=be485918-c5e0-47d1-b5db-33ff46746684">Островок</a> - гостижки
+            </li>
+            <li>
+                Те же сервисы, которые продают биллы на самолетик, продают и биллы в гостижки:
+                <a href="https://www.tinkoff.ru/travel/hotels/new/">Тиньк</a>,
+                <a href="https://travel.yandex.ru/hotels/">Яндекс</a>,
+                <a href="https://www.ozon.ru/travel/hotels/">Озон</a>
+            </li>
+        </ul>
+
+        <h4>Где хранить вещи когда раннее выселение </h4>
+        <ul>
+            <li><b>Там же в гостижке / квартире</b>, если есть такая возможность</li>
+            <li><b>Вокзал</b> - зачастую там есть камеры хранения</li>
+            <li><a href="https://ostavbagaz.ru/">Оставьбагаж</a> - сервис, очевидно, с местами где можно оставить багаж
+                (напр. в Ярике сдали багаж в рандомную гостижку за три сотки)
+            </li>
+            <li>Принцип тот же - <b>тупа сравниваем варики</b></li>
+        </ul>
+    </div>
+
+
+    <script src="{{ url_for('static', filename='js/autoComplete.min.js') }}"></script>
+    <script>
+        let params = {
+            fromIata: 'MOW',
+            toIata: 'OVB',
+            fromDate: new Date('2024-05-05'),
+            toDate: new Date('2024-05-10'),
+        }
+
+        const makeAutocomplete = (selector, callback) => {
+            return new autoComplete({
+                selector,
+                data: {
+                    src: async (query) => {
+                        try {
+                            const source = await fetch(`https://autocomplete.travelpayouts.com/places2?locale=ru&types[]=city&types[]=airport&term=${query}`);
+                            let data = await source.json();
+                            data = data.map(item => ({
+                                value: item.code,
+                                label: `${item.name} - ${item.code}`
+                            }))
+                            return data;
+                        } catch (error) {
+                            return error;
+                        }
+                    },
+                    keys: ["label"],
+                },
+                resultsList: {
+                    tag: 'ul',
+                    class: 'dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52'
+                },
+                resultItem: {
+                    class: 'not-prose',
+                    element: (item, data) => {
+                        item.innerHTML = `<a>${data.match}</a>`
+                    },
+                },
+
+                events: {
+                    input: {
+                        selection: (event) => {
+                            const selection = event.detail.selection.value;
+                            event.target.value = selection.label;
+                            callback(selection.value)
+                        }
+                    }
+                }
+            });
+        };
+
+        const fromIataAutoComplete = makeAutocomplete('#fromIata', value => params.fromIata = value);
+        const toIataAutoComplete = makeAutocomplete('#toIata', value => params.toIata = value);
+
+        function openLinks(params) {
+            params.fromDate = new Date(document.querySelector('#fromDate').value);
+            params.toDate = new Date(document.querySelector('#toDate').value);
+
+            function format_date(date, service) {
+                const isoDate = date.toISOString().split('T')[0]
+                const [year, month, day] = isoDate.split('-')
+                switch (service) {
+                    case 'aviasales':
+                        return `${day}${month}`
+                    case 'tink':
+                        return `${month}-${day}`
+                    case 'kupibilet':
+                    case 'ozon':
+                        return isoDate
+                }
+            }
+
+
+            const avisales = (params) => {
+                let from = params.fromIata + format_date(params.fromDate, 'aviasales');
+                let to = params.toIata + format_date(params.toDate, 'aviasales');
+                return `https://www.aviasales.ru/search/${from}${to}2`
+            }
+
+            const kupibilet = (params) => {
+                let fromDate = format_date(params.fromDate, 'kupibilet');
+                let toDate = format_date(params.toDate, 'kupibilet');
+                const route0 = `iatax:${params.fromIata}_${fromDate}_date_${fromDate}_iatax:${params.toIata}`;
+                const route1 = `iatax:${params.toIata}_${toDate}_date_${toDate}_iatax:${params.fromIata}`
+                return `https://www.kupibilet.ru/search?adult=2&cabinClass=Y&child=0&childrenAges=[]&infant=0&route[0]=${route0}&route[1]=${route1}&v=2`
+            }
+
+            const tink = (params) => {
+                let fromRoute = `${params.fromIata}-${params.toIata}`
+                let fromDate = format_date(params.fromDate, 'tink');
+                let toRoute = `${params.toIata}-${params.fromIata}`
+                let toDate = format_date(params.toDate, 'tink');
+                return `https://www.tinkoff.ru/travel/flights/multi-way/${fromRoute}/${fromDate}/${toRoute}/${toDate}/?adults=2&children=0&infants=0&cabin=Y&composite=0`
+            }
+            const yandex = (params) => `https://travel.yandex.ru/avia/`
+            const ozon = (params) => {
+                let fromDate = format_date(params.fromDate, 'ozon')
+                let toDate = format_date(params.toDate, 'ozon')
+                let route = `${params.fromIata}${params.toIata}${params.toIata}${params.fromIata}`.toLowerCase();
+                return `https://www.ozon.ru/travel/flight/search?Children=0&Dlts=2&Infants=0&ServiceClass=ECONOMY&dates=d${fromDate}d${toDate}&route=${route}&step=search&travelSearchType=simpleAvia`
+            }
+
+            [
+                avisales,
+                kupibilet,
+                tink,
+                yandex,
+                ozon,
+            ].forEach((service, index) => {
+                let url = service(params)
+                console.log(url)
+
+
+                // let link = document.createElement('a');
+                // link.href = url;
+                // link.target = '_blank';
+                // link.click();
+
+                window.open(url, '_blank' + index)
+
+            })
+        }
+    </script>
+{% endblock %}

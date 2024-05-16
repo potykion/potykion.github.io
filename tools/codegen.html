@@ -1,0 +1,181 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region SEO -->
+    <title></title>
+    <meta name="description" content=""/>
+
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <!-- endregion SEO -->
+
+    <!-- region Styles -->
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    <!-- region Tailwind Compiled Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/output.css">
+    <!-- endregion Tailwind Compiled Styles -->
+
+    <!-- region Custom styles -->
+    
+    <!-- endregion Custom styles -->
+
+    <!-- endregion Styles -->
+</head>
+
+<!-- region GA & YaMetrika -->
+
+<!-- endregion GA & YaMetrika -->
+
+<body class="max-w-[1000px]">
+
+<header class="text-sm breadcrumbs border-neutral border-b">
+    <ul class="!pl-2">
+        
+            
+                <li>
+                    
+                        <a href="/">п⌀тик.ио</a>
+                    
+                </li>
+            
+                <li>
+                    
+                        <a href="/tools">Тулзы</a>
+                    
+                </li>
+            
+                <li>
+                    
+                        Кодген
+                    
+                </li>
+            
+        
+
+
+    </ul>
+</header>
+
+<main class="prose  max-w-none p-2">
+    
+        <h1>Кодген</h1>
+        <cite class="block">Чисто для блога</cite>
+    
+
+    
+    <h2>route-gen</h2>
+    
+    <label class="form-control w-full ">
+        <div class="label ">
+            <span class="label-text">slug</span>
+        </div>
+        <input id="slug" type="text" placeholder="mu" value=""
+               required
+               class="input input-sm input-bordered w-full    "/>
+    </label>
+
+
+    
+
+    
+    <label class="form-control">
+        <div class="label">
+            <span class="label-text">route</span>
+        </div>
+
+        <textarea  readonly id="route"
+                  name="" class="textarea textarea-bordered font-mono" rows="6"
+                  placeholder="# region {slug}
+@app.route(&#39;/{slug}&#39;)
+def {slug}_page():
+  return render_template(&#39;{slug}/index.html&#39;, page=deps.page)
+
+# endregion {slug}"></textarea>
+    </label>
+
+
+    <script>
+        document.querySelector('#slug').addEventListener(
+            'input', (e) => {
+                const slug = e.target.value;
+
+                let route;
+                if (!slug) {
+                    route = ''
+                } else {
+                    route = `# region ${slug}
+@app.route('/${slug}')
+def ${slug}_page():
+  return render_template("${slug}/index.html", page=deps.page)
+
+# endregion ${slug}`
+                }
+
+                document.querySelector('#route').value = route;
+            }
+        )
+    </script>
+
+
+    <h2>md-renderer</h2>
+
+    <form hx-post hx-target="#html">
+
+        
+    <label class="form-control">
+        <div class="label">
+            <span class="label-text">md</span>
+        </div>
+
+        <textarea required  id="md"
+                  name="md" class="textarea textarea-bordered font-mono" rows="6"
+                  placeholder="# Title"></textarea>
+    </label>
+
+        <div class="flex justify-end pt-2">
+            <button class="btn" type="submit" name="action" value="md_to_html">md > html</button>
+        </div>
+        
+    <label class="form-control">
+        <div class="label">
+            <span class="label-text">html</span>
+        </div>
+
+        <textarea  readonly id="html"
+                  name="" class="textarea textarea-bordered font-mono" rows="6"
+                  placeholder="&lt;h1&gt;Title&lt;/h1&gt;"></textarea>
+    </label>
+
+    </form>
+
+    <h2>sync recipes</h2>
+
+    <form hx-post hx-target="#result">
+        <button class="btn" type="submit" name="action" value="sync_recipes">sync</button>
+        <div>result: <span id="result"></span></div>
+    </form>
+
+    
+    <script src="/static/js/htmx.min.js"></script>
+
+
+
+</main>
+
+</body>
+
+
+
+</html>
