@@ -6,6 +6,8 @@ from tabnanny import verbose
 
 import tradingview_ta
 from pydantic import BaseModel
+from sklearn.linear_model import ElasticNet
+from sklearn.svm import SVR
 from tradingview_ta import get_multiple_analysis, Interval
 
 from potyk_io_back.core import BASE_DIR
@@ -187,17 +189,24 @@ def predict(repo: AnalysisRepo, save_to_db=True):
     #     y_train=y_train,
     # )
 
-    best_params = {"max_depth": 10, "min_samples_split": 2, "n_estimators": 300}
-    model = RandomForestRegressor(**best_params)
-    model.fit(X_train, y_train)
+    # best_params = {"max_depth": 10, "min_samples_split": 2, "n_estimators": 300}
+    # models = [
+    #     RandomForestRegressor(**best_params),
+    # ]
 
+    models = [
+        ElasticNet(),
+        RandomForestRegressor(),
+        SVR(),
+    ]
+
+    for model in models:
+        model.fit(X_train, y_train)
     # endregion TRAIN
 
     # region PREDICT
-    # Predictions using the best model
-    predictions = model.predict(X_predict)
-    predictions = predictions.tolist()
-    # predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
+    predictions = [model.predict(X_predict).tolist() for model in models]
+    predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
     # endregion PREDICT
 
     if save_to_db:
@@ -225,10 +234,12 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    # print("load_sample...")
-    # load_sample(AnalysisRepo(sqlite_cursor))
-    # print("set_change_next...")
-    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    print("load_sample...")
+    load_sample(AnalysisRepo(sqlite_cursor))
+
+    print("set_change_next...")
+    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+
     print("predict...")
     predict(AnalysisRepo(sqlite_cursor))
     # predict(AnalysisRepo(sqlite_cursor), save_to_db=False)
