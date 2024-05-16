@@ -1,25 +1,19 @@
+{% from '_components/link_and_section.html' import link, section_card %}
+
 {% macro page_list(pages) %}
-    <div class="flex flex-col gap-2">
+    <div class="link-list">
         {% for page in pages %}
-            <div class="text-sm">
-                <div><a href="{{ page.url }}">{{ page.title }}</a></div>
-                <div>{{ page.desc }}</div>
-            </div>
+            {{ link(page.url, page.title, page.desc) }}
         {% endfor %}
     </div>
-
 {% endmacro %}
 
 {% macro page_sections(pages_by_section) %}
-    <div class="flex flex-col gap-4 pt-2">
+    <div class="section-list">
         {% for section,pages in pages_by_section.items() %}
-            <div class="border border-neutral rounded-lg ">
-                <div class="border-neutral border-b px-2 ">{{ section.to_str() }}</div>
-                <div class="p-4">
-                    {{ page_list(pages) }}
-
-                </div>
-            </div>
+            {% call section_card(section.to_str()) %}
+                {{ page_list(pages) }}
+            {% endcall %}
         {% endfor %}
     </div>
 {% endmacro %}

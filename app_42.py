@@ -16,6 +16,7 @@ from pydantic import BaseModel
 
 from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle
 from potyk_io_back.core import BASE_DIR
+from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.pages import BlogPageStore, BlogPage
@@ -188,10 +189,15 @@ def create_app():
     def index_page():
         pages = deps.page_store.list_index()
         pages_by_section = groupby_dict(pages, attrgetter("section"))
+        events = deps.q.select_all(
+            "select * from events where 'date' > date() order by date",
+            as_=Event,
+        )
         return render_template(
             "index.html",
             pages_by_section=pages_by_section,
             page=deps.page,
+            events=events,
         )
 
     # region recipes

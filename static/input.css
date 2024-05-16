@@ -152,4 +152,14 @@
         content: "➖";
         margin-right: 8px;
     }
+
+    .rounded-border {
+        @apply border border-neutral rounded-lg;
+    }
+    .link-list {
+        @apply flex flex-col gap-2;
+    }
+    .section-list {
+        @apply flex flex-col gap-4 pt-2;
+    }
 }
