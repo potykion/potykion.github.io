@@ -1,52 +1,24 @@
-import glob
 import os
 import shutil
-from itertools import chain
+import sqlite3
+from functools import partial
 from pathlib import Path
 from urllib.parse import urljoin
 
-import flask
+import app_42
+from app_42 import render_pages, Deps
+from potyk_io_back.core import BASE_DIR
 
-from app import create_app
-
-os.environ["FLASK_ENV"] = "prod"
+# os.environ["FLASK_ENV"] = "prod"
 # os.environ["FLASK_ENV"] = "development"
 # os.environ["FLASK_DEBUG"] = "1"
-app = create_app()
 
 
-def make_server():
-
-    return app.test_client()
-
-
-def clean_and_create_dir(dist):
-    if os.path.exists(dist):
-        shutil.rmtree(dist)
-    os.mkdir(dist)
+clean_dir = partial(shutil.rmtree, ignore_errors=True)
+make_dir = partial(os.makedirs, exist_ok=True)
 
 
-def render(route, server):
-    resp = server.get(route, follow_redirects=True)
-    if resp.status_code != 200:
-        if resp.status_code == 500 and os.environ.get("FLASK_DEBUG"):
-            print(resp.text)
-        raise RuntimeError(f"Failed to render page: {route}")
-    return resp.text
-
-
-def article_path_to_filename(article):
-    return os.path.split(article)[-1]
-
-
-def make_filename(article):
-    filename = article_path_to_filename(article)
-    if filename.endswith(".md"):
-        filename = filename[:-3] + ".html"
-    return filename
-
-
-def write_article(dist, filename):
+def write_article(dist, filename, rendered):
     path = dist / filename.strip("/")
     os.makedirs(os.path.dirname(path), exist_ok=True)
 
@@ -54,24 +26,7 @@ def write_article(dist, filename):
         f.write(rendered)
 
 
-def copy_static(dist):
-    shutil.copytree("./static", dist / "static", symlinks=False, ignore=None)
-
-
-def _add_section_to_render(section, with_section=True):
-    return [
-        *([(section.url, section.url + "/index.html")] if with_section else []),
-        *((page.url, f"{page.url}.html") for page in section.pages),
-        *chain.from_iterable(
-            (
-                _add_section_to_render(
-                    sub,
-                    with_section=section.key != "notes" and section.key != "special",
-                )
-                for sub in section.subsections
-            )
-        ),
-    ]
+copy_dir = partial(shutil.copytree, symlinks=False, ignore=None)
 
 
 def make_sitemap(routes, save_dir):
@@ -81,9 +36,7 @@ def make_sitemap(routes, save_dir):
     urls = [urljoin("https://potyk.io", route) for route in routes]
 
     # Prepare the sitemap structure
-    sitemap = {
-        "urlset": {"@xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9", "url": []}
-    }
+    sitemap = {"urlset": {"@xmlns": "http://www.sitemaps.org/schemas/sitemap/0.9", "url": []}}
 
     # Populate the sitemap with URLs
     for url in urls:
@@ -100,31 +53,24 @@ def make_sitemap(routes, save_dir):
 
 
 if __name__ == "__main__":
-    server = make_server()
+    dist = BASE_DIR / "docs"
+    clean_dir(dist)
+    make_dir(dist)
 
-    dist = Path("docs")
-    clean_and_create_dir(dist)
+    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
 
-    with app.app_context():
-        content_section = app.config["CONTENT"]
+    app = app_42.create_app()
+    deps = Deps(sqlite_conn=sqlite_conn, sqlite_cursor=sqlite_conn.cursor())
 
-    what_to_render = _add_section_to_render(content_section)
+    pages = render_pages(app, deps)
+    for _, path, rendered in pages:
+        write_article(dist, path, rendered)
 
-    for index, route_and_path in enumerate(what_to_render):
-        route, path = route_and_path
-
-        if route == '/feed':
-            route = '/feed/2024-03-27'
-            path = '/feed/2024-03-27.html'
-
-        rendered = render(route, server)
-        write_article(dist, path)
-        print(f"Rendering articles: Progress: {index + 1} / {len(what_to_render)}")
-
-    make_sitemap([route for route, path in what_to_render], dist)
+    make_sitemap([url for url, _, __ in pages], dist)
 
     print("Coping static")
-    copy_static(dist)
+    copy_dir(BASE_DIR / "static", dist / "static")
+    copy_dir(BASE_DIR / "templates", dist / "templates")
     shutil.copy(Path(app.static_folder) / "CNAME", dist / "CNAME")
 
     print(f"Done! See {dist}")

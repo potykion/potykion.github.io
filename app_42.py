@@ -133,7 +133,8 @@ def render_pages(app, deps: Deps):
     for idx, url_and_path in enumerate(what_to_render):
         url, html_path = url_and_path
         html = app.get(url).text
-        rendered.append((html_path, html))
+        rendered.append((url, html_path, html))
+
         print(f"{idx + 1}/{len(what_to_render)}: {url} -> {html_path}: ok")
 
     print("Done")
