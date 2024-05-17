@@ -34,6 +34,8 @@ class Analysis(BaseModel):
     change_next: decimal.Decimal | None = None
     change_predict: decimal.Decimal | None = None
     sample: int
+    indicators_prev_day: dict
+    indicators_prev_day_2: dict
 
     @property
     def X(self):
@@ -51,6 +53,8 @@ def analysis_from_row(row: sqlite3.Row) -> Analysis:
         dt=row["dt"],
         interval=row["interval"],
         indicators=json.loads(row["indicators"]),
+        indicators_prev_day=json.loads(row["indicators_prev_day"] or "{}"),
+        indicators_prev_day_2=json.loads(row["indicators_prev_day_2"] or "{}"),
         change=row["change"],
         change_next=row["change_next"],
         change_predict=row["change_predict"],
@@ -146,6 +150,18 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
             sqlite_cursor.execute(
                 "update ta_indicators_1d set change_next = ? where id = ?", (str(anal.change_next), anal.id)
             )
+
+        sqlite_cursor.execute(
+            """
+        UPDATE ta_indicators_1d
+        SET indicators_prev_day = (
+            SELECT indicators
+            FROM ta_indicators_1d AS prev_day
+            WHERE prev_day.sample = ta_indicators_1d.sample - 1
+        );
+        """
+        )
+
         sqlite_cursor.connection.commit()
 
     print("yesterday prediction results:")
@@ -165,29 +181,46 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
 # Assuming AnalysisRepo and sqlite_cursor are defined elsewhere in your code
 
 
-def predict(repo: AnalysisRepo, save_to_db=True):
-    # region PREPARE DATA
-    analysis_to_train = repo.list_all(where="change_next is not null")
-    analysis_to_predict = repo.list_all(where="change_next is null ")
-    # analysis_to_predict = repo.list_all(where="sample != 6")
-
+def analysis_to_X_df(analysis: list[Analysis]) -> pd.DataFrame:
     indicators = tradingview_ta.TA_Handler.indicators  # = 90 features
-    str_indicators = ["".join(ch for ch in ind if ch not in "[]<") for ind in indicators]
-    X_train = pd.DataFrame(
-        [[anal.X[ind] for ind in indicators] for anal in analysis_to_train],
-        columns=str_indicators,
+    str_indicators = lambda i: ["".join(ch for ch in ind if ch not in "[]<") + str(i) for ind in indicators]
+    columns = [
+        *str_indicators(1),
+        *str_indicators(2),
+        *str_indicators(3),
+    ]
+
+    X = pd.DataFrame(
+        [
+            [
+                *(anal.X[ind] for ind in indicators),
+                *(anal.indicators_prev_day[ind] for ind in indicators),
+                *(anal.indicators_prev_day_2[ind] for ind in indicators),
+            ]
+            for anal in analysis
+        ],
+        columns=columns,
     )
-    X_train = X_train.fillna(0)
-    y_train = pd.DataFrame([anal.y for anal in analysis_to_train], columns=["change_next"])
+    X = X.fillna(0)
+    return X
+
+def analysis_to_y_df(analysis: list[Analysis]) -> pd.DataFrame:
+    y_train = pd.DataFrame([anal.y for anal in analysis], columns=["change_next"])
     y_train = y_train[
         "change_next"
-    ].values.ravel()  # Using.values to get a numpy array and.ravel() to flatten it
+    ].values.ravel()
+    return y_train
 
-    X_predict = pd.DataFrame(
-        [[anal.X[ind] for ind in indicators] for anal in analysis_to_predict],
-        columns=str_indicators,
-    )
-    X_predict = X_predict.fillna(0)
+def predict(repo: AnalysisRepo, save_to_db=True):
+    # region PREPARE DATA
+    analysis_to_train = repo.list_all(where="change_next is not null and sample > 2")
+    analysis_to_predict = repo.list_all(where="change_next is null ")
+    # analysis_to_predict = repo.list_all(where="sample > 2")
+
+    X_train = analysis_to_X_df(analysis_to_train)
+    y_train =analysis_to_y_df(analysis_to_train)
+
+    X_predict = analysis_to_X_df(analysis_to_predict)
     # endregion PREPARE DATA
 
     # region useless
@@ -238,7 +271,7 @@ def predict(repo: AnalysisRepo, save_to_db=True):
         for index, anal in enumerate(analysis_to_predict):
             anal.change_predict = predictions[index]
             sqlite_cursor.execute(
-                "update ta_indicators_1d set change_predict_2 =? where id =?", (anal.change_predict, anal.id)
+                "update ta_indicators_1d set change_predict_3 =? where id =?", (anal.change_predict, anal.id)
             )
         sqlite_cursor.connection.commit()
 
@@ -246,10 +279,10 @@ def predict(repo: AnalysisRepo, save_to_db=True):
         print("today predictions:")
         results = repo.q.select_all(
             """
-        select ticker, change_predict_2
+        select ticker, change_predict_3
         from ta_indicators_1d
         where sample = ?
-        order by change_predict_2 desc
+        order by change_predict_3 desc
         limit 10
         """,
             (last_sample,),
@@ -257,11 +290,11 @@ def predict(repo: AnalysisRepo, save_to_db=True):
         print(tabulate(results, headers=["ticker", "change_next", "change_predict_2"]))
 
 
-def param_tuning(model, param_grid, X_train, y_train):
-    grid_search = GridSearchCV(model, param_grid, cv=5, scoring="neg_mean_squared_error", verbose=10)
-    grid_search.fit(X_train, y_train)
-    print(grid_search.best_params_)
-    return grid_search.best_estimator_
+# def param_tuning(model, param_grid, X_train, y_train):
+#     grid_search = GridSearchCV(model, param_grid, cv=5, scoring="neg_mean_squared_error", verbose=10)
+#     grid_search.fit(X_train, y_train)
+#     print(grid_search.best_params_)
+#     return grid_search.best_estimator_
 
 
 # Example usage
@@ -273,13 +306,13 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    print("load_sample...")
-    load_sample(AnalysisRepo(sqlite_cursor))
-    print()
-
-    print("set_change_next...")
-    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    print()
+    # print("load_sample...")
+    # load_sample(AnalysisRepo(sqlite_cursor))
+    # print()
+    #
+    # print("set_change_next...")
+    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    # print()
 
     print("predict...")
     predict(AnalysisRepo(sqlite_cursor))
