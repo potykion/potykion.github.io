@@ -253,17 +253,16 @@ if __name__ == "__main__":
     sqlite_cursor = sqlite_conn.cursor()
 
     # run at 5 pm every day
-    # print("load_sample...")
-    # load_sample(AnalysisRepo(sqlite_cursor))
-    # print()
-    #
-    # print("set_change_next...")
-    # set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
-    # print()
-
-    print("predict...")
-    predict(AnalysisRepo(sqlite_cursor))
-    # predict(AnalysisRepo(sqlite_cursor), save_to_db=False)
+    print("load_sample...")
+    load_sample(AnalysisRepo(sqlite_cursor))
     print()
+
+    print("set_change_next...")
+    set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
+    print()
+
+    # print("predict...")
+    # predict(AnalysisRepo(sqlite_cursor))
+    # print()
 
     print("Done!")
