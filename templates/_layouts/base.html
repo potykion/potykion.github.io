@@ -39,7 +39,7 @@
 </head>
 
 <!-- region GA & YaMetrika -->
-{% if is_prod %}
+{% if config['FLASK_ENV'] == 'prod' %}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
     <script>
