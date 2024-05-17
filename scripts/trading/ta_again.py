@@ -220,19 +220,16 @@ def predict(repo: AnalysisRepo, save_to_db=True):
     y_train = analysis_to_y_df(analysis_to_train)
     X_predict = analysis_to_X_df(analysis_to_predict)
 
-    models = [XGBRegressor()]
+    model = XGBRegressor()
+    model.fit(X_train, y_train)
 
-    for model in models:
-        model.fit(X_train, y_train)
-
-    predictions = [model.predict(X_predict).tolist() for model in models]
-    predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
+    predictions = model.predict(X_predict).tolist()
 
     if save_to_db:
-        for index, anal in enumerate(analysis_to_predict):
-            anal.change_predict = predictions[index]
+        for anal, pred in zip(analysis_to_predict, predictions):
             sqlite_cursor.execute(
-                "update ta_indicators_1d set change_predict_3 =? where id =?", (anal.change_predict, anal.id)
+                "update ta_indicators_1d set change_predict_3 =? where id =?",
+                (pred, anal.id),
             )
         sqlite_cursor.connection.commit()
 
@@ -248,7 +245,7 @@ def predict(repo: AnalysisRepo, save_to_db=True):
         """,
             (last_sample,),
         )
-        print(tabulate(results, headers=["ticker", "change_next", "change_predict_2"]))
+        print(tabulate(results, headers=["ticker", "change_next", "change_predict_3"]))
 
 
 if __name__ == "__main__":
