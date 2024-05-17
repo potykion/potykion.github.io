@@ -9,7 +9,7 @@ import app_42
 from app_42 import render_pages, Deps
 from potyk_io_back.core import BASE_DIR
 
-# os.environ["FLASK_ENV"] = "prod"
+os.environ["FLASK_ENV"] = "prod"
 # os.environ["FLASK_ENV"] = "development"
 # os.environ["FLASK_DEBUG"] = "1"
 

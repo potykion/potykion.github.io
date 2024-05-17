@@ -151,6 +151,7 @@ def create_app():
     )
     # RuntimeError: A secret key is required to use CSRF.
     app.config["SECRET_KEY"] = os.urandom(24)
+    app.config["FLASK_ENV"] = os.environ["FLASK_ENV"]
 
     @app.template_filter("render_md")
     def render_md(md):
