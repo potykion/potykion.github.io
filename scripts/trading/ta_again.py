@@ -204,68 +204,29 @@ def analysis_to_X_df(analysis: list[Analysis]) -> pd.DataFrame:
     X = X.fillna(0)
     return X
 
+
 def analysis_to_y_df(analysis: list[Analysis]) -> pd.DataFrame:
     y_train = pd.DataFrame([anal.y for anal in analysis], columns=["change_next"])
-    y_train = y_train[
-        "change_next"
-    ].values.ravel()
+    y_train = y_train["change_next"].values.ravel()
     return y_train
 
+
 def predict(repo: AnalysisRepo, save_to_db=True):
-    # region PREPARE DATA
     analysis_to_train = repo.list_all(where="change_next is not null and sample > 2")
     analysis_to_predict = repo.list_all(where="change_next is null ")
     # analysis_to_predict = repo.list_all(where="sample > 2")
 
     X_train = analysis_to_X_df(analysis_to_train)
-    y_train =analysis_to_y_df(analysis_to_train)
-
+    y_train = analysis_to_y_df(analysis_to_train)
     X_predict = analysis_to_X_df(analysis_to_predict)
-    # endregion PREPARE DATA
 
-    # region useless
-    # Feature selection
-    # selector = SelectKBest(mutual_info_regression, k=20)
-    # X_train = selector.fit_transform(X_train, y_train)
-    # X_predict = selector.transform(X_predict)
-
-    # Feature scaling
-    # scaler = StandardScaler()
-    # X_train = scaler.fit_transform(X_train)
-    # X_predict = scaler.transform(X_predict)
-
-    # model = param_tuning(
-    #     model=RandomForestRegressor(),
-    #     param_grid={
-    #         "n_estimators": [100, 200, 300],
-    #         "max_depth": [None, 10, 20, 30],
-    #         "min_samples_split": [2, 5, 10],
-    #     },
-    #     X_train=X_train,
-    #     y_train=y_train,
-    # )
-
-    # best_params = {"max_depth": 10, "min_samples_split": 2, "n_estimators": 300}
-    # models = [
-    #     RandomForestRegressor(**best_params),
-    # ]
-    # endregion useless
-
-    # region TRAIN
-    models = [
-        # RandomForestRegressor(),
-        # GradientBoostingRegressor(),
-        XGBRegressor(),
-    ]
+    models = [XGBRegressor()]
 
     for model in models:
         model.fit(X_train, y_train)
-    # endregion TRAIN
 
-    # region PREDICT
     predictions = [model.predict(X_predict).tolist() for model in models]
     predictions = [sum(pr) / len(pr) for pr in list(zip(*predictions))]
-    # endregion PREDICT
 
     if save_to_db:
         for index, anal in enumerate(analysis_to_predict):
@@ -288,17 +249,6 @@ def predict(repo: AnalysisRepo, save_to_db=True):
             (last_sample,),
         )
         print(tabulate(results, headers=["ticker", "change_next", "change_predict_2"]))
-
-
-# def param_tuning(model, param_grid, X_train, y_train):
-#     grid_search = GridSearchCV(model, param_grid, cv=5, scoring="neg_mean_squared_error", verbose=10)
-#     grid_search.fit(X_train, y_train)
-#     print(grid_search.best_params_)
-#     return grid_search.best_estimator_
-
-
-# Example usage
-# predict(repo_instance, save_to_db=True)
 
 
 if __name__ == "__main__":
