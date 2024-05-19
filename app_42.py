@@ -19,6 +19,7 @@ from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.movie import MovieStore, MovieTag, MovieList
 from potyk_io_back.pages import BlogPageStore, BlogPage
 from potyk_io_back.q import Q
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
@@ -82,8 +83,8 @@ class Deps:
     sqlite_cursor: sqlite3.Cursor
 
     @property
-    def movie_storage(self):
-        return SimpleStorage(self.sqlite_cursor, "movies")
+    def movie_store(self):
+        return MovieStore(self.sqlite_cursor)
 
     @property
     def q(self):
@@ -192,7 +193,7 @@ def create_app():
         pages = deps.page_store.list_index()
         pages_by_section = groupby_dict(pages, attrgetter("section"))
         events = deps.q.select_all(
-            "select * from events where 'date' > date() order by date",
+            "select * from events as e where e.date > date() order by date",
             as_=Event,
         )
         return render_template(
@@ -495,19 +496,107 @@ def create_app():
     @app.route("/movies")
     def movies_page():
 
-        year_movies = deps.movie_storage.list_all(
-            where="datetime(watched_dt) >= datetime('2024-01-01')",
-            order_by="datetime(watched_dt) desc",
+        year_movies = deps.movie_store.q.select_all(
+            "select * from movies "
+            "where datetime(watched_dt) >= datetime('2024-01-01') "
+            "order by datetime(watched_dt) desc",
         )
-        all_movies = deps.movie_storage.list_all(
-            order_by="datetime(watched_dt) desc",
+
+        all_movies = deps.movie_store.q.select_all(
+            "select * from movies " "order by datetime(watched_dt) desc",
         )
+
+        podborochki = [
+            MovieList(
+                key="ru_teen",
+                movies=[movie for movie in all_movies if MovieTag.ru_teen in movie.tags],
+                title="Пиздюшня русская",
+                desc="Фильмы и серики про нашу молодежь, зачастую это ноги растут из Школа - то есть тоже много маргинального",
+            ),
+            MovieList(
+                key="en_teen",
+                movies=[movie for movie in all_movies if MovieTag.en_teen in movie.tags],
+                title='Пиздюшня нерусская',
+                desc='Фильмы и серики про не нашу молодежь, зачастую это кино про секс и наркотики',
+            ),
+            MovieList(
+                key="telki",
+                movies=[movie for movie in all_movies if MovieTag.telki in movie.tags],
+                title='Телки',
+                desc='Фильмы и серики про женщин, про измены, про глупости'
+            ),
+            MovieList(
+                key="rzhachka_strelylka",
+                movies=[movie for movie in all_movies if MovieTag.rzhachka_strelyalka in movie.tags],
+                title='Ржачка-стрелялка',
+                desc='Фильмы и серики где много стреляют, дерутся, и все это под хихоньки-хахоньки'
+            ),
+            MovieList(
+                key="maniac",
+                movies=[movie for movie in all_movies if MovieTag.maniac in movie.tags],
+                title='Маньяки',
+                desc='Ну понятно, про маньяков'
+            ),
+            MovieList(
+                key="criminal",
+                movies=[movie for movie in all_movies if MovieTag.criminal in movie.tags],
+                title='Гладкий криминал',
+                desc='Крутые фильмы и серики про криминал'
+            ),
+            MovieList(
+                key="xtonb",
+                movies=[movie for movie in all_movies if MovieTag.xtonb in movie.tags],
+                title='Хтонь',
+                desc='Русская конечно))) Всякая чернуха и социальный пиздец'
+            ),
+            MovieList(
+                key="narkotiki",
+                movies=[movie for movie in all_movies if MovieTag.narkotiki in movie.tags],
+                title='Наркотики',
+                desc='Это плохо пнятненько?'
+            ),
+            MovieList(
+                key="sex",
+                movies=[movie for movie in all_movies if MovieTag.sex in movie.tags],
+                title='Секс',
+                desc='Ебаться - вредно, сперма - ядовита, сиськи - отвратительны'
+            ),
+            MovieList(
+                key="shiza",
+                movies=[movie for movie in all_movies if MovieTag.shiza in movie.tags],
+                title='Беды с башкой',
+                desc='Про поехавших или не очень'
+            ),
+            MovieList(
+                key="socialo4ka",
+                movies=[movie for movie in all_movies if MovieTag.socialo4ka in movie.tags],
+                title='Социал очка',
+                desc='Как хтонь, но не так жестко'
+            ),
+            MovieList(
+                key="scifi",
+                movies=[movie for movie in all_movies if MovieTag.scifi in movie.tags],
+                title='С кайф ай боевички',
+                desc='Анти-утопии всякие, эпики, серьезные стрелялки'
+            ),
+
+            MovieList(
+                key="high-grade",
+                movies=[movie for movie in all_movies if movie.vote >= 8],
+                title='8+',
+                desc='Фильмы и серики с хорошей оценкой от меня'
+            ),
+        ]
+
+        wo_tags = set(all_movies) - {movie for list_ in podborochki for movie in list_.movies}
 
         return render_template(
             "movies/index.html",
             page=deps.page,
             year_movies=year_movies,
             all_movies=all_movies,
+            podborochki=podborochki,
+            wo_tags=wo_tags,
         )
 
     # endregion movies

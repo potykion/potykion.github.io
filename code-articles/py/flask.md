@@ -1,7 +1,4 @@
----
-title: Flask
-desc: Гайд по Фласку в 2к24, в эпоху нейросетей, ае
----
+# Flask
 
 - Flask - один из лучших веб-фреймворков на Python
 - Лучший из-за простоты
@@ -27,8 +24,6 @@ def hello_world():
 
 ### Создание `Flask` через функцию
 
-- Удобно для тестов, можно задавать разные конфигурации
-
 ```python
 from flask import Flask
 
@@ -41,8 +36,10 @@ def create_app():
         return "<p>Hello, World!</p>"
 
     return app
-
 ```
+
+- Удобно для тестов, можно задавать разные конфигурации
+
 
 ## Запуск
 
@@ -70,7 +67,7 @@ flask run --host=0.0.0.0
 
 ### PyCharm
 
-![img.png]({{ url_for('static', filename='images/tech/flask/flask-run.png') }})
+![img.png](../../static/images/tech/flask/flask-run.png)
 
 #### Flask Debug
 

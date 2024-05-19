@@ -78,7 +78,12 @@ class Q:
 
         return new
 
-    def list_all(self, *, table: str | None = None, as_: As | None = None):
+    def list_all(
+        self,
+        *,
+        table: str | None = None,
+        as_: As | None = None,
+    ):
         table = table or self._table
         assert table, "{table} param should be set"
         return self.select_all(f"select * from {table}", as_=as_)
@@ -86,13 +91,21 @@ class Q:
     def select_all(self, sql, params=(), *, as_: As | None = None) -> list:
         if not isinstance(params, (list, tuple)):
             params = (params,)
+
         rows = self.sqlite_cur.execute(sql, params).fetchall()
+
         rows = self._apply_as(rows, as_)
+
         return rows
 
     def select_one(self, sql, params=(), *, as_: As | None = None) -> Any:
+        if not isinstance(params, (list, tuple)):
+            params = (params,)
+
         row = self.sqlite_cur.execute(sql, params).fetchone()
+
         row = self._apply_as(row, as_)
+
         return row
 
     def select_val(
@@ -100,9 +113,15 @@ class Q:
         sql,
         params=(),
     ) -> Any:
+        if not isinstance(params, (list, tuple)):
+            params = (params,)
+
         return self.sqlite_cur.execute(sql, params).fetchone()[0]
 
     def execute(self, sql, params=(), *, commit=False):
+        if not isinstance(params, (list, tuple)):
+            params = (params,)
+
         self.sqlite_cur.execute(sql, params)
 
         if commit:

@@ -1,7 +1,4 @@
----
-title: Decimal
-desc: Просто маленькая справка по немаленькому типу данных
----
+# Decimal
 
 ```python
 import decimal

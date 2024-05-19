@@ -1,0 +1,31 @@
+# htmx
+
+[htmx](https://htmx.org/) - альтернативная frontend-библиотека; философия в том чтобы заменять html контент контентом с
+сервера
+
+## Рецепты
+
+```html
+
+<div>
+    {{ link.link_url }}
+    <form hx-post="/mt/qr/gen" hx-target="next .qr-code-img">
+        <input name="url" hidden value="{{ link.link_url }}">
+        <button>Скачать куар</button>
+        <span class="htmx-indicator">⏳</span>
+    </form>
+
+    <div class="qr-code-img" style="width: 400px"></div>
+</div>
+```
+
+При сабмите формы отправляется запрос на сервер и ответ помещается в **следующий за**
+формой `div.qr-code-img`
+
+### Индикатор прогресса
+
+Вешаем класс `.htmx-indicator`:
+
+```html
+<span class="htmx-indicator">⏳</span>
+```
