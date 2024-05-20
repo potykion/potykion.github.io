@@ -14,7 +14,7 @@ from flask import Flask, render_template, render_template_string
 from jinja2 import TemplateNotFound
 from pydantic import BaseModel
 
-from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle
+from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
@@ -331,11 +331,15 @@ def create_app():
             for style in parent_styles
         ]
 
+        stores = [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
+
         return render_template(
             "beer/index.html",
             page=deps.page,
             breweries=breweries,
             styles=styles,
+            beers=beers,
+            stores=stores,
         )
 
     # endregion beer
