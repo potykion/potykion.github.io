@@ -34,8 +34,8 @@ class Analysis(BaseModel):
     change_next: decimal.Decimal | None = None
     change_predict: decimal.Decimal | None = None
     sample: int
-    indicators_prev_day: dict
-    indicators_prev_day_2: dict
+    indicators_prev_day: dict | None = None
+    # indicators_prev_day_2: dict | None = None
 
     @property
     def X(self):
@@ -187,7 +187,7 @@ def analysis_to_X_df(analysis: list[Analysis]) -> pd.DataFrame:
     columns = [
         *str_indicators(1),
         *str_indicators(2),
-        *str_indicators(3),
+        # *str_indicators(3),
     ]
 
     X = pd.DataFrame(
@@ -195,7 +195,7 @@ def analysis_to_X_df(analysis: list[Analysis]) -> pd.DataFrame:
             [
                 *(anal.X[ind] for ind in indicators),
                 *(anal.indicators_prev_day[ind] for ind in indicators),
-                *(anal.indicators_prev_day_2[ind] for ind in indicators),
+                # *(anal.indicators_prev_day_2[ind] for ind in indicators),
             ]
             for anal in analysis
         ],
@@ -212,7 +212,7 @@ def analysis_to_y_df(analysis: list[Analysis]) -> pd.DataFrame:
 
 
 def predict(repo: AnalysisRepo, save_to_db=True):
-    analysis_to_train = repo.list_all(where="change_next is not null and sample > 2")
+    analysis_to_train = repo.list_all(where="change_next is not null and sample > 1")
     analysis_to_predict = repo.list_all(where="change_next is null ")
     # analysis_to_predict = repo.list_all(where="sample > 2")
 
@@ -228,7 +228,7 @@ def predict(repo: AnalysisRepo, save_to_db=True):
     if save_to_db:
         for anal, pred in zip(analysis_to_predict, predictions):
             sqlite_cursor.execute(
-                "update ta_indicators_1d set change_predict_3 =? where id =?",
+                "update ta_indicators_1d set change_predict_2 =? where id =?",
                 (pred, anal.id),
             )
         sqlite_cursor.connection.commit()
@@ -237,15 +237,15 @@ def predict(repo: AnalysisRepo, save_to_db=True):
         print("today predictions:")
         results = repo.q.select_all(
             """
-        select ticker, change_predict_3
+        select ticker, change_predict_2
         from ta_indicators_1d
         where sample = ?
-        order by change_predict_3 desc
+        order by change_predict_2 desc
         limit 10
         """,
             (last_sample,),
         )
-        print(tabulate(results, headers=["ticker", "change_next", "change_predict_3"]))
+        print(tabulate(results, headers=["ticker", "change_predict"]))
 
 
 if __name__ == "__main__":
@@ -261,8 +261,8 @@ if __name__ == "__main__":
     set_change_next(sqlite_cursor, AnalysisRepo(sqlite_cursor))
     print()
 
-    # print("predict...")
-    # predict(AnalysisRepo(sqlite_cursor))
-    # print()
+    print("predict...")
+    predict(AnalysisRepo(sqlite_cursor))
+    print()
 
     print("Done!")

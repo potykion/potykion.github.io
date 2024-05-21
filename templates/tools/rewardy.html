@@ -1,0 +1,26 @@
+{% extends "_layouts/base.html" %}
+
+{% from "_components/input.html" import input, textarea %}
+{% from "_components/scripts.html" import htmx %}
+{% import '_components/icons.html' as icons %}
+
+{% block main %}
+
+
+    <form class="flex gap-2" hx-post="/tools/rewardy" hx-target="next .tasks"
+          hx-on::after-request="if(event.detail.successful) this.reset()">
+        <input class="input input-sm border-neutral w-full" name="title" placeholder="Задача">
+        <button class="btn btn-circle btn-sm" name="action" value="create-task">
+            {{ icons.add(size=4) }}
+        </button>
+    </form>
+
+    <div class="tasks pt-2">
+        {{ tasks | safe }}
+    </div>
+
+    {{ htmx() }}
+
+{% endblock %}
+
+

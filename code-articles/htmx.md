@@ -29,3 +29,22 @@
 ```html
 <span class="htmx-indicator">⏳</span>
 ```
+
+## `hx-target`
+
+- `hx-target="closest div"` - меняет родительский элемент
+
+```html
+
+<div>
+    {{ task.title }}
+
+    <button class="btn btn-sm btn-circle" hx-delete="/tools/rewardy/{{ task.id }}" hx-swap="delete"
+            hx-target="closest div">
+        ❌
+    </button>
+</div>
+
+```
+
+При нажатии на кнопку кидаем запрос, и удаляем родительский div

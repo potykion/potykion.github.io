@@ -23,6 +23,7 @@ from potyk_io_back.movie import MovieStore, MovieTag, MovieList
 from potyk_io_back.pages import BlogPageStore, BlogPage
 from potyk_io_back.q import Q
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
+from potyk_io_back.rewardy import add_rewardy_routes
 from potyk_io_back.tools import ToolStore, ToolTag, ToolType
 
 
@@ -456,6 +457,8 @@ def create_app():
             page=deps.page,
         )
 
+    add_rewardy_routes(app, deps)
+
     # endregion tools
 
     # region drafts
@@ -520,75 +523,74 @@ def create_app():
             MovieList(
                 key="en_teen",
                 movies=[movie for movie in all_movies if MovieTag.en_teen in movie.tags],
-                title='Пиздюшня нерусская',
-                desc='Фильмы и серики про не нашу молодежь, зачастую это кино про секс и наркотики',
+                title="Пиздюшня нерусская",
+                desc="Фильмы и серики про не нашу молодежь, зачастую это кино про секс и наркотики",
             ),
             MovieList(
                 key="telki",
                 movies=[movie for movie in all_movies if MovieTag.telki in movie.tags],
-                title='Телки',
-                desc='Фильмы и серики про женщин, про измены, про глупости'
+                title="Телки",
+                desc="Фильмы и серики про женщин, про измены, про глупости",
             ),
             MovieList(
                 key="rzhachka_strelylka",
                 movies=[movie for movie in all_movies if MovieTag.rzhachka_strelyalka in movie.tags],
-                title='Ржачка-стрелялка',
-                desc='Фильмы и серики где много стреляют, дерутся, и все это под хихоньки-хахоньки'
+                title="Ржачка-стрелялка",
+                desc="Фильмы и серики где много стреляют, дерутся, и все это под хихоньки-хахоньки",
             ),
             MovieList(
                 key="maniac",
                 movies=[movie for movie in all_movies if MovieTag.maniac in movie.tags],
-                title='Маньяки',
-                desc='Ну понятно, про маньяков'
+                title="Маньяки",
+                desc="Ну понятно, про маньяков",
             ),
             MovieList(
                 key="criminal",
                 movies=[movie for movie in all_movies if MovieTag.criminal in movie.tags],
-                title='Гладкий криминал',
-                desc='Крутые фильмы и серики про криминал'
+                title="Гладкий криминал",
+                desc="Крутые фильмы и серики про криминал",
             ),
             MovieList(
                 key="xtonb",
                 movies=[movie for movie in all_movies if MovieTag.xtonb in movie.tags],
-                title='Хтонь',
-                desc='Русская конечно))) Всякая чернуха и социальный пиздец'
+                title="Хтонь",
+                desc="Русская конечно))) Всякая чернуха и социальный пиздец",
             ),
             MovieList(
                 key="narkotiki",
                 movies=[movie for movie in all_movies if MovieTag.narkotiki in movie.tags],
-                title='Наркотики',
-                desc='Это плохо пнятненько?'
+                title="Наркотики",
+                desc="Это плохо пнятненько?",
             ),
             MovieList(
                 key="sex",
                 movies=[movie for movie in all_movies if MovieTag.sex in movie.tags],
-                title='Секс',
-                desc='Ебаться - вредно, сперма - ядовита, сиськи - отвратительны'
+                title="Секс",
+                desc="Ебаться - вредно, сперма - ядовита, сиськи - отвратительны",
             ),
             MovieList(
                 key="shiza",
                 movies=[movie for movie in all_movies if MovieTag.shiza in movie.tags],
-                title='Беды с башкой',
-                desc='Про поехавших или не очень'
+                title="Беды с башкой",
+                desc="Про поехавших или не очень",
             ),
             MovieList(
                 key="socialo4ka",
                 movies=[movie for movie in all_movies if MovieTag.socialo4ka in movie.tags],
-                title='Социал очка',
-                desc='Как хтонь, но не так жестко'
+                title="Социал очка",
+                desc="Как хтонь, но не так жестко",
             ),
             MovieList(
                 key="scifi",
                 movies=[movie for movie in all_movies if MovieTag.scifi in movie.tags],
-                title='С кайф ай боевички',
-                desc='Анти-утопии всякие, эпики, серьезные стрелялки'
+                title="С кайф ай боевички",
+                desc="Анти-утопии всякие, эпики, серьезные стрелялки",
             ),
-
             MovieList(
                 key="high-grade",
                 movies=[movie for movie in all_movies if movie.vote >= 8],
-                title='8+',
-                desc='Фильмы и серики с хорошей оценкой от меня'
+                title="8+",
+                desc="Фильмы и серики с хорошей оценкой от меня",
             ),
         ]
 

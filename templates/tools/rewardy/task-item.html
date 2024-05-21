@@ -1,0 +1,32 @@
+{% import '_components/icons.html' as icons %}
+
+<form class="flex gap-2 items-center task w-full">
+    <input type="checkbox" class="checkbox checkbox-sm" hx-post="/tools/rewardy/{{ task.id }}/toggle"
+           hx-target="closest .tasks" name="done" {% if task.done %}checked{% endif %}>
+
+    {% if edit %}
+        <input class=" input input-sm border-neutral w-full" value="{{ task.title }}" name="title">
+
+        <button class="btn btn-sm btn-circle" hx-post="/tools/rewardy/{{ task.id }}/edit"
+                hx-target="closest .task">
+            {{ icons.done(size=4) }}
+        </button>
+    {% else %}
+        <div class="grow {% if task.done %}line-through{% endif %}">{{ task.title }}</div>
+
+        <button class="btn btn-sm btn-circle" hx-get="/tools/rewardy/{{ task.id }}/edit"
+                hx-target="closest .task">
+            {{ icons.edit(size=4) }}
+        </button>
+    {% endif %}
+
+    <button class="btn btn-sm btn-circle" hx-post="/tools/rewardy/{{ task.id }}/clone"
+            hx-target="closest .tasks">
+        {{ icons.clone(size=4) }}
+    </button>
+
+    <button class="btn btn-sm btn-circle" hx-delete="/tools/rewardy/{{ task.id }}" hx-swap="delete"
+            hx-target="closest div">
+        {{ icons.close(size=4) }}
+    </button>
+</form>
