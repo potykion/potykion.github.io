@@ -20,7 +20,8 @@
 {% macro movie_grid(movies, prefix) %}
     <div class="grid grid-cols-4 md:grid-cols-10 gap-1">
         {% for movie in movies %}
-            <button onclick="modal_movie_{{ prefix }}_{{ movie.id }}.showModal()" class="blue-border-hover-link">
+            <button onclick="modal_movie_{{ prefix }}_{{ movie.id }}.showModal()" class="blue-border-hover-link"
+                    title="{{ movie.title }}">
                 <img src="{{ url_for('static', filename=movie.poster) }}">
             </button>
 
@@ -53,10 +54,44 @@
 {% endmacro %}
 
 {% block main %}
-    <h2>За этот год</h2>
+
+    <ul>
+        <li><a href="#year">За этот год</a></li>
+        <li><a href="#lists">Подборочки</a></li>
+        <li><a href="#all">За все время</a></li>
+    </ul>
+
+    <h2 id="year">За этот год</h2>
     {{ movie_grid(year_movies, 'year') }}
 
-    <h2>За все время</h2>
+    <h2 id="lists">Подборочки</h2>
+
+    <div class="flex flex-col gap-2">
+        {% for movie_list in podborochki %}
+            <div>
+                <h3 class="!mb-0">{{ movie_list.title }}</h3>
+                <div>
+                    <cite>{{ movie_list.desc }}</cite>
+                </div>
+                {{ movie_grid(movie_list.movies, movie_list.key) }}
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+    <details>
+        <summary>
+            <h3 class="!mb-0 inline-block">Нераспределенные</h3>
+
+        </summary>
+        {{ movie_grid(wo_tags, 'wo_tags') }}
+
+    </details>
+
+
+
+    <h2 id="all">За все время</h2>
     {{ movie_grid(all_movies, 'all') }}
 
 {% endblock %}
