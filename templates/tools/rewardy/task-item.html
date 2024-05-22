@@ -12,7 +12,13 @@
             {{ icons.done(size=4) }}
         </button>
     {% else %}
-        <div class="grow {% if task.done %}line-through{% endif %}">{{ task.title }}</div>
+        <div class="grow {% if task.done %}line-through{% endif %}"
+             hx-get="/tools/rewardy/{{ task.id }}/edit"
+             hx-target="closest .task"
+             hx-trigger="dblclick"
+        >
+            {{ task.title }}
+        </div>
 
         <button class="btn btn-sm btn-circle" hx-get="/tools/rewardy/{{ task.id }}/edit"
                 hx-target="closest .task">
@@ -26,7 +32,7 @@
     </button>
 
     <button class="btn btn-sm btn-circle" hx-delete="/tools/rewardy/{{ task.id }}" hx-swap="delete"
-            hx-target="closest div">
+            hx-target="closest .task">
         {{ icons.close(size=4) }}
     </button>
 </form>
