@@ -9,7 +9,30 @@
 
     <form class="flex gap-2" hx-post="/tools/rewardy" hx-target="next .tasks"
           hx-on::after-request="if(event.detail.successful) this.reset()">
+
+        <label class="form-control f-full">
+            <div class="label">
+                <span class="label-text ">
+                    Задача
+                </span>
+            </div>
+
         <input class="input input-sm border-neutral w-full" name="title" placeholder="Задача">
+        </label>
+
+
+
+        <label class="form-control">
+            <div class="label">
+                <span class="label-text ">
+                    Награда (минуты)
+                </span>
+            </div>
+
+            <input class="input input-sm border-neutral " name="reward" type="number"
+                   value="1" placeholder="1" min="0.5" step="0.5">
+        </label>
+
         <button class="btn btn-circle btn-sm" name="action" value="create-task">
             {{ icons.add(size=4) }}
         </button>
