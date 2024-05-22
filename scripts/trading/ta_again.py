@@ -133,36 +133,36 @@ def load_sample(repo: AnalysisRepo):
 def set_change_next(sqlite_cursor, repo: AnalysisRepo):
     last_sample = repo.q.select_val("select max(sample) from ta_indicators_1d") or 0
 
-    # for sample in range(last_sample):
-    #     sample_analysis = repo.list_all(where="sample = ?", where_params=(sample,))
-    #     if all(anal.change_next for anal in sample_analysis):
-    #         continue
-    #
-    #     next_sample_analysis = repo.list_all(where="sample = ?", where_params=(sample + 1,))
-    #     if not next_sample_analysis:
-    #         break
-    #
-    #     next_sample_analysis_by_ticker = {anal.ticker: anal for anal in next_sample_analysis}
-    #
-    #     for anal in sample_analysis:
-    #         next_anal = next_sample_analysis_by_ticker[anal.ticker]
-    #         anal.change_next = next_anal.change
-    #         sqlite_cursor.execute(
-    #             "update ta_indicators_1d set change_next = ? where id = ?", (str(anal.change_next), anal.id)
-    #         )
-    #
-    #     sqlite_cursor.execute(
-    #         """
-    #     UPDATE ta_indicators_1d
-    #     SET indicators_prev_day = (
-    #         SELECT indicators
-    #         FROM ta_indicators_1d AS prev_day
-    #         WHERE prev_day.sample = ta_indicators_1d.sample - 1
-    #     );
-    #     """
-    #     )
-    #
-    #     sqlite_cursor.connection.commit()
+    for sample in range(last_sample):
+        sample_analysis = repo.list_all(where="sample = ?", where_params=(sample,))
+        if all(anal.change_next for anal in sample_analysis):
+            continue
+
+        next_sample_analysis = repo.list_all(where="sample = ?", where_params=(sample + 1,))
+        if not next_sample_analysis:
+            break
+
+        next_sample_analysis_by_ticker = {anal.ticker: anal for anal in next_sample_analysis}
+
+        for anal in sample_analysis:
+            next_anal = next_sample_analysis_by_ticker[anal.ticker]
+            anal.change_next = next_anal.change
+            sqlite_cursor.execute(
+                "update ta_indicators_1d set change_next = ? where id = ?", (str(anal.change_next), anal.id)
+            )
+
+        sqlite_cursor.execute(
+            """
+        UPDATE ta_indicators_1d
+        SET indicators_prev_day = (
+            SELECT indicators
+            FROM ta_indicators_1d AS prev_day
+            WHERE prev_day.sample = ta_indicators_1d.sample - 1
+        );
+        """
+        )
+
+        sqlite_cursor.connection.commit()
 
     print("yesterday prediction results:")
     results = repo.q.select_all(
@@ -178,7 +178,7 @@ def set_change_next(sqlite_cursor, repo: AnalysisRepo):
     print(tabulate(results, headers=["ticker", "change_next", "change_predict_2"]))
     score = repo.q.select_val('select count(*) from ta_indicators_1d where sample = ? and change_next > 0 and change_predict_2 > 0', (last_sample-1, ))
     score = score / len(TICKERS)
-    print('score = {score}')
+    print(f'score = {score}')
 
 # Assuming AnalysisRepo and sqlite_cursor are defined elsewhere in your code
 
