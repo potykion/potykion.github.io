@@ -7,19 +7,18 @@
 {% block main %}
 
 
-    <form class="flex gap-2" hx-post="/tools/rewardy" hx-target="next .tasks"
+    <form class="flex items-end gap-2" hx-post="/tools/rewardy" hx-target="next .tasks"
           hx-on::after-request="if(event.detail.successful) this.reset()">
 
-        <label class="form-control f-full">
+        <label class="form-control w-full">
             <div class="label">
                 <span class="label-text ">
                     Задача
                 </span>
             </div>
 
-        <input class="input input-sm border-neutral w-full" name="title" placeholder="Задача">
+            <input class="input input-sm border-neutral w-full" name="title" placeholder="Сделать таску">
         </label>
-
 
 
         <label class="form-control">
