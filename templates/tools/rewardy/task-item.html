@@ -5,17 +5,17 @@
            hx-target="closest .tasks" name="done" {% if task.done %}checked{% endif %}>
 
     {% if edit %}
-        <input class=" input input-sm border-neutral w-full" value="{{ task.title }}" name="title">
+        <input spellcheck="false" autofocus class=" input input-sm border-neutral w-full" value="{{ task.title }}" name="title" >
 
         <button class="btn btn-sm btn-circle" hx-post="/tools/rewardy/{{ task.id }}/edit"
                 hx-target="closest .task">
             {{ icons.done(size=4) }}
         </button>
     {% else %}
-        <div class="grow {% if task.done %}line-through{% endif %}"
+        <div class="grow {% if task.done %}line-through{% endif %} cursor-pointer"
              hx-get="/tools/rewardy/{{ task.id }}/edit"
              hx-target="closest .task"
-             hx-trigger="dblclick"
+             hx-trigger="click"
         >
             {{ task.title }}
         </div>

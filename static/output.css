@@ -3784,8 +3784,8 @@ ul.li-minus li:before {
   height: 12rem !important;
 }
 
-.h-2 {
-  height: 0.5rem;
+.h-4 {
+  height: 1rem;
 }
 
 .h-48 {
@@ -3796,16 +3796,12 @@ ul.li-minus li:before {
   height: 1.5rem;
 }
 
-.h-4 {
-  height: 1rem;
-}
-
 .max-h-80 {
   max-height: 20rem;
 }
 
-.w-2 {
-  width: 0.5rem;
+.w-4 {
+  width: 1rem;
 }
 
 .w-52 {
@@ -3833,10 +3829,6 @@ ul.li-minus li:before {
   width: 100%;
 }
 
-.w-4 {
-  width: 1rem;
-}
-
 .max-w-\[1000px\] {
   max-width: 1000px;
 }
@@ -3855,6 +3847,10 @@ ul.li-minus li:before {
 
 .cursor-help {
   cursor: help;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .grid-cols-2 {
