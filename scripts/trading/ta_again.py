@@ -3,11 +3,12 @@ import decimal
 import json
 import sqlite3
 import time
-from operator import attrgetter
 
+import numpy as np
 import pandas as pd
 import tradingview_ta
 from pydantic import BaseModel
+from sklearn.metrics import mean_squared_error, r2_score, precision_score, accuracy_score
 from tabulate import tabulate
 from tradingview_ta import get_multiple_analysis, Interval
 from xgboost import XGBRegressor
@@ -157,11 +158,22 @@ class AnalysisRepo:
             as_=dict,
         )
 
-    def get_prediction_score(self, sample):
-        return self.q.select_val(
-            f"select count(*) from {self.table} where sample = ? and change_next > 0 and change_predict_2 > 0",
-            (sample,),
+    def get_prediction_scores(self, sample):
+        values = self.q.select_all(
+            f"select change_next, change_predict_2 from {self.table} where sample = ?", (sample,), as_=dict
         )
+        actual_values = np.array([val["change_next"] for val in values])
+        predictions = np.array([val["change_predict_2"] for val in values])
+
+        actual_classes = np.array([int(val["change_next"] > 0) for val in values])
+        prediction_classes = np.array([int(val["change_predict_2"] > 0) for val in values])
+
+        accuracy = accuracy_score(actual_classes, prediction_classes)
+        # precision = precision_score(actual_classes, prediction_classes, average='binary')
+        rmse = np.sqrt(mean_squared_error(actual_values, predictions))
+        r2 = r2_score(actual_values, predictions)
+
+        return accuracy, rmse, r2
 
     def list_train_samples(self):
         if self.use_prev_indicators:
@@ -204,9 +216,8 @@ def set_change_next(repo: AnalysisRepo):
     results = repo.list_prediction_results(last_sample - 1)
     print(tabulate(results))
 
-    score = repo.get_prediction_score(last_sample - 1)
-    score = score / len(TICKERS)
-    print(f"score = {score}")
+    accuracy, rmse, r2 = repo.get_prediction_scores(last_sample - 1)
+    print(f"score: accuracy📈 = {accuracy}; RMSE📉 = {rmse}; R2📈0️⃣ = {r2}")
 
 
 def predict(repo: AnalysisRepo):
@@ -300,12 +311,18 @@ if __name__ == "__main__":
 
     while True:
         # 10:00 > 10:01
-        if datetime.datetime.now().minute == 0:
+        now = datetime.datetime.now()
+
+        if now.hour >= 19:
+            break
+
+        if now.minute == 0:
             time.sleep(1 * 60)
 
-        print(datetime.datetime.now())
+        print(now)
 
         load_set_predict_loop(repo_1h, ta_repo_1h)
 
-        print("Sleeping...")
+        til = now + datetime.timedelta(minutes=interval_minutes)
+        print(f"Sleep til {til}...")
         time.sleep(interval_minutes * 60)
