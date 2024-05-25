@@ -1,7 +1,10 @@
-{% macro link(url, title, desc, tags=[]) %}
-    <div class="text-sm">
+{% macro link(url, title, desc, tags=[], cls='') %}
+    <div class="text-sm {{ cls }}">
         <div><a href="{{ url }}">{{ title }}</a></div>
-        <div>{{ desc }}</div>
+
+        {% if desc %}
+            <div>{{ desc }}</div>
+        {% endif %}
 
         {% if tags %}
             <div class="flex flex-wrap gap-1">

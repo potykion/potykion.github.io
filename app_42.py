@@ -5,7 +5,6 @@ import re
 import sqlite3
 from itertools import groupby
 from operator import attrgetter
-from typing import Literal
 
 import flask
 import frontmatter
@@ -15,6 +14,7 @@ from jinja2 import TemplateNotFound
 from pydantic import BaseModel
 
 from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore
+from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
@@ -34,13 +34,15 @@ class Game(BaseModel):
     genre: str
     steam: str
     review: str
-    played_date: datetime.date
+    played_date: datetime.date | None
+    wishlist: bool | None
 
 
 class GameStore:
     def __init__(self, sqlite_cursor: sqlite3.Cursor):
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(sqlite_cursor, "games", Game)
+        self.q = Q(sqlite_cursor, table="games", select_all_as=Game)
 
     def list_all(self, order_by=None):
         return self.store.list_all(order_by=order_by)
@@ -48,34 +50,6 @@ class GameStore:
     def get_current(self):
         raw_game = self.sqlite_cursor.execute("select * from games order by played_date desc ").fetchone()
         return Game(**raw_game)
-
-
-class Book(BaseModel):
-    title: str | None
-    author: str | None
-    desc: str | None = ""
-    pdf: str | None = ""
-    bookmate: str | None = ""
-    summary: str | None = ""
-    title_en: str | None = ""
-    url: str | None = ""
-    status: Literal["wip", "wishlist"] = "wishlist"
-
-    summary_html: str = ""
-
-
-class BookStore:
-    def __init__(self, sqlite_cursor):
-        self.sqlite_cursor = sqlite_cursor
-        self.store = SimpleStorage(self.sqlite_cursor, "books", Book)
-
-    def first_by_url(self, url):
-        book: Book = self.store.first_where(url=url)
-        book.summary_html = mistune.html(book.summary or "")
-        return book
-
-    def list_all(self) -> list[Book]:
-        return self.store.list_all()
 
 
 @dataclasses.dataclass
@@ -257,6 +231,7 @@ def create_app():
     def books_page():
         wip_books = []
         wishlist_books = []
+        done_books = []
 
         books = deps.book_store.list_all()
         for book in books:
@@ -264,12 +239,15 @@ def create_app():
                 wip_books.append(book)
             if book.status == "wishlist":
                 wishlist_books.append(book)
+            if book.status == "done" or book.status == "drop":
+                done_books.append(book)
 
         return render_template(
             f"books/index.html",
             page=deps.page,
             wip_books=wip_books,
             wishlist_books=wishlist_books,
+            done_books=done_books,
         )
 
     @app.route("/books/<book_key>")
@@ -369,12 +347,16 @@ def create_app():
     # region games
     @app.route("/games")
     def games_page():
-        games = deps.game_store.list_all(order_by="played_date desc")
-        current = deps.game_store.get_current()
+        games = deps.game_store.q.select_all("select * from games order by played_date desc")
+        wishlist = [game for game in games if game.wishlist]
+        games = [game for game in games if not game.wishlist]
+        current = games[0]
+
         return render_template(
             "games/index.html",
             page=deps.page,
             games=games,
+            wishlist=wishlist,
             current=current,
         )
 
