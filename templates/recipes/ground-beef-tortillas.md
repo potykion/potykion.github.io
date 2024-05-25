@@ -25,7 +25,7 @@ tags:
 
 ## Приготовление
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_W71kr0wJvA?si=8pzTjEmbDD-gQKjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/_W71kr0wJvA?si=8pzTjEmbDD-gQKjk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 1. Целые головки чеснока переложить в форму для выпекания и отправить в заранее разогретую до 180 градусов духовку на 20 минут.
