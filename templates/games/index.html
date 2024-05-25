@@ -11,5 +11,9 @@
     <h2>Стата 2024</h2>
     {% include '_components/game_grid.html' %}
 
+    <h2>Вишлист</h2>
+    {% set games = wishlist %}
+    {% include '_components/game_grid.html' %}
+
 
 {% endblock %}
