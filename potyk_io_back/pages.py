@@ -18,6 +18,7 @@ class BlogPageSection(enum.StrEnum):
     recipes_breakfast = auto()
     recipes_pasta = auto()
     recipes_soup = auto()
+    recipes_salad = auto()
 
     def to_str(self):
         match self:
@@ -40,6 +41,8 @@ class BlogPageSection(enum.StrEnum):
                 return 'Паста'
             case BlogPageSection.recipes_soup:
                 return 'Суп'
+            case BlogPageSection.recipes_salad:
+                return 'Салат'
 
 
 

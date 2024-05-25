@@ -26,7 +26,7 @@ tags:
 
 ## Приготовление
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dcZ3fAY_VXk?si=gX572JUxWy4coV0E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/dcZ3fAY_VXk?si=gX572JUxWy4coV0E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 0. Духовку на 180 градусов
 1. В большую миску разбить 2 яйца, всыпать сахар (110 г) и взбить миксером с венчиками до растворения сахара и увеличения консистенции в объёме. В середине взбивания добавить щепотку соли.

@@ -19,7 +19,7 @@ url: https://vk.com/wall-39128795_12869
 
 ## Приготовление
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tzl-DRCYPv8?si=72kBgv4wzTuDp7xr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe src="https://www.youtube.com/embed/tzl-DRCYPv8?si=72kBgv4wzTuDp7xr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 - Спагетти отправить в кипящую воду, варить 4 минуты, постоянно помешивая.
 - Брокколи нарезать на тонкие кусочки.
