@@ -35,23 +35,25 @@ def main():
 
     prediction_repo = PredictionRepo()
 
-    while True:
-        # 10:00 > 10:01
-        now = datetime.datetime.now()
+    load_set_predict_loop(repo_1h, ta_repo_1h, prediction_repo)
 
-        if now.hour >= 19:
-            break
-
-        if now.minute == 0:
-            time.sleep(1 * 60)
-
-        print(now)
-
-        load_set_predict_loop(repo_1h, ta_repo_1h, prediction_repo)
-
-        til = now + datetime.timedelta(minutes=interval_minutes)
-        print(f"Sleep til {til}...")
-        time.sleep(interval_minutes * 60)
+    # while True:
+    #     # 10:00 > 10:01
+    #     now = datetime.datetime.now()
+    #
+    #     if now.hour >= 19:
+    #         break
+    #
+    #     if now.minute == 0:
+    #         time.sleep(1 * 60)
+    #
+    #     print(now)
+    #
+    #     load_set_predict_loop(repo_1h, ta_repo_1h, prediction_repo)
+    #
+    #     til = now + datetime.timedelta(minutes=interval_minutes)
+    #     print(f"Sleep til {til}...")
+    #     time.sleep(interval_minutes * 60)
 
 
 def load_set_predict_loop(repo, ta_repo_5m, prediction_repo):

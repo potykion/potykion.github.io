@@ -13,9 +13,11 @@ from potyk_io_back.core import BASE_DIR
 def plot(df):
     plt.figure(figsize=(10, 6))
 
-    plt.plot(df["dt"], df["accuracy"], label="Accuracy📈")
-    plt.plot(df["dt"], df["rmse"], label="RMSE📉")
-    plt.plot(df["dt"], df["r2"], label="R^2📈0️⃣")
+    plt.plot(df["dt"], df["accuracy"], label="Accuracy ↑")
+    plt.plot(df["dt"], df["rmse"], label="RMSE ↓")
+    plt.plot(df["dt"], df["r2"], label="R² ↑")
+
+    plt.axhline(y=0, color='gray', linestyle='-')
 
     plt.xlabel("Date-Time")
     plt.ylabel("Value")
@@ -23,6 +25,8 @@ def plot(df):
     plt.legend()
 
     plt.xticks([])
+
+    plt.savefig('line_chart.png', dpi=300, bbox_inches='tight')
 
     plt.show()
 

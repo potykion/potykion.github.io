@@ -14,7 +14,7 @@ def main():
     # dir_ = Path(r"C:\Users\admin\Downloads\Telegram Desktop")
     dir_ = Path(__file__).parent.absolute()
     json_files = [
-        # 'ta_2024-05-28_17-02-14.json',
+        'ta_2024-05-28_18-02-15.json',
         # ...,
     ]
     assert json_files, "No json_files set!"
