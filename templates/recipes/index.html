@@ -2,8 +2,26 @@
 
 {% from '_components/page_list.html' import page_list, page_sections %}
 
+{% block title %}
+    <div class="flex justify-between">
+        <div>
+            <h1>{{ page.title }}</h1>
+            <cite class="block">{{ (page.desc or '') | safe }}</cite>
+
+        </div>
+
+        {% if not config.is_prod %}
+            <div>
+                <a class="btn btn-sm " href="/recipes/form">Создать</a>
+            </div>
+        {% endif %}
+    </div>
+
+
+
+{% endblock %}
+
 
 {% block main %}
-        {{ page_sections(pages_by_section) }}
-
+    {{ page_sections(pages_by_section) }}
 {% endblock %}

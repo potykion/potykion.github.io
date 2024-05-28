@@ -1,0 +1,16 @@
+{% extends "_layouts/base.html" %}
+
+{% from '_components/page_list.html' import page_list, page_sections %}
+{% from '_components/input.html' import input, textarea %}
+
+
+
+{% block main %}
+
+    {{ input('Файл', placeholder='asian-fried-rice') }}
+    {{ input('Название', placeholder='Жареный рисик в азиатском стиле') }}
+    {{ input('Описание', placeholder='Наипростейшая азиаточка: тупа все что есть в холодосе сваливаешь в сковороду') }}
+    {{ textarea('Ингредиенты.md') }}
+    {{ textarea('Приготовление.md') }}
+
+{% endblock %}

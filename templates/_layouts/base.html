@@ -39,7 +39,7 @@
 </head>
 
 <!-- region GA & YaMetrika -->
-{% if config['FLASK_ENV'] == 'prod' %}
+{% if config.is_prod %}
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
     <script>
@@ -107,10 +107,12 @@
 </header>
 
 <main class="prose  max-w-none p-2">
-    {% if page %}
-        <h1>{{ page.title }}</h1>
-        <cite class="block">{{ (page.desc or '') | safe }}</cite>
-    {% endif %}
+    {% block title %}
+        {% if page %}
+            <h1>{{ page.title }}</h1>
+            <cite class="block">{{ (page.desc or '') | safe }}</cite>
+        {% endif %}
+    {% endblock %}
 
     {% block main %}{% endblock %}
 </main>
