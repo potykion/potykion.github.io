@@ -50,9 +50,9 @@ def main():
 
 
 def load_set_predict_loop(repo, ta_repo_5m, prediction_repo):
-    print("load_sample...")
-    load_sample(repo, ta_repo_5m)
-    print()
+    # print("load_sample...")
+    # load_sample(repo, ta_repo_5m)
+    # print()
 
     print("set_change_next...")
     set_change_next(repo)

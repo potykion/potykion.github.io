@@ -2,6 +2,7 @@ import asyncio
 import datetime
 import json
 import os
+from typing import List
 
 from dotenv import load_dotenv
 from telegram import Bot
@@ -9,7 +10,7 @@ from tradingview_ta import Interval
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.tv_ta.tickers import TICKERS
-from potyk_io_back.tv_ta.tv_ta import TAAnalysisRepo
+from potyk_io_back.tv_ta.tv_ta import TAAnalysisRepo, Analysis
 
 
 async def handler(event, context):
@@ -28,7 +29,7 @@ async def main(ignore_schedule=False):
 
     ta_repo = TAAnalysisRepo(Interval.INTERVAL_1_HOUR)
 
-    ta = ta_repo.load_samples(TICKERS, dt=datetime.datetime.now(), sample=0)
+    ta: list[Analysis] = ta_repo.load_samples(TICKERS, dt=datetime.datetime.now(), sample=0)
     ta_json = [anal.model_dump(mode="json") for anal in ta]
 
     await _tg_bot_send_json(ta_json)

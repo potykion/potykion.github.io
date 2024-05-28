@@ -17,7 +17,7 @@ def parse_dt_from_json_filename(filename: str) -> datetime.datetime:
     return datetime.datetime.strptime(filename, "%Y-%m-%d_%H-%M-%S")
 
 
-async def main():
+def main():
     dir_ = Path(r"C:\Users\admin\Downloads\Telegram Desktop")
     json_files = [
         "ta_2024-05-27_19-02-33.json",
