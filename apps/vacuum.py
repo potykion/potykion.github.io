@@ -1,3 +1,7 @@
+"""
+После удаления данных / таблиц в sqlite-бд, нужно вызывать VACUUM, чтобы освободилось место, которое занимают удаленные таблицы
+"""
+
 import sqlite3
 
 from potyk_io_back.core import BASE_DIR

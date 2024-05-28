@@ -1,3 +1,6 @@
+"""
+Yandex CF Cron который стягивает ТА и отправляет в ТГ бота
+"""
 import asyncio
 import datetime
 import json

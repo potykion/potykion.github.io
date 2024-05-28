@@ -1,3 +1,7 @@
+"""
+Проставляет изменения тикеров, считает точность предсказаний, делает новые предсказания
+"""
+
 import datetime
 import sqlite3
 import time
@@ -15,7 +19,8 @@ from potyk_io_back.tv_ta.tv_ta import (
 
 
 def main():
-    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
+    db = "tv_ta.db"
+    sqlite_conn = sqlite3.connect(BASE_DIR / db, check_same_thread=False)
     sqlite_cursor = sqlite_conn.cursor()
 
     # 1d

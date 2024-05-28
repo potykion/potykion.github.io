@@ -1,3 +1,7 @@
+"""
+Загружает json с ТА и вставляет в бд
+"""
+
 import json
 import sqlite3
 from pathlib import Path
@@ -15,7 +19,8 @@ def main():
     ]
     assert json_files, "No json_files set!"
 
-    sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
+    db = "tv_ta.db"
+    sqlite_conn = sqlite3.connect(BASE_DIR / db, check_same_thread=False)
     sqlite_cursor = sqlite_conn.cursor()
 
     repo_1h = AnalysisRepo(sqlite_cursor, table="ta_indicators_1h")
