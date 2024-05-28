@@ -29,6 +29,8 @@ requests
 # trading
 tinkoff-investments
 tradingview-ta
+# tg
+python-telegram-bot
 
 # (опц.) удаление бекграунда
 # rembg

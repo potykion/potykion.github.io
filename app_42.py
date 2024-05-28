@@ -128,6 +128,7 @@ def create_app():
     # RuntimeError: A secret key is required to use CSRF.
     app.config["SECRET_KEY"] = os.urandom(24)
     app.config["FLASK_ENV"] = os.environ["FLASK_ENV"]
+    app.config["is_prod"] = app.config["FLASK_ENV"] == "prod"
 
     @app.template_filter("render_md")
     def render_md(md):
@@ -135,7 +136,11 @@ def create_app():
 
     @app.template_filter("recipe_layers")
     def recipe_layers(ingredients, prefix_br=True, suffix_br=True):
-        return ("<br>" if prefix_br else "") + "<br>&nbsp;&nbsp;&nbsp;↓<br>".join(ingredients) + ("<br>" if suffix_br else "")
+        return (
+            ("<br>" if prefix_br else "")
+            + "<br>&nbsp;&nbsp;&nbsp;↓<br>".join(ingredients)
+            + ("<br>" if suffix_br else "")
+        )
 
     @app.template_filter("youtube_embed")
     def youtube_embed(link: str, height: int | None = None):

@@ -81,7 +81,7 @@ class BlogPageStore:
         return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")
 
     def list_recipe_pages(self) -> list[BlogPage]:
-        return self.q.select_all("select * from blog_pages where url like '/recipes/%' order by section")
+        return self.q.select_all("select * from blog_pages where url like '/recipes/%' and url != '/recipes/form' order by section")
 
     def list_all(self, breadcrumbs=False, **kwargs):
         pages = self.store.list_all(**kwargs)
