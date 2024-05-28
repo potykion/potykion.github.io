@@ -96,6 +96,7 @@ def set_change_next(repo: AnalysisRepo):
 
     accuracy, rmse, r2 = repo.get_prediction_scores(last_sample_w_pred)
     print(f"score: accuracy📈 = {accuracy}; RMSE📉 = {rmse}; R2📈0️⃣ = {r2}")
+    repo.insert_prediction_scores(accuracy, rmse, r2)
 
 
 def predict(repo: AnalysisRepo, predict_repo: PredictionRepo):

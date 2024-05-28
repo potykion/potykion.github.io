@@ -92,11 +92,11 @@ class AnalysisRepo:
         sqlite_cursor,
         *,
         table=None,
-        use_prev_indicators=False,
+        prediction_scores_table=None,
     ):
         self.q = Q(sqlite_cursor, select_all_as=analysis_from_row)
         self.table = table or "ta_indicators_1d"
-        self.use_prev_indicators = use_prev_indicators
+        self.prediction_scores_table = prediction_scores_table or "ta_prediction_scores_1h"
 
     def insert_samples(self, samples):
         with self.q.commit_after():
@@ -116,8 +116,11 @@ class AnalysisRepo:
 
     def get_last_sample(self):
         return self.q.select_val(f"select max(sample) from {self.table}") or 0
+
     def get_last_sample_w_prediction(self):
-        return self.q.select_val(f"select max(sample) from {self.table} where change_predict_2 is not null") or 0
+        return (
+            self.q.select_val(f"select max(sample) from {self.table} where change_predict_2 is not null") or 0
+        )
 
     def update_change_next(self):
         analysis_by_sample = groupby_dict(
@@ -136,16 +139,6 @@ class AnalysisRepo:
                     f"UPDATE {self.table} SET change_next = ? where id = ?",
                     (str(anal.change_next), anal.id),
                 )
-
-    def update_indicators_prev(self):
-        if not self.use_prev_indicators:
-            return
-
-        raise RuntimeError("broken!")
-
-        self.q.execute(
-            f"UPDATE {self.table} SET indicators_prev_day = (SELECT indicators FROM {self.table} AS prev_day WHERE prev_day.sample = {self.table}.sample - 1);"
-        )
 
     def list_prediction_results(self, sample):
         return self.q.select_all(
@@ -179,20 +172,24 @@ class AnalysisRepo:
         return accuracy, rmse, r2
 
     def list_train_samples(self):
-        if self.use_prev_indicators:
-            return self.q.select_all(
-                f"select * from main.{self.table} where change_next is not null and sample > 1"
-            )
-        else:
-            return self.q.select_all(f"select * from main.{self.table} where change_next is not null")
+        return self.q.select_all(f"select * from main.{self.table} where change_next is not null")
 
     def list_predict_samples(self):
-        return self.q.select_all(f"select * from {self.table} "
-                                 f"where change_next is null and "
-                                 f"sample = (select max(sample) from {self.table})")
+        return self.q.select_all(
+            f"select * from {self.table} "
+            f"where change_next is null and "
+            f"sample = (select max(sample) from {self.table})"
+        )
 
     def update_prediction(self, id, prediction):
         self.q.execute(f"update {self.table} set change_predict_2 =? where id =?", (prediction, id))
+
+    def insert_prediction_scores(self, accuracy, rmse, r2):
+        self.q.execute(
+            f"insert into {self.prediction_scores_table} (dt, accuracy, rmse, r2) values (?, ?, ?, ?)",
+            (datetime.datetime.now(), accuracy, rmse, r2),
+            commit=True,
+        )
 
 
 class PredictionRepo:
@@ -211,7 +208,7 @@ class PredictionRepo:
         predictions = model.predict(X_predict).tolist()
         return predictions
 
-    def analysis_to_X_df(self, analysis: list[Analysis]) -> 'pd.DataFrame':
+    def analysis_to_X_df(self, analysis: list[Analysis]) -> "pd.DataFrame":
         indicators = tradingview_ta.TA_Handler.indicators  # = 90 features
 
         def str_indicators(i):
@@ -234,7 +231,7 @@ class PredictionRepo:
         X = X.fillna(0)
         return X
 
-    def analysis_to_y_df(self, analysis: list[Analysis]) -> 'pd.DataFrame':
+    def analysis_to_y_df(self, analysis: list[Analysis]) -> "pd.DataFrame":
         y = pd.DataFrame([anal.change_next for anal in analysis], columns=["change_next"])
         y = y["change_next"].values.ravel()
         return y
