@@ -82,7 +82,6 @@ def set_change_next(repo: AnalysisRepo):
     with repo.q.commit_after():
         repo.update_change_next()
 
-
     last_sample_w_pred = repo.get_last_sample_w_prediction()
     if last_sample_w_pred < 3:
         return
