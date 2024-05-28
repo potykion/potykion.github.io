@@ -82,16 +82,15 @@ def set_change_next(repo: AnalysisRepo):
     with repo.q.commit_after():
         repo.update_change_next()
 
-        if repo.use_prev_indicators:
-            repo.update_indicators_prev()
 
-    if last_sample < 3:
+    last_sample_w_pred = repo.get_last_sample_w_prediction()
+    if last_sample_w_pred < 3:
         return
     print("prev prediction results:")
-    results = repo.list_prediction_results(last_sample - 1)
+    results = repo.list_prediction_results(last_sample_w_pred)
     print(tabulate(results))
 
-    accuracy, rmse, r2 = repo.get_prediction_scores(last_sample - 1)
+    accuracy, rmse, r2 = repo.get_prediction_scores(last_sample_w_pred)
     print(f"score: accuracy📈 = {accuracy}; RMSE📉 = {rmse}; R2📈0️⃣ = {r2}")
 
 

@@ -116,6 +116,8 @@ class AnalysisRepo:
 
     def get_last_sample(self):
         return self.q.select_val(f"select max(sample) from {self.table}") or 0
+    def get_last_sample_w_prediction(self):
+        return self.q.select_val(f"select max(sample) from {self.table} where change_predict_2 is not null") or 0
 
     def update_change_next(self):
         analysis_by_sample = groupby_dict(
@@ -185,7 +187,9 @@ class AnalysisRepo:
             return self.q.select_all(f"select * from main.{self.table} where change_next is not null")
 
     def list_predict_samples(self):
-        return self.q.select_all(f"select * from {self.table} where change_next is null ")
+        return self.q.select_all(f"select * from {self.table} "
+                                 f"where change_next is null and "
+                                 f"sample = (select max(sample) from {self.table})")
 
     def update_prediction(self, id, prediction):
         self.q.execute(f"update {self.table} set change_predict_2 =? where id =?", (prediction, id))
@@ -207,7 +211,7 @@ class PredictionRepo:
         predictions = model.predict(X_predict).tolist()
         return predictions
 
-    def analysis_to_X_df(self, analysis: list[Analysis], *, use_prev_indicators=True) -> 'pd.DataFrame':
+    def analysis_to_X_df(self, analysis: list[Analysis]) -> 'pd.DataFrame':
         indicators = tradingview_ta.TA_Handler.indicators  # = 90 features
 
         def str_indicators(i):
@@ -216,14 +220,12 @@ class PredictionRepo:
 
         columns = [
             *str_indicators(1),
-            *(str_indicators(2) if use_prev_indicators else []),
         ]
 
         X = pd.DataFrame(
             [
                 [
                     *(anal.indicators[ind] for ind in indicators),
-                    *((anal.indicators_prev_day[ind] for ind in indicators) if use_prev_indicators else []),
                 ]
                 for anal in analysis
             ],
