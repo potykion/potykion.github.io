@@ -1,16 +1,25 @@
 {% extends "_layouts/base.html" %}
 
 {% from '_components/page_list.html' import page_list, page_sections %}
-{% from '_components/input.html' import input, textarea %}
-
-
+{% from '_components/form.html' import input %}
+{% from "_components/scripts.html" import htmx %}
 
 {% block main %}
+    <form  hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
+        {{ form.csrf_token }}
 
-    {{ input('Файл', placeholder='asian-fried-rice') }}
-    {{ input('Название', placeholder='Жареный рисик в азиатском стиле') }}
-    {{ input('Описание', placeholder='Наипростейшая азиаточка: тупа все что есть в холодосе сваливаешь в сковороду') }}
-    {{ textarea('Ингредиенты.md') }}
-    {{ textarea('Приготовление.md') }}
+        {{ input(form.file_slug) }}
+        {{ input(form.title) }}
+        {{ input(form.desc) }}
+        {{ input(form.section) }}
+        {{ input(form.ingredients_md) }}
+        {{ input(form.cooking_md) }}
 
+        <div class="flex justify-end mt-2">
+            <button class="btn btn-primary btn-sm">Сохранить</button>
+        </div>
+    </form>
+    <div class="res"></div>
+
+    {{ htmx() }}
 {% endblock %}

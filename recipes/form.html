@@ -117,59 +117,140 @@
     
 
     
+    <form  hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjgzNGRhYWEzNGVkN2Q4NzdkZDNjNzdkODAyMDZmODE0ZmU3YWQxNzYi.Zlc-Bw.6TZxLRRgtFS1AY1yX0_QSt-JVwQ">
 
-    
-    <label class="form-control w-full ">
-        <div class="label ">
-            <span class="label-text">Файл</span>
-        </div>
-        <input id="" type="text" placeholder="asian-fried-rice" value=""
-               required
-               class="input input-sm input-bordered w-full    "/>
-    </label>
-
-    
-    <label class="form-control w-full ">
-        <div class="label ">
-            <span class="label-text">Название</span>
-        </div>
-        <input id="" type="text" placeholder="Жареный рисик в азиатском стиле" value=""
-               required
-               class="input input-sm input-bordered w-full    "/>
-    </label>
-
-    
-    <label class="form-control w-full ">
-        <div class="label ">
-            <span class="label-text">Описание</span>
-        </div>
-        <input id="" type="text" placeholder="Наипростейшая азиаточка: тупа все что есть в холодосе сваливаешь в сковороду" value=""
-               required
-               class="input input-sm input-bordered w-full    "/>
-    </label>
-
-    
-    <label class="form-control">
+        
+    <label class="form-control w-full">
         <div class="label">
-            <span class="label-text">Ингредиенты.md</span>
+            <span class="label-text"><label for="file_slug">Файл / slug</label></span>
         </div>
 
-        <textarea   id=""
-                  name="" class="textarea textarea-bordered " rows="6"
-                  placeholder=""></textarea>
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="file_slug" name="file_slug" placeholder="asian-fried-rice" required type="text" value="">
+
+        
+
+        
+
     </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="title">Название</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="title" name="title" placeholder="Жареный рисик в азиатском стиле" required type="text" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="desc">Описание</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="desc" name="desc" placeholder="Наипростейшая азиаточка: тупа все что есть в холодосе сваливаешь в сковороду" required type="text" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="section">Раздел</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <select class="select select-bordered  " id="section" name="section" required><option value="recipes_sweet">Сладости</option><option value="recipes_asian">Азиатка</option><option value="recipes_main">Основное</option><option value="recipes_breakfast">Завтрак</option><option value="recipes_pasta">Паста</option><option value="recipes_soup">Суп</option><option value="recipes_salad">Салат</option></select>
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="ingredients_md">Ингредиенты.md</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <textarea class="textarea textarea-bordered h-48 " id="ingredients_md" name="ingredients_md" placeholder="Неплохая индийка" required>
+</textarea>
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="cooking_md">Ингредиенты.md</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <textarea class="textarea textarea-bordered h-48 " id="cooking_md" name="cooking_md" placeholder="Неплохая индийка" required>
+</textarea>
+
+        
+
+        
+
+    </label>
+
+
+        <div class="flex justify-end mt-2">
+            <button class="btn btn-primary btn-sm">Сохранить</button>
+        </div>
+    </form>
+    <div class="res"></div>
 
     
-    <label class="form-control">
-        <div class="label">
-            <span class="label-text">Приготовление.md</span>
-        </div>
-
-        <textarea   id=""
-                  name="" class="textarea textarea-bordered " rows="6"
-                  placeholder=""></textarea>
-    </label>
-
+    <script src="/static/js/htmx.min.js"></script>
 
 
 </main>
