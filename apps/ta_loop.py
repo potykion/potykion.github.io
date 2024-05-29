@@ -1,84 +1,92 @@
 """
-Проставляет изменения тикеров, считает точность предсказаний, делает новые предсказания
+- Загружает json с ТА и вставляет в бд
+- Проставляет изменения тикеров, считает точность предсказаний, делает новые предсказания
+- Строит график метрик предсказаний
 """
 
-import datetime
+import json
 import sqlite3
-import time
+from functools import cached_property
+from pathlib import Path
 
+import matplotlib.pyplot as plt
+import pandas as pd
 from tabulate import tabulate
-from tradingview_ta import Interval
 
 from potyk_io_back.core import BASE_DIR
-from potyk_io_back.tv_ta.tickers import TICKERS
 from potyk_io_back.tv_ta.tv_ta import (
     AnalysisRepo,
-    TAAnalysisRepo,
     PredictionRepo,
+    Analysis,
 )
 
 
-def main():
+class Deps:
     db = "tv_ta.db"
-    sqlite_conn = sqlite3.connect(BASE_DIR / db, check_same_thread=False)
-    sqlite_cursor = sqlite_conn.cursor()
+    table = "ta_indicators_1h"
+    prediction_scores_table = "ta_prediction_scores_1h"
 
-    # 1d
-    # repo = AnalysisRepo(sqlite_cursor)
-    # ta_repo = TAAnalysisRepo()
-    # load_set_predict_loop(repo, ta_repo)
+    # json_files_dir = Path(r"C:\Users\admin\Downloads\Telegram Desktop")
+    json_files_dir = Path(__file__).parent.absolute()
 
-    # 1h loop
-    repo_1h = AnalysisRepo(sqlite_cursor, table="ta_indicators_1h")
-    ta_repo_1h = TAAnalysisRepo(Interval.INTERVAL_1_HOUR)
-    interval_minutes = 60
+    @cached_property
+    def sqlite_conn(self):
+        return sqlite3.connect(BASE_DIR / self.db, check_same_thread=False)
 
-    prediction_repo = PredictionRepo()
+    @cached_property
+    def sqlite_cursor(self):
+        return self.sqlite_conn.cursor()
 
-    load_set_predict_loop(repo_1h, ta_repo_1h, prediction_repo)
+    @property
+    def analysis_repo(self):
+        return AnalysisRepo(self.sqlite_cursor, table=self.table)
 
-    # while True:
-    #     # 10:00 > 10:01
-    #     now = datetime.datetime.now()
-    #
-    #     if now.hour >= 19:
-    #         break
-    #
-    #     if now.minute == 0:
-    #         time.sleep(1 * 60)
-    #
-    #     print(now)
-    #
-    #     load_set_predict_loop(repo_1h, ta_repo_1h, prediction_repo)
-    #
-    #     til = now + datetime.timedelta(minutes=interval_minutes)
-    #     print(f"Sleep til {til}...")
-    #     time.sleep(interval_minutes * 60)
+    @property
+    def prediction_repo(self):
+        return PredictionRepo()
 
 
-def load_set_predict_loop(repo, ta_repo_5m, prediction_repo):
-    # print("load_sample...")
-    # load_sample(repo, ta_repo_5m)
-    # print()
+def main():
+    deps = Deps()
+
+    json_files = [
+        # "ta_2024-05-29_14-02-25.json",
+        # "ta_2024-05-29_16-02-14.json",
+        "ta_2024-05-29_17-02-16.json",
+    ]
+
+    print("load_samples_from_json...")
+    load_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo)
+    print()
 
     print("set_change_next...")
-    set_change_next(repo)
+    set_change_next(deps.analysis_repo)
     print()
 
     print("predict...")
-    predict(repo, prediction_repo)
+    predict(deps.analysis_repo, deps.prediction_repo)
+    print()
+
+    print("plotting score...")
+    read_scores_and_plot(deps.db, deps.prediction_scores_table)
     print()
 
     print("Done!")
 
 
-def load_sample(repo: AnalysisRepo, ta_repo: TAAnalysisRepo):
-    analysis_samples = ta_repo.load_samples(
-        TICKERS,
-        dt=datetime.datetime.now(),
-        sample=repo.get_last_sample() + 1,
-    )
-    repo.insert_samples(analysis_samples)
+def load_samples_from_json(dir_, json_files, anal_repo):
+    assert json_files, "No json_files set!"
+
+    for file in json_files:
+        path = dir_ / file
+        with open(path, "r", encoding="utf-8") as f:
+            raw_indicators = json.load(f)
+
+        new_sample = anal_repo.get_last_sample() + 1
+
+        new_samples = [Analysis(**ind).model_copy(update=dict(sample=new_sample)) for ind in raw_indicators]
+
+        anal_repo.insert_samples(samples=new_samples)
 
 
 def set_change_next(repo: AnalysisRepo):
@@ -119,6 +127,60 @@ def predict(repo: AnalysisRepo, predict_repo: PredictionRepo):
     print("new predictions:")
     results = repo.list_predictions(last_sample)
     print(tabulate(results))
+
+
+def read_scores_and_plot(db, table):
+    df = read_table_as_df(db, table)
+    plot(df)
+
+
+def read_table_as_df(db, table):
+    conn = sqlite3.connect(BASE_DIR / db, check_same_thread=False)
+    df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
+    conn.close()
+    return df
+
+
+def plot(df):
+    plt.figure(figsize=(10, 6))
+
+    plt.plot(df["dt"], df["accuracy"], label="Accuracy ↑")
+    plt.plot(df["dt"], df["rmse"], label="RMSE ↓")
+    plt.plot(df["dt"], df["r2"], label="R² ↑")
+
+    plt.axhline(y=0, color="gray", linestyle="-")
+
+    plt.xlabel("Date-Time")
+    plt.ylabel("Value")
+    plt.title("Line Chart of Accuracy, RMSE, and R^2 over Time")
+    plt.legend()
+
+    plt.xticks([])
+
+    # Annotating the last point
+    last_point = df.iloc[-1]  # Get the last row of the DataFrame
+    last_x_value = last_point["dt"]  # Assuming 'dt' is the column name for dates/times
+    last_y_values = [
+        last_point["accuracy"],
+        last_point["rmse"],
+        last_point["r2"],
+    ]  # Values for accuracy, rmse, and r2
+    labels = ["Accuracy", "RMSE", "R²"]  # Labels corresponding to the lines
+
+    for i, (y_value, label) in enumerate(zip(last_y_values, labels)):
+        plt.annotate(
+            f"{label}: {y_value}",
+            xy=(last_x_value, y_value),
+            xytext=(5, 5),
+            textcoords="offset points",
+            ha="left",
+            va="bottom",
+            bbox=dict(boxstyle="round,pad=0.3", fc="yellow", alpha=0.5),
+        )
+
+    plt.savefig("line_chart.png", dpi=300, bbox_inches="tight")
+
+    plt.show()
 
 
 if __name__ == "__main__":
