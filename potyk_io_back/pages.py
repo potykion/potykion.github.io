@@ -20,6 +20,25 @@ class BlogPageSection(enum.StrEnum):
     recipes_soup = auto()
     recipes_salad = auto()
 
+    @classmethod
+    def recipe_sections(cls):
+        return [
+        cls.recipes_sweet,
+        cls.recipes_asian,
+        cls.recipes_main,
+        cls.recipes_breakfast,
+        cls.recipes_pasta,
+        cls.recipes_soup,
+        cls.recipes_salad,
+
+        ]
+    @classmethod
+    def recipe_section_tuples(cls):
+        return [
+            (sec, sec.to_str())
+            for sec in cls.recipe_sections()
+        ]
+
     def to_str(self):
         match self:
             case BlogPageSection.fun:
@@ -76,6 +95,17 @@ class BlogPageStore:
         self.sqlite_cursor = sqlite_cursor
         self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
         self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
+
+    def insert(self, page):
+        self.q.execute(
+            'insert into blog_pages '
+            '(url, html_path, title, desc, section) '
+            'values '
+            '(?, ?, ?, ?, ?)',
+            (page.url, page.html_path, page.title, page.desc, page.section),
+            commit=True
+        )
+
 
     def list_index(self):
         return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")

@@ -1,0 +1,44 @@
+{% macro input(field) %}
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text">{{ field.label }}</span>
+        </div>
+
+        {% if field.type == 'StringField' or field.type == 'URLField' %}
+            {% set cls = 'input input-bordered w-full' %}
+        {% elif field.type in ('SelectField',) %}
+            {% set cls = 'select select-bordered ' %}
+        {% elif field.type in ('SelectMultipleField', ) %}
+            {% set cls = 'select select-bordered !h-48' %}
+        {% elif field.type in ('IntegerRangeField', 'DecimalRangeField') %}
+            {% set cls = 'range' %}
+        {% elif field.type == 'BooleanField' %}
+            {% set cls = 'checkbox checkbox-primary' %}
+        {% elif field.type == 'TextAreaField' %}
+            {% set cls = 'textarea textarea-bordered h-48' %}
+        {% else %}
+            {% set cls = '' %}
+        {% endif %}
+
+        {% set cls = cls + ' ' + (field.render_kw['class'] or '') %}
+
+        {{ field(class=cls) }}
+
+        {% if field.type in ('IntegerRangeField', 'DecimalRangeField') %}
+            <div class="w-full flex justify-between text-xs px-2">
+                {% for step in field.render_kw['steps'] or range(field.render_kw['min'],field.render_kw['max']+1) %}
+                    <span class="text-sm">{{ step }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if field.errors %}
+            <div class="label">
+                {% for err in field.errors %}
+                    <span class="label-text-alt text-error">{{ err }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+    </label>
+{% endmacro %}

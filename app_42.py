@@ -22,6 +22,7 @@ from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore, MovieTag, MovieList
 from potyk_io_back.pages import BlogPageStore, BlogPage
 from potyk_io_back.q import Q
+from potyk_io_back.recipes import add_recipes_routes
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.rewardy import add_rewardy_routes
 from potyk_io_back.tools import ToolStore, ToolTag, ToolType
@@ -78,11 +79,11 @@ class Deps:
         return BookStore(self.sqlite_cursor)
 
     @property
-    def page_store(self):
+    def page_store(self) -> BlogPageStore:
         return BlogPageStore(self.sqlite_cursor)
 
     @property
-    def page(self):
+    def page(self) -> BlogPage:
         return self.page_store.get_by_url(flask.request.path)
 
     @property
@@ -187,41 +188,7 @@ def create_app():
             events=events,
         )
 
-    # region recipes
-    @app.route("/recipes")
-    def recipes_page():
-        recipe_pages = deps.page_store.list_recipe_pages()
-        pages_by_section = groupby_dict(recipe_pages, attrgetter("section"))
-        return render_template(
-            "recipes/index.html",
-            page=deps.page,
-            pages_by_section=pages_by_section,
-        )
-
-    @app.route("/recipes/<recipe_key>")
-    def recipe_page(recipe_key):
-        try:
-            # noinspection PyUnresolvedReferences
-            return render_template(
-                f"recipes/{recipe_key}.html",
-                page=deps.page,
-            )
-        except TemplateNotFound:
-            return _render_md_as_html_template(
-                f"recipes/{recipe_key}.md",
-                page=deps.page,
-            )
-
-    def _render_md_as_html_template(template, **kwargs):
-        md = render_template(template)
-        md = frontmatter.loads(md).content
-        html = render_template_string(
-            '{% extends "_layouts/base.html" %}{% block main %}' + render_md(md) + "{% endblock %}",
-            **kwargs,
-        )
-        return html
-
-    # endregion recipes
+    add_recipes_routes(app, deps)
 
     # region travel
     @app.route("/travel")
