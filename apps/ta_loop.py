@@ -50,9 +50,7 @@ def main():
     deps = Deps()
 
     json_files = [
-        # "ta_2024-05-29_14-02-25.json",
-        # "ta_2024-05-29_16-02-14.json",
-        "ta_2024-05-29_17-02-16.json",
+        'ta_2024-05-30_18-02-16.json',
     ]
 
     print("load_samples_from_json...")
