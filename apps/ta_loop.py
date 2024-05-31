@@ -50,20 +50,23 @@ def main():
     deps = Deps()
 
     json_files = [
-        'ta_2024-05-30_18-02-16.json',
+        "ta_2024-05-31_13-02-15.json",
     ]
 
-    print("load_samples_from_json...")
-    load_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo)
-    print()
+    for new_samples in read_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo):
+        print("load_samples_from_json...")
+        deps.analysis_repo.insert_samples(samples=new_samples)
+        print()
 
-    print("set_change_next...")
-    set_change_next(deps.analysis_repo)
-    print()
+        print("set_change_next...")
+        set_change_next(deps.analysis_repo)
+        print()
 
-    print("predict...")
-    predict(deps.analysis_repo, deps.prediction_repo)
-    print()
+        print("predict...")
+        predict(deps.analysis_repo, deps.prediction_repo)
+        print()
+
+        print('---')
 
     print("plotting score...")
     read_scores_and_plot(deps.db, deps.prediction_scores_table)
@@ -72,7 +75,7 @@ def main():
     print("Done!")
 
 
-def load_samples_from_json(dir_, json_files, anal_repo):
+def read_samples_from_json(dir_, json_files, anal_repo):
     assert json_files, "No json_files set!"
 
     for file in json_files:
@@ -84,7 +87,7 @@ def load_samples_from_json(dir_, json_files, anal_repo):
 
         new_samples = [Analysis(**ind).model_copy(update=dict(sample=new_sample)) for ind in raw_indicators]
 
-        anal_repo.insert_samples(samples=new_samples)
+        yield new_samples
 
 
 def set_change_next(repo: AnalysisRepo):
