@@ -50,7 +50,12 @@ def main():
     deps = Deps()
 
     json_files = [
-        "ta_2024-05-31_13-02-15.json",
+        "ta_2024-05-31_14-02-15.json",
+        "ta_2024-05-31_15-02-19.json",
+        "ta_2024-05-31_16-02-18.json",
+        "ta_2024-05-31_17-02-14.json",
+        "ta_2024-05-31_18-02-15.json",
+        "ta_2024-05-31_19-02-15.json",
     ]
 
     for new_samples in read_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo):

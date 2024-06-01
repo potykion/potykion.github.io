@@ -5,21 +5,25 @@
 {% from "_components/scripts.html" import htmx %}
 
 {% block main %}
-    <form  hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
+    <form method="post">
         {{ form.csrf_token }}
 
-        {{ input(form.file_slug) }}
         {{ input(form.title) }}
-        {{ input(form.desc) }}
-        {{ input(form.section) }}
-        {{ input(form.ingredients_md) }}
-        {{ input(form.cooking_md) }}
+        {{ input(form.title_eng) }}
+        {{ input(form.kp_url) }}
+        {{ input(form.watched_dt) }}
+        {{ input(form.vote) }}
+        {{ input(form.wishlist) }}
+        {{ input(form.is_series) }}
+        {{ input(form.poster) }}
+        {{ input(form.review) }}
+        {{ input(form.year) }}
+        {{ input(form.tags) }}
+
 
         <div class="flex justify-end mt-2">
             <button class="btn btn-primary btn-sm">Сохранить</button>
         </div>
     </form>
-    <div class="res"></div>
 
-    {{ htmx() }}
 {% endblock %}

@@ -59,6 +59,38 @@ order by
 --     payee,
     sum(outcome) desc;
 
+
+-- Траты по магазам (по месяцам + кол-во транзакций + средний чек)
+select payee,
+       sum(case when substr(date, 0, 8) = '2024-01' then  outcome else 0 end) as '01-sum',
+--        sum(case when substr(date, 0, 8) = '2024-01' then  1 else 0 end) as '01-count',
+--        avg(case when substr(date, 0, 8) = '2024-01' then  outcome else 0 end) as '01-avg',
+
+       sum(case when substr(date, 0, 8) = '2024-02' then  outcome else 0 end) as '02-sum',
+--        sum(case when substr(date, 0, 8) = '2024-02' then  1 else 0 end) as       '02-count',
+--        avg(case when substr(date, 0, 8) = '2024-02' then  outcome else 0 end) as '02-avg',
+
+       sum(case when substr(date, 0, 8) = '2024-03' then  outcome else 0 end) as '03-sum',
+--        sum(case when substr(date, 0, 8) = '2024-03' then  1 else 0 end) as       '03-count',
+--        avg(case when substr(date, 0, 8) = '2024-03' then  outcome else 0 end) as '03-avg',
+
+       sum(case when substr(date, 0, 8) = '2024-04' then  outcome else 0 end) as '04-sum',
+--        sum(case when substr(date, 0, 8) = '2024-04' then  1 else 0 end) as       '04-count',
+--        avg(case when substr(date, 0, 8) = '2024-04' then  outcome else 0 end) as '04-avg',
+
+       sum(case when substr(date, 0, 8) = '2024-05' then  outcome else 0 end) as '05-sum'
+--        sum(case when substr(date, 0, 8) = '2024-05' then  1 else 0 end) as       '05-count',
+--        avg(case when substr(date, 0, 8) = '2024-05' then  outcome else 0 end) as '05-avg'
+from zen_2024_05_30_dumpof_transactions
+where categoryName IS NOT NULL
+--   and substr(date, 0, 8) = '2024-02'
+  and categoryName like 'Еда%'
+and payee = 'PEREKRESTOK'
+group by payee
+order by
+--     payee,
+    sum(outcome) desc;
+
 -- Единообразие магазов
 update zen_2024_05_30_dumpof_transactions set payee = 'PEREKRESTOK' where payee like 'PEREKRESTOK%';
 update zen_2024_05_30_dumpof_transactions set payee = 'SPAR' where payee like 'SPAR%';

@@ -55,6 +55,12 @@
 
 {% block main %}
 
+    {% if not config.is_prod %}
+    <div>
+    <a class="btn btn-sm btn-link" href="/movies/form">Добавить</a>
+    </div>
+    {% endif %}
+
     <ul>
         <li><a href="#year">За этот год</a></li>
         <li><a href="#lists">Подборочки</a></li>
