@@ -22,7 +22,11 @@
         {% for movie in movies %}
             <button onclick="modal_movie_{{ prefix }}_{{ movie.id }}.showModal()" class="blue-border-hover-link"
                     title="{{ movie.title }}">
-                <img src="{{ url_for('static', filename=movie.poster) }}">
+                {% if movie.poster.startswith('https://') %}
+                    <img src="{{ movie.poster }}">
+                {% else %}
+                    <img src="{{ url_for('static', filename=movie.poster) }}">
+                {% endif %}
             </button>
 
             {% call modal('modal_movie_' + prefix + '_' + movie.id | string) %}
@@ -56,9 +60,9 @@
 {% block main %}
 
     {% if not config.is_prod %}
-    <div>
-    <a class="btn btn-sm btn-link" href="/movies/form">Добавить</a>
-    </div>
+        <div>
+            <a class="btn btn-sm btn-link" href="/movies/form">Добавить</a>
+        </div>
     {% endif %}
 
     <ul>

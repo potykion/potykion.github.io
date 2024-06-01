@@ -155,11 +155,12 @@ class MovieForm(FlaskForm):
     title = StringField(name="Название")
     title_eng = StringField(name="Название на англ.")
     kp_url = URLField(name="Ссылка на Кинопоиск")
-    watched_dt = DateTimeField(name="Когда смотрел?", widget = DateTimeInput(input_type='datetime-local'))
+    watched_dt = DateTimeField(name="Когда смотрел?", widget=DateTimeInput(input_type="datetime-local"))
     vote = IntegerField(name="Оценка")
     wishlist = BooleanField(name="Хочу посмотреть")
     is_series = BooleanField(name="Сериал?")
-    poster = FileField(name="Постер/афиша")
+    poster_file = FileField(name="Постер/афиша (файл)")
+    poster_url = URLField(name="Постер/афиша (урл)")
     review = TextAreaField(name="Обзор")
     year = IntegerField(name="Год")
     tags = StringField(name="Теги")
@@ -196,7 +197,21 @@ def add_movie_routes(app, deps):
         form = MovieForm()
 
         if form.validate_on_submit():
-            movie = parse_movie({**form.data, 'poster': ''})
+            form_data = form.data
+
+            poster = None
+
+            if poster_file := form_data.pop("poster_file", None):
+                # todo upload file to disk + form url
+                poster = ...
+
+            if poster_url := form_data.pop("poster_url", None):
+                poster = poster_url
+
+            form_data["poster"] = poster
+
+            movie = parse_movie(form_data)
+
             deps.movie_store.q.execute(
                 "insert into movies "
                 "(title, title_eng, kp_url, watched_dt, vote, poster, review, year, tags) "
@@ -211,7 +226,7 @@ def add_movie_routes(app, deps):
                     movie.poster,
                     movie.review,
                     movie.year,
-                    ','.join(movie.tags),
+                    ",".join(movie.tags),
                 ),
                 commit=True,
             )
