@@ -92,13 +92,13 @@
             
                 <li>
                     
-                        <a href="/recipes">Рецептики</a>
+                        <a href="/movies">Мувики / Серики</a>
                     
                 </li>
             
                 <li>
                     
-                        Форма реца
+                        Кино Форма
                     
                 </li>
             
@@ -111,19 +111,19 @@
 <main class="prose  max-w-none p-2">
     
         
-            <h1>Форма реца</h1>
-            <cite class="block">Создаем и редактируем рецики</cite>
+            <h1>Кино Форма</h1>
+            <cite class="block">Добавляем фильмеры</cite>
         
     
 
     
-    <form  hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
+    <form method="post" enctype='multipart/form-data' >
         <input id="csrf_token" name="csrf_token" type="hidden" value="IjQ0Y2Y4ODc2NTZmNDNiYzA2MTRmNmU0ZDFkZDVjNmQ1NjBjNmNjOTUi.Zl3R5A.Ocqmmg21Ke17Qpb66Dk_J6Jark8">
 
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="file_slug">Файл / slug</label></span>
+            <span class="label-text"><label for="Название">Название</label></span>
         </div>
 
         
@@ -132,7 +132,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="file_slug" name="file_slug" placeholder="asian-fried-rice" required type="text" value="">
+        <input class="input input-bordered w-full " id="Название" name="Название" type="text" value="">
 
         
 
@@ -143,7 +143,7 @@
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="title">Название</label></span>
+            <span class="label-text"><label for="Название на англ.">Название На Англ.</label></span>
         </div>
 
         
@@ -152,7 +152,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="title" name="title" placeholder="Жареный рисик в азиатском стиле" required type="text" value="">
+        <input class="input input-bordered w-full " id="Название на англ." name="Название на англ." type="text" value="">
 
         
 
@@ -163,7 +163,7 @@
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="desc">Описание</label></span>
+            <span class="label-text"><label for="Ссылка на Кинопоиск">Ссылка На Кинопоиск</label></span>
         </div>
 
         
@@ -172,7 +172,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="desc" name="desc" placeholder="Наипростейшая азиаточка: тупа все что есть в холодосе сваливаешь в сковороду" required type="text" value="">
+        <input class="input input-bordered w-full " id="Ссылка на Кинопоиск" name="Ссылка на Кинопоиск" type="url" value="">
 
         
 
@@ -183,7 +183,7 @@
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="section">Раздел</label></span>
+            <span class="label-text"><label for="Когда смотрел?">Когда Смотрел?</label></span>
         </div>
 
         
@@ -192,7 +192,7 @@
 
         
 
-        <select class="select select-bordered  " id="section" name="section" required><option value="recipes_breakfast">Завтрак</option><option value="recipes_main">Основное</option><option value="recipes_asian">Азиатка</option><option value="recipes_salad">Салат</option><option value="recipes_pasta">Паста</option><option value="recipes_soup">Суп</option><option value="recipes_sweet">Сладости</option></select>
+        <input class="input input-bordered w-full " id="Когда смотрел?" name="Когда смотрел?" type="datetime-local" value="">
 
         
 
@@ -203,7 +203,7 @@
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="ingredients_md">Ингредиенты (.md)</label></span>
+            <span class="label-text"><label for="Оценка">Оценка</label></span>
         </div>
 
         
@@ -212,8 +212,129 @@
 
         
 
-        <textarea class="textarea textarea-bordered h-48 " id="ingredients_md" name="ingredients_md" placeholder="- Яйца
-- Лук" required>
+        <input class="input input-bordered w-full " id="Оценка" name="Оценка" type="number" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Хочу посмотреть">Хочу Посмотреть</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="checkbox checkbox-primary " id="Хочу посмотреть" name="Хочу посмотреть" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Сериал?">Сериал?</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="checkbox checkbox-primary " id="Сериал?" name="Сериал?" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Постер/афиша (slug)">Постер/Афиша (Slug)</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="Постер/афиша (slug)" name="Постер/афиша (slug)" type="text" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Постер/афиша (урл)">Постер/Афиша (Урл)</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="Постер/афиша (урл)" name="Постер/афиша (урл)" type="url" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Постер/афиша (файл)">Постер/Афиша (Файл)</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="file-input file-input-bordered " id="Постер/афиша (файл)" name="Постер/афиша (файл)" type="file">
+
+        
+
+        
+
+    </label>
+
+
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Обзор">Обзор</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <textarea class="textarea textarea-bordered h-48 " id="Обзор" name="Обзор">
 </textarea>
 
         
@@ -222,12 +343,10 @@
 
     </label>
 
-
-
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="cooking_youtube">Ссылка на YouTube (будет добавлена в начало блока Приготовление)</label></span>
+            <span class="label-text"><label for="Год">Год</label></span>
         </div>
 
         
@@ -236,7 +355,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="cooking_youtube" name="cooking_youtube" placeholder="https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h" type="text" value="">
+        <input class="input input-bordered w-full " id="Год" name="Год" type="number" value="">
 
         
 
@@ -247,7 +366,7 @@
         
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="cooking_link">Ссылка на текстовый рецепт (будет добавлена в начало блока Приготовление)</label></span>
+            <span class="label-text"><label for="Теги">Теги</label></span>
         </div>
 
         
@@ -256,7 +375,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="cooking_link" name="cooking_link" placeholder="https://vk.com/wall-39128795_34992" type="text" value="">
+        <input class="input input-bordered w-full " id="Теги" name="Теги" type="text" value="">
 
         
 
@@ -264,37 +383,12 @@
 
     </label>
 
-        
-    <label class="form-control w-full">
-        <div class="label">
-            <span class="label-text"><label for="cooking_md">Приготовление (.md)</label></span>
-        </div>
-
-        
-            
-        
-
-        
-
-        <textarea class="textarea textarea-bordered h-48 " id="cooking_md" name="cooking_md" placeholder="- Яйца отварить
--Лук обжарить" required>
-</textarea>
-
-        
-
-        
-
-    </label>
 
 
         <div class="flex justify-end mt-2">
             <button class="btn btn-primary btn-sm">Сохранить</button>
         </div>
     </form>
-    <div class="res"></div>
-
-    
-    <script src="/static/js/htmx.min.js"></script>
 
 
 </main>
