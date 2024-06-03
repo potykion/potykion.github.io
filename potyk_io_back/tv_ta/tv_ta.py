@@ -191,6 +191,9 @@ class AnalysisRepo:
             commit=True,
         )
 
+    def get_max_accuracy(self):
+        return self.q.select_val(f'select max(accuracy) from {self.prediction_scores_table}')
+
 
 class PredictionRepo:
     def predict(self, analysis_to_train, analysis_to_predict):
