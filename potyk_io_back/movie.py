@@ -1,13 +1,13 @@
 import datetime
 import enum
+import os
 import sqlite3
 
 import flask
 from flask import render_template
 from flask_wtf import FlaskForm
-from peewee import TextField
 from pydantic import BaseModel, ConfigDict
-from wtforms.fields.datetime import DateTimeField
+from werkzeug.datastructures import FileStorage
 from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import StringField, URLField, BooleanField, FileField, TextAreaField
 from wtforms.widgets.core import DateTimeInput
@@ -155,10 +155,11 @@ class MovieForm(FlaskForm):
     title = StringField(name="Название")
     title_eng = StringField(name="Название на англ.")
     kp_url = URLField(name="Ссылка на Кинопоиск")
-    watched_dt = DateTimeField(name="Когда смотрел?", widget=DateTimeInput(input_type="datetime-local"))
+    watched_dt = StringField(name="Когда смотрел?", widget=DateTimeInput(input_type="datetime-local"))
     vote = IntegerField(name="Оценка")
     wishlist = BooleanField(name="Хочу посмотреть")
     is_series = BooleanField(name="Сериал?")
+    poster_slug = StringField(name="Постер/афиша (slug)")
     poster_file = FileField(name="Постер/афиша (файл)")
     poster_url = URLField(name="Постер/афиша (урл)")
     review = TextAreaField(name="Обзор")
@@ -166,7 +167,7 @@ class MovieForm(FlaskForm):
     tags = StringField(name="Теги")
 
 
-def add_movie_routes(app, deps):
+def add_movie_routes(app: flask.Flask, deps):
     @app.route("/movies")
     def movies_page():
 
@@ -201,9 +202,19 @@ def add_movie_routes(app, deps):
 
             poster = None
 
+            poster_file: FileStorage
             if poster_file := form_data.pop("poster_file", None):
-                # todo upload file to disk + form url
-                poster = ...
+                poster_filename = form_data["poster_slug"] + poster_file.filename.rsplit(".")[-1]
+                poster_file.save(
+                    os.path.join(
+                        app.static_folder,
+                        "images",
+                        "movies",
+                        poster_filename,
+                    )
+                )
+
+                poster = f'images/movies/{poster_filename}'
 
             if poster_url := form_data.pop("poster_url", None):
                 poster = poster_url
