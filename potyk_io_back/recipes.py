@@ -1,4 +1,5 @@
 from operator import attrgetter
+from typing import TypedDict
 
 import flask
 import frontmatter
@@ -13,6 +14,10 @@ from wtforms.validators import InputRequired
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.pages import BlogPage, BlogPageSection
+
+
+class FieldKwargs(TypedDict):
+    placeholder: str
 
 
 class RecipeForm(FlaskForm):
@@ -40,14 +45,45 @@ class RecipeForm(FlaskForm):
     )
 
     ingredients_md = TextAreaField(
-        "Ингредиенты.md",
+        "Ингредиенты (.md)",
         validators=[InputRequired()],
-        render_kw={"placeholder": "Неплохая индийка"},
+        render_kw=dict(placeholder="- Яйца\n- Лук"),
+    )
+
+    cooking_youtube = StringField(
+        "Ссылка на YouTube (будет добавлена в начало блока Приготовление)",
+        render_kw=FieldKwargs(placeholder="https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h"),
+    )
+    cooking_link = StringField(
+        "Ссылка на текстовый рецепт (будет добавлена в начало блока Приготовление)",
+        render_kw=FieldKwargs(placeholder="https://vk.com/wall-39128795_34992"),
     )
     cooking_md = TextAreaField(
-        "Ингредиенты.md",
+        "Приготовление (.md)",
         validators=[InputRequired()],
-        render_kw={"placeholder": "Неплохая индийка"},
+        render_kw={"placeholder": "- Яйца отварить\n-Лук обжарить"},
+    )
+
+
+def make_recipe_md_text(form_data) -> str:
+    def youtube_to_md(youtube_url):
+        return "{{ " + f'"{youtube_url}" | youtube_embed' + " }}"
+
+    def link_to_md(url):
+        return f"[{url}]({url})"
+
+    return "\n\n".join(
+        filter(
+            None,
+            [
+                "## Ингредиенты",
+                form_data["ingredients_md"],
+                "## Приготовление",
+                youtube_to_md(form_data["cooking_youtube"]) if form_data["cooking_youtube"] else None,
+                link_to_md(form_data["cooking_link"]) if form_data["cooking_link"] else None,
+                form_data["cooking_md"],
+            ],
+        )
     )
 
 
@@ -70,20 +106,9 @@ def add_recipes_routes(app, deps):
             if form.validate_on_submit():
                 form_data = form.data
 
-                with open(
-                    BASE_DIR / f"templates/recipes/{form_data['file_slug']}.md",
-                    "w",
-                    encoding="utf-8",
-                ) as f:
-                    f.write(
-                        f"""## Ингредиенты
-
-{form_data['ingredients_md']}
-
-## Приготовление
-
-{form_data['cooking_md']}"""
-                    )
+                recipe_md_path = BASE_DIR / f"templates/recipes/{form_data['file_slug']}.md"
+                with open(recipe_md_path, "w", encoding="utf-8") as f:
+                    f.write(make_recipe_md_text(form_data))
 
                 page = BlogPage(
                     url=f'/recipes/{form_data["file_slug"]}',

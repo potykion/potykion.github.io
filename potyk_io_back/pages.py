@@ -23,21 +23,18 @@ class BlogPageSection(enum.StrEnum):
     @classmethod
     def recipe_sections(cls):
         return [
-        cls.recipes_sweet,
-        cls.recipes_asian,
-        cls.recipes_main,
-        cls.recipes_breakfast,
-        cls.recipes_pasta,
-        cls.recipes_soup,
-        cls.recipes_salad,
-
+            cls.recipes_breakfast,
+            cls.recipes_main,
+            cls.recipes_asian,
+            cls.recipes_salad,
+            cls.recipes_pasta,
+            cls.recipes_soup,
+            cls.recipes_sweet,
         ]
+
     @classmethod
     def recipe_section_tuples(cls):
-        return [
-            (sec, sec.to_str())
-            for sec in cls.recipe_sections()
-        ]
+        return [(sec, sec.to_str()) for sec in cls.recipe_sections()]
 
     def to_str(self):
         match self:
@@ -49,20 +46,19 @@ class BlogPageSection(enum.StrEnum):
                 return "Еда"
 
             case BlogPageSection.recipes_sweet:
-                return 'Сладости'
+                return "Сладости"
             case BlogPageSection.recipes_asian:
-                return 'Азиатка'
+                return "Азиатка"
             case BlogPageSection.recipes_main:
-                return 'Основное'
+                return "Основное"
             case BlogPageSection.recipes_breakfast:
-                return 'Завтрак'
+                return "Завтрак"
             case BlogPageSection.recipes_pasta:
-                return 'Паста'
+                return "Паста"
             case BlogPageSection.recipes_soup:
-                return 'Суп'
+                return "Суп"
             case BlogPageSection.recipes_salad:
-                return 'Салат'
-
+                return "Салат"
 
 
 class BlogPage(BaseModel):
@@ -98,20 +94,18 @@ class BlogPageStore:
 
     def insert(self, page):
         self.q.execute(
-            'insert into blog_pages '
-            '(url, html_path, title, desc, section) '
-            'values '
-            '(?, ?, ?, ?, ?)',
+            "insert into blog_pages " "(url, html_path, title, desc, section) " "values " "(?, ?, ?, ?, ?)",
             (page.url, page.html_path, page.title, page.desc, page.section),
-            commit=True
+            commit=True,
         )
-
 
     def list_index(self):
         return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")
 
     def list_recipe_pages(self) -> list[BlogPage]:
-        return self.q.select_all("select * from blog_pages where url like '/recipes/%' and url != '/recipes/form' order by section")
+        return self.q.select_all(
+            "select * from blog_pages where url like '/recipes/%' and url != '/recipes/form' order by section"
+        )
 
     def list_all(self, breadcrumbs=False, **kwargs):
         pages = self.store.list_all(**kwargs)
