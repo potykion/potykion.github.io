@@ -4,10 +4,12 @@ import os
 import sqlite3
 
 import flask
+import requests
 from flask import render_template
 from flask_wtf import FlaskForm
 from pydantic import BaseModel, ConfigDict
 from werkzeug.datastructures import FileStorage
+from wtforms.fields.choices import SelectField
 from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import StringField, URLField, BooleanField, FileField, TextAreaField
 from wtforms.widgets.core import DateTimeInput
@@ -28,6 +30,17 @@ class MovieTag(enum.StrEnum):
     shiza = "shiza"
     socialo4ka = "socialo4ka"
     scifi = "scifi"
+
+    @classmethod
+    def choices(cls, w_none=True):
+        choices_ = []
+
+        if w_none:
+            choices_.append((None, ''))
+
+        choices_ += [(sec, sec) for sec in cls]
+
+        return choices_
 
 
 class Movie(BaseModel):
@@ -164,7 +177,10 @@ class MovieForm(FlaskForm):
     poster_url = URLField(name="Постер/афиша (урл)")
     review = TextAreaField(name="Обзор")
     year = IntegerField(name="Год")
-    tags = StringField(name="Теги")
+    tags = SelectField(
+        name="Теги",
+        choices=MovieTag.choices(),
+    )
 
 
 def add_movie_routes(app: flask.Flask, deps):
@@ -200,26 +216,7 @@ def add_movie_routes(app: flask.Flask, deps):
         if form.validate_on_submit():
             form_data = form.data
 
-            poster = None
-
-            poster_file: FileStorage
-            if poster_file := form_data.pop("poster_file", None):
-                poster_filename = form_data["poster_slug"] + poster_file.filename.rsplit(".")[-1]
-                poster_file.save(
-                    os.path.join(
-                        app.static_folder,
-                        "images",
-                        "movies",
-                        poster_filename,
-                    )
-                )
-
-                poster = f'images/movies/{poster_filename}'
-
-            if poster_url := form_data.pop("poster_url", None):
-                poster = poster_url
-
-            form_data["poster"] = poster
+            form_data["poster"] = _save_poster(form_data)
 
             movie = parse_movie(form_data)
 
@@ -248,3 +245,50 @@ def add_movie_routes(app: flask.Flask, deps):
             page=deps.page,
             form=form,
         )
+
+    def _save_poster(form_data):
+        poster = None
+        poster_file: FileStorage
+
+        if poster_file := form_data.pop("poster_file", None):
+            ext = poster_file.filename.rsplit(".")[-1]
+
+            poster_filename = form_data["poster_slug"] + ext
+
+            poster_path = os.path.join(app.static_folder, "images", "movies", poster_filename)
+
+            poster_file.save(poster_path)
+
+            return f"images/movies/{poster_filename}"
+
+        if poster_url := form_data.pop("poster_url", None):
+            response = requests.get(poster_url)
+            response.raise_for_status()
+
+            ext = _parse_ext_from_url(poster_url)
+
+            poster_filename = form_data["poster_slug"] + ext
+
+            poster_path = os.path.join(app.static_folder, "images", "movies", poster_filename)
+
+            with open(poster_path, "wb") as file:
+                file.write(response.content)
+
+            return f"images/movies/{poster_filename}"
+
+        return poster
+
+
+def _parse_ext_from_url(url):
+    """
+    >>> _parse_ext_from_url("https://avatars.mds.yandex.net/get-kinopoisk-image/10893610/f54f8fac-e5d2-454e-8724-a877fc6e5e35/600x900")
+    '.jpg'
+    """
+    try:
+        path = url.split("/")[-1]
+        if "." in path:
+            return path.split(".")[-1]
+        else:
+            return ".jpg"
+    except IndexError:
+        return ".jpg"
