@@ -44,3 +44,28 @@
 
     </label>
 {% endmacro %}
+
+
+{% macro htmx_form(form) %}
+    <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
+          class="flex flex-col gap-3">
+        {{ form.csrf_token }}
+
+        {% if caller %}
+            {{ caller() }}
+        {% else %}
+            {% for field_key, field in form._fields.items() %}
+                {% if field_key != 'csrf_token' %}
+                    {{ input(field) }}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="flex justify-end ">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+    </form>
+
+    <div class="res"></div>
+{% endmacro %}
+

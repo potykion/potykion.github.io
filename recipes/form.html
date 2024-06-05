@@ -117,28 +117,14 @@
     
 
     
-    <form  hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
-        <input id="csrf_token" name="csrf_token" type="hidden" value="IjNlZmU2YmE5YWJjM2M3NDIyNWM5MGM4NmQ3MmY1YTJkZWExYzdlY2Ii.Zl8maQ.1i6lQc1m-KlKzCJx_K0Z3zi96DU">
-
-        
-    <label class="form-control w-full">
-        <div class="label">
-            <span class="label-text"><label for="file_slug">Файл / slug</label></span>
-        </div>
+    
+    <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
+          class="flex flex-col gap-3">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="ImU4MWQyZDI0MmEzZjJiZmE4MjNiOGZkMDQ4Yjk0OWFjZmM2ZGY5M2Yi.ZmBz0A.W_BP8r6xMl473x9LWUy5Be7X2oY">
 
         
             
-        
-
-        
-
-        <input class="input input-bordered w-full " id="file_slug" name="file_slug" placeholder="asian-fried-rice" required type="text" value="">
-
-        
-
-        
-
-    </label>
+        <h2 class="!mb-0">Название</h2>
 
         
     <label class="form-control w-full">
@@ -183,6 +169,26 @@
         
     <label class="form-control w-full">
         <div class="label">
+            <span class="label-text"><label for="file_slug">Файл / slug</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="file_slug" name="file_slug" placeholder="asian-fried-rice" required type="text" value="">
+
+        
+
+        
+
+    </label>
+
+        
+    <label class="form-control w-full">
+        <div class="label">
             <span class="label-text"><label for="section">Раздел</label></span>
         </div>
 
@@ -200,30 +206,8 @@
 
     </label>
 
-        
-    <label class="form-control w-full">
-        <div class="label">
-            <span class="label-text"><label for="ingredients_md">Ингредиенты (.md)</label></span>
-        </div>
 
-        
-            
-        
-
-        
-
-        <textarea class="textarea textarea-bordered h-48 " id="ingredients_md" name="ingredients_md" placeholder="- Яйца
-- Лук" required>
-</textarea>
-
-        
-
-        
-
-    </label>
-
-
-
+        <h2 class="!mb-0">Приготовление</h2>
         
     <label class="form-control w-full">
         <div class="label">
@@ -287,11 +271,81 @@
     </label>
 
 
-        <div class="flex justify-end mt-2">
-            <button class="btn btn-primary btn-sm">Сохранить</button>
+        <h2 class="!mb-0">Ингредиенты</h2>
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="ingredients_md">Ингредиенты (.md)</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <textarea class="textarea textarea-bordered h-48 " id="ingredients_md" name="ingredients_md" placeholder="- Яйца
+- Лук" required>
+</textarea>
+
+        
+
+        
+
+    </label>
+
+        <div class="flex">
+            
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="ingredients_make_list">Сделать список?</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="checkbox checkbox-primary " id="ingredients_make_list" name="ingredients_make_list" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
+            
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="ingredients_remove_brackets">Убрать скобки?</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="checkbox checkbox-primary " id="ingredients_remove_brackets" name="ingredients_remove_brackets" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
+        </div>
+    
+        
+
+        <div class="flex justify-end ">
+            <button type="submit" class="btn btn-primary">Добавить</button>
         </div>
     </form>
+
     <div class="res"></div>
+
 
     
     <script src="/static/js/htmx.min.js"></script>
