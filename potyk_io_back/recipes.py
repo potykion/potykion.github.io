@@ -1,3 +1,4 @@
+import re
 from operator import attrgetter
 from typing import TypedDict
 
@@ -8,16 +9,13 @@ from flask import render_template, render_template_string
 from flask_wtf import FlaskForm
 from jinja2 import TemplateNotFound
 from wtforms.fields.choices import SelectField
-from wtforms.fields.simple import StringField, TextAreaField
+from wtforms.fields.simple import StringField, TextAreaField, BooleanField
 from wtforms.validators import InputRequired
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.pages import BlogPage, BlogPageSection
-
-
-class FieldKwargs(TypedDict):
-    placeholder: str
+from potyk_io_back.blog_pages import BlogPage, BlogPageSection
+from potyk_io_back.utils.form import FieldRenderKw
 
 
 class RecipeForm(FlaskForm):
@@ -41,7 +39,7 @@ class RecipeForm(FlaskForm):
     section = SelectField(
         "Раздел",
         validators=[InputRequired()],
-        choices=BlogPageSection.recipe_section_tuples(),
+        choices=BlogPageSection.recipe_section_options(),
     )
 
     ingredients_md = TextAreaField(
@@ -49,14 +47,16 @@ class RecipeForm(FlaskForm):
         validators=[InputRequired()],
         render_kw=dict(placeholder="- Яйца\n- Лук"),
     )
+    ingredients_make_list = BooleanField("Сделать список?")
+    ingredients_remove_brackets = BooleanField("Убрать скобки?")
 
     cooking_youtube = StringField(
         "Ссылка на YouTube (будет добавлена в начало блока Приготовление)",
-        render_kw=FieldKwargs(placeholder="https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h"),
+        render_kw=FieldRenderKw(placeholder="https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h"),
     )
     cooking_link = StringField(
         "Ссылка на текстовый рецепт (будет добавлена в начало блока Приготовление)",
-        render_kw=FieldKwargs(placeholder="https://vk.com/wall-39128795_34992"),
+        render_kw=FieldRenderKw(placeholder="https://vk.com/wall-39128795_34992"),
     )
     cooking_md = TextAreaField(
         "Приготовление (.md)",
@@ -72,12 +72,31 @@ def make_recipe_md_text(form_data) -> str:
     def link_to_md(url):
         return f"[{url}]({url})"
 
+    ingredients_md: str = form_data["ingredients_md"]
+    if form_data["ingredients_make_list"]:
+        lines = ingredients_md.strip().splitlines()
+
+        list_lines = []
+        for line in lines:
+            if line.startswith(">") or line.strip() == '':
+                list_line = line
+            else:
+                list_line = line if line.startswith("- ") else f"- {line}"
+
+                list_line = (
+                    remove_brackets(list_line) if form_data["ingredients_remove_brackets"] else list_line
+                )
+
+            list_lines.append(list_line)
+
+        ingredients_md = "\n".join(list_lines)
+
     return "\n\n".join(
         filter(
             None,
             [
                 "## Ингредиенты",
-                form_data["ingredients_md"],
+                ingredients_md,
                 "## Приготовление",
                 youtube_to_md(form_data["cooking_youtube"]) if form_data["cooking_youtube"] else None,
                 link_to_md(form_data["cooking_link"]) if form_data["cooking_link"] else None,
@@ -85,6 +104,14 @@ def make_recipe_md_text(form_data) -> str:
             ],
         )
     )
+
+
+def remove_brackets(text):
+    """
+    >>> remove_brackets('sample (text) (text 2)')
+    'sample'
+    """
+    return re.sub(r"\(.*?\)", "", text).strip()
 
 
 def add_recipes_routes(app, deps):
@@ -119,14 +146,7 @@ def add_recipes_routes(app, deps):
                 )
                 deps.page_store.insert(page)
 
-                return f"""
-                Результат: <a class='btn btn-link btn-sm' href="{page.url}">{page.title}</a>
-                
-                <div class="toast animate-fadeOut">
-  <div class="alert alert-success">
-    <span>Записал!</span>
-  </div>
-</div>"""
+                return render_template("_components/htmx_success.html", page=page)
             else:
                 return form.errors, 400
 

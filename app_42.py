@@ -13,6 +13,7 @@ from flask import Flask, render_template, render_template_string
 from jinja2 import TemplateNotFound
 from pydantic import BaseModel
 
+from potyk_io_back.admin import add_admin_routes
 from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore
 from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
@@ -20,7 +21,7 @@ from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore, MovieTag, MovieList, add_movie_routes
-from potyk_io_back.pages import BlogPageStore, BlogPage
+from potyk_io_back.blog_pages import BlogPageStore, BlogPage
 from potyk_io_back.q import Q
 from potyk_io_back.recipes import add_recipes_routes
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
@@ -458,6 +459,8 @@ def create_app():
     # endregion rest
 
     add_movie_routes(app, deps)
+
+    add_admin_routes(app, deps)
 
     render_pages(app, deps)
 
