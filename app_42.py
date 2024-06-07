@@ -154,7 +154,7 @@ def create_app():
 
         """
 
-        if re.match(r"https://youtu.be/(.+)?si=(.+)", link):
+        if re.match(r"https://youtu.be/(.+)?si=(.+)", link) or re.match(r"https://youtu.be/(.+)", link):
             id = link.rsplit("/", 1)[1]
         elif re.match(r"https://www\.youtube\.com/watch\?v=(.+)", link):
             id = link.rsplit("=")[1]

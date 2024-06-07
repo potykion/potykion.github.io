@@ -47,7 +47,7 @@ class RecipeForm(FlaskForm):
         validators=[InputRequired()],
         render_kw=dict(placeholder="- Яйца\n- Лук"),
     )
-    ingredients_make_list = BooleanField("Сделать список?")
+    ingredients_make_list = BooleanField("Сделать список?", default=True)
     ingredients_remove_brackets = BooleanField("Убрать скобки?")
 
     cooking_youtube = StringField(
@@ -63,6 +63,7 @@ class RecipeForm(FlaskForm):
         validators=[InputRequired()],
         render_kw={"placeholder": "- Яйца отварить\n-Лук обжарить"},
     )
+    cooking_make_list = BooleanField("Сделать список?", default=True)
 
 
 def make_recipe_md_text(form_data) -> str:
@@ -72,24 +73,30 @@ def make_recipe_md_text(form_data) -> str:
     def link_to_md(url):
         return f"[{url}]({url})"
 
-    ingredients_md: str = form_data["ingredients_md"]
-    if form_data["ingredients_make_list"]:
-        lines = ingredients_md.strip().splitlines()
+    def make_list(raw_list, *, remove_brackets_=False):
+        lines = raw_list.strip().splitlines()
 
         list_lines = []
         for line in lines:
-            if line.startswith(">") or line.strip() == '':
+            if line.startswith(">") or line.strip() == "":
                 list_line = line
             else:
                 list_line = line if line.startswith("- ") else f"- {line}"
 
-                list_line = (
-                    remove_brackets(list_line) if form_data["ingredients_remove_brackets"] else list_line
-                )
+                list_line = remove_brackets(list_line) if remove_brackets_ else list_line
 
             list_lines.append(list_line)
 
-        ingredients_md = "\n".join(list_lines)
+        return "\n".join(list_lines)
+
+    ingredients_md: str = form_data["ingredients_md"]
+    if form_data["ingredients_make_list"]:
+        ingredients_md = make_list(ingredients_md, remove_brackets_=form_data["ingredients_remove_brackets"])
+
+    cooking_md = form_data["cooking_md"]
+    if form_data["cooking_make_list"]:
+        cooking_md = make_list(cooking_md)
+
 
     return "\n\n".join(
         filter(
@@ -100,7 +107,7 @@ def make_recipe_md_text(form_data) -> str:
                 "## Приготовление",
                 youtube_to_md(form_data["cooking_youtube"]) if form_data["cooking_youtube"] else None,
                 link_to_md(form_data["cooking_link"]) if form_data["cooking_link"] else None,
-                form_data["cooking_md"],
+                cooking_md,
             ],
         )
     )
