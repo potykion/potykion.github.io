@@ -120,7 +120,7 @@
     
     <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
           class="flex flex-col gap-3">
-        <input id="csrf_token" name="csrf_token" type="hidden" value="ImE1YzNhN2M2NWQ0MjM1NWQzNTc2Mzc0ODI5OWVhMmM1Njk4YmU5OWMi.ZmHCjg.NZTiBCu-Z-fpQnMFTtvIXC0tcvk">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjlmMjU3MTJhZjA5ODM2YzFiZjVhNTIzNGYyMGZhYWQxMWI5OTJhM2Yi.ZmMoCQ.At5eo7C1F2VxX2qQfyFzcklUJk4">
 
         
             
@@ -270,6 +270,26 @@
 
     </label>
 
+        
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="cooking_make_list">Сделать список?</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input checked class="checkbox checkbox-primary " id="cooking_make_list" name="cooking_make_list" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
 
         <h2 class="!mb-0">Ингредиенты</h2>
         
@@ -307,7 +327,7 @@
 
         
 
-        <input class="checkbox checkbox-primary " id="ingredients_make_list" name="ingredients_make_list" type="checkbox" value="y">
+        <input checked class="checkbox checkbox-primary " id="ingredients_make_list" name="ingredients_make_list" type="checkbox" value="y">
 
         
 
