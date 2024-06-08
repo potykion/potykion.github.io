@@ -1,6 +1,10 @@
 import enum
 from enum import auto
 
+import flask
+import frontmatter
+import mistune
+from flask import render_template_string
 from flask_wtf import FlaskForm
 from pydantic import BaseModel, Field
 from wtforms.fields.choices import SelectField
@@ -161,8 +165,24 @@ class BlogPageForm(FlaskForm):
     )
     title = StringField("Название", render_kw=FieldRenderKw(placeholder="Рецептики"))
     desc = StringField("Описание", render_kw=FieldRenderKw(placeholder="Вкусные и не очень"))
-    section = SelectField("Раздел", coerce=lambda val: val if str(val) != str(None) else None, validators=[Optional()], choices=BlogPageSection.options(w_recipes=False))
+    section = SelectField(
+        "Раздел",
+        coerce=lambda val: val if str(val) != str(None) else None,
+        validators=[Optional()],
+        choices=BlogPageSection.options(w_recipes=False),
+    )
     include_in_index = BooleanField("Показывать на главной?")
     breadcrumbs_title = StringField(
         "Название в хлебных крошках (опц.)", render_kw=FieldRenderKw(placeholder="Рецы")
     )
+
+
+def render_md_as_html_template(template, **kwargs):
+    md = flask.render_template(template)
+    md = frontmatter.loads(md).content
+    html = mistune.html(md)
+    html = render_template_string(
+        '{% extends "_layouts/base.html" %}{% block main %}' + html + "{% endblock %}",
+        **kwargs,
+    )
+    return html

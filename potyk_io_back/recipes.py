@@ -14,7 +14,7 @@ from wtforms.validators import InputRequired
 
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.blog_pages import BlogPage, BlogPageSection
+from potyk_io_back.blog_pages import BlogPage, BlogPageSection, render_md_as_html_template
 from potyk_io_back.utils.form import FieldRenderKw
 
 
@@ -97,7 +97,6 @@ def make_recipe_md_text(form_data) -> str:
     if form_data["cooking_make_list"]:
         cooking_md = make_list(cooking_md)
 
-
     return "\n\n".join(
         filter(
             None,
@@ -169,18 +168,9 @@ def add_recipes_routes(app, deps):
             )
         except TemplateNotFound:
             try:
-                return _render_md_as_html_template(
+                return render_md_as_html_template(
                     f"recipes/{recipe_key}.md",
                     page=deps.page,
                 )
             except TemplateNotFound:
                 raise Exception(f"Failed to find {recipe_key}.html / {recipe_key}.md")
-
-    def _render_md_as_html_template(template, **kwargs):
-        md = render_template(template)
-        md = frontmatter.loads(md).content
-        html = render_template_string(
-            '{% extends "_layouts/base.html" %}{% block main %}' + mistune.html(md) + "{% endblock %}",
-            **kwargs,
-        )
-        return html

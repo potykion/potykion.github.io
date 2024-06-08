@@ -21,7 +21,7 @@ from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore, MovieTag, MovieList, add_movie_routes
-from potyk_io_back.blog_pages import BlogPageStore, BlogPage
+from potyk_io_back.blog_pages import BlogPageStore, BlogPage, render_md_as_html_template
 from potyk_io_back.q import Q
 from potyk_io_back.recipes import add_recipes_routes
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
@@ -461,6 +461,13 @@ def create_app():
     add_movie_routes(app, deps)
 
     add_admin_routes(app, deps)
+
+    # region perf
+    @app.route("/perf")
+    def perf_page():
+        return render_md_as_html_template(f"perf/index.md", page=deps.page)
+
+    # endregion perf
 
     render_pages(app, deps)
 

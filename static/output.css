@@ -4336,6 +4336,18 @@ ul.li-minus li:before {
     height: 100%;
   }
 
+  .md\:w-\[100px\] {
+    width: 100px;
+  }
+
+  .md\:w-\[300px\] {
+    width: 300px;
+  }
+
+  .md\:w-\[400px\] {
+    width: 400px;
+  }
+
   .md\:min-w-64 {
     min-width: 16rem;
   }
