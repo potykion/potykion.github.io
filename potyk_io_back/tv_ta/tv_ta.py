@@ -192,23 +192,33 @@ class AnalysisRepo:
         )
 
     def get_max_accuracy(self):
-        return self.q.select_val(f'select max(accuracy) from {self.prediction_scores_table}')
+        return self.q.select_val(f"select max(accuracy) from {self.prediction_scores_table}")
 
 
 class PredictionRepo:
-    def predict(self, analysis_to_train, analysis_to_predict):
-        X_train = self.analysis_to_X_df(
-            analysis_to_train,
-        )
-        y_train = self.analysis_to_y_df(analysis_to_train)
-        X_predict = self.analysis_to_X_df(
-            analysis_to_predict,
-        )
+    model_params = {
+        "colsample_bytree": 0.9909263177857031,
+        "learning_rate": 0.012951760123713815,
+        "max_depth": 3.0,
+        "n_estimators": 250.0,
+        "reg_alpha": 0.4994961543025278,
+        "reg_lambda": 0.45303518113562763,
+        "subsample": 0.9992583958968904,
+    }
 
-        model = XGBRegressor()
+    def predict(self, X_train, y_train, X_predict, *, params=None, to_list=True):
+        params = params or self.model_params
+        params["n_estimators"] = int(params["n_estimators"])
+        params["max_depth"] = int(params["max_depth"])
+
+        model = XGBRegressor(**params)
         model.fit(X_train, y_train)
 
-        predictions = model.predict(X_predict).tolist()
+        predictions = model.predict(X_predict)
+
+        if to_list:
+            predictions = predictions.tolist()
+
         return predictions
 
     def analysis_to_X_df(self, analysis: list[Analysis]) -> "pd.DataFrame":

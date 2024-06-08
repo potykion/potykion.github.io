@@ -50,10 +50,10 @@ def main():
     deps = Deps()
 
     json_files = [
-        "ta_2024-06-07_12-02-15.json",
-        "ta_2024-06-07_13-02-15.json",
-        "ta_2024-06-07_14-02-15.json",
-        "ta_2024-06-07_15-02-21.json",
+        "ta_2024-06-07_16-02-18.json",
+        "ta_2024-06-07_17-02-15.json",
+        "ta_2024-06-07_18-02-16.json",
+        "ta_2024-06-07_19-02-20.json",
     ]
 
     for new_samples in read_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo):
@@ -123,7 +123,11 @@ def predict(repo: AnalysisRepo, predict_repo: PredictionRepo):
     analysis_to_train = repo.list_train_samples()
     analysis_to_predict = repo.list_predict_samples()
 
-    predictions = predict_repo.predict(analysis_to_train, analysis_to_predict)
+    X_train = predict_repo.analysis_to_X_df(analysis_to_train)
+    y_train = predict_repo.analysis_to_y_df(analysis_to_train)
+    X_predict = predict_repo.analysis_to_X_df(analysis_to_predict)
+
+    predictions = predict_repo.predict(X_train, y_train, X_predict)
 
     with repo.q.commit_after():
         for anal, pred in zip(analysis_to_predict, predictions):
