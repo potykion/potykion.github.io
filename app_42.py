@@ -416,6 +416,15 @@ def create_app():
             page=deps.page,
         )
 
+    @app.route("/tools/turik", )
+    def turik_page():
+
+        return render_template(
+            "tools/turik.html",
+            page=deps.page,
+        )
+
+
     add_rewardy_routes(app, deps)
 
     # endregion tools
