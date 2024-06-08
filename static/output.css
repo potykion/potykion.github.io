@@ -4089,6 +4089,11 @@ ul.li-minus li:before {
   height: 1.5rem;
 }
 
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .max-h-80 {
   max-height: 20rem;
 }
@@ -4120,6 +4125,10 @@ ul.li-minus li:before {
 
 .w-full {
   width: 100%;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .max-w-\[1000px\] {

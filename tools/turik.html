@@ -78,7 +78,7 @@
 
 <!-- endregion GA & YaMetrika -->
 
-<body class="max-w-[1000px]">
+<body class="">
 
 <header class="text-sm breadcrumbs border-neutral border-b">
     <ul class="!pl-2">
@@ -127,7 +127,7 @@
 
                 <textarea
                         class="textarea textarea-bordered" rows="6"
-                        placeholder='Выпиши что хочешь выбрать, напр. список фильмов'
+                        placeholder='Выпиши что хочешь выбрать построчно, напр. список фильмов'
 
                         required x-model="rawOptions"
                 ></textarea>
@@ -139,12 +139,12 @@
             </div>
         </form>
 
-        <div class="flex gap-2 overflow-x-auto">
+        <div class="flex gap-2 overflow-x-auto mt-2">
             <template x-for="(options, roundIndex) in rounds">
                 <div class="flex flex-col gap-2">
                     <template x-for="(opt, optIndex) in options">
-                        <button class="btn btn-sm w-52" :class="opt.status==='win' && 'btn-success'"
-                                @click="setOptionForNextRound(roundIndex, optIndex)" x-text="opt.val"
+                        <button class="btn w-96 h-fit" :class="opt.status==='win' && 'btn-success'"
+                                @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
                                 :disabled="opt.status==='lose'"></button>
                     </template>
                 </div>
@@ -194,6 +194,14 @@
                     if (loseOpt) {
                         loseOpt.status = 'lose'
                     }
+
+                    // todo already won => un-select
+
+                    // todo shuffle on every next round
+
+                    // todo full width
+
+                    // todo pairs space
 
                     const nextRoundOpt = {...winOpt, status: 'queue'}
                     if (this.rounds.length === roundIndex + 1) {
