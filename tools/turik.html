@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- region SEO -->
+    <title></title>
+    <meta name="description" content=""/>
+
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <!-- endregion SEO -->
+
+    <!-- region Styles -->
+
+    <!-- region Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
+    <!-- endregion Noto Sans Font -->
+
+    <!-- region Tailwind Compiled Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/output.css">
+    <!-- endregion Tailwind Compiled Styles -->
+
+    <!-- region Custom styles -->
+    
+    <!-- endregion Custom styles -->
+
+    <!-- endregion Styles -->
+</head>
+
+<!-- region GA & YaMetrika -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-5WTE0KE6PT');
+    </script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments)
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(82960681, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true
+        });
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+<!-- endregion GA & YaMetrika -->
+
+<body class="max-w-[1000px]">
+
+<header class="text-sm breadcrumbs border-neutral border-b">
+    <ul class="!pl-2">
+        
+            
+                <li>
+                    
+                        <a href="/">п⌀тик.ио</a>
+                    
+                </li>
+            
+                <li>
+                    
+                        <a href="/tools">Тулзы</a>
+                    
+                </li>
+            
+                <li>
+                    
+                        Турик
+                    
+                </li>
+            
+        
+
+
+    </ul>
+</header>
+
+<main class="prose  max-w-none p-2">
+    
+        
+            <h1>Турик</h1>
+            <cite class="block">Выбираем лучший варик</cite>
+        
+    
+
+    
+
+    <div x-data="turik">
+        <form>
+            <label class="form-control">
+                <div class="label">
+                    <span class="label-text">Варики</span>
+                </div>
+
+                <textarea
+                        class="textarea textarea-bordered" rows="6"
+                        placeholder='Выпиши что хочешь выбрать, напр. список фильмов'
+
+                        required x-model="rawOptions"
+                ></textarea>
+            </label>
+
+
+            <div class="flex mt-2 justify-center">
+                <button class="btn btn-primary btn-wide" @click="setOptions">Погнали</button>
+            </div>
+        </form>
+
+        <div class="flex gap-2 overflow-x-auto">
+            <template x-for="(options, roundIndex) in rounds">
+                <div class="flex flex-col gap-2">
+                    <template x-for="(opt, optIndex) in options">
+                        <button class="btn btn-sm w-52" :class="opt.status==='win' && 'btn-success'"
+                                @click="setOptionForNextRound(roundIndex, optIndex)" x-text="opt.val"
+                                :disabled="opt.status==='lose'"></button>
+                    </template>
+                </div>
+            </template>
+        </div>
+
+    </div>
+
+    
+    <!-- Alpine Plugins -->
+    <script defer src="/static/js/alpinejs-plugins.min.js"></script>
+    <!-- Alpine Core -->
+    <script defer src="/static/js/alpinejs.min.js"></script>
+
+
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('turik', () => ({
+                rawOptions: '',
+
+                // [][]
+                rounds: [],
+
+                setOptions(e) {
+                    e.preventDefault()
+                    // status = 'win' | 'lose' | 'queue'
+                    const options = shuffleArray(this.rawOptions.trim().split('\n')).map(val => ({
+                        val,
+                        status: 'queue'
+                    }))
+                    this.rounds = [options]
+                },
+
+                setOptionForNextRound(roundIndex, optIndex) {
+                    let winOpt = this.rounds[roundIndex][optIndex];
+                    winOpt.status = 'win'
+
+                    let loseOpt = this.rounds[roundIndex][optIndex + (optIndex % 2 === 1 ? -1 : 1)];
+                    if (loseOpt) {
+                        loseOpt.status = 'lose'
+                    }
+
+                    const nextRoundOpt = {...winOpt, status: 'queue'}
+                    if (this.rounds.length === roundIndex + 1) {
+                        this.rounds.push([nextRoundOpt])
+                    } else {
+                        this.rounds[roundIndex + 1].push(nextRoundOpt)
+                    }
+                }
+            }))
+        })
+    </script>
+
+
+</main>
+
+<footer class="prose max-w-none border-t border-neutral mt-4 p-2">
+    <div class="flex justify-end gap-2 text-sm">
+        <a href="https://t.me/potyk_forever">[канал]</a> •
+        <a href="https://t.me/potykion">[автор]</a>
+    </div>
+</footer>
+
+</body>
+
+
+
+</html>
