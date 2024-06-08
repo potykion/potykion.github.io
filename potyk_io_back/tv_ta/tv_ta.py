@@ -197,13 +197,15 @@ class AnalysisRepo:
 
 class PredictionRepo:
     model_params = {
-        "colsample_bytree": 0.9909263177857031,
-        "learning_rate": 0.012951760123713815,
-        "max_depth": 3.0,
-        "n_estimators": 250.0,
-        "reg_alpha": 0.4994961543025278,
-        "reg_lambda": 0.45303518113562763,
-        "subsample": 0.9992583958968904,
+        "colsample_bytree": 0.5891068053804113,
+        "gamma": 0.161134814723787,
+        "learning_rate": 0.018598396703702173,
+        "max_depth": 2.0,
+        "min_child_weight": 6.0,
+        "n_estimators": 500.0,
+        "reg_alpha": 9.526447733547432,
+        "reg_lambda": 4.144959618046851,
+        "subsample": 0.1518126264708962,
     }
 
     def predict(self, X_train, y_train, X_predict, *, params=None, to_list=True):
