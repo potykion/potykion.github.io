@@ -64,6 +64,7 @@ class RecipeForm(FlaskForm):
         render_kw={"placeholder": "- Яйца отварить\n-Лук обжарить"},
     )
     cooking_make_list = BooleanField("Сделать список?", default=True)
+    cooking_remove_quotes = BooleanField("Убрать кавычки?", default=False)
 
 
 def make_recipe_md_text(form_data) -> str:
@@ -73,7 +74,7 @@ def make_recipe_md_text(form_data) -> str:
     def link_to_md(url):
         return f"[{url}]({url})"
 
-    def make_list(raw_list, *, remove_brackets_=False):
+    def make_list(raw_list, *, remove_brackets=False, remove_quotes=False):
         lines = raw_list.strip().splitlines()
 
         list_lines = []
@@ -83,7 +84,8 @@ def make_recipe_md_text(form_data) -> str:
             else:
                 list_line = line if line.startswith("- ") else f"- {line}"
 
-                list_line = remove_brackets(list_line) if remove_brackets_ else list_line
+                list_line = remove_brackets_from_str(list_line) if remove_brackets else list_line
+                list_line = trim_quotes(list_line) if remove_quotes else list_line
 
             list_lines.append(list_line)
 
@@ -91,11 +93,11 @@ def make_recipe_md_text(form_data) -> str:
 
     ingredients_md: str = form_data["ingredients_md"]
     if form_data["ingredients_make_list"]:
-        ingredients_md = make_list(ingredients_md, remove_brackets_=form_data["ingredients_remove_brackets"])
+        ingredients_md = make_list(ingredients_md, remove_brackets=form_data["ingredients_remove_brackets"])
 
     cooking_md = form_data["cooking_md"]
     if form_data["cooking_make_list"]:
-        cooking_md = make_list(cooking_md)
+        cooking_md = make_list(cooking_md, remove_quotes=form_data["cooking_remove_quotes"])
 
     return "\n\n".join(
         filter(
@@ -112,12 +114,20 @@ def make_recipe_md_text(form_data) -> str:
     )
 
 
-def remove_brackets(text):
+def remove_brackets_from_str(text):
     """
-    >>> remove_brackets('sample (text) (text 2)')
+    >>> remove_brackets_from_str('sample (text) (text 2)')
     'sample'
     """
     return re.sub(r"\(.*?\)", "", text).strip()
+
+
+def trim_quotes(text: str):
+    """
+    >>> remove_brackets_from_str('"sample"')
+    'sample'
+    """
+    return text.strip('"')
 
 
 def add_recipes_routes(app, deps):

@@ -10,5 +10,6 @@ console.log(
                 .filter((_, i) => i != 2)
                 .join('<br>')
         )
+        .filter(item => !item.includes('сериал'))
         .join('\n')
 )

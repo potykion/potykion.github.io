@@ -49,12 +49,13 @@ class Deps:
 def main():
     deps = Deps()
 
-    json_files = [
-        "ta_2024-06-07_16-02-18.json",
-        "ta_2024-06-07_17-02-15.json",
-        "ta_2024-06-07_18-02-16.json",
-        "ta_2024-06-07_19-02-20.json",
-    ]
+    json_files = '''
+        ta_2024-06-10_10-02-13.json
+        ta_2024-06-10_11-02-15.json
+        ta_2024-06-10_12-02-15.json
+        ta_2024-06-10_13-02-15.json
+        ta_2024-06-10_14-02-25.json
+        '''.strip().split()
 
     for new_samples in read_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo):
         print("load_samples_from_json...")
