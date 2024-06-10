@@ -120,7 +120,7 @@
     
     <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
           class="flex flex-col gap-3">
-        <input id="csrf_token" name="csrf_token" type="hidden" value="IjI4YjA2NmI2NWE0YTI3MGQzZTJjYjhmNjYxMjQwMzgyMDljMDFhYzMi.ZmV11A.iVsG2rEY1GwJvYoa0Cg6fdwzQZE">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjJhZDdhNzNhYjY1NDJlMTliNjA5NGE3MjlhZGFjMzEzZWM4YTAzMTMi.ZmbyQA.pGgoWIps32kOSJfevGtkBa7qe_c">
 
         
             
@@ -270,7 +270,9 @@
 
     </label>
 
-        
+
+        <div class="flex">
+            
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="cooking_make_list">Сделать список?</label></span>
@@ -290,6 +292,27 @@
 
     </label>
 
+            
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="cooking_remove_quotes">Убрать кавычки?</label></span>
+        </div>
+
+        
+            
+        
+
+        
+
+        <input class="checkbox checkbox-primary " id="cooking_remove_quotes" name="cooking_remove_quotes" type="checkbox" value="y">
+
+        
+
+        
+
+    </label>
+
+        </div>
 
         <h2 class="!mb-0">Ингредиенты</h2>
         
