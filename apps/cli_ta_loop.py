@@ -49,13 +49,14 @@ class Deps:
 def main():
     deps = Deps()
 
-    json_files = '''
-        ta_2024-06-10_10-02-13.json
-        ta_2024-06-10_11-02-15.json
-        ta_2024-06-10_12-02-15.json
-        ta_2024-06-10_13-02-15.json
-        ta_2024-06-10_14-02-25.json
-        '''.strip().split()
+    json_files: list[str] = (
+        """
+        ta_2024-06-10_15-02-16.json
+ta_2024-06-10_16-02-09.json
+ta_2024-06-10_17-02-14.json
+        """.strip().split()
+    )
+    json_files = [file.strip() for file in json_files]
 
     for new_samples in read_samples_from_json(deps.json_files_dir, json_files, deps.analysis_repo):
         print("load_samples_from_json...")
@@ -70,7 +71,7 @@ def main():
         predict(deps.analysis_repo, deps.prediction_repo)
         print()
 
-        print('---')
+        print("---")
 
     print("plotting score...")
     read_scores_and_plot(deps.db, deps.prediction_scores_table)
@@ -113,7 +114,7 @@ def set_change_next(repo: AnalysisRepo):
     print(f"score: accuracy📈 = {accuracy}; RMSE📉 = {rmse}; R2📈0️⃣ = {r2}")
     repo.insert_prediction_scores(accuracy, rmse, r2)
     max_accuracy = repo.get_max_accuracy()
-    print(f'max accuracy: {max_accuracy}')
+    print(f"max accuracy: {max_accuracy}")
 
 
 def predict(repo: AnalysisRepo, predict_repo: PredictionRepo):

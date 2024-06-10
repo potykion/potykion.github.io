@@ -4,7 +4,9 @@ from enum import auto
 import flask
 import frontmatter
 import mistune
-from flask import render_template_string
+from mistune import HTMLRenderer
+from mistune.plugins.task_lists import task_lists
+from flask import render_template_string, render_template
 from flask_wtf import FlaskForm
 from pydantic import BaseModel, Field
 from wtforms.fields.choices import SelectField
@@ -20,6 +22,7 @@ class BlogPageSection(enum.StrEnum):
     fun = auto()
     work = auto()
     food = auto()
+    n = auto()
 
     recipes_sweet = auto()
     recipes_asian = auto()
@@ -67,6 +70,8 @@ class BlogPageSection(enum.StrEnum):
                 return "Работка"
             case BlogPageSection.food:
                 return "Еда"
+            case BlogPageSection.n:
+                return "Личное"
 
             case BlogPageSection.recipes_sweet:
                 return "Сладости"
@@ -177,10 +182,19 @@ class BlogPageForm(FlaskForm):
     )
 
 
+class CustomTaskListsRenderer(HTMLRenderer):
+    def task_list_item(self, text, checked=False, **attrs):
+        return render_template("_components/md_checkbox.html", checked=checked, text=text)
+
+
+renderer = CustomTaskListsRenderer()
+markdown = mistune.Markdown(renderer, plugins=[task_lists])
+
+
 def render_md_as_html_template(template, **kwargs):
     md = flask.render_template(template)
     md = frontmatter.loads(md).content
-    html = mistune.html(md)
+    html = markdown(md)
     html = render_template_string(
         '{% extends "_layouts/base.html" %}{% block main %}' + html + "{% endblock %}",
         **kwargs,
