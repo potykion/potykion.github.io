@@ -138,9 +138,14 @@ def add_recipes_routes(app, deps):
     def recipes_page():
         recipe_pages = deps.page_store.list_recipe_pages()
         pages_by_section = groupby_dict(recipe_pages, attrgetter("section"))
+
+        tags = BlogPageSection.recipe_section_options()
+
         return render_template(
             "recipes/index.html",
             page=deps.page,
+            tags=tags,
+            recipe_pages=[page.model_dump() for page in recipe_pages],
             pages_by_section=pages_by_section,
         )
 

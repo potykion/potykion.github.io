@@ -1,6 +1,7 @@
 {% extends "_layouts/base.html" %}
 
 {% from '_components/page_list.html' import page_list, page_sections %}
+{% from "_components/scripts.html" import alpinejs %}
 
 {% block title %}
     <div class="flex justify-between">
@@ -23,5 +24,70 @@
 
 
 {% block main %}
+    <h2 class="italic">#чепожрать?</h2>
+
+    <div class="flex flex-col gap-4" x-data="recipes">
+        <div class="flex flex-wrap gap-2">
+            <template x-for="tag in tags">
+                <button type="button" class="btn" :class="  tag.selected && 'btn-outline btn-primary'"
+                        @click="selectTag(tag)"
+                        x-text="tag.title"></button>
+            </template>
+        </div>
+
+
+        <div class="flex gap-2">
+            <button type="button" class="btn grow " disabled>Турик</button>
+            <button type="button" class="btn grow " @click="selectRandomRecipe()">Рандом</button>
+        </div>
+
+        <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
+            <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
+            <div x-text="randomRecipe.desc"></div>
+        </div>
+
+    </div>
+
+
+    <hr>
+    <h2>База</h2>
     {{ page_sections(pages_by_section) }}
+
+
+    {{ alpinejs() }}
+
+    <script>
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('recipes', () => ({
+                tags: {{ tags | tojson }}.map(([tag, title]) => ({tag, title, selected: false})),
+                recipes: {{ recipe_pages | tojson }},
+                randomRecipe: null,
+
+                get selectedTags() {
+                    return this.tags.filter(tag => tag.selected).map(tag => tag.tag)
+                },
+
+                selectTag(tag) {
+                    tag.selected = !tag.selected;
+                },
+                selectRandomRecipe() {
+                    const matchingRecipes = this.recipes.filter(rec => !this.selectedTags.length || this.selectedTags.includes(rec.section))
+                    this.randomRecipe = shuffleArray(matchingRecipes)[0]
+                },
+
+
+            }))
+
+
+        })
+    </script>
+
 {% endblock %}
