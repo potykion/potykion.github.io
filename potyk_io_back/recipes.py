@@ -79,13 +79,16 @@ def make_recipe_md_text(form_data) -> str:
 
         list_lines = []
         for line in lines:
-            if line.startswith(">") or line.strip() == "":
-                list_line = line
+            list_line = line
+
+            list_line = trim_quotes(list_line) if remove_quotes else list_line
+
+            if list_line.startswith(">") or list_line.strip() == "":
+                list_line = list_line
             else:
-                list_line = line if line.startswith("- ") else f"- {line}"
+                list_line = list_line if list_line.startswith("- ") else f"- {list_line}"
 
                 list_line = remove_brackets_from_str(list_line) if remove_brackets else list_line
-                list_line = trim_quotes(list_line) if remove_quotes else list_line
 
             list_lines.append(list_line)
 
