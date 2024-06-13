@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
     sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)
 
-    app = app_42.create_app()
+    app = app_42.create_app(server_name='potyk.io')
     deps = app_42.Deps(sqlite_conn=sqlite_conn, sqlite_cursor=sqlite_conn.cursor())
 
     main(app, deps)
