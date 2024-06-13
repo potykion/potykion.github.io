@@ -56,6 +56,7 @@ class FeedForm(flask_wtf.Form):
 class FeedCard(BaseModel):
     exclude_fields: ClassVar[set[str]] = {"rel_table", "rel_id"}
 
+    date: datetime.date
     category: str
     image: str | None = None
     image_width: int = 0

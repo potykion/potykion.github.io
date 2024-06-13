@@ -29,8 +29,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt 
 
-      - name: Run Python script to generate docs
-        run: python apps.script_render_all_pages
+      - name: Run Python script to generate pages
+        run: python -m apps.script_render_all_pages
+
+      - name: Run Python script to generate feed
+        run: python -m apps.script_render_feed
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

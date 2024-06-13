@@ -83,9 +83,11 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border fle
     {% endif %}
 
     {% if feed_card.desc %}
-        <div class=" text-sm font-normal {% if feed_card.desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t {{ border_color }} ">
+        <div class=" text-sm font-normal grow {% if feed_card.desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t {{ border_color }} ">
             {{ feed_card.desc | safe }}
         </div>
     {% endif %}
+
+    <div class="text-sm text-right text-neutral-300 dark:text-neutral-700 p-2">{{ feed_card.date }}</div>
 
 </{% if feed_card.url %}a{% else %}div{% endif %}>

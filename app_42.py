@@ -131,6 +131,9 @@ def create_app():
         sqlite_conn=(sqlite_conn := sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)),
         sqlite_cursor=sqlite_conn.cursor(),
     )
+    # RuntimeError: Unable to build URLs outside an active request without 'SERVER_NAME' configured.
+    #   Also configure 'APPLICATION_ROOT' and 'PREFERRED_URL_SCHEME' as needed.
+    app.config["SERVER_NAME"] = "127.0.0.1:5000"
     # RuntimeError: A secret key is required to use CSRF.
     app.config["SECRET_KEY"] = os.urandom(24)
     app.config["FLASK_ENV"] = os.environ["FLASK_ENV"]

@@ -15,6 +15,7 @@ def main(app, deps):
     with app.app_context():
         chunks = tuple(chunked(feed_cards, 10))
         for index, cards in enumerate(chunks):
+            deps.feed_storage.prep_feed_items(cards)
 
             feed_card_html = "".join(
                 flask.render_template("_components/feed_card.html", feed_card=card) for card in cards
