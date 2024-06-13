@@ -18,6 +18,7 @@ from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore
 from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
+from potyk_io_back.index_and_feed import add_index_page, FeedStorage
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore, MovieTag, MovieList, add_movie_routes
@@ -58,6 +59,9 @@ class GameStore:
 class Deps:
     sqlite_conn: sqlite3.Connection
     sqlite_cursor: sqlite3.Cursor
+
+    @property
+    def feed_storage(self): return FeedStorage(self.sqlite_cursor)
 
     @property
     def movie_store(self):
@@ -174,20 +178,7 @@ def create_app():
     def serve_file(path):
         return flask.send_file(path)
 
-    @app.route("/")
-    def index_page():
-        pages = deps.page_store.list_index()
-        pages_by_section = groupby_dict(pages, attrgetter("section"))
-        events = deps.q.select_all(
-            "select * from events as e where e.date > date() order by date",
-            as_=Event,
-        )
-        return render_template(
-            "index.html",
-            pages_by_section=pages_by_section,
-            page=deps.page,
-            events=events,
-        )
+    add_index_page(app, deps)
 
     add_recipes_routes(app, deps)
 
@@ -430,6 +421,12 @@ def create_app():
     def projects_page():
         return render_md_as_html_template(
             "n/projects.md",
+            page=deps.page,
+        )
+    @app.route("/n")
+    def n_page():
+        return render_md_as_html_template(
+            "n/index.md",
             page=deps.page,
         )
 

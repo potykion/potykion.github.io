@@ -1,6 +1,6 @@
+# Docker
 
-## 30.05.2024 - Docker hub перестал работать в России
-
+## 30.05.2024 - 11.06.2024 - Docker hub перестал работать в России
 
 Кто пользуется Docker Desktop и сегодня перестали скачиваться образы, нужно добавить гугловское зеркало в конфиг и
 перезапустить весь Docker Desktop.
@@ -21,3 +21,7 @@ sudo nano /etc/docker/daemon.json
 }
 sudo systemctl restart docker
 ```
+
+### https://huecker.io/ - Open-source прокси для Docker Hub
+
+![huecker.svg](huecker.svg)

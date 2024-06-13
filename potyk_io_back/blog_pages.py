@@ -10,7 +10,7 @@ from flask import render_template_string, render_template
 from flask_wtf import FlaskForm
 from pydantic import BaseModel, Field
 from wtforms.fields.choices import SelectField
-from wtforms.fields.simple import StringField, BooleanField
+from wtforms.fields.simple import StringField, BooleanField, HiddenField
 from wtforms.validators import Optional
 
 from potyk_io_back.lazy import SimpleStorage
@@ -69,7 +69,7 @@ class BlogPageSection(enum.StrEnum):
             case BlogPageSection.work:
                 return "Работка"
             case BlogPageSection.food:
-                return "Еда"
+                return "<i>#чепожрать?</i>"
             case BlogPageSection.n:
                 return "Личное"
 
@@ -163,6 +163,7 @@ class BlogPageStore:
 
 
 class BlogPageForm(FlaskForm):
+    action = HiddenField(default='page')
     url = StringField("Url", render_kw=FieldRenderKw(placeholder="/recipes"))
     html_path = StringField(
         "Путь к HTML файлу после рендеринга",
