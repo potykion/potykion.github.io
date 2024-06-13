@@ -123,7 +123,7 @@ def render_pages(app, deps: Deps):
     return rendered
 
 
-def create_app():
+def create_app(server_name=None):
     app = Flask(
         __name__,
     )
@@ -133,7 +133,7 @@ def create_app():
     )
     # RuntimeError: Unable to build URLs outside an active request without 'SERVER_NAME' configured.
     #   Also configure 'APPLICATION_ROOT' and 'PREFERRED_URL_SCHEME' as needed.
-    app.config["SERVER_NAME"] = "127.0.0.1:5000"
+    app.config["SERVER_NAME"] = server_name or "127.0.0.1:5000"
     # RuntimeError: A secret key is required to use CSRF.
     app.config["SECRET_KEY"] = os.urandom(24)
     app.config["FLASK_ENV"] = os.environ["FLASK_ENV"]
