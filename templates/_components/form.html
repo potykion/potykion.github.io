@@ -55,7 +55,7 @@
             {{ caller() }}
         {% else %}
             {% for field_key, field in form._fields.items() %}
-                {% if field_key != 'csrf_token' %}
+                {% if not field.flags.hidden %}
                     {{ input(field) }}
                 {% endif %}
             {% endfor %}

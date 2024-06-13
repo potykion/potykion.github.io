@@ -17,8 +17,8 @@
 {% endmacro %}
 
 {% macro section_card(section) %}
-    <div class="rounded-border">
-        <div class="border-neutral border-b px-2 ">{{ section }}</div>
+    <div class="rounded-border dark:border-gray-700">
+        <div class="border-neutral dark:border-gray-700 border-b px-2 ">{{ section | safe }}</div>
         <div class="p-4">
             {{ caller() }}
         </div>
