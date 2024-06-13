@@ -3,6 +3,7 @@ import sqlite3
 from operator import attrgetter
 from typing import ClassVar
 
+import flask
 import flask_wtf
 from flask import render_template, url_for
 from pydantic import BaseModel
@@ -27,7 +28,8 @@ class FeedForm(flask_wtf.Form):
     )
     desc = TextAreaField(label="Описание", render_kw=FieldRenderKw(placeholder="pizda lupasit"))
     desc_padding = IntegerRangeField(
-        label="Размер описания (p-4)", render_kw=FieldRenderKw(min=0, max=4, step=4),
+        label="Размер описания (p-4)",
+        render_kw=FieldRenderKw(min=0, max=4, step=4),
     )
     row_span = IntegerRangeField(
         label="Размер карточки (в строках)", render_kw=FieldRenderKw(min=1, max=4), default=1
@@ -41,8 +43,14 @@ class FeedForm(flask_wtf.Form):
     rel_table = StringField(render_kw=FieldRenderKw(placeholder="beer"))
     rel_id = IntegerField(render_kw=FieldRenderKw(placeholder=32))
     video = StringField(label="Видосик (путь)", render_kw=FieldRenderKw(placeholder="video/april-fools.mp4"))
-    audio = StringField(label="Аудио (путь)", render_kw=FieldRenderKw(placeholder="audio/Armond Hammer - The Key Is Under The Mat.opus"))
-    image = StringField(label="Картинка (путь)", render_kw=FieldRenderKw(placeholder="images/mu/Armand-Hammer-we-buy-diabetic-test-strips.webp"))
+    audio = StringField(
+        label="Аудио (путь)",
+        render_kw=FieldRenderKw(placeholder="audio/Armond Hammer - The Key Is Under The Mat.opus"),
+    )
+    image = StringField(
+        label="Картинка (путь)",
+        render_kw=FieldRenderKw(placeholder="images/mu/Armand-Hammer-we-buy-diabetic-test-strips.webp"),
+    )
 
 
 class FeedCard(BaseModel):
@@ -156,3 +164,7 @@ def add_index_page(app, deps):
             events=events,
             feed_items=feed_items,
         )
+
+    @app.route("/feed/<index>")
+    def feed_card_page(index: str):
+        return flask.render_template(f"feed/{index}")

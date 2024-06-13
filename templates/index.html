@@ -2,7 +2,7 @@
 
 {% from '_components/page_list.html' import page_list, page_sections %}
 {% from '_components/link_and_section.html' import link, section_card %}
-{% from '_components/feed_card.html' import feed_card %}
+{% from "_components/scripts.html" import htmx %}
 
 {% block main %}
     <div class="flex flex-col gap-4 ">
@@ -19,13 +19,16 @@
         <div class="h-4"></div>
 
         <div class="grid md:grid-cols-3 gap-4">
-            {% for feed_item in feed_items %}
-                {{ feed_card(**feed_item) }}
+            {% for feed_card in feed_items %}
+                {% include '_components/feed_card.html' %}
+
             {% endfor %}
+
+            <div class="flex justify-center mt-4 md:col-span-3" hx-target="this" hx-get="/feed/1.html" hx-swap="outerHTML">
+                <button class="btn btn-primary btn-wide">Загрузить еще</button>
+            </div>
         </div>
-        <div class="flex justify-center mt-4">
-            <button class="btn btn-primary btn-wide">Загрузить еще</button>
-        </div>
+
 
         <hr>
         <h2 class="text-center !mt-0 !py-0 border-neutral dark:border-gray-700 ">Разделы</h2>
@@ -35,4 +38,7 @@
     <div class="flex flex-col gap-4 ">
         {{ page_sections(pages_by_section) }}
     </div>
+
+    {{ htmx() }}
+
 {% endblock %}

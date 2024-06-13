@@ -30,7 +30,7 @@ jobs:
           pip install -r requirements.txt 
 
       - name: Run Python script to generate docs
-        run: python render_all.py
+        run: python apps.script_render_all_pages
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

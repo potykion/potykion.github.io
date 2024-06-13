@@ -3702,10 +3702,6 @@ input {
   width: 16rem;
 }
 
-.btn-block {
-  width: 100%;
-}
-
 .btn-square:where(.btn-sm) {
   height: 2rem;
   width: 2rem;
@@ -4185,18 +4181,12 @@ ul.li-minus li:before {
   grid-row: span 4 / span 4;
 }
 
-.my-0 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-.\!my-0 {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-}
-
 .\!mb-0 {
   margin-bottom: 0px !important;
+}
+
+.\!mt-0 {
+  margin-top: 0px !important;
 }
 
 .mb-2 {
@@ -4223,14 +4213,6 @@ ul.li-minus li:before {
   margin-top: 1rem;
 }
 
-.mt-6 {
-  margin-top: 1.5rem;
-}
-
-.\!mt-0 {
-  margin-top: 0px !important;
-}
-
 .block {
   display: block;
 }
@@ -4249,6 +4231,10 @@ ul.li-minus li:before {
 
 .grid {
   display: grid;
+}
+
+.hidden {
+  display: none;
 }
 
 .aspect-square {
@@ -4496,6 +4482,11 @@ ul.li-minus li:before {
   padding: 1rem;
 }
 
+.\!py-0 {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
 .px-0 {
   padding-left: 0px;
   padding-right: 0px;
@@ -4521,16 +4512,6 @@ ul.li-minus li:before {
   padding-bottom: 1rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.\!py-0 {
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-}
-
 .\!pl-2 {
   padding-left: 0.5rem !important;
 }
@@ -4541,10 +4522,6 @@ ul.li-minus li:before {
 
 .pt-2 {
   padding-top: 0.5rem;
-}
-
-.\!pt-0 {
-  padding-top: 0px !important;
 }
 
 .text-center {
@@ -4651,6 +4628,10 @@ ul.li-minus li:before {
 }
 
 @media (min-width: 768px) {
+  .md\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
   .md\:h-full {
     height: 100%;
   }
@@ -4698,26 +4679,6 @@ ul.li-minus li:before {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:border-gray-300 {
-    --tw-border-opacity: 1;
-    border-color: rgb(209 213 219 / var(--tw-border-opacity));
-  }
-
-  .dark\:border-gray-500 {
-    --tw-border-opacity: 1;
-    border-color: rgb(107 114 128 / var(--tw-border-opacity));
-  }
-
-  .dark\:border-gray-400 {
-    --tw-border-opacity: 1;
-    border-color: rgb(156 163 175 / var(--tw-border-opacity));
-  }
-
-  .dark\:border-gray-600 {
-    --tw-border-opacity: 1;
-    border-color: rgb(75 85 99 / var(--tw-border-opacity));
-  }
-
   .dark\:border-gray-700 {
     --tw-border-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-border-opacity));

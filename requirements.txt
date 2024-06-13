@@ -31,6 +31,8 @@ tinkoff-investments
 tradingview-ta
 # tg
 python-telegram-bot
+# utils
+more-itertools
 
 # (опц.) удаление бекграунда
 # rembg
