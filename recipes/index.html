@@ -132,13 +132,26 @@
 
 
         <div class="flex gap-2">
-            <button type="button" class="btn grow " disabled>Турик</button>
+            <button type="button" class="btn grow " @click="startTour()">Турик</button>
             <button type="button" class="btn grow " @click="selectRandomRecipe()">Рандом</button>
         </div>
 
         <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
             <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
             <div x-text="randomRecipe.desc"></div>
+        </div>
+
+
+    <div class="flex gap-2 overflow-x-auto mt-2" x-show="rounds.length" x-transition>
+            <template x-for="(options, roundIndex) in rounds">
+                <div class="flex flex-col gap-2">
+                    <template x-for="(opt, optIndex) in options">
+                        <button class="btn w-96 h-fit" :class="opt.status==='win' && 'btn-success'"
+                                @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
+                                :disabled="opt.status==='lose'"></button>
+                    </template>
+                </div>
+            </template>
         </div>
 
     </div>
@@ -1543,15 +1556,56 @@
                 get selectedTags() {
                     return this.tags.filter(tag => tag.selected).map(tag => tag.tag)
                 },
+                get matchingRecipes() {
+                    return this.recipes.filter(rec => !this.selectedTags.length || this.selectedTags.includes(rec.section))
+                },
 
                 selectTag(tag) {
                     tag.selected = !tag.selected;
                 },
                 selectRandomRecipe() {
-                    const matchingRecipes = this.recipes.filter(rec => !this.selectedTags.length || this.selectedTags.includes(rec.section))
-                    this.randomRecipe = shuffleArray(matchingRecipes)[0]
+                    this.randomRecipe = shuffleArray(this.matchingRecipes)[0]
                 },
 
+
+                rawOptions: '',
+
+                // [][]
+                rounds: [],
+
+                startTour() {
+                    // status = 'win' | 'lose' | 'queue'
+                    const options = shuffleArray(this.matchingRecipes.map(rec => rec.title)).map(val => ({
+                        val,
+                        status: 'queue'
+                    }))
+                    this.rounds = [options]
+                },
+
+                setOptionForNextRound(roundIndex, optIndex) {
+                    let winOpt = this.rounds[roundIndex][optIndex];
+                    winOpt.status = 'win'
+
+                    let loseOpt = this.rounds[roundIndex][optIndex + (optIndex % 2 === 1 ? -1 : 1)];
+                    if (loseOpt) {
+                        loseOpt.status = 'lose'
+                    }
+
+                    // todo already won => un-select
+
+                    // todo shuffle on every next round
+
+                    // todo full width
+
+                    // todo pairs space
+
+                    const nextRoundOpt = {...winOpt, status: 'queue'}
+                    if (this.rounds.length === roundIndex + 1) {
+                        this.rounds.push([nextRoundOpt])
+                    } else {
+                        this.rounds[roundIndex + 1].push(nextRoundOpt)
+                    }
+                }
 
             }))
 
