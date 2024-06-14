@@ -46,16 +46,17 @@
 {% endmacro %}
 
 
-{% macro htmx_form(form) %}
-    <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
+{% macro htmx_form(form, post_url='') %}
+    <form hx-post="{{ post_url }}" hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
           class="flex flex-col gap-3">
-        {{ form.csrf_token }}
-
         {% if caller %}
+            {{ form.csrf_token }}
             {{ caller() }}
         {% else %}
             {% for field_key, field in form._fields.items() %}
-                {% if not field.flags.hidden %}
+                {% if field.flags.hidden %}
+                    {{ field(class=cls) }}
+                {% else %}
                     {{ input(field) }}
                 {% endif %}
             {% endfor %}
