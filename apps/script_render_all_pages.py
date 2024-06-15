@@ -72,5 +72,6 @@ if __name__ == "__main__":
     copy_dir(BASE_DIR / "static", dist / "static")
     copy_dir(BASE_DIR / "templates", dist / "templates")
     shutil.copy(Path(app.static_folder) / "CNAME", dist / "CNAME")
+    shutil.copy(Path(app.static_folder) / "favicon.ico", dist / "favicon.ico")
 
     print(f"Done! See {dist}")

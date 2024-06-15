@@ -5,14 +5,19 @@ from typing import ClassVar
 
 import flask
 import flask_wtf
+import mistune
 from flask import render_template, url_for
 from flask_wtf import FlaskForm
+from markupsafe import Markup
 from pydantic import BaseModel, Field
 from wtforms import validators
+from wtforms.fields.choices import RadioField
 from wtforms.fields.numeric import IntegerRangeField, IntegerField
 from wtforms.fields.simple import StringField, HiddenField, TextAreaField
+from wtforms.widgets.core import html_params, RadioInput
 
 from potyk_io_back.beer import BeerStorage
+from potyk_io_back.core import render_md_as_html
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
@@ -42,6 +47,26 @@ class FeedCard(BaseModel):
     rel_id: int | None
 
 
+class RadioListWidget:
+
+    def __call__(self, field, **kwargs):
+        # radio radio-primary
+        kwargs.setdefault("id", field.id)
+        kwargs["class"] = f'{kwargs.get("class", "")} form-control flex-row gap-2'
+        html = [
+            f"<div {html_params(**kwargs)}>",
+            *(
+                f'<label class="label cursor-pointer gap-2">'
+                f'{subfield(**{"class": "radio radio-primary"})}'
+                f'<div class="label-text min-w-12">{subfield.label}</div>'
+                f"</label>"
+                for subfield in field
+            ),
+            f"</div>",
+        ]
+        return Markup("".join(html))
+
+
 class FeedForm(FlaskForm):
     action = HiddenField(default="feed")
     category = StringField(
@@ -51,6 +76,13 @@ class FeedForm(FlaskForm):
         label="Заголовок", render_kw=FieldRenderKw(placeholder="Serum, The Riddler — Ain't No Way 2024")
     )
     desc = TextAreaField(label="Описание", render_kw=FieldRenderKw(placeholder="pizda lupasit"))
+    desc_format = RadioField(
+        label="Описание: формат",
+        choices=[("md", "md"), ("html", "html")],
+        widget=RadioListWidget(),
+        default="md",
+    )
+
     desc_padding = IntegerRangeField(
         label="Описание: padding",
         render_kw=FieldRenderKw(min=0, max=4, step=4, steps=["p-2", "p-4"]),
@@ -85,8 +117,9 @@ class FeedForm(FlaskForm):
 
 
 def feed_card_from_form_data(form_data: dict) -> FeedCard:
-    form_data["youtube_height"] = form_data["youtube_height"] or None
-    form_data["rel_id"] = form_data["rel_id"] or None
+    desc_format = form_data.pop("desc_format")
+    if desc_format == "md":
+        form_data["desc"] = mistune.html(form_data["desc"])
     return FeedCard(**form_data)
 
 

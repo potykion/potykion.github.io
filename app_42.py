@@ -179,7 +179,10 @@ def create_app(server_name=None):
 
     @app.route("/<path:path>")
     def serve_file(path):
-        return flask.send_file(path)
+        try:
+            return flask.send_file(path)
+        except FileNotFoundError:
+            return flask.send_file(os.path.join(app.static_folder, path))
 
     add_index_page(app, deps)
 
