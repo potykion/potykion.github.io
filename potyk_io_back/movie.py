@@ -36,7 +36,7 @@ class MovieTag(enum.StrEnum):
         choices_ = []
 
         if w_none:
-            choices_.append((None, ''))
+            choices_.append((None, ""))
 
         choices_ += [(sec, sec) for sec in cls]
 
@@ -79,6 +79,9 @@ class MovieList(BaseModel):
 class MovieStore:
     def __init__(self, sqlite_cursor: sqlite3.Cursor) -> None:
         self.q = Q(sqlite_cursor, select_all_as=parse_movie)
+
+    def get_by_id(self, rel_id):
+        return self.q.select_one("select * from movies where id = ?", (rel_id,))
 
 
 def make_movie_lists(all_movies):
@@ -166,8 +169,9 @@ def make_movie_lists(all_movies):
 
 class MovieForm(FlaskForm):
     title = StringField(name="Название")
-    title_eng = StringField(name="Название на англ.")
+    year = IntegerField(name="Год")
     kp_url = URLField(name="Ссылка на Кинопоиск")
+    title_eng = StringField(name="Название на англ.")
     watched_dt = StringField(name="Когда смотрел?", widget=DateTimeInput(input_type="datetime-local"))
     vote = IntegerField(name="Оценка")
     wishlist = BooleanField(name="Хочу посмотреть")
@@ -176,7 +180,6 @@ class MovieForm(FlaskForm):
     poster_file = FileField(name="Постер/афиша (файл)")
     poster_url = URLField(name="Постер/афиша (урл)")
     review = TextAreaField(name="Обзор")
-    year = IntegerField(name="Год")
     tags = SelectField(
         name="Теги",
         choices=MovieTag.choices(),
@@ -213,32 +216,35 @@ def add_movie_routes(app: flask.Flask, deps):
     def movie_form():
         form = MovieForm()
 
-        if form.validate_on_submit():
-            form_data = form.data
+        if flask.request.method == "POST":
+            if form.validate_on_submit():
+                form_data = form.data
 
-            form_data["poster"] = _save_poster(form_data)
+                form_data["poster"] = _save_poster(form_data)
 
-            movie = parse_movie(form_data)
+                movie = parse_movie(form_data)
 
-            deps.movie_store.q.execute(
-                "insert into movies "
-                "(title, title_eng, kp_url, watched_dt, vote, poster, review, year, tags) "
-                "values "
-                "(?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                (
-                    movie.title,
-                    movie.title_eng,
-                    movie.kp_url,
-                    movie.watched_dt,
-                    movie.vote,
-                    movie.poster,
-                    movie.review,
-                    movie.year,
-                    ",".join(movie.tags),
-                ),
-                commit=True,
-            )
-            return flask.redirect("/movies")
+                deps.movie_store.q.execute(
+                    "insert into movies "
+                    "(title, title_eng, kp_url, watched_dt, vote, poster, review, year, tags) "
+                    "values "
+                    "(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        movie.title,
+                        movie.title_eng,
+                        movie.kp_url,
+                        movie.watched_dt,
+                        movie.vote,
+                        movie.poster,
+                        movie.review,
+                        movie.year,
+                        ",".join(movie.tags),
+                    ),
+                    commit=True,
+                )
+                return render_template("_components/htmx_success.html")
+            else:
+                return render_template("_components/htmx_error.html", error=form.errors)
 
         return render_template(
             "movies/form.html",

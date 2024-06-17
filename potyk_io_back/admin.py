@@ -30,13 +30,8 @@ def add_admin_routes(app: flask.Flask, deps):
     def post_admin_feed():
         feed_form = FeedForm()
         if feed_form.validate_on_submit():
-            feed_card = feed_card_from_form_data(feed_form.data)
+            feed_card = feed_card_from_form_data(feed_form.data, app)
             deps.feed_storage.insert(feed_card)
-            return render_template(
-                "_components/htmx_success.html",
-            )
+            return render_template("_components/htmx_success.html")
         else:
-            return render_template(
-                "_components/htmx_error.html",
-                error=feed_form.errors,
-            )
+            return render_template("_components/htmx_error.html", error=feed_form.errors)

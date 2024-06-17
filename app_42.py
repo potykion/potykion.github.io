@@ -14,7 +14,7 @@ from jinja2 import TemplateNotFound
 from pydantic import BaseModel
 
 from potyk_io_back.admin import add_admin_routes
-from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore
+from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore, beer_from_dict
 from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
@@ -239,7 +239,7 @@ def create_app(server_name=None):
     # region beer
     @app.route("/beer")
     def beer_page():
-        beers = deps.q.select_all("select * from beers order by brewery_id", as_=Beer)
+        beers = deps.q.select_all("select * from beers order by brewery_id", as_=beer_from_dict)
 
         beer_prices = deps.q.select_all(
             "select * from beers_prices order by beer_id",

@@ -120,7 +120,8 @@ class BeerStorage:
         if order_by is not None:
             q += f" order by {order_by}"
         raw_beers = self.sqlite_cur.execute(q).fetchall()
-        beers = [Beer(**beer) for beer in raw_beers]
+
+        beers = [beer_from_dict(beer) for beer in raw_beers]
 
         raw_beer_prices = self.sqlite_cur.execute(
             "select id, beer_id, price, store, date, url from beers_prices order by beer_id"
@@ -139,11 +140,18 @@ class BeerStorage:
 
         return beers
 
+
     def list_stores(self):
         return [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
 
     def get_by_id(self, id):
         return self.list_all(f"id = {id}")[0]
+
+def beer_from_dict(raw_beer):
+    raw_beer = dict(raw_beer)
+    raw_beer["wishlist"] = raw_beer["wishlist"] or False
+    return Beer(**raw_beer)
+
 
 
 def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:

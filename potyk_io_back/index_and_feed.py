@@ -1,7 +1,8 @@
 import datetime
+import os
 import sqlite3
 from operator import attrgetter
-from typing import ClassVar
+from typing import ClassVar, cast
 
 import flask
 import flask_wtf
@@ -10,10 +11,11 @@ from flask import render_template, url_for
 from flask_wtf import FlaskForm
 from markupsafe import Markup
 from pydantic import BaseModel, Field
+from werkzeug.datastructures import FileStorage
 from wtforms import validators
 from wtforms.fields.choices import RadioField
 from wtforms.fields.numeric import IntegerRangeField, IntegerField
-from wtforms.fields.simple import StringField, HiddenField, TextAreaField
+from wtforms.fields.simple import StringField, HiddenField, TextAreaField, FileField
 from wtforms.widgets.core import html_params, RadioInput
 
 from potyk_io_back.beer import BeerStorage
@@ -21,6 +23,7 @@ from potyk_io_back.core import render_md_as_html
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.movie import MovieStore
 from potyk_io_back.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
 
@@ -90,7 +93,7 @@ class FeedForm(FlaskForm):
     )
     row_span = IntegerRangeField(
         label="Карточка: row-span",
-        render_kw=FieldRenderKw(min=1, max=4, steps=[f"row-span-{i}" for i in range(1, 5)]),
+        render_kw=FieldRenderKw(min=1, max=6, steps=[f"row-span-{i}" for i in range(1, 6 + 1)]),
         default=1,
     )
     url = StringField(label="Урл", render_kw=FieldRenderKw(placeholder="https://potyk.io"))
@@ -114,9 +117,22 @@ class FeedForm(FlaskForm):
         label="Картинка (путь)",
         render_kw=FieldRenderKw(placeholder="images/mu/Armand-Hammer-we-buy-diabetic-test-strips.webp"),
     )
+    image_file = FileField(
+        label="Картинка (файл)",
+    )
+    image_file_save_path = StringField(
+        label="Картинка (путь, куда сохранять файл)",
+        render_kw=FieldRenderKw(placeholder="images/feed/"),
+    )
 
 
-def feed_card_from_form_data(form_data: dict) -> FeedCard:
+def feed_card_from_form_data(form_data: dict, app: flask.Flask) -> FeedCard:
+    if form_data["image_file"] and form_data["image_file_save_path"]:
+        cast(FileStorage, form_data.pop("image_file")).save(
+            os.path.join(app.static_folder, form_data.pop("image_file_save_path")),
+        )
+        form_data["image"] = form_data.pop("image_file_save_path")
+
     desc_format = form_data.pop("desc_format")
     if desc_format == "md":
         form_data["desc"] = mistune.html(form_data["desc"])
@@ -133,12 +149,28 @@ class TechTool(BaseModel):
     img: str | None = None
 
 
+RelItemToFeedFieldMap = {
+    "poster": "image",
+    "untappd_url": "url",
+    "review": "desc",
+    "image": "image",
+    "img": "image",
+    "title": "title",
+    "audio": "audio",
+    "desc": "desc",
+    "url": "url",
+    "youtube": "youtube",
+    "video": "video",
+}
+
+
 class FeedStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor):
         self.sqlite_cur = sqlite_cur
         self.q = Q(self.sqlite_cur)
         self.simple_storage = SimpleStorage(sqlite_cur, "feed")
 
+        self.movie_store = MovieStore(sqlite_cur)
         self.beer_storage = BeerStorage(sqlite_cur)
         self.tech_storage = SimpleStorage(sqlite_cur, "tech_tools", model=TechTool)
 
@@ -184,37 +216,32 @@ class FeedStorage:
         return feed_items
 
     def prep_feed_items(self, feed_items):
-        for item in feed_items:
-            if item.rel_table and item.rel_id:
+        for feed_item in feed_items:
+            if feed_item.rel_table and feed_item.rel_id:
                 rel_item = None
-                if item.rel_table == "beer":
-                    rel_item = self.beer_storage.get_by_id(item.rel_id)
-                if item.rel_table == "tech_tools":
-                    rel_item = self.tech_storage.get_by_id(item.rel_id)
+                if feed_item.rel_table == "beer":
+                    rel_item = self.beer_storage.get_by_id(feed_item.rel_id)
+                if feed_item.rel_table == "movies":
+                    rel_item = self.movie_store.get_by_id(feed_item.rel_id)
+                if feed_item.rel_table == "tech_tools":
+                    rel_item = self.tech_storage.get_by_id(feed_item.rel_id)
 
                 if rel_item:
-                    # item.title = rel_item[item.title]
-                    for field in (
-                        "image",
-                        "title",
-                        "audio",
-                        "desc",
-                        "url",
-                        "youtube",
-                        "video",
-                    ):
-                        rel_item_field = getattr(item, field)
-                        if rel_item_field is not None:
-                            if hasattr(rel_item, rel_item_field):
-                                setattr(item, field, getattr(rel_item, rel_item_field))
+                    for rel_field, feed_field in RelItemToFeedFieldMap.items():
+                        if hasattr(rel_item, rel_field):
+                            setattr(
+                                feed_item,
+                                feed_field,
+                                getattr(rel_item, rel_field),
+                            )
 
-        for item in feed_items:
-            if item.image:
-                item.image = url_for("static", filename=item.image)
-            if item.audio:
-                item.audio = url_for("static", filename=item.audio)
-            if item.video:
-                item.video = url_for("static", filename=item.video)
+        for feed_item in feed_items:
+            if feed_item.image:
+                feed_item.image = url_for("static", filename=feed_item.image)
+            if feed_item.audio:
+                feed_item.audio = url_for("static", filename=feed_item.audio)
+            if feed_item.video:
+                feed_item.video = url_for("static", filename=feed_item.video)
 
 
 def add_index_page(app, deps):
