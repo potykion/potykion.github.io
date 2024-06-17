@@ -166,4 +166,8 @@
     .task-list-item-checkbox {
         @apply checkbox checkbox-sm
     }
+
+    .p-no-mt p {
+        margin-top: 0;
+    }
 }

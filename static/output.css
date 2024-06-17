@@ -4207,6 +4207,10 @@ ul.li-minus li:before {
   padding-top: 0.5rem;
 }
 
+.p-no-mt p {
+  margin-top: 0;
+}
+
 .visible {
   visibility: visible;
 }

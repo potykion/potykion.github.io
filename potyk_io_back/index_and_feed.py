@@ -128,10 +128,11 @@ class FeedForm(FlaskForm):
 
 def feed_card_from_form_data(form_data: dict, app: flask.Flask) -> FeedCard:
     if form_data["image_file"] and form_data["image_file_save_path"]:
+        rel_path = form_data.pop("image_file_save_path")
         cast(FileStorage, form_data.pop("image_file")).save(
-            os.path.join(app.static_folder, form_data.pop("image_file_save_path")),
+            os.path.join(app.static_folder, rel_path),
         )
-        form_data["image"] = form_data.pop("image_file_save_path")
+        form_data["image"] = rel_path
 
     desc_format = form_data.pop("desc_format")
     if desc_format == "md":
