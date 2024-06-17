@@ -51,10 +51,8 @@ def main():
 
     json_files: list[str] = (
         """
-        ta_2024-06-14_16-02-14.json
-ta_2024-06-14_17-02-14.json
-ta_2024-06-14_18-02-13.json
-ta_2024-06-14_19-02-14.json
+ta_2024-06-17_13-02-14.json
+ta_2024-06-17_14-02-15.json
         """.strip().split()
     )
     json_files = [file.strip() for file in json_files]
