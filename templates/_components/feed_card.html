@@ -19,6 +19,10 @@ include feed_card.html
     {% set row_span_cls = 'row-span-3' %}
 {% elif feed_card.row_span == 4 %}
     {% set row_span_cls = 'row-span-4' %}
+{% elif feed_card.row_span == 5 %}
+    {% set row_span_cls = 'row-span-5' %}
+{% elif feed_card.row_span == 6 %}
+    {% set row_span_cls = 'row-span-6' %}
 {% else %}
     {% set row_span_cls = 'row-span-1' %}
 {% endif %}

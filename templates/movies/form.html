@@ -1,33 +1,10 @@
 {% extends "_layouts/base.html" %}
 
 {% from '_components/page_list.html' import page_list, page_sections %}
-{% from '_components/form.html' import input %}
+{% from '_components/form.html' import input, htmx_form %}
 {% from "_components/scripts.html" import htmx %}
 
 {% block main %}
-    <form method="post" enctype='multipart/form-data' >
-        {{ form.csrf_token }}
-
-        {{ input(form.title) }}
-        {{ input(form.title_eng) }}
-        {{ input(form.kp_url) }}
-        {{ input(form.watched_dt) }}
-        {{ input(form.vote) }}
-        {{ input(form.wishlist) }}
-        {{ input(form.is_series) }}
-
-        {{ input(form.poster_slug) }}
-        {{ input(form.poster_url) }}
-        {{ input(form.poster_file) }}
-
-        {{ input(form.review) }}
-        {{ input(form.year) }}
-        {{ input(form.tags) }}
-
-
-        <div class="flex justify-end mt-2">
-            <button class="btn btn-primary btn-sm">Сохранить</button>
-        </div>
-    </form>
-
+    {{ htmx_form(form, enctype='multipart/form-data') }}
+    {{ htmx() }}
 {% endblock %}

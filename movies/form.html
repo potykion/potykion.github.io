@@ -117,10 +117,13 @@
     
 
     
-    <form method="post" enctype='multipart/form-data' >
-        <input id="csrf_token" name="csrf_token" type="hidden" value="IjE5ZDY2ZDA2NDBhYjcwNjkyNGZjNDhmYzIyNWRlODY5ZTIxOWRlOTQi.ZnArlA.N_f4Rf1sWIBrr0op1FTjBEK_FZo">
-
+    
+    <form hx-post="" enctype="multipart/form-data" hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
+          class="flex flex-col gap-3">
         
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Название">Название</label></span>
@@ -140,10 +143,13 @@
 
     </label>
 
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
-            <span class="label-text"><label for="Название на англ.">Название На Англ.</label></span>
+            <span class="label-text"><label for="Год">Год</label></span>
         </div>
 
         
@@ -152,7 +158,7 @@
 
         
 
-        <input class="input input-bordered w-full " id="Название на англ." name="Название на англ." type="text" value="">
+        <input class="input input-bordered w-full " id="Год" name="Год" type="number" value="">
 
         
 
@@ -160,7 +166,10 @@
 
     </label>
 
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Ссылка на Кинопоиск">Ссылка На Кинопоиск</label></span>
@@ -180,7 +189,33 @@
 
     </label>
 
+                
+            
+                
+                    
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Название на англ.">Название На Англ.</label></span>
+        </div>
+
         
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="Название на англ." name="Название на англ." type="text" value="">
+
+        
+
+        
+
+    </label>
+
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Когда смотрел?">Когда Смотрел?</label></span>
@@ -200,7 +235,10 @@
 
     </label>
 
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Оценка">Оценка</label></span>
@@ -220,7 +258,10 @@
 
     </label>
 
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Хочу посмотреть">Хочу Посмотреть</label></span>
@@ -240,7 +281,10 @@
 
     </label>
 
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Сериал?">Сериал?</label></span>
@@ -260,8 +304,10 @@
 
     </label>
 
-
-        
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Постер/афиша (slug)">Постер/Афиша (Slug)</label></span>
@@ -281,27 +327,10 @@
 
     </label>
 
-        
-    <label class="form-control w-full">
-        <div class="label">
-            <span class="label-text"><label for="Постер/афиша (урл)">Постер/Афиша (Урл)</label></span>
-        </div>
-
-        
+                
             
-        
-
-        
-
-        <input class="input input-bordered w-full " id="Постер/афиша (урл)" name="Постер/афиша (урл)" type="url" value="">
-
-        
-
-        
-
-    </label>
-
-        
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Постер/афиша (файл)">Постер/Афиша (Файл)</label></span>
@@ -321,8 +350,33 @@
 
     </label>
 
+                
+            
+                
+                    
+    <label class="form-control w-full">
+        <div class="label">
+            <span class="label-text"><label for="Постер/афиша (урл)">Постер/Афиша (Урл)</label></span>
+        </div>
 
         
+            
+        
+
+        
+
+        <input class="input input-bordered w-full " id="Постер/афиша (урл)" name="Постер/афиша (урл)" type="url" value="">
+
+        
+
+        
+
+    </label>
+
+                
+            
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Обзор">Обзор</label></span>
@@ -343,27 +397,10 @@
 
     </label>
 
-        
-    <label class="form-control w-full">
-        <div class="label">
-            <span class="label-text"><label for="Год">Год</label></span>
-        </div>
-
-        
+                
             
-        
-
-        
-
-        <input class="input input-bordered w-full " id="Год" name="Год" type="number" value="">
-
-        
-
-        
-
-    </label>
-
-        
+                
+                    
     <label class="form-control w-full">
         <div class="label">
             <span class="label-text"><label for="Теги">Теги</label></span>
@@ -383,12 +420,23 @@
 
     </label>
 
+                
+            
+                
+                    <input class="" id="csrf_token" name="csrf_token" type="hidden" value="Ijg2N2JhNzA4MmFjMzYyOTcyZTAyMmU4NjVlMzdjNGI0NWY1OWMwZDki.ZnA_Ig.EVwgOV4kKGNcW83ST5SFZT4kJmA">
+                
+            
+        
 
-
-        <div class="flex justify-end mt-2">
-            <button class="btn btn-primary btn-sm">Сохранить</button>
+        <div class="flex justify-end ">
+            <button type="submit" class="btn btn-primary">Добавить</button>
         </div>
     </form>
+
+    <div class="res"></div>
+
+    
+    <script src="/static/js/htmx.min.js"></script>
 
 
 </main>

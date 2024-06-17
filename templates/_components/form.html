@@ -46,8 +46,8 @@
 {% endmacro %}
 
 
-{% macro htmx_form(form, post_url='') %}
-    <form hx-post="{{ post_url }}" hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
+{% macro htmx_form(form, post_url='', enctype='application/x-www-form-urlencoded') %}
+    <form hx-post="{{ post_url }}" enctype="{{ enctype }}" hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
           class="flex flex-col gap-3">
         {% if caller %}
             {{ form.csrf_token }}

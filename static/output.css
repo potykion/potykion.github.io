@@ -4247,6 +4247,14 @@ ul.li-minus li:before {
   grid-row: span 4 / span 4;
 }
 
+.row-span-5 {
+  grid-row: span 5 / span 5;
+}
+
+.row-span-6 {
+  grid-row: span 6 / span 6;
+}
+
 .\!mb-0 {
   margin-bottom: 0px !important;
 }
@@ -4336,10 +4344,6 @@ ul.li-minus li:before {
   width: 5rem;
 }
 
-.w-32 {
-  width: 8rem;
-}
-
 .w-4 {
   width: 1rem;
 }
@@ -4371,14 +4375,6 @@ ul.li-minus li:before {
 
 .w-full {
   width: 100%;
-}
-
-.min-w-20 {
-  min-width: 5rem;
-}
-
-.min-w-16 {
-  min-width: 4rem;
 }
 
 .min-w-12 {
