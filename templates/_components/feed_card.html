@@ -4,6 +4,7 @@ include feed_card.html
 
 #}
 
+
 {% set border_color = 'border-neutral dark:border-gray-700' %}
 
 {#    {% set bg_color = 'dark:bg-gray-800 ' + ('hover:dark:bg-gray-900 hover:bg-gray-50' if url else ' ') %}#}
@@ -87,7 +88,7 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border fle
     {% endif %}
 
     {% if feed_card.desc %}
-        <div class=" text-sm font-normal grow {% if feed_card.desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t {{ border_color }} ">
+        <div class=" text-sm font-normal grow {% if feed_card.desc_padding == 4 %}p-4{% else %}p-2{% endif %} border-t {{ border_color }} p-no-mt">
             {{ feed_card.desc | safe }}
         </div>
     {% endif %}

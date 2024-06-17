@@ -16,7 +16,7 @@
         <hr>
 
         <h2>Форма Карточки Фида ака feed</h2>
-        {{ htmx_form(feed_form, '/admin/feed') }}
+        {{ htmx_form(feed_form, '/admin/feed', enctype='multipart/form-data') }}
 
         {{ htmx() }}
 
