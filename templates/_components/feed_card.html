@@ -68,7 +68,7 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border fle
     {% endif %}
 
     {% if feed_card.video %}
-        <video src="{{ feed_card.video }}" controls></video>
+        <video src="{{ feed_card.video }}" autoplay muted loop controls></video>
     {% endif %}
 
     {% if feed_card.youtube %}
