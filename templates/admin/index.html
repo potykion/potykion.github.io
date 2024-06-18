@@ -15,8 +15,15 @@
 
         <hr>
 
-        <h2>Форма Карточки Фида ака feed</h2>
+        <h2>Фид ака feed</h2>
+        <button class="btn btn-primary" hx-post="/admin/feed/digest" hx-target="next #digest">Дайджест за день</button>
+        <div id="digest"></div>
+
+
+        <h3>Форма Карточки Фида Базовая</h3>
         {{ htmx_form(feed_form, '/admin/feed', enctype='multipart/form-data') }}
+        <h3>Форма Карточки Фида Тематическая</h3>
+        {{ htmx_form(rel_feed_form, '/admin/rel_feed') }}
 
         {{ htmx() }}
 

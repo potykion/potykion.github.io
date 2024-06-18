@@ -35,10 +35,16 @@
 ```html
 
 <form hx-post hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()">
-    
+
 ```
 
-## `hx-target`
+## Таргет `hx-target`
+
+| Тип       | Описание                      | Пример                          |
+|-----------|-------------------------------|---------------------------------|
+| `closest` | Родительский элемент          | `hx-target="closest div"`       |
+| `next`    | Сиблинг - тег на одном уровне | `hx-target="next .qr-code-img"` |
+| `find`    |                               |                                 |
 
 - `hx-target="closest div"` - меняет родительский элемент
 

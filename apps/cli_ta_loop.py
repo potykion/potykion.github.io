@@ -51,8 +51,11 @@ def main():
 
     json_files: list[str] = (
         """
-ta_2024-06-17_16-02-17.json
-ta_2024-06-17_17-02-16.json        """.strip().split()
+        ta_2024-06-18_12-02-26.json
+ta_2024-06-18_13-02-15.json
+ta_2024-06-18_14-02-15.json
+
+       """.strip().split()
     )
     json_files = [file.strip() for file in json_files]
 
@@ -154,11 +157,14 @@ def read_table_as_df(db, table):
 def plot(df):
     plt.figure(figsize=(10, 6))
 
+    plt.axhline(y=0, color="gray", linestyle="-")
+    plt.axhline(y=0.5, color="lightgray", linestyle="--")
+
     plt.plot(df["dt"], df["accuracy"], label="Accuracy ↑")
     plt.plot(df["dt"], df["rmse"], label="RMSE ↓")
     plt.plot(df["dt"], df["r2"], label="R² ↑")
 
-    plt.axhline(y=0, color="gray", linestyle="-")
+
 
     plt.xlabel("Date-Time")
     plt.ylabel("Value")

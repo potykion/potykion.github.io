@@ -13,7 +13,7 @@ from markupsafe import Markup
 from pydantic import BaseModel, Field
 from werkzeug.datastructures import FileStorage
 from wtforms import validators
-from wtforms.fields.choices import RadioField
+from wtforms.fields.choices import RadioField, SelectField
 from wtforms.fields.numeric import IntegerRangeField, IntegerField
 from wtforms.fields.simple import StringField, HiddenField, TextAreaField, FileField
 from wtforms.widgets.core import html_params, RadioInput
@@ -126,6 +126,21 @@ class FeedForm(FlaskForm):
     )
 
 
+class RelFeedForm(FlaskForm):
+    category = StringField(
+        label="Категория / Секция / Раздел", render_kw=FieldRenderKw(placeholder="Трек дня")
+    )
+    rel_table = SelectField(
+        "Табличка",
+        choices=[
+            ("beer", "beer"),
+            ("movies", "movies"),
+            ("tech_tools", "tech_tools"),
+        ],
+    )
+    rel_id = IntegerField(render_kw=FieldRenderKw(placeholder=32), validators=[validators.Optional()])
+
+
 def feed_card_from_form_data(form_data: dict, app: flask.Flask) -> FeedCard:
     if form_data["image_file"] and form_data["image_file_save_path"]:
         rel_path = form_data.pop("image_file_save_path")
@@ -137,6 +152,35 @@ def feed_card_from_form_data(form_data: dict, app: flask.Flask) -> FeedCard:
     desc_format = form_data.pop("desc_format")
     if desc_format == "md":
         form_data["desc"] = mistune.html(form_data["desc"])
+    return FeedCard(**form_data)
+
+
+def feed_card_from_rel_form_data(form_data: dict) -> FeedCard:
+    if form_data['rel_table'] == 'beer':
+        form_data.update({
+            'title': 'title',
+            'desc': 'desc',
+            'row_span': 2,
+            'image_width': 20,
+            'image': 'image',
+            'url': 'untappd_url',
+        })
+    if form_data['rel_table'] == 'movies':
+        form_data.update({
+            "title": 'title',
+            'desc': 'review',
+            'row_span': 3,
+            'image': 'poster'
+        })
+    if form_data['rel_table'] == 'tech_tools':
+        form_data.update({
+            'title': 'title',
+            'desc': 'desc',
+            'image': 'img',
+            'image_padding': '4',
+            'url': 'url',
+        })
+
     return FeedCard(**form_data)
 
 
@@ -208,7 +252,7 @@ class FeedStorage:
         return feed_items
 
     def list_recent(
-        self,
+            self,
     ) -> list[FeedCard]:
         feed_items = self.q.select_all("select * from feed order by id desc,    date desc limit 10")
         feed_items = [FeedCard(**item) for item in feed_items]
@@ -246,7 +290,6 @@ class FeedStorage:
 
 
 def add_index_page(app, deps):
-
     @app.route("/")
     def index_page():
         pages = deps.page_store.list_index()
