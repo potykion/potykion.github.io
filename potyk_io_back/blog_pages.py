@@ -188,7 +188,7 @@ class CustomTaskListsRenderer(HTMLRenderer):
         return render_template("_components/md_checkbox.html", checked=checked, text=text)
 
 
-renderer = CustomTaskListsRenderer()
+renderer = CustomTaskListsRenderer(escape=False)
 markdown = mistune.Markdown(renderer, plugins=[task_lists])
 
 
