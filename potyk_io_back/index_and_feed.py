@@ -285,7 +285,7 @@ class FeedStorage:
                 feed_item.image = url_for("static", filename=feed_item.image)
             if feed_item.audio:
                 feed_item.audio = url_for("static", filename=feed_item.audio)
-            if feed_item.video:
+            if feed_item.video and not feed_item.video.startswith(('blob', 'http', 'https')):
                 feed_item.video = url_for("static", filename=feed_item.video)
 
 

@@ -5,6 +5,7 @@ import mistune
 from pydantic import BaseModel
 
 from potyk_io_back.lazy import SimpleStorage
+from potyk_io_back.q import Q
 
 
 class BookStatus(enum.StrEnum):
@@ -36,6 +37,7 @@ class Book(BaseModel):
 class BookStore:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
+        self.q = Q(self.sqlite_cursor, select_all_as=Book)
         self.store = SimpleStorage(self.sqlite_cursor, "books", Book)
 
     def first_by_url(self, url):
@@ -44,4 +46,4 @@ class BookStore:
         return book
 
     def list_all(self) -> list[Book]:
-        return self.store.list_all()
+        return self.q.select_all("select * from books order by read_date desc ")
