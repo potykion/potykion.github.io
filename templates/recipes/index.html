@@ -24,48 +24,65 @@
 
 
 {% block main %}
-    <h2 class="italic">#чепожрать?</h2>
+    <div x-data="recipes">
+        <h2 class="italic">#чепожрать?</h2>
 
-    <div class="flex flex-col gap-4" x-data="recipes">
-        <div class="flex flex-wrap gap-2">
-            <template x-for="tag in tags">
-                <button type="button" class="btn" :class="  tag.selected && 'btn-outline btn-primary'"
-                        @click="selectTag(tag)"
-                        x-text="tag.title"></button>
-            </template>
+        <div class="flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+                <template x-for="tag in tags">
+                    <button type="button" class="btn" :class="  tag.selected && 'btn-outline btn-primary'"
+                            @click="selectTag(tag)"
+                            x-text="tag.title"></button>
+                </template>
+            </div>
+
+
+            <div class="flex gap-2">
+                <button type="button" class="btn grow " @click="startTour()">Турик</button>
+                <button type="button" class="btn grow " @click="selectRandomRecipe()">Рандом</button>
+            </div>
+
+            <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
+                <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
+                <div x-text="randomRecipe.desc"></div>
+            </div>
+
+
+            <div class="flex gap-2 overflow-x-auto mt-2" x-show="rounds.length" x-transition>
+                <template x-for="(options, roundIndex) in rounds">
+                    <div class="flex flex-col gap-2">
+                        <template x-for="(opt, optIndex) in options">
+                            <button class="btn w-96 h-fit" :class="opt.status==='win' && 'btn-success'"
+                                    @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
+                                    :disabled="opt.status==='lose'"></button>
+                        </template>
+                    </div>
+                </template>
+            </div>
+
         </div>
 
 
-        <div class="flex gap-2">
-            <button type="button" class="btn grow " @click="startTour()">Турик</button>
-            <button type="button" class="btn grow " @click="selectRandomRecipe()">Рандом</button>
-        </div>
+        <hr>
+        <h2>База</h2>
 
-        <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
-            <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
-            <div x-text="randomRecipe.desc"></div>
-        </div>
+        <input type="search" class="input  input-bordered w-full mb-4" placeholder="Поиск" x-model="searchQ"/>
 
+        <template x-if="searchQ">
+            <div class="flex flex-col gap-4">
+                <template x-for="recipe in searchResults">
+                    <a :href="recipe.url" class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-700  " >
+                        <div class="underline" x-text="recipe.title"></div>
+                        <div class="font-normal" x-text="recipe.desc"></div>
+                    </a>
+                </template>
 
-    <div class="flex gap-2 overflow-x-auto mt-2" x-show="rounds.length" x-transition>
-            <template x-for="(options, roundIndex) in rounds">
-                <div class="flex flex-col gap-2">
-                    <template x-for="(opt, optIndex) in options">
-                        <button class="btn w-96 h-fit" :class="opt.status==='win' && 'btn-success'"
-                                @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
-                                :disabled="opt.status==='lose'"></button>
-                    </template>
-                </div>
-            </template>
-        </div>
-
+            </div>
+        </template>
+        <template x-if="!searchQ">
+            {{ page_sections(pages_by_section) }}
+        </template>
     </div>
-
-
-    <hr>
-    <h2>База</h2>
-    {{ page_sections(pages_by_section) }}
-
 
     {{ alpinejs() }}
 
@@ -81,7 +98,13 @@
         document.addEventListener('alpine:init', () => {
             Alpine.data('recipes', () => ({
                 tags: {{ tags | tojson }}.map(([tag, title]) => ({tag, title, selected: false})),
+
                 recipes: {{ recipe_pages | tojson }},
+                searchQ: '',
+                get searchResults() {
+                    return this.recipes.filter(rec => rec.title.toLowerCase().includes(this.searchQ.toLowerCase()) || rec.desc.toLowerCase().includes(this.searchQ.toLowerCase()));
+                },
+
                 randomRecipe: null,
 
                 get selectedTags() {
