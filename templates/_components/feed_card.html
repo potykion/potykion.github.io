@@ -9,6 +9,9 @@ include feed_card.html
 
 {#    {% set bg_color = 'dark:bg-gray-800 ' + ('hover:dark:bg-gray-900 hover:bg-gray-50' if url else ' ') %}#}
 {% set bg_color = '' %}
+{% if feed_card.url %}
+{% set bg_color = bg_color + ' dark:hover:bg-gray-800' %}
+{% endif %}
 
 {% set text_color = 'dark:text-gray-200' %}
 

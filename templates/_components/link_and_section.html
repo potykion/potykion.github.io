@@ -1,9 +1,9 @@
 {% macro link(url, title, desc, tags=[], cls='') %}
-    <div class="text-sm {{ cls }}">
-        <div><a href="{{ url }}">{{ title }}</a></div>
+    <a href="{{ url }}" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 {{ cls }}">
+        <div class="underline">{{ title }}</div>
 
         {% if desc %}
-            <div>{{ desc }}</div>
+            <div class="font-normal">{{ desc }}</div>
         {% endif %}
 
         {% if tags %}
@@ -13,13 +13,13 @@
                 {% endfor %}
             </div>
         {% endif %}
-    </div>
+    </a>
 {% endmacro %}
 
 {% macro section_card(section) %}
     <div class="rounded-border dark:border-gray-700">
         <div class="border-neutral dark:border-gray-700 border-b px-2 ">{{ section | safe }}</div>
-        <div class="p-4">
+        <div class="">
             {{ caller() }}
         </div>
     </div>
