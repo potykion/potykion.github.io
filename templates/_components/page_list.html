@@ -3,7 +3,7 @@
 {% macro page_list(pages) %}
     <div class="link-list">
         {% for page in pages %}
-            {{ link(page.url, page.title, page.desc) }}
+            {{ link(page.url, page.title, page.desc, cls='rounded-b-lg' if loop.last else '') }}
         {% endfor %}
     </div>
 {% endmacro %}

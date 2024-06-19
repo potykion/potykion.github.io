@@ -9,6 +9,9 @@ include feed_card.html
 
 {#    {% set bg_color = 'dark:bg-gray-800 ' + ('hover:dark:bg-gray-900 hover:bg-gray-50' if url else ' ') %}#}
 {% set bg_color = '' %}
+{% if feed_card.url %}
+{% set bg_color = bg_color + ' dark:hover:bg-gray-800' %}
+{% endif %}
 
 {% set text_color = 'dark:text-gray-200' %}
 
@@ -68,7 +71,9 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border fle
     {% endif %}
 
     {% if feed_card.video %}
-        <video src="{{ feed_card.video }}" autoplay muted loop controls></video>
+        <div class="border-t {{ border_color }}">
+            <video src="{{ feed_card.video }}"  autoplay muted loop controls></video>
+        </div>
     {% endif %}
 
     {% if feed_card.youtube %}

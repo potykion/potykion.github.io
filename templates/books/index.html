@@ -2,9 +2,9 @@
 {% from "_components/link_and_section.html" import link %}
 
 {% macro list_books(books) %}
-    <div class="link-list">
+    <div class="link-list gap-2">
         {% for book in books %}
-            {{ link(book.url, book.title_w_author, book.desc, cls='line-through' if book.status == 'drop' else '') }}
+            {{ link(book.url, book.title_w_author, book.desc, cls='border rounded-lg border-neutral ' + ('line-through' if book.status == 'drop' else '')) }}
         {% endfor %}
     </div>
 {% endmacro %}
