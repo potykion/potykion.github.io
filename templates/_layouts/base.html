@@ -84,32 +84,53 @@
 
 <body class="{% if fullwidth %}{% else %}max-w-[1000px]{% endif %}">
 
-<header class="text-sm breadcrumbs border-neutral border-b">
-    <ul class="!pl-2">
-        {% if page %}
-            {% for page in page.breadcrumbs %}
-                <li>
-                    {% if loop.last %}
-                        {{ page.breadcrumbs_title }}
-                    {% else %}
-                        <a href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        {% else %}
-            <li>
-                <a href="/">потик.ио</a>
-            </li>
+<header class="text-sm ">
+    <div class="border-b py-2 border-neutral flex items-baseline gap-1">
+        <a class="btn btn-ghost btn-sm" href="/">∏⌀♰ʯԞ.ʯ⌀</a>
+{#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">разделы</a>#}
+{#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">мысли</a>#}
+
+        {% if not config.is_prod %}
+        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/admin">админка</a>
         {% endif %}
 
+    </div>
 
-    </ul>
+
+    {% if page.breadcrumbs | length > 2 %}
+        <div class="breadcrumbs border-neutral border-b">
+            <ul class="!pl-3">
+{#            <ul >#}
+                {#            <ul class="!pl-0">#}
+                {% if page %}
+                    <li>
+                                <a class="link-hover " href="/">⌀</a>
+
+                        </li>
+                    {% for page in page.breadcrumbs[1:-1] %}
+                        <li>
+{#                            {% if loop.last %}#}
+{#                                {{ page.breadcrumbs_title }}#}
+{#                            {% else %}#}
+                                <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
+{#                            {% endif %}#}
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>
+                        <a href="/">потик.ио</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+
 </header>
 
 <main class="prose  max-w-none p-2">
     {% block title %}
         {% if page %}
-            <h1>{{ page.title }}</h1>
+            <h1>{{ page.title | safe }}</h1>
             <cite class="block">{{ (page.desc or '') | safe }}</cite>
         {% endif %}
     {% endblock %}
@@ -118,9 +139,10 @@
 </main>
 
 <footer class="prose max-w-none border-t border-neutral mt-4 p-2">
-    <div class="flex justify-end gap-2 text-sm">
-        <a href="https://t.me/potyk_forever">[канал]</a> •
-        <a href="https://t.me/potykion">[автор]</a>
+    <div class="flex items-baseline justify-end gap-1 ">
+        <a class="btn btn-ghost btn-sm " href="https://t.me/potyk_forever">канал в тг</a>
+        <span >|</span>
+        <a class="btn btn-ghost btn-sm " href="https://t.me/potykion">я в тг</a>
     </div>
 </footer>
 

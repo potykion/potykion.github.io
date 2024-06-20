@@ -17,11 +17,17 @@ module.exports = {
             // class="animate-fadeOut"
             animation: {
                 fadeOut: 'fadeOut 3s ease-in-out forwards',
+                fadeIn: 'fadeIn 2s ease-in-out infinite',
+
             },
             keyframes: {
                 fadeOut: {
                     '0%': {opacity: 1},
                     '100%': {opacity: 0},
+                },
+                fadeIn: {
+                    '0%': {opacity: '0'},
+                    '100%': {opacity: '1'},
                 },
             },
         }
