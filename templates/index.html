@@ -38,4 +38,24 @@
 
     {{ htmx() }}
 
+    <script>
+
+
+        let cites = [
+            'Занимаюсь х⁁йней онлайн с 2020 г',
+            'Занимаюсь х⁁йней с 1996 г',
+            'Ит ис вот ит ис',
+            'Блог по настроению',
+            'Блог из-под палки',
+            'Подпишись на телегу',
+            'Едулечка, пивчик, прожка, киношка, музончик, бабосик, книжки, игрушки',
+        ];
+
+
+        const citeElement = document.querySelector('body > main > cite');
+
+        citeElement.innerHTML = cites[Math.floor(Math.random() * cites.length)];
+
+    </script>
+
 {% endblock %}
