@@ -254,7 +254,7 @@ class FeedStorage:
     def list_recent(
             self,
     ) -> list[FeedCard]:
-        feed_items = self.q.select_all("select * from feed order by id desc,    date desc limit 10")
+        feed_items = self.q.select_all("select * from feed order by date desc, id limit 10")
         feed_items = [FeedCard(**item) for item in feed_items]
 
         self.prep_feed_items(feed_items)
