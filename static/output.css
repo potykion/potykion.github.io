@@ -4286,6 +4286,16 @@ ul.li-minus li:before {
   grid-row: span 6 / span 6;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .\!mb-0 {
   margin-bottom: 0px !important;
 }
