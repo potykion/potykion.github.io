@@ -1,0 +1,72 @@
+{% extends "_layouts/base.html" %}
+{% from "_components/scripts.html" import alpinejs %}
+
+{% set fullwidth = True %}
+{% block main %}
+
+    <div x-data="issues">
+
+        <input type="search" class="input  input-bordered w-full my-4" placeholder="Поиск" x-model="searchQ"/>
+
+
+        <table>
+            <thead>
+            <tr>
+                <th>Выпуск</th>
+                <th>Рецепт 1</th>
+                <th>Рецепт 2</th>
+                <th>Рецепт 3</th>
+                <th>Рецепт 4</th>
+                <th>Рецепт 5</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template x-for="issue in searchResults">
+                <tr>
+                    <td><a :href="issue.youtube_url" x-text="issue.issue_number"></a></td>
+                    <template x-for="recipe in issue.recipes_pad">
+                        <td x-html="recipe.title"></td>
+                    </template>
+                </tr>
+            </template>
+
+            </tbody>
+        </table>
+
+    </div>
+
+    {{ alpinejs() }}
+    <script>
+
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('issues', () => ({
+                issues: {{ issues | tojson }},
+
+                searchQ: '',
+                get searchResults() {
+                    if (!this.searchQ) {
+                        return this.issues
+                    }
+
+                    const recMatchesQ = rec => rec.title.toLowerCase().includes(this.searchQ.toLowerCase())
+
+                    return this.issues
+                        .filter(
+                            issue => issue.recipes.some(recMatchesQ)
+                        )
+                        .map(issue => ({
+                            ...issue,
+                            recipes_pad: issue.recipes_pad.map(recipe => ({
+                                ...recipe,
+                                title: recMatchesQ(recipe) ? `<mark>${recipe.title}</mark>` : recipe.title
+                            }))
+                        }));
+                },
+            }))
+
+
+        })
+    </script>
+
+
+{% endblock %}

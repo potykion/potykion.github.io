@@ -140,7 +140,7 @@ class Q:
         if not as_:
             return row_or_rows
 
-        is_func = inspect.isfunction(as_)
+        is_func = inspect.isfunction(as_) or inspect.ismethod(as_)
         is_list = isinstance(row_or_rows, (list, tuple))
 
         if is_func and is_list:

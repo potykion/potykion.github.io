@@ -1,6 +1,8 @@
+import json
 import re
 from operator import attrgetter
-from typing import TypedDict
+from typing import TypedDict, ClassVar
+from unittest.mock import Mock
 
 import flask
 import frontmatter
@@ -8,6 +10,7 @@ import mistune
 from flask import render_template, render_template_string
 from flask_wtf import FlaskForm
 from jinja2 import TemplateNotFound
+from pydantic import BaseModel, computed_field
 from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import StringField, TextAreaField, BooleanField
 from wtforms.validators import InputRequired
@@ -16,6 +19,30 @@ from potyk_io_back.core import BASE_DIR
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.blog_pages import BlogPage, BlogPageSection, render_md_as_html_template
 from potyk_io_back.utils.form import FieldRenderKw
+
+
+class ProstoKuhnyaRecipe(BaseModel):
+    title: str = ""
+
+
+class ProstoKuhnyaIssue(BaseModel):
+    recipes_amount: ClassVar[int] = 5
+
+    id: int
+    issue_number: int
+    youtube_url: str
+    recipes: list[ProstoKuhnyaRecipe]
+
+    @classmethod
+    def from_json(cls, json_):
+        json_ = {**json_}
+        json_["recipes"] = json.loads(json_["recipes"])
+        return ProstoKuhnyaIssue(**json_)
+
+    @computed_field
+    @property
+    def recipes_pad(self) -> list[ProstoKuhnyaRecipe]:
+        return self.recipes + [ProstoKuhnyaRecipe()] * max(self.recipes_amount - len(self.recipes), 0)
 
 
 class RecipeForm(FlaskForm):
@@ -175,6 +202,19 @@ def add_recipes_routes(app, deps):
                 return form.errors, 400
 
         return render_template("recipes/form.html", page=deps.page, form=form)
+
+    @app.route("/recipes/prosto-kuhnya")
+    def route_recipes_prosto_kuhnya():
+        issues: list[ProstoKuhnyaIssue] = deps.q.select_all(
+            "select * from recipes_prosto_kuhnya_issues",
+            as_=ProstoKuhnyaIssue.from_json,
+        )
+
+        return render_template(
+            "recipes/prosto-kuhnya.html",
+            page=deps.page,
+            issues=[i.model_dump() for i in issues],
+        )
 
     @app.route("/recipes/<recipe_key>")
     def recipe_page(recipe_key):
