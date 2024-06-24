@@ -10,7 +10,7 @@ from potyk_io_back.index_and_feed import FeedCard
 
 
 def main(app, deps):
-    feed_cards: list[FeedCard] = deps.q.select_all("select * from feed order by date desc", as_=FeedCard)
+    feed_cards: list[FeedCard] = deps.q.select_all("select * from feed order by date desc, priority desc, id", as_=FeedCard)
 
     with app.app_context():
         chunks = tuple(chunked(feed_cards, 10))
