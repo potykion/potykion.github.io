@@ -1,1 +1,1 @@
-• {{ feed_card.title or feed_card.category }} - {{ feed_card.desc }}
+• {{ feed_card.category | safe }}: {{ feed_card.title | safe }} - {{ feed_card.desc | safe }}

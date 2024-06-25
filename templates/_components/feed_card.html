@@ -36,7 +36,7 @@ include feed_card.html
 class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border flex-col flex {{ border_color }} {{ row_span_cls }}"
 >
 
-    <div class="flex items-center">
+    <div class="flex items-center shrink">
         <div></div>
         <div class="grow font-semibold text-center {% if feed_card.category.startswith('#') %}italic{% endif %}">{{ feed_card.category }}</div>
         <div class="pr-1">
@@ -82,9 +82,9 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl shadow border fle
 
 
     {% if feed_card.title %}
-        <div class="flex flex-col justify-center ">
+        <div class="flex flex-col justify-center border-t {{ border_color }} {% if not feed_card.desc %}grow{% endif %}">
 
-            <div class="font-semibold text-center border-t {{ border_color }}" style="text-wrap: balance">{{ feed_card.title }}</div>
+            <div class="font-semibold text-center " style="text-wrap: balance">{{ feed_card.title | safe }}</div>
 
             {% if feed_card.audio %}
                 <audio controls class="w-full border-t {{ border_color }}" src="{{ feed_card.audio }}"></audio>
