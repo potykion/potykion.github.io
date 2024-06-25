@@ -4286,11 +4286,6 @@ ul.li-minus li:before {
   grid-row: span 6 / span 6;
 }
 
-.my-2 {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -4434,6 +4429,10 @@ ul.li-minus li:before {
   max-width: 1024px;
 }
 
+.shrink {
+  flex-shrink: 1;
+}
+
 .grow {
   flex-grow: 1;
 }
@@ -4549,6 +4548,10 @@ ul.li-minus li:before {
 
 .whitespace-pre-wrap {
   white-space: pre-wrap;
+}
+
+.text-wrap {
+  text-wrap: wrap;
 }
 
 .rounded-box {
