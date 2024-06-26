@@ -1,5 +1,5 @@
 {% macro link(url, title, desc, tags=[], cls='') %}
-    <a href="{{ url }}" class="block px-4 py-2 text-sm  no-underline uni-hover {{ cls }}">
+    <a href="{{ url }}" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover {{ cls }}">
         <div class="underline">{{ title }}</div>
 
         {% if desc %}
@@ -17,7 +17,7 @@
 {% endmacro %}
 
 {% macro section_card(section) %}
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">{{ section | safe }}</div>
         <div class="">
             {{ caller() }}

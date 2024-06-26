@@ -133,7 +133,7 @@ class BlogPageStore:
 
     def list_recipe_pages(self) -> list[BlogPage]:
         return self.q.select_all(
-            "select * from blog_pages where url like '/recipes/%' and url != '/recipes/form' order by section"
+            "select * from blog_pages where section like 'recipes_%' order by section"
         )
 
     def list_all(self, breadcrumbs=False, **kwargs):
