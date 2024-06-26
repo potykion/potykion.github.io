@@ -15,9 +15,8 @@
         {% endif %}
     </div>
 
-    <div class="h-4"></div>
 
-    <div class="grid md:grid-cols-3 gap-4">
+    <div class="grid md:grid-cols-3 gap-2 md:gap-4">
         {% for feed_card in feed_items %}
             {% include '_components/feed_card.html' %}
         {% endfor %}
@@ -27,7 +26,8 @@
         </div>
     </div>
 
-    <hr>
+    <div class="border uni-border mt-6"></div>
+
     <h2 class="text-center !py-0 border-neutral dark:border-gray-700 ">Разделы</h2>
 
 

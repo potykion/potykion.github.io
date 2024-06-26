@@ -78,9 +78,9 @@
 
 <!-- endregion GA & YaMetrika -->
 
-<body class="max-w-[1000px]">
+<body class="uni-bg-body  max-w-none">
 
-<header class="text-sm ">
+<header class="text-sm uni-bg">
     <div class="border-b py-2 uni-border flex items-baseline gap-1">
         <a class="btn btn-ghost btn-sm" href="/">∏⌀♰ʯԞ.ʯ⌀</a>
         
@@ -115,10 +115,10 @@
 
 </header>
 
-<main class="prose  max-w-none p-2">
+<main class="prose   p-2 min-h-[80vh] max-w-[1000px] mx-auto">
     
         
-            <div class="mb-2">
+            <div class="my-2">
                 <h1>🗒️ Рецептики</h1>
                 <cite class="block">Вкусные и не очень</cite>
             </div>
@@ -132,14 +132,12 @@
     <div x-data="recipes">
 
 
-    <div class="flex gap-2">
-            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Завтраки</a>
-            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Просто Кухня</a>
+        <div class="flex gap-2 flex-wrap">
 
             
         </div>
 
-        <div class="border uni-border  rounded-lg p-4 my-4">
+        <div class="border uni-border  rounded-lg p-4 my-4 uni-bg">
             <h2 class="italic !my-0">#чепожрать?</h2>
             <cite>Выбери категории, устрой турик / заролль рандомно</cite>
 
@@ -154,8 +152,9 @@
 
 
                 <div class="flex gap-2">
-                    <button type="button" class="btn grow btn-sm " @click="startTour()">Турик</button>
-                    <button type="button" class="btn grow btn-sm" @click="selectRandomRecipe()">Рандом</button>
+                    <button type="button" class="btn grow btn-sm btn-neutral  " @click="startTour()">Турик</button>
+                    <button type="button" class="btn grow btn-sm btn-neutral " @click="selectRandomRecipe()">Рандом
+                    </button>
                 </div>
 
                 <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
@@ -201,34 +200,7 @@
     <div class="section-list">
         
             
-    <div class="rounded-border uni-border shadow">
-        <div class="border-b uni-border px-2 "><i>#чепожрать?</i></div>
-        <div class="">
-            
-                
-    <div class="link-list">
-        
-            
-    <a href="/recipes/prosto-kuhnya" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
-        <div class="underline">Просто Кухня</div>
-
-        
-            <div class="font-normal">Табличка с рецептиками из одноименной передачи</div>
-        
-
-        
-    </a>
-
-        
-    </div>
-
-            
-        </div>
-    </div>
-
-        
-            
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Азиатка</div>
         <div class="">
             
@@ -236,7 +208,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/asian-fried-rice" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/asian-fried-rice" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Жареный рисик в азиатском стиле</div>
 
         
@@ -248,7 +220,7 @@
 
         
             
-    <a href="/recipes/miso-ramen" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/miso-ramen" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Мисо Рамен</div>
 
         
@@ -260,7 +232,7 @@
 
         
             
-    <a href="/recipes/ramen" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/ramen" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Рамен от Васи</div>
 
         
@@ -272,7 +244,7 @@
 
         
             
-    <a href="/recipes/ramyun" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/ramyun" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Рамёны</div>
 
         
@@ -284,7 +256,7 @@
 
         
             
-    <a href="/recipes/duck-soba" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/duck-soba" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Соба с уткой и терияки</div>
 
         
@@ -296,7 +268,7 @@
 
         
             
-    <a href="/recipes/korean-sandwich-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/korean-sandwich-tuna" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Корейский сэндвич с тунцом</div>
 
         
@@ -308,7 +280,7 @@
 
         
             
-    <a href="/recipes/rabokki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/rabokki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Рапокки</div>
 
         
@@ -320,7 +292,7 @@
 
         
             
-    <a href="/recipes/salmon-hand-rolls" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salmon-hand-rolls" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Хэнд роллы с запеченным лососем</div>
 
         
@@ -332,7 +304,7 @@
 
         
             
-    <a href="/recipes/scallop-funchosa" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/scallop-funchosa" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Азиатский салат с гребешком и фунчозой</div>
 
         
@@ -344,7 +316,7 @@
 
         
             
-    <a href="/recipes/tteok-bokki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tteok-bokki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Токпокки</div>
 
         
@@ -356,7 +328,7 @@
 
         
             
-    <a href="/recipes/pollock-korean" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pollock-korean" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Минтай по-корейски</div>
 
         
@@ -368,7 +340,7 @@
 
         
             
-    <a href="/recipes/glass-wok-shrimps" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/glass-wok-shrimps" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Стеклянный вок с креветками</div>
 
         
@@ -380,7 +352,7 @@
 
         
             
-    <a href="/recipes/okonomiaki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/okonomiaki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Окономияки</div>
 
         
@@ -392,7 +364,7 @@
 
         
             
-    <a href="/recipes/lazy-phila" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/lazy-phila" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Ленивая Филадельфия</div>
 
         
@@ -404,7 +376,7 @@
 
         
             
-    <a href="/recipes/asian-udon-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/asian-udon-chicken" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Удон с курицей</div>
 
         
@@ -416,7 +388,7 @@
 
         
             
-    <a href="/recipes/korean-gulash" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/korean-gulash" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Корейский гуляш</div>
 
         
@@ -428,7 +400,7 @@
 
         
             
-    <a href="/recipes/kimpab" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/kimpab" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Кимпаб</div>
 
         
@@ -440,7 +412,7 @@
 
         
             
-    <a href="/recipes/ramyon-creamy" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/ramyon-creamy" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Сливочный Рамён с Кочудяном</div>
 
         
@@ -459,7 +431,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Завтрак</div>
         <div class="">
             
@@ -467,7 +439,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/banh-mi" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/banh-mi" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Бань Ми</div>
 
         
@@ -479,7 +451,7 @@
 
         
             
-    <a href="/recipes/pita-turkey" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pita-turkey" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Пита с индейкой</div>
 
         
@@ -491,7 +463,7 @@
 
         
             
-    <a href="/recipes/bliny-hachapuri" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/bliny-hachapuri" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Блины с сырной начинкой 🥞</div>
 
         
@@ -503,7 +475,7 @@
 
         
             
-    <a href="/recipes/ground-beef-tortillas" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/ground-beef-tortillas" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Лепёшки слоёные с фаршем и картошкой</div>
 
         
@@ -515,7 +487,7 @@
 
         
             
-    <a href="/recipes/lavash-hotdog" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/lavash-hotdog" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Хот-дог в лаваше</div>
 
         
@@ -527,7 +499,7 @@
 
         
             
-    <a href="/recipes/toast-shrimp" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/toast-shrimp" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Тосты с креветками и крабовым мясом</div>
 
         
@@ -539,7 +511,7 @@
 
         
             
-    <a href="/recipes/toast-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/toast-tuna" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Бутер с тунцом</div>
 
         
@@ -551,7 +523,7 @@
 
         
             
-    <a href="/recipes/tuna-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tuna-salad" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Салат с тунцом и фасолью</div>
 
         
@@ -563,7 +535,7 @@
 
         
             
-    <a href="/recipes/casserole-vasya" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/casserole-vasya" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Запеканка от Васи</div>
 
         
@@ -575,7 +547,7 @@
 
         
             
-    <a href="/recipes/ham-scramble-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/ham-scramble-sandwich" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Брускетта со скрэмблом и ветчиной</div>
 
         
@@ -587,7 +559,7 @@
 
         
             
-    <a href="/recipes/pollock-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pollock-sandwich" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Бутер с минтаем и авокадо</div>
 
         
@@ -599,7 +571,7 @@
 
         
             
-    <a href="/recipes/tuna-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tuna-sandwich" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Бутер с тунцом</div>
 
         
@@ -611,7 +583,7 @@
 
         
             
-    <a href="/recipes/sandwich-salmon-riet" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sandwich-salmon-riet" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Бутер с риетом из горбуши</div>
 
         
@@ -623,7 +595,7 @@
 
         
             
-    <a href="/recipes/sandwich-shrimps-saganaki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sandwich-shrimps-saganaki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Тост &#34;Креветки &#34;Саганаки&#34;</div>
 
         
@@ -635,7 +607,7 @@
 
         
             
-    <a href="/recipes/shakshouka" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/shakshouka" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Шакшука</div>
 
         
@@ -647,7 +619,7 @@
 
         
             
-    <a href="/recipes/mc-breakfast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/mc-breakfast" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Мак Завтрак</div>
 
         
@@ -659,7 +631,7 @@
 
         
             
-    <a href="/recipes/avocado-toast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/avocado-toast" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Авокадо Тост</div>
 
         
@@ -671,7 +643,7 @@
 
         
             
-    <a href="/recipes/quesadilla-morning" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/quesadilla-morning" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Кесадилья утренняя</div>
 
         
@@ -683,7 +655,7 @@
 
         
             
-    <a href="/recipes/balkan-pita-burger" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/balkan-pita-burger" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Балканский бургер с питой</div>
 
         
@@ -695,7 +667,7 @@
 
         
             
-    <a href="/recipes/croissant-salmon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/croissant-salmon" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Круассан с рыбкой</div>
 
         
@@ -707,7 +679,7 @@
 
         
             
-    <a href="/recipes/buckwheat-poke" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/buckwheat-poke" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Боул с гречкой</div>
 
         
@@ -719,7 +691,7 @@
 
         
             
-    <a href="/recipes/english-breakfast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/english-breakfast" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Английский завтрак</div>
 
         
@@ -731,7 +703,7 @@
 
         
             
-    <a href="/recipes/baked-omlette" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/baked-omlette" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сырный Омлет-Суфле</div>
 
         
@@ -743,7 +715,7 @@
 
         
             
-    <a href="/recipes/sandwich-italian" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sandwich-italian" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Итальянский сэндвич</div>
 
         
@@ -755,7 +727,7 @@
 
         
             
-    <a href="/recipes/taco-burger" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/taco-burger" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Тако-Бургер</div>
 
         
@@ -767,7 +739,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-shproti" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/smorrebrod-shproti" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сморреброд со шпротами и маринованными огурчиками</div>
 
         
@@ -779,7 +751,7 @@
 
         
             
-    <a href="/recipes/sandwich-cabbage-korean" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sandwich-cabbage-korean" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Корейский бутерброд с капустой</div>
 
         
@@ -791,7 +763,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-fish-liver" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/smorrebrod-fish-liver" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сморреброд с печенью трески</div>
 
         
@@ -803,7 +775,7 @@
 
         
             
-    <a href="/recipes/croc-madam" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/croc-madam" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сэндвич &#34;Крок-мадам&#34;</div>
 
         
@@ -815,7 +787,7 @@
 
         
             
-    <a href="/recipes/sandwich-egg-bacon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sandwich-egg-bacon" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сэндвич с яйцом и беконом</div>
 
         
@@ -827,7 +799,7 @@
 
         
             
-    <a href="/recipes/tortilla-fajitas" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tortilla-fajitas" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Фахитос</div>
 
         
@@ -839,7 +811,7 @@
 
         
             
-    <a href="/recipes/syrniki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/syrniki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сырники</div>
 
         
@@ -851,7 +823,7 @@
 
         
             
-    <a href="/recipes/banana-waffles" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/banana-waffles" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Банановые вафли</div>
 
         
@@ -863,7 +835,7 @@
 
         
             
-    <a href="/recipes/waffles" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/waffles" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Вафли</div>
 
         
@@ -875,7 +847,7 @@
 
         
             
-    <a href="/recipes/greek-cheese-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/greek-cheese-pie" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Греческий сырный пирог</div>
 
         
@@ -887,7 +859,7 @@
 
         
             
-    <a href="/recipes/mannik-kefir" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/mannik-kefir" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Манник на кефире с фруктами</div>
 
         
@@ -899,7 +871,7 @@
 
         
             
-    <a href="/recipes/sharlotka" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sharlotka" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Шаплотка</div>
 
         
@@ -911,7 +883,7 @@
 
         
             
-    <a href="/recipes/tuna-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tuna-pie" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Пирог с тунцом</div>
 
         
@@ -923,7 +895,7 @@
 
         
             
-    <a href="/recipes/eegs-benedict" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/eegs-benedict" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Яйца Бенедикт</div>
 
         
@@ -935,7 +907,7 @@
 
         
             
-    <a href="/recipes/zapekanka-pumpkin" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/zapekanka-pumpkin" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Тыквенная запеканка</div>
 
         
@@ -947,7 +919,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-fish" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/smorrebrod-fish" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Сморреброд с рыбой</div>
 
         
@@ -959,7 +931,7 @@
 
         
             
-    <a href="/recipes/shawarma" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/shawarma" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Шаурма с беконом</div>
 
         
@@ -978,7 +950,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Основное</div>
         <div class="">
             
@@ -986,7 +958,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/egg-plant-parmigiano" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/egg-plant-parmigiano" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Баклажаны Пармиджано</div>
 
         
@@ -998,7 +970,7 @@
 
         
             
-    <a href="/recipes/berlin-liver" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/berlin-liver" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Печень по-берлински</div>
 
         
@@ -1010,7 +982,7 @@
 
         
             
-    <a href="/recipes/chicken-shkmeruli" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/chicken-shkmeruli" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Курица Чкмерули</div>
 
         
@@ -1022,7 +994,7 @@
 
         
             
-    <a href="/recipes/crab-cakes" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/crab-cakes" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Краб-кейки</div>
 
         
@@ -1034,7 +1006,7 @@
 
         
             
-    <a href="/recipes/gratin" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/gratin" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Картофельный Гратен с цветной капустой и рыбой</div>
 
         
@@ -1046,7 +1018,7 @@
 
         
             
-    <a href="/recipes/shepherds-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/shepherds-pie" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Пастуший пирог</div>
 
         
@@ -1058,7 +1030,7 @@
 
         
             
-    <a href="/recipes/chicken-provence" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/chicken-provence" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Куринная грудка в соусе Провансаль</div>
 
         
@@ -1070,7 +1042,7 @@
 
         
             
-    <a href="/recipes/chilli-turkey" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/chilli-turkey" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Индейка с Чили, фасолью и овощами</div>
 
         
@@ -1082,7 +1054,7 @@
 
         
             
-    <a href="/recipes/tom-yam-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tom-yam-chicken" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Курица в духовке и Спагетти в соусе Том ям</div>
 
         
@@ -1094,7 +1066,7 @@
 
         
             
-    <a href="/recipes/string-beans-bolognese" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/string-beans-bolognese" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Фасоль Болоньезе</div>
 
         
@@ -1106,7 +1078,7 @@
 
         
             
-    <a href="/recipes/nut-pure" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/nut-pure" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Пюре из нута с фаршем</div>
 
         
@@ -1118,7 +1090,7 @@
 
         
             
-    <a href="/recipes/cutlet" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/cutlet" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Котлеты</div>
 
         
@@ -1130,7 +1102,7 @@
 
         
             
-    <a href="/recipes/buckwheat-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/buckwheat-chicken" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Запеченная Курица с Гречкой</div>
 
         
@@ -1142,7 +1114,7 @@
 
         
             
-    <a href="/recipes/guakomolle" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/guakomolle" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Гуакамоле</div>
 
         
@@ -1154,7 +1126,7 @@
 
         
             
-    <a href="/recipes/pepper-sauce-beef" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pepper-sauce-beef" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Говядина в перечном соусе с овощами</div>
 
         
@@ -1166,7 +1138,7 @@
 
         
             
-    <a href="/recipes/lazy-golubcy" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/lazy-golubcy" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Ленивые Голубцы</div>
 
         
@@ -1178,7 +1150,7 @@
 
         
             
-    <a href="/recipes/pot-meat" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pot-meat" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Мясо в горшочке</div>
 
         
@@ -1190,7 +1162,7 @@
 
         
             
-    <a href="/recipes/ikea-meat-balls" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/ikea-meat-balls" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Шведские фрикадельки с брусничным и сливочным соусами</div>
 
         
@@ -1202,7 +1174,7 @@
 
         
             
-    <a href="/recipes/bikus" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/bikus" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Солянка / Бикус со шпикачками / сосисками</div>
 
         
@@ -1214,7 +1186,7 @@
 
         
             
-    <a href="/recipes/golybci-china" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/golybci-china" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Голубцы по-китайски</div>
 
         
@@ -1226,7 +1198,7 @@
 
         
             
-    <a href="/recipes/sausage-broccoli" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/sausage-broccoli" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Колбаски с брокколи в хрустящей корочке</div>
 
         
@@ -1238,7 +1210,7 @@
 
         
             
-    <a href="/recipes/fish-and-chips" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/fish-and-chips" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Фиш энд чипс с пюре из горошка</div>
 
         
@@ -1250,7 +1222,7 @@
 
         
             
-    <a href="/recipes/shrimps-pil-pil" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/shrimps-pil-pil" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Креветки пиль-пиль</div>
 
         
@@ -1262,7 +1234,7 @@
 
         
             
-    <a href="/recipes/terpug-potato" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/terpug-potato" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Терпуг с мятой картошкой</div>
 
         
@@ -1274,7 +1246,7 @@
 
         
             
-    <a href="/recipes/pie-wellington-fish" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pie-wellington-fish" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Фиш &#34;Велингтон&#34; в слоеном тесте со шпинатом</div>
 
         
@@ -1286,7 +1258,7 @@
 
         
             
-    <a href="/recipes/paella" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/paella" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паэлья</div>
 
         
@@ -1298,7 +1270,7 @@
 
         
             
-    <a href="/recipes/pepperonata-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/pepperonata-chicken" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Пепероната с курицей</div>
 
         
@@ -1317,7 +1289,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Паста</div>
         <div class="">
             
@@ -1325,7 +1297,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/pasta-salmon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-salmon" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Спагетти с лососем в сливочном соусе</div>
 
         
@@ -1337,7 +1309,7 @@
 
         
             
-    <a href="/recipes/pasta-scallop" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-scallop" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста с гребешком</div>
 
         
@@ -1349,7 +1321,7 @@
 
         
             
-    <a href="/recipes/pasta-squid" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-squid" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста с кальмаром</div>
 
         
@@ -1361,7 +1333,7 @@
 
         
             
-    <a href="/recipes/pasta-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-tuna" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста с тунцом</div>
 
         
@@ -1373,7 +1345,7 @@
 
         
             
-    <a href="/recipes/pasta-flot" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-flot" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Макароны по флотски с приколами</div>
 
         
@@ -1385,7 +1357,7 @@
 
         
             
-    <a href="/recipes/pasta-ala-norma" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-ala-norma" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста Ала норма с баклажанами</div>
 
         
@@ -1397,7 +1369,7 @@
 
         
             
-    <a href="/recipes/pasta-alfredo" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-alfredo" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста Альфредо</div>
 
         
@@ -1409,7 +1381,7 @@
 
         
             
-    <a href="/recipes/pasta-carbonara" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-carbonara" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста Карбонара</div>
 
         
@@ -1421,7 +1393,7 @@
 
         
             
-    <a href="/recipes/pasta-beetroot" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/pasta-beetroot" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Паста со свекольным песто</div>
 
         
@@ -1433,7 +1405,7 @@
 
         
             
-    <a href="/recipes/pasta-meatballs" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/pasta-meatballs" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Спагетти с фрикадельками из индейки</div>
 
         
@@ -1452,7 +1424,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Салат</div>
         <div class="">
             
@@ -1460,7 +1432,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/duck-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/duck-salad" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Салат с уткой</div>
 
         
@@ -1472,7 +1444,7 @@
 
         
             
-    <a href="/recipes/salad-greek" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-greek" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Греческий</div>
 
         
@@ -1484,7 +1456,7 @@
 
         
             
-    <a href="/recipes/coleslaw" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/coleslaw" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Коуслоу</div>
 
         
@@ -1496,7 +1468,7 @@
 
         
             
-    <a href="/recipes/crab-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/crab-salad" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Крабовый салат</div>
 
         
@@ -1508,7 +1480,7 @@
 
         
             
-    <a href="/recipes/salad-mangal" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-mangal" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Мангал салат</div>
 
         
@@ -1520,7 +1492,7 @@
 
         
             
-    <a href="/recipes/salad-spring" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-spring" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Салат Весенний</div>
 
         
@@ -1532,7 +1504,7 @@
 
         
             
-    <a href="/recipes/salad-egg-plant" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-egg-plant" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Салат с баклажанами в соусе Сладкий Чили</div>
 
         
@@ -1544,7 +1516,7 @@
 
         
             
-    <a href="/recipes/salad-tuna-pepper" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-tuna-pepper" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Салат с тунцом и замеченным перцем</div>
 
         
@@ -1556,7 +1528,7 @@
 
         
             
-    <a href="/recipes/salad-turkish-finiki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/salad-turkish-finiki" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Турецкий салат с финиками</div>
 
         
@@ -1568,7 +1540,7 @@
 
         
             
-    <a href="/recipes/funchosa-shrooms" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/funchosa-shrooms" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Фунчоза с вешенками и овощами</div>
 
         
@@ -1580,7 +1552,7 @@
 
         
             
-    <a href="/recipes/salad-caesar" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/salad-caesar" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Простой Салат Цезарь</div>
 
         
@@ -1599,7 +1571,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Суп</div>
         <div class="">
             
@@ -1607,7 +1579,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/solyanka-soup-sauerkraut" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/solyanka-soup-sauerkraut" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Суп Солянка с квашеной капустой</div>
 
         
@@ -1619,7 +1591,7 @@
 
         
             
-    <a href="/recipes/champignons-cream-soup" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/champignons-cream-soup" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Грибной крем суп</div>
 
         
@@ -1631,7 +1603,7 @@
 
         
             
-    <a href="/recipes/mashed-orange-lentil-soup" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/mashed-orange-lentil-soup" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Суп-пюре из красной чечевицы</div>
 
         
@@ -1643,7 +1615,7 @@
 
         
             
-    <a href="/recipes/tomato-soup-with-lentil" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/tomato-soup-with-lentil" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Томатный суп с чечевицей и фаршем</div>
 
         
@@ -1655,7 +1627,7 @@
 
         
             
-    <a href="/recipes/soup-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/soup-chicken" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Куриный суп</div>
 
         
@@ -1667,7 +1639,7 @@
 
         
             
-    <a href="/recipes/soup-mexican" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/soup-mexican" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Мексиканский острый фасолевый суп</div>
 
         
@@ -1679,7 +1651,7 @@
 
         
             
-    <a href="/recipes/soup-harcho" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/soup-harcho" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Суп Харчо</div>
 
         
@@ -1691,7 +1663,7 @@
 
         
             
-    <a href="/recipes/soup-lamb-chechvica" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/soup-lamb-chechvica" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Суп из баранины с чечевицей</div>
 
         
@@ -1703,7 +1675,7 @@
 
         
             
-    <a href="/recipes/soup-tom-yam" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/soup-tom-yam" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Том Ям</div>
 
         
@@ -1722,7 +1694,7 @@
 
         
             
-    <div class="rounded-border uni-border shadow">
+    <div class="rounded-border uni-border shadow uni-bg">
         <div class="border-b uni-border px-2 ">Сладости</div>
         <div class="">
             
@@ -1730,7 +1702,7 @@
     <div class="link-list">
         
             
-    <a href="/recipes/almond-lingonberry-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
+    <a href="/recipes/almond-lingonberry-pie" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover ">
         <div class="underline">Брусничный Пирог</div>
 
         
@@ -1742,7 +1714,7 @@
 
         
             
-    <a href="/recipes/brownie-cherry" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
+    <a href="/recipes/brownie-cherry" class="block px-4 py-2 text-sm uni-bg no-underline uni-hover rounded-b-lg">
         <div class="underline">Брауни с вишней</div>
 
         
@@ -1785,7 +1757,7 @@
             Alpine.data('recipes', () => ({
                 tags: [["recipes_breakfast", "\u0417\u0430\u0432\u0442\u0440\u0430\u043a"], ["recipes_main", "\u041e\u0441\u043d\u043e\u0432\u043d\u043e\u0435"], ["recipes_asian", "\u0410\u0437\u0438\u0430\u0442\u043a\u0430"], ["recipes_salad", "\u0421\u0430\u043b\u0430\u0442"], ["recipes_pasta", "\u041f\u0430\u0441\u0442\u0430"], ["recipes_soup", "\u0421\u0443\u043f"], ["recipes_sweet", "\u0421\u043b\u0430\u0434\u043e\u0441\u0442\u0438"]].map(([tag, title]) => ({tag, title, selected: false})),
 
-                recipes: [{"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0430\u0431\u043b\u0438\u0447\u043a\u0430 \u0441 \u0440\u0435\u0446\u0435\u043f\u0442\u0438\u043a\u0430\u043c\u0438 \u0438\u0437 \u043e\u0434\u043d\u043e\u0438\u043c\u0435\u043d\u043d\u043e\u0439 \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438", "html_path": "recipes/prosto-kuhnya.html", "include_in_index": null, "section": "food", "title": "\u041f\u0440\u043e\u0441\u0442\u043e \u041a\u0443\u0445\u043d\u044f", "url": "/recipes/prosto-kuhnya"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0430\u0438\u043f\u0440\u043e\u0441\u0442\u0435\u0439\u0448\u0430\u044f \u0430\u0437\u0438\u0430\u0442\u043e\u0447\u043a\u0430: \u0442\u0443\u043f\u0430 \u0432\u0441\u0435 \u0447\u0442\u043e \u0435\u0441\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u043e\u0441\u0435 \u0441\u0432\u0430\u043b\u0438\u0432\u0430\u0435\u0448\u044c \u0432 \u0441\u043a\u043e\u0432\u043e\u0440\u043e\u0434\u0443 \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0440\u0438\u0441\u043e\u043c, \u043f\u043e\u043b\u0438\u0432\u0430\u0435\u0448\u044c \u043f\u0430\u0440\u043e\u0439 \u0441\u043e\u0443\u0441\u043e\u0432 - \u0438 \u0432\u0443\u0430 \u043b\u044f", "html_path": "recipes/asian-fried-rice.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0416\u0430\u0440\u0435\u043d\u044b\u0439 \u0440\u0438\u0441\u0438\u043a \u0432 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u043e\u043c \u0441\u0442\u0438\u043b\u0435", "url": "/recipes/asian-fried-rice"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0430\u0440\u0438\u0430\u043d\u0442 \u0420\u0430\u043c\u0435\u043d\u0430 \u043d\u0430 \u043c\u0438\u0441\u043e \u0431\u0443\u043b\u044c\u043e\u043d\u0435", "html_path": "recipes/miso-ramen.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041c\u0438\u0441\u043e \u0420\u0430\u043c\u0435\u043d", "url": "/recipes/miso-ramen"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041b\u0430\u043f\u0448\u0438\u0447\u043a\u0430 \u0441 \u0442\u043e\u043f\u043f\u0438\u043d\u0433\u0430\u043c\u0438 \u043f\u043e\u0434 \u043c\u043e\u0449\u043d\u044b\u043c \u0431\u0443\u043b\u044c\u043e\u043d\u043e\u043c", "html_path": "recipes/ramen.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043c\u0435\u043d \u043e\u0442 \u0412\u0430\u0441\u0438", "url": "/recipes/ramen"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0435\u0446\u0435\u043f\u0442\u044b \u0441 Shin Ramyun \u0441 \u043a\u0430\u043d\u0430\u043b\u0430 FoodKor", "html_path": "recipes/ramyun.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043c\u0451\u043d\u044b", "url": "/recipes/ramyun"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u0430\u044f \u0443\u0442\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0438 \u0441\u043e\u0431\u043e\u0439 \u043f\u043e\u0434 \u0442\u0435\u0440\u0438\u044f\u043a\u0438 \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/duck-soba.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u043e\u0431\u0430 \u0441 \u0443\u0442\u043a\u043e\u0439 \u0438 \u0442\u0435\u0440\u0438\u044f\u043a\u0438", "url": "/recipes/duck-soba"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u043d\u043e\u0433\u043e \u043d\u0430\u0447\u0438\u043d\u043a\u0438, \u043c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043e\u0432, \u043c\u043d\u043e\u0433\u043e \u0432\u043a\u0443\u0441\u0430", "html_path": "recipes/korean-sandwich-tuna.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0441\u044d\u043d\u0434\u0432\u0438\u0447 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/korean-sandwich-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u043c\u0435\u0441\u044c \u0440\u0430\u043c\u0451\u043d\u0430 \u0438 \u0442\u043e\u043a\u043f\u043e\u043a\u043a\u0438 \u0432 \u043f\u0440\u044f\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/rabokki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043f\u043e\u043a\u043a\u0438", "url": "/recipes/rabokki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041b\u043e\u0441\u043e\u0441\u044c \u0432 \u0441\u043f\u0430\u0439\u0441\u0438 \u043c\u0430\u0439\u043e\u043d\u0435\u0437\u0435 \u0441 \u0440\u0438\u0441\u0438\u043a\u043e\u043c \u0438 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u043e\u043c, \u0437\u0430\u0432\u0435\u0440\u043d\u0443\u0442\u044b\u043c \u0432 \u043d\u043e\u0440\u0438", "html_path": "recipes/salmon-hand-rolls.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0425\u044d\u043d\u0434 \u0440\u043e\u043b\u043b\u044b \u0441 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043b\u043e\u0441\u043e\u0441\u0435\u043c", "url": "/recipes/salmon-hand-rolls"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0444\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435\u043c \u0431\u043e\u0431\u043e\u0432 \u044d\u0434\u0430\u043c\u0435 \u0438 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c", "html_path": "recipes/scallop-funchosa.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0410\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c \u0438 \u0444\u0443\u043d\u0447\u043e\u0437\u043e\u0439", "url": "/recipes/scallop-funchosa"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0438\u0441\u043e\u0432\u044b\u0435 \u043a\u043b\u0451\u0446\u043a\u0438 \u0441 \u0441\u043e\u0441\u0438\u0441\u0430\u043c\u0438, \u0432\u0430\u0440\u0435\u043d\u044b\u043c\u0438 \u044f\u0439\u0446\u0430\u043c\u0438, \u0437\u0435\u043b\u0435\u043d\u044b\u043c \u043b\u0443\u0447\u043a\u043e\u043c \u0432 \u0433\u0443\u0441\u0442\u043e\u043c \u0441\u043f\u0430\u0439\u0441\u0438 \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/tteok-bokki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0422\u043e\u043a\u043f\u043e\u043a\u043a\u0438", "url": "/recipes/tteok-bokki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u0430 \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435 \u0438 \u0441\u043b\u0430\u0434\u043a\u043e-\u0441\u043e\u043b\u0435\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/pollock-korean.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041c\u0438\u043d\u0442\u0430\u0439 \u043f\u043e-\u043a\u043e\u0440\u0435\u0439\u0441\u043a\u0438", "url": "/recipes/pollock-korean"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430 \u0438 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438 - \u0431\u044b\u0441\u0442\u0440\u043e \u0438 \u0432\u043a\u0443\u0441\u043d\u043e", "html_path": "recipes/glass-wok-shrimps.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u0442\u0435\u043a\u043b\u044f\u043d\u043d\u044b\u0439 \u0432\u043e\u043a \u0441 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438", "url": "/recipes/glass-wok-shrimps"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0410\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0439 \u0434\u0440\u0430\u043d\u0438\u043a \u0438\u0437 \u043a\u0430\u043f\u0443\u0441\u0442\u044b \u0441 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/okonomiaki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041e\u043a\u043e\u043d\u043e\u043c\u0438\u044f\u043a\u0438", "url": "/recipes/okonomiaki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043f\u0430 \u0440\u0438\u0441\u043e\u0432\u044b\u0435 \u0448\u0430\u0440\u044b \u0441 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439", "html_path": "recipes/lazy-phila.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041b\u0435\u043d\u0438\u0432\u0430\u044f \u0424\u0438\u043b\u0430\u0434\u0435\u043b\u044c\u0444\u0438\u044f", "url": "/recipes/lazy-phila"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0418\u0437\u0438 \u0430\u0437\u0438\u0430\u0442\u043a\u0430, \u0435\u0449\u0435 \u043f\u0440\u043e\u0449\u0435 \u0440\u0438\u0441\u0430", "html_path": "recipes/asian-udon-chicken.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0423\u0434\u043e\u043d \u0441 \u043a\u0443\u0440\u0438\u0446\u0435\u0439", "url": "/recipes/asian-udon-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u0448\u0435\u043d\u043e\u0435 \u043c\u044f\u0441\u043e \u0432 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/korean-gulash.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0433\u0443\u043b\u044f\u0448", "url": "/recipes/korean-gulash"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u043e\u043b\u043b\u044b \u043f\u043e-\u043a\u043e\u0440\u0435\u0439\u0441\u043a\u0438", "html_path": "recipes/kimpab.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u0438\u043c\u043f\u0430\u0431", "url": "/recipes/kimpab"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0430\u043c\u0451\u043d, \u0431\u0435\u043a\u043e\u043d, \u043c\u043d\u043e\u0433\u043e \u0441\u043b\u0438\u0432\u043e\u043a \u0438 \u0441\u044b\u0440\u0430", "html_path": "recipes/ramyon-creamy.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u0439 \u0420\u0430\u043c\u0451\u043d \u0441 \u041a\u043e\u0447\u0443\u0434\u044f\u043d\u043e\u043c", "url": "/recipes/ramyon-creamy"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u044c\u0435\u0442\u043d\u0430\u043c\u0441\u043a\u0438\u0439 \u0441\u0435\u043d\u0434\u0432\u0438\u0447 \u043d\u0430 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u043c\u0430\u043d\u0435\u0440", "html_path": "recipes/banh-mi.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043d\u044c \u041c\u0438", "url": "/recipes/banh-mi"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0439 \u0444\u0430\u0440\u0448 \u0441\u043e \u0441\u043f\u0435\u0446\u0438\u044f\u043c\u0438, \u0441\u043e\u0443\u0441 \u0438\u0437 \u0439\u043e\u0433\u0443\u0440\u0442\u0430 \u0438 \u0445\u0440\u0435\u043d\u0430, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0441\u0432\u0435\u0436\u0438\u0435 \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/pita-turkey.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041f\u0438\u0442\u0430 \u0441 \u0438\u043d\u0434\u0435\u0439\u043a\u043e\u0439", "url": "/recipes/pita-turkey"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0435\u0446\u0435\u043f\u0442 \u0431\u043b\u0438\u043d\u043e\u0432 + \u0432\u0430\u0440\u0438\u0430\u043d\u0442 \u043d\u0430\u0447\u0438\u043d\u043a\u0438 \u0430\u043b\u044f \u0445\u0430\u0447\u0430\u043f\u0443\u0440\u0438", "html_path": "recipes/bliny-hachapuri.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u043b\u0438\u043d\u044b \u0441 \u0441\u044b\u0440\u043d\u043e\u0439 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439 \ud83e\udd5e", "url": "/recipes/bliny-hachapuri"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u044b\u0435 \u0438 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0438\u0435", "html_path": "recipes/ground-beef-tortillas.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041b\u0435\u043f\u0451\u0448\u043a\u0438 \u0441\u043b\u043e\u0451\u043d\u044b\u0435 \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0438 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "url": "/recipes/ground-beef-tortillas"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e, \u0441\u043e\u0447\u043d\u043e, \u0445\u043b\u0435\u0431\u0430 \u043d\u0435\u043c\u043d\u043e\u0433\u043e - \u043e\u0442\u043b\u0438\u0447\u043d\u0430\u044f \u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u0430 \u043a\u043b\u0430\u0441\u0441\u0438\u043a\u0435", "html_path": "recipes/lavash-hotdog.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0425\u043e\u0442-\u0434\u043e\u0433 \u0432 \u043b\u0430\u0432\u0430\u0448\u0435", "url": "/recipes/lavash-hotdog"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0435 \u0441\u043b\u0430\u0439\u0441\u044b \u0431\u0430\u0433\u0435\u0442\u0430 \u0441 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439 \u0438\u0437 \u043a\u0440\u0435\u0432\u0435\u0442\u043e\u043a \u0438 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u0431\u0430 \u0432 \u0433\u043e\u0440\u0447\u0438\u0447\u043d\u043e\u0439 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0435", "html_path": "recipes/toast-shrimp.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u043e\u0441\u0442\u044b \u0441 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438 \u0438 \u043a\u0440\u0430\u0431\u043e\u0432\u044b\u043c \u043c\u044f\u0441\u043e\u043c", "url": "/recipes/toast-shrimp"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0439 \u0442\u0443\u043d\u0446\u043e\u0432\u044b\u0439 \u0440\u0438\u0435\u0442 \u0441 \u0441\u0435\u043b\u044c\u0434\u0435\u0440\u0435\u0435\u043c, \u043b\u0443\u043a\u043e\u043c \u0438 \u0438\u043c\u0431\u0438\u0440\u0435\u043c \u043d\u0430 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u043c \u0431\u0430\u0433\u0435\u0442\u0435, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u044f\u0439\u0446\u043e\u043c \u0438 \u043a\u0443\u043d\u0436\u0443\u0442\u043e\u043c", "html_path": "recipes/toast-tuna.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/toast-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u043e\u0442\u043d\u0435\u0439\u0448\u0438\u0439, \u0441\u044b\u0442\u043d\u0435\u0439\u0448\u0438\u0439 \u0441\u0430\u043b\u0430\u0442, \u043f\u043e\u0434\u0445\u043e\u0434\u0438\u0442 \u043a\u0430\u043a \u043d\u0430 \u0437\u0430\u0432\u0442\u0440\u0430\u043a, \u0442\u0430\u043a \u0438 \u043d\u0430 \u0443\u0436\u0438\u043d", "html_path": "recipes/tuna-salad.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c \u0438 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "url": "/recipes/tuna-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043d\u0435\u0436\u043d\u0430\u044f \u0442\u0432\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u0441 \u0438\u0437\u044e\u043c\u043e\u043c", "html_path": "recipes/casserole-vasya.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0417\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u043e\u0442 \u0412\u0430\u0441\u0438", "url": "/recipes/casserole-vasya"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0435\u0442\u0447\u0438\u043d\u0430, \u0441\u043a\u0440\u0435\u043c\u0431\u043b \u0441 \u043b\u0443\u043a\u043e\u043c \u0438 \u0442\u043e\u043c\u0430\u0442\u0430\u043c\u0438 \u043d\u0430 \u043a\u0443\u0441\u043a\u0435 \u0445\u043b\u0435\u0431\u0430", "html_path": "recipes/ham-scramble-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0440\u0443\u0441\u043a\u0435\u0442\u0442\u0430 \u0441\u043e \u0441\u043a\u0440\u044d\u043c\u0431\u043b\u043e\u043c \u0438 \u0432\u0435\u0442\u0447\u0438\u043d\u043e\u0439", "url": "/recipes/ham-scramble-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0439 \u0437\u0430\u0432\u0430\u0440\u043d\u043e\u0439 \u0445\u043b\u0435\u0431\u0443\u0448\u0435\u043a, \u0441\u043c\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u043a\u0440\u0435\u043c-\u0447\u0438\u0437\u043e\u043c, \u0441 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043c\u0438\u043d\u0442\u0430\u0435\u043c, \u0430\u0432\u043e\u043a\u0430\u0434\u043e, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u0441\u0430\u043b\u0430\u0442\u043e\u043c \u0430\u0439\u0441\u0431\u0435\u0440\u0433, \u043f\u0435\u0440\u0446\u0435\u043c \u0447\u0438\u043b\u0438, \u0438 \u043f\u043e\u043b\u0438\u0442\u044b\u0439 \u0441\u043f\u0430\u0439\u0441\u0438-\u043c\u0430\u0439\u043e\u043d\u0435\u0437\u043e\u043c", "html_path": "recipes/pollock-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u043c\u0438\u043d\u0442\u0430\u0435\u043c \u0438 \u0430\u0432\u043e\u043a\u0430\u0434\u043e", "url": "/recipes/pollock-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0439 \u0442\u0443\u043d\u0446\u043e\u0432\u044b\u0439 \u0440\u0438\u0435\u0442 \u0441 \u0441\u0435\u043b\u044c\u0434\u0435\u0440\u0435\u0435\u043c, \u043b\u0443\u043a\u043e\u043c \u0438 \u0438\u043c\u0431\u0438\u0440\u0435\u043c \u043d\u0430 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u043c \u0431\u0430\u0433\u0435\u0442\u0435, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u044f\u0439\u0446\u043e\u043c \u0438 \u043a\u0443\u043d\u0436\u0443\u0442\u043e\u043c", "html_path": "recipes/tuna-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/tuna-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0430\u0448\u0442\u0435\u0442 \u0438\u0437 \u0433\u043e\u0440\u0431\u0443\u0448\u0438, \u044f\u0439\u0446\u043e, \u0441\u0430\u043b\u0430\u0442, \u0441\u043e\u0443\u0441", "html_path": "recipes/sandwich-salmon-riet.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0440\u0438\u0435\u0442\u043e\u043c \u0438\u0437 \u0433\u043e\u0440\u0431\u0443\u0448\u0438", "url": "/recipes/sandwich-salmon-riet"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u043d\u0430 \u0445\u043b\u0435\u0431\u0443\u0448\u043a\u0435", "html_path": "recipes/sandwich-shrimps-saganaki.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u043e\u0441\u0442 \"\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \"\u0421\u0430\u0433\u0430\u043d\u0430\u043a\u0438\"", "url": "/recipes/sandwich-shrimps-saganaki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u0430 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c-\u043f\u0440\u044f\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/shakshouka.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u043a\u0448\u0443\u043a\u0430", "url": "/recipes/shakshouka"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0425\u044d\u0448\u0431\u0440\u0430\u0443\u043d \u0438 \u0431\u0443\u0440\u0433\u0435\u0440 \u0441 \u044f\u0439\u0446\u043e\u043c \u0438 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "html_path": "recipes/mc-breakfast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041c\u0430\u043a \u0417\u0430\u0432\u0442\u0440\u0430\u043a", "url": "/recipes/mc-breakfast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u044b\u0439 \u0431\u0443\u0442\u0435\u0440 \u0441 \u0430\u0432\u043e\u043a\u0430\u0434\u043e, \u044f\u0439\u0446\u043e\u043c \u043f\u0430\u0448\u043e\u0442, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0431\u0435\u043a\u043e\u043d\u043e\u043c \u0438\u043b\u0438 \u043a\u0440\u0430\u0441\u043d\u043e\u0439 \u0440\u044b\u0431\u043a\u043e\u0439", "html_path": "recipes/avocado-toast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0410\u0432\u043e\u043a\u0430\u0434\u043e \u0422\u043e\u0441\u0442", "url": "/recipes/avocado-toast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u0430 \u0441 \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u043a\u0430\u043c\u0438 \u0438 \u043a\u043e\u043b\u0431\u0430\u0441\u043e\u0439 \u0432 \u0442\u043e\u0440\u0442\u0438\u043b\u044c\u0435", "html_path": "recipes/quesadilla-morning.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u0435\u0441\u0430\u0434\u0438\u043b\u044c\u044f \u0443\u0442\u0440\u0435\u043d\u043d\u044f\u044f", "url": "/recipes/quesadilla-morning"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u0435\u0441\u043a\u0430\u0432\u0438\u0446\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0432 \u043f\u0438\u0442\u0435", "html_path": "recipes/balkan-pita-burger.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043b\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u0431\u0443\u0440\u0433\u0435\u0440 \u0441 \u043f\u0438\u0442\u043e\u0439", "url": "/recipes/balkan-pita-burger"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u043c-\u0447\u0438\u0437, \u0440\u044b\u0431\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438 \u0438 \u0432\u0441\u0435 \u043d\u0430 \u043f\u044b\u0448\u043d\u043e\u043c \u043a\u0440\u0443\u0430\u0441\u0441\u0430\u043d\u0435", "html_path": "recipes/croissant-salmon.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u0440\u0443\u0430\u0441\u0441\u0430\u043d \u0441 \u0440\u044b\u0431\u043a\u043e\u0439", "url": "/recipes/croissant-salmon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0435\u0447\u043a\u0430, \u0432\u0435\u0442\u0447\u0438\u043d\u0430, \u0433\u0440\u0438\u0431\u044b, \u044f\u0439\u0446\u043e", "html_path": "recipes/buckwheat-poke.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u043e\u0443\u043b \u0441 \u0433\u0440\u0435\u0447\u043a\u043e\u0439", "url": "/recipes/buckwheat-poke"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0438\u0447\u043d\u0438\u0446\u0430 \u0441\u043e \u0432\u0441\u044f\u043a\u0438\u043c\u0438 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/english-breakfast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u0437\u0430\u0432\u0442\u0440\u0430\u043a", "url": "/recipes/english-breakfast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u043c\u043b\u0435\u0442 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u043f\u043e-\u043f\u0440\u043e\u0441\u0442\u043e\u043c\u0443", "html_path": "recipes/baked-omlette.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044b\u0440\u043d\u044b\u0439 \u041e\u043c\u043b\u0435\u0442-\u0421\u0443\u0444\u043b\u0435", "url": "/recipes/baked-omlette"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0443\u043a\u043a\u043e\u043b\u043a\u0430, \u0432\u044f\u043b\u0435\u043d\u044b\u0435 \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u043a\u0438, \u043c\u043e\u0446\u0430\u0440\u044b\u043b\u0430 - \u0432\u0441\u044f\u043a\u043e\u0435 \u0438\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u043e\u0435", "html_path": "recipes/sandwich-italian.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0418\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u0438\u0439 \u0441\u044d\u043d\u0434\u0432\u0438\u0447", "url": "/recipes/sandwich-italian"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u0440\u0442\u0438\u043b\u044c\u044f \u0441 \u043a\u043e\u0442\u043b\u0435\u0442\u043e\u0439 \u0438 \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/taco-burger.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u0430\u043a\u043e-\u0411\u0443\u0440\u0433\u0435\u0440", "url": "/recipes/taco-burger"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0443\u0442\u0435\u0440 \u0441\u043e \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u044b\u0440\u043e\u043c, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0430\u043c\u0438, \u0438 \u0448\u043f\u0440\u043e\u0442\u0438\u043a\u0430\u043c\u0438", "html_path": "recipes/smorrebrod-shproti.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441\u043e \u0448\u043f\u0440\u043e\u0442\u0430\u043c\u0438 \u0438 \u043c\u0430\u0440\u0438\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u043c\u0438 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0430\u043c\u0438", "url": "/recipes/smorrebrod-shproti"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0414\u0440\u0430\u043d\u0438\u043a \u0438\u0437 \u043a\u0430\u043f\u0443\u0441\u0442\u044b, \u0432\u0435\u0442\u0447\u0438\u043d\u0430, \u0433\u043e\u0440\u0447\u0438\u0446\u0430, \u043a\u0435\u0442\u0447\u0443\u043f", "html_path": "recipes/sandwich-cabbage-korean.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0431\u0443\u0442\u0435\u0440\u0431\u0440\u043e\u0434 \u0441 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439", "url": "/recipes/sandwich-cabbage-korean"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0435\u0447\u0435\u043d\u044c, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438, \u0440\u0435\u0434\u0438\u0441\u043a\u0430, \u043a\u0430\u043f\u0435\u0440\u0441\u044b", "html_path": "recipes/smorrebrod-fish-liver.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441 \u043f\u0435\u0447\u0435\u043d\u044c\u044e \u0442\u0440\u0435\u0441\u043a\u0438", "url": "/recipes/smorrebrod-fish-liver"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0439 \u0441\u0435\u043d\u0434\u0432\u0438\u0447 \u0441 \u0441\u043e\u0443\u0441\u043e\u043c \u0431\u0435\u0448\u0430\u043c\u0435\u043b\u044c, \u0433\u043e\u0440\u0447\u0438\u0447\u043a\u043e\u0439, \u0441 \u0432\u0435\u0442\u0447\u0438\u043d\u043e\u0439 \u0438 \u0441\u044b\u0440\u043e\u043c", "html_path": "recipes/croc-madam.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044d\u043d\u0434\u0432\u0438\u0447 \"\u041a\u0440\u043e\u043a-\u043c\u0430\u0434\u0430\u043c\"", "url": "/recipes/croc-madam"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u043e, \u0431\u0435\u043a\u043e\u043d, \u043c\u0430\u0437\u0438\u043a, \u0441\u044b\u0440, \u043f\u043e\u043c\u0438\u0434\u043e\u0440, \u0441\u0430\u043b\u0430\u0442, \u0433\u043e\u0440\u0447\u0438\u0446\u0430", "html_path": "recipes/sandwich-egg-bacon.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044d\u043d\u0434\u0432\u0438\u0447 \u0441 \u044f\u0439\u0446\u043e\u043c \u0438 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "url": "/recipes/sandwich-egg-bacon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u0440\u0442\u0438\u043b\u044c\u044f \u0438 \u0432\u0441\u0435 \u0447\u0442\u043e \u0435\u0441\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u043e\u0441\u0435: \u043a\u0443\u043a\u0443\u0440\u0443\u0437\u0430, \u0444\u0430\u0440\u0448/\u0444\u0438\u043b\u0435, \u043f\u0435\u0440\u0435\u0446, \u043f\u043e\u043c\u0438\u0434\u043e\u0440, \u043b\u0443\u043a", "html_path": "recipes/tortilla-fajitas.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0424\u0430\u0445\u0438\u0442\u043e\u0441", "url": "/recipes/tortilla-fajitas"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0435, \u0432\u043e\u0437\u0434\u0443\u0448\u043d\u044b\u0435", "html_path": "recipes/syrniki.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044b\u0440\u043d\u0438\u043a\u0438", "url": "/recipes/syrniki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0430\u0444\u043b\u0438, \u0431\u0430\u043d\u0430\u043d\u044b, \u0448\u043e\u043a\u043e\u043b\u0430\u0434, \u0441\u043c\u0435\u0442\u0430\u043d\u0430", "html_path": "recipes/banana-waffles.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043d\u0430\u043d\u043e\u0432\u044b\u0435 \u0432\u0430\u0444\u043b\u0438", "url": "/recipes/banana-waffles"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043f\u0430 \u0432\u0430\u0444\u043b\u0438 \u0432 \u0432\u0430\u0444\u0435\u043b\u044c\u043d\u0438\u0446\u0435", "html_path": "recipes/waffles.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0412\u0430\u0444\u043b\u0438", "url": "/recipes/waffles"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0435\u0441\u0442\u043e \u0424\u0438\u043b\u0430, \u0441\u043b\u0438\u0432\u044b\u0447, \u0442\u0432\u043e\u0440\u043e\u0433, \u0441\u044b\u0440, \u0437\u0435\u043b\u0435\u043d\u044c", "html_path": "recipes/greek-cheese-pie.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0413\u0440\u0435\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u044b\u0440\u043d\u044b\u0439 \u043f\u0438\u0440\u043e\u0433", "url": "/recipes/greek-cheese-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0430\u043d\u043a\u0430, \u043a\u0435\u0444\u0438\u0440, \u0441\u0430\u0445\u0430\u0440, \u0444\u0440\u0443\u043a\u0442\u044b", "html_path": "recipes/mannik-kefir.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041c\u0430\u043d\u043d\u0438\u043a \u043d\u0430 \u043a\u0435\u0444\u0438\u0440\u0435 \u0441 \u0444\u0440\u0443\u043a\u0442\u0430\u043c\u0438", "url": "/recipes/mannik-kefir"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0438 \u043c\u0430\u043d\u043d\u0438\u043a, \u0442\u0443\u043f\u0430 \u0437\u0430\u043c\u0435\u0448\u0438\u0432\u0430\u0435\u0448\u044c \u0442\u0435\u0441\u0442\u043e, \u0437\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u0448\u044c \u044f\u0431\u043b\u043e\u043a\u0438 \u0438 \u0432\u0443\u0430\u043b\u044f", "html_path": "recipes/sharlotka.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u043f\u043b\u043e\u0442\u043a\u0430", "url": "/recipes/sharlotka"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0441\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c, \u043d\u043e \u0441 \u0442\u0435\u0441\u0442\u043e\u043c", "html_path": "recipes/tuna-pie.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041f\u0438\u0440\u043e\u0433 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/tuna-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u043e \u043f\u0430\u0448\u043e\u0442 \u043d\u0430 \u0431\u0440\u0438\u043e\u0448\u0435 \u0441 \u0442\u043e\u043f\u0438\u043d\u0433\u0430\u043c\u0438, \u043f\u043e\u043b\u0438\u0442\u043e\u0435 \u0441\u043e\u0443\u0441\u043e\u043c \u0433\u043e\u043b\u043b\u0430\u043d\u0434\u0435\u0437", "html_path": "recipes/eegs-benedict.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u042f\u0439\u0446\u0430 \u0411\u0435\u043d\u0435\u0434\u0438\u043a\u0442", "url": "/recipes/eegs-benedict"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u043e\u0431\u044b\u0447\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430, \u043d\u043e \u0441 \u0442\u044b\u043a\u0432\u043e\u0439 \u0438 \u0441\u043f\u0435\u0446\u0438\u044f\u043c\u0438", "html_path": "recipes/zapekanka-pumpkin.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u044b\u043a\u0432\u0435\u043d\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430", "url": "/recipes/zapekanka-pumpkin"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0440\u044b\u0431\u043a\u043e\u0439, \u0441\u044b\u0440\u043e\u043c, \u044f\u0439\u0446\u043e\u043c, \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/smorrebrod-fish.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441 \u0440\u044b\u0431\u043e\u0439", "url": "/recipes/smorrebrod-fish"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421 \u0442\u043e\u043f\u043e\u0432\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/shawarma.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u0443\u0440\u043c\u0430 \u0441 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "url": "/recipes/shawarma"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0410\u043b\u044f \u043b\u0430\u0437\u0430\u043d\u044c\u044f, \u043d\u043e \u0438\u0437 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u043e\u0432", "html_path": "recipes/egg-plant-parmigiano.html", "include_in_index": null, "section": "recipes_main", "title": "\u0411\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u044b \u041f\u0430\u0440\u043c\u0438\u0434\u0436\u0430\u043d\u043e", "url": "/recipes/egg-plant-parmigiano"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0435\u0447\u0435\u043d\u044c \u0441 \u043a\u0438\u0441\u043b\u043e-\u0441\u043b\u0430\u0434\u043a\u0438\u043c \u0433\u0430\u0440\u043d\u0438\u0440\u043e\u043c \u0438\u0437 \u044f\u0431\u043b\u043e\u043a \u0438 \u043b\u0443\u043a\u0430", "html_path": "recipes/berlin-liver.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0435\u0447\u0435\u043d\u044c \u043f\u043e-\u0431\u0435\u0440\u043b\u0438\u043d\u0441\u043a\u0438", "url": "/recipes/berlin-liver"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0447\u0435\u0441\u043d\u043e\u0447\u043d\u043e-\u0441\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0441\u043e \u0441\u0432\u0435\u0436\u0435\u0439 \u0437\u0435\u043b\u0435\u043d\u044c\u044e", "html_path": "recipes/chicken-shkmeruli.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0427\u043a\u043c\u0435\u0440\u0443\u043b\u0438", "url": "/recipes/chicken-shkmeruli"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0435 \u043a\u043e\u0442\u043b\u0435\u0442\u043a\u0438 \u0438\u0437 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u0431\u0430 \u0438 \u0441\u043e\u0443\u0441\u043e\u043c \u0438\u0437 \u043c\u0430\u043b\u043e\u0441\u043e\u043b\u044c\u043d\u044b\u0445 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u043e\u0432", "html_path": "recipes/crab-cakes.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0440\u0430\u0431-\u043a\u0435\u0439\u043a\u0438", "url": "/recipes/crab-cakes"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u043e\u0444\u0435\u043b\u044c\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u0438\u0437 5 \u0438\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u043e\u0432", "html_path": "recipes/gratin.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0430\u0440\u0442\u043e\u0444\u0435\u043b\u044c\u043d\u044b\u0439 \u0413\u0440\u0430\u0442\u0435\u043d \u0441 \u0446\u0432\u0435\u0442\u043d\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439 \u0438 \u0440\u044b\u0431\u043e\u0439", "url": "/recipes/gratin"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0427\u0442\u043e-\u0442\u043e \u0442\u0438\u043f\u0430 \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0438, \u043e\u0447\u0435\u043d\u044c \u0432\u043a\u0443\u0441\u043d\u043e, \u043d\u043e \u0438 \u0432\u043e\u0437\u043d\u0438 \u043d\u0435 \u043c\u0430\u043b\u043e", "html_path": "recipes/shepherds-pie.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0430\u0441\u0442\u0443\u0448\u0438\u0439 \u043f\u0438\u0440\u043e\u0433", "url": "/recipes/shepherds-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u0430\u044f \u043a\u0443\u0440\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0432 \u0432\u043a\u0443\u0441\u043d\u0435\u0439\u0448\u0435\u043c \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/chicken-provence.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0432 \u0441\u043e\u0443\u0441\u0435 \u041f\u0440\u043e\u0432\u0430\u043d\u0441\u0430\u043b\u044c", "url": "/recipes/chicken-provence"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0438\u043b\u0435 \u0438\u043d\u0434\u0435\u0439\u043a\u0438 \u0441 \u043e\u0432\u043e\u0449\u043d\u044b\u043c \u0441\u043e\u0442\u0435 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e-\u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0438 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "html_path": "recipes/chilli-turkey.html", "include_in_index": null, "section": "recipes_main", "title": "\u0418\u043d\u0434\u0435\u0439\u043a\u0430 \u0441 \u0427\u0438\u043b\u0438, \u0444\u0430\u0441\u043e\u043b\u044c\u044e \u0438 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/chilli-turkey"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u043d\u043d\u044b\u0435 \u0431\u0435\u0434\u0440\u044b\u0448\u043a\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0442\u043e\u043c \u044f\u043c \u0441\u043e \u0441\u043f\u0430\u0433\u0435\u0442\u0442\u0438", "html_path": "recipes/tom-yam-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u0438 \u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0422\u043e\u043c \u044f\u043c", "url": "/recipes/tom-yam-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u043f\u0430\u0441\u0442\u0430, \u0442\u043e\u043b\u044c\u043a\u043e \u0441 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "html_path": "recipes/string-beans-bolognese.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0430\u0441\u043e\u043b\u044c \u0411\u043e\u043b\u043e\u043d\u044c\u0435\u0437\u0435", "url": "/recipes/string-beans-bolognese"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u043d\u0436\u0443\u0442\u043d\u043e-\u043d\u0443\u0442\u043e\u0432\u043e\u0435 \u043f\u044e\u0440\u0435, \u0430\u0440\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0444\u0430\u0440\u0441 \u0438 \u0441\u0430\u043b\u044c\u0441\u0430 - \u043e\u0447 \u0441\u044b\u0442\u043d\u043e \u0438 \u0432\u043a\u0443\u0441\u043d\u043e", "html_path": "recipes/nut-pure.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u044e\u0440\u0435 \u0438\u0437 \u043d\u0443\u0442\u0430 \u0441 \u0444\u0430\u0440\u0448\u0435\u043c", "url": "/recipes/nut-pure"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u0442\u043b\u0435\u0442\u044b", "html_path": "recipes/cutlet.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u043e\u0442\u043b\u0435\u0442\u044b", "url": "/recipes/cutlet"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0435\u0447\u0430 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u0441 \u043e\u043a\u043e\u0440\u043e\u0447\u043a\u0430 \u0438 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/buckwheat-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u0430\u044f \u041a\u0443\u0440\u0438\u0446\u0430 \u0441 \u0413\u0440\u0435\u0447\u043a\u043e\u0439", "url": "/recipes/buckwheat-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u0441\u043e\u0443\u0441 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u0430\u0432\u043e\u043a\u0430\u0434\u043e \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0438 \u043d\u0430\u0447\u043e\u0441", "html_path": "recipes/guakomolle.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u0443\u0430\u043a\u0430\u043c\u043e\u043b\u0435", "url": "/recipes/guakomolle"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430, \u043b\u0443\u043a, \u043f\u0435\u0440\u0447\u0438\u043a \u0438 \u0432\u0441\u0435 \u044d\u0442\u043e \u043f\u043e\u0434 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043c\u043e\u043b\u043e\u0442\u043e\u0433\u043e \u043f\u0435\u0440\u0446\u0430", "html_path": "recipes/pepper-sauce-beef.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430 \u0432 \u043f\u0435\u0440\u0435\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/pepper-sauce-beef"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0430\u0440\u0448, \u043a\u0430\u043f\u0443\u0441\u0442\u0430 \u0438 \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u043e\u0443\u0441", "html_path": "recipes/lazy-golubcy.html", "include_in_index": null, "section": "recipes_main", "title": "\u041b\u0435\u043d\u0438\u0432\u044b\u0435 \u0413\u043e\u043b\u0443\u0431\u0446\u044b", "url": "/recipes/lazy-golubcy"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0441\u0435 \u0432 \u0433\u043e\u0440\u0448\u043e\u0447\u0435\u043a, \u0433\u043e\u0440\u0448\u043e\u0447\u0435\u043a \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0443, \u0438 \u043a\u0430\u0439\u0444\u0443\u0435\u043c", "html_path": "recipes/pot-meat.html", "include_in_index": null, "section": "recipes_main", "title": "\u041c\u044f\u0441\u043e \u0432 \u0433\u043e\u0440\u0448\u043e\u0447\u043a\u0435", "url": "/recipes/pot-meat"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0432 \u0418\u043a\u0435\u0435", "html_path": "recipes/ikea-meat-balls.html", "include_in_index": null, "section": "recipes_main", "title": "\u0428\u0432\u0435\u0434\u0441\u043a\u0438\u0435 \u0444\u0440\u0438\u043a\u0430\u0434\u0435\u043b\u044c\u043a\u0438 \u0441 \u0431\u0440\u0443\u0441\u043d\u0438\u0447\u043d\u044b\u043c \u0438 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u0430\u043c\u0438", "url": "/recipes/ikea-meat-balls"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u0448\u0435\u043d\u0430\u044f \u043a\u0430\u043f\u0443\u0441\u0442\u043a\u0430 \u0441 \u0441\u043e\u0441\u0438\u0441\u0430\u043c\u0438", "html_path": "recipes/bikus.html", "include_in_index": null, "section": "recipes_main", "title": "\u0421\u043e\u043b\u044f\u043d\u043a\u0430 / \u0411\u0438\u043a\u0443\u0441 \u0441\u043e \u0448\u043f\u0438\u043a\u0430\u0447\u043a\u0430\u043c\u0438 / \u0441\u043e\u0441\u0438\u0441\u043a\u0430\u043c\u0438", "url": "/recipes/bikus"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0438\u0441\u0438\u043a \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0432 \u043a\u0438\u0442\u0430\u0439\u0441\u043a\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u0435 \u0438 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/golybci-china.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u043e\u043b\u0443\u0431\u0446\u044b \u043f\u043e-\u043a\u0438\u0442\u0430\u0439\u0441\u043a\u0438", "url": "/recipes/golybci-china"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0435 \u043a\u043e\u043b\u0431\u0430\u0441\u043a\u0438 \u0438 \u0431\u0440\u043e\u043a\u043a\u043e\u043b\u0438 \u0432 \u0441\u044b\u0440\u043d\u043e\u0439 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435", "html_path": "recipes/sausage-broccoli.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u043e\u043b\u0431\u0430\u0441\u043a\u0438 \u0441 \u0431\u0440\u043e\u043a\u043a\u043e\u043b\u0438 \u0432 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u0439 \u043a\u043e\u0440\u043e\u0447\u043a\u0435", "url": "/recipes/sausage-broccoli"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u0430 \u0438 \u043a\u0430\u0440\u0442\u043e\u0445\u0430 \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435 \u0438 \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/fish-and-chips.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0438\u0448 \u044d\u043d\u0434 \u0447\u0438\u043f\u0441 \u0441 \u043f\u044e\u0440\u0435 \u0438\u0437 \u0433\u043e\u0440\u043e\u0448\u043a\u0430", "url": "/recipes/fish-and-chips"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u0432 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0447\u0435\u0441\u043d\u043e\u0447\u043d\u043e\u043c \u043c\u0430\u0441\u043b\u0435", "html_path": "recipes/shrimps-pil-pil.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u043f\u0438\u043b\u044c-\u043f\u0438\u043b\u044c", "url": "/recipes/shrimps-pil-pil"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u0430\u044f \u0440\u044b\u0431\u0430 \u0441 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "html_path": "recipes/terpug-potato.html", "include_in_index": null, "section": "recipes_main", "title": "\u0422\u0435\u0440\u043f\u0443\u0433 \u0441 \u043c\u044f\u0442\u043e\u0439 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "url": "/recipes/terpug-potato"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u043d\u044b\u0439 \u043f\u0438\u0440\u043e\u0433", "html_path": "recipes/pie-wellington-fish.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0438\u0448 \"\u0412\u0435\u043b\u0438\u043d\u0433\u0442\u043e\u043d\" \u0432 \u0441\u043b\u043e\u0435\u043d\u043e\u043c \u0442\u0435\u0441\u0442\u0435 \u0441\u043e \u0448\u043f\u0438\u043d\u0430\u0442\u043e\u043c", "url": "/recipes/pie-wellington-fish"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u043e\u0432 \u043f\u043e-\u0438\u0441\u043f\u0430\u043d\u0441\u043a\u0438", "html_path": "recipes/paella.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0430\u044d\u043b\u044c\u044f", "url": "/recipes/paella"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0438\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u043e\u043c \u0441\u0442\u0438\u043b\u0435", "html_path": "recipes/pepperonata-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0435\u043f\u0435\u0440\u043e\u043d\u0430\u0442\u0430 \u0441 \u043a\u0443\u0440\u0438\u0446\u0435\u0439", "url": "/recipes/pepperonata-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u0430\u044f \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430 \u0441 \u043a\u043e\u043b\u044c\u0446\u0430\u043c\u0438 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u0430", "html_path": "recipes/pasta-salmon.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0441 \u043b\u043e\u0441\u043e\u0441\u0435\u043c \u0432 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "url": "/recipes/pasta-salmon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0430\u043a\u0430\u0440\u0438\u043a\u0438, \u043f\u043e\u0442\u0438\u0442\u044b\u0435 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c, \u043c\u043d\u043e\u0433\u043e \u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u0430, \u0438 \u0432\u0441\u0435 \u044d\u0442\u043e \u043f\u043e\u0441\u044b\u043f\u0430\u043d\u043e \u0441\u044b\u0440\u043e\u043c", "html_path": "recipes/pasta-scallop.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c", "url": "/recipes/pasta-scallop"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u0430\u044f \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430 \u0441 \u043a\u043e\u043b\u044c\u0446\u0430\u043c\u0438 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u0430", "html_path": "recipes/pasta-squid.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u043e\u043c", "url": "/recipes/pasta-squid"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043d\u0435\u0446, \u043f\u0430\u0441\u0442\u0430, \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u044b, \u0447\u0435\u0441\u043d\u043e\u043a, \u043b\u0443\u043a, \u043e\u043b\u0438\u0432\u043a\u0438", "html_path": "recipes/pasta-tuna.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/pasta-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u043c \u0432 \u043c\u0430\u043a\u0430\u0440\u0438\u043a\u0438 \u0432\u0441\u0435 \u0447\u0435 \u0435\u0441\u0442\u044c", "html_path": "recipes/pasta-flot.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041c\u0430\u043a\u0430\u0440\u043e\u043d\u044b \u043f\u043e \u0444\u043b\u043e\u0442\u0441\u043a\u0438 \u0441 \u043f\u0440\u0438\u043a\u043e\u043b\u0430\u043c\u0438", "url": "/recipes/pasta-flot"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u043c\u0430\u0442\u043d\u043e, \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u043d\u043e, \u0441\u044b\u0442\u043d\u043e", "html_path": "recipes/pasta-ala-norma.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0410\u043b\u0430 \u043d\u043e\u0440\u043c\u0430 \u0441 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u0430\u043c\u0438", "url": "/recipes/pasta-ala-norma"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e-\u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-alfredo.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0410\u043b\u044c\u0444\u0440\u0435\u0434\u043e", "url": "/recipes/pasta-alfredo"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0430\u043c\u0430\u044f \u043f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430, \u0432\u0430\u0440\u0438\u043a \u043d\u0430 \u0436\u0435\u043b\u0442\u043a\u0430\u0445", "html_path": "recipes/pasta-carbonara.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u041a\u0430\u0440\u0431\u043e\u043d\u0430\u0440\u0430", "url": "/recipes/pasta-carbonara"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e-\u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-beetroot.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441\u043e \u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u044b\u043c \u043f\u0435\u0441\u0442\u043e", "url": "/recipes/pasta-beetroot"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0435\u0444\u0442\u0435\u043b\u044c\u043a\u0438, \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u043e\u0443\u0441, \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-meatballs.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0441 \u0444\u0440\u0438\u043a\u0430\u0434\u0435\u043b\u044c\u043a\u0430\u043c\u0438 \u0438\u0437 \u0438\u043d\u0434\u0435\u0439\u043a\u0438", "url": "/recipes/pasta-meatballs"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u043d\u043e\u0433\u043e \u0437\u0435\u043b\u0435\u043d\u0438, \u0443\u0442\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0438 \u0431\u043e\u043c\u0431\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0430\u043f\u0435\u043b\u044c\u0441\u0438\u043d\u043e\u0432\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/duck-salad.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0443\u0442\u043a\u043e\u0439", "url": "/recipes/duck-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0430\u0438\u043f\u0440\u043e\u0441\u0442\u0435\u0439\u0448\u0438\u0439 \u0441\u0430\u043b\u0430\u0442\u0438\u043a, \u0438 \u0442\u0430\u043a \u0432\u0441\u0435 \u043f\u043e\u043d\u044f\u0442\u043d\u043e", "html_path": "recipes/salad-greek.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0413\u0440\u0435\u0447\u0435\u0441\u043a\u0438\u0439", "url": "/recipes/salad-greek"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043f\u0443\u0441\u0442\u043d\u044b\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u043e\u0439", "html_path": "recipes/coleslaw.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041a\u043e\u0443\u0441\u043b\u043e\u0443", "url": "/recipes/coleslaw"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u043a\u0430, \u043a\u0440\u0430\u0431\u043e\u0432\u044b\u0435 \u043f\u0430\u043b\u043e\u0447\u043a\u0438, \u043a\u0443\u043a\u0443\u0440\u0443\u0437\u0430, \u0440\u0438\u0441, \u044f\u0439\u0446\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438", "html_path": "recipes/crab-salad.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041a\u0440\u0430\u0431\u043e\u0432\u044b\u0439 \u0441\u0430\u043b\u0430\u0442", "url": "/recipes/crab-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0430\u043b\u0430\u0442 \u0438\u0437 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0445 \u043e\u0432\u043e\u0449\u0435\u0439 \u0441 \u0442\u0430\u0440\u0445\u0443\u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u043e\u0439", "html_path": "recipes/salad-mangal.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041c\u0430\u043d\u0433\u0430\u043b \u0441\u0430\u043b\u0430\u0442", "url": "/recipes/salad-mangal"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043f\u0443\u0441\u0442\u043a\u0430, \u0440\u0435\u0434\u0438\u0441\u043e\u0447\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438", "html_path": "recipes/salad-spring.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0412\u0435\u0441\u0435\u043d\u043d\u0438\u0439", "url": "/recipes/salad-spring"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u044b \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435, \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u044b, \u043a\u0438\u043d\u0437\u0430, \u0441\u0432\u0438\u0442-\u0447\u0438\u043b\u0438", "html_path": "recipes/salad-egg-plant.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u0430\u043c\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0421\u043b\u0430\u0434\u043a\u0438\u0439 \u0427\u0438\u043b\u0438", "url": "/recipes/salad-egg-plant"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043d\u0435\u0446, \u043f\u0435\u0440\u0435\u0446, \u043b\u0443\u043a, \u043e\u0433\u0443\u0440\u0435\u0446, \u043a\u0430\u043f\u0435\u0440\u0441\u044b \u0438 \u0433\u043e\u0440\u0447\u0438\u0447\u043d\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/salad-tuna-pepper.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c \u0438 \u0437\u0430\u043c\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043f\u0435\u0440\u0446\u0435\u043c", "url": "/recipes/salad-tuna-pepper"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0438\u043d\u0438\u043a\u0438, \u043a\u043e\u0437\u0438\u0439 \u0441\u044b\u0440, \u0433\u0440\u0430\u043d\u0430\u0442\u043e\u0432\u044b\u0439 \u0441\u043e\u0443\u0441 \u0438 \u0441\u0432\u0435\u0436\u0430\u044f \u0437\u0435\u043b\u0435\u043d\u044c", "html_path": "recipes/salad-turkish-finiki.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0422\u0443\u0440\u0435\u0446\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0444\u0438\u043d\u0438\u043a\u0430\u043c\u0438", "url": "/recipes/salad-turkish-finiki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0442\u0435\u043a\u043b\u044f\u043d\u043d\u0430\u044f \u043b\u0430\u043f\u0448\u0430, \u0433\u0440\u0438\u0431\u044b, \u043c\u043e\u0440\u043a\u043e\u0432\u043e\u0447\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438, \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/funchosa-shrooms.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0424\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u0432\u0435\u0448\u0435\u043d\u043a\u0430\u043c\u0438 \u0438 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/funchosa-shrooms"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430, \u0441\u0430\u043b\u0430\u0442, \u0447\u0435\u0440\u0440\u0438\u043a\u0438, \u0441\u043e\u0443\u0441, \u043f\u0430\u0440\u043c\u0435\u0437\u0430\u043d, \u0441\u0443\u0445\u0430\u0440\u0438\u043a\u0438", "html_path": "recipes/salad-caesar.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u0421\u0430\u043b\u0430\u0442 \u0426\u0435\u0437\u0430\u0440\u044c", "url": "/recipes/salad-caesar"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0438\u0441\u043b\u044b\u0439, \u043d\u0430\u0441\u044b\u0449\u0435\u043d\u043d\u044b\u0439 \u0441\u0443\u043f \u0441 \u043e\u0431\u0438\u043b\u0438\u0435\u043c \u043c\u044f\u0441\u0430", "html_path": "recipes/solyanka-soup-sauerkraut.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0421\u043e\u043b\u044f\u043d\u043a\u0430 \u0441 \u043a\u0432\u0430\u0448\u0435\u043d\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439", "url": "/recipes/solyanka-soup-sauerkraut"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0438\u0431\u043d\u043e\u0439, \u0433\u0443\u0441\u0442\u043e\u0439 \u0438 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u0439", "html_path": "recipes/champignons-cream-soup.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0413\u0440\u0438\u0431\u043d\u043e\u0439 \u043a\u0440\u0435\u043c \u0441\u0443\u043f", "url": "/recipes/champignons-cream-soup"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u044f\u043d\u044b\u0439 \u0438 \u043d\u0435\u0436\u043d\u044b\u0439 \u0441\u0443\u043f \u0438\u0437 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u044b \u0441 \u043b\u0435\u0433\u043a\u043e\u0439 \u043a\u0438\u0441\u043b\u0438\u043d\u043a\u043e\u0439", "html_path": "recipes/mashed-orange-lentil-soup.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f-\u043f\u044e\u0440\u0435 \u0438\u0437 \u043a\u0440\u0430\u0441\u043d\u043e\u0439 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u044b", "url": "/recipes/mashed-orange-lentil-soup"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0447\u0435\u043d\u044c \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0438 \u043e\u0447\u0435\u043d\u044c \u0441\u044b\u0442\u043d\u044b\u0439", "html_path": "recipes/tomato-soup-with-lentil.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0422\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u0443\u043f \u0441 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439 \u0438 \u0444\u0430\u0440\u0448\u0435\u043c", "url": "/recipes/tomato-soup-with-lentil"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u0441\u044e\u043f\u0438\u043a, \u0433\u043b\u0430\u0432\u043d\u043e\u0435 \u0431\u0443\u043b\u044c\u043e\u043d \u043e\u0442\u0432\u0430\u0440\u0438\u0442\u044c \u0437\u0430\u0440\u0430\u043d\u0435\u0435", "html_path": "recipes/soup-chicken.html", "include_in_index": null, "section": "recipes_soup", "title": "\u041a\u0443\u0440\u0438\u043d\u044b\u0439 \u0441\u0443\u043f", "url": "/recipes/soup-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0441\u044e \u043c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u043a\u0443 \u0437\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u043c \u0432 \u043a\u0430\u0441\u0442\u0440\u044e\u043b\u044e \u0438 \u043f\u0440\u0438\u0433\u043e\u0432\u0430\u0440\u0438\u0432\u0430\u0435\u043c \"\u0443\u0445, \u0431\u043b\u044f\"", "html_path": "recipes/soup-mexican.html", "include_in_index": null, "section": "recipes_soup", "title": "\u041c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u043e\u0441\u0442\u0440\u044b\u0439 \u0444\u0430\u0441\u043e\u043b\u0435\u0432\u044b\u0439 \u0441\u0443\u043f", "url": "/recipes/soup-mexican"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0438\u043a\u0430\u043d\u0442\u043d\u044b\u0439 \u0433\u0440\u0443\u0437\u0438\u043d\u0441\u043a\u0438\u0439 \u0441\u0443\u043f \u043d\u0430 \u0433\u043e\u0432\u044f\u0436\u044c\u0435\u043c \u0431\u0443\u043b\u044c\u043e\u043d\u0435", "html_path": "recipes/soup-harcho.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0425\u0430\u0440\u0447\u043e", "url": "/recipes/soup-harcho"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u0430\u044f \u043f\u043e\u0445\u043b\u0435\u0431\u043a\u0430 \u0441 \u043c\u044f\u0441\u043e\u043c, \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0438 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439", "html_path": "recipes/soup-lamb-chechvica.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0438\u0437 \u0431\u0430\u0440\u0430\u043d\u0438\u043d\u044b \u0441 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439", "url": "/recipes/soup-lamb-chechvica"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0441\u0442\u0440\u044b\u0439 \u0441\u0443\u043f \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043a\u043e\u043a\u043e\u0441\u043e\u0432\u043e\u0433\u043e \u043c\u043e\u043b\u043e\u043a\u0430, \u0438 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0445 \u043a\u043e\u0440\u043d\u0435\u043f\u043b\u043e\u0434\u043e\u0432", "html_path": "recipes/soup-tom-yam.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0422\u043e\u043c \u042f\u043c", "url": "/recipes/soup-tom-yam"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0438\u0441\u043a\u0432\u0438\u0442, \u044f\u0433\u043e\u0434\u043a\u0438 \u0438 \u043a\u0430\u0440\u0430\u043c\u0435\u043b\u044c\u043d\u043e-\u043c\u0438\u043d\u0434\u0430\u043b\u044c\u043d\u0430\u044f \u0437\u0430\u043b\u0438\u0432\u043a\u0430", "html_path": "recipes/almond-lingonberry-pie.html", "include_in_index": null, "section": "recipes_sweet", "title": "\u0411\u0440\u0443\u0441\u043d\u0438\u0447\u043d\u044b\u0439 \u041f\u0438\u0440\u043e\u0433", "url": "/recipes/almond-lingonberry-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0428\u043e\u043a\u043e\u043b\u0430\u0434\u043d\u044b\u0439 \u043a\u0435\u043a\u0441 \u0441 \u0432\u0438\u0448\u043d\u0435\u0439 \u0432\u043d\u0443\u0442\u0440\u0438, \u0448\u0430\u0440\u0438\u043a\u043e\u043c \u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u0432\u0435\u0440\u0445\u0443, \u043f\u043e\u043b\u0438\u0442\u044b\u0439 \u0432\u0438\u0448\u043d\u0435\u0432\u044b\u043c \u0441\u0438\u0440\u043e\u043f\u043e\u043c", "html_path": "recipes/brownie-cherry.html", "include_in_index": null, "section": "recipes_sweet", "title": "\u0411\u0440\u0430\u0443\u043d\u0438 \u0441 \u0432\u0438\u0448\u043d\u0435\u0439", "url": "/recipes/brownie-cherry"}],
+                recipes: [{"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0430\u0438\u043f\u0440\u043e\u0441\u0442\u0435\u0439\u0448\u0430\u044f \u0430\u0437\u0438\u0430\u0442\u043e\u0447\u043a\u0430: \u0442\u0443\u043f\u0430 \u0432\u0441\u0435 \u0447\u0442\u043e \u0435\u0441\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u043e\u0441\u0435 \u0441\u0432\u0430\u043b\u0438\u0432\u0430\u0435\u0448\u044c \u0432 \u0441\u043a\u043e\u0432\u043e\u0440\u043e\u0434\u0443 \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0440\u0438\u0441\u043e\u043c, \u043f\u043e\u043b\u0438\u0432\u0430\u0435\u0448\u044c \u043f\u0430\u0440\u043e\u0439 \u0441\u043e\u0443\u0441\u043e\u0432 - \u0438 \u0432\u0443\u0430 \u043b\u044f", "html_path": "recipes/asian-fried-rice.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0416\u0430\u0440\u0435\u043d\u044b\u0439 \u0440\u0438\u0441\u0438\u043a \u0432 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u043e\u043c \u0441\u0442\u0438\u043b\u0435", "url": "/recipes/asian-fried-rice"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0430\u0440\u0438\u0430\u043d\u0442 \u0420\u0430\u043c\u0435\u043d\u0430 \u043d\u0430 \u043c\u0438\u0441\u043e \u0431\u0443\u043b\u044c\u043e\u043d\u0435", "html_path": "recipes/miso-ramen.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041c\u0438\u0441\u043e \u0420\u0430\u043c\u0435\u043d", "url": "/recipes/miso-ramen"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041b\u0430\u043f\u0448\u0438\u0447\u043a\u0430 \u0441 \u0442\u043e\u043f\u043f\u0438\u043d\u0433\u0430\u043c\u0438 \u043f\u043e\u0434 \u043c\u043e\u0449\u043d\u044b\u043c \u0431\u0443\u043b\u044c\u043e\u043d\u043e\u043c", "html_path": "recipes/ramen.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043c\u0435\u043d \u043e\u0442 \u0412\u0430\u0441\u0438", "url": "/recipes/ramen"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0435\u0446\u0435\u043f\u0442\u044b \u0441 Shin Ramyun \u0441 \u043a\u0430\u043d\u0430\u043b\u0430 FoodKor", "html_path": "recipes/ramyun.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043c\u0451\u043d\u044b", "url": "/recipes/ramyun"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u0430\u044f \u0443\u0442\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0438 \u0441\u043e\u0431\u043e\u0439 \u043f\u043e\u0434 \u0442\u0435\u0440\u0438\u044f\u043a\u0438 \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/duck-soba.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u043e\u0431\u0430 \u0441 \u0443\u0442\u043a\u043e\u0439 \u0438 \u0442\u0435\u0440\u0438\u044f\u043a\u0438", "url": "/recipes/duck-soba"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u043d\u043e\u0433\u043e \u043d\u0430\u0447\u0438\u043d\u043a\u0438, \u043c\u043d\u043e\u0433\u043e \u0446\u0432\u0435\u0442\u043e\u0432, \u043c\u043d\u043e\u0433\u043e \u0432\u043a\u0443\u0441\u0430", "html_path": "recipes/korean-sandwich-tuna.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0441\u044d\u043d\u0434\u0432\u0438\u0447 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/korean-sandwich-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u043c\u0435\u0441\u044c \u0440\u0430\u043c\u0451\u043d\u0430 \u0438 \u0442\u043e\u043a\u043f\u043e\u043a\u043a\u0438 \u0432 \u043f\u0440\u044f\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/rabokki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0420\u0430\u043f\u043e\u043a\u043a\u0438", "url": "/recipes/rabokki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041b\u043e\u0441\u043e\u0441\u044c \u0432 \u0441\u043f\u0430\u0439\u0441\u0438 \u043c\u0430\u0439\u043e\u043d\u0435\u0437\u0435 \u0441 \u0440\u0438\u0441\u0438\u043a\u043e\u043c \u0438 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u043e\u043c, \u0437\u0430\u0432\u0435\u0440\u043d\u0443\u0442\u044b\u043c \u0432 \u043d\u043e\u0440\u0438", "html_path": "recipes/salmon-hand-rolls.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0425\u044d\u043d\u0434 \u0440\u043e\u043b\u043b\u044b \u0441 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043b\u043e\u0441\u043e\u0441\u0435\u043c", "url": "/recipes/salmon-hand-rolls"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0444\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435\u043c \u0431\u043e\u0431\u043e\u0432 \u044d\u0434\u0430\u043c\u0435 \u0438 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c", "html_path": "recipes/scallop-funchosa.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0410\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c \u0438 \u0444\u0443\u043d\u0447\u043e\u0437\u043e\u0439", "url": "/recipes/scallop-funchosa"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0438\u0441\u043e\u0432\u044b\u0435 \u043a\u043b\u0451\u0446\u043a\u0438 \u0441 \u0441\u043e\u0441\u0438\u0441\u0430\u043c\u0438, \u0432\u0430\u0440\u0435\u043d\u044b\u043c\u0438 \u044f\u0439\u0446\u0430\u043c\u0438, \u0437\u0435\u043b\u0435\u043d\u044b\u043c \u043b\u0443\u0447\u043a\u043e\u043c \u0432 \u0433\u0443\u0441\u0442\u043e\u043c \u0441\u043f\u0430\u0439\u0441\u0438 \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/tteok-bokki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0422\u043e\u043a\u043f\u043e\u043a\u043a\u0438", "url": "/recipes/tteok-bokki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u0430 \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435 \u0438 \u0441\u043b\u0430\u0434\u043a\u043e-\u0441\u043e\u043b\u0435\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/pollock-korean.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041c\u0438\u043d\u0442\u0430\u0439 \u043f\u043e-\u043a\u043e\u0440\u0435\u0439\u0441\u043a\u0438", "url": "/recipes/pollock-korean"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430 \u0438 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438 - \u0431\u044b\u0441\u0442\u0440\u043e \u0438 \u0432\u043a\u0443\u0441\u043d\u043e", "html_path": "recipes/glass-wok-shrimps.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u0442\u0435\u043a\u043b\u044f\u043d\u043d\u044b\u0439 \u0432\u043e\u043a \u0441 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438", "url": "/recipes/glass-wok-shrimps"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0410\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0439 \u0434\u0440\u0430\u043d\u0438\u043a \u0438\u0437 \u043a\u0430\u043f\u0443\u0441\u0442\u044b \u0441 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/okonomiaki.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041e\u043a\u043e\u043d\u043e\u043c\u0438\u044f\u043a\u0438", "url": "/recipes/okonomiaki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043f\u0430 \u0440\u0438\u0441\u043e\u0432\u044b\u0435 \u0448\u0430\u0440\u044b \u0441 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439", "html_path": "recipes/lazy-phila.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041b\u0435\u043d\u0438\u0432\u0430\u044f \u0424\u0438\u043b\u0430\u0434\u0435\u043b\u044c\u0444\u0438\u044f", "url": "/recipes/lazy-phila"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0418\u0437\u0438 \u0430\u0437\u0438\u0430\u0442\u043a\u0430, \u0435\u0449\u0435 \u043f\u0440\u043e\u0449\u0435 \u0440\u0438\u0441\u0430", "html_path": "recipes/asian-udon-chicken.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0423\u0434\u043e\u043d \u0441 \u043a\u0443\u0440\u0438\u0446\u0435\u0439", "url": "/recipes/asian-udon-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u0448\u0435\u043d\u043e\u0435 \u043c\u044f\u0441\u043e \u0432 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/korean-gulash.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0433\u0443\u043b\u044f\u0448", "url": "/recipes/korean-gulash"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u043e\u043b\u043b\u044b \u043f\u043e-\u043a\u043e\u0440\u0435\u0439\u0441\u043a\u0438", "html_path": "recipes/kimpab.html", "include_in_index": null, "section": "recipes_asian", "title": "\u041a\u0438\u043c\u043f\u0430\u0431", "url": "/recipes/kimpab"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0430\u043c\u0451\u043d, \u0431\u0435\u043a\u043e\u043d, \u043c\u043d\u043e\u0433\u043e \u0441\u043b\u0438\u0432\u043e\u043a \u0438 \u0441\u044b\u0440\u0430", "html_path": "recipes/ramyon-creamy.html", "include_in_index": null, "section": "recipes_asian", "title": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u0439 \u0420\u0430\u043c\u0451\u043d \u0441 \u041a\u043e\u0447\u0443\u0434\u044f\u043d\u043e\u043c", "url": "/recipes/ramyon-creamy"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u044c\u0435\u0442\u043d\u0430\u043c\u0441\u043a\u0438\u0439 \u0441\u0435\u043d\u0434\u0432\u0438\u0447 \u043d\u0430 \u0434\u043e\u043c\u0430\u0448\u043d\u0438\u0439 \u043c\u0430\u043d\u0435\u0440", "html_path": "recipes/banh-mi.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043d\u044c \u041c\u0438", "url": "/recipes/banh-mi"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0439 \u0444\u0430\u0440\u0448 \u0441\u043e \u0441\u043f\u0435\u0446\u0438\u044f\u043c\u0438, \u0441\u043e\u0443\u0441 \u0438\u0437 \u0439\u043e\u0433\u0443\u0440\u0442\u0430 \u0438 \u0445\u0440\u0435\u043d\u0430, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0441\u0432\u0435\u0436\u0438\u0435 \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/pita-turkey.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041f\u0438\u0442\u0430 \u0441 \u0438\u043d\u0434\u0435\u0439\u043a\u043e\u0439", "url": "/recipes/pita-turkey"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0435\u0446\u0435\u043f\u0442 \u0431\u043b\u0438\u043d\u043e\u0432 + \u0432\u0430\u0440\u0438\u0430\u043d\u0442 \u043d\u0430\u0447\u0438\u043d\u043a\u0438 \u0430\u043b\u044f \u0445\u0430\u0447\u0430\u043f\u0443\u0440\u0438", "html_path": "recipes/bliny-hachapuri.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u043b\u0438\u043d\u044b \u0441 \u0441\u044b\u0440\u043d\u043e\u0439 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439 \ud83e\udd5e", "url": "/recipes/bliny-hachapuri"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u044b\u0435 \u0438 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0438\u0435", "html_path": "recipes/ground-beef-tortillas.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041b\u0435\u043f\u0451\u0448\u043a\u0438 \u0441\u043b\u043e\u0451\u043d\u044b\u0435 \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0438 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "url": "/recipes/ground-beef-tortillas"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e, \u0441\u043e\u0447\u043d\u043e, \u0445\u043b\u0435\u0431\u0430 \u043d\u0435\u043c\u043d\u043e\u0433\u043e - \u043e\u0442\u043b\u0438\u0447\u043d\u0430\u044f \u0430\u043b\u044c\u0442\u0435\u0440\u043d\u0430\u0442\u0438\u0432\u0430 \u043a\u043b\u0430\u0441\u0441\u0438\u043a\u0435", "html_path": "recipes/lavash-hotdog.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0425\u043e\u0442-\u0434\u043e\u0433 \u0432 \u043b\u0430\u0432\u0430\u0448\u0435", "url": "/recipes/lavash-hotdog"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0435 \u0441\u043b\u0430\u0439\u0441\u044b \u0431\u0430\u0433\u0435\u0442\u0430 \u0441 \u043d\u0430\u0447\u0438\u043d\u043a\u043e\u0439 \u0438\u0437 \u043a\u0440\u0435\u0432\u0435\u0442\u043e\u043a \u0438 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u0431\u0430 \u0432 \u0433\u043e\u0440\u0447\u0438\u0447\u043d\u043e\u0439 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0435", "html_path": "recipes/toast-shrimp.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u043e\u0441\u0442\u044b \u0441 \u043a\u0440\u0435\u0432\u0435\u0442\u043a\u0430\u043c\u0438 \u0438 \u043a\u0440\u0430\u0431\u043e\u0432\u044b\u043c \u043c\u044f\u0441\u043e\u043c", "url": "/recipes/toast-shrimp"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0439 \u0442\u0443\u043d\u0446\u043e\u0432\u044b\u0439 \u0440\u0438\u0435\u0442 \u0441 \u0441\u0435\u043b\u044c\u0434\u0435\u0440\u0435\u0435\u043c, \u043b\u0443\u043a\u043e\u043c \u0438 \u0438\u043c\u0431\u0438\u0440\u0435\u043c \u043d\u0430 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u043c \u0431\u0430\u0433\u0435\u0442\u0435, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u044f\u0439\u0446\u043e\u043c \u0438 \u043a\u0443\u043d\u0436\u0443\u0442\u043e\u043c", "html_path": "recipes/toast-tuna.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/toast-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u043e\u0442\u043d\u0435\u0439\u0448\u0438\u0439, \u0441\u044b\u0442\u043d\u0435\u0439\u0448\u0438\u0439 \u0441\u0430\u043b\u0430\u0442, \u043f\u043e\u0434\u0445\u043e\u0434\u0438\u0442 \u043a\u0430\u043a \u043d\u0430 \u0437\u0430\u0432\u0442\u0440\u0430\u043a, \u0442\u0430\u043a \u0438 \u043d\u0430 \u0443\u0436\u0438\u043d", "html_path": "recipes/tuna-salad.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c \u0438 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "url": "/recipes/tuna-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u043d\u0435\u0436\u043d\u0430\u044f \u0442\u0432\u043e\u0440\u043e\u0436\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u0441 \u0438\u0437\u044e\u043c\u043e\u043c", "html_path": "recipes/casserole-vasya.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0417\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u043e\u0442 \u0412\u0430\u0441\u0438", "url": "/recipes/casserole-vasya"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0435\u0442\u0447\u0438\u043d\u0430, \u0441\u043a\u0440\u0435\u043c\u0431\u043b \u0441 \u043b\u0443\u043a\u043e\u043c \u0438 \u0442\u043e\u043c\u0430\u0442\u0430\u043c\u0438 \u043d\u0430 \u043a\u0443\u0441\u043a\u0435 \u0445\u043b\u0435\u0431\u0430", "html_path": "recipes/ham-scramble-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0440\u0443\u0441\u043a\u0435\u0442\u0442\u0430 \u0441\u043e \u0441\u043a\u0440\u044d\u043c\u0431\u043b\u043e\u043c \u0438 \u0432\u0435\u0442\u0447\u0438\u043d\u043e\u0439", "url": "/recipes/ham-scramble-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u044b\u0439 \u0437\u0430\u0432\u0430\u0440\u043d\u043e\u0439 \u0445\u043b\u0435\u0431\u0443\u0448\u0435\u043a, \u0441\u043c\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u043a\u0440\u0435\u043c-\u0447\u0438\u0437\u043e\u043c, \u0441 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043c\u0438\u043d\u0442\u0430\u0435\u043c, \u0430\u0432\u043e\u043a\u0430\u0434\u043e, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u0441\u0430\u043b\u0430\u0442\u043e\u043c \u0430\u0439\u0441\u0431\u0435\u0440\u0433, \u043f\u0435\u0440\u0446\u0435\u043c \u0447\u0438\u043b\u0438, \u0438 \u043f\u043e\u043b\u0438\u0442\u044b\u0439 \u0441\u043f\u0430\u0439\u0441\u0438-\u043c\u0430\u0439\u043e\u043d\u0435\u0437\u043e\u043c", "html_path": "recipes/pollock-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u043c\u0438\u043d\u0442\u0430\u0435\u043c \u0438 \u0430\u0432\u043e\u043a\u0430\u0434\u043e", "url": "/recipes/pollock-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0439 \u0442\u0443\u043d\u0446\u043e\u0432\u044b\u0439 \u0440\u0438\u0435\u0442 \u0441 \u0441\u0435\u043b\u044c\u0434\u0435\u0440\u0435\u0435\u043c, \u043b\u0443\u043a\u043e\u043c \u0438 \u0438\u043c\u0431\u0438\u0440\u0435\u043c \u043d\u0430 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u043c \u0431\u0430\u0433\u0435\u0442\u0435, \u0443\u043a\u0440\u0430\u0448\u0435\u043d\u043d\u044b\u0439 \u044f\u0439\u0446\u043e\u043c \u0438 \u043a\u0443\u043d\u0436\u0443\u0442\u043e\u043c", "html_path": "recipes/tuna-sandwich.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/tuna-sandwich"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0430\u0448\u0442\u0435\u0442 \u0438\u0437 \u0433\u043e\u0440\u0431\u0443\u0448\u0438, \u044f\u0439\u0446\u043e, \u0441\u0430\u043b\u0430\u0442, \u0441\u043e\u0443\u0441", "html_path": "recipes/sandwich-salmon-riet.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0440\u0438\u0435\u0442\u043e\u043c \u0438\u0437 \u0433\u043e\u0440\u0431\u0443\u0448\u0438", "url": "/recipes/sandwich-salmon-riet"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u043d\u0430 \u0445\u043b\u0435\u0431\u0443\u0448\u043a\u0435", "html_path": "recipes/sandwich-shrimps-saganaki.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u043e\u0441\u0442 \"\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \"\u0421\u0430\u0433\u0430\u043d\u0430\u043a\u0438\"", "url": "/recipes/sandwich-shrimps-saganaki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u0430 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c-\u043f\u0440\u044f\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/shakshouka.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u043a\u0448\u0443\u043a\u0430", "url": "/recipes/shakshouka"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0425\u044d\u0448\u0431\u0440\u0430\u0443\u043d \u0438 \u0431\u0443\u0440\u0433\u0435\u0440 \u0441 \u044f\u0439\u0446\u043e\u043c \u0438 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "html_path": "recipes/mc-breakfast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041c\u0430\u043a \u0417\u0430\u0432\u0442\u0440\u0430\u043a", "url": "/recipes/mc-breakfast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u044b\u0439 \u0431\u0443\u0442\u0435\u0440 \u0441 \u0430\u0432\u043e\u043a\u0430\u0434\u043e, \u044f\u0439\u0446\u043e\u043c \u043f\u0430\u0448\u043e\u0442, \u0430 \u0442\u0430\u043a\u0436\u0435 \u0431\u0435\u043a\u043e\u043d\u043e\u043c \u0438\u043b\u0438 \u043a\u0440\u0430\u0441\u043d\u043e\u0439 \u0440\u044b\u0431\u043a\u043e\u0439", "html_path": "recipes/avocado-toast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0410\u0432\u043e\u043a\u0430\u0434\u043e \u0422\u043e\u0441\u0442", "url": "/recipes/avocado-toast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u0430 \u0441 \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u043a\u0430\u043c\u0438 \u0438 \u043a\u043e\u043b\u0431\u0430\u0441\u043e\u0439 \u0432 \u0442\u043e\u0440\u0442\u0438\u043b\u044c\u0435", "html_path": "recipes/quesadilla-morning.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u0435\u0441\u0430\u0434\u0438\u043b\u044c\u044f \u0443\u0442\u0440\u0435\u043d\u043d\u044f\u044f", "url": "/recipes/quesadilla-morning"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u0435\u0441\u043a\u0430\u0432\u0438\u0446\u0430 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0432 \u043f\u0438\u0442\u0435", "html_path": "recipes/balkan-pita-burger.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043b\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u0431\u0443\u0440\u0433\u0435\u0440 \u0441 \u043f\u0438\u0442\u043e\u0439", "url": "/recipes/balkan-pita-burger"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u043c-\u0447\u0438\u0437, \u0440\u044b\u0431\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438 \u0438 \u0432\u0441\u0435 \u043d\u0430 \u043f\u044b\u0448\u043d\u043e\u043c \u043a\u0440\u0443\u0430\u0441\u0441\u0430\u043d\u0435", "html_path": "recipes/croissant-salmon.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u0440\u0443\u0430\u0441\u0441\u0430\u043d \u0441 \u0440\u044b\u0431\u043a\u043e\u0439", "url": "/recipes/croissant-salmon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0435\u0447\u043a\u0430, \u0432\u0435\u0442\u0447\u0438\u043d\u0430, \u0433\u0440\u0438\u0431\u044b, \u044f\u0439\u0446\u043e", "html_path": "recipes/buckwheat-poke.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u043e\u0443\u043b \u0441 \u0433\u0440\u0435\u0447\u043a\u043e\u0439", "url": "/recipes/buckwheat-poke"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0438\u0447\u043d\u0438\u0446\u0430 \u0441\u043e \u0432\u0441\u044f\u043a\u0438\u043c\u0438 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/english-breakfast.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0410\u043d\u0433\u043b\u0438\u0439\u0441\u043a\u0438\u0439 \u0437\u0430\u0432\u0442\u0440\u0430\u043a", "url": "/recipes/english-breakfast"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u043c\u043b\u0435\u0442 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u043f\u043e-\u043f\u0440\u043e\u0441\u0442\u043e\u043c\u0443", "html_path": "recipes/baked-omlette.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044b\u0440\u043d\u044b\u0439 \u041e\u043c\u043b\u0435\u0442-\u0421\u0443\u0444\u043b\u0435", "url": "/recipes/baked-omlette"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0443\u043a\u043a\u043e\u043b\u043a\u0430, \u0432\u044f\u043b\u0435\u043d\u044b\u0435 \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u043a\u0438, \u043c\u043e\u0446\u0430\u0440\u044b\u043b\u0430 - \u0432\u0441\u044f\u043a\u043e\u0435 \u0438\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u043e\u0435", "html_path": "recipes/sandwich-italian.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0418\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u0438\u0439 \u0441\u044d\u043d\u0434\u0432\u0438\u0447", "url": "/recipes/sandwich-italian"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u0440\u0442\u0438\u043b\u044c\u044f \u0441 \u043a\u043e\u0442\u043b\u0435\u0442\u043e\u0439 \u0438 \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/taco-burger.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u0430\u043a\u043e-\u0411\u0443\u0440\u0433\u0435\u0440", "url": "/recipes/taco-burger"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0443\u0442\u0435\u0440 \u0441\u043e \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u044b\u0440\u043e\u043c, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0430\u043c\u0438, \u0438 \u0448\u043f\u0440\u043e\u0442\u0438\u043a\u0430\u043c\u0438", "html_path": "recipes/smorrebrod-shproti.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441\u043e \u0448\u043f\u0440\u043e\u0442\u0430\u043c\u0438 \u0438 \u043c\u0430\u0440\u0438\u043d\u043e\u0432\u0430\u043d\u043d\u044b\u043c\u0438 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0430\u043c\u0438", "url": "/recipes/smorrebrod-shproti"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0414\u0440\u0430\u043d\u0438\u043a \u0438\u0437 \u043a\u0430\u043f\u0443\u0441\u0442\u044b, \u0432\u0435\u0442\u0447\u0438\u043d\u0430, \u0433\u043e\u0440\u0447\u0438\u0446\u0430, \u043a\u0435\u0442\u0447\u0443\u043f", "html_path": "recipes/sandwich-cabbage-korean.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0438\u0439 \u0431\u0443\u0442\u0435\u0440\u0431\u0440\u043e\u0434 \u0441 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439", "url": "/recipes/sandwich-cabbage-korean"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0435\u0447\u0435\u043d\u044c, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438, \u0440\u0435\u0434\u0438\u0441\u043a\u0430, \u043a\u0430\u043f\u0435\u0440\u0441\u044b", "html_path": "recipes/smorrebrod-fish-liver.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441 \u043f\u0435\u0447\u0435\u043d\u044c\u044e \u0442\u0440\u0435\u0441\u043a\u0438", "url": "/recipes/smorrebrod-fish-liver"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0439 \u0441\u0435\u043d\u0434\u0432\u0438\u0447 \u0441 \u0441\u043e\u0443\u0441\u043e\u043c \u0431\u0435\u0448\u0430\u043c\u0435\u043b\u044c, \u0433\u043e\u0440\u0447\u0438\u0447\u043a\u043e\u0439, \u0441 \u0432\u0435\u0442\u0447\u0438\u043d\u043e\u0439 \u0438 \u0441\u044b\u0440\u043e\u043c", "html_path": "recipes/croc-madam.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044d\u043d\u0434\u0432\u0438\u0447 \"\u041a\u0440\u043e\u043a-\u043c\u0430\u0434\u0430\u043c\"", "url": "/recipes/croc-madam"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u043e, \u0431\u0435\u043a\u043e\u043d, \u043c\u0430\u0437\u0438\u043a, \u0441\u044b\u0440, \u043f\u043e\u043c\u0438\u0434\u043e\u0440, \u0441\u0430\u043b\u0430\u0442, \u0433\u043e\u0440\u0447\u0438\u0446\u0430", "html_path": "recipes/sandwich-egg-bacon.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044d\u043d\u0434\u0432\u0438\u0447 \u0441 \u044f\u0439\u0446\u043e\u043c \u0438 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "url": "/recipes/sandwich-egg-bacon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u0440\u0442\u0438\u043b\u044c\u044f \u0438 \u0432\u0441\u0435 \u0447\u0442\u043e \u0435\u0441\u0442\u044c \u0432 \u0445\u043e\u043b\u043e\u0434\u043e\u0441\u0435: \u043a\u0443\u043a\u0443\u0440\u0443\u0437\u0430, \u0444\u0430\u0440\u0448/\u0444\u0438\u043b\u0435, \u043f\u0435\u0440\u0435\u0446, \u043f\u043e\u043c\u0438\u0434\u043e\u0440, \u043b\u0443\u043a", "html_path": "recipes/tortilla-fajitas.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0424\u0430\u0445\u0438\u0442\u043e\u0441", "url": "/recipes/tortilla-fajitas"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0435, \u0432\u043e\u0437\u0434\u0443\u0448\u043d\u044b\u0435", "html_path": "recipes/syrniki.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u044b\u0440\u043d\u0438\u043a\u0438", "url": "/recipes/syrniki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0430\u0444\u043b\u0438, \u0431\u0430\u043d\u0430\u043d\u044b, \u0448\u043e\u043a\u043e\u043b\u0430\u0434, \u0441\u043c\u0435\u0442\u0430\u043d\u0430", "html_path": "recipes/banana-waffles.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0411\u0430\u043d\u0430\u043d\u043e\u0432\u044b\u0435 \u0432\u0430\u0444\u043b\u0438", "url": "/recipes/banana-waffles"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043f\u0430 \u0432\u0430\u0444\u043b\u0438 \u0432 \u0432\u0430\u0444\u0435\u043b\u044c\u043d\u0438\u0446\u0435", "html_path": "recipes/waffles.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0412\u0430\u0444\u043b\u0438", "url": "/recipes/waffles"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0435\u0441\u0442\u043e \u0424\u0438\u043b\u0430, \u0441\u043b\u0438\u0432\u044b\u0447, \u0442\u0432\u043e\u0440\u043e\u0433, \u0441\u044b\u0440, \u0437\u0435\u043b\u0435\u043d\u044c", "html_path": "recipes/greek-cheese-pie.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0413\u0440\u0435\u0447\u0435\u0441\u043a\u0438\u0439 \u0441\u044b\u0440\u043d\u044b\u0439 \u043f\u0438\u0440\u043e\u0433", "url": "/recipes/greek-cheese-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0430\u043d\u043a\u0430, \u043a\u0435\u0444\u0438\u0440, \u0441\u0430\u0445\u0430\u0440, \u0444\u0440\u0443\u043a\u0442\u044b", "html_path": "recipes/mannik-kefir.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041c\u0430\u043d\u043d\u0438\u043a \u043d\u0430 \u043a\u0435\u0444\u0438\u0440\u0435 \u0441 \u0444\u0440\u0443\u043a\u0442\u0430\u043c\u0438", "url": "/recipes/mannik-kefir"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0438 \u043c\u0430\u043d\u043d\u0438\u043a, \u0442\u0443\u043f\u0430 \u0437\u0430\u043c\u0435\u0448\u0438\u0432\u0430\u0435\u0448\u044c \u0442\u0435\u0441\u0442\u043e, \u0437\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u0448\u044c \u044f\u0431\u043b\u043e\u043a\u0438 \u0438 \u0432\u0443\u0430\u043b\u044f", "html_path": "recipes/sharlotka.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u043f\u043b\u043e\u0442\u043a\u0430", "url": "/recipes/sharlotka"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0441\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c, \u043d\u043e \u0441 \u0442\u0435\u0441\u0442\u043e\u043c", "html_path": "recipes/tuna-pie.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u041f\u0438\u0440\u043e\u0433 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/tuna-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u042f\u0439\u0446\u043e \u043f\u0430\u0448\u043e\u0442 \u043d\u0430 \u0431\u0440\u0438\u043e\u0448\u0435 \u0441 \u0442\u043e\u043f\u0438\u043d\u0433\u0430\u043c\u0438, \u043f\u043e\u043b\u0438\u0442\u043e\u0435 \u0441\u043e\u0443\u0441\u043e\u043c \u0433\u043e\u043b\u043b\u0430\u043d\u0434\u0435\u0437", "html_path": "recipes/eegs-benedict.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u042f\u0439\u0446\u0430 \u0411\u0435\u043d\u0435\u0434\u0438\u043a\u0442", "url": "/recipes/eegs-benedict"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u043e\u0431\u044b\u0447\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430, \u043d\u043e \u0441 \u0442\u044b\u043a\u0432\u043e\u0439 \u0438 \u0441\u043f\u0435\u0446\u0438\u044f\u043c\u0438", "html_path": "recipes/zapekanka-pumpkin.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0422\u044b\u043a\u0432\u0435\u043d\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430", "url": "/recipes/zapekanka-pumpkin"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0443\u0442\u0435\u0440 \u0441 \u0440\u044b\u0431\u043a\u043e\u0439, \u0441\u044b\u0440\u043e\u043c, \u044f\u0439\u0446\u043e\u043c, \u043e\u0432\u043e\u0449\u0430", "html_path": "recipes/smorrebrod-fish.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0421\u043c\u043e\u0440\u0440\u0435\u0431\u0440\u043e\u0434 \u0441 \u0440\u044b\u0431\u043e\u0439", "url": "/recipes/smorrebrod-fish"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421 \u0442\u043e\u043f\u043e\u0432\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c", "html_path": "recipes/shawarma.html", "include_in_index": null, "section": "recipes_breakfast", "title": "\u0428\u0430\u0443\u0440\u043c\u0430 \u0441 \u0431\u0435\u043a\u043e\u043d\u043e\u043c", "url": "/recipes/shawarma"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0410\u043b\u044f \u043b\u0430\u0437\u0430\u043d\u044c\u044f, \u043d\u043e \u0438\u0437 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u043e\u0432", "html_path": "recipes/egg-plant-parmigiano.html", "include_in_index": null, "section": "recipes_main", "title": "\u0411\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u044b \u041f\u0430\u0440\u043c\u0438\u0434\u0436\u0430\u043d\u043e", "url": "/recipes/egg-plant-parmigiano"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0435\u0447\u0435\u043d\u044c \u0441 \u043a\u0438\u0441\u043b\u043e-\u0441\u043b\u0430\u0434\u043a\u0438\u043c \u0433\u0430\u0440\u043d\u0438\u0440\u043e\u043c \u0438\u0437 \u044f\u0431\u043b\u043e\u043a \u0438 \u043b\u0443\u043a\u0430", "html_path": "recipes/berlin-liver.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0435\u0447\u0435\u043d\u044c \u043f\u043e-\u0431\u0435\u0440\u043b\u0438\u043d\u0441\u043a\u0438", "url": "/recipes/berlin-liver"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0447\u0435\u0441\u043d\u043e\u0447\u043d\u043e-\u0441\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0441\u043e \u0441\u0432\u0435\u0436\u0435\u0439 \u0437\u0435\u043b\u0435\u043d\u044c\u044e", "html_path": "recipes/chicken-shkmeruli.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0427\u043a\u043c\u0435\u0440\u0443\u043b\u0438", "url": "/recipes/chicken-shkmeruli"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0435\u0436\u043d\u044b\u0435 \u043a\u043e\u0442\u043b\u0435\u0442\u043a\u0438 \u0438\u0437 \u0441\u043d\u0435\u0436\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u0431\u0430 \u0438 \u0441\u043e\u0443\u0441\u043e\u043c \u0438\u0437 \u043c\u0430\u043b\u043e\u0441\u043e\u043b\u044c\u043d\u044b\u0445 \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u043e\u0432", "html_path": "recipes/crab-cakes.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0440\u0430\u0431-\u043a\u0435\u0439\u043a\u0438", "url": "/recipes/crab-cakes"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043a\u0430\u0440\u0442\u043e\u0444\u0435\u043b\u044c\u043d\u0430\u044f \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0430 \u0438\u0437 5 \u0438\u043d\u0433\u0440\u0435\u0434\u0438\u0435\u043d\u0442\u043e\u0432", "html_path": "recipes/gratin.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0430\u0440\u0442\u043e\u0444\u0435\u043b\u044c\u043d\u044b\u0439 \u0413\u0440\u0430\u0442\u0435\u043d \u0441 \u0446\u0432\u0435\u0442\u043d\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439 \u0438 \u0440\u044b\u0431\u043e\u0439", "url": "/recipes/gratin"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0427\u0442\u043e-\u0442\u043e \u0442\u0438\u043f\u0430 \u0437\u0430\u043f\u0435\u043a\u0430\u043d\u043a\u0438, \u043e\u0447\u0435\u043d\u044c \u0432\u043a\u0443\u0441\u043d\u043e, \u043d\u043e \u0438 \u0432\u043e\u0437\u043d\u0438 \u043d\u0435 \u043c\u0430\u043b\u043e", "html_path": "recipes/shepherds-pie.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0430\u0441\u0442\u0443\u0448\u0438\u0439 \u043f\u0438\u0440\u043e\u0433", "url": "/recipes/shepherds-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0431\u0436\u0430\u0440\u0435\u043d\u043d\u0430\u044f \u043a\u0443\u0440\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0432 \u0432\u043a\u0443\u0441\u043d\u0435\u0439\u0448\u0435\u043c \u0442\u043e\u043c\u0430\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/chicken-provence.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0432 \u0441\u043e\u0443\u0441\u0435 \u041f\u0440\u043e\u0432\u0430\u043d\u0441\u0430\u043b\u044c", "url": "/recipes/chicken-provence"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0438\u043b\u0435 \u0438\u043d\u0434\u0435\u0439\u043a\u0438 \u0441 \u043e\u0432\u043e\u0449\u043d\u044b\u043c \u0441\u043e\u0442\u0435 \u0432 \u0442\u043e\u043c\u0430\u0442\u043d\u043e-\u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0438 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "html_path": "recipes/chilli-turkey.html", "include_in_index": null, "section": "recipes_main", "title": "\u0418\u043d\u0434\u0435\u0439\u043a\u0430 \u0441 \u0427\u0438\u043b\u0438, \u0444\u0430\u0441\u043e\u043b\u044c\u044e \u0438 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/chilli-turkey"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u043d\u043d\u044b\u0435 \u0431\u0435\u0434\u0440\u044b\u0448\u043a\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0442\u043e\u043c \u044f\u043c \u0441\u043e \u0441\u043f\u0430\u0433\u0435\u0442\u0442\u0438", "html_path": "recipes/tom-yam-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u0438 \u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0422\u043e\u043c \u044f\u043c", "url": "/recipes/tom-yam-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u043f\u0430\u0441\u0442\u0430, \u0442\u043e\u043b\u044c\u043a\u043e \u0441 \u0444\u0430\u0441\u043e\u043b\u044c\u044e", "html_path": "recipes/string-beans-bolognese.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0430\u0441\u043e\u043b\u044c \u0411\u043e\u043b\u043e\u043d\u044c\u0435\u0437\u0435", "url": "/recipes/string-beans-bolognese"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u043d\u0436\u0443\u0442\u043d\u043e-\u043d\u0443\u0442\u043e\u0432\u043e\u0435 \u043f\u044e\u0440\u0435, \u0430\u0440\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0444\u0430\u0440\u0441 \u0438 \u0441\u0430\u043b\u044c\u0441\u0430 - \u043e\u0447 \u0441\u044b\u0442\u043d\u043e \u0438 \u0432\u043a\u0443\u0441\u043d\u043e", "html_path": "recipes/nut-pure.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u044e\u0440\u0435 \u0438\u0437 \u043d\u0443\u0442\u0430 \u0441 \u0444\u0430\u0440\u0448\u0435\u043c", "url": "/recipes/nut-pure"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043a\u043e\u0442\u043b\u0435\u0442\u044b", "html_path": "recipes/cutlet.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u043e\u0442\u043b\u0435\u0442\u044b", "url": "/recipes/cutlet"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0435\u0447\u0430 \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0435 \u0441 \u043e\u043a\u043e\u0440\u043e\u0447\u043a\u0430 \u0438 \u043f\u0440\u0438\u0431\u0430\u043c\u0431\u0430\u0441\u0430\u043c\u0438", "html_path": "recipes/buckwheat-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u0430\u044f \u041a\u0443\u0440\u0438\u0446\u0430 \u0441 \u0413\u0440\u0435\u0447\u043a\u043e\u0439", "url": "/recipes/buckwheat-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u0441\u043e\u0443\u0441 \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u0430\u0432\u043e\u043a\u0430\u0434\u043e \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0438 \u043d\u0430\u0447\u043e\u0441", "html_path": "recipes/guakomolle.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u0443\u0430\u043a\u0430\u043c\u043e\u043b\u0435", "url": "/recipes/guakomolle"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430, \u043b\u0443\u043a, \u043f\u0435\u0440\u0447\u0438\u043a \u0438 \u0432\u0441\u0435 \u044d\u0442\u043e \u043f\u043e\u0434 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043c\u043e\u043b\u043e\u0442\u043e\u0433\u043e \u043f\u0435\u0440\u0446\u0430", "html_path": "recipes/pepper-sauce-beef.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u043e\u0432\u044f\u0434\u0438\u043d\u0430 \u0432 \u043f\u0435\u0440\u0435\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435 \u0441 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/pepper-sauce-beef"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0430\u0440\u0448, \u043a\u0430\u043f\u0443\u0441\u0442\u0430 \u0438 \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u043e\u0443\u0441", "html_path": "recipes/lazy-golubcy.html", "include_in_index": null, "section": "recipes_main", "title": "\u041b\u0435\u043d\u0438\u0432\u044b\u0435 \u0413\u043e\u043b\u0443\u0431\u0446\u044b", "url": "/recipes/lazy-golubcy"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0441\u0435 \u0432 \u0433\u043e\u0440\u0448\u043e\u0447\u0435\u043a, \u0433\u043e\u0440\u0448\u043e\u0447\u0435\u043a \u0432 \u0434\u0443\u0445\u043e\u0432\u043a\u0443, \u0438 \u043a\u0430\u0439\u0444\u0443\u0435\u043c", "html_path": "recipes/pot-meat.html", "include_in_index": null, "section": "recipes_main", "title": "\u041c\u044f\u0441\u043e \u0432 \u0433\u043e\u0440\u0448\u043e\u0447\u043a\u0435", "url": "/recipes/pot-meat"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043a \u0432 \u0418\u043a\u0435\u0435", "html_path": "recipes/ikea-meat-balls.html", "include_in_index": null, "section": "recipes_main", "title": "\u0428\u0432\u0435\u0434\u0441\u043a\u0438\u0435 \u0444\u0440\u0438\u043a\u0430\u0434\u0435\u043b\u044c\u043a\u0438 \u0441 \u0431\u0440\u0443\u0441\u043d\u0438\u0447\u043d\u044b\u043c \u0438 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u0430\u043c\u0438", "url": "/recipes/ikea-meat-balls"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u0448\u0435\u043d\u0430\u044f \u043a\u0430\u043f\u0443\u0441\u0442\u043a\u0430 \u0441 \u0441\u043e\u0441\u0438\u0441\u0430\u043c\u0438", "html_path": "recipes/bikus.html", "include_in_index": null, "section": "recipes_main", "title": "\u0421\u043e\u043b\u044f\u043d\u043a\u0430 / \u0411\u0438\u043a\u0443\u0441 \u0441\u043e \u0448\u043f\u0438\u043a\u0430\u0447\u043a\u0430\u043c\u0438 / \u0441\u043e\u0441\u0438\u0441\u043a\u0430\u043c\u0438", "url": "/recipes/bikus"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u0438\u0441\u0438\u043a \u0441 \u0444\u0430\u0440\u0448\u0435\u043c \u0432 \u043a\u0438\u0442\u0430\u0439\u0441\u043a\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u0435 \u0438 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/golybci-china.html", "include_in_index": null, "section": "recipes_main", "title": "\u0413\u043e\u043b\u0443\u0431\u0446\u044b \u043f\u043e-\u043a\u0438\u0442\u0430\u0439\u0441\u043a\u0438", "url": "/recipes/golybci-china"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0435 \u043a\u043e\u043b\u0431\u0430\u0441\u043a\u0438 \u0438 \u0431\u0440\u043e\u043a\u043a\u043e\u043b\u0438 \u0432 \u0441\u044b\u0440\u043d\u043e\u0439 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435", "html_path": "recipes/sausage-broccoli.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u043e\u043b\u0431\u0430\u0441\u043a\u0438 \u0441 \u0431\u0440\u043e\u043a\u043a\u043e\u043b\u0438 \u0432 \u0445\u0440\u0443\u0441\u0442\u044f\u0449\u0435\u0439 \u043a\u043e\u0440\u043e\u0447\u043a\u0435", "url": "/recipes/sausage-broccoli"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u0430 \u0438 \u043a\u0430\u0440\u0442\u043e\u0445\u0430 \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435 \u0438 \u0441\u043e\u0443\u0441\u0435", "html_path": "recipes/fish-and-chips.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0438\u0448 \u044d\u043d\u0434 \u0447\u0438\u043f\u0441 \u0441 \u043f\u044e\u0440\u0435 \u0438\u0437 \u0433\u043e\u0440\u043e\u0448\u043a\u0430", "url": "/recipes/fish-and-chips"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u0432 \u043f\u0438\u043a\u0430\u043d\u0442\u043d\u043e\u043c \u0447\u0435\u0441\u043d\u043e\u0447\u043d\u043e\u043c \u043c\u0430\u0441\u043b\u0435", "html_path": "recipes/shrimps-pil-pil.html", "include_in_index": null, "section": "recipes_main", "title": "\u041a\u0440\u0435\u0432\u0435\u0442\u043a\u0438 \u043f\u0438\u043b\u044c-\u043f\u0438\u043b\u044c", "url": "/recipes/shrimps-pil-pil"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u0430\u044f \u0440\u044b\u0431\u0430 \u0441 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "html_path": "recipes/terpug-potato.html", "include_in_index": null, "section": "recipes_main", "title": "\u0422\u0435\u0440\u043f\u0443\u0433 \u0441 \u043c\u044f\u0442\u043e\u0439 \u043a\u0430\u0440\u0442\u043e\u0448\u043a\u043e\u0439", "url": "/recipes/terpug-potato"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0420\u044b\u0431\u043d\u044b\u0439 \u043f\u0438\u0440\u043e\u0433", "html_path": "recipes/pie-wellington-fish.html", "include_in_index": null, "section": "recipes_main", "title": "\u0424\u0438\u0448 \"\u0412\u0435\u043b\u0438\u043d\u0433\u0442\u043e\u043d\" \u0432 \u0441\u043b\u043e\u0435\u043d\u043e\u043c \u0442\u0435\u0441\u0442\u0435 \u0441\u043e \u0448\u043f\u0438\u043d\u0430\u0442\u043e\u043c", "url": "/recipes/pie-wellington-fish"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u043b\u043e\u0432 \u043f\u043e-\u0438\u0441\u043f\u0430\u043d\u0441\u043a\u0438", "html_path": "recipes/paella.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0430\u044d\u043b\u044c\u044f", "url": "/recipes/paella"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u0446\u0430 \u0432 \u0438\u0442\u0430\u043b\u044c\u044f\u043d\u0441\u043a\u043e\u043c \u0441\u0442\u0438\u043b\u0435", "html_path": "recipes/pepperonata-chicken.html", "include_in_index": null, "section": "recipes_main", "title": "\u041f\u0435\u043f\u0435\u0440\u043e\u043d\u0430\u0442\u0430 \u0441 \u043a\u0443\u0440\u0438\u0446\u0435\u0439", "url": "/recipes/pepperonata-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u0430\u044f \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430 \u0441 \u043a\u043e\u043b\u044c\u0446\u0430\u043c\u0438 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u0430", "html_path": "recipes/pasta-salmon.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0441 \u043b\u043e\u0441\u043e\u0441\u0435\u043c \u0432 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u043e\u043c \u0441\u043e\u0443\u0441\u0435", "url": "/recipes/pasta-salmon"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u0430\u043a\u0430\u0440\u0438\u043a\u0438, \u043f\u043e\u0442\u0438\u0442\u044b\u0435 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u043c \u0441\u043e\u0443\u0441\u043e\u043c, \u043c\u043d\u043e\u0433\u043e \u043d\u0435\u0436\u043d\u043e\u0433\u043e \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u0430, \u0438 \u0432\u0441\u0435 \u044d\u0442\u043e \u043f\u043e\u0441\u044b\u043f\u0430\u043d\u043e \u0441\u044b\u0440\u043e\u043c", "html_path": "recipes/pasta-scallop.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u0433\u0440\u0435\u0431\u0435\u0448\u043a\u043e\u043c", "url": "/recipes/pasta-scallop"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u0430\u044f \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430 \u0441 \u043a\u043e\u043b\u044c\u0446\u0430\u043c\u0438 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u0430", "html_path": "recipes/pasta-squid.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u043a\u0430\u043b\u044c\u043c\u0430\u0440\u043e\u043c", "url": "/recipes/pasta-squid"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043d\u0435\u0446, \u043f\u0430\u0441\u0442\u0430, \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u044b, \u0447\u0435\u0441\u043d\u043e\u043a, \u043b\u0443\u043a, \u043e\u043b\u0438\u0432\u043a\u0438", "html_path": "recipes/pasta-tuna.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c", "url": "/recipes/pasta-tuna"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0417\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u043c \u0432 \u043c\u0430\u043a\u0430\u0440\u0438\u043a\u0438 \u0432\u0441\u0435 \u0447\u0435 \u0435\u0441\u0442\u044c", "html_path": "recipes/pasta-flot.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041c\u0430\u043a\u0430\u0440\u043e\u043d\u044b \u043f\u043e \u0444\u043b\u043e\u0442\u0441\u043a\u0438 \u0441 \u043f\u0440\u0438\u043a\u043e\u043b\u0430\u043c\u0438", "url": "/recipes/pasta-flot"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u043e\u043c\u0430\u0442\u043d\u043e, \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u043d\u043e, \u0441\u044b\u0442\u043d\u043e", "html_path": "recipes/pasta-ala-norma.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0410\u043b\u0430 \u043d\u043e\u0440\u043c\u0430 \u0441 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u0430\u043c\u0438", "url": "/recipes/pasta-ala-norma"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e-\u0441\u043b\u0438\u0432\u043e\u0447\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-alfredo.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0410\u043b\u044c\u0444\u0440\u0435\u0434\u043e", "url": "/recipes/pasta-alfredo"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0430\u043c\u0430\u044f \u043f\u043e\u043f\u0443\u043b\u044f\u0440\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430, \u0432\u0430\u0440\u0438\u043a \u043d\u0430 \u0436\u0435\u043b\u0442\u043a\u0430\u0445", "html_path": "recipes/pasta-carbonara.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u041a\u0430\u0440\u0431\u043e\u043d\u0430\u0440\u0430", "url": "/recipes/pasta-carbonara"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0440\u043d\u043e-\u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u0430\u044f \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-beetroot.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u041f\u0430\u0441\u0442\u0430 \u0441\u043e \u0441\u0432\u0435\u043a\u043e\u043b\u044c\u043d\u044b\u043c \u043f\u0435\u0441\u0442\u043e", "url": "/recipes/pasta-beetroot"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0435\u0444\u0442\u0435\u043b\u044c\u043a\u0438, \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u043e\u0443\u0441, \u043f\u0430\u0441\u0442\u0430", "html_path": "recipes/pasta-meatballs.html", "include_in_index": null, "section": "recipes_pasta", "title": "\u0421\u043f\u0430\u0433\u0435\u0442\u0442\u0438 \u0441 \u0444\u0440\u0438\u043a\u0430\u0434\u0435\u043b\u044c\u043a\u0430\u043c\u0438 \u0438\u0437 \u0438\u043d\u0434\u0435\u0439\u043a\u0438", "url": "/recipes/pasta-meatballs"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041c\u043d\u043e\u0433\u043e \u0437\u0435\u043b\u0435\u043d\u0438, \u0443\u0442\u0438\u043d\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430 \u0438 \u0431\u043e\u043c\u0431\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0430\u043f\u0435\u043b\u044c\u0441\u0438\u043d\u043e\u0432\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/duck-salad.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0443\u0442\u043a\u043e\u0439", "url": "/recipes/duck-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041d\u0430\u0438\u043f\u0440\u043e\u0441\u0442\u0435\u0439\u0448\u0438\u0439 \u0441\u0430\u043b\u0430\u0442\u0438\u043a, \u0438 \u0442\u0430\u043a \u0432\u0441\u0435 \u043f\u043e\u043d\u044f\u0442\u043d\u043e", "html_path": "recipes/salad-greek.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0413\u0440\u0435\u0447\u0435\u0441\u043a\u0438\u0439", "url": "/recipes/salad-greek"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043f\u0443\u0441\u0442\u043d\u044b\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u043e\u0439", "html_path": "recipes/coleslaw.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041a\u043e\u0443\u0441\u043b\u043e\u0443", "url": "/recipes/coleslaw"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u043b\u0430\u0441\u0441\u0438\u043a\u0430, \u043a\u0440\u0430\u0431\u043e\u0432\u044b\u0435 \u043f\u0430\u043b\u043e\u0447\u043a\u0438, \u043a\u0443\u043a\u0443\u0440\u0443\u0437\u0430, \u0440\u0438\u0441, \u044f\u0439\u0446\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438", "html_path": "recipes/crab-salad.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041a\u0440\u0430\u0431\u043e\u0432\u044b\u0439 \u0441\u0430\u043b\u0430\u0442", "url": "/recipes/crab-salad"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0430\u043b\u0430\u0442 \u0438\u0437 \u0437\u0430\u043f\u0435\u0447\u0435\u043d\u043d\u044b\u0445 \u043e\u0432\u043e\u0449\u0435\u0439 \u0441 \u0442\u0430\u0440\u0445\u0443\u043d\u043e\u0432\u043e\u0439 \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u043e\u0439", "html_path": "recipes/salad-mangal.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041c\u0430\u043d\u0433\u0430\u043b \u0441\u0430\u043b\u0430\u0442", "url": "/recipes/salad-mangal"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0430\u043f\u0443\u0441\u0442\u043a\u0430, \u0440\u0435\u0434\u0438\u0441\u043e\u0447\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438", "html_path": "recipes/salad-spring.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0412\u0435\u0441\u0435\u043d\u043d\u0438\u0439", "url": "/recipes/salad-spring"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u044b \u0432 \u043f\u0430\u043d\u0438\u0440\u043e\u0432\u043a\u0435, \u043f\u043e\u043c\u0438\u0434\u043e\u0440\u044b, \u043a\u0438\u043d\u0437\u0430, \u0441\u0432\u0438\u0442-\u0447\u0438\u043b\u0438", "html_path": "recipes/salad-egg-plant.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0431\u0430\u043a\u043b\u0430\u0436\u0430\u043d\u0430\u043c\u0438 \u0432 \u0441\u043e\u0443\u0441\u0435 \u0421\u043b\u0430\u0434\u043a\u0438\u0439 \u0427\u0438\u043b\u0438", "url": "/recipes/salad-egg-plant"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0422\u0443\u043d\u0435\u0446, \u043f\u0435\u0440\u0435\u0446, \u043b\u0443\u043a, \u043e\u0433\u0443\u0440\u0435\u0446, \u043a\u0430\u043f\u0435\u0440\u0441\u044b \u0438 \u0433\u043e\u0440\u0447\u0438\u0447\u043d\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/salad-tuna-pepper.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0421\u0430\u043b\u0430\u0442 \u0441 \u0442\u0443\u043d\u0446\u043e\u043c \u0438 \u0437\u0430\u043c\u0435\u0447\u0435\u043d\u043d\u044b\u043c \u043f\u0435\u0440\u0446\u0435\u043c", "url": "/recipes/salad-tuna-pepper"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0424\u0438\u043d\u0438\u043a\u0438, \u043a\u043e\u0437\u0438\u0439 \u0441\u044b\u0440, \u0433\u0440\u0430\u043d\u0430\u0442\u043e\u0432\u044b\u0439 \u0441\u043e\u0443\u0441 \u0438 \u0441\u0432\u0435\u0436\u0430\u044f \u0437\u0435\u043b\u0435\u043d\u044c", "html_path": "recipes/salad-turkish-finiki.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0422\u0443\u0440\u0435\u0446\u043a\u0438\u0439 \u0441\u0430\u043b\u0430\u0442 \u0441 \u0444\u0438\u043d\u0438\u043a\u0430\u043c\u0438", "url": "/recipes/salad-turkish-finiki"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u0442\u0435\u043a\u043b\u044f\u043d\u043d\u0430\u044f \u043b\u0430\u043f\u0448\u0430, \u0433\u0440\u0438\u0431\u044b, \u043c\u043e\u0440\u043a\u043e\u0432\u043e\u0447\u043a\u0430, \u043e\u0433\u0443\u0440\u0447\u0438\u043a\u0438, \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u0430\u044f \u0437\u0430\u043f\u0440\u0430\u0432\u043a\u0430", "html_path": "recipes/funchosa-shrooms.html", "include_in_index": null, "section": "recipes_salad", "title": "\u0424\u0443\u043d\u0447\u043e\u0437\u0430 \u0441 \u0432\u0435\u0448\u0435\u043d\u043a\u0430\u043c\u0438 \u0438 \u043e\u0432\u043e\u0449\u0430\u043c\u0438", "url": "/recipes/funchosa-shrooms"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0443\u0440\u0438\u043d\u0430\u044f \u0433\u0440\u0443\u0434\u043a\u0430, \u0441\u0430\u043b\u0430\u0442, \u0447\u0435\u0440\u0440\u0438\u043a\u0438, \u0441\u043e\u0443\u0441, \u043f\u0430\u0440\u043c\u0435\u0437\u0430\u043d, \u0441\u0443\u0445\u0430\u0440\u0438\u043a\u0438", "html_path": "recipes/salad-caesar.html", "include_in_index": null, "section": "recipes_salad", "title": "\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u0421\u0430\u043b\u0430\u0442 \u0426\u0435\u0437\u0430\u0440\u044c", "url": "/recipes/salad-caesar"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041a\u0438\u0441\u043b\u044b\u0439, \u043d\u0430\u0441\u044b\u0449\u0435\u043d\u043d\u044b\u0439 \u0441\u0443\u043f \u0441 \u043e\u0431\u0438\u043b\u0438\u0435\u043c \u043c\u044f\u0441\u0430", "html_path": "recipes/solyanka-soup-sauerkraut.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0421\u043e\u043b\u044f\u043d\u043a\u0430 \u0441 \u043a\u0432\u0430\u0448\u0435\u043d\u043e\u0439 \u043a\u0430\u043f\u0443\u0441\u0442\u043e\u0439", "url": "/recipes/solyanka-soup-sauerkraut"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0413\u0440\u0438\u0431\u043d\u043e\u0439, \u0433\u0443\u0441\u0442\u043e\u0439 \u0438 \u0441\u043b\u0438\u0432\u043e\u0447\u043d\u044b\u0439", "html_path": "recipes/champignons-cream-soup.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0413\u0440\u0438\u0431\u043d\u043e\u0439 \u043a\u0440\u0435\u043c \u0441\u0443\u043f", "url": "/recipes/champignons-cream-soup"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u044f\u043d\u044b\u0439 \u0438 \u043d\u0435\u0436\u043d\u044b\u0439 \u0441\u0443\u043f \u0438\u0437 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u044b \u0441 \u043b\u0435\u0433\u043a\u043e\u0439 \u043a\u0438\u0441\u043b\u0438\u043d\u043a\u043e\u0439", "html_path": "recipes/mashed-orange-lentil-soup.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f-\u043f\u044e\u0440\u0435 \u0438\u0437 \u043a\u0440\u0430\u0441\u043d\u043e\u0439 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u044b", "url": "/recipes/mashed-orange-lentil-soup"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0447\u0435\u043d\u044c \u0442\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0438 \u043e\u0447\u0435\u043d\u044c \u0441\u044b\u0442\u043d\u044b\u0439", "html_path": "recipes/tomato-soup-with-lentil.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0422\u043e\u043c\u0430\u0442\u043d\u044b\u0439 \u0441\u0443\u043f \u0441 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439 \u0438 \u0444\u0430\u0440\u0448\u0435\u043c", "url": "/recipes/tomato-soup-with-lentil"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0440\u043e\u0441\u0442\u043e\u0439 \u0441\u044e\u043f\u0438\u043a, \u0433\u043b\u0430\u0432\u043d\u043e\u0435 \u0431\u0443\u043b\u044c\u043e\u043d \u043e\u0442\u0432\u0430\u0440\u0438\u0442\u044c \u0437\u0430\u0440\u0430\u043d\u0435\u0435", "html_path": "recipes/soup-chicken.html", "include_in_index": null, "section": "recipes_soup", "title": "\u041a\u0443\u0440\u0438\u043d\u044b\u0439 \u0441\u0443\u043f", "url": "/recipes/soup-chicken"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0412\u0441\u044e \u043c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u043a\u0443 \u0437\u0430\u043a\u0438\u0434\u044b\u0432\u0430\u0435\u043c \u0432 \u043a\u0430\u0441\u0442\u0440\u044e\u043b\u044e \u0438 \u043f\u0440\u0438\u0433\u043e\u0432\u0430\u0440\u0438\u0432\u0430\u0435\u043c \"\u0443\u0445, \u0431\u043b\u044f\"", "html_path": "recipes/soup-mexican.html", "include_in_index": null, "section": "recipes_soup", "title": "\u041c\u0435\u043a\u0441\u0438\u043a\u0430\u043d\u0441\u043a\u0438\u0439 \u043e\u0441\u0442\u0440\u044b\u0439 \u0444\u0430\u0441\u043e\u043b\u0435\u0432\u044b\u0439 \u0441\u0443\u043f", "url": "/recipes/soup-mexican"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041f\u0438\u043a\u0430\u043d\u0442\u043d\u044b\u0439 \u0433\u0440\u0443\u0437\u0438\u043d\u0441\u043a\u0438\u0439 \u0441\u0443\u043f \u043d\u0430 \u0433\u043e\u0432\u044f\u0436\u044c\u0435\u043c \u0431\u0443\u043b\u044c\u043e\u043d\u0435", "html_path": "recipes/soup-harcho.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0425\u0430\u0440\u0447\u043e", "url": "/recipes/soup-harcho"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0421\u044b\u0442\u043d\u0430\u044f \u043f\u043e\u0445\u043b\u0435\u0431\u043a\u0430 \u0441 \u043c\u044f\u0441\u043e\u043c, \u043e\u0432\u043e\u0449\u0430\u043c\u0438 \u0438 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439", "html_path": "recipes/soup-lamb-chechvica.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0421\u0443\u043f \u0438\u0437 \u0431\u0430\u0440\u0430\u043d\u0438\u043d\u044b \u0441 \u0447\u0435\u0447\u0435\u0432\u0438\u0446\u0435\u0439", "url": "/recipes/soup-lamb-chechvica"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u041e\u0441\u0442\u0440\u044b\u0439 \u0441\u0443\u043f \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u043a\u043e\u043a\u043e\u0441\u043e\u0432\u043e\u0433\u043e \u043c\u043e\u043b\u043e\u043a\u0430, \u0438 \u0430\u0437\u0438\u0430\u0442\u0441\u043a\u0438\u0445 \u043a\u043e\u0440\u043d\u0435\u043f\u043b\u043e\u0434\u043e\u0432", "html_path": "recipes/soup-tom-yam.html", "include_in_index": null, "section": "recipes_soup", "title": "\u0422\u043e\u043c \u042f\u043c", "url": "/recipes/soup-tom-yam"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0411\u0438\u0441\u043a\u0432\u0438\u0442, \u044f\u0433\u043e\u0434\u043a\u0438 \u0438 \u043a\u0430\u0440\u0430\u043c\u0435\u043b\u044c\u043d\u043e-\u043c\u0438\u043d\u0434\u0430\u043b\u044c\u043d\u0430\u044f \u0437\u0430\u043b\u0438\u0432\u043a\u0430", "html_path": "recipes/almond-lingonberry-pie.html", "include_in_index": null, "section": "recipes_sweet", "title": "\u0411\u0440\u0443\u0441\u043d\u0438\u0447\u043d\u044b\u0439 \u041f\u0438\u0440\u043e\u0433", "url": "/recipes/almond-lingonberry-pie"}, {"breadcrumbs": [], "breadcrumbs_title": null, "desc": "\u0428\u043e\u043a\u043e\u043b\u0430\u0434\u043d\u044b\u0439 \u043a\u0435\u043a\u0441 \u0441 \u0432\u0438\u0448\u043d\u0435\u0439 \u0432\u043d\u0443\u0442\u0440\u0438, \u0448\u0430\u0440\u0438\u043a\u043e\u043c \u043c\u043e\u0440\u043e\u0436\u0435\u043d\u043d\u043e\u0433\u043e \u0441\u0432\u0435\u0440\u0445\u0443, \u043f\u043e\u043b\u0438\u0442\u044b\u0439 \u0432\u0438\u0448\u043d\u0435\u0432\u044b\u043c \u0441\u0438\u0440\u043e\u043f\u043e\u043c", "html_path": "recipes/brownie-cherry.html", "include_in_index": null, "section": "recipes_sweet", "title": "\u0411\u0440\u0430\u0443\u043d\u0438 \u0441 \u0432\u0438\u0448\u043d\u0435\u0439", "url": "/recipes/brownie-cherry"}],
                 searchQ: '',
                 get searchResults() {
                     return this.recipes.filter(rec => rec.title.toLowerCase().includes(this.searchQ.toLowerCase()) || rec.desc.toLowerCase().includes(this.searchQ.toLowerCase()));
@@ -1856,17 +1828,17 @@
 
 </main>
 
-<footer class="prose max-w-none border-t uni-border mt-4 p-2">
+<footer class="prose max-w-none px-2 border-t py-4 uni-border mt-6">
 
-    <div class="flex gap-2  justify-end ">
-        <a href="https://t.me/potyk_forever" class="btn btn-sm btn-primary  relative">
+    <div class="flex gap-2  justify-center ">
+        <a href="https://t.me/potyk_forever" class="btn  btn-ghost  relative">
             подпишись на телегу
 
             <span class="opacity-0">👉👈</span>
 
-            <span class="animate-bounce-x-right absolute bottom-[2px] right-9">👉</span>
-            <span class="absolute right-[24px] opacity-80  top-1 ">🥺</span>
-            <span class="animate-bounce-x-left absolute bottom-[2px] right-3">👈</span>
+            <span class="animate-bounce-x-right absolute bottom-2 right-9">👉</span>
+            <span class="absolute right-[24.5px]   top-3 ">🥺</span>
+            <span class="animate-bounce-x-left absolute bottom-2 right-3">👈</span>
         </a>
 
     </div>

@@ -12,16 +12,18 @@
     <div x-data="recipes">
 
 
-    <div class="flex gap-2">
-            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Завтраки</a>
-            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Просто Кухня</a>
+        <div class="flex gap-2 flex-wrap">
 
             {% if not config.is_prod %}
-                <a class="btn btn-sm " href="/recipes/form">Добавить рец</a>
+                <a class="btn btn-sm btn-neutral" href="/recipes/prosto-kuhnya">Завтраки</a>
+
+            <a class="btn btn-sm btn-neutral" href="/recipes/prosto-kuhnya">Просто Кухня</a>
+
+                <a class="btn btn-sm btn-neutral " href="/recipes/form">Добавить рец</a>
             {% endif %}
         </div>
 
-        <div class="border uni-border  rounded-lg p-4 my-4">
+        <div class="border uni-border  rounded-lg p-4 my-4 uni-bg">
             <h2 class="italic !my-0">#чепожрать?</h2>
             <cite>Выбери категории, устрой турик / заролль рандомно</cite>
 
@@ -36,8 +38,9 @@
 
 
                 <div class="flex gap-2">
-                    <button type="button" class="btn grow btn-sm " @click="startTour()">Турик</button>
-                    <button type="button" class="btn grow btn-sm" @click="selectRandomRecipe()">Рандом</button>
+                    <button type="button" class="btn grow btn-sm btn-neutral  " @click="startTour()">Турик</button>
+                    <button type="button" class="btn grow btn-sm btn-neutral " @click="selectRandomRecipe()">Рандом
+                    </button>
                 </div>
 
                 <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
