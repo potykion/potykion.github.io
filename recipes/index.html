@@ -92,6 +92,26 @@
 
 
     
+        <div class="breadcrumbs border-neutral border-b">
+            <ul class="!pl-3">
+
+                
+                
+                    <li>
+                                <a class="link-hover " href="/">⌀</a>
+
+                        </li>
+                    
+                        <li>
+                            
+                                Рецептики
+                            
+                        </li>
+                    
+                
+            </ul>
+        </div>
+    
 
 </header>
 
@@ -104,7 +124,13 @@
 
         </div>
 
-        
+        <div>
+            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Просто Кухня</a>
+
+            
+        </div>
+
+
     </div>
 
 
@@ -159,7 +185,8 @@
         <template x-if="searchQ">
             <div class="flex flex-col gap-4">
                 <template x-for="recipe in searchResults">
-                    <a :href="recipe.url" class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-800  " >
+                    <a :href="recipe.url"
+                       class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-800  ">
                         <div class="underline" x-text="recipe.title"></div>
                         <div class="font-normal" x-text="recipe.desc"></div>
                     </a>
