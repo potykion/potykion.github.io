@@ -2566,14 +2566,6 @@ input {
     --btn-color: var(--fallback-p);
   }
 
-  .btn-secondary {
-    --btn-color: var(--fallback-s);
-  }
-
-  .btn-accent {
-    --btn-color: var(--fallback-a);
-  }
-
   .btn-success {
     --btn-color: var(--fallback-su);
   }
@@ -2641,14 +2633,6 @@ input {
     --btn-color: var(--p);
   }
 
-  .btn-secondary {
-    --btn-color: var(--s);
-  }
-
-  .btn-accent {
-    --btn-color: var(--a);
-  }
-
   .btn-success {
     --btn-color: var(--su);
   }
@@ -2656,18 +2640,6 @@ input {
   .btn-warning {
     --btn-color: var(--wa);
   }
-}
-
-.btn-secondary {
-  --tw-text-opacity: 1;
-  color: var(--fallback-sc,oklch(var(--sc)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-s,oklch(var(--s)/1));
-}
-
-.btn-accent {
-  --tw-text-opacity: 1;
-  color: var(--fallback-ac,oklch(var(--ac)/var(--tw-text-opacity)));
-  outline-color: var(--fallback-a,oklch(var(--a)/1));
 }
 
 .btn-success {
@@ -4218,8 +4190,6 @@ ul.li-minus li:before {
 .rounded-border {
   border-radius: 0.5rem;
   border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: var(--fallback-n,oklch(var(--n)/var(--tw-border-opacity)));
 }
 
 .link-list {
@@ -4238,6 +4208,62 @@ ul.li-minus li:before {
   margin-top: 0;
 }
 
+.uni-border {
+  --tw-border-opacity: 1;
+  border-color: rgb(212 212 212 / var(--tw-border-opacity));
+}
+
+@media (prefers-color-scheme: dark) {
+  .uni-border {
+    --tw-border-opacity: 1;
+    border-color: rgb(55 65 81 / var(--tw-border-opacity));
+  }
+}
+
+.uni-hover:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
+@media (prefers-color-scheme: dark) {
+  .uni-hover:hover {
+    --tw-border-opacity: 1;
+    border-color: rgb(31 41 55 / var(--tw-border-opacity));
+  }
+}
+
+@keyframes bounce-x-left {
+  0%, 100% {
+    transform: translateX(-5px);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateX(0px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-x-left {
+  animation: bounce-x-left 1s infinite;
+}
+
+@keyframes bounce-x-right {
+  0%, 100% {
+    transform: translateX(5px);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+
+  50% {
+    transform: translateX(0px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce-x-right {
+  animation: bounce-x-right 1s infinite;
+}
+
 .visible {
   visibility: visible;
 }
@@ -4250,12 +4276,92 @@ ul.li-minus li:before {
   position: absolute;
 }
 
+.relative {
+  position: relative;
+}
+
 .right-2 {
   right: 0.5rem;
 }
 
 .top-2 {
   top: 0.5rem;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.right-3 {
+  right: 0.75rem;
+}
+
+.right-5 {
+  right: 1.25rem;
+}
+
+.right-6 {
+  right: 1.5rem;
+}
+
+.right-7 {
+  right: 1.75rem;
+}
+
+.top-0 {
+  top: 0px;
+}
+
+.right-\[20px\] {
+  right: 20px;
+}
+
+.right-\[30px\] {
+  right: 30px;
+}
+
+.right-\[25px\] {
+  right: 25px;
+}
+
+.right-\[26px\] {
+  right: 26px;
+}
+
+.top-1 {
+  top: 0.25rem;
+}
+
+.right-10 {
+  right: 2.5rem;
+}
+
+.right-8 {
+  right: 2rem;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.right-9 {
+  right: 2.25rem;
+}
+
+.bottom-1 {
+  bottom: 0.25rem;
+}
+
+.bottom-\[2px\] {
+  bottom: 2px;
+}
+
+.right-\[24px\] {
+  right: 24px;
 }
 
 .z-\[1\] {
@@ -4286,6 +4392,11 @@ ul.li-minus li:before {
   grid-row: span 6 / span 6;
 }
 
+.\!my-0 {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -4293,10 +4404,6 @@ ul.li-minus li:before {
 
 .\!mb-0 {
   margin-bottom: 0px !important;
-}
-
-.\!mt-0 {
-  margin-top: 0px !important;
 }
 
 .mb-2 {
@@ -4370,6 +4477,18 @@ ul.li-minus li:before {
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
+}
+
+.h-\[34px\] {
+  height: 34px;
+}
+
+.h-\[36px\] {
+  height: 36px;
+}
+
+.h-\[40px\] {
+  height: 40px;
 }
 
 .max-h-80 {
@@ -4613,6 +4732,10 @@ ul.li-minus li:before {
   padding: 1rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .\!py-0 {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
@@ -4741,6 +4864,22 @@ ul.li-minus li:before {
 
 .no-underline {
   text-decoration-line: none;
+}
+
+.opacity-95 {
+  opacity: 0.95;
+}
+
+.opacity-90 {
+  opacity: 0.9;
+}
+
+.opacity-80 {
+  opacity: 0.8;
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 .shadow {
