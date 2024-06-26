@@ -81,10 +81,10 @@
 <body class="max-w-[1000px]">
 
 <header class="text-sm ">
-    <div class="border-b py-2 border-neutral flex items-baseline gap-1">
+    <div class="border-b py-2 uni-border flex items-baseline gap-1">
         <a class="btn btn-ghost btn-sm" href="/">∏⌀♰ʯԞ.ʯ⌀</a>
-
-
+        
+        
 
         
 
@@ -92,19 +92,19 @@
 
 
     
-        <div class="breadcrumbs border-neutral border-b">
+        <div class="breadcrumbs uni-border border-b mb-2">
             <ul class="!pl-3">
-
+                
                 
                 
                     <li>
-                                <a class="link-hover " href="/">⌀</a>
+                        <a class="link-hover " href="/">⌀</a>
 
-                        </li>
+                    </li>
                     
                         <li>
                             
-                                Рецептики
+                                🗒️ Рецептики
                             
                         </li>
                     
@@ -117,67 +117,69 @@
 
 <main class="prose  max-w-none p-2">
     
-    <div class="flex justify-between">
-        <div>
-            <h1>Рецептики</h1>
-            <cite class="block">Вкусные и не очень</cite>
+        
+            <div class="mb-2">
+                <h1>🗒️ Рецептики</h1>
+                <cite class="block">Вкусные и не очень</cite>
+            </div>
+        
+    
 
-        </div>
+    
 
-        <div>
+
+
+    <div x-data="recipes">
+
+
+    <div class="flex gap-2">
+            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Завтраки</a>
             <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Просто Кухня</a>
 
             
         </div>
 
+        <div class="border uni-border  rounded-lg p-4 my-4">
+            <h2 class="italic !my-0">#чепожрать?</h2>
+            <cite>Выбери категории, устрой турик / заролль рандомно</cite>
 
-    </div>
+            <div class="flex flex-col mt-4 gap-4">
+                <div class="flex flex-wrap gap-2">
+                    <template x-for="tag in tags">
+                        <button type="button" class="btn btn-sm" :class="  tag.selected && 'btn-outline btn-primary'"
+                                @click="selectTag(tag)"
+                                x-text="tag.title"></button>
+                    </template>
+                </div>
 
 
+                <div class="flex gap-2">
+                    <button type="button" class="btn grow btn-sm " @click="startTour()">Турик</button>
+                    <button type="button" class="btn grow btn-sm" @click="selectRandomRecipe()">Рандом</button>
+                </div>
+
+                <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
+                    <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
+                    <div x-text="randomRecipe.desc"></div>
+                </div>
 
 
+                <div class="flex gap-2 overflow-x-auto mt-2" x-show="rounds.length" x-transition>
+                    <template x-for="(options, roundIndex) in rounds">
+                        <div class="flex flex-col gap-2">
+                            <template x-for="(opt, optIndex) in options">
+                                <button class="btn w-96 h-fit " :class="opt.status==='win' && 'btn-success'"
+                                        @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
+                                        :disabled="opt.status==='lose'"></button>
+                            </template>
+                        </div>
+                    </template>
+                </div>
 
-    
-    <div x-data="recipes">
-        <h2 class="italic">#чепожрать?</h2>
-
-        <div class="flex flex-col gap-4">
-            <div class="flex flex-wrap gap-2">
-                <template x-for="tag in tags">
-                    <button type="button" class="btn" :class="  tag.selected && 'btn-outline btn-primary'"
-                            @click="selectTag(tag)"
-                            x-text="tag.title"></button>
-                </template>
             </div>
-
-
-            <div class="flex gap-2">
-                <button type="button" class="btn grow " @click="startTour()">Турик</button>
-                <button type="button" class="btn grow " @click="selectRandomRecipe()">Рандом</button>
-            </div>
-
-            <div x-show="randomRecipe" class="text-sm border rounded-lg p-4 border-neutral" x-transition>
-                <div><a :href="randomRecipe.url" x-text="randomRecipe.title"></a></div>
-                <div x-text="randomRecipe.desc"></div>
-            </div>
-
-
-            <div class="flex gap-2 overflow-x-auto mt-2" x-show="rounds.length" x-transition>
-                <template x-for="(options, roundIndex) in rounds">
-                    <div class="flex flex-col gap-2">
-                        <template x-for="(opt, optIndex) in options">
-                            <button class="btn w-96 h-fit" :class="opt.status==='win' && 'btn-success'"
-                                    @click="setOptionForNextRound(roundIndex, optIndex)" x-html="opt.val"
-                                    :disabled="opt.status==='lose'"></button>
-                        </template>
-                    </div>
-                </template>
-            </div>
-
         </div>
 
 
-        <hr>
         <h2>База</h2>
 
         <input type="search" class="input  input-bordered w-full mb-4" placeholder="Поиск" x-model="searchQ"/>
@@ -186,7 +188,7 @@
             <div class="flex flex-col gap-4">
                 <template x-for="recipe in searchResults">
                     <a :href="recipe.url"
-                       class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-800  ">
+                       class="block text-sm border rounded-lg p-4 uni-border no-underline dark:hover:bg-gray-800  ">
                         <div class="underline" x-text="recipe.title"></div>
                         <div class="font-normal" x-text="recipe.desc"></div>
                     </a>
@@ -199,15 +201,15 @@
     <div class="section-list">
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 "><i>#чепожрать?</i></div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 "><i>#чепожрать?</i></div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/prosto-kuhnya" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/prosto-kuhnya" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Просто Кухня</div>
 
         
@@ -226,15 +228,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Азиатка</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Азиатка</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/asian-fried-rice" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/asian-fried-rice" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Жареный рисик в азиатском стиле</div>
 
         
@@ -246,7 +248,7 @@
 
         
             
-    <a href="/recipes/miso-ramen" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/miso-ramen" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Мисо Рамен</div>
 
         
@@ -258,7 +260,7 @@
 
         
             
-    <a href="/recipes/ramen" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/ramen" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Рамен от Васи</div>
 
         
@@ -270,7 +272,7 @@
 
         
             
-    <a href="/recipes/ramyun" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/ramyun" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Рамёны</div>
 
         
@@ -282,7 +284,7 @@
 
         
             
-    <a href="/recipes/duck-soba" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/duck-soba" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Соба с уткой и терияки</div>
 
         
@@ -294,7 +296,7 @@
 
         
             
-    <a href="/recipes/korean-sandwich-tuna" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/korean-sandwich-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Корейский сэндвич с тунцом</div>
 
         
@@ -306,7 +308,7 @@
 
         
             
-    <a href="/recipes/rabokki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/rabokki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Рапокки</div>
 
         
@@ -318,7 +320,7 @@
 
         
             
-    <a href="/recipes/salmon-hand-rolls" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salmon-hand-rolls" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Хэнд роллы с запеченным лососем</div>
 
         
@@ -330,7 +332,7 @@
 
         
             
-    <a href="/recipes/scallop-funchosa" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/scallop-funchosa" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Азиатский салат с гребешком и фунчозой</div>
 
         
@@ -342,7 +344,7 @@
 
         
             
-    <a href="/recipes/tteok-bokki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tteok-bokki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Токпокки</div>
 
         
@@ -354,7 +356,7 @@
 
         
             
-    <a href="/recipes/pollock-korean" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pollock-korean" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Минтай по-корейски</div>
 
         
@@ -366,7 +368,7 @@
 
         
             
-    <a href="/recipes/glass-wok-shrimps" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/glass-wok-shrimps" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Стеклянный вок с креветками</div>
 
         
@@ -378,7 +380,7 @@
 
         
             
-    <a href="/recipes/okonomiaki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/okonomiaki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Окономияки</div>
 
         
@@ -390,7 +392,7 @@
 
         
             
-    <a href="/recipes/lazy-phila" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/lazy-phila" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Ленивая Филадельфия</div>
 
         
@@ -402,7 +404,7 @@
 
         
             
-    <a href="/recipes/asian-udon-chicken" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/asian-udon-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Удон с курицей</div>
 
         
@@ -414,7 +416,7 @@
 
         
             
-    <a href="/recipes/korean-gulash" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/korean-gulash" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Корейский гуляш</div>
 
         
@@ -426,7 +428,7 @@
 
         
             
-    <a href="/recipes/kimpab" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/kimpab" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Кимпаб</div>
 
         
@@ -438,7 +440,7 @@
 
         
             
-    <a href="/recipes/ramyon-creamy" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/ramyon-creamy" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Сливочный Рамён с Кочудяном</div>
 
         
@@ -457,15 +459,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Завтрак</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Завтрак</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/banh-mi" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/banh-mi" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Бань Ми</div>
 
         
@@ -477,7 +479,7 @@
 
         
             
-    <a href="/recipes/pita-turkey" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pita-turkey" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Пита с индейкой</div>
 
         
@@ -489,7 +491,7 @@
 
         
             
-    <a href="/recipes/bliny-hachapuri" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/bliny-hachapuri" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Блины с сырной начинкой 🥞</div>
 
         
@@ -501,7 +503,7 @@
 
         
             
-    <a href="/recipes/ground-beef-tortillas" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/ground-beef-tortillas" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Лепёшки слоёные с фаршем и картошкой</div>
 
         
@@ -513,7 +515,7 @@
 
         
             
-    <a href="/recipes/lavash-hotdog" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/lavash-hotdog" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Хот-дог в лаваше</div>
 
         
@@ -525,7 +527,7 @@
 
         
             
-    <a href="/recipes/toast-shrimp" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/toast-shrimp" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Тосты с креветками и крабовым мясом</div>
 
         
@@ -537,7 +539,7 @@
 
         
             
-    <a href="/recipes/toast-tuna" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/toast-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Бутер с тунцом</div>
 
         
@@ -549,7 +551,7 @@
 
         
             
-    <a href="/recipes/tuna-salad" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tuna-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Салат с тунцом и фасолью</div>
 
         
@@ -561,7 +563,7 @@
 
         
             
-    <a href="/recipes/casserole-vasya" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/casserole-vasya" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Запеканка от Васи</div>
 
         
@@ -573,7 +575,7 @@
 
         
             
-    <a href="/recipes/ham-scramble-sandwich" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/ham-scramble-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Брускетта со скрэмблом и ветчиной</div>
 
         
@@ -585,7 +587,7 @@
 
         
             
-    <a href="/recipes/pollock-sandwich" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pollock-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Бутер с минтаем и авокадо</div>
 
         
@@ -597,7 +599,7 @@
 
         
             
-    <a href="/recipes/tuna-sandwich" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tuna-sandwich" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Бутер с тунцом</div>
 
         
@@ -609,7 +611,7 @@
 
         
             
-    <a href="/recipes/sandwich-salmon-riet" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sandwich-salmon-riet" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Бутер с риетом из горбуши</div>
 
         
@@ -621,7 +623,7 @@
 
         
             
-    <a href="/recipes/sandwich-shrimps-saganaki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sandwich-shrimps-saganaki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Тост &#34;Креветки &#34;Саганаки&#34;</div>
 
         
@@ -633,7 +635,7 @@
 
         
             
-    <a href="/recipes/shakshouka" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/shakshouka" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Шакшука</div>
 
         
@@ -645,7 +647,7 @@
 
         
             
-    <a href="/recipes/mc-breakfast" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/mc-breakfast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Мак Завтрак</div>
 
         
@@ -657,7 +659,7 @@
 
         
             
-    <a href="/recipes/avocado-toast" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/avocado-toast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Авокадо Тост</div>
 
         
@@ -669,7 +671,7 @@
 
         
             
-    <a href="/recipes/quesadilla-morning" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/quesadilla-morning" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Кесадилья утренняя</div>
 
         
@@ -681,7 +683,7 @@
 
         
             
-    <a href="/recipes/balkan-pita-burger" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/balkan-pita-burger" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Балканский бургер с питой</div>
 
         
@@ -693,7 +695,7 @@
 
         
             
-    <a href="/recipes/croissant-salmon" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/croissant-salmon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Круассан с рыбкой</div>
 
         
@@ -705,7 +707,7 @@
 
         
             
-    <a href="/recipes/buckwheat-poke" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/buckwheat-poke" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Боул с гречкой</div>
 
         
@@ -717,7 +719,7 @@
 
         
             
-    <a href="/recipes/english-breakfast" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/english-breakfast" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Английский завтрак</div>
 
         
@@ -729,7 +731,7 @@
 
         
             
-    <a href="/recipes/baked-omlette" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/baked-omlette" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сырный Омлет-Суфле</div>
 
         
@@ -741,7 +743,7 @@
 
         
             
-    <a href="/recipes/sandwich-italian" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sandwich-italian" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Итальянский сэндвич</div>
 
         
@@ -753,7 +755,7 @@
 
         
             
-    <a href="/recipes/taco-burger" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/taco-burger" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Тако-Бургер</div>
 
         
@@ -765,7 +767,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-shproti" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/smorrebrod-shproti" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сморреброд со шпротами и маринованными огурчиками</div>
 
         
@@ -777,7 +779,7 @@
 
         
             
-    <a href="/recipes/sandwich-cabbage-korean" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sandwich-cabbage-korean" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Корейский бутерброд с капустой</div>
 
         
@@ -789,7 +791,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-fish-liver" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/smorrebrod-fish-liver" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сморреброд с печенью трески</div>
 
         
@@ -801,7 +803,7 @@
 
         
             
-    <a href="/recipes/croc-madam" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/croc-madam" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сэндвич &#34;Крок-мадам&#34;</div>
 
         
@@ -813,7 +815,7 @@
 
         
             
-    <a href="/recipes/sandwich-egg-bacon" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sandwich-egg-bacon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сэндвич с яйцом и беконом</div>
 
         
@@ -825,7 +827,7 @@
 
         
             
-    <a href="/recipes/tortilla-fajitas" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tortilla-fajitas" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Фахитос</div>
 
         
@@ -837,7 +839,7 @@
 
         
             
-    <a href="/recipes/syrniki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/syrniki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сырники</div>
 
         
@@ -849,7 +851,7 @@
 
         
             
-    <a href="/recipes/banana-waffles" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/banana-waffles" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Банановые вафли</div>
 
         
@@ -861,7 +863,7 @@
 
         
             
-    <a href="/recipes/waffles" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/waffles" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Вафли</div>
 
         
@@ -873,7 +875,7 @@
 
         
             
-    <a href="/recipes/greek-cheese-pie" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/greek-cheese-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Греческий сырный пирог</div>
 
         
@@ -885,7 +887,7 @@
 
         
             
-    <a href="/recipes/mannik-kefir" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/mannik-kefir" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Манник на кефире с фруктами</div>
 
         
@@ -897,7 +899,7 @@
 
         
             
-    <a href="/recipes/sharlotka" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sharlotka" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Шаплотка</div>
 
         
@@ -909,7 +911,7 @@
 
         
             
-    <a href="/recipes/tuna-pie" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tuna-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Пирог с тунцом</div>
 
         
@@ -921,7 +923,7 @@
 
         
             
-    <a href="/recipes/eegs-benedict" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/eegs-benedict" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Яйца Бенедикт</div>
 
         
@@ -933,7 +935,7 @@
 
         
             
-    <a href="/recipes/zapekanka-pumpkin" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/zapekanka-pumpkin" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Тыквенная запеканка</div>
 
         
@@ -945,7 +947,7 @@
 
         
             
-    <a href="/recipes/smorrebrod-fish" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/smorrebrod-fish" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Сморреброд с рыбой</div>
 
         
@@ -957,7 +959,7 @@
 
         
             
-    <a href="/recipes/shawarma" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/shawarma" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Шаурма с беконом</div>
 
         
@@ -976,15 +978,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Основное</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Основное</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/egg-plant-parmigiano" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/egg-plant-parmigiano" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Баклажаны Пармиджано</div>
 
         
@@ -996,7 +998,7 @@
 
         
             
-    <a href="/recipes/berlin-liver" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/berlin-liver" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Печень по-берлински</div>
 
         
@@ -1008,7 +1010,7 @@
 
         
             
-    <a href="/recipes/chicken-shkmeruli" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/chicken-shkmeruli" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Курица Чкмерули</div>
 
         
@@ -1020,7 +1022,7 @@
 
         
             
-    <a href="/recipes/crab-cakes" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/crab-cakes" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Краб-кейки</div>
 
         
@@ -1032,7 +1034,7 @@
 
         
             
-    <a href="/recipes/gratin" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/gratin" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Картофельный Гратен с цветной капустой и рыбой</div>
 
         
@@ -1044,7 +1046,7 @@
 
         
             
-    <a href="/recipes/shepherds-pie" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/shepherds-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Пастуший пирог</div>
 
         
@@ -1056,7 +1058,7 @@
 
         
             
-    <a href="/recipes/chicken-provence" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/chicken-provence" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Куринная грудка в соусе Провансаль</div>
 
         
@@ -1068,7 +1070,7 @@
 
         
             
-    <a href="/recipes/chilli-turkey" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/chilli-turkey" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Индейка с Чили, фасолью и овощами</div>
 
         
@@ -1080,7 +1082,7 @@
 
         
             
-    <a href="/recipes/tom-yam-chicken" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tom-yam-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Курица в духовке и Спагетти в соусе Том ям</div>
 
         
@@ -1092,7 +1094,7 @@
 
         
             
-    <a href="/recipes/string-beans-bolognese" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/string-beans-bolognese" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Фасоль Болоньезе</div>
 
         
@@ -1104,7 +1106,7 @@
 
         
             
-    <a href="/recipes/nut-pure" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/nut-pure" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Пюре из нута с фаршем</div>
 
         
@@ -1116,7 +1118,7 @@
 
         
             
-    <a href="/recipes/cutlet" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/cutlet" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Котлеты</div>
 
         
@@ -1128,7 +1130,7 @@
 
         
             
-    <a href="/recipes/buckwheat-chicken" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/buckwheat-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Запеченная Курица с Гречкой</div>
 
         
@@ -1140,7 +1142,7 @@
 
         
             
-    <a href="/recipes/guakomolle" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/guakomolle" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Гуакамоле</div>
 
         
@@ -1152,7 +1154,7 @@
 
         
             
-    <a href="/recipes/pepper-sauce-beef" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pepper-sauce-beef" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Говядина в перечном соусе с овощами</div>
 
         
@@ -1164,7 +1166,7 @@
 
         
             
-    <a href="/recipes/lazy-golubcy" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/lazy-golubcy" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Ленивые Голубцы</div>
 
         
@@ -1176,7 +1178,7 @@
 
         
             
-    <a href="/recipes/pot-meat" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pot-meat" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Мясо в горшочке</div>
 
         
@@ -1188,7 +1190,7 @@
 
         
             
-    <a href="/recipes/ikea-meat-balls" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/ikea-meat-balls" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Шведские фрикадельки с брусничным и сливочным соусами</div>
 
         
@@ -1200,7 +1202,7 @@
 
         
             
-    <a href="/recipes/bikus" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/bikus" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Солянка / Бикус со шпикачками / сосисками</div>
 
         
@@ -1212,7 +1214,7 @@
 
         
             
-    <a href="/recipes/golybci-china" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/golybci-china" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Голубцы по-китайски</div>
 
         
@@ -1224,7 +1226,7 @@
 
         
             
-    <a href="/recipes/sausage-broccoli" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/sausage-broccoli" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Колбаски с брокколи в хрустящей корочке</div>
 
         
@@ -1236,7 +1238,7 @@
 
         
             
-    <a href="/recipes/fish-and-chips" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/fish-and-chips" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Фиш энд чипс с пюре из горошка</div>
 
         
@@ -1248,7 +1250,7 @@
 
         
             
-    <a href="/recipes/shrimps-pil-pil" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/shrimps-pil-pil" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Креветки пиль-пиль</div>
 
         
@@ -1260,7 +1262,7 @@
 
         
             
-    <a href="/recipes/terpug-potato" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/terpug-potato" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Терпуг с мятой картошкой</div>
 
         
@@ -1272,7 +1274,7 @@
 
         
             
-    <a href="/recipes/pie-wellington-fish" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pie-wellington-fish" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Фиш &#34;Велингтон&#34; в слоеном тесте со шпинатом</div>
 
         
@@ -1284,7 +1286,7 @@
 
         
             
-    <a href="/recipes/paella" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/paella" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паэлья</div>
 
         
@@ -1296,7 +1298,7 @@
 
         
             
-    <a href="/recipes/pepperonata-chicken" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/pepperonata-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Пепероната с курицей</div>
 
         
@@ -1315,15 +1317,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Паста</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Паста</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/pasta-salmon" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-salmon" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Спагетти с лососем в сливочном соусе</div>
 
         
@@ -1335,7 +1337,7 @@
 
         
             
-    <a href="/recipes/pasta-scallop" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-scallop" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста с гребешком</div>
 
         
@@ -1347,7 +1349,7 @@
 
         
             
-    <a href="/recipes/pasta-squid" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-squid" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста с кальмаром</div>
 
         
@@ -1359,7 +1361,7 @@
 
         
             
-    <a href="/recipes/pasta-tuna" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-tuna" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста с тунцом</div>
 
         
@@ -1371,7 +1373,7 @@
 
         
             
-    <a href="/recipes/pasta-flot" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-flot" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Макароны по флотски с приколами</div>
 
         
@@ -1383,7 +1385,7 @@
 
         
             
-    <a href="/recipes/pasta-ala-norma" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-ala-norma" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста Ала норма с баклажанами</div>
 
         
@@ -1395,7 +1397,7 @@
 
         
             
-    <a href="/recipes/pasta-alfredo" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-alfredo" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста Альфредо</div>
 
         
@@ -1407,7 +1409,7 @@
 
         
             
-    <a href="/recipes/pasta-carbonara" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-carbonara" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста Карбонара</div>
 
         
@@ -1419,7 +1421,7 @@
 
         
             
-    <a href="/recipes/pasta-beetroot" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/pasta-beetroot" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Паста со свекольным песто</div>
 
         
@@ -1431,7 +1433,7 @@
 
         
             
-    <a href="/recipes/pasta-meatballs" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/pasta-meatballs" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Спагетти с фрикадельками из индейки</div>
 
         
@@ -1450,15 +1452,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Салат</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Салат</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/duck-salad" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/duck-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Салат с уткой</div>
 
         
@@ -1470,7 +1472,7 @@
 
         
             
-    <a href="/recipes/salad-greek" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-greek" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Греческий</div>
 
         
@@ -1482,7 +1484,7 @@
 
         
             
-    <a href="/recipes/coleslaw" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/coleslaw" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Коуслоу</div>
 
         
@@ -1494,7 +1496,7 @@
 
         
             
-    <a href="/recipes/crab-salad" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/crab-salad" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Крабовый салат</div>
 
         
@@ -1506,7 +1508,7 @@
 
         
             
-    <a href="/recipes/salad-mangal" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-mangal" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Мангал салат</div>
 
         
@@ -1518,7 +1520,7 @@
 
         
             
-    <a href="/recipes/salad-spring" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-spring" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Салат Весенний</div>
 
         
@@ -1530,7 +1532,7 @@
 
         
             
-    <a href="/recipes/salad-egg-plant" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-egg-plant" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Салат с баклажанами в соусе Сладкий Чили</div>
 
         
@@ -1542,7 +1544,7 @@
 
         
             
-    <a href="/recipes/salad-tuna-pepper" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-tuna-pepper" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Салат с тунцом и замеченным перцем</div>
 
         
@@ -1554,7 +1556,7 @@
 
         
             
-    <a href="/recipes/salad-turkish-finiki" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/salad-turkish-finiki" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Турецкий салат с финиками</div>
 
         
@@ -1566,7 +1568,7 @@
 
         
             
-    <a href="/recipes/funchosa-shrooms" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/funchosa-shrooms" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Фунчоза с вешенками и овощами</div>
 
         
@@ -1578,7 +1580,7 @@
 
         
             
-    <a href="/recipes/salad-caesar" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/salad-caesar" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Простой Салат Цезарь</div>
 
         
@@ -1597,15 +1599,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Суп</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Суп</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/solyanka-soup-sauerkraut" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/solyanka-soup-sauerkraut" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Суп Солянка с квашеной капустой</div>
 
         
@@ -1617,7 +1619,7 @@
 
         
             
-    <a href="/recipes/champignons-cream-soup" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/champignons-cream-soup" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Грибной крем суп</div>
 
         
@@ -1629,7 +1631,7 @@
 
         
             
-    <a href="/recipes/mashed-orange-lentil-soup" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/mashed-orange-lentil-soup" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Суп-пюре из красной чечевицы</div>
 
         
@@ -1641,7 +1643,7 @@
 
         
             
-    <a href="/recipes/tomato-soup-with-lentil" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/tomato-soup-with-lentil" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Томатный суп с чечевицей и фаршем</div>
 
         
@@ -1653,7 +1655,7 @@
 
         
             
-    <a href="/recipes/soup-chicken" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/soup-chicken" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Куриный суп</div>
 
         
@@ -1665,7 +1667,7 @@
 
         
             
-    <a href="/recipes/soup-mexican" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/soup-mexican" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Мексиканский острый фасолевый суп</div>
 
         
@@ -1677,7 +1679,7 @@
 
         
             
-    <a href="/recipes/soup-harcho" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/soup-harcho" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Суп Харчо</div>
 
         
@@ -1689,7 +1691,7 @@
 
         
             
-    <a href="/recipes/soup-lamb-chechvica" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/soup-lamb-chechvica" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Суп из баранины с чечевицей</div>
 
         
@@ -1701,7 +1703,7 @@
 
         
             
-    <a href="/recipes/soup-tom-yam" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/soup-tom-yam" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Том Ям</div>
 
         
@@ -1720,15 +1722,15 @@
 
         
             
-    <div class="rounded-border dark:border-gray-700">
-        <div class="border-neutral dark:border-gray-700 border-b px-2 ">Сладости</div>
+    <div class="rounded-border uni-border shadow">
+        <div class="border-b uni-border px-2 ">Сладости</div>
         <div class="">
             
                 
     <div class="link-list">
         
             
-    <a href="/recipes/almond-lingonberry-pie" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 ">
+    <a href="/recipes/almond-lingonberry-pie" class="block px-4 py-2 text-sm  no-underline uni-hover ">
         <div class="underline">Брусничный Пирог</div>
 
         
@@ -1740,7 +1742,7 @@
 
         
             
-    <a href="/recipes/brownie-cherry" class="block px-4 py-2 text-sm  no-underline dark:hover:bg-gray-800 rounded-b-lg">
+    <a href="/recipes/brownie-cherry" class="block px-4 py-2 text-sm  no-underline uni-hover rounded-b-lg">
         <div class="underline">Брауни с вишней</div>
 
         
@@ -1854,12 +1856,26 @@
 
 </main>
 
-<footer class="prose max-w-none border-t border-neutral mt-4 p-2">
-    <div class="flex items-baseline justify-end gap-1 ">
-        <a class="btn btn-ghost btn-sm " href="https://t.me/potyk_forever">канал в тг</a>
-        <span >|</span>
-        <a class="btn btn-ghost btn-sm " href="https://t.me/potykion">я в тг</a>
+<footer class="prose max-w-none border-t uni-border mt-4 p-2">
+
+    <div class="flex gap-2  justify-end ">
+        <a href="https://t.me/potyk_forever" class="btn btn-sm btn-primary  relative">
+            подпишись на телегу
+
+            <span class="opacity-0">👉👈</span>
+
+            <span class="animate-bounce-x-right absolute bottom-[2px] right-9">👉</span>
+            <span class="absolute right-[24px] opacity-80  top-1 ">🥺</span>
+            <span class="animate-bounce-x-left absolute bottom-[2px] right-3">👈</span>
+        </a>
+
     </div>
+
+    
+    
+    
+    
+    
 </footer>
 
 </body>

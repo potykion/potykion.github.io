@@ -5,12 +5,12 @@ include feed_card.html
 #}
 
 
-{% set border_color = 'border-neutral dark:border-gray-700' %}
+{% set border_color = 'uni-border' %}
 
 {#    {% set bg_color = 'dark:bg-gray-800 ' + ('hover:dark:bg-gray-900 hover:bg-gray-50' if url else ' ') %}#}
 {% set bg_color = '' %}
 {% if feed_card.url %}
-{% set bg_color = bg_color + ' dark:hover:bg-gray-800' %}
+{% set bg_color = bg_color + ' uni-hover' %}
 {% endif %}
 
 {% set text_color = 'dark:text-gray-200' %}

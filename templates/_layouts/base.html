@@ -85,28 +85,28 @@
 <body class="{% if fullwidth %}{% else %}max-w-[1000px]{% endif %}">
 
 <header class="text-sm ">
-    <div class="border-b py-2 border-neutral flex items-baseline gap-1">
+    <div class="border-b py-2 uni-border flex items-baseline gap-1">
         <a class="btn btn-ghost btn-sm" href="/">∏⌀♰ʯԞ.ʯ⌀</a>
-{#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">разделы</a>#}
-{#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">мысли</a>#}
+        {#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">разделы</a>#}
+        {#        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/">мысли</a>#}
 
         {% if not config.is_prod %}
-        <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/admin">админка</a>
+            <span class="">|</span> <a class="btn btn-ghost btn-sm " href="/admin">админка</a>
         {% endif %}
 
     </div>
 
 
     {% if page.breadcrumbs | length > 1 %}
-        <div class="breadcrumbs border-neutral border-b">
+        <div class="breadcrumbs uni-border border-b mb-2">
             <ul class="!pl-3">
-{#            <ul >#}
+                {#            <ul >#}
                 {#            <ul class="!pl-0">#}
                 {% if page %}
                     <li>
-                                <a class="link-hover " href="/">⌀</a>
+                        <a class="link-hover " href="/">⌀</a>
 
-                        </li>
+                    </li>
                     {% for page in page.breadcrumbs[1:] %}
                         <li>
                             {% if loop.last %}
@@ -130,20 +130,36 @@
 <main class="prose  max-w-none p-2">
     {% block title %}
         {% if page %}
-            <h1>{{ page.title | safe }}</h1>
-            <cite class="block">{{ (page.desc or '') | safe }}</cite>
+            <div class="mb-2">
+                <h1>{{ page.title | safe }}</h1>
+                <cite class="block">{{ (page.desc or '') | safe }}</cite>
+            </div>
         {% endif %}
     {% endblock %}
 
     {% block main %}{% endblock %}
 </main>
 
-<footer class="prose max-w-none border-t border-neutral mt-4 p-2">
-    <div class="flex items-baseline justify-end gap-1 ">
-        <a class="btn btn-ghost btn-sm " href="https://t.me/potyk_forever">канал в тг</a>
-        <span >|</span>
-        <a class="btn btn-ghost btn-sm " href="https://t.me/potykion">я в тг</a>
+<footer class="prose max-w-none border-t uni-border mt-4 p-2">
+
+    <div class="flex gap-2  justify-end ">
+        <a href="https://t.me/potyk_forever" class="btn btn-sm btn-primary  relative">
+            подпишись на телегу
+
+            <span class="opacity-0">👉👈</span>
+
+            <span class="animate-bounce-x-right absolute bottom-[2px] right-9">👉</span>
+            <span class="absolute right-[24px] opacity-80  top-1 ">🥺</span>
+            <span class="animate-bounce-x-left absolute bottom-[2px] right-3">👈</span>
+        </a>
+
     </div>
+
+    {#    <div class="flex items-baseline justify-end gap-1 ">#}
+    {#        <a class="btn btn-ghost btn-sm " href="https://t.me/potyk_forever">канал в тг</a>#}
+    {#        <span >|</span>#}
+    {#        <a class="btn btn-ghost btn-sm " href="https://t.me/potykion">я в тг</a>#}
+    {#    </div>#}
 </footer>
 
 </body>
