@@ -24,20 +24,32 @@ from potyk_io_back.utils.form import FieldRenderKw
 class ProstoKuhnyaRecipe(BaseModel):
     title: str = ""
 
-
 class ProstoKuhnyaIssue(BaseModel):
     recipes_amount: ClassVar[int] = 5
 
     id: int
-    issue_number: int
+    issue_number: str
     youtube_url: str
     recipes: list[ProstoKuhnyaRecipe]
+
+    @computed_field
+    @property
+    def sort_key(self) -> tuple[int, str]:
+        parts = self.issue_number.split('_')
+        return int(parts[0]), (parts[1] if len(parts) > 1 else '')
 
     @classmethod
     def from_json(cls, json_):
         json_ = {**json_}
+
         json_["recipes"] = json.loads(json_["recipes"])
-        return ProstoKuhnyaIssue(**json_)
+        issue = ProstoKuhnyaIssue(**json_)
+
+        for rec in issue.recipes:
+            if rec.title.startswith('"\''):
+                rec.title =rec.title.strip('"\'')
+
+        return issue
 
     @computed_field
     @property
@@ -209,6 +221,7 @@ def add_recipes_routes(app, deps):
             "select * from recipes_prosto_kuhnya_issues",
             as_=ProstoKuhnyaIssue.from_json,
         )
+        issues = sorted(issues, key=lambda issue: issue.sort_key, reverse=True)
 
         return render_template(
             "recipes/prosto-kuhnya.html",

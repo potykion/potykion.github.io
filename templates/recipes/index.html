@@ -11,11 +11,15 @@
 
         </div>
 
-        {% if not config.is_prod %}
-            <div>
+        <div>
+            <a class="btn btn-sm " href="/recipes/prosto-kuhnya">Просто Кухня</a>
+
+            {% if not config.is_prod %}
                 <a class="btn btn-sm " href="/recipes/form">Создать</a>
-            </div>
-        {% endif %}
+            {% endif %}
+        </div>
+
+
     </div>
 
 
@@ -71,7 +75,8 @@
         <template x-if="searchQ">
             <div class="flex flex-col gap-4">
                 <template x-for="recipe in searchResults">
-                    <a :href="recipe.url" class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-800  " >
+                    <a :href="recipe.url"
+                       class="block text-sm border rounded-lg p-4 border-neutral no-underline dark:hover:bg-gray-800  ">
                         <div class="underline" x-text="recipe.title"></div>
                         <div class="font-normal" x-text="recipe.desc"></div>
                     </a>

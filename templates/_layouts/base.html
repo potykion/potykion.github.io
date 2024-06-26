@@ -97,7 +97,7 @@
     </div>
 
 
-    {% if page.breadcrumbs | length > 2 %}
+    {% if page.breadcrumbs | length > 1 %}
         <div class="breadcrumbs border-neutral border-b">
             <ul class="!pl-3">
 {#            <ul >#}
@@ -107,13 +107,13 @@
                                 <a class="link-hover " href="/">⌀</a>
 
                         </li>
-                    {% for page in page.breadcrumbs[1:-1] %}
+                    {% for page in page.breadcrumbs[1:] %}
                         <li>
-{#                            {% if loop.last %}#}
-{#                                {{ page.breadcrumbs_title }}#}
-{#                            {% else %}#}
+                            {% if loop.last %}
+                                {{ page.breadcrumbs_title }}
+                            {% else %}
                                 <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
-{#                            {% endif %}#}
+                            {% endif %}
                         </li>
                     {% endfor %}
                 {% else %}
