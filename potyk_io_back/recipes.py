@@ -229,6 +229,20 @@ def add_recipes_routes(app, deps):
             issues=[i.model_dump() for i in issues],
         )
 
+    @app.route("/recipes/breakfast")
+    def route_recipes_breakfast():
+        issues: list[ProstoKuhnyaIssue] = deps.q.select_all(
+            "select * from recipes_prosto_kuhnya_issues",
+            as_=ProstoKuhnyaIssue.from_json,
+        )
+        issues = sorted(issues, key=lambda issue: issue.sort_key, reverse=True)
+
+        return render_template(
+            "recipes/prosto-kuhnya.html",
+            page=deps.page,
+            issues=[i.model_dump() for i in issues],
+        )
+
     @app.route("/recipes/<recipe_key>")
     def recipe_page(recipe_key):
         try:
