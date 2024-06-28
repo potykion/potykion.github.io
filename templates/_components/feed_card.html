@@ -87,7 +87,9 @@ class="no-underline {{ bg_color }} {{ text_color }} rounded-xl uni-bg shadow bor
             <div class="font-semibold text-center " style="text-wrap: balance">{{ feed_card.title | safe }}</div>
 
             {% if feed_card.audio %}
-                <audio controls class="w-full border-t {{ border_color }}" src="{{ feed_card.audio }}"></audio>
+                {% for audio in feed_card.audio.split(',') %}
+                <audio controls class="w-full border-t {{ border_color }}" src="{{ audio }}"></audio>
+                {% endfor %}
             {% endif %}
         </div>
     {% endif %}
