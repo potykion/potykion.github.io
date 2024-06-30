@@ -97,9 +97,15 @@ class BlogPage(BaseModel):
     section: BlogPageSection | None = None
     include_in_index: bool | None = False
     breadcrumbs_title: str | None = ""
+    tags: tuple[str, ...] = Field(default_factory=tuple)
 
     breadcrumbs: list["BlogPage"] = Field(default_factory=list)
 
+    @classmethod
+    def from_sql(cls, row):
+        row = {**row}
+        row['tags'] = sorted((row['tags'] or '').split(','),)
+        return cls(**row)
 
 def generate_breadcrumbs(path):
     """
@@ -118,7 +124,7 @@ def generate_breadcrumbs(path):
 class BlogPageStore:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
-        self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", BlogPage)
+        self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", model_factory=BlogPage.from_sql)
         self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
 
     def insert(self, page):
@@ -129,11 +135,12 @@ class BlogPageStore:
         )
 
     def list_index(self):
-        return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")
+        return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section", as_=BlogPage.from_sql)
 
     def list_recipe_pages(self) -> list[BlogPage]:
         return self.q.select_all(
-            "select * from blog_pages where section like 'recipes_%' order by section"
+            "select * from blog_pages where section like 'recipes_%' order by section",
+            as_=BlogPage.from_sql,
         )
 
     def list_all(self, breadcrumbs=False, **kwargs):

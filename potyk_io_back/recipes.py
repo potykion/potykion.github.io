@@ -18,11 +18,13 @@ from wtforms.validators import InputRequired
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.blog_pages import BlogPage, BlogPageSection, render_md_as_html_template
+from potyk_io_back.services import sql
 from potyk_io_back.utils.form import FieldRenderKw
 
 
 class ProstoKuhnyaRecipe(BaseModel):
     title: str = ""
+
 
 class ProstoKuhnyaIssue(BaseModel):
     recipes_amount: ClassVar[int] = 5
@@ -35,8 +37,8 @@ class ProstoKuhnyaIssue(BaseModel):
     @computed_field
     @property
     def sort_key(self) -> tuple[int, str]:
-        parts = self.issue_number.split('_')
-        return int(parts[0]), (parts[1] if len(parts) > 1 else '')
+        parts = self.issue_number.split("_")
+        return int(parts[0]), (parts[1] if len(parts) > 1 else "")
 
     @classmethod
     def from_json(cls, json_):
@@ -46,8 +48,8 @@ class ProstoKuhnyaIssue(BaseModel):
         issue = ProstoKuhnyaIssue(**json_)
 
         for rec in issue.recipes:
-            if rec.title.startswith('"\''):
-                rec.title =rec.title.strip('"\'')
+            if rec.title.startswith("\"'"):
+                rec.title = rec.title.strip("\"'")
 
         return issue
 
@@ -231,16 +233,21 @@ def add_recipes_routes(app, deps):
 
     @app.route("/recipes/breakfast")
     def route_recipes_breakfast():
-        issues: list[ProstoKuhnyaIssue] = deps.q.select_all(
-            "select * from recipes_prosto_kuhnya_issues",
-            as_=ProstoKuhnyaIssue.from_json,
+        recipes = sql().select_all(
+            "select * from blog_pages where section = 'recipes_breakfast'",
+            as_=BlogPage.from_sql,
         )
-        issues = sorted(issues, key=lambda issue: issue.sort_key, reverse=True)
+        recipes = sorted(recipes, key=lambda recipe: recipe.tags)
+
+        tags = list({tag for recipe in recipes for tag in recipe.tags})
+        recipes_json = [rec.model_dump() for rec in recipes]
+
 
         return render_template(
-            "recipes/prosto-kuhnya.html",
+            "recipes/breakfast.html",
             page=deps.page,
-            issues=[i.model_dump() for i in issues],
+            recipes=recipes_json,
+            tags=tags,
         )
 
     @app.route("/recipes/<recipe_key>")
