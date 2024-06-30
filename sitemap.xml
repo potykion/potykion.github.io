@@ -67,9 +67,6 @@
 		<loc>https://potyk.io/recipes/gratin</loc>
 	</url>
 	<url>
-		<loc>https://potyk.io/recipes/ground-beef-tortillas</loc>
-	</url>
-	<url>
 		<loc>https://potyk.io/recipes/lavash-hotdog</loc>
 	</url>
 	<url>
@@ -167,9 +164,6 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/recipes/tteok-bokki</loc>
-	</url>
-	<url>
-		<loc>https://potyk.io/recipes/tuna-sandwich</loc>
 	</url>
 	<url>
 		<loc>https://potyk.io/recipes/pollock-korean</loc>
@@ -428,5 +422,8 @@
 	</url>
 	<url>
 		<loc>https://potyk.io/recipes/prosto-kuhnya</loc>
+	</url>
+	<url>
+		<loc>https://potyk.io/recipes/breakfast</loc>
 	</url>
 </urlset>
