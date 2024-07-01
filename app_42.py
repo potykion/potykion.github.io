@@ -18,6 +18,7 @@ from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore, b
 from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
+from potyk_io_back.food import Food, set_restaurants_for_food
 from potyk_io_back.index_and_feed import add_index_page, FeedStorage
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.lazy import SimpleStorage
@@ -457,6 +458,18 @@ def create_app(server_name=None):
             "rest/index.html",
             page=deps.page,
             restaurants=deps.restaurant_store.list_all(),
+        )
+    @app.route("/food")
+    def food_page():
+        food = deps.q.select_all('select * from mmm_food', as_=Food.from_sql)
+
+        food = set_restaurants_for_food(food)
+
+        food_by_cuisine = groupby_dict(food, lambda food: food.cuisine or 'Без категории')
+        return render_template(
+            "food/index.html",
+            page=deps.page,
+            food_by_cuisine=food_by_cuisine,
         )
 
     @app.route("/rest/add", methods=["GET", "POST"])
