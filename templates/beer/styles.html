@@ -1,0 +1,34 @@
+{% extends "_layouts/base.html" %}
+
+
+{% block main %}
+
+    <h2>Пробовал</h2>
+
+    <div class="flex gap-2 flex-col">
+        {% for style in tried_styles %}
+            <div class="text-sm border uni-border p-2 rounded-lg">
+                <div class="font-semibold text-base">{{ style.title }}</div>
+                <div>{{ style.desc }}</div>
+                <div><span class="font-semibold">Примеры:</span> {{ style.examples.split(',') | join(' • ') }}</div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <h2>Не пробовал</h2>
+    <div class="flex gap-2 flex-col">
+
+        {% for style in not_tried_styles %}
+            <div class="text-sm border uni-border p-2 rounded-lg">
+                <div class="font-semibold text-base">{{ style.title }}</div>
+                <div>{{ style.desc }}</div>
+                <div>{{ style.examples }}</div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
