@@ -2,9 +2,10 @@ import datetime
 import enum
 import sqlite3
 from itertools import groupby
+from operator import attrgetter
 from typing import cast
 
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, Flask
 from pydantic import BaseModel, Field, fields
 
 from potyk_io_back.core import (
@@ -140,18 +141,17 @@ class BeerStorage:
 
         return beers
 
-
     def list_stores(self):
         return [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
 
     def get_by_id(self, id):
         return self.list_all(f"id = {id}")[0]
 
+
 def beer_from_dict(raw_beer):
     raw_beer = dict(raw_beer)
     raw_beer["wishlist"] = raw_beer["wishlist"] or False
     return Beer(**raw_beer)
-
 
 
 def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
@@ -177,3 +177,75 @@ def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
         )
 
     return beer_bp
+
+
+def add_beer_routes(app: Flask, deps) -> None:
+    @app.route("/beer")
+    def beer_page():
+        beers = deps.q.select_all("select * from beers order by brewery_id", as_=beer_from_dict)
+
+        beer_prices = deps.q.select_all(
+            "select * from beers_prices order by beer_id",
+            as_=BeerPrice,
+        )
+        beer_prices_by_beer_id = {
+            beer_id: list(beer_id_prices)
+            for beer_id, beer_id_prices in groupby(beer_prices, lambda price: price.beer_id)
+        }
+        beers = [
+            beer.model_copy(update={"prices": beer_prices_by_beer_id.get(beer.id, [])}) for beer in beers
+        ]
+
+        beers_by_brewery = {
+            brewery_id: list(beers) for brewery_id, beers in groupby(beers, attrgetter("brewery_id"))
+        }
+        breweries: list[Brewery] = deps.q.select_all(
+            "select * from beer_breweries",
+            as_=lambda row: Brewery(
+                **{
+                    **row,
+                    "styles": list(map(str.strip, row["styles"].split(","))),
+                }
+            ),
+        )
+        breweries = [
+            brew.model_copy(update={"beers": beers_by_brewery.get(brew.id, [])}) for brew in breweries
+        ]
+
+        styles: list[BeerStyle] = deps.q.select_all(
+            "select * from beer_styles order by parent_style", as_=BeerStyle
+        )
+        parent_styles = [style for style in styles if not style.parent_style]
+        child_styles_by_parent = {
+            parent_id: list(styles)
+            for parent_id, styles in groupby(
+                [style for style in styles if style.parent_style], attrgetter("parent_style")
+            )
+        }
+        styles = [
+            style.model_copy(update={"sub_styles": child_styles_by_parent.get(style.id, [])})
+            for style in parent_styles
+        ]
+
+        stores = [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
+
+        return render_template(
+            "beer/index.html",
+            page=deps.page,
+            breweries=breweries,
+            styles=styles,
+            beers=beers,
+            stores=stores,
+        )
+
+    @app.route("/beer/styles")
+    def beer_styles_page():
+        tried_styles = deps.q.select_all('select * from beer_styles_2 where tried = 1')
+        not_tried_styles = deps.q.select_all('select * from beer_styles_2 where tried = 0')
+        return render_template(
+            "beer/styles.html",
+            page=deps.page,
+            tried_styles=tried_styles,
+        not_tried_styles=not_tried_styles,
+
+        )

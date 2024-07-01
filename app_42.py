@@ -14,7 +14,7 @@ from jinja2 import TemplateNotFound
 from pydantic import BaseModel
 
 from potyk_io_back.admin import add_admin_routes
-from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore, beer_from_dict
+from potyk_io_back.beer import Beer, Brewery, BeerPrice, BeerStyle, BeerStore, beer_from_dict, add_beer_routes
 from potyk_io_back.books import BookStore
 from potyk_io_back.core import BASE_DIR
 from potyk_io_back.event import Event
@@ -62,7 +62,8 @@ class Deps:
     sqlite_cursor: sqlite3.Cursor
 
     @property
-    def feed_storage(self): return FeedStorage(self.sqlite_cursor)
+    def feed_storage(self):
+        return FeedStorage(self.sqlite_cursor)
 
     @property
     def movie_store(self):
@@ -237,66 +238,7 @@ def create_app(server_name=None):
 
     # endregion books
 
-    # region beer
-    @app.route("/beer")
-    def beer_page():
-        beers = deps.q.select_all("select * from beers order by brewery_id", as_=beer_from_dict)
-
-        beer_prices = deps.q.select_all(
-            "select * from beers_prices order by beer_id",
-            as_=BeerPrice,
-        )
-        beer_prices_by_beer_id = {
-            beer_id: list(beer_id_prices)
-            for beer_id, beer_id_prices in groupby(beer_prices, lambda price: price.beer_id)
-        }
-        beers = [
-            beer.model_copy(update={"prices": beer_prices_by_beer_id.get(beer.id, [])}) for beer in beers
-        ]
-
-        beers_by_brewery = {
-            brewery_id: list(beers) for brewery_id, beers in groupby(beers, attrgetter("brewery_id"))
-        }
-        breweries: list[Brewery] = deps.q.select_all(
-            "select * from beer_breweries",
-            as_=lambda row: Brewery(
-                **{
-                    **row,
-                    "styles": list(map(str.strip, row["styles"].split(","))),
-                }
-            ),
-        )
-        breweries = [
-            brew.model_copy(update={"beers": beers_by_brewery.get(brew.id, [])}) for brew in breweries
-        ]
-
-        styles: list[BeerStyle] = deps.q.select_all(
-            "select * from beer_styles order by parent_style", as_=BeerStyle
-        )
-        parent_styles = [style for style in styles if not style.parent_style]
-        child_styles_by_parent = {
-            parent_id: list(styles)
-            for parent_id, styles in groupby(
-                [style for style in styles if style.parent_style], attrgetter("parent_style")
-            )
-        }
-        styles = [
-            style.model_copy(update={"sub_styles": child_styles_by_parent.get(style.id, [])})
-            for style in parent_styles
-        ]
-
-        stores = [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
-
-        return render_template(
-            "beer/index.html",
-            page=deps.page,
-            breweries=breweries,
-            styles=styles,
-            beers=beers,
-            stores=stores,
-        )
-
-    # endregion beer
+    add_beer_routes(app, deps)
 
     # region money
     @app.route("/money")
@@ -430,6 +372,7 @@ def create_app(server_name=None):
             "n/projects.md",
             page=deps.page,
         )
+
     @app.route("/n")
     def n_page():
         return render_md_as_html_template(
@@ -459,13 +402,14 @@ def create_app(server_name=None):
             page=deps.page,
             restaurants=deps.restaurant_store.list_all(),
         )
+
     @app.route("/food")
     def food_page():
-        food = deps.q.select_all('select * from mmm_food', as_=Food.from_sql)
+        food = deps.q.select_all("select * from mmm_food", as_=Food.from_sql)
 
         food = set_restaurants_for_food(food)
 
-        food_by_cuisine = groupby_dict(food, lambda food: food.cuisine or 'Без категории')
+        food_by_cuisine = groupby_dict(food, lambda food: food.cuisine or "Без категории")
         return render_template(
             "food/index.html",
             page=deps.page,
