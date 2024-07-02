@@ -179,6 +179,22 @@ def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
     return beer_bp
 
 
+class BeerStyle2(BaseModel):
+    id: int
+    title: str
+    desc: str
+    examples: list[str]
+
+    @classmethod
+    def from_sql(cls, row: sqlite3.Row) -> "BeerStyle2":
+        return cls(
+            id=row["id"],
+            title=row["title"],
+            desc=row["desc"],
+            examples=(row["examples"] or "").split(","),
+        )
+
+
 def add_beer_routes(app: Flask, deps) -> None:
     @app.route("/beer")
     def beer_page():
@@ -240,12 +256,17 @@ def add_beer_routes(app: Flask, deps) -> None:
 
     @app.route("/beer/styles")
     def beer_styles_page():
-        tried_styles = deps.q.select_all('select * from beer_styles_2 where tried = 1')
-        not_tried_styles = deps.q.select_all('select * from beer_styles_2 where tried = 0')
+        tried_styles = deps.q.select_all(
+            "select * from beer_styles_2 where tried = 1",
+            as_=BeerStyle2.from_sql,
+        )
+        not_tried_styles = deps.q.select_all(
+            "select * from beer_styles_2 where tried = 0",
+            as_=BeerStyle2.from_sql,
+        )
         return render_template(
             "beer/styles.html",
             page=deps.page,
             tried_styles=tried_styles,
-        not_tried_styles=not_tried_styles,
-
+            not_tried_styles=not_tried_styles,
         )
