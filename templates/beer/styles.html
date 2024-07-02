@@ -10,7 +10,7 @@
             <div class="text-sm border uni-border p-2 rounded-lg">
                 <div class="font-semibold text-base">{{ style.title }}</div>
                 <div>{{ style.desc }}</div>
-                <div><span class="font-semibold">Примеры:</span> {{ style.examples.split(',') | join(' • ') }}</div>
+                <div><span class="font-semibold">Примеры:</span> {{ style.examples | join(' • ') }}</div>
 
             </div>
         {% endfor %}
