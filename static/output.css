@@ -4426,6 +4426,18 @@ ul.li-minus li:before {
   margin-top: 1.5rem;
 }
 
+.mt-\[50vh\] {
+  margin-top: 50vh;
+}
+
+.mt-\[40vh\] {
+  margin-top: 40vh;
+}
+
+.mt-\[30vh\] {
+  margin-top: 30vh;
+}
+
 .block {
   display: block;
 }
@@ -4783,9 +4795,9 @@ ul.li-minus li:before {
   line-height: 2rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .text-sm {
@@ -4801,11 +4813,6 @@ ul.li-minus li:before {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .font-bold {
