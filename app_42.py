@@ -379,6 +379,12 @@ def create_app(server_name=None):
             "n/index.md",
             page=deps.page,
         )
+    @app.route("/n/cv")
+    def n_cv_page():
+        return render_md_as_html_template(
+            "n/cv.md",
+            page=deps.page,
+        )
 
     add_rewardy_routes(app, deps)
 
