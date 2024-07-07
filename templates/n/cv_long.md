@@ -1,36 +1,15 @@
-{% extends "_layouts/base.html" %}
 
-{% block title %}
+## Обо мне
 
-<div class="my-2 flex justify-between">
-
-<div>
-
-# Лейбович Никита
-
-<a class="link link-hover block my-2" href="mailto:potykion@gmail.com">potykion@gmail.com</a>
-
-## Python Бекенд Разработчик
-
-- Навыки: Python • Django • Flask • pytest • mypy • Google App Engine • BitBucket Pipelines
-- Из интересов люблю [вести блог](https://potyk.io/) и [пить пиво :)](https://untappd.com/user/potykion) 
+- 8 лет опыта
+- Делаю любые задачи, связанные с веб-разработкой: проработка требований, ведение задач, документирование, разработка (бекенд и фронтенд), рефакторинг, проверка качества (CI-pipelines, Linting, Code Review), тестирование (unit, integration, load testing), деплой (от ssh до docker), мониторинг (sentry, logging, metrics), оптимизация (profiling)
+- По скиллам:
+- Backend: Python • Django/FastAPI/Flask • Postgres/MySQL/Mongo/Elastic • Celery/Redis/RabbitMQ • pytest/mypy/ruff
+- Frontend: Svelte • TypeScript/JavaScript • TailwindCSS • Vue/Vuetify/Nuxt
+- DevOps: GoogleCloud/YandexCloud • GitHubActions/BitBucketPipelines • Docker
+- Английский — B1 — Средний
+- Из интересов люблю писать, делать пет-проджекты, изучать новые технологии, слушать музыку, пить пиво :)
 - [Гитхаб](https://github.com/potykion) • [Телеграм](https://t.me/potykion)
-
-</div>
-
-<div>
-
-<img src="/static/images/me.jpeg" class="w-32 ">
-
-</div>
-
-</div>
-
-{% endblock %}
-
-
-{% block main %}
-
 
 ## Опыт
 
@@ -46,9 +25,6 @@
 - Интегрировал новые технологии такие как Black, Formkit - что ускорило разработку
 
 ### Рубикон • Июнь 2016 — Июль 2024
-
-- 5000+ коммитов за 8 лет
-- 
 
 - Занимался сервером для мобильных приложений по доставке еды, включая разработку, поддержку, тестирование и развертывание
 - Менторил коллег - что помогло им вырасти с джуна для мидла
@@ -88,4 +64,4 @@
 - [НИУ ВШЭ ФКН ДПИ](https://cs.hse.ru/dse/) • 2014 - 2018 
 
 
-{% endblock %}
+

@@ -1,6 +1,7 @@
 import datetime
 import enum
 import sqlite3
+from collections import defaultdict
 from itertools import groupby
 from operator import attrgetter
 from typing import cast
@@ -12,6 +13,7 @@ from potyk_io_back.core import (
     render_md_as_html,
     wrap_html_to_base_template,
 )
+from potyk_io_back.iter_utils import groupby_dict
 
 
 class BeerStyle(BaseModel):
@@ -184,6 +186,7 @@ class BeerStyle2(BaseModel):
     title: str
     desc: str
     examples: list[str]
+    tags: list[str]
 
     @classmethod
     def from_sql(cls, row: sqlite3.Row) -> "BeerStyle2":
@@ -191,7 +194,8 @@ class BeerStyle2(BaseModel):
             id=row["id"],
             title=row["title"],
             desc=row["desc"],
-            examples=(row["examples"] or "").split(","),
+            examples=(row["examples"]).split(",") if row["examples"] else [],
+            tags=(row["tags"]).split(",") if row["tags"] else [],
         )
 
 
@@ -256,17 +260,23 @@ def add_beer_routes(app: Flask, deps) -> None:
 
     @app.route("/beer/styles")
     def beer_styles_page():
-        tried_styles = deps.q.select_all(
-            "select * from beer_styles_2 where tried = 1",
+        beers = deps.q.select_all(
+            "select * from beer_styles_2 order by priority desc, title",
             as_=BeerStyle2.from_sql,
         )
-        not_tried_styles = deps.q.select_all(
-            "select * from beer_styles_2 where tried = 0",
-            as_=BeerStyle2.from_sql,
-        )
+        not_tried_styles = []
+
+        # tags = {tag for beer in beers for tag in beer.tags}
+        tag_beers = defaultdict(list)
+
+        for beer in beers:
+            for tag in beer.tags:
+                tag_beers[tag].append(beer)
+
         return render_template(
             "beer/styles.html",
             page=deps.page,
-            tried_styles=tried_styles,
+            tried_styles=beers,
             not_tried_styles=not_tried_styles,
+            tag_beers=tag_beers,
         )

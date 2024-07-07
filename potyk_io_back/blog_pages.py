@@ -1,5 +1,7 @@
 import enum
+import os.path
 from enum import auto
+from pathlib import Path
 
 import flask
 import frontmatter
@@ -13,6 +15,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import StringField, BooleanField, HiddenField
 from wtforms.validators import Optional
 
+from potyk_io_back.core import BASE_DIR
 from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
@@ -104,8 +107,11 @@ class BlogPage(BaseModel):
     @classmethod
     def from_sql(cls, row):
         row = {**row}
-        row['tags'] = sorted((row['tags'] or '').split(','),)
+        row["tags"] = sorted(
+            (row["tags"] or "").split(","),
+        )
         return cls(**row)
+
 
 def generate_breadcrumbs(path):
     """
@@ -135,7 +141,9 @@ class BlogPageStore:
         )
 
     def list_index(self):
-        return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section", as_=BlogPage.from_sql)
+        return self.q.select_all(
+            "select * from blog_pages where include_in_index = 1 order by section", as_=BlogPage.from_sql
+        )
 
     def list_recipe_pages(self) -> list[BlogPage]:
         return self.q.select_all(
@@ -170,7 +178,7 @@ class BlogPageStore:
 
 
 class BlogPageForm(FlaskForm):
-    action = HiddenField(default='page')
+    action = HiddenField(default="page")
     url = StringField("Url", render_kw=FieldRenderKw(placeholder="/recipes"))
     html_path = StringField(
         "Путь к HTML файлу после рендеринга",
@@ -190,21 +198,37 @@ class BlogPageForm(FlaskForm):
     )
 
 
-class CustomTaskListsRenderer(HTMLRenderer):
+class TaskListsAndNoEscapeRenderer(HTMLRenderer):
     def task_list_item(self, text, checked=False, **attrs):
         return render_template("_components/md_checkbox.html", checked=checked, text=text)
+    def text(self, text: str) -> str:
+        return text
+
+    def paragraph(self, text: str) -> str:
+        if text.strip().startswith('{%'):
+            return text
+        else:
+            return '<p>' + text + '</p>\n'
 
 
-renderer = CustomTaskListsRenderer(escape=False)
-markdown = mistune.Markdown(renderer, plugins=[task_lists])
+
+markdown_to_html = mistune.Markdown(TaskListsAndNoEscapeRenderer(escape=False), plugins=[task_lists],)
 
 
 def render_md_as_html_template(template, **kwargs):
-    md = flask.render_template(template)
-    md = frontmatter.loads(md).content
-    html = markdown(md)
+    template_path = Path(flask.current_app.template_folder).resolve() / template
+
+    md = frontmatter.load(str(template_path)).content
+
+    html = markdown_to_html(md)
+
+    if html.startswith("{% extends"):
+        html_template = html
+    else:
+        html_template = '{% extends "_layouts/base.html" %}{% block main %}' + html + "{% endblock %}"
+
     html = render_template_string(
-        '{% extends "_layouts/base.html" %}{% block main %}' + html + "{% endblock %}",
+        html_template,
         **kwargs,
     )
     return html
