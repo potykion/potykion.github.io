@@ -7,20 +7,87 @@ https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
 {% block main %}
 
 
-    <div class="flex gap-2 flex-col">
-        {% for style in tried_styles %}
-            <div class="text-sm border uni-border p-2 rounded-lg">
-                <div class="font-semibold text-base">{{ style.title }}</div>
-                <div>{{ style.desc }}</div>
-                <div><span class="font-semibold">Примеры:</span> {{ style.examples | join(' • ') }}</div>
-            </div>
-        {% endfor %}
 
-    </div>
 
 
     <h2>По странам</h2>
-    <h3>Бельгия</h3>
+
+
+    <h3>Бельгия 🇧🇪</h3>
+    <div class="flex gap-4 flex-col">
+        {% for style in tag_beers['belgian'] %}
+            <div class="flex flex-col gap-2">
+                <div class="text-sm border uni-border p-2 rounded-lg flex flex-row gap-2 items-center">
+                    {% if style.img %}
+                        <img src="{{ style.img }}" class="w-20 ">
+                    {% endif %}
+
+
+
+                    <div class="flex flex-col gap-1">
+                        <div class="font-semibold text-base">{{ style.title }}</div>
+
+                        <div>
+                            <div><span class="font-semibold">Описание:</span> {{ style.desc |safe }}</div>
+                            <div><span class="font-semibold">Аромат:</span> {{ style.aroma |safe }}</div>
+                            <div><span class="font-semibold">Вкус:</span> {{ style.taste |safe }}</div>
+                            <div><span class="font-semibold">Текстура:</span> {{ style.mouthfeel |safe }}</div>
+                        </div>
+
+                        <div class="flex gap-2">
+                            {% if style.abv_range %}
+                                <div><span class="font-semibold">Алко</span>: {{ style.abv_range }} %</div>
+                            {% endif %}
+
+                            •
+
+                            {% if style.color_srm %}
+                                <div>
+                                    Цвет:
+                                    <div class="w-4 h-4 inline-block"
+
+                                            {% if style.color_srm == 5 %}
+                                         style="background: #f4be38"
+                                            {% endif %}
+
+                                    ></div>
+                                </div>
+                            {% endif %}
+
+                            •
+
+                            {% if style.bjcp %}
+                                <div><span class="font-semibold">BJCP</span>: {{ style.bjcp | safe }}</div>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+
+                {% if style.checkins %}
+                    <div class="overflow-x-auto ">
+                        <div class="flex flex-row   gap-2 ">
+                            {% for checkin in style.checkins %}
+                                <div class="shrink-0  border uni-border p-2 rounded-lg w-[300px]">
+                                    <a href="{{ checkin.url }}" class="text-sm font-semibold">{{ checkin.name }}</a>
+                                    <div class="text-sm ">{{ checkin.brewery }}</div>
+                                    <div class="my-2 border-b uni-border "></div>
+
+
+                                    <div class="text-sm">{{ checkin.review | safe }}</div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+        {% endfor %}
+    </div>
+
+
     <h3>Англия</h3>
     <h3>Германия</h3>
     <h3>Чехия</h3>
@@ -44,7 +111,19 @@ https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
     </div>
 
 
+    <hr>
 
+    <h2>Все подряд</h2>
+    <div class="flex gap-2 flex-col">
+        {% for style in tried_styles %}
+            <div class="text-sm border uni-border p-2 rounded-lg">
+                <div class="font-semibold text-base">{{ style.title }}</div>
+                <div>{{ style.desc }}</div>
+                <div><span class="font-semibold">Примеры:</span> {{ style.examples | join(' • ') }}</div>
+            </div>
+        {% endfor %}
+
+    </div>
 
 
 {% endblock %}

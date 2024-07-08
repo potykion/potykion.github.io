@@ -4713,6 +4713,10 @@ ul.li-minus li:before {
   height: 12rem !important;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .h-4 {
   height: 1rem;
 }
@@ -4762,6 +4766,10 @@ ul.li-minus li:before {
   width: 24rem;
 }
 
+.w-\[300px\] {
+  width: 300px;
+}
+
 .w-\[50px\] {
   width: 50px;
 }
@@ -4797,6 +4805,10 @@ ul.li-minus li:before {
 
 .shrink {
   flex-shrink: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
 }
 
 .grow {
