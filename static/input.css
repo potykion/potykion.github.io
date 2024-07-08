@@ -211,8 +211,8 @@
     }
 
 
-    #widget_login {
-        height: 80px;
+    #telegram-login-potyk_io_bot {
+        height: 80px !important;
     }
 
 }
