@@ -1,9 +1,11 @@
 {% extends "_layouts/base.html" %}
 
+https://www.bjcp.org/bjcp-style-guidelines/
+
+https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
 
 {% block main %}
 
-    <h2>Пробовал</h2>
 
     <div class="flex gap-2 flex-col">
         {% for style in tried_styles %}
@@ -11,24 +13,38 @@
                 <div class="font-semibold text-base">{{ style.title }}</div>
                 <div>{{ style.desc }}</div>
                 <div><span class="font-semibold">Примеры:</span> {{ style.examples | join(' • ') }}</div>
-
             </div>
         {% endfor %}
 
     </div>
 
-    <h2>Не пробовал</h2>
-    <div class="flex gap-2 flex-col">
 
-        {% for style in not_tried_styles %}
+    <h2>По странам</h2>
+    <h3>Бельгия</h3>
+    <h3>Англия</h3>
+    <h3>Германия</h3>
+    <h3>Чехия</h3>
+    <h3>Америка</h3>
+
+    <h2>По стилям (ну типа)</h2>
+    <h3>Лагеры</h3>
+    <h3>Эли</h3>
+
+
+    <h3>Пшеничка</h3>
+
+    <div class="flex gap-2 flex-col">
+        {% for style in tag_beers['wheat'] %}
             <div class="text-sm border uni-border p-2 rounded-lg">
                 <div class="font-semibold text-base">{{ style.title }}</div>
                 <div>{{ style.desc }}</div>
-                <div>{{ style.examples }}</div>
-
+                <div><span class="font-semibold">Примеры:</span> {{ style.examples | join(' • ') }}</div>
             </div>
         {% endfor %}
     </div>
+
+
+
 
 
 {% endblock %}

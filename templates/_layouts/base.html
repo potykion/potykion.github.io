@@ -127,7 +127,8 @@
 
 </header>
 
-<main class="prose   p-2 min-h-[80vh] {% if fullwidth %}{% else %}max-w-[1000px]{% endif %} mx-auto">
+<main class="prose prose-sm md:prose-base   p-2 min-h-[80vh]
+        {% if fullwidth %}{% else %}max-w-[1000px]{% endif %} mx-auto">
     {% block title %}
         {% if page %}
             <div class="my-2">
@@ -140,7 +141,7 @@
     {% block main %}{% endblock %}
 </main>
 
-<footer class="prose max-w-none px-2 border-t py-4 uni-border mt-6">
+<footer class="prose prose-sm md:prose-base max-w-none px-2 border-t py-4 uni-border mt-6">
 
     <div class="flex gap-2  justify-center ">
         <a href="https://t.me/+Wech5MYNgew3MTMy" class="btn  btn-ghost  relative">
