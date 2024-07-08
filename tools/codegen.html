@@ -32,6 +32,12 @@
     <!-- endregion Custom styles -->
 
     <!-- endregion Styles -->
+
+    <script>
+        if (window.location.href !== '/login' && !localStorage.getItem('tgAuth')) {
+            window.location.href = '/login';
+        }
+    </script>
 </head>
 
 <!-- region GA & YaMetrika -->
@@ -247,14 +253,10 @@ def ${slug}_page():
 
     </div>
 
-    
-    
-    
-    
-    
 </footer>
 
 </body>
+
 
 
 
