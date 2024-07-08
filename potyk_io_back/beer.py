@@ -6,7 +6,7 @@ from itertools import groupby
 from operator import attrgetter
 from typing import cast
 
-from flask import Blueprint, render_template, Flask
+from flask import Blueprint, render_template, Flask, url_for
 from pydantic import BaseModel, Field, fields
 
 from potyk_io_back.core import (
@@ -181,22 +181,43 @@ def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
     return beer_bp
 
 
+class Checkin(BaseModel):
+    name: str
+    url: str
+    brewery: str
+    review: str
+    style_id: int | None
+
+
 class BeerStyle2(BaseModel):
     id: int
     title: str
     desc: str
     examples: list[str]
     tags: list[str]
+    abv_range: str | None
+    bjcp: str | None
+    taste: str | None
+    color_srm: int | None
+    aroma: str | None
+    mouthfeel: str | None
+    img: str | None
+
+    checkins: list[Checkin] = Field(default_factory=list)
 
     @classmethod
     def from_sql(cls, row: sqlite3.Row) -> "BeerStyle2":
-        return cls(
-            id=row["id"],
-            title=row["title"],
-            desc=row["desc"],
-            examples=(row["examples"]).split(",") if row["examples"] else [],
-            tags=(row["tags"]).split(",") if row["tags"] else [],
+        row = dict(**row)
+        row.update(
+            dict(
+                examples=(row["examples"]).split(",") if row["examples"] else [],
+                tags=(row["tags"]).split(",") if row["tags"] else [],
+            )
         )
+        if row['img']:
+            row['img'] = url_for("static", filename=row['img'])
+
+        return cls(**row)
 
 
 def add_beer_routes(app: Flask, deps) -> None:
@@ -260,23 +281,33 @@ def add_beer_routes(app: Flask, deps) -> None:
 
     @app.route("/beer/styles")
     def beer_styles_page():
-        beers = deps.q.select_all(
+        styles: list[BeerStyle2] = deps.q.select_all(
             "select * from beer_styles_2 order by priority desc, title",
             as_=BeerStyle2.from_sql,
         )
-        not_tried_styles = []
+
+        checkins = deps.q.select_all(
+            "select * from beer_my_untappd_beers",
+            as_=Checkin,
+        )
+        checkins_by_style = defaultdict(list)
+        for checkin in checkins:
+            if checkin.style_id:
+                checkins_by_style[checkin.style_id].append(checkin)
+
+        for style in styles:
+            style.checkins = checkins_by_style.get(style.id, [])
 
         # tags = {tag for beer in beers for tag in beer.tags}
         tag_beers = defaultdict(list)
 
-        for beer in beers:
+        for beer in styles:
             for tag in beer.tags:
                 tag_beers[tag].append(beer)
 
         return render_template(
             "beer/styles.html",
             page=deps.page,
-            tried_styles=beers,
-            not_tried_styles=not_tried_styles,
+            tried_styles=styles,
             tag_beers=tag_beers,
         )
