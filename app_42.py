@@ -195,6 +195,10 @@ def create_app(server_name=None):
 
     add_recipes_routes(app, deps)
 
+    @app.route("/login")
+    def login_page():
+        return render_template(f"login.html", page=deps.page)
+
     # region travel
     @app.route("/travel")
     def travel_page():
@@ -384,6 +388,7 @@ def create_app(server_name=None):
             "n/index.md",
             page=deps.page,
         )
+
     @app.route("/n/cv")
     def n_cv_page():
         return render_md_as_html_template(
