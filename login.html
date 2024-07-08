@@ -138,7 +138,7 @@
             data-size="large" data-onauth="onTelegramAuth(user)" data-request-access="write"></script>
     <script type="text/javascript">
         async function onTelegramAuth(user) {
-            await fetch(
+            const resp = await fetch(
                 'https://functions.yandexcloud.net/d4egqbhi7fbj2euj7tca',
                 {
                     method: 'POST',
@@ -148,8 +148,12 @@
                     body: JSON.stringify(user)
                 }
             )
-            localStorage.setItem('tgAuth', JSON.stringify(user))
-            window.location.href = '/';
+            if (resp.status === 200) {
+                localStorage.setItem('tgAuth', JSON.stringify(user))
+                window.location.href = '/';
+            } else {
+                alert('Не повезло тебе 🐼')
+            }
         }
     </script>
 
