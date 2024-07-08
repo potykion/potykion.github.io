@@ -33,11 +33,13 @@
 
     <!-- endregion Styles -->
 
-    <script>
-        if (window.location.href !== '/login' && !localStorage.getItem('tgAuth')) {
-            window.location.href = '/login';
-        }
-    </script>
+    
+        <script>
+            if (!localStorage.getItem('tgAuth')) {
+                window.location.href = '/login';
+            }
+        </script>
+    
 </head>
 
 <!-- region GA & YaMetrika -->
@@ -149,7 +151,7 @@
     <h1 class="py-4">Добавление рестика</h1>
 
     <form method="POST" class="flex flex-col gap-3">
-        <input id="csrf_token" name="csrf_token" type="hidden" value="IjU0MmI5ZmRkMDU3MzlmNzJkOWNmMjBhMDIzM2RhNDhiY2JmYmExNTEi.ZovzBw.MqLzIy6hNB1P_moxK8DZorws-7M">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjZkMzJkYzA4ZGQwZThhNzExNDNjM2I0NjE4ODliNDUyZDEzN2UxMzIi.Zov2lA.u_sKMxhMI-p5_S0S_FjQ6t84oG0">
 
         
     <label class="form-control w-full">

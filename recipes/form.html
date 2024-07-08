@@ -33,11 +33,13 @@
 
     <!-- endregion Styles -->
 
-    <script>
-        if (window.location.href !== '/login' && !localStorage.getItem('tgAuth')) {
-            window.location.href = '/login';
-        }
-    </script>
+    
+        <script>
+            if (!localStorage.getItem('tgAuth')) {
+                window.location.href = '/login';
+            }
+        </script>
+    
 </head>
 
 <!-- region GA & YaMetrika -->
@@ -143,7 +145,7 @@
     <form hx-post="" enctype="application/x-www-form-urlencoded" hx-target="next .res" hx-on::after-request="if(event.detail.successful) this.reset()"
           class="flex flex-col gap-3">
         
-            <input id="csrf_token" name="csrf_token" type="hidden" value="IjU0MmI5ZmRkMDU3MzlmNzJkOWNmMjBhMDIzM2RhNDhiY2JmYmExNTEi.ZovzBw.MqLzIy6hNB1P_moxK8DZorws-7M">
+            <input id="csrf_token" name="csrf_token" type="hidden" value="IjZkMzJkYzA4ZGQwZThhNzExNDNjM2I0NjE4ODliNDUyZDEzN2UxMzIi.Zov2lQ.h0uhGUgY50JhOVRB9Uv4-xuyvCs">
             
         <h2 class="!mb-0">Название</h2>
 
