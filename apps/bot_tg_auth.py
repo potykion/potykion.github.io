@@ -24,24 +24,24 @@ class TgAuth(TypedDict):
 
 
 async def handler(event: Event, context) -> Resp:
-    if event['httpMethod'] == 'OPTIONS':
+    if event["httpMethod"] == "OPTIONS":
         return {
             "statusCode": 200,
             "body": "ok",
             "headers": {
                 "Access-Control-Allow-Origin": "*",
                 "Access-Control-Allow-Headers": "*",
-                "Access-Control-Allow-Methods": "*"
-            }
+                "Access-Control-Allow-Methods": "*",
+            },
         }
 
     tg_auth = json.loads(event["body"])
 
-    await main(tg_auth)
-    return {
-        "statusCode": 200,
-        "body": "Hello World!",
-    }
+    res = await main(tg_auth)
+    if res:
+        return {"statusCode": 200, "body": "Hello World!"}
+    else:
+        return {"statusCode": 400, "body": "sosat"}
 
 
 async def main(tg_auth):
@@ -52,9 +52,10 @@ async def main(tg_auth):
 
     if validate_hash(tg_auth, bot_token):
         await send_auth_to_tg(tg_auth, bot_token, chat_id)
+        return True
     else:
-        await send_auth_to_tg(tg_auth, bot_token, chat_id, msg='Failed to validate auth token')
-
+        await send_auth_to_tg(tg_auth, bot_token, chat_id, msg="Failed to validate auth token")
+        return False
 
 
 def validate_hash(tg_auth: TgAuth, bot_token: str) -> bool:
@@ -78,11 +79,11 @@ def validate_hash(tg_auth: TgAuth, bot_token: str) -> bool:
     return computed_hash == hash_
 
 
-async def send_auth_to_tg(tg_auth, TOKEN, chat_id, msg='New successful login'):
+async def send_auth_to_tg(tg_auth, TOKEN, chat_id, msg="New successful login"):
     bot = Bot(token=TOKEN)
     res = await bot.send_message(
         chat_id=chat_id,
         text="{}:\n```{}```".format(msg, json.dumps(tg_auth, indent=2, ensure_ascii=False)),
-        parse_mode='MarkdownV2'
+        parse_mode="MarkdownV2",
     )
     print(res)
