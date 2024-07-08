@@ -6,7 +6,7 @@ from typing import TypedDict
 from dotenv import load_dotenv
 from telegram import Bot
 
-from potyk_io_back.cf import Event
+from potyk_io_back.cf import Event, Resp
 from potyk_io_back.core import BASE_DIR
 
 import hashlib
@@ -23,7 +23,18 @@ class TgAuth(TypedDict):
     hash: str
 
 
-async def handler(event: Event, context):
+async def handler(event: Event, context) -> Resp:
+    if event['httpMethod'] == 'OPTIONS':
+        return {
+            "statusCode": 200,
+            "body": "ok",
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "*",
+                "Access-Control-Allow-Methods": "*"
+            }
+        }
+
     tg_auth = json.loads(event["body"])
 
     await main(tg_auth)
