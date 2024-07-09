@@ -14,25 +14,28 @@ https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
 
 
     <h3>Бельгия 🇧🇪</h3>
-    <div class="flex gap-4 flex-col">
+    <div class="flex gap-8 flex-col">
         {% for style in tag_beers['belgian'] %}
             <div class="flex flex-col gap-2">
-                <div class="text-sm border uni-border p-2 rounded-lg flex flex-row gap-2 items-center">
+                <div class="text-sm border uni-border  rounded-lg flex flex-col md:flex-row  items-center uni-bg">
                     {% if style.img %}
-                        <img src="{{ style.img }}" class="w-20 ">
+                        <img src="{{ style.img }}" class=" max-w-[300px] p-4 md:p-8">
                     {% endif %}
 
 
 
-                    <div class="flex flex-col gap-1">
-                        <div class="font-semibold text-base">{{ style.title }}</div>
+                    <div class="flex flex-col gap-1 p-4 md:p-8">
+                        <div class="font-semibold text-base text-balance">{{ style.title }}</div>
+                        <div class=" text-gray-400 text-sm text-balance">{{ style.title_en }}</div>
 
-                        <div>
-                            <div><span class="font-semibold">Описание:</span> {{ style.desc |safe }}</div>
-                            <div><span class="font-semibold">Аромат:</span> {{ style.aroma |safe }}</div>
-                            <div><span class="font-semibold">Вкус:</span> {{ style.taste |safe }}</div>
-                            <div><span class="font-semibold">Текстура:</span> {{ style.mouthfeel |safe }}</div>
-                        </div>
+                        <div class="my-2 border-b uni-border "></div>
+
+
+                        <div><span class="font-semibold text-balance">Описание:</span> {{ style.desc |safe }}</div>
+                        <div><span class="font-semibold text-balance">Аромат:</span> {{ style.aroma |safe }}</div>
+                        <div><span class="font-semibold text-balance">Вкус:</span> {{ style.taste |safe }}</div>
+                        <div><span class="font-semibold text-balance">Текстура:</span> {{ style.mouthfeel |safe }}</div>
+
 
                         <div class="flex gap-2">
                             {% if style.abv_range %}
@@ -66,12 +69,25 @@ https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
                 </div>
 
                 {% if style.checkins %}
-                    <div class="overflow-x-auto ">
+                    <div class="overflow-x-auto  ">
                         <div class="flex flex-row   gap-2 ">
                             {% for checkin in style.checkins %}
-                                <div class="shrink-0  border uni-border p-2 rounded-lg w-[300px]">
-                                    <a href="{{ checkin.url }}" class="text-sm font-semibold">{{ checkin.name }}</a>
-                                    <div class="text-sm ">{{ checkin.brewery }}</div>
+                                <div class="shrink-0  border uni-border p-2 rounded-lg w-[300px] uni-bg">
+
+                                    <div class="flex gap-2">
+                                        <img src="{{ checkin.img }}" class="w-12">
+
+                                        <div>
+                                            <a href="{{ checkin.url }}"
+                                               class="text-sm font-semibold">{{ checkin.name }}</a>
+                                            <div class="text-sm ">{{ checkin.brewery }}</div>
+
+                                        </div>
+
+
+                                    </div>
+
+
                                     <div class="my-2 border-b uni-border "></div>
 
 

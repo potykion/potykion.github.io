@@ -184,6 +184,7 @@ def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
 class Checkin(BaseModel):
     name: str
     url: str
+    img: str
     brewery: str
     review: str
     style_id: int | None
@@ -192,6 +193,7 @@ class Checkin(BaseModel):
 class BeerStyle2(BaseModel):
     id: int
     title: str
+    title_en: str | None
     desc: str
     examples: list[str]
     tags: list[str]
