@@ -6,6 +6,9 @@ module.exports = {
         "./potyk_io_back/**/*.py",
     ],
 
+
+    darkMode: 'false',
+
     theme: {
         fontFamily: {
             "sans": ["Noto Sans"],
@@ -34,5 +37,9 @@ module.exports = {
 
     },
     plugins: [require("@tailwindcss/typography"), require("daisyui")],
+    daisyui: {
+        themes: ['light'],
+        darkMode: 'light',
+    }
 }
 

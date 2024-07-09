@@ -64,7 +64,7 @@
 
 
     div.desc {
-        @apply text-gray-400 py-1 dark:text-gray-500;
+        @apply text-gray-400 py-1 ;
     }
 
     cite {
@@ -166,18 +166,19 @@
     }
 
     .uni-border {
-        @apply border-neutral-300 dark:border-gray-700
+        @apply border-neutral-300
     }
 
     .uni-bg-body {
-        @apply bg-neutral-100 dark:bg-gray-950;
+        @apply bg-neutral-100;
     }
+
     .uni-bg {
-        @apply bg-white dark:bg-gray-900;
+        @apply bg-white;
     }
 
     .uni-hover {
-        @apply hover:bg-purple-100 hover:dark:bg-gray-800
+        @apply hover:bg-purple-100;
     }
 
     @keyframes bounce-x-left {
