@@ -37,7 +37,7 @@ https://legacy.bjcp.org/docs/SCP_BeerScoreSheet.pdf
                         <div><span class="font-semibold text-balance">Текстура:</span> {{ style.mouthfeel |safe }}</div>
 
 
-                        <div class="flex gap-2">
+                        <div class="flex gap-2 flex-wrap">
                             {% if style.abv_range %}
                                 <div><span class="font-semibold">Алко</span>: {{ style.abv_range }} %</div>
                             {% endif %}
