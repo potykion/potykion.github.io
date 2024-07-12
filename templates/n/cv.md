@@ -42,7 +42,7 @@
 ### [RuBeacon](https://rbcn.mobi/) • 2016 — 2024
 
 - Сервер для мобильных приложений по доставке еды **[Google App Engine, webapp2, Flask]**
-- Перевод 100000 строк кода с Python 2 на Python 3 **[six, Flask]**
+- Перевод 100000 строк кода с Python 2 на Python 3 **[six, mypy, Flask]**
 - CI для проверки качества кода и деплоя **[Bitbucket Pipelines, pytest, mypy, ruff]** 
 - Оптимизация трат в облаке **[Google Cloud Monitoring, Google Cloud Logging, BigQuery]**
 - Система электронного документооборота **[Django, pydantic, openpyxl, pdfKit, docxtpl]**
