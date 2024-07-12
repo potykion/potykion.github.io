@@ -12,8 +12,7 @@
 <div class="flex gap-2 my-4">
 <a class="btn btn-sm btn-primary" href="mailto:potykion@gmail.com">Почта</a> 
 <a class="btn btn-sm btn-primary" href="https://t.me/potykion">Telegram</a> 
-<a class="btn btn-sm btn-primary" href="https://github.com/potykion">Github</a> 
-<a class="btn btn-sm btn-primary" href="https://potyk.io/cv.pdf">PDF</a> 
+<a class="btn btn-sm btn-primary" href="https://github.com/potykion">Github</a>
 </div>
 
 
