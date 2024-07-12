@@ -63,7 +63,11 @@ class TAAnalysisRepo:
 
         analysis_samples = []
         for index, ticker in enumerate(tickers):
-            indicators = ta_analysis[tickers_w_exchange[index]].indicators
+            ta = ta_analysis[tickers_w_exchange[index]]
+            if not ta:
+                continue
+
+            indicators = ta.indicators
             analysis = Analysis(
                 ticker=ticker,
                 dt=dt,
@@ -161,7 +165,7 @@ class AnalysisRepo:
         actual_values = np.array([val["change_next"] for val in values])
         predictions = np.array([val["change_predict_2"] for val in values])
 
-        actual_classes = np.array([int(val["change_next"] > 0) for val in values])
+        actual_classes = np.array([int((val["change_next"] or 0) > 0) for val in values])
         prediction_classes = np.array([int(val["change_predict_2"] > 0) for val in values])
 
         accuracy = accuracy_score(actual_classes, prediction_classes)
