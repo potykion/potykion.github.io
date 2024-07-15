@@ -11,11 +11,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- region SEO -->
-    <title>{{ title }}</title>
-    <meta name="description" content="{{ desc }}"/>
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.desc }}"/>
 
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{{ desc }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:url" content="{{ page.url }}">
+    <meta property="og:description" content="{{ page.desc }}">
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:site" content="potyk.io"/>
+    <meta name="twitter:title" content="{{ page.title }}"/>
+    <meta name="twitter:description" content="{{ page.desc }}"/>
+    <meta name="twitter:image" content=""/>
     <!-- endregion SEO -->
 
     <!-- region Styles -->
@@ -87,18 +94,9 @@
 
 <main class="prose prose-sm md:prose-base   p-2 min-h-[80vh]
         {% if fullwidth %}{% else %}max-w-[1000px]{% endif %} mx-auto">
-    {% block title %}
-        {% if page %}
-            <div class="my-2">
-                <h1>{{ page.title | safe }}</h1>
-                <cite class="block">{{ (page.desc or '') | safe }}</cite>
-            </div>
-        {% endif %}
-    {% endblock %}
 
     {% block main %}{% endblock %}
 </main>
-
 
 
 </body>
