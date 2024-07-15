@@ -377,6 +377,12 @@ def create_app(server_name=None):
             "n/projects.md",
             page=deps.page,
         )
+    @app.route("/hardware")
+    def hardware_page():
+        return render_template(
+            "hardware/index.html",
+            page=deps.page,
+        )
 
     @app.route("/n/<page>")
     def n_any_page(page):
