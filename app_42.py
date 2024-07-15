@@ -377,10 +377,30 @@ def create_app(server_name=None):
             "n/projects.md",
             page=deps.page,
         )
+
     @app.route("/n/<page>")
     def n_any_page(page):
+        try:
+            return render_md_as_html_template(
+                f"n/{page}.md",
+                page=deps.page,
+            )
+        except FileNotFoundError:
+            return render_template(
+                f"n/{page}.html",
+                page=deps.page,
+            )
+
+    @app.route("/mind/<page>")
+    def mind_any_page(page):
         return render_md_as_html_template(
-            f"n/{page}.md",
+            f"mind/{page}.md",
+            page=deps.page,
+        )
+    @app.route("/mind")
+    def mind_index():
+        return render_md_as_html_template(
+            f"mind/index.md",
             page=deps.page,
         )
 
@@ -393,8 +413,8 @@ def create_app(server_name=None):
 
     @app.route("/n/cv")
     def n_cv_page():
-        return render_md_as_html_template(
-            "n/cv.md",
+        return render_template(
+            "n/cv.html",
             page=deps.page,
         )
 

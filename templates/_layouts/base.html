@@ -11,11 +11,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- region SEO -->
-    <title>{{ title }}</title>
-    <meta name="description" content="{{ desc }}"/>
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.desc }}"/>
 
-    <meta property="og:title" content="{{ title }}">
-    <meta property="og:description" content="{{ desc }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:description" content="{{ page.desc }}">
     <!-- endregion SEO -->
 
     <!-- region Styles -->
@@ -37,7 +37,7 @@
 
     <!-- endregion Styles -->
 
-    {% if config.is_prod and page.url != '/login'   %}
+    {% if config.is_prod and page.url != '/login' %}
         <script>
             if (!localStorage.getItem('tgAuth')) {
                 window.location.href = '/login';
@@ -108,27 +108,18 @@
     {% if page.breadcrumbs | length > 1 %}
         <div class="breadcrumbs uni-border border-b mb-2">
             <ul class="!pl-3">
-                {#            <ul >#}
-                {#            <ul class="!pl-0">#}
-                {% if page %}
+                <li>
+                    <a class="link-hover " href="/">⌀</a>
+                </li>
+                {% for page in page.breadcrumbs[1:] %}
                     <li>
-                        <a class="link-hover " href="/">⌀</a>
-
+                        {% if loop.last %}
+                            {{ page.breadcrumbs_title }}
+                        {% else %}
+                            <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
+                        {% endif %}
                     </li>
-                    {% for page in page.breadcrumbs[1:] %}
-                        <li>
-                            {% if loop.last %}
-                                {{ page.breadcrumbs_title }}
-                            {% else %}
-                                <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                {% else %}
-                    <li>
-                        <a href="/">потик.ио</a>
-                    </li>
-                {% endif %}
+                {% endfor %}
             </ul>
         </div>
     {% endif %}
@@ -138,12 +129,10 @@
 <main class="prose prose-sm md:prose-base   p-2 min-h-[80vh]
         {% if fullwidth %}{% else %}max-w-[1000px]{% endif %} mx-auto">
     {% block title %}
-        {% if page %}
-            <div class="my-2">
-                <h1>{{ page.title | safe }}</h1>
-                <cite class="block">{{ (page.desc or '') | safe }}</cite>
-            </div>
-        {% endif %}
+        <div class="my-2">
+            <h1>{{ page.title | safe }}</h1>
+            <cite class="block">{{ (page.desc or '') | safe }}</cite>
+        </div>
     {% endblock %}
 
     {% block main %}{% endblock %}

@@ -2,11 +2,17 @@ import enum
 import os.path
 from enum import auto
 from pathlib import Path
+from re import Match
 
 import flask
 import frontmatter
+import markdown
 import mistune
-from mistune import HTMLRenderer
+from mistune import HTMLRenderer, InlineParser, InlineState
+from mistune.plugins.footnotes import footnotes
+from mistune.plugins.formatting import strikethrough
+from mistune.plugins.speedup import speedup
+from mistune.plugins.table import table
 from mistune.plugins.task_lists import task_lists
 from flask import render_template_string, render_template
 from flask_wtf import FlaskForm
@@ -135,8 +141,16 @@ class BlogPageStore:
 
     def insert(self, page):
         self.q.execute(
-            "insert into blog_pages " "(url, html_path, title, desc, section) " "values " "(?, ?, ?, ?, ?)",
-            (page.url, page.html_path, page.title, page.desc, page.section),
+            "insert into blog_pages (url, html_path, title, desc, section, include_in_index, breadcrumbs_title) values (?, ?, ?, ?, ?, ?, ?)",
+            (
+                page.url,
+                page.html_path,
+                page.title,
+                page.desc,
+                page.section,
+                page.include_in_index,
+                page.breadcrumbs_title,
+            ),
             commit=True,
         )
 
@@ -201,22 +215,30 @@ class BlogPageForm(FlaskForm):
 class TaskListsAndNoEscapeRenderer(HTMLRenderer):
     def task_list_item(self, text, checked=False, **attrs):
         return render_template("_components/md_checkbox.html", checked=checked, text=text)
+
     def text(self, text: str) -> str:
         return text
 
     def paragraph(self, text: str) -> str:
-        if text.strip().startswith('{%'):
+        if text.strip().startswith(("{%", "{{")):
             return text
         else:
-            return '<p>' + text + '</p>\n'
+            return "<p>" + text + "</p>\n"
 
 
-
-markdown_to_html = mistune.Markdown(TaskListsAndNoEscapeRenderer(escape=False), plugins=[task_lists],)
+markdown_to_html = mistune.Markdown(
+    TaskListsAndNoEscapeRenderer(escape=False),
+    plugins=[
+        strikethrough,
+        footnotes,
+        table,
+        task_lists,
+    ],
+)
 
 
 def render_md_as_html_template(template, **kwargs):
-    template_path = Path(flask.current_app.template_folder).resolve() / template
+    template_path = BASE_DIR / flask.current_app.template_folder / template
 
     md = frontmatter.load(str(template_path)).content
 
