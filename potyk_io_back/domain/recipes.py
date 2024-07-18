@@ -12,11 +12,11 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import StringField, TextAreaField, BooleanField
 from wtforms.validators import InputRequired
 
-from potyk_io_back.blog_pages import BlogPage, BlogPageSection, render_md_as_html_template
-from potyk_io_back.config import BASE_DIR
-from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.services import sql
-from potyk_io_back.utils.form import FieldRenderKw
+from potyk_io_back.domain.blog_pages import BlogPage, BlogPageSection, render_md_as_html_template
+from potyk_io_back.core.config import BASE_DIR
+from potyk_io_back.core.iter_utils import groupby_dict
+from potyk_io_back.core.services import sql
+from potyk_io_back.core.form import FieldRenderKw
 
 
 class ProstoKuhnyaRecipe(BaseModel):

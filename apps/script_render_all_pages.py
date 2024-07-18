@@ -7,7 +7,7 @@ from urllib.parse import urljoin
 
 import app_42
 from app_42 import render_pages, Deps
-from potyk_io_back.config import BASE_DIR
+from potyk_io_back.core.config import BASE_DIR
 
 os.environ["FLASK_ENV"] = "prod"
 # os.environ["FLASK_ENV"] = "development"

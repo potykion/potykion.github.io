@@ -8,20 +8,20 @@ import frontmatter
 import mistune
 from flask import Flask, render_template
 
-from potyk_io_back.admin import add_admin_routes
-from potyk_io_back.beer import add_beer_routes
-from potyk_io_back.blog_pages import BlogPageStore, BlogPage, render_md_as_html_template
-from potyk_io_back.books import BookStore
-from potyk_io_back.config import BASE_DIR
+from potyk_io_back.domain.admin import add_admin_routes
+from potyk_io_back.domain.beer import add_beer_routes
+from potyk_io_back.domain.blog_pages import BlogPageStore, BlogPage, render_md_as_html_template
+from potyk_io_back.domain.books import BookStore
+from potyk_io_back.core.config import BASE_DIR
 from potyk_io_back.domain.game import GameStore
-from potyk_io_back.food import Food, set_restaurants_for_food
-from potyk_io_back.index_and_feed import add_index_page, FeedStorage
-from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.movie import MovieStore, add_movie_routes
+from potyk_io_back.domain.food import Food, set_restaurants_for_food
+from potyk_io_back.domain.index_and_feed import add_index_page, FeedStorage
+from potyk_io_back.core.iter_utils import groupby_dict
+from potyk_io_back.domain.movie import MovieStore, add_movie_routes
 from potyk_io_back.core.q import Q
-from potyk_io_back.recipes import add_recipes_routes
-from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
-from potyk_io_back.rewardy import add_rewardy_routes
+from potyk_io_back.domain.recipes import add_recipes_routes
+from potyk_io_back.domain.restaurants import AddRestForm, Restaurant, RestaurantStorage
+from potyk_io_back.domain.rewardy import add_rewardy_routes
 from potyk_io_back.domain.tools import ToolQQ, ToolTag, ToolType
 
 

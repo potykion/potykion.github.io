@@ -17,12 +17,12 @@ from wtforms.fields.numeric import IntegerRangeField, IntegerField
 from wtforms.fields.simple import StringField, HiddenField, TextAreaField, FileField
 from wtforms.widgets.core import html_params
 
-from potyk_io_back.beer import BeerStorage
-from potyk_io_back.event import Event
-from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.movie import MovieStore
+from potyk_io_back.domain.beer import BeerStorage
+from potyk_io_back.domain.event import Event
+from potyk_io_back.core.iter_utils import groupby_dict
+from potyk_io_back.domain.movie import MovieStore
 from potyk_io_back.core.q import Q
-from potyk_io_back.utils.form import FieldRenderKw
+from potyk_io_back.core.form import FieldRenderKw
 
 
 class FeedCard(BaseModel):

@@ -2,7 +2,7 @@ import json
 import re
 from typing import TypedDict, NamedTuple
 
-from potyk_io_back.services import sql
+from potyk_io_back.core.services import sql
 
 class ProstoKuhnyaRecipeForSql(TypedDict):
     title: str

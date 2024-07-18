@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 from telegram import Bot
 from tradingview_ta import Interval
 
-from potyk_io_back.config import BASE_DIR
-from potyk_io_back.tv_ta.tickers import TICKERS
-from potyk_io_back.tv_ta.tv_ta import TAAnalysisRepo, Analysis
+from potyk_io_back.core.config import BASE_DIR
+from potyk_io_back.domain.tv_ta import TICKERS
+from potyk_io_back.domain.tv_ta import TAAnalysisRepo, Analysis
 
 
 async def handler(event, context):

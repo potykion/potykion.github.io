@@ -3,8 +3,8 @@ import os.path
 import flask
 from flask import render_template
 
-from potyk_io_back.blog_pages import BlogPageForm, BlogPage, BlogPageStore
-from potyk_io_back.index_and_feed import (
+from potyk_io_back.domain.blog_pages import BlogPageForm, BlogPage, BlogPageStore
+from potyk_io_back.domain.index_and_feed import (
     FeedForm,
     FeedCard,
     feed_card_from_form_data,

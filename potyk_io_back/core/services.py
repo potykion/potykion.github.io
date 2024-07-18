@@ -1,6 +1,6 @@
 import sqlite3
 
-from potyk_io_back.config import BASE_DIR
+from potyk_io_back.core.config import BASE_DIR
 from potyk_io_back.core.q import Q
 
 

@@ -1,7 +1,7 @@
 import json
 import sqlite3
 
-from potyk_io_back.config import BASE_DIR
+from potyk_io_back.core.config import BASE_DIR
 
 if __name__ == "__main__":
     sqlite_conn = sqlite3.connect(BASE_DIR / "potyk-io.db", check_same_thread=False)

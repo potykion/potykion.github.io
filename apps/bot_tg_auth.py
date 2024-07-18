@@ -1,4 +1,3 @@
-import hashlib
 import json
 import os
 from typing import TypedDict
@@ -6,8 +5,8 @@ from typing import TypedDict
 from dotenv import load_dotenv
 from telegram import Bot
 
-from potyk_io_back.cf import Event, Resp
-from potyk_io_back.config import BASE_DIR
+from potyk_io_back.core.cf import Event, Resp
+from potyk_io_back.core.config import BASE_DIR
 
 import hashlib
 import hmac

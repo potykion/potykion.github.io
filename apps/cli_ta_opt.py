@@ -7,8 +7,8 @@ from hyperopt import fmin, tpe, hp, STATUS_OK, Trials
 from skimage.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 
-from potyk_io_back.config import BASE_DIR
-from potyk_io_back.tv_ta.tv_ta import PredictionRepo, AnalysisRepo
+from potyk_io_back.core.config import BASE_DIR
+from potyk_io_back.domain.tv_ta import PredictionRepo, AnalysisRepo
 
 
 class Deps:

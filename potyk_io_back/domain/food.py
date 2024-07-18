@@ -2,8 +2,8 @@ import sqlite3
 
 from pydantic import BaseModel, Field
 
-from potyk_io_back.restaurants import Restaurant, rest_from_row
-from potyk_io_back.services import sql
+from potyk_io_back.domain.restaurants import Restaurant, rest_from_row
+from potyk_io_back.core.services import sql
 
 
 class Food(BaseModel):

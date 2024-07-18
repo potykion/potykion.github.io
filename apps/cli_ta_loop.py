@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from tabulate import tabulate
 
-from potyk_io_back.config import BASE_DIR
-from potyk_io_back.tv_ta.tv_ta import (
+from potyk_io_back.core.config import BASE_DIR
+from potyk_io_back.domain.tv_ta import (
     AnalysisRepo,
     PredictionRepo,
     Analysis,
