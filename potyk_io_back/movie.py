@@ -78,7 +78,7 @@ class MovieList(BaseModel):
 
 class MovieStore:
     def __init__(self, sqlite_cursor: sqlite3.Cursor) -> None:
-        self.q = Q(sqlite_cursor, select_all_as=parse_movie)
+        self.q = Q(sqlite_cursor, select_as=parse_movie)
 
     def get_by_id(self, rel_id):
         return self.q.select_one("select * from movies where id = ?", (rel_id,))

@@ -22,7 +22,7 @@ def row_to_task(row):
 
 
 def add_rewardy_routes(app: flask.Flask, deps):
-    task_q = Q(deps.sqlite_cursor, select_all_as=row_to_task)
+    task_q = Q(deps.sqlite_cursor, select_as=row_to_task)
 
     @app.route("/tools/rewardy", methods=["GET", "POST"])
     def rewardy_page():

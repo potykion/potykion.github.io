@@ -4,7 +4,6 @@ import enum
 import mistune
 from pydantic import BaseModel
 
-from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
 
 
@@ -37,11 +36,10 @@ class Book(BaseModel):
 class BookStore:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
-        self.q = Q(self.sqlite_cursor, select_all_as=Book)
-        self.store = SimpleStorage(self.sqlite_cursor, "books", Book)
+        self.q = Q(self.sqlite_cursor, select_as=Book)
 
     def first_by_url(self, url):
-        book: Book = self.store.first_where(url=url)
+        book: Book = self.q.select_one("select * from books where url = ?", params=(url,))
         book.summary_html = mistune.html(book.summary or "")
         return book
 

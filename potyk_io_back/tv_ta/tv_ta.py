@@ -98,7 +98,7 @@ class AnalysisRepo:
         table=None,
         prediction_scores_table=None,
     ):
-        self.q = Q(sqlite_cursor, select_all_as=analysis_from_row)
+        self.q = Q(sqlite_cursor, select_as=analysis_from_row)
         self.table = table or "ta_indicators_1d"
         self.prediction_scores_table = prediction_scores_table or "ta_prediction_scores_1h"
 

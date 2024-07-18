@@ -3,7 +3,6 @@ import sqlite3
 
 from pydantic import BaseModel, ConfigDict
 
-from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
 
 
@@ -43,6 +42,6 @@ def tool_from_sql(tool_sql: sqlite3.Row) -> Tool:
 
 
 ToolStore = Q.factory(
-    select_all_as=tool_from_sql,
+    select_as=tool_from_sql,
     table="tech_tools",
 )

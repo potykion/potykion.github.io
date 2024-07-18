@@ -111,7 +111,7 @@ def rest_from_row(row: sqlite3.Row) -> Restaurant:
 
 class RestaurantStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor) -> None:
-        self.q = Q(sqlite_cur, select_all_as=rest_from_row)
+        self.q = Q(sqlite_cur, select_as=rest_from_row)
 
     def list_all(self):
         return self.q.select_all("select * from restaurants order by score desc")

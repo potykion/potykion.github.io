@@ -5,7 +5,6 @@ from operator import attrgetter
 from typing import ClassVar, cast
 
 import flask
-import flask_wtf
 import mistune
 from flask import render_template, url_for
 from flask_wtf import FlaskForm
@@ -16,13 +15,11 @@ from wtforms import validators
 from wtforms.fields.choices import RadioField, SelectField
 from wtforms.fields.numeric import IntegerRangeField, IntegerField
 from wtforms.fields.simple import StringField, HiddenField, TextAreaField, FileField
-from wtforms.widgets.core import html_params, RadioInput
+from wtforms.widgets.core import html_params
 
 from potyk_io_back.beer import BeerStorage
-from potyk_io_back.core import render_md_as_html
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore
 from potyk_io_back.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
@@ -213,11 +210,10 @@ class FeedStorage:
     def __init__(self, sqlite_cur: sqlite3.Cursor):
         self.sqlite_cur = sqlite_cur
         self.q = Q(self.sqlite_cur)
-        self.simple_storage = SimpleStorage(sqlite_cur, "feed")
 
         self.movie_store = MovieStore(sqlite_cur)
         self.beer_storage = BeerStorage(sqlite_cur)
-        self.tech_storage = SimpleStorage(sqlite_cur, "tech_tools", model=TechTool)
+        self.tech_storage = Q(self.sqlite_cur, select_as=TechTool)
 
     def insert(self, feed_card):
         self.q.execute(
@@ -244,12 +240,6 @@ class FeedStorage:
             commit=True,
         )
 
-    def list_by_date(self, date: datetime.date | str) -> list[FeedCard]:
-        feed_items = self.simple_storage.list_all(where="date = ?", where_params=(date,))
-        feed_items = [FeedCard(**item) for item in feed_items]
-
-        self.prep_feed_items(feed_items)
-        return feed_items
 
     def list_recent(
             self,
@@ -269,7 +259,7 @@ class FeedStorage:
                 if feed_item.rel_table == "movies":
                     rel_item = self.movie_store.get_by_id(feed_item.rel_id)
                 if feed_item.rel_table == "tech_tools":
-                    rel_item = self.tech_storage.get_by_id(feed_item.rel_id)
+                    rel_item = self.tech_storage.select_one("select * from tech_tools where id = ?", params=(feed_item.rel_id,))
 
                 if rel_item:
                     for rel_field, feed_field in RelItemToFeedFieldMap.items():

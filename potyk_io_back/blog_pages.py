@@ -17,7 +17,6 @@ from wtforms.fields.simple import StringField, BooleanField, HiddenField
 from wtforms.validators import Optional
 
 from potyk_io_back.core import BASE_DIR
-from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
 
@@ -131,8 +130,7 @@ def generate_breadcrumbs(path):
 class BlogPageStore:
     def __init__(self, sqlite_cursor):
         self.sqlite_cursor = sqlite_cursor
-        self.store = SimpleStorage(self.sqlite_cursor, "blog_pages", model_factory=BlogPage.from_sql)
-        self.q = Q(self.sqlite_cursor, select_all_as=BlogPage)
+        self.q = Q(self.sqlite_cursor, select_as=BlogPage.from_sql)
 
     def insert(self, page):
         self.q.execute(
@@ -160,18 +158,14 @@ class BlogPageStore:
             as_=BlogPage.from_sql,
         )
 
-    def list_all(self, breadcrumbs=False, **kwargs):
-        pages = self.store.list_all(**kwargs)
-        return [self._row_to_page(page, breadcrumbs=breadcrumbs) for page in pages]
-
-    def list_where_url_in(self, urls, breadcrumbs=False):
-        placeholders = ", ".join("?" for _ in urls)
-        where = f"url in ({placeholders})"
-        pages = self.list_all(where=where, where_params=urls, order_by="url", breadcrumbs=breadcrumbs)
-        return pages
+    def list_all(self):
+        return self.q.select_all(
+            "select * from blog_pages",
+        )
 
     def get_by_url(self, url) -> BlogPage:
-        page: BlogPage = self.list_where_url_in([url], breadcrumbs=True)[0]
+        page: BlogPage = self.q.select_one("select * from blog_pages where url = ?", (url,))
+        self._row_to_page(page, breadcrumbs=True)
         return page
 
     def _row_to_page(self, row_or_page, *, breadcrumbs=False):
@@ -179,7 +173,13 @@ class BlogPageStore:
 
         if breadcrumbs:
             subpaths = generate_breadcrumbs(page.url)
-            page.breadcrumbs = self.list_where_url_in(urls=subpaths)
+
+            placeholders = ", ".join("?" for _ in subpaths)
+
+            page.breadcrumbs = self.q.select_all(
+                f"select * from blog_pages where url in ({placeholders}) order by url",
+                params=subpaths,
+            )
 
         page.breadcrumbs_title = page.breadcrumbs_title or page.title
 

@@ -18,7 +18,6 @@ from potyk_io_back.core import BASE_DIR
 from potyk_io_back.food import Food, set_restaurants_for_food
 from potyk_io_back.index_and_feed import add_index_page, FeedStorage
 from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.lazy import SimpleStorage
 from potyk_io_back.movie import MovieStore, add_movie_routes
 from potyk_io_back.q import Q
 from potyk_io_back.recipes import add_recipes_routes
@@ -41,15 +40,8 @@ class Game(BaseModel):
 class GameStore:
     def __init__(self, sqlite_cursor: sqlite3.Cursor):
         self.sqlite_cursor = sqlite_cursor
-        self.store = SimpleStorage(sqlite_cursor, "games", Game)
-        self.q = Q(sqlite_cursor, table="games", select_all_as=Game)
+        self.q = Q(sqlite_cursor, table="games", select_as=Game)
 
-    def list_all(self, order_by=None):
-        return self.store.list_all(order_by=order_by)
-
-    def get_current(self):
-        raw_game = self.sqlite_cursor.execute("select * from games order by played_date desc ").fetchone()
-        return Game(**raw_game)
 
 
 @dataclasses.dataclass
@@ -68,14 +60,6 @@ class Deps:
     @property
     def q(self):
         return Q(self.sqlite_cursor)
-
-    @property
-    def places_table(self):
-        return SimpleStorage(self.sqlite_cursor, "travel_places")
-
-    @property
-    def books_table(self):
-        return SimpleStorage(self.sqlite_cursor, "books")
 
     @property
     def book_store(self):
@@ -198,7 +182,7 @@ def create_app(server_name=None):
     # region travel
     @app.route("/travel")
     def travel_page():
-        places = deps.places_table.list_all(order_by="date desc")
+        places = deps.q.select_all("select * from travel_places order by date desc")
         return render_template(
             f"travel/index.html",
             page=deps.page,
@@ -377,6 +361,7 @@ def create_app(server_name=None):
             "n/projects.md",
             page=deps.page,
         )
+
     @app.route("/hardware")
     def hardware_page():
         return render_template(
@@ -403,6 +388,7 @@ def create_app(server_name=None):
             f"mind/{page}.md",
             page=deps.page,
         )
+
     @app.route("/mind")
     def mind_index():
         return render_md_as_html_template(

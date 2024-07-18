@@ -44,8 +44,7 @@ class Q:
         self,
         sqlite_conn_or_cursor: sqlite3.Connection | sqlite3.Cursor,
         *,
-        select_all_as: As | None = None,
-        select_one_as: As | None = None,
+        select_as: As | None = None,
         table: str | None = None,
     ):
         if isinstance(sqlite_conn_or_cursor, sqlite3.Connection):
@@ -55,15 +54,13 @@ class Q:
 
         self.sqlite_cur.row_factory = sqlite3.Row
 
-        self._select_all_as = select_all_as
-        self._select_one_as = select_one_as
+        self._select_all_as = select_as
         self._table = table
 
     @classmethod
     def factory(
         cls,
-        select_all_as: As | None = None,
-        select_one_as: As | None = None,
+        select_as: As | None = None,
         table: str | None = None,
     ):
         def new(
@@ -71,8 +68,7 @@ class Q:
         ):
             return cls(
                 sqlite_conn_or_cursor,
-                select_all_as=select_all_as,
-                select_one_as=select_one_as,
+                select_as=select_as,
                 table=table,
             )
 
