@@ -1,5 +1,4 @@
 from collections import defaultdict
-from itertools import groupby
 
 
 def groupby_dict(iter_, key_func):
