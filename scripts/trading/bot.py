@@ -15,7 +15,7 @@ from tinkoff.invest import Client, InstrumentIdType
 from tinkoff.invest.utils import money_to_decimal
 from tradingview_ta import get_multiple_analysis, Interval
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 from potyk_io_back.tv_ta.tickers import TICKERS
 
 

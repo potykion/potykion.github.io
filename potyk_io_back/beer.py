@@ -6,14 +6,8 @@ from itertools import groupby
 from operator import attrgetter
 from typing import cast
 
-from flask import Blueprint, render_template, Flask, url_for
-from pydantic import BaseModel, Field, fields
-
-from potyk_io_back.core import (
-    render_md_as_html,
-    wrap_html_to_base_template,
-)
-from potyk_io_back.iter_utils import groupby_dict
+from flask import render_template, Flask, url_for
+from pydantic import BaseModel, Field
 
 
 class BeerStyle(BaseModel):
@@ -156,31 +150,6 @@ def beer_from_dict(raw_beer):
     return Beer(**raw_beer)
 
 
-def make_beer_blueprint(sqlite_cur: sqlite3.Cursor) -> Blueprint:
-    beer_bp = Blueprint("beer_bp", __name__)
-    beer_storage = BeerStorage(sqlite_cur)
-
-    @beer_bp.route("/special/beer/guide")
-    def get_beer():
-        ctx = {"show_title": True, "show_desc": True}
-
-        html, md_ctx = render_md_as_html("special/beer/guide.md")
-        ctx.update(md_ctx)
-        return wrap_html_to_base_template(html, ctx)
-
-    @beer_bp.route("/special/beer/base")
-    def get_beer_base():
-        return render_template(
-            "special/beer/base.html",
-            show_title=True,
-            show_desc=True,
-            beers=beer_storage.list_all(order_by="title"),
-            stores=beer_storage.list_stores(),
-        )
-
-    return beer_bp
-
-
 class Checkin(BaseModel):
     name: str
     url: str
@@ -216,8 +185,8 @@ class BeerStyle2(BaseModel):
                 tags=(row["tags"]).split(",") if row["tags"] else [],
             )
         )
-        if row['img']:
-            row['img'] = url_for("static", filename=row['img'])
+        if row["img"]:
+            row["img"] = url_for("static", filename=row["img"])
 
         return cls(**row)
 

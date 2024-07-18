@@ -13,7 +13,7 @@ import gspread
 from pydantic import BaseModel, Field, computed_field
 from tinydb import TinyDB
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 
 
 def parse_date(raw_date: str) -> datetime.date | None:

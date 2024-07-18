@@ -11,7 +11,7 @@ import os
 
 from pydantic import BaseModel
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 
 
 def to_kinorium_csv(kp_movies):

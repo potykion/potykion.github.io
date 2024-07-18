@@ -147,3 +147,19 @@ class Q:
             return [as_(**row) for row in row_or_rows]
         else:
             return as_(**row_or_rows)
+
+
+class QQ:
+    def __init__(self, q: Q, table: str | None = None):
+        self.q = q
+        self._table = table or q._table
+
+    def list_all(self, *, as_: As | None = None):
+        return self.q.select_all(f"select * from {self._table}", as_=as_)
+
+    @classmethod
+    def factory(cls, cursor_factory: Callable[[sqlite3.Cursor], Q]):
+        def new(cursor: sqlite3.Cursor):
+            return cls(cursor_factory(cursor))
+
+        return new

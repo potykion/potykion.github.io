@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from telegram import Bot
 
 from potyk_io_back.cf import Event, Resp
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 
 import hashlib
 import hmac

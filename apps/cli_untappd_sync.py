@@ -1,7 +1,7 @@
 import json
 from collections import defaultdict
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 from potyk_io_back.services import sql
 
 

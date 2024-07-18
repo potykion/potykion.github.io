@@ -3,7 +3,7 @@ import sqlite3
 
 from pydantic import BaseModel, ConfigDict
 
-from potyk_io_back.q import Q
+from potyk_io_back.q import Q, QQ
 
 
 class ToolTag(enum.StrEnum):
@@ -29,19 +29,15 @@ class Tool(BaseModel):
 
 
 def tool_from_sql(tool_sql: sqlite3.Row) -> Tool:
-    return Tool(
-        id=tool_sql["id"],
-        title=tool_sql["title"],
-        type=tool_sql["type"],
-        tags=tuple(tool_sql["tags"].split(",")),
-        desc=tool_sql["desc"],
-        url=tool_sql["url"],
-        img=tool_sql["img"],
-        pinned=tool_sql["pinned"] or False,
+    tool_sql = {**tool_sql}
+    tool_sql["tags"] = tuple(tool_sql["tags"].split(","))
+    tool_sql["pinned"] = tool_sql["pinned"] or False
+    return Tool(**tool_sql)
+
+
+ToolStore = QQ.factory(
+    Q.factory(
+        select_as=tool_from_sql,
+        table="tech_tools",
     )
-
-
-ToolStore = Q.factory(
-    select_as=tool_from_sql,
-    table="tech_tools",
 )

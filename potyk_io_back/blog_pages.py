@@ -16,7 +16,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import StringField, BooleanField, HiddenField
 from wtforms.validators import Optional
 
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 from potyk_io_back.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
 

@@ -5,7 +5,7 @@ from more_itertools import chunked
 
 import app_42
 from apps.script_render_all_pages import clean_dir, make_dir
-from potyk_io_back.core import BASE_DIR
+from potyk_io_back.config import BASE_DIR
 from potyk_io_back.index_and_feed import FeedCard
 
 
