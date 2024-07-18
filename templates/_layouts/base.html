@@ -114,9 +114,9 @@
                 {% for page in page.breadcrumbs[1:] %}
                     <li>
                         {% if loop.last %}
-                            {{ page.breadcrumbs_title }}
+                            {{ page.breadcrumbs_title or page.title }}
                         {% else %}
-                            <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title }}</a>
+                            <a class="link-hover " href="{{ page.url }}">{{ page.breadcrumbs_title or page.title }}</a>
                         {% endif %}
                     </li>
                 {% endfor %}
