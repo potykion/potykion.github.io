@@ -4,7 +4,7 @@ import enum
 import mistune
 from pydantic import BaseModel
 
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 
 
 class BookStatus(enum.StrEnum):

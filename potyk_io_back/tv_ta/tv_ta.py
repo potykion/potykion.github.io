@@ -8,7 +8,7 @@ import tradingview_ta
 from pydantic import BaseModel
 from tradingview_ta import get_multiple_analysis, Interval
 from potyk_io_back.iter_utils import groupby_dict
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 
 try:
     import numpy as np

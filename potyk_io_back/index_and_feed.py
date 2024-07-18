@@ -21,7 +21,7 @@ from potyk_io_back.beer import BeerStorage
 from potyk_io_back.event import Event
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.movie import MovieStore
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 from potyk_io_back.utils.form import FieldRenderKw
 
 

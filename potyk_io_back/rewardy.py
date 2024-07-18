@@ -2,7 +2,7 @@ import flask
 from flask import render_template
 from pydantic import BaseModel
 
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 
 
 class Task(BaseModel):

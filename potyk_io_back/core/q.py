@@ -1,13 +1,29 @@
 import inspect
 import sqlite3
 from contextlib import contextmanager
-from typing import Type, Callable, Any
+from typing import Type, Callable, Any, Generic, TypeVar, overload, Self
 
-As = Type | Callable[[sqlite3.Row], Any]
+T = TypeVar("T")
+AsT = TypeVar("AsT")
+As = Type[T] | Callable[[sqlite3.Row], T]
+SqliteConnOrCursor = sqlite3.Connection | sqlite3.Cursor
 
 
-class Q:
+class QProto(Generic[T]):
+    def select_all(self, sql, params=(), *, as_: As | None = None) -> list[T]: ...
+    def select_one(self, sql, params=(), *, as_: As | None = None) -> Any: ...
+    def select_val(self, sql, params=()) -> Any: ...
+    def execute(self, sql, params=(), *, commit=False) -> None: ...
+    def commit(self) -> None: ...
+
+    @contextmanager
+    def commit_after(self) -> None: ...
+
+
+class Q(QProto):
     """
+    Обертка над sqlite3.Cursor, для удобного использования в коде.
+
     q = Q(
       sqlite_conn_or_cursor=...,
       select_all_as=..., # type: cls | func
@@ -42,10 +58,9 @@ class Q:
 
     def __init__(
         self,
-        sqlite_conn_or_cursor: sqlite3.Connection | sqlite3.Cursor,
+        sqlite_conn_or_cursor: SqliteConnOrCursor,
         *,
         select_as: As | None = None,
-        table: str | None = None,
     ):
         if isinstance(sqlite_conn_or_cursor, sqlite3.Connection):
             self.sqlite_cur = sqlite_conn_or_cursor.cursor()
@@ -54,35 +69,22 @@ class Q:
 
         self.sqlite_cur.row_factory = sqlite3.Row
 
-        self._select_all_as = select_as
-        self._table = table
+        self._select_as = select_as
 
     @classmethod
     def factory(
         cls,
-        select_as: As | None = None,
-        table: str | None = None,
-    ):
+        select_as: As[T] | None = None,
+    ) -> Callable[[SqliteConnOrCursor], QProto[T]]:
         def new(
             sqlite_conn_or_cursor: sqlite3.Connection | sqlite3.Cursor,
         ):
             return cls(
                 sqlite_conn_or_cursor,
                 select_as=select_as,
-                table=table,
             )
 
         return new
-
-    def list_all(
-        self,
-        *,
-        table: str | None = None,
-        as_: As | None = None,
-    ):
-        table = table or self._table
-        assert table, "{table} param should be set"
-        return self.select_all(f"select * from {table}", as_=as_)
 
     def select_all(self, sql, params=(), *, as_: As | None = None) -> list:
         if not isinstance(params, (list, tuple)):
@@ -90,7 +92,7 @@ class Q:
 
         rows = self.sqlite_cur.execute(sql, params).fetchall()
 
-        rows = self._apply_as(rows, as_)
+        rows = [self._apply_as(row, as_) for row in rows]
 
         return rows
 
@@ -104,11 +106,7 @@ class Q:
 
         return row
 
-    def select_val(
-        self,
-        sql,
-        params=(),
-    ) -> Any:
+    def select_val(self, sql, params=()) -> Any:
         if not isinstance(params, (list, tuple)):
             params = (params,)
 
@@ -132,34 +130,47 @@ class Q:
         self.commit()
 
     def _apply_as(self, row_or_rows, as_: As | None = None):
-        as_ = as_ or self._select_all_as
+        as_ = as_ or self._select_as
         if not as_:
             return row_or_rows
 
         is_func = inspect.isfunction(as_) or inspect.ismethod(as_)
-        is_list = isinstance(row_or_rows, (list, tuple))
 
-        if is_func and is_list:
-            return [as_(row) for row in row_or_rows]
-        elif is_func and not is_list:
+        if is_func:
             return as_(row_or_rows)
-        elif not is_func and is_list:
-            return [as_(**row) for row in row_or_rows]
         else:
             return as_(**row_or_rows)
 
 
-class QQ:
-    def __init__(self, q: Q, table: str | None = None):
-        self.q = q
-        self._table = table or q._table
+class QQProto(Generic[T]):
 
-    def list_all(self, *, as_: As | None = None):
-        return self.q.select_all(f"select * from {self._table}", as_=as_)
+    @overload
+    def list_all(self, *, as_: None = None) -> list[T]: ...
+    @overload
+    def list_all(self, *, as_: Type[AsT]) -> list[AsT]: ...
+    @overload
+    def list_all(self, *, as_: Callable[[sqlite3.Row], AsT]) -> list[AsT]: ...
+    def list_all(self, *, as_=None): ...
+
+
+class QQ(QQProto[T], QProto[T]):
+    def __init__(self, table: str, q: QProto[T]):
+        self._table = table
+        self.q = q
 
     @classmethod
-    def factory(cls, cursor_factory: Callable[[sqlite3.Cursor], Q]):
+    def factory(
+        cls,
+        table: str,
+        cursor_factory: Callable[[SqliteConnOrCursor], QProto[T]],
+    ) -> Callable[[SqliteConnOrCursor], Self]:
         def new(cursor: sqlite3.Cursor):
-            return cls(cursor_factory(cursor))
+            return cls(table, cursor_factory(cursor))
 
         return new
+
+    def __getattr__(self, item):
+        return getattr(self.q, item)
+
+    def list_all(self, *, as_=None):
+        return self.q.select_all(f"select * from {self._table}", as_=as_)

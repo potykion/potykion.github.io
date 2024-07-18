@@ -19,11 +19,11 @@ from potyk_io_back.food import Food, set_restaurants_for_food
 from potyk_io_back.index_and_feed import add_index_page, FeedStorage
 from potyk_io_back.iter_utils import groupby_dict
 from potyk_io_back.movie import MovieStore, add_movie_routes
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 from potyk_io_back.recipes import add_recipes_routes
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.rewardy import add_rewardy_routes
-from potyk_io_back.tools import ToolStore, ToolTag, ToolType
+from potyk_io_back.domain.tools import ToolQQ, ToolTag, ToolType
 
 
 class Game(BaseModel):
@@ -37,11 +37,7 @@ class Game(BaseModel):
     wishlist: bool | None
 
 
-class GameStore:
-    def __init__(self, sqlite_cursor: sqlite3.Cursor):
-        self.sqlite_cursor = sqlite_cursor
-        self.q = Q(sqlite_cursor, table="games", select_as=Game)
-
+GameStore = Q.factory(select_as=Game)
 
 
 @dataclasses.dataclass
@@ -79,7 +75,7 @@ class Deps:
 
     @property
     def tool_store(self):
-        return ToolStore(self.sqlite_cursor)
+        return ToolQQ(self.sqlite_cursor)
 
     @property
     def restaurant_store(self):
@@ -253,7 +249,7 @@ def create_app(server_name=None):
     # region games
     @app.route("/games")
     def games_page():
-        games = deps.game_store.q.select_all("select * from games order by played_date desc")
+        games = deps.game_store.select_all("select * from games order by played_date desc")
         wishlist = [game for game in games if game.wishlist]
         games = [game for game in games if not game.wishlist]
         current = games[0]

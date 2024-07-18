@@ -14,7 +14,7 @@ from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import StringField, URLField, BooleanField, FileField, TextAreaField
 from wtforms.widgets.core import DateTimeInput
 
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 
 
 class MovieTag(enum.StrEnum):

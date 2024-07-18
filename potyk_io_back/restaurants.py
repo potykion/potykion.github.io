@@ -10,7 +10,7 @@ from wtforms.fields.numeric import IntegerRangeField, DecimalRangeField
 from wtforms.fields.simple import StringField, BooleanField, URLField, TextAreaField
 from wtforms.validators import InputRequired
 
-from potyk_io_back.q import Q
+from potyk_io_back.core.q import Q
 
 
 class PriceRange(enum.IntEnum):
