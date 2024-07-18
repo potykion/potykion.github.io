@@ -145,12 +145,12 @@ class Q(QProto):
 class QQProto(Generic[T]):
 
     @overload
-    def list_all(self, *, as_: None = None) -> list[T]: ...
+    def list_all(self, *, as_: None = None, order_by: str | None = None) -> list[T]: ...
     @overload
-    def list_all(self, *, as_: Type[AsT]) -> list[AsT]: ...
+    def list_all(self, *, as_: Type[AsT], order_by: str | None = None) -> list[AsT]: ...
     @overload
-    def list_all(self, *, as_: Callable[[sqlite3.Row], AsT]) -> list[AsT]: ...
-    def list_all(self, *, as_=None): ...
+    def list_all(self, *, as_: Callable[[sqlite3.Row], AsT], order_by: str | None = None) -> list[AsT]: ...
+    def list_all(self, *, as_=None, order_by: str | None = None): ...
 
 
 class QQ(QQProto[T], QProto[T]):
@@ -172,5 +172,9 @@ class QQ(QQProto[T], QProto[T]):
     def __getattr__(self, item):
         return getattr(self.q, item)
 
-    def list_all(self, *, as_=None):
-        return self.q.select_all(f"select * from {self._table}", as_=as_)
+    def list_all(self, *, as_=None, order_by: str | None = None):
+        q = f"select * from {self._table}"
+        if order_by:
+            q += f" order by {order_by}"
+
+        return self.q.select_all(q, as_=as_)

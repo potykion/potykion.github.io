@@ -1,5 +1,4 @@
 import dataclasses
-import datetime
 import os
 import re
 import sqlite3
@@ -8,13 +7,13 @@ import flask
 import frontmatter
 import mistune
 from flask import Flask, render_template
-from pydantic import BaseModel
 
 from potyk_io_back.admin import add_admin_routes
 from potyk_io_back.beer import add_beer_routes
 from potyk_io_back.blog_pages import BlogPageStore, BlogPage, render_md_as_html_template
 from potyk_io_back.books import BookStore
 from potyk_io_back.config import BASE_DIR
+from potyk_io_back.domain.game import GameStore
 from potyk_io_back.food import Food, set_restaurants_for_food
 from potyk_io_back.index_and_feed import add_index_page, FeedStorage
 from potyk_io_back.iter_utils import groupby_dict
@@ -24,20 +23,6 @@ from potyk_io_back.recipes import add_recipes_routes
 from potyk_io_back.restaurants import AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.rewardy import add_rewardy_routes
 from potyk_io_back.domain.tools import ToolQQ, ToolTag, ToolType
-
-
-class Game(BaseModel):
-    id: int
-    title: str
-    img: str
-    genre: str
-    steam: str
-    review: str
-    played_date: datetime.date | None
-    wishlist: bool | None
-
-
-GameStore = Q.factory(select_as=Game)
 
 
 @dataclasses.dataclass
@@ -249,7 +234,7 @@ def create_app(server_name=None):
     # region games
     @app.route("/games")
     def games_page():
-        games = deps.game_store.select_all("select * from games order by played_date desc")
+        games = deps.game_store.list_all(order_by="played_date desc")
         wishlist = [game for game in games if game.wishlist]
         games = [game for game in games if not game.wishlist]
         current = games[0]
