@@ -71,6 +71,9 @@ async def handler(event: Event, context) -> Resp:
 
 
 async def main(body) -> str | None:
+    if body.get("type") == "anon":
+        return await anon_auth(body)
+
     if set(body.keys()) == {"id", "first_name", "last_name", "username", "photo_url", "auth_date", "hash"}:
         return await tg_auth(body)
 
@@ -89,6 +92,15 @@ async def main(body) -> str | None:
     # else:
     #     await send_echo(body)
     #     return "Ok"
+
+async def anon_auth(body):
+    load_dotenv(BASE_DIR / ".env")
+
+    bot_token = os.getenv("TG_POTYK_IO_BOT_TOKEN")
+    chat_id = os.getenv("TG_BOT_CHAT_ID")
+
+    await send_json_to_tg(body, bot_token, chat_id)
+    return "True"
 
 
 async def process_tg_update(tg_update: TgUpdate):
@@ -131,10 +143,10 @@ async def tg_auth(body):
     chat_id = os.getenv("TG_BOT_CHAT_ID")
 
     if validate_hash(body, bot_token):
-        await send_auth_to_tg(body, bot_token, chat_id)
+        await send_json_to_tg(body, bot_token, chat_id)
         return "True"
     else:
-        await send_auth_to_tg(body, bot_token, chat_id, msg="Failed to validate auth token")
+        await send_json_to_tg(body, bot_token, chat_id, msg="Failed to validate auth token")
         return None
 
 
@@ -174,11 +186,11 @@ def validate_hash(tg_auth: TgAuth, bot_token: str) -> bool:
     return computed_hash == hash_
 
 
-async def send_auth_to_tg(tg_auth, TOKEN, chat_id, msg="New successful login"):
+async def send_json_to_tg(json_obj, TOKEN, chat_id, msg="New successful login"):
     bot = Bot(token=TOKEN)
     res = await bot.send_message(
         chat_id=chat_id,
-        text="{}:\n```{}```".format(msg, json.dumps(tg_auth, indent=2, ensure_ascii=False)),
+        text="{}:\n```{}```".format(msg, json.dumps(json_obj, indent=2, ensure_ascii=False)),
         parse_mode="MarkdownV2",
     )
     print(res)

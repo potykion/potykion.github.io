@@ -157,7 +157,9 @@ def create_app(server_name=None):
     flask_city = FlaskCity(
         app,
         deps,
-        ctx=dict(page=lambda: deps.page),
+        ctx=dict(
+            page=lambda: deps.page,
+        ),
     )
 
     flask_city.template(
