@@ -39,3 +39,5 @@ more-itertools
 
 # formatting
 black
+
+git+https://github.com/potykion/pytubefix.git
