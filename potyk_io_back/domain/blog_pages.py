@@ -16,6 +16,7 @@ from wtforms.fields.choices import SelectField
 from wtforms.fields.simple import StringField, BooleanField, HiddenField
 from wtforms.validators import Optional
 
+from potyk_io_back.core.any_mapper import map_from_to, pipe, comma_split
 from potyk_io_back.core.config import BASE_DIR
 from potyk_io_back.core.q import Q
 from potyk_io_back.core.form import FieldRenderKw
@@ -106,11 +107,11 @@ class BlogPage(BaseModel):
 
     @classmethod
     def from_sql(cls, row):
-        row = {**row}
-        row["tags"] = sorted(
-            (row["tags"] or "").split(","),
+        return map_from_to(
+            row,
+            cls,
+            fields={"tags": pipe(comma_split, sorted)},
         )
-        return cls(**row)
 
 
 def generate_breadcrumbs(path):
@@ -148,20 +149,13 @@ class BlogPageStore:
         )
 
     def list_index(self):
-        return self.q.select_all(
-            "select * from blog_pages where include_in_index = 1 order by section", as_=BlogPage.from_sql
-        )
+        return self.q.select_all("select * from blog_pages where include_in_index = 1 order by section")
 
     def list_recipe_pages(self) -> list[BlogPage]:
-        return self.q.select_all(
-            "select * from blog_pages where section like 'recipes_%' order by section",
-            as_=BlogPage.from_sql,
-        )
+        return self.q.select_all("select * from blog_pages where section like 'recipes_%' order by section")
 
     def list_all(self):
-        return self.q.select_all(
-            "select * from blog_pages",
-        )
+        return self.q.select_all("select * from blog_pages")
 
     def get_by_url(self, url) -> BlogPage:
         page: BlogPage = self.q.select_one("select * from blog_pages where url = ?", (url,))
