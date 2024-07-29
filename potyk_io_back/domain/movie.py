@@ -7,13 +7,14 @@ import flask
 import requests
 from flask import render_template
 from flask_wtf import FlaskForm
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from werkzeug.datastructures import FileStorage
 from wtforms.fields.choices import SelectField
 from wtforms.fields.numeric import IntegerField
 from wtforms.fields.simple import StringField, URLField, BooleanField, FileField, TextAreaField
 from wtforms.widgets.core import DateTimeInput
 
+from potyk_io_back.core.any_mapper import pipe, comma_split, map_from_to
 from potyk_io_back.core.q import Q
 
 
@@ -57,16 +58,11 @@ class Movie(BaseModel):
     poster: str
     review: str | None
     year: int
-    tags: tuple[MovieTag | str, ...]
+    tags: tuple[MovieTag | str, ...] = Field(default_factory=tuple)
 
 
 def parse_movie(row: sqlite3.Row | dict) -> Movie:
-    return Movie(
-        **{
-            **row,
-            "tags": tuple(row["tags"].split(",") if row["tags"] else []),
-        }
-    )
+    return map_from_to(row, Movie, field_funcs={"tags": comma_split})
 
 
 class MovieList(BaseModel):

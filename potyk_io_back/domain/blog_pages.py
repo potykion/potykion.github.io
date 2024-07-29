@@ -110,7 +110,7 @@ class BlogPage(BaseModel):
         return map_from_to(
             row,
             cls,
-            fields={"tags": pipe(comma_split, sorted)},
+            field_funcs={"tags": pipe(comma_split, sorted)},
         )
 
 

@@ -1,6 +1,5 @@
 from functools import partial
-from typing import Any
-
+from typing import Any, Callable, TypeVar
 
 try:
     from pydantic import BaseModel
@@ -8,17 +7,23 @@ try:
 except ImportError:
     ...
 
+ToCls = TypeVar("ToCls")
 
-def map_from_to(from_, to, fields=None):
-    fields = fields or {}
+
+def map_from_to(
+    from_: Any,
+    to: type[ToCls],
+    field_funcs: None | dict[str, Callable[[Any], Any]] = None,
+) -> ToCls:
+    field_funcs = field_funcs or {}
 
     from_supports_mapping = hasattr(from_, "__getitem__")
     from_kwargs: dict[str, Any]
     if from_supports_mapping:
         from_kwargs = from_
 
-    is_pydantic = issubclass(to, BaseModel)
-    if is_pydantic:
+    to_is_pydantic = issubclass(to, BaseModel)
+    if to_is_pydantic:
         to_kwargs = {}
 
         for field_key, field_value in to.model_fields.items():
@@ -35,8 +40,8 @@ def map_from_to(from_, to, fields=None):
                     to_kwargs[field_key] = field_value.default_factory()
             # from_kwargs[field_key] is not None => apply {fields} func
             else:
-                if field_key in fields:
-                    to_kwargs[field_key] = fields[field_key](to_kwargs[field_key])
+                if field_key in field_funcs:
+                    to_kwargs[field_key] = field_funcs[field_key](to_kwargs[field_key])
 
         return to(**to_kwargs)
 

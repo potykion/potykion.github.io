@@ -35,7 +35,7 @@ def test_map_from_to():
             "desc": "tasty",
         },
         BlogPage,
-        fields={"tags": pipe(comma_split, sorted)},
+        field_funcs={"tags": pipe(comma_split, sorted)},
     )
 
     assert page == BlogPage(
@@ -56,7 +56,7 @@ def test_map_from_to_no_tags():
             "desc": "tasty",
         },
         BlogPage,
-        fields={"tags": pipe(comma_split, sorted)},
+        field_funcs={"tags": pipe(comma_split, sorted)},
     )
 
     assert page == BlogPage(
