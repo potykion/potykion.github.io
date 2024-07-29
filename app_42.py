@@ -8,6 +8,7 @@ import frontmatter
 import mistune
 from flask import Flask, render_template
 
+from potyk_io_back.core.flask_city import FlaskCity
 from potyk_io_back.domain.admin import add_admin_routes
 from potyk_io_back.domain.beer import add_beer_routes
 from potyk_io_back.domain.blog_pages import BlogPageStore, BlogPage, render_md_as_html_template
@@ -15,7 +16,7 @@ from potyk_io_back.domain.books import BookStore
 from potyk_io_back.core.config import BASE_DIR
 from potyk_io_back.domain.game import GameStore
 from potyk_io_back.domain.food import Food, set_restaurants_for_food
-from potyk_io_back.domain.index_and_feed import add_index_page, FeedStorage
+from potyk_io_back.domain.index_and_feed import FeedStorage, get_pages_by_section, get_events, get_feed_items
 from potyk_io_back.core.iter_utils import groupby_dict
 from potyk_io_back.domain.movie import MovieStore, add_movie_routes
 from potyk_io_back.core.q import Q
@@ -23,6 +24,7 @@ from potyk_io_back.domain.recipes import add_recipes_routes
 from potyk_io_back.domain.restaurants import AddRestForm, Restaurant, RestaurantStorage
 from potyk_io_back.domain.rewardy import add_rewardy_routes
 from potyk_io_back.domain.tools import ToolQQ, ToolTag, ToolType
+from potyk_io_back.domain.travel import get_travel_places
 
 
 @dataclasses.dataclass
@@ -152,25 +154,46 @@ def create_app(server_name=None):
         except FileNotFoundError:
             return flask.send_file(os.path.join(app.static_folder, path))
 
-    add_index_page(app, deps)
+    flask_city = FlaskCity(
+        app,
+        deps,
+        ctx=dict(page=lambda: deps.page),
+    )
+
+    flask_city.template(
+        "/",
+        lambda: flask.render_template("index.html"),
+        ctx=dict(
+            pages_by_section=get_pages_by_section,
+            events=get_events,
+            feed_items=get_feed_items,
+        ),
+    )
+
+    flask_city.template(
+        "/sections",
+        lambda: flask.render_template("sections.html"),
+        ctx=dict(pages_by_section=get_pages_by_section),
+    )
+
+    flask_city.template(
+        "/feed/<index>",
+        lambda index: flask.render_template(f"feed/{index}"),
+        ignore_global_ctx=True,
+    )
+
+    flask_city.template(
+        "/login",
+        lambda: flask.render_template(f"login.html"),
+    )
+
+    flask_city.template(
+        "/travel",
+        lambda: flask.render_template(f"travel/index.html"),
+        ctx=dict(places=get_travel_places),
+    )
 
     add_recipes_routes(app, deps)
-
-    @app.route("/login")
-    def login_page():
-        return render_template(f"login.html", page=deps.page)
-
-    # region travel
-    @app.route("/travel")
-    def travel_page():
-        places = deps.q.select_all("select * from travel_places order by date desc")
-        return render_template(
-            f"travel/index.html",
-            page=deps.page,
-            places=places,
-        )
-
-    # endregion travel
 
     # region books
     @app.route("/books")

@@ -17,7 +17,9 @@ from wtforms.fields.numeric import IntegerRangeField, IntegerField
 from wtforms.fields.simple import StringField, HiddenField, TextAreaField, FileField
 from wtforms.widgets.core import html_params
 
+from potyk_io_back.core.flask_city import FlaskCity
 from potyk_io_back.domain.beer import BeerStorage
+from potyk_io_back.domain.blog_pages import BlogPageStore
 from potyk_io_back.domain.event import Event
 from potyk_io_back.core.iter_utils import groupby_dict
 from potyk_io_back.domain.movie import MovieStore
@@ -153,30 +155,29 @@ def feed_card_from_form_data(form_data: dict, app: flask.Flask) -> FeedCard:
 
 
 def feed_card_from_rel_form_data(form_data: dict) -> FeedCard:
-    if form_data['rel_table'] == 'beer':
-        form_data.update({
-            'title': 'title',
-            'desc': 'desc',
-            'row_span': 2,
-            'image_width': 20,
-            'image': 'image',
-            'url': 'untappd_url',
-        })
-    if form_data['rel_table'] == 'movies':
-        form_data.update({
-            "title": 'title',
-            'desc': 'review',
-            'row_span': 3,
-            'image': 'poster'
-        })
-    if form_data['rel_table'] == 'tech_tools':
-        form_data.update({
-            'title': 'title',
-            'desc': 'desc',
-            'image': 'img',
-            'image_padding': '4',
-            'url': 'url',
-        })
+    if form_data["rel_table"] == "beer":
+        form_data.update(
+            {
+                "title": "title",
+                "desc": "desc",
+                "row_span": 2,
+                "image_width": 20,
+                "image": "image",
+                "url": "untappd_url",
+            }
+        )
+    if form_data["rel_table"] == "movies":
+        form_data.update({"title": "title", "desc": "review", "row_span": 3, "image": "poster"})
+    if form_data["rel_table"] == "tech_tools":
+        form_data.update(
+            {
+                "title": "title",
+                "desc": "desc",
+                "image": "img",
+                "image_padding": "4",
+                "url": "url",
+            }
+        )
 
     return FeedCard(**form_data)
 
@@ -240,9 +241,8 @@ class FeedStorage:
             commit=True,
         )
 
-
     def list_recent(
-            self,
+        self,
     ) -> list[FeedCard]:
         feed_items = self.q.select_all("select * from feed order by date desc, priority desc, id limit 10")
         feed_items = [FeedCard(**item) for item in feed_items]
@@ -259,7 +259,9 @@ class FeedStorage:
                 if feed_item.rel_table == "movies":
                     rel_item = self.movie_store.get_by_id(feed_item.rel_id)
                 if feed_item.rel_table == "tech_tools":
-                    rel_item = self.tech_storage.select_one("select * from tech_tools where id = ?", params=(feed_item.rel_id,))
+                    rel_item = self.tech_storage.select_one(
+                        "select * from tech_tools where id = ?", params=(feed_item.rel_id,)
+                    )
 
                 if rel_item:
                     for rel_field, feed_field in RelItemToFeedFieldMap.items():
@@ -274,32 +276,25 @@ class FeedStorage:
             if feed_item.image:
                 feed_item.image = url_for("static", filename=feed_item.image)
             if feed_item.audio:
-                feed_item.audio = ','.join(url_for("static", filename=audio) for audio in feed_item.audio.split(','))
-            if feed_item.video and not feed_item.video.startswith(('blob', 'http', 'https')):
+                feed_item.audio = ",".join(
+                    url_for("static", filename=audio) for audio in feed_item.audio.split(",")
+                )
+            if feed_item.video and not feed_item.video.startswith(("blob", "http", "https")):
                 feed_item.video = url_for("static", filename=feed_item.video)
 
 
-def add_index_page(app, deps):
-    @app.route("/")
-    def index_page():
-        pages = deps.page_store.list_index()
-        pages_by_section = groupby_dict(pages, attrgetter("section"))
-        events = deps.q.select_all(
-            "select * from events as e where e.date > date() order by date",
-            as_=Event,
-        )
+def get_pages_by_section(page_store: BlogPageStore):
+    return groupby_dict(page_store.list_index(), attrgetter("section"))
 
-        feed_items = deps.feed_storage.list_recent()
-        feed_items = [item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items]
 
-        return render_template(
-            "index.html",
-            pages_by_section=pages_by_section,
-            page=deps.page,
-            events=events,
-            feed_items=feed_items,
-        )
+def get_events(q: Q):
+    return q.select_all(
+        "select * from events as e where e.date > date() order by date",
+        as_=Event,
+    )
 
-    @app.route("/feed/<index>")
-    def feed_card_page(index: str):
-        return flask.render_template(f"feed/{index}")
+
+def get_feed_items(feed_storage: FeedStorage):
+    feed_items = feed_storage.list_recent()
+    feed_items = [item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items]
+    return feed_items

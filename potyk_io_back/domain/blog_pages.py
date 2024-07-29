@@ -130,8 +130,7 @@ def generate_breadcrumbs(path):
 
 class BlogPageStore:
     def __init__(self, sqlite_cursor):
-        self.sqlite_cursor = sqlite_cursor
-        self.q = Q(self.sqlite_cursor, select_as=BlogPage.from_sql)
+        self.q = Q(sqlite_cursor, select_as=BlogPage.from_sql)
 
     def insert(self, page):
         self.q.execute(
@@ -158,7 +157,7 @@ class BlogPageStore:
         return self.q.select_all("select * from blog_pages")
 
     def get_by_url(self, url) -> BlogPage:
-        page: BlogPage = self.q.select_one("select * from blog_pages where url = ?", (url,))
+        page: BlogPage = self.q.select_one("select * from blog_pages where url = ?", (url,), raise_not_found=True)
         self._row_to_page(page, breadcrumbs=True)
         return page
 

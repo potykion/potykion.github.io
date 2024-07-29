@@ -96,11 +96,21 @@ class Q(QProto):
 
         return rows
 
-    def select_one(self, sql, params=(), *, as_: As | None = None) -> Any:
+    def select_one(
+        self,
+        sql,
+        params=(),
+        *,
+        as_: As | None = None,
+        raise_not_found: bool = False,
+    ) -> Any:
         if not isinstance(params, (list, tuple)):
             params = (params,)
 
         row = self.sqlite_cur.execute(sql, params).fetchone()
+
+        if not row and raise_not_found:
+            raise Exception(f'No row found for "{sql}" with params {params}')
 
         row = self._apply_as(row, as_)
 
