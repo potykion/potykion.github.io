@@ -62,7 +62,7 @@ class Movie(BaseModel):
 
 
 def parse_movie(row: sqlite3.Row | dict) -> Movie:
-    return map_from_to(row, Movie, field_funcs={"tags": comma_split})
+    return map_from_to(row, Movie, to_field_val_funcs={"tags": comma_split})
 
 
 class MovieList(BaseModel):
