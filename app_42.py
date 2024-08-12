@@ -2,6 +2,7 @@ import dataclasses
 import os
 import re
 import sqlite3
+from functools import reduce
 
 import flask
 import frontmatter
@@ -284,7 +285,11 @@ def create_app(server_name=None):
         ai_tools = [tool for tool in tools if ToolTag.ai in tool.tags]
         python_tools = [tool for tool in tools if ToolType.python == tool.type]
 
-        tools = set(tools) - set(image_tools) - set(python_tools) - set(pinned_tools)
+        tools = reduce(
+            lambda x, y: x - y,
+            map(set, [image_tools, python_tools, pinned_tools, ai_tools]),
+            set(tools),
+        )
 
         return render_template(
             "tools/index.html",
@@ -481,7 +486,5 @@ def create_app(server_name=None):
         return render_md_as_html_template(f"perf/index.md", page=deps.page)
 
     # endregion perf
-
-    render_pages(app, deps)
 
     return app
