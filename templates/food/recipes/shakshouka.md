@@ -1,6 +1,6 @@
 ## Ингредиенты
 
-![](/static/images/recipes/shakshouka.jpg)
+![](/images/recipes/shakshouka.jpg)
 
 | Name             | Amount Unit |
 |------------------|-------------|

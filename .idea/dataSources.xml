@@ -9,7 +9,7 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="tv_ta" uuid="f0d05ca9-0bd3-4fd8-9eb6-b039b9a28e18">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>0303ec83-d14e-48a8-833e-881395ff074a</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\admin\PycharmProjects\potykion.github.io\tv_ta.db</jdbc-url>

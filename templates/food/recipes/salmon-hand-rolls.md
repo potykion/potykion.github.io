@@ -14,7 +14,7 @@ new: true
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/salmon-hand-rolls/ing.png)
+![Ингредиенты](/images/recipes/salmon-hand-rolls/ing.png)
 
 | Title                        | Amount + Unit |
 |------------------------------|---------------|

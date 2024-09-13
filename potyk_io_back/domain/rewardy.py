@@ -39,7 +39,7 @@ def add_rewardy_routes(app: flask.Flask, deps):
                 return render_task_list()
 
         return render_template(
-            "tools/rewardy/index.html",
+            "work/tools/rewardy/index.html",
             page=deps.page,
             tasks=render_task_list(),
         )
@@ -66,7 +66,7 @@ def add_rewardy_routes(app: flask.Flask, deps):
         task = task_q.select_one("select * from rewardy_tasks where id = ?", (id,))
 
         if flask.request.method == "GET":
-            return render_template("tools/rewardy/task-item.html", task=task, edit=True)
+            return render_template("work/tools/rewardy/task-item.html", task=task, edit=True)
         if flask.request.method == "POST":
             title = flask.request.form.get("title")
             reward = float(flask.request.form.get("reward"))
@@ -77,7 +77,7 @@ def add_rewardy_routes(app: flask.Flask, deps):
                 (title, reward, id),
                 commit=True,
             )
-            return render_template("tools/rewardy/task-item.html", task=task, edit=False)
+            return render_template("work/tools/rewardy/task-item.html", task=task, edit=False)
 
     @app.post("/tools/rewardy/<id>/clone")
     def clone_task(id):
@@ -89,4 +89,4 @@ def add_rewardy_routes(app: flask.Flask, deps):
 
     def render_task_list():
         tasks = task_q.select_all("select * from rewardy_tasks order by done")
-        return render_template("tools/rewardy/task-list.html", tasks=tasks)
+        return render_template("work/tools/rewardy/task-list.html", tasks=tasks)

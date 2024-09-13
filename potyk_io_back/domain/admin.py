@@ -46,7 +46,7 @@ def add_admin_routes(app: flask.Flask, deps):
                 return render_template("_components/htmx_error.html", error=page_form.errors)
 
         return render_template(
-            "admin/index.html",
+            "work/admin/index.html",
             page=deps.page,
             page_form=page_form,
             feed_form=feed_form,

@@ -41,7 +41,7 @@ ingredients:
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/tomato-soup-with-lentil/ingredients.png)
+![Ингредиенты](/images/recipes/tomato-soup-with-lentil/ingredients.png)
 
 | Title                                | Amount + Unit |
 |--------------------------------------|---------------|

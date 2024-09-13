@@ -180,7 +180,7 @@ def add_recipes_routes(app, deps):
         tags = BlogPageSection.recipe_section_options()
 
         return render_template(
-            "recipes/index.html",
+            "food/recipes/index.html",
             page=deps.page,
             tags=tags,
             recipe_pages=[page.model_dump() for page in recipe_pages],
@@ -212,7 +212,7 @@ def add_recipes_routes(app, deps):
             else:
                 return form.errors, 400
 
-        return render_template("recipes/form.html", page=deps.page, form=form)
+        return render_template("food/recipes/form.html", page=deps.page, form=form)
 
     @app.route("/recipes/prosto-kuhnya")
     def route_recipes_prosto_kuhnya():
@@ -223,7 +223,7 @@ def add_recipes_routes(app, deps):
         issues = sorted(issues, key=lambda issue: issue.sort_key, reverse=True)
 
         return render_template(
-            "recipes/prosto-kuhnya.html",
+            "food/recipes/prosto-kuhnya.html",
             page=deps.page,
             issues=[i.model_dump() for i in issues],
         )
@@ -241,7 +241,7 @@ def add_recipes_routes(app, deps):
 
 
         return render_template(
-            "recipes/breakfast.html",
+            "food/recipes/breakfast.html",
             page=deps.page,
             recipes=recipes_json,
             tags=tags,
@@ -252,7 +252,7 @@ def add_recipes_routes(app, deps):
         try:
             # noinspection PyUnresolvedReferences
             return render_template(
-                f"recipes/{recipe_key}.html",
+                f"food/recipes/{recipe_key}.html",
                 page=deps.page,
             )
         except TemplateNotFound:

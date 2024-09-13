@@ -200,7 +200,7 @@ def add_movie_routes(app: flask.Flask, deps):
         wo_tags = set(all_movies) - {movie for list_ in podborochki for movie in list_.movies}
 
         return render_template(
-            "movies/index.html",
+            "fun/movies/index.html",
             page=deps.page,
             year_movies=year_movies,
             all_movies=all_movies,
@@ -243,7 +243,7 @@ def add_movie_routes(app: flask.Flask, deps):
                 return render_template("_components/htmx_error.html", error=form.errors)
 
         return render_template(
-            "movies/form.html",
+            "fun/movies/form.html",
             page=deps.page,
             form=form,
         )

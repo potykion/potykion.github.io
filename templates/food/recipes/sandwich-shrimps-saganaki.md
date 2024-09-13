@@ -1,6 +1,6 @@
 ## Ингредиенты
 
-![](/static/images/recipes/sandwich-shrimps-saganaki.png)
+![](/images/recipes/sandwich-shrimps-saganaki.png)
 
 | Ингредиент                  | Кол-во      |
 |-----------------------------|-------------|

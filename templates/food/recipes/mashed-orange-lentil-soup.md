@@ -44,7 +44,7 @@ ingredients:
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/mashed-orange-lentil-soup/ingredients.png)
+![Ингредиенты](/images/recipes/mashed-orange-lentil-soup/ingredients.png)
 
 | Title                        | Amount + Unit |
 |------------------------------|---------------|

@@ -1,6 +1,6 @@
 ## Ингредиенты
 
-![](/static/images/recipes/glass-wok-shrimps.jpg)
+![](/images/recipes/glass-wok-shrimps.jpg)
 
 | Name              | Amount + Unit |
 |-------------------|---------------|

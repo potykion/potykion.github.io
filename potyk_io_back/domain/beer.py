@@ -242,7 +242,7 @@ def add_beer_routes(app: Flask, deps) -> None:
         stores = [(store, store_enum.label) for store, store_enum in BeerStore.__members__.items()]
 
         return render_template(
-            "beer/index.html",
+            "food/beer/index.html",
             page=deps.page,
             breweries=breweries,
             styles=styles,
@@ -277,7 +277,7 @@ def add_beer_routes(app: Flask, deps) -> None:
                 tag_beers[tag].append(beer)
 
         return render_template(
-            "beer/styles.html",
+            "food/beer/styles.html",
             page=deps.page,
             tried_styles=styles,
             tag_beers=tag_beers,

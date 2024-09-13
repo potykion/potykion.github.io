@@ -192,7 +192,7 @@ def create_app(server_name=None):
 
     flask_city.template(
         "/travel",
-        lambda: flask.render_template(f"travel/index.html"),
+        lambda: flask.render_template(f"fun/travel/index.html"),
         ctx=dict(places=get_travel_places),
     )
 
@@ -215,7 +215,7 @@ def create_app(server_name=None):
                 done_books.append(book)
 
         return render_template(
-            f"books/index.html",
+            f"fun/books/index.html",
             page=deps.page,
             wip_books=wip_books,
             wishlist_books=wishlist_books,
@@ -227,7 +227,7 @@ def create_app(server_name=None):
         book = deps.book_store.first_by_url(url=flask.request.path)
 
         return render_template(
-            f"books/book.html",
+            f"fun/books/book.html",
             page=deps.page,
             book=book,
         )
@@ -239,21 +239,21 @@ def create_app(server_name=None):
     # region money
     @app.route("/money")
     def money_page():
-        return render_template("money/index.html", page=deps.page)
+        return render_template("work/money/index.html", page=deps.page)
 
     # endregion money
 
     # region wishlist
     @app.route("/wishlist")
     def wishlist_page():
-        return render_template("wishlist/index.html", page=deps.page)
+        return render_template("fun/wishlist/index.html", page=deps.page)
 
     # endregion wishlist
 
     # region mu
     @app.route("/mu")
     def mu_page():
-        return render_template("mu/index.html", page=deps.page)
+        return render_template("fun/mu/index.html", page=deps.page)
 
     # endregion mu
 
@@ -266,7 +266,7 @@ def create_app(server_name=None):
         current = games[0]
 
         return render_template(
-            "games/index.html",
+            "fun/games/index.html",
             page=deps.page,
             games=games,
             wishlist=wishlist,
@@ -292,7 +292,7 @@ def create_app(server_name=None):
         )
 
         return render_template(
-            "tools/index.html",
+            "work/tools/index.html",
             page=deps.page,
             tools=tools,
             pinned_tools=pinned_tools,
@@ -352,7 +352,7 @@ def create_app(server_name=None):
                 return "ok"
 
         return render_template(
-            "tools/codegen.html",
+            "work/tools/codegen.html",
             page=deps.page,
         )
 
@@ -362,7 +362,7 @@ def create_app(server_name=None):
     def turik_page():
 
         return render_template(
-            "tools/turik.html",
+            "work/tools/turik.html",
             page=deps.page,
         )
 
@@ -376,7 +376,7 @@ def create_app(server_name=None):
     @app.route("/hardware")
     def hardware_page():
         return render_template(
-            "hardware/index.html",
+            "fun/hardware/index.html",
             page=deps.page,
         )
 
@@ -439,7 +439,7 @@ def create_app(server_name=None):
     @app.route("/rest")
     def rest_page():
         return render_template(
-            "rest/index.html",
+            "food/rest/index.html",
             page=deps.page,
             restaurants=deps.restaurant_store.list_all(),
         )
@@ -469,7 +469,7 @@ def create_app(server_name=None):
             return flask.redirect("/rest")
 
         return render_template(
-            "rest/add.html",
+            "food/rest/add.html",
             page=deps.page,
             form=form,
         )

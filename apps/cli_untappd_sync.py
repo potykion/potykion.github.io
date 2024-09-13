@@ -17,13 +17,13 @@ def main(beer_history_path, checkins_path):
     for checkin in checkins:
         checkins_by_url[checkin["url"]].append(checkin["comment"])
 
-    with q.commit_after():
-        for hist in beer_history:
-            q.execute(
-                "insert into beer_my_untappd_beers (url, name, style, brewery, rating, abv, ibu, img, review) values  (?,?,?,?,?,?,?,?,?)",
-                [hist[key] for key in ("url", "name", "style", "brewery", "rating", "abv", "ibu", "img")]
-                + ["\n\n".join(checkins_by_url[hist["url"]])],
-            )
+    for hist in beer_history:
+        q.execute(
+            "insert into beer_my_untappd_beers (url, name, style, brewery, rating, abv, ibu, img, review) values  (?,?,?,?,?,?,?,?,?)",
+            [hist[key] for key in ("url", "name", "style", "brewery", "rating", "abv", "ibu", "img")]
+            + ["\n\n".join(checkins_by_url[hist["url"]])],
+            commit=True,
+        )
 
 
 if __name__ == "__main__":
