@@ -17,7 +17,8 @@ from potyk_io_back.domain.books import BookStore
 from potyk_io_back.core.config import BASE_DIR
 from potyk_io_back.domain.game import GameStore
 from potyk_io_back.domain.food import Food, set_restaurants_for_food
-from potyk_io_back.domain.index_and_feed import FeedStorage, get_pages_by_section, get_events, get_feed_items
+from potyk_io_back.domain.index_and_feed import FeedStorage, get_pages_by_section, get_events, get_feed_items, \
+    get_projects
 from potyk_io_back.core.iter_utils import groupby_dict
 from potyk_io_back.domain.movie import MovieStore, add_movie_routes
 from potyk_io_back.core.q import Q
@@ -170,6 +171,7 @@ def create_app(server_name=None):
             pages_by_section=get_pages_by_section,
             events=get_events,
             feed_items=get_feed_items,
+            projects=get_projects,
         ),
     )
 

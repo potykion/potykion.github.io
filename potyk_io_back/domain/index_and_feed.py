@@ -45,8 +45,8 @@ class FeedCard(BaseModel):
     youtube_height: int | None = None
     video: str | None = None
 
-    rel_table: str | None
-    rel_id: int | None
+    rel_table: str | None = None
+    rel_id: int | None = None
 
 
 class RadioListWidget:
@@ -298,3 +298,20 @@ def get_feed_items(feed_storage: FeedStorage):
     feed_items = feed_storage.list_recent()
     feed_items = [item.model_dump(exclude=FeedCard.exclude_fields) for item in feed_items]
     return feed_items
+
+
+def get_projects():
+    return [
+        {
+            "img": "images/projects/potyk_forever.png",
+            "title": "п⌀тик навсегда",
+            "desc": "Нерегулярный постинг в телеграм",
+            "url": "https://t.me/potyk_forever",
+        },
+        {
+            "img": "images/projects/potyk_prikol.png",
+            "title": "потик прикол ака щищпост",
+            "desc": "Хехи и хахи в телеграм",
+            "url": "https://t.me/potyk_prikol",
+        },
+    ]
