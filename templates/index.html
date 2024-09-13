@@ -5,35 +5,39 @@
 {% from "_components/scripts.html" import htmx %}
 
 {% block main %}
-    <div class="flex flex-col gap-4 ">
-        {% if events %}
-            {% call section_card('Планы') %}
-                {% for event in events %}
-                    {{ link(event.url, event.title_w_date, event.desc) }}
-                {% endfor %}
-            {% endcall %}
-        {% endif %}
-    </div>
+
+    🚧 v4.3 wip 🚧
 
 
-    <div class="grid md:grid-cols-3 gap-2 md:gap-4">
-        {% for feed_card in feed_items %}
-            {% include '_components/feed_card.html' %}
-        {% endfor %}
-
-        <div class="flex justify-center mt-4 md:col-span-3" hx-target="this" hx-get="/feed/1.html" hx-swap="outerHTML">
-            <button class="btn btn-primary btn-wide ">Загрузить еще</button>
-        </div>
-    </div>
-
-    <div class="border uni-border mt-6"></div>
-
-    <h2 class="text-center !py-0 border-neutral  ">Разделы</h2>
-
-
-    <div class="flex flex-col gap-4 ">
-        {{ page_sections(pages_by_section) }}
-    </div>
+{#    <div class="flex flex-col gap-4 ">#}
+{#        {% if events %}#}
+{#            {% call section_card('Планы') %}#}
+{#                {% for event in events %}#}
+{#                    {{ link(event.url, event.title_w_date, event.desc) }}#}
+{#                {% endfor %}#}
+{#            {% endcall %}#}
+{#        {% endif %}#}
+{#    </div>#}
+{##}
+{##}
+{#    <div class="grid md:grid-cols-3 gap-2 md:gap-4">#}
+{#        {% for feed_card in feed_items %}#}
+{#            {% include '_components/feed_card.html' %}#}
+{#        {% endfor %}#}
+{##}
+{#        <div class="flex justify-center mt-4 md:col-span-3" hx-target="this" hx-get="/feed/1.html" hx-swap="outerHTML">#}
+{#            <button class="btn btn-primary btn-wide ">Загрузить еще</button>#}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#    <div class="border uni-border mt-6"></div>#}
+{##}
+{#    <h2 class="text-center !py-0 border-neutral  ">Разделы</h2>#}
+{##}
+{##}
+{#    <div class="flex flex-col gap-4 ">#}
+{#        {{ page_sections(pages_by_section) }}#}
+{#    </div>#}
 
     {{ htmx() }}
 
