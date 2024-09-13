@@ -33,60 +33,10 @@
 
     <!-- endregion Styles -->
 
-    
-        <script>
-            if (!localStorage.getItem('tgAuth')) {
-                window.location.href = '/login';
-            }
-        </script>
-    
 </head>
 
-<!-- region GA & YaMetrika -->
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WTE0KE6PT"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag('js', new Date());
-
-        gtag('config', 'G-5WTE0KE6PT');
-    </script>
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () {
-                (m[i].a = m[i].a || []).push(arguments)
-            };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-                if (document.scripts[j].src === r) {
-                    return;
-                }
-            }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(82960681, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
-    </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/82960681" style="position:absolute; left:-9999px;" alt=""/></div>
-    </noscript>
-    <!-- /Yandex.Metrika counter -->
-
-<!-- endregion GA & YaMetrika -->
-
-<body class="uni-bg-body  max-w-none">
+<body class="uni-bg-body  max-w-none h-[100vh]">
 
 <header class="text-sm uni-bg">
     <div class="border-b py-2 uni-border flex items-baseline gap-1">
@@ -131,7 +81,7 @@
     
 
     <div>
-        <img src="/templates/beer/true.png">
+        <img src="/templates/food/beer/beer/true.png">
     </div>
 
     <ul>
@@ -245,7 +195,7 @@
     <div class="flex flex-wrap items-baseline gap-[2px]">
 
         
-            <button class="beer blue-border-hover-link" data-store="citycraft am perekrestok winelab winestyle rusbeer av"
+            <button class="beer blue-border-hover-link" data-store="perekrestok am av winelab rusbeer citycraft winestyle"
                     title="Hofbräu Original"
 
                     onclick="modal_beer_3.showModal()"
@@ -330,7 +280,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="perekrestok winelab winestyle rusbeer av"
+            <button class="beer blue-border-hover-link" data-store="perekrestok av winelab rusbeer winestyle"
                     title="Hofbräu Münchner Weisse"
 
                     onclick="modal_beer_4.showModal()"
@@ -405,7 +355,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra av citycraft"
+            <button class="beer blue-border-hover-link" data-store="litra av rusbeer citycraft"
                     title="Weihenstephaner Hefeweissbier"
 
                     onclick="modal_beer_5.showModal()"
@@ -755,7 +705,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="citycraft beruvyhodnoy winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle beruvyhodnoy citycraft"
                     title="La Trappe Tripel"
 
                     onclick="modal_beer_14.showModal()"
@@ -820,7 +770,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer citycraft beruvyhodnoy winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle beruvyhodnoy rusbeer citycraft"
                     title="Trappistes Rochefort 8"
 
                     onclick="modal_beer_15.showModal()"
@@ -890,7 +840,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra beruvyhodnoy winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle litra beruvyhodnoy rusbeer"
                     title="Trappistes Rochefort Triple Extra"
 
                     onclick="modal_beer_16.showModal()"
@@ -960,7 +910,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer av beruvyhodnoy winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle av beruvyhodnoy rusbeer"
                     title="Chimay Cinq Cents (White)"
 
                     onclick="modal_beer_17.showModal()"
@@ -1030,7 +980,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer av beruvyhodnoy winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle av beruvyhodnoy rusbeer"
                     title="Chimay Grande Réserve (Blue)"
 
                     onclick="modal_beer_18.showModal()"
@@ -1100,7 +1050,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="vkusvill am perekrestok winelab beruvyhodnoy av"
+            <button class="beer blue-border-hover-link" data-store="beruvyhodnoy perekrestok am av winelab vkusvill"
                     title="Pilsner Urquell"
 
                     onclick="modal_beer_19.showModal()"
@@ -1235,7 +1185,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="perekrestok winestyle"
+            <button class="beer blue-border-hover-link" data-store="winestyle perekrestok"
                     title="St.Bernardus Tripel"
 
                     onclick="modal_beer_21.showModal()"
@@ -1450,7 +1400,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra av citycraft"
+            <button class="beer blue-border-hover-link" data-store="litra av rusbeer citycraft"
                     title="Weihenstephaner Original Helles"
 
                     onclick="modal_beer_40.showModal()"
@@ -2410,7 +2360,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer superkhmel"
+            <button class="beer blue-border-hover-link" data-store="superkhmel rusbeer"
                     title="Ayinger Maibock"
 
                     onclick="modal_beer_13.showModal()"
@@ -2470,7 +2420,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer superkhmel"
+            <button class="beer blue-border-hover-link" data-store="superkhmel rusbeer"
                     title="Ayinger Keller"
 
                     onclick="modal_beer_44.showModal()"
@@ -2530,7 +2480,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra winelab citycraft"
+            <button class="beer blue-border-hover-link" data-store="litra winelab rusbeer citycraft"
                     title="Schneider Weisse Original (TAP07)"
 
                     onclick="modal_beer_1.showModal()"
@@ -2670,7 +2620,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra citycraft"
+            <button class="beer blue-border-hover-link" data-store="litra rusbeer citycraft"
                     title="Schneider Weisse Hopfenweisse (TAP05)"
 
                     onclick="modal_beer_41.showModal()"
@@ -2790,7 +2740,7 @@
                 </div>
             </dialog>
         
-            <button class="beer blue-border-hover-link" data-store="rusbeer litra"
+            <button class="beer blue-border-hover-link" data-store="litra rusbeer"
                     title="Schneider Weisse Aventinus Eisbock (TAP09)"
 
                     onclick="modal_beer_43.showModal()"
@@ -3990,7 +3940,7 @@
                     </div>
                 </dialog>
             
-                <button class="beer blue-border-hover-link" data-store="rusbeer superkhmel"
+                <button class="beer blue-border-hover-link" data-store="superkhmel rusbeer"
                         title="Ayinger Maibock"
 
                         onclick="modal_beer_13.showModal()"
@@ -4050,7 +4000,7 @@
                     </div>
                 </dialog>
             
-                <button class="beer blue-border-hover-link" data-store="rusbeer superkhmel"
+                <button class="beer blue-border-hover-link" data-store="superkhmel rusbeer"
                         title="Ayinger Keller"
 
                         onclick="modal_beer_44.showModal()"
@@ -4131,7 +4081,7 @@
 
         <div class="py-2 md:py-4">
             
-                <button class="beer blue-border-hover-link" data-store="rusbeer litra winelab citycraft"
+                <button class="beer blue-border-hover-link" data-store="litra winelab rusbeer citycraft"
                         title="Schneider Weisse Original (TAP07)"
 
                         onclick="modal_beer_1.showModal()"
@@ -4271,7 +4221,7 @@
                     </div>
                 </dialog>
             
-                <button class="beer blue-border-hover-link" data-store="rusbeer litra citycraft"
+                <button class="beer blue-border-hover-link" data-store="litra rusbeer citycraft"
                         title="Schneider Weisse Hopfenweisse (TAP05)"
 
                         onclick="modal_beer_41.showModal()"
@@ -4391,7 +4341,7 @@
                     </div>
                 </dialog>
             
-                <button class="beer blue-border-hover-link" data-store="rusbeer litra"
+                <button class="beer blue-border-hover-link" data-store="litra rusbeer"
                         title="Schneider Weisse Aventinus Eisbock (TAP09)"
 
                         onclick="modal_beer_43.showModal()"
@@ -4863,7 +4813,7 @@
     </div>
 
     <figure>
-        <audio src="/templates/beer/Brыkaisya%20-%20Крафтовый%20мудак.mp3" controls class="w-full"></audio>
+        <audio src="/templates/food/beer/beer/Brыkaisya%20-%20Крафтовый%20мудак.mp3" controls class="w-full"></audio>
         <figcaption>Brыkaisya — Крафтовый мудак</figcaption>
     </figure>
 
@@ -4874,20 +4824,20 @@
 
 </main>
 
-<footer class="prose prose-sm md:prose-base max-w-none px-2 border-t py-4 uni-border mt-6">
+<footer class="">
 
-    <div class="flex gap-2  justify-center ">
-        <a href="https://t.me/+Wech5MYNgew3MTMy" class="btn  btn-ghost  relative">
-            подпишись на телегу
 
-            <span class="opacity-0">👉👈</span>
 
-            <span class="animate-bounce-x-right absolute bottom-2 right-9">👉</span>
-            <span class="absolute right-[24.5px]   top-3 ">🥺</span>
-            <span class="animate-bounce-x-left absolute bottom-2 right-3">👈</span>
-        </a>
 
-    </div>
+
+
+
+
+
+
+
+
+
 
 </footer>
 

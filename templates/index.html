@@ -5,37 +5,24 @@
 {% from "_components/scripts.html" import htmx %}
 
 {% block main %}
-    <div class="flex flex-col gap-4 ">
-        {% if events %}
-            {% call section_card('Планы') %}
-                {% for event in events %}
-                    {{ link(event.url, event.title_w_date, event.desc) }}
-                {% endfor %}
-            {% endcall %}
-        {% endif %}
-    </div>
-
 
     <div class="grid md:grid-cols-3 gap-2 md:gap-4">
-        {% for feed_card in feed_items %}
-            {% include '_components/feed_card.html' %}
+
+        {% for project in projects %}
+
+            <a href="{{ project.url }}" class="no-underline text-base uni-border border rounded-lg uni-hover uni-bg ">
+                <img src="{{ url_for('static', filename=project.img ) }}">
+                <div class="p-4  rounded-lg">
+                    <div class="font-semibold text-xl">{{ project.title }}</div>
+                    <div class="text-gray-500 text-sm">{{ project.desc }}</div>
+                </div>
+            </a>
+
         {% endfor %}
 
-        <div class="flex justify-center mt-4 md:col-span-3" hx-target="this" hx-get="/feed/1.html" hx-swap="outerHTML">
-            <button class="btn btn-primary btn-wide ">Загрузить еще</button>
-        </div>
+
     </div>
 
-    <div class="border uni-border mt-6"></div>
-
-    <h2 class="text-center !py-0 border-neutral  ">Разделы</h2>
-
-
-    <div class="flex flex-col gap-4 ">
-        {{ page_sections(pages_by_section) }}
-    </div>
-
-    {{ htmx() }}
 
     <script>
 
@@ -58,7 +45,7 @@
 
         const citeElement = document.querySelector('body main cite');
 
-        citeElement.innerHTML = cites[Math.floor(Math.random() * cites.length)];
+        {#citeElement.innerHTML = cites[Math.floor(Math.random() * cites.length)];#}
 
     </script>
 

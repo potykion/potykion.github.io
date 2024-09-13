@@ -14,7 +14,7 @@ categories:
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/duck-soba/ingredients.png)
+![Ингредиенты](/images/recipes/duck-soba/ingredients.png)
 
 
 | Title                        | Amount + Unit |

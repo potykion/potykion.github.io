@@ -15,7 +15,7 @@ categories:
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/ham-scramble-sandwich/ingredients.png)
+![Ингредиенты](/images/recipes/ham-scramble-sandwich/ingredients.png)
 
 | Title              | Amount + Unit |
 |--------------------|---------------|

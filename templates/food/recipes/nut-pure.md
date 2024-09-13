@@ -1,6 +1,6 @@
 ## Ингредиенты
 
-![](/static/images/recipes/nut-pure.png)
+![](/images/recipes/nut-pure.png)
 
 Основные:
 

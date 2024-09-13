@@ -1,6 +1,6 @@
 ## Игредиенты
 
-![](/static/images/recipes/mc-breakfast.jpg)
+![](/images/recipes/mc-breakfast.jpg)
 
 ### Хэшбраун
 

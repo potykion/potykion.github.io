@@ -14,7 +14,7 @@ categories:
 
 ## Ингредиенты
 
-![Ингредиенты](/static/images/recipes/brownie-cherry/ingredients.png)
+![Ингредиенты](/images/recipes/brownie-cherry/ingredients.png)
 
 | Title               | Amount + Unit |
 |---------------------|---------------|
