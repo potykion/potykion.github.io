@@ -4,11 +4,6 @@ from functools import partial
 from typing import Any, Callable, TypeVar, Tuple
 
 try:
-    import attr
-except ImportError:  # pragma: no cover
-    ...
-
-try:
     from pydantic import BaseModel
     from pydantic_core import PydanticUndefined
 except ImportError:
@@ -40,40 +35,10 @@ def parse_pydantic(to, from_field_key_func, from_field_getter, to_field_val_func
     return to(**to_kwargs)
 
 
-def parse_attrs(to, from_field_key_func, from_field_getter, to_field_val_funcs):
-    to_kwargs = {}
-    for field_key, field_value in attr.fields_dict(to).items():
-        if is_basic_type(field_value.type):
-            to_kwargs[field_key] = field_value.type(from_field_getter(field_key))
-        elif is_sequence_type(field_value.type):
-            to_kwargs[field_key] = init_seq(
-                field_value.type,
-                (
-                    map_from_to(
-                        item,
-                        field_value.type.__args__[0],
-                        from_field_key_func,
-                        to_field_val_funcs,
-                    )
-                    for item in from_field_getter(field_key)
-                ),
-            )
-        elif is_class_type(field_value.type):
-            to_kwargs[field_key] = map_from_to(
-                from_field_getter(field_key),
-                field_value.type,
-                from_field_key_func,
-                to_field_val_funcs,
-            )
-        elif field_value.type is None:
-            to_kwargs[field_key] = from_field_getter(field_key)
-
-    return to(**to_kwargs)
 
 
 extensions = {
     lambda to: issubclass(to, BaseModel): parse_pydantic,
-    attr.has: parse_attrs,
 }
 
 
