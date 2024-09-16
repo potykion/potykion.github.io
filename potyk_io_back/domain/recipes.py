@@ -258,7 +258,7 @@ def add_recipes_routes(app, deps):
         except TemplateNotFound:
             try:
                 return render_md_as_html_template(
-                    f"recipes/{recipe_key}.md",
+                    f"food/recipes/{recipe_key}.md",
                     page=deps.page,
                 )
             except TemplateNotFound:
