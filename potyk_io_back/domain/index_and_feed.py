@@ -314,4 +314,10 @@ def get_projects():
             "desc": "Хехи и хахи в телеграм",
             "url": "https://t.me/potyk_prikol",
         },
+        {
+            "img": "images/projects/potyk_beer.jpg",
+            "title": "тапок",
+            "desc": "Пью пиво и кайфую",
+            "url": "https://untappd.com/user/potykion",
+        },
     ]
