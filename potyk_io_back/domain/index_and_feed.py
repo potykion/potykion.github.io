@@ -304,19 +304,25 @@ def get_projects():
     return [
         {
             "img": "images/projects/potyk_forever.png",
-            "title": "п⌀тик навсегда",
-            "desc": "Нерегулярный постинг в телеграм",
+            "title": "t.me/п⌀тик_навсегда",
+            "desc": "шизотерик пусситолкинг",
             "url": "https://t.me/potyk_forever",
         },
         {
             "img": "images/projects/potyk_prikol.png",
-            "title": "потик прикол ака щищпост",
-            "desc": "Хехи и хахи в телеграм",
+            "title": "t.me/потик_прикол",
+            "desc": "Хехи и хахи",
             "url": "https://t.me/potyk_prikol",
         },
         {
+            "img": "images/projects/potyk_x.jpg",
+            "title": "x.com/potykion",
+            "desc": "Coding shit, smoking weed",
+            "url": "https://x.com/potykion",
+        },
+        {
             "img": "images/projects/potyk_beer.jpg",
-            "title": "тапок",
+            "title": "untappd.com/potykion",
             "desc": "Пью пиво и кайфую",
             "url": "https://untappd.com/user/potykion",
         },
