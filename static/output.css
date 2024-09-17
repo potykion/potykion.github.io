@@ -4637,6 +4637,10 @@ ul.li-minus li:before {
   width: 100%;
 }
 
+.\!w-full {
+  width: 100% !important;
+}
+
 .min-w-12 {
   min-width: 3rem;
 }
@@ -4655,6 +4659,10 @@ ul.li-minus li:before {
 
 .max-w-screen-lg {
   max-width: 1024px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .shrink {
