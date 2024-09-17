@@ -13,7 +13,7 @@
             <a href="{{ project.url }}" class="no-underline text-base uni-border border rounded-lg uni-hover uni-bg ">
                 <img src="{{ url_for('static', filename=project.img ) }}">
                 <div class="p-4  rounded-lg">
-                    <div class="font-semibold text-xl">{{ project.title }}</div>
+                    <div class="font-semibold text-xl">{{ project.title | safe }}</div>
                     <div class="text-gray-500 text-sm">{{ project.desc }}</div>
                 </div>
             </a>
