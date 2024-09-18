@@ -305,7 +305,7 @@ def get_projects():
         {
             "img": "images/projects/potyk_forever.png",
             "title": "t.me/п⌀тик_навсегда",
-            "desc": "шизотерик пусситолкинг",
+            "desc": "максимально уютненький канал про всякое",
             "url": "https://t.me/potyk_forever",
         },
         {
