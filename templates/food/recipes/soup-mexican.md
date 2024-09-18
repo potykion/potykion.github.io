@@ -18,7 +18,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/y5ydYG7fmcA" | youtube_embed }}
+{{ "https://youtu.be/y5ydYG7fmcA" | youtube_embed | safe }}
 
 - (все делается в одной кастрюле)
 - Режем все: **лук, чеснок, перцы**

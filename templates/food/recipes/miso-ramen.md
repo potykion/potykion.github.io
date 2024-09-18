@@ -21,7 +21,7 @@ desc: Вариант Рамена на мисо бульоне
 
 ## Приготовление
 
-{{ 'https://youtu.be/oHYAxzZpmms?si=-HQajWYgZMLQVH71' | youtube_embed }}
+{{ 'https://youtu.be/oHYAxzZpmms?si=-HQajWYgZMLQVH71' | youtube_embed | safe }}
 
 ### Бульон
 

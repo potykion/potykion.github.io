@@ -26,7 +26,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=EOq9I0Xkq98" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=EOq9I0Xkq98" | youtube_embed | safe }}
 
 [https://vk.com/wall-39128795_33619](https://vk.com/wall-39128795_33619)
 

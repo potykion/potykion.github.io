@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/m5VwfIXvNRw?si=nC662T-hE6fJVPRt' | youtube_embed }}
+{{ 'https://youtu.be/m5VwfIXvNRw?si=nC662T-hE6fJVPRt' | youtube_embed | safe }}
 
 - Кидаем помидоры в кипяток на минуту, затем в холодную воду
 - Снимаем шкурку, нарезаем

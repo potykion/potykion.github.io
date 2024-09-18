@@ -14,7 +14,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=YGQDpvGtZAk&t=655s" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=YGQDpvGtZAk&t=655s" | youtube_embed | safe }}
 
 - Духовку на 200
 - Обжариваем куриные ноги до корочки

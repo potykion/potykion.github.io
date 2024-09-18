@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/Sjwqb2GrsIc?si=9kHD7HSPeTmDOdGV' | youtube_embed }}
+{{ 'https://youtu.be/Sjwqb2GrsIc?si=9kHD7HSPeTmDOdGV' | youtube_embed | safe }}
 
 - Вода (6 с.л.) + соевый (4-5 с.л.) + сироп (2 с.л.) + имбирь (½ ч.л.)
 - Чеснок, лук нарезаем

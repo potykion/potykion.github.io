@@ -16,7 +16,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=rPVOfS6eoMc" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=rPVOfS6eoMc" | youtube_embed | safe }}
 
 - Картоху варим
 - Хлеб нарезаем, заливаем сливками

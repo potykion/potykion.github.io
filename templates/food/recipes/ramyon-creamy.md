@@ -10,7 +10,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=iIhfZWsNOd4" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=iIhfZWsNOd4" | youtube_embed | safe }}
 
 - 1. Отварить лапшу, после пару раз промыть в холодной воде.
 - 2. Нарезать овощи и бекон. Сыр натереть на мелкой тёрке.

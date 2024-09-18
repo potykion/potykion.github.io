@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/5hJAW3fRbCY" | youtube_embed }}
+{{ "https://youtu.be/5hJAW3fRbCY" | youtube_embed | safe }}
 
 - Духовку на 180
 - Яйца соединить с сахаром, взбить

@@ -16,7 +16,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/1MJAkHyLte8" | youtube_embed }}
+{{ "https://youtu.be/1MJAkHyLte8" | youtube_embed | safe }}
 
 - Лук режем, обжариваем
 - Добавляем томатку, пассируем

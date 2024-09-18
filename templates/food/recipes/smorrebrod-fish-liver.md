@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/0r2diVHiziI?si=zFPhq0MADmeHT89L" | youtube_embed }}
+{{ "https://youtu.be/0r2diVHiziI?si=zFPhq0MADmeHT89L" | youtube_embed | safe }}
 
 - Варим яйца 
 - Нарезаем огурцы и редис слайсами или соломкой

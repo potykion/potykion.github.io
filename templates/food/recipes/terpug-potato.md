@@ -9,7 +9,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed | safe }}
 
 - Духовку на 200
 - Рыбу очищаем от внутренностей

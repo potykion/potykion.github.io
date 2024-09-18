@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=YGaoLNdRNWw" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=YGaoLNdRNWw" | youtube_embed | safe }}
 
 - Варим макарики
 -  Нарезаем чеснок, чили, лук, оливки

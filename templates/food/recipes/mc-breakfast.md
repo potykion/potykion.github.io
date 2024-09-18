@@ -26,7 +26,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h' | youtube_embed }}
+{{ 'https://youtu.be/3QEvEZh8jpc?si=XYOnG_UFmfYoyb0h' | youtube_embed | safe }}
 
 ### Хэшбрауны
 

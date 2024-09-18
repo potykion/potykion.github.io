@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=7--PVc8OR1o" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=7--PVc8OR1o" | youtube_embed | safe }}
 
 - Духовка 180℃
 

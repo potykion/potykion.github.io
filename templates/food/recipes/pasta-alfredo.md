@@ -10,7 +10,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed | safe }}
 
 - Чеснок режем, жарим
 - Сливки к чесноку

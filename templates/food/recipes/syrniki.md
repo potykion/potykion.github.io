@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=PgTzL56j-BE" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=PgTzL56j-BE" | youtube_embed | safe }}
 
 - Духовку на 180
 - Творог просушить

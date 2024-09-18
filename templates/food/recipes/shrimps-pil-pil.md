@@ -8,7 +8,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=l0y82cctgnQ" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=l0y82cctgnQ" | youtube_embed | safe }}
 
 - масле на маленьком огне обжариваем чеснок и перец
 - кидаем туда креветосы

@@ -10,7 +10,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=CSnPvFoeRlE" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=CSnPvFoeRlE" | youtube_embed | safe }}
 
 - Хрен соединяем со сливочным сыром
 - Нарезаем лук и огурец

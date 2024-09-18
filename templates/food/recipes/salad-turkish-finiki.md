@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=u3EdMvuUqNk" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=u3EdMvuUqNk" | youtube_embed | safe }}
 
 - Микс салатов в миску
 - Черики нарезаем, добавляем к салату

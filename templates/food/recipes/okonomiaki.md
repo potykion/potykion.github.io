@@ -20,7 +20,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=1QBgQENv4Yc" | youtube_embed | safe }}
 
 - Капусту нарезаем
 - Нарезаем чеснок, чили, лук, кинзу - добавляем к капусте

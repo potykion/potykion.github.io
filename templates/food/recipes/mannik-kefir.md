@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=EOq9I0Xkq98" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=EOq9I0Xkq98" | youtube_embed | safe }}
 
 - Духовку на 180
 - Манку заливаем кефиром 

@@ -21,7 +21,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/Hu_skd8B1no' | youtube_embed }}
+{{ 'https://youtu.be/Hu_skd8B1no' | youtube_embed | safe }}
 
 - Нут замочить на ночь
 - Нут варим час

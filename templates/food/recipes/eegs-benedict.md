@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=BQu_Om8bN5M" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=BQu_Om8bN5M" | youtube_embed | safe }}
 
 - ## База
 

@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=j_XV0OZUBQw" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=j_XV0OZUBQw" | youtube_embed | safe }}
 
 [https://vk.com/wall-39128795_37516](https://vk.com/wall-39128795_37516)
 

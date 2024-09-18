@@ -15,7 +15,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=YryR1-zNgbo" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=YryR1-zNgbo" | youtube_embed | safe }}
 
 - Сливыч с сахаром взбиваем
 - Добавляем яйца, перемешиваем

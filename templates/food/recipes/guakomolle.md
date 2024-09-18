@@ -14,7 +14,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/gXHeDpZKbEU" | youtube_embed }}
+{{ "https://youtu.be/gXHeDpZKbEU" | youtube_embed | safe }}
 
 - Разогреваем сковороду, выдавливаем туда чеснок, добавляем фарш
 - Добавляем соль, паприку, поджариваем

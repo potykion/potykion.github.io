@@ -16,7 +16,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=0dXkpNvGTcg" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=0dXkpNvGTcg" | youtube_embed | safe }}
 
 - Перчим много в сотейник
 - Ставим на огонь, подпекаем перец

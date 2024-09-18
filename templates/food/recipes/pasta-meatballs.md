@@ -10,7 +10,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=u3EdMvuUqNk" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=u3EdMvuUqNk" | youtube_embed | safe }}
 
 - Фарш, соль, перец выбиваем, формируем тефтели
 - На оливыче жарим тефтели до корочки

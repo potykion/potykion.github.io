@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=nolXoaNQs1E" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=nolXoaNQs1E" | youtube_embed | safe }}
 
 - Яйца отварить
 - (опц.) Сливки (чуть-чуть) смешиваем с творожным сыром

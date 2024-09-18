@@ -10,7 +10,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=dQp_PekmOpM&t=388s" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=dQp_PekmOpM&t=388s" | youtube_embed | safe }}
 
 - Духовку на 200
 - Броколли режем

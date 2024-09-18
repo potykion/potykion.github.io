@@ -8,7 +8,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/WuMRoHbvCUM?si=UeIEo30i4unxcEtT' | youtube_embed }}
+{{ 'https://youtu.be/WuMRoHbvCUM?si=UeIEo30i4unxcEtT' | youtube_embed | safe }}
 
 - Сыр натираем, колбасу и помидор нарезаем
 - Яйца взбиваем, и жарим на сковороде
