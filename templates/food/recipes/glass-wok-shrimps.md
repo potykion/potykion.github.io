@@ -19,7 +19,7 @@
 
 ## Приготовление
 
-- {{ 'https://www.youtube.com/watch?v=NsretHPXqkQ' | youtube_embed }}
+- {{ 'https://www.youtube.com/watch?v=NsretHPXqkQ' | youtube_embed | safe }}
 - Фунчозу завариваем
 - Нарезаем морковь, перец, имбирь, лук, чеснок, китайскую капусту полосками
 - Жарим морковь > лук > перец > имбирь > чеснок > креветки

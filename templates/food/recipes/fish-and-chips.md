@@ -15,7 +15,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=TTuKU5XujZM" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=TTuKU5XujZM" | youtube_embed | safe }}
 
 - Духовку на 220
 - Делаем соус тар-тар: Сметана + горчица + укроп + огурцы + рассол

@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=VCeHKUWp600" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=VCeHKUWp600" | youtube_embed | safe }}
 
 - Режем баклажан, солим, оставляем, чтобы выделился сок
 - Режем чеснок, перец, помидоры

@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=ztZl8mad_RA" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=ztZl8mad_RA" | youtube_embed | safe }}
 
 - Бекон жарим
 - 100 мл молока, 200 мл масла, чеснок, соль блендерим до смешения, не доставая блендер, в конце лимонный сок

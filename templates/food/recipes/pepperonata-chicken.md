@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=jTEW1jn6FOw" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=jTEW1jn6FOw" | youtube_embed | safe }}
 
 - "Режем все"
 - "Жарим **куру**, откладываем в кастрюлю"

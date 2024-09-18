@@ -17,7 +17,7 @@
 
 ## Приготовление
 
-{{ 'https://youtu.be/KQBPccqrTiY?si=YyRXEkCflC_O040t' | youtube_embed }}
+{{ 'https://youtu.be/KQBPccqrTiY?si=YyRXEkCflC_O040t' | youtube_embed | safe }}
 
 - Чистим креветки
 - Нарезаем чеснок, лук

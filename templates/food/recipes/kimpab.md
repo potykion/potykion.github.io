@@ -15,7 +15,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=Lh9FSTBSQtA" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=Lh9FSTBSQtA" | youtube_embed | safe }}
 
 - Нарезаем морковь соломкой
 - Колбаски/ветчину нарезать

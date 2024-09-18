@@ -16,7 +16,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=Fq4OKU_oHtg" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=Fq4OKU_oHtg" | youtube_embed | safe }}
 
 - Духовку на 180
 - Тыкву нарезаем, чистим, вырезаем семечки, шкурку

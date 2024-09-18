@@ -17,7 +17,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=yFAgHSvf23c&t=266s" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=yFAgHSvf23c&t=266s" | youtube_embed | safe }}
 
 - Духовку на 180
 - Лук, грибы нарезаем, жарим, соль, перец, откладываем

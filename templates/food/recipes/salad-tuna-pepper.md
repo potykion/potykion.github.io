@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/hRiCr3g-vAU" | youtube_embed }}
+{{ "https://youtu.be/hRiCr3g-vAU" | youtube_embed | safe }}
 
 - Духовку на 200
 - Перец в духовку на 20 минут

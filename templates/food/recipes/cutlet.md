@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ 'https://www.youtube.com/watch?v=pOzKXkXA0XM' | youtube_embed }}
+{{ 'https://www.youtube.com/watch?v=pOzKXkXA0XM' | youtube_embed | safe }}
 
 - Духовку на 200
 - Хлеб заливаем водой

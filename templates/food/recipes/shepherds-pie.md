@@ -31,7 +31,7 @@ desc: Что-то типа запеканки, очень вкусно, но и 
 
 ## Приготовление
 
-{{ 'https://youtu.be/72EuzIZIB5k?si=wNM6jeOnTuO0NwBg' | youtube_embed }}
+{{ 'https://youtu.be/72EuzIZIB5k?si=wNM6jeOnTuO0NwBg' | youtube_embed | safe }}
 
 - Духовку на 200℃
 - Нарезаем овоща: лук, морковь, сельдерей

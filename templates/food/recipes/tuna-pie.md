@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/dQp_PekmOpM" | youtube_embed }}
+{{ "https://youtu.be/dQp_PekmOpM" | youtube_embed | safe }}
 
 - 5 яиц отварить 
 - Духовку на 180

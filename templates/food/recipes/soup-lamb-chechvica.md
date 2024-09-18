@@ -16,7 +16,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=0D0bux93zlE" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=0D0bux93zlE" | youtube_embed | safe }}
 
 - Баранину нарезаем
 - Обжариваем мясо: сначала жирные части, затем на жирке постные части

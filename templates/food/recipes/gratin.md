@@ -13,7 +13,7 @@ desc: Сливочная картофельная запеканка из 5 ин
 
 ## Приготовление
 
-{{ 'https://www.youtube.com/watch?v=1vy6Bm3rP9I' | youtube_embed }}
+{{ 'https://www.youtube.com/watch?v=1vy6Bm3rP9I' | youtube_embed | safe }}
 
 - Духовку на 200 градусов
 

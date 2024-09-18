@@ -15,7 +15,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=yFAgHSvf23c" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=yFAgHSvf23c" | youtube_embed | safe }}
 
 - Капусту соединить с морковью соединяем, посыпаем солью
 - Через пару минут начинаем выжимать сок, чтобы капуста стала мягче

@@ -13,7 +13,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=gG32SCERQjk" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=gG32SCERQjk" | youtube_embed | safe }}
 
 - Удон варим
 - Нарезаем морковь, закидываем жарится

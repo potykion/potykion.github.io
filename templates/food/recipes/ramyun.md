@@ -3,7 +3,7 @@ title: Рамёны
 desc: Рецепты с Shin Ramyun с канала FoodKor
 ---
 
-{{ 'https://www.youtube.com/embed/Jt-PTBf6kng?si=MKQcza5vMURh0bkL' | youtube_embed }}
+{{ 'https://www.youtube.com/embed/Jt-PTBf6kng?si=MKQcza5vMURh0bkL' | youtube_embed | safe }}
 
 ## Тантанмен Рамён с арахисовой пастой 
 

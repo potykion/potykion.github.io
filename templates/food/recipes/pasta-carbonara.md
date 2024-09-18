@@ -9,7 +9,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=ZtXz3rta5IU" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=ZtXz3rta5IU" | youtube_embed | safe }}
 
 - Варим макарики
 - Бекон нарезаем, жарим на оливыче

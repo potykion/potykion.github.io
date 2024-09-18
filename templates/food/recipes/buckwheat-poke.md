@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ 'https://www.youtube.com/watch?v=WGm8lff7_Z4' | youtube_embed }}
+{{ 'https://www.youtube.com/watch?v=WGm8lff7_Z4' | youtube_embed | safe }}
 
 - Варим гречу
 - Нарезаем лук, грибы, петрушку, помидоры

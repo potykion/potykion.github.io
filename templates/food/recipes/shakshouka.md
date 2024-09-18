@@ -18,7 +18,7 @@
 
 ## Приготовление
 
-{{ 'https://www.youtube.com/watch?v=sB5p4sdJhnQ' | youtube_embed }}
+{{ 'https://www.youtube.com/watch?v=sB5p4sdJhnQ' | youtube_embed | safe }}
 
 - Перец, лук нарезать
 - Обжариваем на оливыче перец и лук

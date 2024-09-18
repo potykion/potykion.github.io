@@ -17,7 +17,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=IaGjkF2mcOQ&t=421s" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=IaGjkF2mcOQ&t=421s" | youtube_embed | safe }}
 
 1. Соус: смешать сметану, майонез, аджику и мелко нарубленные огурцы.
 2. Помидор и лук нарезать тонкими полукольцами. 

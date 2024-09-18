@@ -14,7 +14,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=sso0qRN-7Fs" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=sso0qRN-7Fs" | youtube_embed | safe }}
 
 - Вместо мангала можно юзать гриль
 - Перец в гриль, по готовности закидываем в пакет, чтобы шкурка слезла

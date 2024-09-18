@@ -11,7 +11,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/t0uYmn8aHFI" | youtube_embed }}
+{{ "https://youtu.be/t0uYmn8aHFI" | youtube_embed | safe }}
 
 - Духовку на 180-200°
 - Отвариваем грибы минимум 30 минут

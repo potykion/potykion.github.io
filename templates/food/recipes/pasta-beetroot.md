@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=wNV81FRuv98" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=wNV81FRuv98" | youtube_embed | safe }}
 
 - Запекаем свеклу
 - Варим макарики

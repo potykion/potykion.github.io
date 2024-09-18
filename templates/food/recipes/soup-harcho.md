@@ -20,7 +20,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=__Tn8522PIw" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=__Tn8522PIw" | youtube_embed | safe }}
 
 - Морковь нарезаем пластинами, обжариваем без масла
 - Говядину в кастрюлю, заливаем водой, включаем огонь

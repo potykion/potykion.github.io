@@ -26,7 +26,7 @@ link: https://vk.com/wall-39128795_79584
 
 ## Приготовление
 
-{{ 'https://youtu.be/pVClM7xwLo4?si=7Hg9blRYn3N-Wo6_' | youtube_embed }}
+{{ 'https://youtu.be/pVClM7xwLo4?si=7Hg9blRYn3N-Wo6_' | youtube_embed | safe }}
 
 * Лук нарезать мелким кубиком. На разогретую сковороду отправить сливочное масло (50 г) и закинуть лук томиться на
   медленном огне.

@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://youtu.be/Cwus07MOvoM" | youtube_embed }}
+{{ "https://youtu.be/Cwus07MOvoM" | youtube_embed | safe }}
 
 - Варим рис, заливаем уксус с сахаром 
 - Нарезаем имбирь, нори, лук

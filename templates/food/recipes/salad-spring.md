@@ -12,7 +12,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=RT-6-6PztJ4" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=RT-6-6PztJ4" | youtube_embed | safe }}
 
 - Яйца отвариваем (5 минут кипятим)
 - Капусту нарезаем (или покупаем нарезанную)

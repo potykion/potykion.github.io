@@ -15,7 +15,7 @@
 
 ## Приготовление
 
-{{ "https://www.youtube.com/watch?v=sXR9oRxiXZA" | youtube_embed }}
+{{ "https://www.youtube.com/watch?v=sXR9oRxiXZA" | youtube_embed | safe }}
 
 - Рис варим
 - Говядину, лук, чеснок нарезаем
