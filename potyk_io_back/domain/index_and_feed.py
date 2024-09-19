@@ -303,22 +303,16 @@ def get_feed_items(feed_storage: FeedStorage):
 def get_projects():
     return [
 
+
         {
-            "img": "images/projects/potyk_cv.jpg",
-            # "rows": 2,
-            "title": "Резюме",
-            "desc": "Найми меня 🥺",
-            "url": "/n/cv",
-        },
-        {
-            "img": "images/projects/potyk_forever.png",
-            "title": "t.me/п⌀тик_навсегда",
+            "img": "images/projects/potyk_forever.jpg",
+            "title": "тг/п⌀тик_навсегда",
             "desc": "максимально уютненький канал",
             "url": "https://t.me/potyk_forever",
         },
         {
-            "img": "images/projects/potyk_prikol.png",
-            "title": "t.me/потик_прикол",
+            "img": "images/projects/potyk_prikol.jpg",
+            "title": "тг/потик_прикол",
             "desc": "Хехи и хахи",
             "url": "https://t.me/potyk_prikol",
         },
@@ -330,8 +324,16 @@ def get_projects():
         },
         {
             "img": "images/projects/potyk_beer.jpg",
-            "title": "untappd.com/potykion",
+            "title": "тапок/potykion",
             "desc": "Пью пиво и кайфую",
             "url": "https://untappd.com/user/potykion",
+        },
+
+
+        {
+            "img": "images/projects/potyk_cv.jpg",
+            "title": "Резюме",
+            "desc": "Найми меня 🥺",
+            "url": "/n/cv",
         },
     ]
