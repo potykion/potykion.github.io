@@ -678,15 +678,15 @@ table :where(thead, tfoot) {
 }
 
 table :not(thead):not(tfoot) tr {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
 }
 
 table :where(th, td) {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 
 table {
@@ -4637,10 +4637,6 @@ ul.li-minus li:before {
   width: 100%;
 }
 
-.\!w-full {
-  width: 100% !important;
-}
-
 .min-w-12 {
   min-width: 3rem;
 }
@@ -4653,16 +4649,16 @@ ul.li-minus li:before {
   max-width: 300px;
 }
 
+.max-w-full {
+  max-width: 100%;
+}
+
 .max-w-none {
   max-width: none;
 }
 
 .max-w-screen-lg {
   max-width: 1024px;
-}
-
-.max-w-full {
-  max-width: 100%;
 }
 
 .shrink {
