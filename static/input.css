@@ -55,7 +55,7 @@
     }
 
     table {
-        @apply table table-zebra table-sm !my-0
+        @apply table table-zebra table-xs !my-0
     }
 
     td {

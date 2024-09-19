@@ -302,6 +302,14 @@ def get_feed_items(feed_storage: FeedStorage):
 
 def get_projects():
     return [
+
+        {
+            "img": "images/projects/potyk_cv.jpg",
+            # "rows": 2,
+            "title": "Резюме",
+            "desc": "Найми меня 🥺",
+            "url": "/n/cv",
+        },
         {
             "img": "images/projects/potyk_forever.png",
             "title": "t.me/п⌀тик_навсегда",

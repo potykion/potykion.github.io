@@ -2,63 +2,158 @@
 
 {% block main %}
 
-    <div class="my-2 flex justify-between">
+    <div class="flex justify-between">
         <div>
-            <h1>Лейбович Никита</h1>
-            <ul>
-                <li><b>Почта:</b> <a href="mailto:potykion@gmail.com">potykion@gmail.com</a></li>
-                <li><b>Telegram:</b> <a href="https://t.me/potykion">https://t.me/potykion</a></li>
-                <li><b>Github:</b> <a href="https://github.com/potykion">https://github.com/potykion</a></li>
-            </ul>
+            <h2>Лейбович Никита • Senior Python Developer</h2>
 
-            <h2>Senior Python Developer</h2>
             <ul>
-                <li><strong>Навыки:</strong> Django • Flask • pytest • mypy • Google Cloud • BitBucket Pipelines</li>
-                <li><strong>Open Source:</strong>
+                <li>
+                    <b>Желаемая зарплата:</b> 350 000 ₽ / мес. • 2000 ₽ / час • ИП
+                </li>
+                <li><b>Навыки:</b> Django • Flask • PostgreSQL • RabbitMQ • Redis</li>
+                <li><b>Open Source:</b>
                     <a href="https://github.com/pydantic/pydantic/pull/444">pydantic#444</a> •
                     <a href="https://github.com/yc-actions/yc-sls-container-deploy/pull/427">yc-sls-container-deploy#427</a>
                     •
                     <a href="https://github.com/python/typeshed/pull/2278">typeshed#2278</a>
                 </li>
                 <li>
-                    <strong>Мои проекты:</strong>
-                    <a href="https://potyk.io/">potyk.io</a> •
+                    <b>Мои проекты:</b>
                     <a href="https://github.com/potykion/jinja2xlsx">jinja2xlsx</a> •
+                    <a href="https://github.com/potykion/my-vk-likes">my-vk-likes</a> •
                     <a href="https://github.com/potykion/repka">repka</a></li>
+                <li>
+                    <b>Образование</b>: <a href="https://www.hse.ru/ba/se/">НИУ ВШЭ ФКН ПИ</a> • 2014 — 2018
+                </li>
+
+                <li>
+                    <b>Контакты:</b>
+                    <a href="mailto:potykion@gmail.com">Почта</a> •
+                    <a  href="https://t.me/potykion">Телеграм</a> • <a  href="https://github.com/potykion">GitHub</a>
+                </li>
             </ul>
         </div>
 
         <div>
-            <img src="/static/images/me.jpeg" class="w-32 ">
+            <img src="/static/images/me.jpg" class="w-32 ">
         </div>
     </div>
 
-    <h2>Опыт работы</h2>
-    <h3><a href="https://rbcn.mobi/">RuBeacon</a> • 2016 — 2024</h3>
-    <div><i>Сфера:</i> разработка приложений и сайтов по доставке еды</div>
-    <ul>
-        <li>API для мобильных приложений и сайтов <strong>[Google App Engine, webapp2, Flask]</strong></li>
-        <li>Интеграции с системами доставки: Iiko, FrontPad, Mobidel <strong>[requests, xmltodict, lxml]</strong></li>
-        <li>Система электронного документооборота <strong>[Django, pydantic, openpyxl, pdfKit, docxtpl]</strong></li>
-        <li>Telegram бот для уведомлений о заказах <strong>[python-telegram-bot]</strong></li>
-        <li>Синхронизация данных из Google DataStore в BigQuery <strong>[Google ndb, BigQuery]</strong></li>
-        <li>Оптимизация трат в облаке <strong>[Google Cloud Monitoring, Google Cloud Logging, BigQuery]</strong></li>
-        <li>Менторинг коллег <strong>[Bitbucket Pull Requests]</strong></li>
-        <li>CI для проверки качества кода и деплоя <strong>[Bitbucket Pipelines, pytest, mypy, ruff]</strong></li>
-        <li>Перевод 100000 строк кода с Python 2 на Python 3 <strong>[six, mypy, Flask]</strong></li>
-    </ul>
-    <h3><a href="https://lins.ru/">LINS</a> • 2021 — 2023</h3>
-    <div><i>Сфера:</i> ПО для медицинских учреждений для проведения КТ, МРТ, УЗИ</div>
-    <ul>
-        <li>Интеграции с медицинскими системами ЕРИС ЕМИАС <strong>[requests, lxml]</strong></li>
-        <li>Поддержка нескольких бд, оптимизация и кеширование запросов <strong>[Django, Redis, pandas]</strong></li>
-        <li>Межсерверное взаимодействие между медицинскими организациями <strong>[Django, requests]</strong></li>
-    </ul>
-    <h3><a href="https://mcdonalds.ru/">McDonald's IT</a> • 2017 — 2019</h3>
-    <div><i>Сфера:</i> приложение ресторана McDonald's</div>
-    <ul>
-        <li>Админка и API для мобильного приложения <strong>[Django, Gentelella]</strong></li>
-        <li>API для акции "Монополия" <strong>[Django Rest Framework, Celery, RabbitMQ, requests]</strong></li>
-        <li>Плагин для кассы для сканирования QR-кодов <strong>[wxPython, PyInstaller]</strong></li>
-    </ul>
+    <h3>Опыт работы</h3>
+
+    <h4><a href="https://www.agora.ru/">AGORA</a> • 2023 — 2024</h4>
+    <table>
+        <tbody>
+        <tr>
+            <td><i>Сфера</i></td>
+            <td>Заказная разработка • Системы Электронных Закупок, SRM, E-Commerce</td>
+        </tr>
+        <tr>
+            <td><i>Стек</i></td>
+            <td>Django • Pydantic • Celery • Kafka • Vue.js</td>
+        </tr>
+        <tr>
+            <td><i>Достижения</i></td>
+            <td> Разделы Системы Электронных Закупок для РЖД и SRM для НЛМК под ключ
+
+            </td>
+        </tbody>
+    </table>
+
+
+
+    <h4><a href="https://lins.ru/">LINS</a> • 2021 — 2023</h4>
+    <table>
+        <tbody>
+        <tr>
+            <td><i>Сфера</i></td>
+            <td>Медтех • ПО для медицинских учреждений для проведения КТ, МРТ, УЗИ</td>
+        </tr>
+        <tr>
+            <td><i>Стек</i></td>
+            <td>Django • Redis • pandas • PostgreSQL</td>
+        </tr>
+        <tr>
+            <td><i>Достижения</i></td>
+            <td> Интеграция с ЕРИС ЕМИАС • Масштабирование бд • Синхронизация медицинских организаций
+            </td>
+        </tbody>
+    </table>
+
+
+    <h4><a href="https://kometa.fit//">Kometa.Fit</a> • 2019 — 2021</h4>
+
+    <table>
+        <tbody>
+        <tr>
+            <td><i>Сфера</i></td>
+            <td>Фитнес • Бекенд для сети фитнес-клубов Kometa.Fit</td>
+        </tr>
+        <tr>
+            <td><i>Стек</i></td>
+            <td>Flask • MSSQL • C# • React • Windows Server</td>
+        </tr>
+        <tr>
+            <td><i>Достижения</i></td>
+            <td>Поддержка работы фитнес-клуба • Админка для топ-менеджеров •
+                Работа с "железом"
+            </td>
+        </tbody>
+    </table>
+
+    <h4><a href="https://mcdonalds.ru/">McDonald's IT</a> • 2017 — 2019</h4>
+
+    <table>
+        <tbody>
+        <tr>
+            <td><i>Сфера</i></td>
+            <td>Фудтех • Бекенд для приложение ресторана McDonald's</td>
+        </tr>
+        <tr>
+            <td><i>Стек</i></td>
+            <td>Django • Celery • RabbitMQ • MySQL</td>
+        </tr>
+        <tr>
+            <td><i>Достижения</i></td>
+            <td> Админка для мобильного приложения • API для акции "Монополия" • Кассовый Плагин
+            </td>
+        </tbody>
+    </table>
+
+
+
+    <h4><a href="https://rbcn.mobi/">RuBeacon</a> • 2016 — 2017</h4>
+
+    <table>
+        <tbody>
+        <tr>
+            <td><i>Сфера</i></td>
+            <td>Фудтех • Бекенд для приложений и сайтов по доставке еды</td>
+        </tr>
+        <tr>
+            <td><i>Стек</i></td>
+            <td>Google App Engine • webapp2 • Flask • Vue.js</td>
+        </tr>
+        <tr>
+            <td><i>Достижения</i></td>
+            <td> Электронный документооборот • Интеграции с системами доставки • Telegram бот для заказов
+            </td>
+        </tbody>
+    </table>
+
+
+
+
+    {#    <ul>#}
+    {#        <li> <strong>[Google App Engine, webapp2, Flask]</strong></li>#}
+    {#        <li>Интеграции с системами доставки: Iiko, FrontPad, Mobidel <strong>[requests, xmltodict, lxml]</strong></li>#}
+    {#        <li>Система электронного документооборота <strong>[Django, pydantic, openpyxl, pdfKit, docxtpl]</strong></li>#}
+    {#        <li>Telegram бот для уведомлений о заказах <strong>[python-telegram-bot]</strong></li>#}
+    {#        <li>Синхронизация данных из Google DataStore в BigQuery <strong>[Google ndb, BigQuery]</strong></li>#}
+    {#        <li>Оптимизация трат в облаке <strong>[Google Cloud Monitoring, Google Cloud Logging, BigQuery]</strong></li>#}
+    {#        <li>Менторинг коллег <strong>[Bitbucket Pull Requests]</strong></li>#}
+    {#        <li>CI для проверки качества кода и деплоя <strong>[Bitbucket Pipelines, pytest, mypy, ruff]</strong></li>#}
+    {#        <li>Перевод 100000 строк кода с Python 2 на Python 3 <strong>[six, mypy, Flask]</strong></li>#}
+    {#    </ul>#}
+
 {% endblock %}
