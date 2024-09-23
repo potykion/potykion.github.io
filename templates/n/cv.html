@@ -2,41 +2,41 @@
 
 {% block main %}
 
-    <div class="flex space-x-4 items-center">
+    <div class="flex space-x-2 md:space-x-4 items-center">
         <div class="avatar">
-            <div class="w-20 h-20 rounded">
+            <div class="w-16 md:w-20  rounded">
                 <img src="/static/images/me.jpg"/>
             </div>
         </div>
 
 
         <div>
-            <div class="text-3xl font-semibold text-gray-800">Лейбович Никита <br> Python Разработчик </div>
+            <div class="text-xl md:text-3xl font-semibold text-gray-800">Лейбович Никита <br> Python Разработчик </div>
         </div>
     </div>
 
-    <ul>
+    <ul class="list-none !p-0">
         <li>
-            <b>Желаемая зарплата:</b> 350 000 ₽ / мес. • 2500 ₽ / час • ИП
+            <b>Желаемая зарплата<span class="hidden md:inline">:</span></b><br class="md:hidden"> 350 000 ₽ / мес. • 2500 ₽ / час • ИП
         </li>
-        <li><b>Навыки:</b> Django • Flask • PostgreSQL • RabbitMQ • Redis</li>
-        <li><b>Open Source:</b>
+        <li><b>Навыки<span class="hidden md:inline">:</span></b><br class="md:hidden"> Django • Flask • PostgreSQL • RabbitMQ • Redis</li>
+        <li><b>Open Source<span class="hidden md:inline">:</span></b><br class="md:hidden">
             <a href="https://github.com/pydantic/pydantic/pull/444">pydantic#444</a> •
             <a href="https://github.com/yc-actions/yc-sls-container-deploy/pull/427">yc-sls-container-deploy#427</a>
             •
             <a href="https://github.com/python/typeshed/pull/2278">typeshed#2278</a>
         </li>
         <li>
-            <b>Мои проекты:</b>
+            <b>Мои проекты<span class="hidden md:inline">:</span></b><br class="md:hidden">
             <a href="https://github.com/potykion/jinja2xlsx">jinja2xlsx</a> •
             <a href="https://github.com/potykion/my-vk-likes">my-vk-likes</a> •
             <a href="https://github.com/potykion/repka">repka</a></li>
         <li>
-            <b>Образование</b>: <a href="https://www.hse.ru/ba/se/">НИУ ВШЭ ФКН ПИ</a> • 2014 — 2018
+            <b>Образование<span class="hidden md:inline">:</span></b><br class="md:hidden"> <a href="https://www.hse.ru/ba/se/">НИУ ВШЭ ФКН ПИ</a> • 2014 — 2018
         </li>
 
         <li>
-            <b>Контакты:</b>
+            <b>Контакты<span class="hidden md:inline">:</span></b><br class="md:hidden">
             <a href="mailto:potykion@gmail.com">Почта</a> •
             <a href="https://t.me/potykion">Телеграм</a> • <a href="https://github.com/potykion">GitHub</a>
         </li>
