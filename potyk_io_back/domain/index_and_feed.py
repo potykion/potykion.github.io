@@ -302,8 +302,6 @@ def get_feed_items(feed_storage: FeedStorage):
 
 def get_projects():
     return [
-
-
         {
             "img": "images/projects/potyk_forever.jpg",
             "title": "тг/п⌀тик_навсегда",
@@ -328,8 +326,12 @@ def get_projects():
             "desc": "Пью пиво и кайфую",
             "url": "https://untappd.com/user/potykion",
         },
-
-
+        {
+            "img": "images/projects/sobesedix.jpg",
+            "title": "СОБЕСЕДИКС УЛЬТИМЕЙТ",
+            "desc": "Материалы по Python Backend Собеседованию",
+            "url": "https://potyk.io/sobesedix/",
+        },
         {
             "img": "images/projects/potyk_cv.jpg",
             "title": "Резюме",
