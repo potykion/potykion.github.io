@@ -6,21 +6,25 @@
 
 {% block main %}
 
-    <div class="grid md:grid-cols-3 grid-cols-2 gap-2 md:gap-4">
+    <h2>WHO E TA</h2>
 
+    <div>
+        Я Никита Лейбович, прикольный челик.
+    </div>
+
+    <h2>PROJECTS</h2>
+    <div>
         {% for project in projects %}
 
-            <a href="{{ project.url }}" class="no-underline text-base uni-border border rounded-lg uni-hover uni-bg {% if project.rows == 2 %}row-span-2{% endif %}">
-                <img src="{{ url_for('static', filename=project.img ) }}">
+            <a href="{{ project.url }}"
+               class="flex no-underline hover:uni-hover p-2 rounded">
+                <img class="w-20" src="{{ url_for('static', filename=project.img ) }}">
                 <div class="p-4  rounded-lg">
                     <div class="font-semibold text-xl">{{ project.title | safe }}</div>
-                    <div class="text-gray-500 text-sm">{{ project.desc }}</div>
+                    <div class=" text-gray-500 text-sm">{{ project.desc }}</div>
                 </div>
             </a>
-
         {% endfor %}
-
-
     </div>
 
 
