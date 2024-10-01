@@ -303,9 +303,19 @@ def get_feed_items(feed_storage: FeedStorage):
 def get_projects():
     return [
         {
+            "type": "header",
+            "title": "Важное",
+        },
+        {
+            "img": "images/projects/cooking.jpg",
+            "title": "Рецептики",
+            "desc": "Кукинг",
+            "url": "/recipes",
+        },
+        {
             "img": "images/projects/potyk_forever.jpg",
             "title": "тг/п⌀тик_навсегда",
-            "desc": "максимально уютненький канал",
+            "desc": "Основа",
             "url": "https://t.me/potyk_forever",
         },
         {
@@ -315,16 +325,14 @@ def get_projects():
             "url": "https://t.me/potyk_prikol",
         },
         {
+            "type": "header",
+            "title": "Прога",
+        },
+        {
             "img": "images/projects/potyk_x.jpg",
             "title": "x.com/potykion",
             "desc": "Coding shit, smoking weed",
             "url": "https://x.com/potykion",
-        },
-        {
-            "img": "images/projects/potyk_beer.jpg",
-            "title": "тапок/potykion",
-            "desc": "Пью пиво и кайфую",
-            "url": "https://untappd.com/user/potykion",
         },
         {
             "img": "images/projects/sobesedix.jpg",
@@ -337,5 +345,38 @@ def get_projects():
             "title": "Резюме",
             "desc": "Найми меня 🥺",
             "url": "/n/cv",
+        },
+        {
+            "type": "header",
+            "title": "Обзоры",
+        },
+        {
+            "img": "images/projects/potyk_beer.jpg",
+            "title": "тапок/potykion",
+            "desc": "Пью пиво и кайфую",
+            "url": "https://untappd.com/user/potykion",
+        },
+        {
+            "img": "images/projects/ymaps2.jpg",
+            "title": "Яндекс.Карты",
+            "desc": "Отзывы на рестики",
+            "url": "https://yandex.ru/maps/user/potyk-io",
+        },
+        {
+            "img": "images/projects/rym.jpg",
+            "title": "Rym",
+            "desc": "Отзывы на мьюзик",
+            "url": "https://rateyourmusic.com/~potykion",
+        },
+        {
+            "type": "header",
+            "title": "Стафф",
+        },
+
+        {
+            "img": "images/projects/sections.jpg",
+            "title": "Разделы",
+            "desc": "Че есть в блоге",
+            "url": "/sections",
         },
     ]
