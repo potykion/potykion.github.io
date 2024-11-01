@@ -304,7 +304,7 @@ def get_projects():
     return [
         {
             "type": "header",
-            "title": "Важное",
+            "title": "Фуд энд дринкс 🍔",
         },
         {
             "img": "images/projects/cooking.jpg",
@@ -314,9 +314,42 @@ def get_projects():
         },
         {
             "img": "images/projects/potyk_forever.jpg",
-            "title": "тг/п⌀тик_навсегда",
-            "desc": "Основа",
+            "title": "тг/п⌀тик итс фка п⌀тик навсегда",
+            "desc": "максимально уютненький канал про еду × основа",
             "url": "https://t.me/potyk_forever",
+        },
+
+        {
+
+            "title": "potyk-beer",
+            "desc": "собираю всякую инфу про пиво / сидры / миды",
+            "url": "https://potyk.io/potyk-beer/",
+        },
+        {
+            "img": "images/projects/potyk_beer.jpg",
+            "title": "тапок",
+            "desc": "Пью пиво и люблю жену",
+            "url": "https://untappd.com/user/potykion",
+        },
+
+        {
+            "img": "images/projects/ymaps2.jpg",
+            "title": "ЯКарты",
+            "desc": "Отзывы на рестики",
+            "url": "https://yandex.ru/maps/user/potyk-io",
+        },
+
+
+
+        {
+            "type": "header",
+            "title": "Стафф 🗃️",
+        },
+
+        {
+            "title": "тг/потик движ",
+            "desc": "Мероприятия, которые заинтересовали",
+            "url": "https://t.me/potyk_flex",
         },
         {
             "img": "images/projects/potyk_prikol.jpg",
@@ -324,21 +357,43 @@ def get_projects():
             "desc": "Хехи и хахи",
             "url": "https://t.me/potyk_prikol",
         },
+
+        {
+            "title": "инст/потик.арт",
+            "desc": "Калякаю",
+            "url": "https://www.instagram.com/potyk.art/",
+        },
+
+        {
+            "img": "images/projects/rym.jpg",
+            "title": "рюм",
+            "desc": "РЕдкие отзывы на мьюзик",
+            "url": "https://rateyourmusic.com/~potykion",
+        },
+        {
+            "img": "images/projects/sections.jpg",
+            "title": "Разделы",
+            "desc": "Че есть в блоге",
+            "url": "/sections",
+        },
+
+
         {
             "type": "header",
-            "title": "Прога",
+            "title": "Прога 🤖",
+        },
+
+        {
+            "img": "images/projects/sobesedix.jpg",
+            "title": "sobesedix",
+            "desc": "Материалы по Python Backend Собеседованию",
+            "url": "https://potyk.io/sobesedix/",
         },
         {
             "img": "images/projects/potyk_x.jpg",
-            "title": "x.com/potykion",
+            "title": "тви ",
             "desc": "Coding shit, smoking weed",
             "url": "https://x.com/potykion",
-        },
-        {
-            "img": "images/projects/sobesedix.jpg",
-            "title": "СОБЕСЕДИКС УЛЬТИМЕЙТ",
-            "desc": "Материалы по Python Backend Собеседованию",
-            "url": "https://potyk.io/sobesedix/",
         },
         {
             "img": "images/projects/potyk_cv.jpg",
@@ -346,37 +401,6 @@ def get_projects():
             "desc": "Найми меня 🥺",
             "url": "/n/cv",
         },
-        {
-            "type": "header",
-            "title": "Обзоры",
-        },
-        {
-            "img": "images/projects/potyk_beer.jpg",
-            "title": "тапок/potykion",
-            "desc": "Пью пиво и кайфую",
-            "url": "https://untappd.com/user/potykion",
-        },
-        {
-            "img": "images/projects/ymaps2.jpg",
-            "title": "Яндекс.Карты",
-            "desc": "Отзывы на рестики",
-            "url": "https://yandex.ru/maps/user/potyk-io",
-        },
-        {
-            "img": "images/projects/rym.jpg",
-            "title": "Rym",
-            "desc": "Отзывы на мьюзик",
-            "url": "https://rateyourmusic.com/~potykion",
-        },
-        {
-            "type": "header",
-            "title": "Стафф",
-        },
 
-        {
-            "img": "images/projects/sections.jpg",
-            "title": "Разделы",
-            "desc": "Че есть в блоге",
-            "url": "/sections",
-        },
+
     ]
