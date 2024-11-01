@@ -316,7 +316,7 @@ def get_projects():
             "img": "images/projects/potyk_forever.jpg",
             "title": "тг/п⌀тик итс фка п⌀тик навсегда",
             "desc": "максимально уютненький канал про еду × основа",
-            "url": "https://t.me/potyk_forever",
+            "url": "https://t.me/potyk_eats",
         },
 
         {
