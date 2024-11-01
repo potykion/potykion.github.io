@@ -5,28 +5,30 @@
 {% from "_components/scripts.html" import htmx %}
 
 {% block main %}
-    <div >
-        <h1 class="!mt-6 text-center md:!text-7xl " >∏⌀♰ʯԞ.ʯ⌀</h1>
+    <div>
+        <h1 class="!my-6 text-center md:!text-7xl ">∏⌀♰ʯԞ.ʯ⌀</h1>
 
+        <ul>
 
-        <div>
             {% for project in projects %}
                 {% if project.type == "header" %}
-                    <h2 class="text-center md:!text-4xl ">{{ project.title }}</h2>
-                    <hr class="!mb-2">
+                    <h2>{{ project.title }}</h2>
                 {% else %}
 
-                    <a href="{{ project.url }}"
-                       class="flex no-underline hover:uni-hover p-2 rounded items-center">
-                        <img class="w-20 h-20" src="{{ url_for('static', filename=project.img ) }}">
-                        <div class="p-4  rounded-lg">
-                            <div class="font-semibold text-xl">{{ project.title | safe }}</div>
-                            <div class=" text-gray-500 text-sm">{{ project.desc }}</div>
-                        </div>
-                    </a>
+
+                    <li>
+                        <a href="{{ project.url }}" class="no-underline text-blue-500 hover:text-blue-600 hover:underline">
+                            <span class="font-semibold text-xl">{{ project.title | safe }}</span>
+
+                            <span class=" text-gray-500 text-sm">— {{ project.desc }}</span>
+                        </a>
+                    </li>
+
+
+
                 {% endif %}
             {% endfor %}
-        </div>
+        </ul>
 
 
         <script>
