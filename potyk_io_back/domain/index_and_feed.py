@@ -303,72 +303,10 @@ def get_feed_items(feed_storage: FeedStorage):
 def get_projects():
     return [
         {
-            "type": "header",
-            "title": "Фуд энд дринкс 🍔",
-        },
-        {
             "img": "images/projects/cooking.jpg",
             "title": "Рецептики",
             "desc": "Кукинг",
             "url": "/recipes",
-        },
-        {
-            "img": "images/projects/potyk_forever.jpg",
-            "title": "тг/п⌀тик итс фка п⌀тик навсегда",
-            "desc": "максимально уютненький канал про еду × основа",
-            "url": "https://t.me/potyk_eats",
-        },
-
-        {
-
-            "title": "potyk-beer",
-            "desc": "собираю всякую инфу про пиво / сидры / миды",
-            "url": "https://potyk.io/potyk-beer/",
-        },
-        {
-            "img": "images/projects/potyk_beer.jpg",
-            "title": "тапок",
-            "desc": "Пью пиво и люблю жену",
-            "url": "https://untappd.com/user/potykion",
-        },
-
-        {
-            "img": "images/projects/ymaps2.jpg",
-            "title": "ЯКарты",
-            "desc": "Отзывы на рестики",
-            "url": "https://yandex.ru/maps/user/potyk-io",
-        },
-
-
-
-        {
-            "type": "header",
-            "title": "Стафф 🗃️",
-        },
-
-        {
-            "title": "тг/потик движ",
-            "desc": "Мероприятия, которые заинтересовали",
-            "url": "https://t.me/potyk_flex",
-        },
-        {
-            "img": "images/projects/potyk_prikol.jpg",
-            "title": "тг/потик_прикол",
-            "desc": "Хехи и хахи",
-            "url": "https://t.me/potyk_prikol",
-        },
-
-        {
-            "title": "инст/потик.арт",
-            "desc": "Калякаю",
-            "url": "https://www.instagram.com/potyk.art/",
-        },
-
-        {
-            "img": "images/projects/rym.jpg",
-            "title": "рюм",
-            "desc": "РЕдкие отзывы на мьюзик",
-            "url": "https://rateyourmusic.com/~potykion",
         },
         {
             "img": "images/projects/sections.jpg",
@@ -376,31 +314,4 @@ def get_projects():
             "desc": "Че есть в блоге",
             "url": "/sections",
         },
-
-
-        {
-            "type": "header",
-            "title": "Прога 🤖",
-        },
-
-        {
-            "img": "images/projects/sobesedix.jpg",
-            "title": "sobesedix",
-            "desc": "Материалы по Python Backend Собеседованию",
-            "url": "https://potyk.io/sobesedix/",
-        },
-        {
-            "img": "images/projects/potyk_x.jpg",
-            "title": "тви ",
-            "desc": "Coding shit, smoking weed",
-            "url": "https://x.com/potykion",
-        },
-        {
-            "img": "images/projects/potyk_cv.jpg",
-            "title": "Резюме",
-            "desc": "Найми меня 🥺",
-            "url": "/n/cv",
-        },
-
-
     ]
