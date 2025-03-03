@@ -9,6 +9,12 @@
 
 ## Опыт работы
 
+### [Basis](https://basistech.ru/) • 2024 - ...
+
+- Сфера:    IAAS 
+- Стек:    Bottle • ZeroMQ • Redis • libvirt 
+- Достижения: API для работы с vGPU • Поддержка Redis Cluster • Авторизация с помощью LDAP • Интеграция со SPICE protocol
+
 ### [AGORA](https://www.agora.ru/) • 2023 — 2024
 
 - Сфера:    Заказная разработка • Системы Электронных Закупок, SRM, E-Commerce

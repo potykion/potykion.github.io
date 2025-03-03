@@ -1,0 +1,23 @@
+
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+
+/* Отключаем сброс стилей */
+ @import "tailwindcss/preflight.css" layer(base);
+
+@import "tailwindcss/utilities.css" layer(utilities);
+
+
+@plugin "daisyui" {
+    /* Отрубаем дарк мод */
+    themes: light --default;
+}
+ @plugin "@tailwindcss/typography";
+
+
+.badge-soft.badge-purple {
+ @apply bg-purple-100 text-purple-800;
+}
+
