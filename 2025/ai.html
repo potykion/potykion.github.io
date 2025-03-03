@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AI</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/output.css">
 
     <style>
@@ -22,12 +22,14 @@
         <a href="/" class="btn btn-link no-underline">∅</a>
       </div>
 
-    <article class="prose lg:prose-xl mx-auto max-w-screen-lg px-4">
+    <article class="prose prose-sm lg:prose-xl mx-auto max-w-screen-lg px-4">
         <h1 class="!mb-0">AI <s>SLOP</s></h1>
 
         <cite>Тут про всякие ИИ тулзы</cite>
 
         <h2>Чаты</h2>
+
+        <div class="overflow-x-auto">
 
         <table class="table table-zebra " x-data="{
                 chats: [
@@ -143,9 +145,9 @@
                             <sup x-show="chat.vpn">[vpn]</sup>
 
                         </td>
-                        <td class="flex gap-1">
+                        <td class="flex flex-wrap gap-1">
                             <template x-for="feature in chat.features" :key="feature">
-                                <span class="badge badge-soft badge-sm" :class="features[feature].badge">
+                                <span class="badge badge-soft badge-xs lg:badge-sm" :class="features[feature].badge">
                                     <div class="tooltip" :data-tip="features[feature].description">
                                         <span x-text="features[feature].label"></span>
                                     </div>
@@ -159,7 +161,7 @@
 
             </tbody>
         </table>
-
+        </div>
 
         <h2>Кодинг</h2>
         <ul >
