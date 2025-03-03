@@ -21,3 +21,10 @@
  @apply bg-purple-100 text-purple-800;
 }
 
+ul {
+    @apply list-disc list-outside;
+}
+
+a {
+    @apply link link-primary;
+}

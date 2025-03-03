@@ -18,115 +18,165 @@
 </head>
 
 <body>
-<article class="prose-lg mx-auto max-w-screen-lg px-4">
-    <h1>AI <s>SLOP</s></h1>
+    <article class="prose lg:prose-xl mx-auto max-w-screen-lg px-4">
+        <h1 class="!mb-0">AI <s>SLOP</s></h1>
 
-    <h2>Чаты</h2>
+        <cite>Тут про всякие ИИ тулзы</cite>
 
-    <table class="table table-zebra " x-data="{
+        <h2>Чаты</h2>
+
+        <table class="table table-zebra " x-data="{
                 chats: [
                     {
                         name: 'ChatGPT',
                         url: 'https://chatgpt.com/',
                         vpn: true,
                         features: ['web', 'thinking', 'voice']
+                    },
+                    {
+                        name: 'Perplexity',
+                        url: 'https://www.perplexity.ai/',
+                        features: ['web', 'thinking', 'image', 'document']
+                    },
+                    {
+                        name: 'Duck.AI',
+                        url: 'https://duck.ai/',
+                    },
+                    {
+                        name: 'Le Chat',
+                        url: 'https://chat.mistral.ai/chat',
+                        features: ['web', 'image-creation', 'image', 'document']
+                    },
+                    {
+                        name: 'Deepseek',
+                        url: 'https://deepseek.com/chat',
+                        features: ['web', 'thinking']
+                    },
+                    {
+                        name: 'Qwen',
+                        url: 'https://chat.qwenlm.ai/',
+                        features: ['web', 'thinking', 'image', 'document', 'image-creation', 'video-creation']
+                    },
+                    {
+                        name: 'Gemini',
+                        url: 'https://chat.gemini.ai/',
+                        vpn: true,
+                        features: ['thinking', 'image', 'document']
+                    },
+                    {
+                        name: 'Phind',
+                        url: 'https://www.phind.com/',
+                        features: ['web', 'code'],
+                    },
+                    {
+                        name: 'Яндекс Нейро',
+                        url: 'https://ya.ru/',
+                        features: ['web']
+                    },
+                    {
+                        name: 'GigaChat',
+                        url: 'https://giga.chat/',
+                        features: ['voice']
                     }
                 ],
                 features: {
                     web: {
                         label: '🌐 Веб-поиск',
-                        badge: 'badge-info'
+                        badge: 'badge-info',
+                        description: 'Поиск в Интернете'
                     },
                     thinking: {
                         label: '🧠 Думанье',
-                        badge: 'badge-secondary'
+                        badge: 'badge-secondary',
+                        description: 'aka Reasoning'
                     },
                     voice: {
                         label: '🗣️ Голосовой ввод',
-                        badge: 'badge-purple'
+                        badge: 'badge-primary',
+                        description: 'Можно болтать с ИИ'
+                    },
+                    image: {
+                        label: '🖼️ Парс картинок',
+                        badge: 'badge-warning',
+                        description: 'Можно скармливать картинки вместо текста'
+                    },
+                    document: {
+                        label: '📄 Парс документов',
+                        badge: '',
+                        description: 'Можно скармливать pdf/md вместо текста'
+                    },
+                    'image-creation': {
+                        label: '🎨 Создание картинок',
+                        badge: 'badge-warning',
+                        description: 'Можно генерировать картинки'
+                    },
+                    'video-creation': {
+                        label: '🎥 Создание видео',
+                        badge: 'badge-primary',
+                        description: 'Можно генерировать видео'
+                    },
+                    code: {
+                        label: '💻 Генерация кода',
+                        badge: 'badge-info',
+                        description: 'Заточено под разработку'
                     }
                 }
             }">
-        <thead>
-        <tr>
-            <th>Сервис</th>
-            <th>Фичи</th>
+            <thead>
+                <tr>
+                    <th>Сервис</th>
+                    <th>Фичи</th>
 
-        </tr>
-        </thead>
-        <tbody>
-        <template x-for="chat in chats" :key="chat.name">
-            <tr>
-                <td>
-                    <a :href="chat.url" class="link link-primary">
-                        <span x-text="chat.name"></span>
-                    </a>
-                    <sup x-show="chat.vpn">[vpn]</sup>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="chat in chats" :key="chat.name">
+                    <tr>
+                        <td>
+                            <a :href="chat.url" >
+                                <span x-text="chat.name"></span>
+                            </a>
+                            <sup x-show="chat.vpn">[vpn]</sup>
 
-                </td>
-                <td class="flex gap-1">
-                    <template x-for="feature in chat.features" :key="feature">
-                        <span class="badge badge-soft badge-sm" :class="features[feature].badge">
-                            <span x-text="features[feature].label"></span>
-                        </span>
-                    </template>
-                </td>
-            </tr>
-        </template>
+                        </td>
+                        <td class="flex gap-1">
+                            <template x-for="feature in chat.features" :key="feature">
+                                <span class="badge badge-soft badge-sm" :class="features[feature].badge">
+                                    <div class="tooltip" :data-tip="features[feature].description">
+                                        <span x-text="features[feature].label"></span>
+                                    </div>
+                                </span>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
 
-        <tr>
-            <td><a href="https://www.perplexity.ai/">Perplexity</a></td>
-            <td>
-                Веб-поиск • Думанье • Парс Картинок • Парс доков
-            </td>
-        </tr>
 
-        <tr>
-            <td><a href="https://duck.ai/">Duck.AI</a></td>
-            <td>
 
-            </td>
-        </tr>
+            </tbody>
+        </table>
 
-        <tr>
-            <td><a href="https://chat.mistral.ai/chat">Le Chat</a></td>
-            <td>
-                Парс Картинок • Парс доков • Создание картинок • Веб-поиск
-            </td>
-        </tr>
 
-        <tr>
-            <td><a href="https://deepseek.com/chat">Deepseek</a></td>
-            <td>
-                Веб-поиск • Думанье
-            </td>
-        </tr>
+        <h2>Кодинг</h2>
+        <ul >
+            <li><a  href="https://www.cursor.com/">Cursor</a> – лучший, <i>пока что</i>, ии редактор кода; топ фича - сканирование
+                кодовой базы и изменение сразу нескольких файлов</li>
+        </ul>
 
-        <tr>
-            <td><a href="https://chat.qwenlm.ai/">Qwen</a></td>
-            <td>
-                Веб-поиск • Думанье • Парс Картинок • Парс доков • Создание картинок • Создание видео
-            </td>
-        </tr>
+        <h3>Как оплатить</h3>
+        <ul class="list-disc list-outside">
+            <li><a  href="https://t.me/paymentserv_bot">@paymentserv_bot</a></li>
+        </ul>
 
-        <tr>
-            <td><a href="https://chat.gemini.ai/">Gemini</a> <sup>[vpn]</sup></td>
-            <td>
-                Думанье • Парс Картинок • Парс доков
-            </td>
-        </tr>
+        <h2>Прочие тулзы</h2>
+        <ul>
+            <li><a href="https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview">ChatGPT for Excel</a></li>
+        </ul>
 
-        <tr>
-            <td><a href="https://www.phind.com/">Phind</a></td>
-            <td>
-                Веб-поиск
-            </td>
-        </tr>
 
-        </tbody>
-    </table>
 
-</article>
+
+    </article>
 </body>
 
 </html>
