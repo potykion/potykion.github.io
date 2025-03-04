@@ -5,7 +5,7 @@
 @import "tailwindcss/theme.css" layer(theme);
 
 /* Отключаем сброс стилей */
- @import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/preflight.css" layer(base);
 
 @import "tailwindcss/utilities.css" layer(utilities);
 
@@ -14,7 +14,7 @@
     /* Отрубаем дарк мод */
     themes: light --default;
 }
- @plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/typography";
 
 
 .badge-soft.badge-purple {
@@ -27,4 +27,11 @@ ul {
 
 a {
     @apply link link-primary;
+}
+
+h2 {
+    @apply mt-4 mb-2;
+}
+h3 {
+    @apply mt-2 mb-1;
 }
