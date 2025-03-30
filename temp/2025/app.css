@@ -2,12 +2,12 @@
 
 @layer theme, base, components, utilities;
 
-@import "tailwindcss/theme.css" layer(theme);
+@import "theme.css" layer(theme);
 
 /* Отключаем сброс стилей */
-@import "tailwindcss/preflight.css" layer(base);
+@import "preflight.css" layer(base);
 
-@import "tailwindcss/utilities.css" layer(utilities);
+@import "utilities.css" layer(utilities);
 
 
 @plugin "daisyui" {
