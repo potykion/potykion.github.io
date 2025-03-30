@@ -1,0 +1,176 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
+---
+<Layout>
+    <div>
+        <a href="/temp/2025/public" class="btn btn-sm lg:btn-base btn-link no-underline">∅</a>
+    </div>
+
+    <article class="prose lg:prose-base mx-auto max-w-screen-lg lg:px-4 px-3">
+        <h1 class="!mb-0">AI <s>SLOP</s></h1>
+
+        <cite>Тут про всякие ИИ тулзы</cite>
+
+        <h2 class="!mb-0">Чаты</h2>
+
+        <div class="overflow-x-auto ">
+            <table class="table table-xs lg:table-md table-zebra !my-0 " x-data="{
+                chats: [
+                    {
+                        name: 'ChatGPT',
+                        url: 'https://chatgpt.com/',
+                        vpn: true,
+                        features: ['web', 'thinking', 'voice']
+                    },
+                    {
+                        name: 'Perplexity',
+                        url: 'https://www.perplexity.ai/',
+                        features: ['web', 'thinking', 'image', 'document']
+                    },
+                    {
+                        name: 'Duck.AI',
+                        url: 'https://duck.ai/',
+                    },
+                    {
+                        name: 'Le Chat',
+                        url: 'https://chat.mistral.ai/chat',
+                        features: ['web', 'image-creation', 'image', 'document']
+                    },
+                    {
+                        name: 'Deepseek',
+                        url: 'https://deepseek.com/chat',
+                        features: ['web', 'thinking']
+                    },
+                    {
+                        name: 'Qwen',
+                        url: 'https://chat.qwenlm.ai/',
+                        features: ['web', 'thinking', 'image', 'document', 'image-creation', 'video-creation']
+                    },
+                    {
+                        name: 'Gemini',
+                        url: 'https://chat.gemini.ai/',
+                        vpn: true,
+                        features: ['thinking', 'image', 'document']
+                    },
+                    {
+                        name: 'Phind',
+                        url: 'https://www.phind.com/',
+                        features: ['web', 'code']
+                    },
+                    {
+                        name: 'Яндекс Нейро',
+                        url: 'https://ya.ru/',
+                        features: ['web']
+                    },
+                    {
+                        name: 'GigaChat',
+                        url: 'https://giga.chat/',
+                        features: ['voice']
+                    }
+                ],
+                features: {
+                    web: {
+                        label: '🌐 Веб-поиск',
+                        badge: 'badge-info',
+                        description: 'Поиск в Интернете'
+                    },
+                    thinking: {
+                        label: '🧠 Думанье',
+                        badge: 'badge-secondary',
+                        description: 'aka Reasoning'
+                    },
+                    voice: {
+                        label: '🗣️ Голосовой ввод',
+                        badge: 'badge-primary',
+                        description: 'Можно болтать с ИИ'
+                    },
+                    image: {
+                        label: '🖼️ Парс картинок',
+                        badge: 'badge-warning',
+                        description: 'Можно скармливать картинки вместо текста'
+                    },
+                    document: {
+                        label: '📄 Парс документов',
+                        badge: '',
+                        description: 'Можно скармливать pdf/md вместо текста'
+                    },
+                    'image-creation': {
+                        label: '🎨 Создание картинок',
+                        badge: 'badge-warning',
+                        description: 'Можно генерировать картинки'
+                    },
+                    'video-creation': {
+                        label: '🎥 Создание видео',
+                        badge: 'badge-primary',
+                        description: 'Можно генерировать видео'
+                    },
+                    code: {
+                        label: '💻 Генерация кода',
+                        badge: 'badge-info',
+                        description: 'Заточено под разработку'
+                    }
+                }
+            }">
+                <thead>
+                <tr>
+                    <th>Сервис</th>
+                    <th>Фичи</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <template x-for="chat in chats" :key="chat.name">
+                    <tr>
+                        <td>
+                            <a :href="chat.url">
+                                <span x-text="chat.name"></span>
+                            </a>
+                            <sup x-show="chat.vpn">[vpn]</sup>
+
+                        </td>
+                        <td class="flex flex-wrap gap-1">
+                            <template x-for="feature in chat.features" :key="feature">
+                                <span class="badge badge-soft badge-xs lg:badge-sm" :class="features[feature].badge">
+                                    <div class="lg:tooltip" :data-tip="features[feature].description">
+                                        <span x-text="features[feature].label"></span>
+                                    </div>
+                                </span>
+                            </template>
+                        </td>
+                    </tr>
+                </template>
+
+
+                </tbody>
+            </table>
+        </div>
+        <h2>Кодинг</h2>
+        <ul>
+            <li><a href="https://www.cursor.com/">Cursor</a> – лучший, <i>пока что</i>, ии редактор кода; топ фича -
+                сканирование
+                кодовой базы и изменение сразу нескольких файлов
+            </li>
+        </ul>
+
+        <h3>Как оплатить</h3>
+        <ul class="list-disc list-outside">
+            <li><a href="https://t.me/paymentserv_bot">@paymentserv_bot</a></li>
+        </ul>
+
+        <h2>Музыка</h2>
+        <ul>
+            <li>
+                <a href="https://suno.com/">Suno</a> - ии-генератор музыки
+            </li>
+        </ul>
+
+        <h2>Прочие тулзы</h2>
+        <ul>
+            <li><a href="https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview">ChatGPT for
+                Excel</a></li>
+        </ul>
+
+
+    </article>
+</Layout>
