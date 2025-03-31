@@ -1,7 +1,6 @@
 node_modules
 .venv
 poty-blog-8ecdcdc42b5e.json
-docs
 .env
 ~$*
 tv_ta.db
