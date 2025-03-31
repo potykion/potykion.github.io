@@ -1,0 +1,35 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 2025/package-lock.json
+
+      - name: Install dependencies
+        run: cd 2025 && npm ci
+
+      - name: Build
+        run: cd 2025 && npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: 2025/dist # Папка, в которую собирается проект согласно обновленному outDir в astro.config.mjs
+          branch: gh-pages # Ветка для публикации
+          clean: true # Удалить старые файлы в ветке gh-pages 
