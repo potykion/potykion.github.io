@@ -2,6 +2,7 @@
 const {title} = Astro.props;
 import "../styles/global.css";
 
+const currentPath = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
@@ -18,7 +19,9 @@ import "../styles/global.css";
 
 <div class="flex justify-center py-2">
     <div>
-        <a href="/" class="btn btn-sm lg:btn-base btn-link no-underline">∅</a>
+        {currentPath !== "/" && 
+            <a href="/" class="btn btn-sm lg:btn-base btn-link no-underline">∅</a>
+        }
     </div>
 </div>
 
