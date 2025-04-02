@@ -4,6 +4,35 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="potyk.io">
-    <h1>Sell your soul and die alone 💀</h1>
+    <h1 class="text-center text-balance">
+        <span class="rotating">💀</span>
+        Sell your soul and die alone
+        <span class="rotating">💀</span>
+    </h1>
+
+    <div class="flex gap-4">
+        <div class="grow text-center"><a href="/ai">ai</a></div>
+        <div class="grow text-center"><a href="/n/cv">cv</a></div>
+        <div class="grow text-center"><a href="/travel/ekb-2025">ekb 2025</a></div>
+    </div>
 
 </Layout>
+
+
+<style>
+    /* Styling for the rotating disk */
+.rotating {
+  display: inline-block; /* Ensures proper alignment and rotation */
+  animation: spin 2s linear infinite; /* Apply the animation */
+}
+
+/* Keyframes for the rotation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* Rotate to 360 degrees */
+  }
+}
+</style>

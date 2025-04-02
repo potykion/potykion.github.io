@@ -1,6 +1,5 @@
 ---
 layout: ../../layouts/Layout.astro
-
 ---
 
 # Лейбович Никита
