@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Данные о весе и ИМТ по датам
+const weightData = [
+  { date: '2024-08-27', weight: 81.5, bmi: 24.33634925 },
+  { date: '2024-09-17', weight: 80.1, bmi: 23.91830153 },
+  { date: '2024-10-01', weight: 78.6, bmi: 23.47039326 },
+  { date: '2024-10-03', weight: 79.1, bmi: 23.61969602 },
+  { date: '2024-10-09', weight: 79, bmi: 23.58983547 },
+  { date: '2024-10-15', weight: 78, bmi: 23.29122996 },
+  { date: '2024-10-19', weight: 78.2, bmi: 23.35095106 },
+  { date: '2024-10-29', weight: 78.6, bmi: 23.47039326 },
+  { date: '2024-10-31', weight: 78.4, bmi: 23.41067216 },
+  { date: '2024-11-05', weight: 77.9, bmi: 23.2613694 },
+  { date: '2024-11-16', weight: 80.6, bmi: 24.06760429 },
+  { date: '2024-11-21', weight: 80.1, bmi: 23.91830153 },
+  { date: '2024-11-28', weight: 79.5, bmi: 23.73913822 },
+  { date: '2024-12-03', weight: 78.9, bmi: 23.55997492 },
+  { date: '2024-12-05', weight: 79.8, bmi: 23.82871988 },
+  { date: '2024-12-10', weight: 80, bmi: 23.88844098 },
+  { date: '2024-12-12', weight: 80.4, bmi: 24.00788319 },
+  { date: '2024-12-17', weight: 79.9, bmi: 23.85858043 },
+  { date: '2024-12-19', weight: 79.9, bmi: 23.85858043 },
+  { date: '2025-01-09', weight: 80.3, bmi: 23.97802263 },
+  { date: '2025-01-13', weight: 81, bmi: 24.18704649 },
+  { date: '2025-01-16', weight: 81.3, bmi: 24.27662815 },
+  { date: '2025-01-20', weight: 80.6, bmi: 24.06760429 },
+  { date: '2025-01-27', weight: 80.4, bmi: 24.00788319 },
+  { date: '2025-01-31', weight: 82, bmi: 24.48565201 },
+  { date: '2025-02-03', weight: 80.8, bmi: 24.12732539 },
+  { date: '2025-02-11', weight: 81.2, bmi: 24.2467676 },
+  { date: '2025-02-13', weight: 82.5, bmi: 24.63495476 },
+  { date: '2025-02-17', weight: 81, bmi: 24.18704649 },
+  { date: '2025-02-18', weight: 83, bmi: 24.78425752 },
+  { date: '2025-02-24', weight: 81.3, bmi: 24.27662815 },
+  { date: '2025-02-27', weight: 81.8, bmi: 24.42593091 },
+  { date: '2025-03-04', weight: 81.4, bmi: 24.30648871 },
+  { date: '2025-03-15', weight: 80.3, bmi: 23.97802263 },
+  { date: '2025-03-20', weight: 81.7, bmi: 23.97802263 },
+  { date: '2025-03-27', weight: 82.2, bmi: 24.39607035 },
+  { date: '2025-03-31', weight: 82, bmi: 0 }
+];
+
+// Подготовка данных для передачи в скрипт
+const labels = weightData.map(entry => {
+  return entry.date;
+});
+const weights = weightData.map(entry => entry.weight);
+---
+
+<Layout title="Здоровье">
+  <h1>Здоровье</h1>
+  
+  <div>
+    <h2>Вес</h2>
+    <div style="height: 400px; width: 100%;">
+      <canvas id="weightChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Подключаем библиотеку -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Инициализируем график -->
+  <script define:vars={{ labels, weights, weightData }}>
+    document.addEventListener('DOMContentLoaded', () => {
+      const ctx = document.getElementById('weightChart');
+      if (ctx) {
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Вес',
+              data: weights,
+              borderColor: 'rgb(75, 192, 192)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              tension: 0.1,
+              fill: true
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              y: {
+                title: {
+                  display: true,
+                  text: 'Вес (кг)'
+                },
+                min: 77,
+                max: 84
+              },
+              x: {
+                title: {
+                  display: true,
+                  text: 'Дата'
+                },
+                ticks: {
+                  maxRotation: 45,
+                  minRotation: 45,
+                  autoSkip: true,
+                  maxTicksLimit: 20
+                }
+              }
+            },
+            plugins: {
+              tooltip: {
+                callbacks: {
+                  title: function(tooltipItems) {
+                    const index = tooltipItems[0].dataIndex;
+                    return new Date(weightData[index].date).toLocaleDateString('ru-RU');
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  </script>
+</Layout>
