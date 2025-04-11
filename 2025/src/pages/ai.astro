@@ -19,7 +19,11 @@ const chats = [
     {
         name: 'Duck.AI',
         url: 'https://duck.ai/',
-        features: []
+        features: ['private']
+    }, {
+        name: 'Venice',
+        url: 'https://venice.ai/',
+        features: ['private']
     },
     {
         name: 'Le Chat',
@@ -56,6 +60,12 @@ const chats = [
         name: 'GigaChat',
         url: 'https://giga.chat/',
         features: ['voice']
+    },
+    {
+        name: 'GlobalGPT',
+        url: 'https://glbgpt.com/',
+        features: ["aggregator"],
+
     }
 ];
 
@@ -99,27 +109,38 @@ const features = {
         label: '💻 Генерация кода',
         badge: 'badge-info',
         description: 'Заточено под разработку'
+    },
+    private: {
+        label: "🔒 Приватный",
+        badge: 'badge-warning',
+        description: 'Данные не передаются'
+    },
+    aggregator: {
+        label: "🕸️ Агрегатор",
+        badge: 'badge-info',
+        description: 'Много разных моделек'
     }
+
 };
 ---
 <Layout title="AI">
 
-        <h1 class="!mb-0">AI <s>SLOP</s></h1>
+    <h1 class="!mb-0">AI <s>SLOP</s></h1>
 
-        <cite>Тут про всякие ИИ тулзы</cite>
+    <cite>Тут про всякие ИИ тулзы</cite>
 
-        <h2 class="!mb-0">Чаты</h2>
+    <h2 class="!mb-0">Чаты</h2>
 
-        <div class="overflow-x-auto ">
-            <table class="table table-xs lg:table-md table-zebra !my-0">
-                <thead>
-                <tr>
-                    <th>Сервис</th>
-                    <th>Фичи</th>
-                </tr>
-                </thead>
-                <tbody>
-                {chats.map(chat => (
+    <div class="overflow-x-auto ">
+        <table class="table table-xs lg:table-md table-zebra !my-0">
+            <thead>
+            <tr>
+                <th>Сервис</th>
+                <th>Фичи</th>
+            </tr>
+            </thead>
+            <tbody>
+            {chats.map(chat => (
                     <tr>
                         <td>
                             <a href={chat.url}>
@@ -129,7 +150,7 @@ const features = {
                         </td>
                         <td class="flex flex-wrap gap-1">
                             {chat.features && chat.features.map(feature => (
-                                <span class={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
+                                    <span class={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
                                     <div class="lg:tooltip" data-tip={features[feature]?.description}>
                                         {features[feature]?.label}
                                     </div>
@@ -139,31 +160,66 @@ const features = {
                     </tr>
                 ))}
                 </tbody>
-            </table>
-        </div>
-        <h2>Кодинг</h2>
-        <ul>
-            <li><a href="https://www.cursor.com/">Cursor</a> – лучший, <i>пока что</i>, ии редактор кода; топ фича -
-                сканирование
-                кодовой базы и изменение сразу нескольких файлов
-            </li>
-        </ul>
+                </table>
+                </div>
 
-        <h3>Как оплатить</h3>
-        <ul class="list-disc list-outside">
-            <li><a href="https://t.me/paymentserv_bot">@paymentserv_bot</a></li>
-        </ul>
 
-        <h2>Музыка</h2>
-        <ul>
-            <li>
-                <a href="https://suno.com/">Suno</a> - ии-генератор музыки
-            </li>
-        </ul>
+                <h2>Кодинг</h2>
+                <h3>IDE</h3>
+                <ul>
+                    <li><a href="https://www.cursor.com/">Cursor</a> — лучший, <i>пока что</i>, ии редактор кода
 
-        <h2>Прочие тулзы</h2>
-        <ul>
-            <li><a href="https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview">ChatGPT for
-                Excel</a></li>
-        </ul>
-</Layout>
+                        <ul>
+                            <li>
+                                Топ фича — сканирование кодовой базы и изменение сразу нескольких файлов
+                            </li>
+                        </ul>
+
+                    </li>
+
+
+                    <li>
+                        <a href="https://windsurf.com/">Windsurf</a> — аналог Cursor + плагин на IDEA — <a
+                            href="https://windsurf.com/blog/windsurf-wave-7">Cascade</a> (но не в России)
+                    </li>
+                </ul>
+                <h3>Фронтенд Тулзы</h3>
+                <ul>
+                    <li>
+                        <a href="https://v0.dev/">v0</a> — дизайн компонентов с помощью промтов
+
+                    </li>
+                    <li>
+                        <a href="https://21st.dev/">21st.dev</a> — галерея компонентов, которые можно интегрировать себе
+                        с помощью Cursor
+                    </li>
+                    <li>
+                        <a href="https://bolt.new">bolt.new</a> — генерирует целые сайты на основе промтов
+                    </li>
+                </ul>
+
+                <h2>Музыка</h2>
+                <ul>
+                    <li>
+                        <a href="https://suno.com/">Suno</a> - ии-генератор музыки
+                    </li>
+                </ul>
+
+                <h2>Работа с картинками</h2>
+                <ul>
+
+                    <li>
+                        <a href="https://photes.io/">photes.io</a> — Turn photos into notes with AI
+
+
+                    </li>
+                </ul>
+
+
+                <h2>Прочие тулзы</h2>
+                <ul>
+                    <li><a href="https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview">ChatGPT
+                        for
+                        Excel</a></li>
+                </ul>
+                </Layout>
