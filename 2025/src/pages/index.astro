@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
 ---
 
 <Layout title="potyk.io">
@@ -10,12 +9,37 @@ import Layout from '../layouts/Layout.astro';
         <span class="rotating">💀</span>
     </h1>
 
-    <div class="flex gap-4">
-        <div class="grow text-center"><a href="/ai">ai</a></div>
-        <div class="grow text-center"><a href="/n/cv">cv</a></div>
-        <div class="grow text-center"><a href="/kino">kino</a></div>
-        <div class="grow text-center"><a href="/health">health</a></div>
-        <div class="grow text-center"><a href="/travel/ekb-2025">ekb 2025</a></div>
+    <div class="flex  flex-col gap-2">
+        <a href="/ai" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                ai
+            </div>
+        </a>
+        <a href="/n/cv" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                cv
+            </div>
+        </a>
+        <a href="/kino" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                kino
+            </div>
+        </a>
+        <a href="/health" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                health
+            </div>
+        </a>
+        <a href="/travel/ekb-2025" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                ekb 2025
+            </div>
+        </a>
+        <a href="https://docs.google.com/document/d/1Aa7qA0gaUu6iAomZ81jRRikGfBdZ2Rc_TRs5B3J1gF0/edit?usp=sharing" class="!no-underline">
+            <div class="text-center border-2 rounded p-1">
+                beer:guide
+            </div>
+        </a>
     </div>
 
 </Layout>
@@ -23,18 +47,18 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
     /* Styling for the rotating disk */
-.rotating {
-  display: inline-block; /* Ensures proper alignment and rotation */
-  animation: spin 2s linear infinite; /* Apply the animation */
-}
+    .rotating {
+        display: inline-block; /* Ensures proper alignment and rotation */
+        animation: spin 2s linear infinite; /* Apply the animation */
+    }
 
-/* Keyframes for the rotation */
-@keyframes spin {
-  from {
-    transform: rotate(0deg); /* Start at 0 degrees */
-  }
-  to {
-    transform: rotate(360deg); /* Rotate to 360 degrees */
-  }
-}
+    /* Keyframes for the rotation */
+    @keyframes spin {
+        from {
+            transform: rotate(0deg); /* Start at 0 degrees */
+        }
+        to {
+            transform: rotate(360deg); /* Rotate to 360 degrees */
+        }
+    }
 </style>
