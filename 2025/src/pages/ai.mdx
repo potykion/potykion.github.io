@@ -1,0 +1,197 @@
+---
+layout: ../layouts/Layout.astro
+title: AI
+---
+
+
+export const chats = [
+    {
+        name: 'ChatGPT',
+        url: 'https://chatgpt.com/',
+        vpn: true,
+        features: ['web', 'thinking', 'voice']
+    },
+    {
+        name: 'Perplexity',
+        url: 'https://www.perplexity.ai/',
+        features: ['web', 'thinking', 'image', 'document']
+    },
+    {
+        name: 'Duck.AI',
+        url: 'https://duck.ai/',
+        features: ['private']
+    }, {
+        name: 'Venice',
+        url: 'https://venice.ai/',
+        features: ['private']
+    },
+    {
+        name: 'Le Chat',
+        url: 'https://chat.mistral.ai/chat',
+        features: ['web', 'image-creation', 'image', 'document']
+    },
+    {
+        name: 'Deepseek',
+        url: 'https://deepseek.com/chat',
+        features: ['web', 'thinking']
+    },
+    {
+        name: 'Qwen',
+        url: 'https://chat.qwenlm.ai/',
+        features: ['web', 'thinking', 'image', 'document', 'image-creation', 'video-creation']
+    },
+    {
+        name: 'Gemini',
+        url: 'https://chat.gemini.ai/',
+        vpn: true,
+        features: ['thinking', 'image', 'document']
+    },
+    {
+        name: 'Phind',
+        url: 'https://www.phind.com/',
+        features: ['web', 'code']
+    },
+    {
+        name: 'Яндекс Нейро',
+        url: 'https://ya.ru/',
+        features: ['web']
+    },
+    {
+        name: 'GigaChat',
+        url: 'https://giga.chat/',
+        features: ['voice']
+    },
+    {
+        name: 'GlobalGPT',
+        url: 'https://glbgpt.com/',
+        features: ["aggregator"],
+    }
+];
+
+export const features = {
+    web: {
+        label: '🌐 Веб-поиск',
+        badge: 'badge-info',
+        description: 'Поиск в Интернете'
+    },
+    thinking: {
+        label: '🧠 Думанье',
+        badge: 'badge-secondary',
+        description: 'aka Reasoning'
+    },
+    voice: {
+        label: '🗣️ Голосовой ввод',
+        badge: 'badge-primary',
+        description: 'Можно болтать с ИИ'
+    },
+    image: {
+        label: '🖼️ Парс картинок',
+        badge: 'badge-warning',
+        description: 'Можно скармливать картинки вместо текста'
+    },
+    document: {
+        label: '📄 Парс документов',
+        badge: '',
+        description: 'Можно скармливать pdf/md вместо текста'
+    },
+    'image-creation': {
+        label: '🎨 Создание картинок',
+        badge: 'badge-warning',
+        description: 'Можно генерировать картинки'
+    },
+    'video-creation': {
+        label: '🎥 Создание видео',
+        badge: 'badge-primary',
+        description: 'Можно генерировать видео'
+    },
+    code: {
+        label: '💻 Генерация кода',
+        badge: 'badge-info',
+        description: 'Заточено под разработку'
+    },
+    private: {
+        label: "🔒 Приватный",
+        badge: 'badge-warning',
+        description: 'Данные не передаются'
+    },
+    aggregator: {
+        label: "🕸️ Агрегатор",
+        badge: 'badge-info',
+        description: 'Много разных моделек'
+    }
+};
+
+# AI <s>SLOP</s>
+
+<cite>Тут про всякие ИИ тулзы</cite>
+
+## Чаты
+
+<div className="overflow-x-auto">
+  <table className="table table-xs lg:table-md table-zebra !my-0">
+    <thead>
+      <tr>
+        <th>Сервис</th>
+        <th>Фичи</th>
+      </tr>
+    </thead>
+    <tbody>
+      {chats.map(chat => (
+        <tr key={chat.name}>
+          <td>
+            <a href={chat.url}>{chat.name}</a> {chat.vpn && <sup>[vpn]</sup>}
+          </td>
+          <td className="flex flex-wrap gap-1">
+            {chat.features && chat.features.map(feature => (
+              <span key={feature} className={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
+                <div className="lg:tooltip" data-tip={features[feature]?.description}>
+                  {features[feature]?.label}
+                </div>
+              </span>
+            ))}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+## Кодинг
+
+### IDE
+
+- [Cursor](https://www.cursor.com/) — лучший, *пока что*, ии редактор кода
+- <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> [Windsurf](https://windsurf.com/) — аналог Cursor + плагин на IDEA — [Cascade](https://windsurf.com/blog/windsurf-wave-7)
+- <sup>[vpn]</sup> [JetBrains AI Assistant + Junie](https://www.jetbrains.com/ai/) - ии-агент от JetBrains
+
+### Фронтенд Компоненты
+
+- [v0](https://v0.dev/) — дизайн компонентов с помощью промтов
+- [21st.dev](https://21st.dev/) — галерея компонентов, которые можно интегрировать себе с помощью Cursor
+
+### Целиковые сайты
+
+> Генерация целых сайтов на основе промтов
+
+- [bolt.new](https://bolt.new)
+- [lovable.dev](https://lovable.dev/)
+
+## Музыка
+
+- [Suno](https://suno.com/) - ии-генератор музыки
+
+## Картинки
+
+### Генераторы картинок
+
+- [ideogram.ai](https://ideogram.ai/t/explore)
+- [hailuoai.video](https://hailuoai.video/)
+
+### Редакторы
+
+- [fotor.com](https://www.fotor.com/ai-image-generator/)
+- [photes.io](https://photes.io/) — Turn photos into notes with AI
+
+## Прочие тулзы
+
+- [ChatGPT for Excel](https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview) 
