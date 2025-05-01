@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import IndexLink from "../components/IndexLink.astro";
 ---
 
 <Layout title="potyk.io">
@@ -10,36 +11,16 @@ import Layout from '../layouts/Layout.astro';
     </h1>
 
     <div class="flex  flex-col gap-2">
-        <a href="/ai" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                ai
-            </div>
-        </a>
-        <a href="/n/cv" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                cv
-            </div>
-        </a>
-        <a href="/kino" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                kino
-            </div>
-        </a>
-        <a href="/health" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                health
-            </div>
-        </a>
-        <a href="/travel/ekb-2025" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                ekb 2025
-            </div>
-        </a>
-        <a href="https://docs.google.com/document/d/1Aa7qA0gaUu6iAomZ81jRRikGfBdZ2Rc_TRs5B3J1gF0/edit?usp=sharing" class="!no-underline">
-            <div class="text-center border-2 rounded p-1">
-                beer:guide
-            </div>
-        </a>
+        <IndexLink href="/ai">ai</IndexLink>
+        <IndexLink href="/n/cv">cv</IndexLink>
+        <IndexLink href="/kino">kino</IndexLink>
+        <IndexLink href="/health">health</IndexLink>
+        <IndexLink href="/travel">travel</IndexLink>
+        <IndexLink
+                href="https://docs.google.com/document/d/1Aa7qA0gaUu6iAomZ81jRRikGfBdZ2Rc_TRs5B3J1gF0/edit?usp=sharing">
+            beer:guide
+        </IndexLink>
+
     </div>
 
 </Layout>

@@ -15,12 +15,12 @@ const currentPath = Astro.url.pathname;
     <meta name="generator" content={Astro.generator}/>
     <title>{title}</title>
 </head>
-<body>
+<body class="pb-10">
 
 <div class="flex justify-center py-2">
     <div>
         {currentPath !== "/" && 
-            <a href="/" class="btn btn-sm lg:btn-base btn-link no-underline">∅</a>
+            <a href="/" class="btn btn-sm lg:btn-base btn-link no-underline text-xl">∅</a>
         }
     </div>
 </div>
@@ -29,6 +29,9 @@ const currentPath = Astro.url.pathname;
 
     <slot/>
 </article>
+
+
+
 </body>
 </html>
 
