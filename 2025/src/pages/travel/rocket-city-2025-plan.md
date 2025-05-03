@@ -22,3 +22,4 @@
 
 - [Зерна](https://yandex.ru/maps/-/CHrinZ6S)
 - [Vaffel](https://yandex.ru/maps/-/CHrin61G)
+- [Hot Black](https://yandex.ru/maps/-/CHrirJOz)
