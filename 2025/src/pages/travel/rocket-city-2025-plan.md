@@ -1,3 +1,7 @@
+---
+layout: ../../layouts/Layout.astro
+---
+
 # Королев 2025
 
 ## Бары
