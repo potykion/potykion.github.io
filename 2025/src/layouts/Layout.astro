@@ -48,5 +48,44 @@ const currentPath = Astro.url.pathname;
     article {
         overflow-wrap: break-word;
         word-wrap: break-word;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Правила для изображений */
+    img {
+        max-height: 100%;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+    /* Правила для прокручиваемых flex-контейнеров */
+    .flex, div[class*="flex"] {
+        display: flex;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 10px;
+        max-width: 100%;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Стили для скроллбара */
+    .flex::-webkit-scrollbar, div[class*="flex"]::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .flex::-webkit-scrollbar-track, div[class*="flex"]::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+    
+    .flex::-webkit-scrollbar-thumb, div[class*="flex"]::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    /* Правила для всех потенциальных контейнеров изображений */
+    div {
+        max-width: 100%;
+        overflow-wrap: break-word;
     }
 </style>
