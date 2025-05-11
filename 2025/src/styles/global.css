@@ -24,3 +24,11 @@ h2 {
 h3 {
     @apply my-0 lg:mt-2 lg:mb-0;
 }
+h4 {
+    @apply my-2;
+}
+
+article.prose {
+    /* Фикс view-port для оч длинных ссылок */
+    overflow-wrap: break-word;
+}
