@@ -36,5 +36,17 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <style>
+    /* Обработка длинных ссылок */
+    a {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        hyphens: auto;
+    }
 
+    /* Убедимся, что контент не выходит за пределы контейнера */
+    article {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
 </style>
