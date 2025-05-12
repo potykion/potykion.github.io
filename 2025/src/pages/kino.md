@@ -44,6 +44,7 @@ layout: ../layouts/Layout.astro
     - [На игле 2](https://www.kinopoisk.ru/film/744776/)
 - [Грязь](https://www.kinopoisk.ru/film/467293/)
 - [Страх и ненависть в Лас-Вегасе](https://www.kinopoisk.ru/film/4385/)
+  - [Обед нагишом](https://www.kinopoisk.ru/film/7576/)
 - [99 франков](https://www.kinopoisk.ru/film/262771/)
 - [Ананасовый экспресс](https://www.kinopoisk.ru/film/279596/)
 - [Укуренные](https://www.kinopoisk.ru/film/4411/)
