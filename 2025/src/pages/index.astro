@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import IndexLink from "../components/IndexLink.astro";
+import PillLink from "../components/PillLink.astro";
 ---
 
 <Layout title="potyk.io">
@@ -10,18 +11,18 @@ import IndexLink from "../components/IndexLink.astro";
         <span class="rotating">💀</span>
     </h1>
 
-    <div class="flex  flex-col gap-2">
-        <IndexLink href="/ai">ai</IndexLink>
-        <IndexLink href="/yt">yt</IndexLink>
-        <IndexLink href="/n/cv">cv</IndexLink>
-        <IndexLink href="/life">life</IndexLink>
-        <IndexLink href="/kino">kino</IndexLink>
-        <IndexLink href="/invest">invest</IndexLink>
-        <IndexLink href="/travel">travel</IndexLink>
-        <IndexLink href="/health">health</IndexLink>
-        <IndexLink href="/bypass">bypass</IndexLink>
-        <IndexLink href="/thoughts">thoughts</IndexLink>
-        <IndexLink href="https://docs.google.com/document/d/1Aa7qA0gaUu6iAomZ81jRRikGfBdZ2Rc_TRs5B3J1gF0/edit?usp=sharing">beer:guide</IndexLink>
+    <div class="flex flex-wrap gap-2 justify-center">
+        <PillLink href="/ai">ai</PillLink>
+        <PillLink href="/yt">yt</PillLink>
+        <PillLink href="/n/cv">cv</PillLink>
+        <PillLink href="/life">life</PillLink>
+        <PillLink href="/kino">kino</PillLink>
+        <PillLink href="/invest">invest</PillLink>
+        <PillLink href="/travel">travel</PillLink>
+        <PillLink href="/health">health</PillLink>
+        <PillLink href="/bypass">bypass</PillLink>
+        <PillLink href="/thoughts">thoughts</PillLink>
+        <PillLink href="https://docs.google.com/document/d/1Aa7qA0gaUu6iAomZ81jRRikGfBdZ2Rc_TRs5B3J1gF0/edit?usp=sharing">beer:guide</PillLink>
 
     </div>
 
