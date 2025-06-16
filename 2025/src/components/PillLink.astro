@@ -1,0 +1,9 @@
+---
+const {href} = Astro.props;
+---
+
+<a href={href} class="!no-underline">
+    <div class="btn btn-primary btn-soft btn-sm">
+        <slot/>
+    </div>
+</a>

@@ -1,25 +1,36 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import IndexLink from "../../components/IndexLink.astro";
+import PillLink from "../../components/PillLink.astro";
 ---
 
 <Layout title="travel">
-    <h1 class="text-center text-balance !mt-[40vh]">
-        тревел
+    <h1 class=" text-balance !mt-[30vh]">
+        Тревел
     </h1>
 
-    <div class="flex  flex-col gap-2">
-        <IndexLink href="/travel/ekb-2025">ekb-2025</IndexLink>
-        <IndexLink href="/travel/bugtown-2025">bugtown-2025</IndexLink>
-        <IndexLink href="/travel/rocket-city-2025">rocket-city-2025</IndexLink>
-        <IndexLink href="/travel/tver-2025">tver-2025</IndexLink>
+    <div>
+        <PillLink href="/travel/guide">guide</PillLink>
+    </div>
+    <br>
+
+    <div class="flex flex-wrap gap-2">
+        <kbd class="kbd kbd-xl">2025</kbd>:
+        <PillLink href="/travel/ekb-2025">ekb</PillLink>
+        <PillLink href="/travel/bugtown-2025">bugtown</PillLink>
+        <PillLink href="/travel/rocket-city-2025">rocket-city</PillLink>
+        <PillLink href="/travel/tver-2025">tver</PillLink>
+        <PillLink href="/travel/2025/kalik-2025">kalik</PillLink>
+
     </div>
 
-    <h2>Plans</h2>
+    <!--<hr>-->
 
-    <div class="flex  flex-col gap-2">
-        <IndexLink href="/travel/kalik-2025-plan">kalik</IndexLink>
+    <!--<h2>Планы</h2>-->
 
-    </div>
+    <!--<div class="flex flex-wrap gap-2">-->
+    <!--    <PillLink href="/travel/plans/kalik-2025-plan">kalik</PillLink>-->
+
+    <!--</div>-->
 
 </Layout>
