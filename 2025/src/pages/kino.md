@@ -9,6 +9,8 @@ layout: ../layouts/Layout.astro
 
 ## Про то как пацаны ебланят вайбят, творят бардак
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QWaWsgBbFsA?si=EtWKRQ-4d8tNKMEH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 - [Ненависть](https://www.kinopoisk.ru/film/9448/)
 - [Футбольные гладиаторы](https://www.kinopoisk.ru/film/398049/)
 - [Город бога](https://www.kinopoisk.ru/film/439/)
@@ -22,6 +24,8 @@ layout: ../layouts/Layout.astro
 
 > Когда упитый, упоротый, больной, и время уже под вечер-нось, и хочется кинчика, которого в трезвом состоянии не
 > прочувствуешь
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-kyAucCCiRI?si=GBkQffpMM8V_waOS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 - [Экстаз](https://www.kinopoisk.ru/film/1118214/)
 - [Вход в пустоту](https://www.kinopoisk.ru/film/406477/)

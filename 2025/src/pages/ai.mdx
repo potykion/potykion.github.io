@@ -109,32 +109,33 @@ export const features = {
 ## Чаты
 
 <div className="overflow-x-auto">
-  <table className="table table-xs lg:table-md table-zebra !my-0">
-    <thead>
-      <tr>
-        <th>Сервис</th>
-        <th>Фичи</th>
-      </tr>
-    </thead>
-    <tbody>
-      {chats.map(chat => (
-        <tr key={chat.name}>
-          <td>
-            <a href={chat.url}>{chat.name}</a> {chat.vpn && <sup>[vpn]</sup>}
-          </td>
-          <td className="flex flex-wrap gap-1">
-            {chat.features && chat.features.map(feature => (
-              <span key={feature} className={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
+    <table className="table table-xs lg:table-md table-zebra !my-0">
+        <thead>
+        <tr>
+            <th>Сервис</th>
+            <th>Фичи</th>
+        </tr>
+        </thead>
+        <tbody>
+        {chats.map(chat => (
+            <tr key={chat.name}>
+                <td>
+                    <a href={chat.url}>{chat.name}</a> {chat.vpn && <sup>[vpn]</sup>}
+                </td>
+                <td className="flex flex-wrap gap-1">
+                    {chat.features && chat.features.map(feature => (
+                        <span key={feature}
+                              className={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
                 <div className="lg:tooltip" data-tip={features[feature]?.description}>
                   {features[feature]?.label}
                 </div>
               </span>
-            ))}
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+                    ))}
+                </td>
+            </tr>
+        ))}
+        </tbody>
+    </table>
 </div>
 
 
@@ -172,9 +173,11 @@ export const features = {
 - [bolt.new](https://bolt.new)
 - [lovable.dev](https://lovable.dev/)
 
-## Голос / Звук
+## Медиа контент
 
-### Транскрибция
+### Голос / Звук
+
+#### Транскрибция
 
 >Транскрибция - перевод голоса в текст
 
@@ -184,22 +187,29 @@ export const features = {
 - https://www.whispertranscribe.com/
 - https://evernote.com/ai-transcribe
 
-### Генерация голоса
+#### Генерация голоса
 
 - https://elevenlabs.io/ - *The most realistic voice AI platform*
 
-### Музыка
+#### Музыка
 
 - [Suno](https://suno.com/) - ии-генератор музыки
+- https://www.udio.com/
 
-## Картинки
+### Картинки и Видео
 
-### Генераторы картинок
+#### Генераторы картинок
 
 - [ideogram.ai](https://ideogram.ai/t/explore)
 - [hailuoai.video](https://hailuoai.video/)
+- @kandinsky21_bot, @shedevrum_aibot, midjourney.com, sora.com, chatgpt.com, klingai.com, krea.ai, recraft.ai, playground.com, stablediffusionweb.com
 
-### Редакторы
+#### Генераторы видео
+
+- https://www.klingai.com/global/\
+- https://www.heygen.com/
+
+#### Фото Редакторы
 
 - [FLUX Playground/Kontext](https://playground.bfl.ai/image/generate) - ИИ-редактор
 - [fotor.com](https://www.fotor.com/ai-image-generator/)
@@ -211,7 +221,7 @@ export const features = {
 
 ## ИИ-агенты
 
->Чатик с возможностью выполнять действия (отправка писем, построение табличек). Иными словами, автоматизация естественным языком.
+>ИИ-агент -- Чатик с возможностью выполнять действия (отправка писем, построение табличек). Иными словами, автоматизация естественным языком.
 
 - [manus](https://manus.im/) <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> - дженерал ии-агент
 - [n8n](https://n8n.io/) - визуальный редактор ии-агентов
@@ -220,6 +230,10 @@ export const features = {
 >MCP - Model Context Protocol - апишка на стероидах для скармливания ии
 
 - [langchain](https://github.com/langchain-ai/langchain) - python-фреймворк для декларации функций, которые будет дергать ии-агент
+- [pipedream](https://pipedream.com/) - low-code платформа для создания workflow / triggered serverless
+    - [Пример](https://www.youtube.com/watch?v=Y-4byg2pXL0): ендпоинт, получающий в query-параметре название покемона, затем идет через node в покемон апи, затем просит чат-гпт интерпретировать результат; а потом еще прикрутили бд, и генерацию картинок и отправку в слак
+    - есть mcp: то есть можно дергать воркфлоу в чатике с чат гпт
+
 
 ## Терминология
 
