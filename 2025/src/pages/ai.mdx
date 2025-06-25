@@ -3,7 +3,6 @@ layout: ../layouts/Layout.astro
 title: AI
 ---
 
-
 export const chats = [
     {
         name: 'ChatGPT',
@@ -46,6 +45,32 @@ export const chats = [
         name: 'GlobalGPT',
         url: 'https://glbgpt.com/',
         features: ["aggregator"],
+    }
+];
+
+export const russianChats = [
+    {
+        name: 'Яндекс Нейро',
+        url: 'https://ya.ru/',
+        features: ['web', 'image-creation']
+    },
+    {
+        name: 'GigaChat',
+        url: 'https://giga.chat/',
+        features: ['web', 'thinking', 'image']
+    }
+];
+
+export const privateChats = [
+    {
+        name: 'Duck.AI',
+        url: 'https://duck.ai/',
+        features: ['private']
+    },
+    {
+        name: 'Venice',
+        url: 'https://venice.ai/',
+        features: ['private']
     }
 ];
 
@@ -102,146 +127,129 @@ export const features = {
     }
 };
 
+export const ChatTable = ({ chats }) => (
+    <div className="overflow-x-auto">
+        <table className="table table-xs lg:table-md table-zebra !my-0">
+            <thead>
+            <tr>
+                <th>Сервис</th>
+                <th>Фичи</th>
+            </tr>
+            </thead>
+            <tbody>
+            {chats.map(chat => (
+                <tr key={chat.name}>
+                    <td>
+                        <a href={chat.url}>{chat.name}</a> {chat.vpn && <sup>[vpn]</sup>}
+                    </td>
+                    <td className="flex flex-wrap gap-1">
+                        {chat.features && chat.features.map(feature => (
+                            <span key={feature}
+                                  className={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
+                    <div className="lg:tooltip" data-tip={features[feature]?.description}>
+                      {features[feature]?.label}
+                    </div>
+                  </span>
+                        ))}
+                    </td>
+                </tr>
+            ))}
+            </tbody>
+        </table>
+    </div>
+);
+
 # AI <s>SLOP</s>
 
 <cite>Тут про всякие ИИ тулзы</cite>
 
-## Чаты
+## 💬 Чаты и ассистенты
 
-<div className="overflow-x-auto">
-    <table className="table table-xs lg:table-md table-zebra !my-0">
-        <thead>
-        <tr>
-            <th>Сервис</th>
-            <th>Фичи</th>
-        </tr>
-        </thead>
-        <tbody>
-        {chats.map(chat => (
-            <tr key={chat.name}>
-                <td>
-                    <a href={chat.url}>{chat.name}</a> {chat.vpn && <sup>[vpn]</sup>}
-                </td>
-                <td className="flex flex-wrap gap-1">
-                    {chat.features && chat.features.map(feature => (
-                        <span key={feature}
-                              className={`badge badge-soft badge-xs lg:badge-sm ${features[feature]?.badge || ''}`}>
-                <div className="lg:tooltip" data-tip={features[feature]?.description}>
-                  {features[feature]?.label}
-                </div>
-              </span>
-                    ))}
-                </td>
-            </tr>
-        ))}
-        </tbody>
-    </table>
-</div>
+### Основные чаты
+<ChatTable chats={chats} />
 
+### Русские чаты
+<ChatTable chats={russianChats} />
 
-### Русские
+### Приватные чаты
+<ChatTable chats={privateChats} />
 
-- [Яндекс Нейро](https://ya.ru/)
-- [GigaChat](https://giga.chat/)
+## 💻 Разработка
 
-### Приватные
+### Лучшие модели для кодинга
+- **Claude Sonnet 4** (на 02.06) — текущий лидер
 
-- [Duck.AI](https://duck.ai/)
-- [Venice](https://venice.ai/)
+### IDE и редакторы
+- **[Cursor](https://www.cursor.com/)** — лучший ИИ-редактор кода на данный момент
+- **[Windsurf](https://windsurf.com/)** <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> — аналог Cursor + плагин на IDEA — [Cascade](https://windsurf.com/blog/windsurf-wave-7)
+- **[JetBrains AI Assistant + Junie](https://www.jetbrains.com/ai/)** <sup>[vpn]</sup> — ИИ-агент от JetBrains
 
-## Кодинг
+### Фронтенд и компоненты
+- **[v0](https://v0.dev/)** — дизайн компонентов с помощью промтов
+- **[21st.dev](https://21st.dev/)** — галерея компонентов для интеграции с Cursor
 
-### Модели для кодинга
+### Генерация целых сайтов
+- **[bolt.new](https://bolt.new)** — создание сайтов по промтам
+- **[lovable.dev](https://lovable.dev/)** — аналогично bolt.new
 
-- Claude Sonnet 4 (на 02.06)
+## 🎨 Создание контента
 
-### IDE
-
-- [Cursor](https://www.cursor.com/) — лучший, *пока что*, ии редактор кода
-- [Windsurf](https://windsurf.com/) <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> — аналог Cursor + плагин на IDEA — [Cascade](https://windsurf.com/blog/windsurf-wave-7)
-- [JetBrains AI Assistant + Junie](https://www.jetbrains.com/ai/) <sup>[vpn]</sup> - ии-агент от JetBrains
-
-### Фронтенд Компоненты
-
-- [v0](https://v0.dev/) — дизайн компонентов с помощью промтов
-- [21st.dev](https://21st.dev/) — галерея компонентов, которые можно интегрировать себе с помощью Cursor
-
-### Целиковые сайты
-
-> Генерация целых сайтов на основе промтов
-
-- [bolt.new](https://bolt.new)
-- [lovable.dev](https://lovable.dev/)
-
-## Медиа контент
-
-### Голос / Звук
-
-#### Транскрибция
-
->Транскрибция - перевод голоса в текст
-
-- [Open AI whisper](https://github.com/openai/whisper)
-- https://riverside.fm/transcription
-- https://restream.io/tools/transcribe-audio-to-text
-- https://www.whispertranscribe.com/
-- https://evernote.com/ai-transcribe
+### Работа с аудио
+#### Транскрибация (голос → текст)
+- **[OpenAI Whisper](https://github.com/openai/whisper)**
+- **[Riverside.fm](https://riverside.fm/transcription)**
+- **[Restream](https://restream.io/tools/transcribe-audio-to-text)**
+- **[Whisper Transcribe](https://www.whispertranscribe.com/)**
+- **[Evernote AI](https://evernote.com/ai-transcribe)**
 
 #### Генерация голоса
+- **[ElevenLabs](https://elevenlabs.io/)**
 
-- https://elevenlabs.io/ - *The most realistic voice AI platform*
+#### Создание музыки
+- **[Suno](https://suno.com/)**
+- **[Udio](https://www.udio.com/)**
 
-#### Музыка
+### Работа с изображениями и видео
+#### Генерация изображений
+- **[Ideogram](https://ideogram.ai/t/explore)**
+- **[HailuoAI](https://hailuoai.video/)**
+- **Telegram-боты**: @kandinsky21_bot, @shedevrum_aibot
+- **Другие**: midjourney.com, sora.com, klingai.com, krea.ai, recraft.ai, playground.com
 
-- [Suno](https://suno.com/) - ии-генератор музыки
-- https://www.udio.com/
+#### Генерация видео
+- **[Kling AI](https://www.klingai.com/global/)**
+- **[HeyGen](https://www.heygen.com/)**
 
-### Картинки и Видео
+#### Редактирование фото
+- **[FLUX Playground](https://playground.bfl.ai/image/generate)**
+- **[Fotor](https://www.fotor.com/ai-image-generator/)**
+- **[Photes.io](https://photes.io/)** — превращение фото в заметки
 
-#### Генераторы картинок
+## 🤖 Автоматизация и агенты
 
-- [ideogram.ai](https://ideogram.ai/t/explore)
-- [hailuoai.video](https://hailuoai.video/)
-- @kandinsky21_bot, @shedevrum_aibot, midjourney.com, sora.com, chatgpt.com, klingai.com, krea.ai, recraft.ai, playground.com, stablediffusionweb.com
+### ИИ-агенты
+> ИИ-агент — чатик с возможностью выполнять действия (отправка писем, создание таблиц). Автоматизация естественным языком.
 
-#### Генераторы видео
+- **[Manus](https://manus.im/)** <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> — универсальный ИИ-агент
+- **[n8n](https://n8n.io/)** — визуальный редактор ИИ-агентов
+- **[Composio](https://composio.dev/)** — галерея MCP-инструментов
 
-- https://www.klingai.com/global/\
-- https://www.heygen.com/
+### Фреймворки и платформы
+- **[LangChain](https://github.com/langchain-ai/langchain)** — Python-фреймворк для создания ИИ-агентов
+- **[Pipedream](https://pipedream.com/)** — low-code платформа для создания workflow и triggered serverless
+  - [Пример workflow](https://www.youtube.com/watch?v=Y-4byg2pXL0): создание эндпоинта, который получает название покемона в query-параметре → обращается к Pokemon API → передает результат ChatGPT для интерпретации → сохраняет в БД + генерирует картинки + отправляет в Slack
+  - Поддерживает MCP: можно вызывать workflow прямо из чата с ChatGPT
 
-#### Фото Редакторы
+### Интеграции
+- **[ChatGPT for Excel](https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview)** — ИИ прямо в таблицах
 
-- [FLUX Playground/Kontext](https://playground.bfl.ai/image/generate) - ИИ-редактор
-- [fotor.com](https://www.fotor.com/ai-image-generator/)
-- [photes.io](https://photes.io/) — Turn photos into notes with AI
+## 📚 Обучение и справка
 
-## Прочие тулзы
+### Терминология
+- **RAG** — Retrieval Augmented Generation — поиск и передача кастомного контекста модели из векторной БД
+- **MCP** — Model Context Protocol — продвинутый API для передачи контекста ИИ
 
-- [ChatGPT for Excel](https://appsource.microsoft.com/en-my/product/office/WA200005271?tab=Overview)
-
-## ИИ-агенты
-
->ИИ-агент -- Чатик с возможностью выполнять действия (отправка писем, построение табличек). Иными словами, автоматизация естественным языком.
-
-- [manus](https://manus.im/) <sup className={"border-dashed border-b"} title="Извини, но ты живешь в России">[интжвр]</sup> - дженерал ии-агент
-- [n8n](https://n8n.io/) - визуальный редактор ии-агентов
-- [composio](https://composio.dev/) - галлерея mcp
-
->MCP - Model Context Protocol - апишка на стероидах для скармливания ии
-
-- [langchain](https://github.com/langchain-ai/langchain) - python-фреймворк для декларации функций, которые будет дергать ии-агент
-- [pipedream](https://pipedream.com/) - low-code платформа для создания workflow / triggered serverless
-    - [Пример](https://www.youtube.com/watch?v=Y-4byg2pXL0): ендпоинт, получающий в query-параметре название покемона, затем идет через node в покемон апи, затем просит чат-гпт интерпретировать результат; а потом еще прикрутили бд, и генерацию картинок и отправку в слак
-    - есть mcp: то есть можно дергать воркфлоу в чатике с чат гпт
-
-
-## Терминология
-
-- **RAG** -- Retrieval Augmented Generation -- поиск и передача кастомного контекста модельки из векторной бд
-
-
-## Материалы / Видосы
-
-- [📝 RAG (Retrieval Augmented Generation) — простое и понятное объяснение](https://habr.com/ru/articles/779526/)
-- [📹 N8N всё. Escalator AI всё делает сам, и сразу ;)](https://www.youtube.com/watch?v=l7Yii7ox8pc)
-- [📹 ИИ-агенты — вот что действительно изменит разработку. Пишем ИИ-агент на Python, LangChain и GigaChat](https://youtu.be/KFgwXXWT7sQ?si=0neznhjguvCZFc2x)
+### Полезные материалы
+- **[📝 RAG (Retrieval Augmented Generation) — простое и понятное объяснение](https://habr.com/ru/articles/779526/)** — понятная статья на Хабре
+- **[📹 N8N всё. Escalator AI всё делает сам, и сразу ;)](https://www.youtube.com/watch?v=l7Yii7ox8pc)** — сравнение инструментов
+- **[📹 ИИ-агенты — вот что действительно изменит разработку. Пишем ИИ-агент на Python, LangChain и GigaChat](https://youtu.be/KFgwXXWT7sQ?si=0neznhjguvCZFc2x)** — практическое руководство с LangChain и GigaChat
