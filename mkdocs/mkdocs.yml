@@ -1,0 +1,9 @@
+site_name: потик.ио
+
+theme:
+  name: material
+
+plugins:
+  - blog:
+      blog_dir: .
+
