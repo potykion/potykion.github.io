@@ -6,7 +6,8 @@ layout: ../../layouts/Layout.astro
 
 ## Python разработчик
 
-- Желаемая зарплата: 400 000 ₽ / мес. • 2500 ₽ / час • ИП
+[//]: # (- Желаемая зарплата: 400 000 ₽ / мес. • 2500 ₽ / час • ИП)
+
 - Навыки: Django • Flask • PostgreSQL • RabbitMQ • Redis
 - Open Source: [pydantic#444](https://github.com/pydantic/pydantic/pull/444) • [yc-sls-container-deploy#427](https://github.com/yc-actions/yc-sls-container-deploy/pull/427) • [typeshed#2278](https://github.com/python/typeshed/pull/2278)
 - Мои проекты: [jinja2xlsx](https://github.com/potykion/jinja2xlsx) • [my-vk-likes](https://github.com/potykion/my-vk-likes) • [repka](https://github.com/potykion/repka)
