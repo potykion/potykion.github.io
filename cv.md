@@ -1,12 +1,6 @@
----
-layout: ../../layouts/Layout.astro
----
-
 # Лейбович Никита
 
 ## Python разработчик
-
-[//]: # (- Желаемая зарплата: 400 000 ₽ / мес. • 2500 ₽ / час • ИП)
 
 - Навыки: Django • Flask • PostgreSQL • RabbitMQ • Redis
 - Open Source: [pydantic#444](https://github.com/pydantic/pydantic/pull/444) • [yc-sls-container-deploy#427](https://github.com/yc-actions/yc-sls-container-deploy/pull/427) • [typeshed#2278](https://github.com/python/typeshed/pull/2278)
@@ -16,7 +10,7 @@ layout: ../../layouts/Layout.astro
 
 ## Опыт работы
 
-### [Basis](https://basistech.ru/) • 2024 - ...
+### [Basis](https://basistech.ru/) • 2024 - 2026
 
 - Сфера:    IAAS 
 - Стек:    Bottle • ZeroMQ • Redis • libvirt 
