@@ -1,5 +1,3 @@
-# Лейбович Никита
-
 ## Python разработчик
 
 - Навыки: Django • Flask • PostgreSQL • RabbitMQ • Redis
