@@ -11,71 +11,141 @@
             font-family: Rubik;
         }
 
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px
+        }
 
+        .chip {
+            /*font-weight: bold;*/
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 5px
+        }
+
+        .proj {
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #e8e8e8
+        }
+
+        .proj:hover {
+            background: yellow;
+        }
+
+        .proj-title {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .proj-subtitle {
+            color: black;
+            font-style: italic;
+        }
     </style>
+
 </head>
 <body>
 
 <main>
 
-    <div style="margin-top: 30vh; margin-left: auto; margin-right: auto; max-width: 500px; text-align: center">
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center">
-        <h1 style="font-size: 48px; padding: 5px 10px; border-radius: 20px; margin-bottom: 0; font-style: italic">potyk.io</h1>
+    <div style="margin-top: 30vh; margin-left: auto; margin-right: auto; max-width: 500px; ">
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+            <h1 style="font-size: 48px; padding: 5px 10px; border-radius: 20px; margin-bottom: 0; font-style: italic; text-align: center">
+                potyk.io</h1>
         </div>
-        <p style="margin-top: 0; font-style: italic">Делаю свой интернет</p>
+        <p style="margin-top: 0; font-style: italic;text-align: center">Делаю свой интернет</p>
 
 
-        <div style="display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; align-items: center">
-            <a class="chip" target="_blank" href="/cv">/cv</a> •
-            
-            <a class="chip" target="_blank" href="http://84.201.131.244:5001/">src-e</a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/lines">lines</a> •
+        <div class="chips">
 
-            <!-- 8 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potykion.github.io"><mark>🏠 potyk-io</mark></a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-mu/">potyk-mu</a> •
 
-            <!-- 9 -->
-            <a class="chip" target="_blank" href="https://www.instagram.com/potyk.art"><mark>🖼 potyk-art</mark></a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-hub">potyk-hub</a> •
-            <a class="chip" target="_blank" href="https://potyk.io/pub/blog/">potyk-pub</a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-web">potyk-web</a> •
-
-            <!-- 10 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-arch">potyk-arch</a> •
-            <a class="chip" target="_blank" href="https://potyk.io/potyk-food/"><mark>🍕 potyk-food</mark></a> •
-            <a class="chip" target="_blank" href="https://t.me/potyk_news"><mark>📰 potyk-news</mark></a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/sqlite-api">sqlite-api</a> •
-
-            <!-- 11 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-ideas">potyk-ideas</a> •
-            <a class="chip" target="_blank" href="http://84.201.131.244:5003">potyk-stats</a> •
-
-            <!-- 12 -->
-            <a class="chip" target="_blank" href="http://84.201.131.244:5002"><mark>✨ potyk-dreams</mark></a> •
-
-            <!-- 13 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-gallery">potyk-gallery</a> •
-            <a class="chip" target="_blank" href="https://potyk.io/stories/">potyk-stories</a> •
-
-            <!-- 14 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-plz-stop">potyk-plz-stop</a> •
-
-            <!-- 15 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-assistant">potyk-assistant</a> •
-            
-            <!-- 16 -->
-            <a class="chip" target="_blank" href="https://github.com/potykion/flask-proj-templ">flask-proj-templ</a> •
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-food-guide">potyk-food-guide</a> •
-            
-            <a class="chip" target="_blank" href="https://github.com/potykion/potyk-entertainment">potyk-entertainment</a>
-            
         </div>
 
+        <div class="projects" style="">
+
+
+        </div>
 
     </div>
 </main>
 
 
 </body>
+
+<script>
+    const projects = [
+        {
+            title: "cv",
+            subtitle: 'Резюмеха',
+            url: '/cv'
+        },
+        {url: "http://84.201.131.244:5001/", title: "src-e", subtitle: "BitBucket (Non-Sucking) Client"},
+        {url: "https://github.com/potykion/lines", title: "lines", subtitle: 'Simply find lines within file without grep brain fvck'},
+        {url: "https://github.com/potykion/potykion.github.io", title: "potyk-io", mark: true, icon: '🏠', subtitle: 'This page repo'},
+        {url: "https://github.com/potykion/potyk-mu/", title: "potyk-mu", subtitle: 'Loved music collection'},
+        {url: "https://www.instagram.com/potyk.art", title: "potyk-art", mark: true, icon: '🖼', subtitle: 'Insta w ma pics'},
+        {url: "https://github.com/potykion/potyk-hub", title: "potyk-hub", subtitle: 'Random stuff'},
+        {url: "https://potyk.io/pub/blog/", title: "potyk-pub", subtitle: 'Share any md'},
+        {url: "https://github.com/potykion/potyk-web", title: "potyk-web", subtitle: "Collection of handy tools like video downloaders"},
+        {url: "https://github.com/potykion/potyk-arch", title: "potyk-arch", subtitle: 'Software architecture thoughts'},
+        {url: "https://potyk.io/potyk-food/", title: "potyk-food", mark: true, icon: '🍕', subtitle: 'Recipes'},
+        {url: "https://t.me/potyk_news", title: "potyk-news", mark: true, icon: '📰', subtitle: 'Daily project updates'},
+        {url: "https://github.com/potykion/sqlite-api", title: "sqlite-api", subtitle: 'Select * from table as json'},
+        {url: "https://github.com/potykion/potyk-ideas", title: "potyk-ideas", subtitle: 'Ideas graveyard'},
+        {url: "http://84.201.131.244:5003", title: "potyk-stats", subtitle: 'Abandoned daily stats'},
+        {url: "http://84.201.131.244:5002", title: "potyk-dreams", mark: true, icon: '✨', subtitle: 'Wine, travel, wishlists, sweets, etc.'},
+        {url: "https://github.com/potykion/potyk-gallery", title: "potyk-gallery", subtitle: 'Random layout'},
+        {url: "https://potyk.io/stories/", title: "potyk-stories", subtitle: 'WWWWIIIIPPPP TODODODORTOTOTOD'},
+        {url: "https://github.com/potykion/potyk-plz-stop", title: "potyk-plz-stop"},
+        {url: "https://github.com/potykion/potyk-assistant", title: "potyk-assistant"},
+        {url: "https://github.com/potykion/flask-proj-templ", title: "flask-proj-templ"},
+        {url: "https://github.com/potykion/potyk-food-guide", title: "potyk-food-guide"},
+        {url: "https://github.com/potykion/potyk-entertainment", title: "potyk-entertainme"},
+
+
+    ].toSorted((p1, p2) => p1.title.length - p2.title.length);
+
+
+    const chipsHtml = projects.map(
+        proj => {
+            let title = `${proj.title}`;
+            if (proj.icon) {
+                title = `${proj.icon} ${title}`
+            }
+            if (proj.mark) {
+                title = `<mark>${title}</mark>`
+            }
+
+
+            return `
+                <a class="chip" target="_blank" href="${proj.url}">
+
+    ${title}
+
+
+
+    </a>
+            `;
+        }
+    ).join(' • ')
+    document.querySelector('.chips').innerHTML = chipsHtml;
+
+    const projectsHtml = projects.map(
+        proj => ` <a class="proj" href="${proj.url}">
+                <div class="proj-title">${proj.title}</div>
+                <div class="proj-subtitle">${proj.subtitle}</div>
+            </a>`
+    ).join('')
+    document.querySelector('.projects').innerHTML = projectsHtml;
+</script>
+
 </html>
