@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>potyk.io</title>
-
     <style>
         body {
             font-family: Rubik;
         }
+
+
 
         .chips {
             display: flex;
@@ -51,62 +51,93 @@
             font-style: italic;
         }
     </style>
-
 </head>
 <body>
-
 <main>
-
     <div style="margin-top: 25vh; margin-left: auto; margin-right: auto; max-width: 500px; ">
         <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
             <h1 style="font-size: 48px; padding: 5px 10px; border-radius: 20px; margin-bottom: 0; font-style: italic; text-align: center">
                 potyk.io</h1>
         </div>
-        <p style="margin-top: 0; font-style: italic;text-align: center">Делаю свой интернет</p>
+        <p style="margin-top: 0; font-style: italic;text-align: center">Делаю свой интернет, свой идеальный мир 🌍</p>
 
-
-        <div class="chips">
-
-
-        </div>
-
-        <div class="projects" style="">
-
-
-        </div>
-
+        <div class="chips"></div>
+        <div class="projects"></div>
     </div>
 </main>
-
-
 </body>
-
 <script>
     const projects = [
         {title: "cv", subtitle: 'Резюмеха', url: '/cv'},
         {url: "http://84.201.131.244:5001/", title: "src-e", subtitle: "BitBucket (Non-Sucking) Client"},
         {url: "https://potyk.io/potyk-self/", title: "potyk-self", subtitle: "Всякое самопознание"},
-        {url: "https://github.com/potykion/lines", title: "lines", subtitle: 'Simply find lines within file without grep brain fvck'},
-        {url: "https://github.com/potykion/potykion.github.io", title: "potyk-io", mark: true, icon: '🏠', subtitle: 'This page repo'},
+        {
+            url: "https://github.com/potykion/lines",
+            title: "lines",
+            subtitle: 'Simply find lines within file without grep brain fvck'
+        },
+        {
+            url: "https://github.com/potykion/potykion.github.io",
+            title: "potyk-io",
+            mark: true,
+            icon: '🏠',
+            subtitle: 'This page repo'
+        },
         {url: "http://84.201.131.244:5004/", title: "potyk-mu", subtitle: 'Loved music collection'},
-        {url: "https://www.instagram.com/potyk.art", title: "potyk-art", mark: true, icon: '🖼', subtitle: 'Insta w ma pics'},
+        {
+            url: "https://www.instagram.com/potyk.art",
+            title: "potyk-art",
+            mark: true,
+            icon: '🖼',
+            subtitle: 'Insta w ma pics'
+        },
         {url: "https://github.com/potykion/potyk-hub", title: "potyk-hub", subtitle: 'Random stuff'},
         {url: "https://potyk.io/pub/blog/", title: "potyk-pub", subtitle: 'Share any md'},
-        {url: "https://github.com/potykion/potyk-web", title: "potyk-web", subtitle: "Collection of handy tools like video downloaders"},
-        {url: "https://github.com/potykion/potyk-arch", title: "potyk-arch", subtitle: 'Software architecture thoughts'},
+        {
+            url: "https://github.com/potykion/potyk-web",
+            title: "potyk-web",
+            subtitle: "Collection of handy tools like video downloaders"
+        },
+        {
+            url: "https://github.com/potykion/potyk-arch",
+            title: "potyk-arch",
+            subtitle: 'Software architecture thoughts'
+        },
         {url: "https://potyk.io/potyk-food/", title: "potyk-food", mark: true, icon: '🍕', subtitle: 'Recipes'},
         {url: "https://t.me/potyk_news", title: "potyk-news", mark: true, icon: '📰', subtitle: 'Daily project updates'},
         {url: "https://github.com/potykion/sqlite-api", title: "sqlite-api", subtitle: 'Select * from table as json'},
         {url: "https://github.com/potykion/potyk-ideas", title: "potyk-ideas", subtitle: 'Ideas graveyard'},
         {url: "http://84.201.131.244:5003", title: "potyk-stats", subtitle: 'Abandoned daily stats'},
-        {url: "http://84.201.131.244:5002", title: "potyk-dreams", mark: true, icon: '✨', subtitle: 'Wine, travel, wishlists, sweets, etc.'},
+        {
+            url: "http://84.201.131.244:5002",
+            title: "potyk-dreams",
+            mark: true,
+            icon: '✨',
+            subtitle: 'Wine, travel, wishlists, sweets, etc.'
+        },
         {url: "https://github.com/potykion/potyk-gallery", title: "potyk-gallery", subtitle: 'Random layout'},
         {url: "https://potyk.io/stories/", title: "potyk-stories", subtitle: 'Cool stories'},
         {url: "https://github.com/potykion/potyk-plz-stop", title: "potyk-plz-stop", subtitle: 'Draft stuff'},
-        {url: "https://github.com/potykion/potyk-assistant", title: "potyk-assistant", subtitle: 'Telegram bot & api for routine stuff like tracking weight'},
-        {url: "https://github.com/potykion/flask-proj-templ", title: "flask-proj-templ", subtitle: "Template for simple flask apps like potyk-dreams"},
-        {url: "https://github.com/potykion/potyk-food-guide", title: "potyk-food-guide", subtitle: 'What & where to eat'},
-        {url: "https://github.com/potykion/potyk-entertainment", title: "potyk-entertainment", subtitle: 'Museums, theatre, cinema, etc.'},
+        {
+            url: "https://github.com/potykion/potyk-assistant",
+            title: "potyk-assistant",
+            subtitle: 'Telegram bot & api for routine stuff like tracking weight'
+        },
+        {
+            url: "https://github.com/potykion/flask-proj-templ",
+            title: "flask-proj-templ",
+            subtitle: "Template for simple flask apps like potyk-dreams"
+        },
+        {
+            url: "https://github.com/potykion/potyk-food-guide",
+            title: "potyk-food-guide",
+            subtitle: 'What & where to eat'
+        },
+        {
+            url: "https://github.com/potykion/potyk-entertainment",
+            title: "potyk-entertainment",
+            subtitle: 'Museums, theatre, cinema, etc.'
+        },
 
 
     ].toSorted((p1, p2) => p1.title.length - p2.title.length);
@@ -122,16 +153,7 @@
                 title = `<mark>${title}</mark>`
             }
 
-
-            return `
-                <a class="chip" target="_blank" href="${proj.url}">
-
-    ${title}
-
-
-
-    </a>
-            `;
+            return `<a class="chip" target="_blank" href="${proj.url}">${title}</a>`;
         }
     ).join(' • ')
     document.querySelector('.chips').innerHTML = chipsHtml;
@@ -144,5 +166,4 @@
     ).join('')
     document.querySelector('.projects').innerHTML = projectsHtml;
 </script>
-
 </html>
