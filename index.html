@@ -70,17 +70,43 @@
             color: black;
             font-style: italic;
         }
+
+        summary {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 <main class="main">
     <h1 class="title">potyk.io</h1>
     <p class="subtitle">Делаю свой интернет, свой идеальный мир 🌍</p>
-    <div class="chips"></div>
-    <div class="projects"></div>
+    <h2>Проекты</h2>
+    <div class="chips" id="projects"></div>
+    <details>
+        <summary>Подробнее</summary>
+        <div class="projects"></div>
+    </details>
+    <h2>Таблички</h2>
+    <div class="chips" id="tables"></div>
 </main>
 </body>
 <script>
+    /**
+     * @typedef {Object} Project
+     * @property {string} title
+     * @property {string} [subtitle]
+     * @property {string} url
+     * @property {boolean} [mark]
+     * @property {string} [icon]
+     */
+
+    /** @type {Project[]} */
     const projects = [
         {title: "cv", subtitle: 'Резюмеха', url: '/cv'},
         {url: "http://84.201.131.244:5001/", title: "src-e", subtitle: "BitBucket (Non-Sucking) Client"},
@@ -154,27 +180,41 @@
         },
     ].toSorted((p1, p2) => p1.title.length - p2.title.length);
 
-    const chipsHtml = projects.map(
-        proj => {
-            let title = `${proj.title}`;
-            if (proj.icon) {
-                title = `${proj.icon} ${title}`
-            }
-            if (proj.mark) {
-                title = `<mark>${title}</mark>`
-            }
-
-            return `<a class="chip" target="_blank" href="${proj.url}">${title}</a>`;
+    /** @type {Project[]} */
+    const tables = [
+        {
+            title: "Театры/Мюзиклы",
+            url: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing",
         }
-    ).join(' • ')
-    document.querySelector('.chips').innerHTML = chipsHtml;
+    ]
 
-    const projectsHtml = projects.map(
-        proj => ` <a class="proj" href="${proj.url}">
+    function makeChipsHtml(projects) {
+        return projects.map(
+            proj => {
+                let title = `${proj.title}`;
+                if (proj.icon) {
+                    title = `${proj.icon} ${title}`
+                }
+                if (proj.mark) {
+                    title = `<mark>${title}</mark>`
+                }
+
+                return `<a class="chip" target="_blank" href="${proj.url}">${title}</a>`;
+            }
+        ).join(' • ');
+    }
+
+    function makeProjectsHtml(projects) {
+        return projects.map(
+            proj => ` <a class="proj" href="${proj.url}">
                 <div class="proj-title">${proj.title}</div>
                 <div class="proj-subtitle">${proj.subtitle}</div>
             </a>`
-    ).join('')
-    document.querySelector('.projects').innerHTML = projectsHtml;
+        ).join('');
+    }
+
+    document.querySelector('#projects').innerHTML = makeChipsHtml(projects);
+    document.querySelector('#tables').innerHTML = makeChipsHtml(tables);
+    document.querySelector('.projects').innerHTML = makeProjectsHtml(projectsHtml);
 </script>
 </html>
