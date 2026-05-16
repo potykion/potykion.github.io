@@ -9,7 +9,27 @@
             font-family: Rubik;
         }
 
+        .main {
+            margin-top: 25vh;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 500px;
+        }
 
+        .title {
+            font-size: 48px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .subtitle {
+            margin-top: 0;
+            font-style: italic;
+            text-align: center;
+        }
 
         .chips {
             display: flex;
@@ -53,17 +73,11 @@
     </style>
 </head>
 <body>
-<main>
-    <div style="margin-top: 25vh; margin-left: auto; margin-right: auto; max-width: 500px; ">
-        <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
-            <h1 style="font-size: 48px; padding: 5px 10px; border-radius: 20px; margin-bottom: 0; font-style: italic; text-align: center">
-                potyk.io</h1>
-        </div>
-        <p style="margin-top: 0; font-style: italic;text-align: center">Делаю свой интернет, свой идеальный мир 🌍</p>
-
-        <div class="chips"></div>
-        <div class="projects"></div>
-    </div>
+<main class="main">
+    <h1 class="title">potyk.io</h1>
+    <p class="subtitle">Делаю свой интернет, свой идеальный мир 🌍</p>
+    <div class="chips"></div>
+    <div class="projects"></div>
 </main>
 </body>
 <script>
@@ -138,10 +152,7 @@
             title: "potyk-entertainment",
             subtitle: 'Museums, theatre, cinema, etc.'
         },
-
-
     ].toSorted((p1, p2) => p1.title.length - p2.title.length);
-
 
     const chipsHtml = projects.map(
         proj => {
