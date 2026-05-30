@@ -28,9 +28,14 @@
         .subtitle {
             margin-top: 0;
             margin-bottom: 20px;
+
             font-style: italic;
-            text-align: center;
             color: dodgerblue;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
         }
 
         .chips {
@@ -39,7 +44,7 @@
             gap: 5px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px
+            margin-bottom: 10px
         }
 
         .chip {
@@ -85,17 +90,21 @@
 
         hr {
             border: 1px solid #f4f4f4;
-            margin: 20px;
+            margin: 10px;
+        }
+
+        #globe {
+            width: 25px;
         }
     </style>
 </head>
 <body>
 <main class="main">
     <h1 class="title">potyk.io</h1>
-    <p class="subtitle">Делаю свой интернет <span style="font-style: normal" id="globe">🌐</span></p>
+    <div class="subtitle">Делаю свой интернет <img src="static/img/globe.gif" id="globe"></div>
 
     <!-- Контент-Проекты -->
-    <h2>Контент-Проекты</h2>
+    <h2><small>📝</small> Контент-Проекты</h2>
     <div class="chips" id="projects"></div>
     <details>
         <summary>Подробнее</summary>
@@ -104,12 +113,12 @@
     <hr>
 
     <!-- Таблички -->
-    <h2>Таблички</h2>
+    <h2><small>📊</small> Таблички</h2>
     <div class="chips" id="tables"></div>
     <hr>
 
     <!-- Кодинг-Проекты -->
-    <h2>Кодинг-Проекты</h2>
+    <h2><small>🤖</small> Кодинг-Проекты</h2>
     <div class="chips" id="coding-projects"></div>
     <details>
         <summary>Подробнее</summary>
