@@ -27,6 +27,7 @@
 
         .subtitle {
             margin-top: 0;
+            margin-bottom: 20px;
             font-style: italic;
             text-align: center;
             color: dodgerblue;
@@ -81,20 +82,39 @@
             text-align: center;
             margin-bottom: 10px;
         }
+
+        hr {
+            border: 1px solid #f4f4f4;
+            margin: 20px;
+        }
     </style>
 </head>
 <body>
 <main class="main">
     <h1 class="title">potyk.io</h1>
-    <p class="subtitle">Делаю свой интернет <span style="font-style: normal">🌐</span></p>
-    <h2>Проекты</h2>
+    <p class="subtitle">Делаю свой интернет <span style="font-style: normal" id="globe">🌐</span></p>
+
+    <!-- Контент-Проекты -->
+    <h2>Контент-Проекты</h2>
     <div class="chips" id="projects"></div>
     <details>
         <summary>Подробнее</summary>
-        <div class="projects"></div>
+        <div id="projects-details" class="projects"></div>
     </details>
+    <hr>
+
+    <!-- Таблички -->
     <h2>Таблички</h2>
     <div class="chips" id="tables"></div>
+    <hr>
+
+    <!-- Кодинг-Проекты -->
+    <h2>Кодинг-Проекты</h2>
+    <div class="chips" id="coding-projects"></div>
+    <details>
+        <summary>Подробнее</summary>
+        <div id="coding-projects-details" class="projects"></div>
+    </details>
 </main>
 </body>
 <script>
@@ -108,95 +128,49 @@
      */
 
     /** @type {Project[]} */
+    // <!-- @formatter:off -->
     const projects = [
         {title: "cv", subtitle: 'Резюмеха', url: '/cv'},
-        {url: "http://84.201.131.244:5001/", title: "src-e", subtitle: "BitBucket (Non-Sucking) Client"},
-        {url: "https://potyk.io/potyk-self/", title: "potyk-self", subtitle: "Всякое самопознание"},
-        {
-            url: "https://github.com/potykion/lines",
-            title: "lines",
-            subtitle: 'Simply find lines within file without grep brain fvck'
-        },
-        {
-            url: "https://github.com/potykion/potykion.github.io",
-            title: "potyk-io",
-            mark: true,
-            icon: '🏠',
-            subtitle: 'This page repo'
-        },
-        {url: "http://84.201.131.244:5004/", title: "potyk-mu", subtitle: 'Loved music collection'},
-        {
-            url: "https://www.instagram.com/potyk.art",
-            title: "potyk-art",
-            mark: true,
-            icon: '🖼',
-            subtitle: 'Insta w ma pics'
-        },
-        {url: "https://github.com/potykion/potyk-hub", title: "potyk-hub", subtitle: 'Random stuff'},
-        {
-            url: "http://potyk.io/potyk-wiki/",
-            title: "potyk-wiki",
-            subtitle: "Всякие факты, знания, справочники, конспекты"
-        },
-        {
-            url: "https://github.com/potykion/potyk-arch",
-            title: "potyk-arch",
-            subtitle: 'Software architecture thoughts'
-        },
-        {url: "https://potyk.io/potyk-food/", title: "potyk-food", mark: true, icon: '🍕', subtitle: 'Recipes'},
-        {url: "https://t.me/potyk_news", title: "potyk-news", mark: true, icon: '📰', subtitle: 'Daily project updates'},
-        {url: "https://github.com/potykion/sqlite-api", title: "sqlite-api", subtitle: 'Select * from table as json'},
-        {url: "https://github.com/potykion/potyk-ideas", title: "potyk-ideas", subtitle: 'Ideas graveyard'},
-        {url: "http://84.201.131.244:5003", title: "potyk-stats", subtitle: 'Abandoned daily stats'},
-        {
-            url: "http://84.201.131.244:5002",
-            title: "potyk-dreams",
-            mark: true,
-            icon: '✨',
-            subtitle: 'Wine, travel, wishlists, sweets, etc.'
-        },
-        {url: "https://potyk.io/stories/", title: "potyk-stories", subtitle: 'Cool stories'},
-        {
-            url: "https://github.com/potykion/potyk-assistant",
-            title: "potyk-assistant",
-            subtitle: 'Telegram bot & api for routine stuff like tracking weight'
-        },
-        {
-            url: "https://github.com/potykion/flask-proj-templ",
-            title: "flask-proj-templ",
-            subtitle: "Template for simple flask apps like potyk-dreams"
-        },
-        {
-            url: "https://github.com/potykion/potyk-food-guide",
-            title: "potyk-food-guide",
-            subtitle: 'What & where to eat'
-        },
-        {
-            url: "https://github.com/potykion/potyk-entertainment",
-            title: "potyk-entertainment",
-            subtitle: 'Museums, theatre, cinema, etc.'
-        }, {
-            url: "https://github.com/potykion/potyk-ai",
-            title: "potyk-ai",
-            subtitle: 'ИИ приколы'
-        },
-    ].toSorted((p1, p2) => p1.title.length - p2.title.length);
+        {title: "potyk-ai", subtitle: 'ИИ приколы', url: "https://github.com/potykion/potyk-ai"},
+        {title: "potyk-arch", subtitle: 'Software architecture thoughts', url: "https://github.com/potykion/potyk-arch"},
+        {title: "potyk-art", subtitle: 'Insta w ma pics', url: "https://www.instagram.com/potyk.art", mark: true, icon: '🖼'},
+        {title: "potyk-dreams", subtitle: 'Wine, travel, wishlists, sweets, etc.', url: "http://84.201.131.244:5002", mark: true, icon: '✨'},
+        {title: "potyk-entertainment", subtitle: 'Museums, theatre, cinema, etc.', url: "https://github.com/potykion/potyk-entertainment"},
+        {title: "potyk-food", subtitle: 'Recipes', url: "https://potyk.io/potyk-food/", mark: true, icon: '🍕'},
+        {title: "potyk-food-guide", subtitle: 'What & where to eat', url: "https://github.com/potykion/potyk-food-guide"},
+        {title: "potyk-hub", subtitle: 'Random stuff', url: "https://github.com/potykion/potyk-hub"},
+        {title: "potyk-ideas", subtitle: 'Ideas graveyard', url: "https://github.com/potykion/potyk-ideas"},
+        {title: "potyk-io", subtitle: 'This page repo', url: "https://github.com/potykion/potykion.github.io", mark: true, icon: '🏠'},
+        {title: "potyk-mu", subtitle: 'Loved music collection', url: "http://84.201.131.244:5004/"},
+        {title: "potyk-self", subtitle: "Всякое самопознание", url: "https://potyk.io/potyk-self/"},
+        {title: "potyk-stats", subtitle: 'Abandoned daily stats', url: "http://84.201.131.244:5003"},
+        {title: "potyk-stories", subtitle: 'Cool stories', url: "https://potyk.io/stories/"},
+        {title: "potyk-wiki", subtitle: "Всякие факты, знания, справочники, конспекты", url: "http://potyk.io/potyk-wiki/"},
+    ]
+        .toSorted((p1, p2) => p1.title.length - p2.title.length);
+    // <!-- @formatter:on -->
+
+    // <!-- @formatter:off -->
+    const codingProjects = [
+        {title: "flask-proj-templ", subtitle: "Template for simple flask apps like potyk-dreams", url: "https://github.com/potykion/flask-proj-templ"},
+        {title: "lines", subtitle: 'Simply find lines within file without grep brain fvck', url: "https://github.com/potykion/lines"},
+        {title: "potyk-assistant", subtitle: 'Telegram bot & api for routine stuff like tracking weight', url: "https://github.com/potykion/potyk-assistant"},
+        {title: "sqlite-api", subtitle: 'Select * from table as json', url: "https://github.com/potykion/sqlite-api"},
+        {title: "src-e", subtitle: "BitBucket (Non-Sucking) Client", url: "http://84.201.131.244:5001/"},
+    ]
+        .toSorted((p1, p2) => p1.title.length - p2.title.length)
+    // <!-- @formatter:on -->
 
     /** @type {Project[]} */
+    // <!-- @formatter:off -->
     const tables = [
-        {
-            title: "Театры/Мюзиклы",
-            url: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing",
-        },
-        {
-            title: "Телеграм Каналы",
-            url: "https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing"
-        },
-        {
-            title: 'Софт/Сервисы',
-            url: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing'
-        }
+        {title: "Театры/Мюзиклы", url: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing",},
+        {title: "Телеграм Каналы", url: "https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing"},
+        {title: 'Музык', url: 'https://docs.google.com/spreadsheets/d/1Dy9fxDgLzxy84PsIAoyappVB9xfTYHls1rn9KNe4gDs/edit?usp=sharing'},
+        {title: 'Софт/Сервисы', url: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing'},
+        {title: 'ЮТ-каналы', url: 'https://docs.google.com/spreadsheets/d/1BLWN5txwatQdyRSHt0Jl2IWUqIbm-dcAMkEMXIiyTqg/edit?usp=sharing'},
     ]
+    // <!-- @formatter:on -->
 
     function makeChipsHtml(projects) {
         return projects.map(
@@ -224,7 +198,11 @@
     }
 
     document.querySelector('#projects').innerHTML = makeChipsHtml(projects);
+    document.querySelector('#projects-details').innerHTML = makeProjectsHtml(projects);
+
     document.querySelector('#tables').innerHTML = makeChipsHtml(tables);
-    document.querySelector('.projects').innerHTML = makeProjectsHtml(projects);
+
+    document.querySelector('#coding-projects').innerHTML = makeChipsHtml(codingProjects);
+    document.querySelector('#coding-projects-details').innerHTML = makeProjectsHtml(codingProjects);
 </script>
 </html>
