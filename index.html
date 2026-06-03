@@ -8,13 +8,13 @@
         body {
             font-family: Rubik;
             font-size: 0.8rem;
-
+            min-height: 98vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .main {
-            margin-top: 15vh;
-            margin-left: auto;
-            margin-right: auto;
             max-width: 500px;
         }
 
@@ -29,7 +29,6 @@
             padding: 5px 10px;
             border-radius: 20px;
             margin-bottom: 0;
-            font-style: italic;
             text-align: center;
         }
 
@@ -37,7 +36,6 @@
             margin-top: 0;
             margin-bottom: 20px;
 
-            font-style: italic;
             color: dodgerblue;
 
             display: flex;
@@ -47,15 +45,20 @@
         }
         a {
             color: dodgerblue;
+            padding: 2px;
+            border-radius: 2px;
+            font-weight: bold;
+
         }
         a:hover {
-            font-weight: bold;
+            background: lemonchiffon;
+
         }
 
         .chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 4px;
             justify-content: center;
             align-items: center;
             margin-bottom: 10px
@@ -116,7 +119,6 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 5px;
             margin-bottom: 16px;
-            margin-top: 16px;
         }
 
         .card {
@@ -127,13 +129,20 @@
             gap: 8px;
             text-decoration: none;
             color: inherit;
-            background: lightyellow;
             font-weight: bold;
+            border: 1px solid dodgerblue;
         }
         .card-subtitle {
             font-weight: normal;
         }
         .card:hover {
+            background: lemonchiffon;
+        }
+
+        .card-marked {
+            background: lightyellow;
+        }
+        .card-marked:hover {
             background: lemonchiffon;
         }
     </style>
@@ -232,7 +241,7 @@
     function makeProjectCards(projects) {
         return projects.map(p => {
             return `
-                <a href="${p.url}" class="card">
+                <a href="${p.url}" class="card card-marked">
                     <div>
                         ${p.icon}
                     </div>
@@ -267,9 +276,9 @@
 
     function makeProjectsHtml(projects) {
         return projects.map(
-            proj => ` <a class="proj" href="${proj.url}">
-                <div class="proj-title">${proj.title}</div>
-                <div class="proj-subtitle">${proj.subtitle}</div>
+            proj => ` <a class="card" href="${proj.url}">
+                <div class="">${proj.title}</div>
+                <small class="card-subtitle">${proj.subtitle}</small>
             </a>`
         ).join('');
     }
