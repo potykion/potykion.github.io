@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>potyk.io</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+          rel="stylesheet">
+
     <style>
         body {
             font-family: Rubik, system-ui;
@@ -28,7 +29,6 @@
 
         .title {
             font-size: 48px;
-            padding: 5px 10px;
             border-radius: 20px;
             margin-bottom: 0;
             text-align: center;
@@ -36,14 +36,20 @@
 
         .subtitle {
             margin-top: 0;
+            margin-bottom: 10px;
 
             color: dodgerblue;
 
+
+        }
+
+        .center {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 5px;
         }
+
         a {
             color: dodgerblue;
             padding: 2px;
@@ -51,6 +57,7 @@
             font-weight: bold;
 
         }
+
         a:hover {
             background: lemonchiffon;
 
@@ -59,10 +66,16 @@
         .chips {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
             justify-content: center;
             align-items: center;
-            margin-bottom: 12px
+            margin-bottom: 20px
+
+
+        }
+
+        .mb-6 {
+            margin-bottom: 6px;
         }
 
         .chip {
@@ -102,8 +115,8 @@
         }
 
         h2 {
-            text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 0px;
+            margin-top: 0px;
         }
 
         hr {
@@ -130,19 +143,32 @@
             gap: 5px;
             text-decoration: none;
             color: inherit;
-            font-weight: bold;
+            font-weight: 600;
+            flex-grow: 1;
             border: 1px solid dodgerblue;
         }
+
+        .card-header {
+
+            padding: 0;
+            border: 0;
+            align-items: baseline;
+        }
+
         .card-subtitle {
             font-weight: normal;
         }
+
         .card:hover {
             background: lemonchiffon;
+        } .card-header:hover {
+            background: inherit;
         }
 
         .card-marked {
             background: lightyellow;
         }
+
         .card-marked:hover {
             background: lemonchiffon;
         }
@@ -151,30 +177,29 @@
 <body>
 <main class="main">
     <h1 class="title">potyk.io</h1>
-    <div class="subtitle">Делаю свой интернет <img src="static/img/globe.gif" id="globe"></div>
+    <div class="subtitle center">Делаю свой интернет <img src="static/img/globe.gif" id="globe"></div>
 
     <!-- Контент-Проекты -->
-    <h2><small>📝</small> Контент-Проекты</h2>
-    <div class="cards" id="marked-projects"></div>
+    <div class="card card-header">
+        <h2> <small>📝</small> Контент-Проекты</h2>•
+        <div class="subtitle card-subtitle">Пишу, пощу, все удалить хочу</div>
+    </div>
+    <div class="chips mb-6"  id="marked-projects"></div>
     <div class="chips" id="projects"></div>
-    <details>
-        <summary>Подробнее</summary>
-        <div id="projects-details" class="projects"></div>
-    </details>
-    <hr>
 
     <!-- Таблички -->
-    <h2><small>📊</small> Таблички</h2>
+    <div class="card card-header">
+        <h2> <small>📊</small> Таблички</h2>•
+        <div class="subtitle card-subtitle">Бич, я молодой PLUSHкин</div>
+    </div>
     <div class="chips" id="tables"></div>
-    <hr>
 
     <!-- Кодинг-Проекты -->
-    <h2><small>🤖</small> Кодинг-Проекты</h2>
+    <div class="card card-header">
+        <h2> <small>🤖</small> Кодинг-Проекты</h2>•
+        <div class="subtitle card-subtitle">Coding shit × smoking weed</div>
+    </div>
     <div class="chips" id="coding-projects"></div>
-    <details>
-        <summary>Подробнее</summary>
-        <div id="coding-projects-details" class="projects"></div>
-    </details>
 </main>
 </body>
 <script>
@@ -190,11 +215,11 @@
 
     /** @type {Project[]} */
     const markedProjects = [
-        {title: "potyk-art", subtitle: 'Рисую чертей по фану', url: "https://www.instagram.com/potyk.art", icon: '🖼️'},
-        {title: "potyk-self-2", subtitle: "Дневниковое", url: "http://84.201.131.244:5005", icon: '📝'},
-        {title: "potyk-dreams", subtitle: 'Потребление', url: "http://84.201.131.244:5002", icon: '✨'},
-        {title: "potyk-food", subtitle: 'Ворую рецепты', url: "https://potyk.io/potyk-food/", icon: '🍕'},
         {title: "potyk-io", subtitle: 'Эта страница', url: "https://github.com/potykion/potykion.github.io", icon: '🏠'},
+        {title: "potyk-food", subtitle: 'Ворую рецепты', url: "https://potyk.io/potyk-food/", icon: '🍕'},
+        {title: "potyk-art", subtitle: 'Рисую чертей по фану', url: "https://www.instagram.com/potyk.art", icon: '🖼️'},
+        {title: "potyk-dreams", subtitle: 'Потребление', url: "http://84.201.131.244:5002", icon: '✨'},
+        {title: "potyk-self-2", subtitle: "Дневниковое", url: "http://84.201.131.244:5005", icon: '📝'},
     ];
 
     /** @type {Project[]} */
@@ -218,21 +243,21 @@
         {title: "flask-proj-templ", subtitle: "Template for simple flask apps like potyk-dreams", url: "https://github.com/potykion/flask-proj-templ"},
         {title: "lines", subtitle: 'Simply find lines within file without grep brain fvck', url: "https://github.com/potykion/lines"},
         {title: "potyk-assistant", subtitle: 'Telegram bot & api for routine stuff like tracking weight', url: "https://github.com/potykion/potyk-assistant"},
-        {title: "sqlite-api", subtitle: 'Select * from table as json', url: "https://github.com/potykion/sqlite-api"},
+        {title: "sqlite-api", subtitle: '<code>Select * from table as json</code>', url: "https://github.com/potykion/sqlite-api"},
         {title: "src-e", subtitle: "BitBucket (Non-Sucking) Client", url: "http://84.201.131.244:5001/"},
     ]
         .toSorted((p1, p2) => p1.title.length - p2.title.length)
 
     /** @type {Project[]} */
     const tables = [
-        {title: "Театры/Мюзиклы 🎭", url: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing",},
-        {title: "Телеграм Каналы 📣", url: "https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing"},
-        {title: 'Музык 🎵', url: 'https://docs.google.com/spreadsheets/d/1Dy9fxDgLzxy84PsIAoyappVB9xfTYHls1rn9KNe4gDs/edit?usp=sharing'},
-        {title: 'Софт/Сервисы ⚙', url: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing'},
-        {title: 'ЮТ-каналы 📹', url: 'https://docs.google.com/spreadsheets/d/1BLWN5txwatQdyRSHt0Jl2IWUqIbm-dcAMkEMXIiyTqg/edit?usp=sharing'},
-        {title: 'Пиво Россия 🍺', url: 'https://docs.google.com/spreadsheets/d/1JdhEktmNFFrolieF7O4pkmlic3urTROx8Fq8C2RNWY4/edit?usp=sharing'},
-        {title: 'Рестики/Кафешки Россия 🐷', url: 'https://docs.google.com/spreadsheets/d/1h56SxxWjZCJmGULhlzVsRvT4KSU4rWoYBEWhQvrecGk/edit?usp=sharing'},
-        {title: 'танцевальное по лайту 📺', url: 'https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q'},
+        {title: 'Музык ', url: 'https://docs.google.com/spreadsheets/d/1Dy9fxDgLzxy84PsIAoyappVB9xfTYHls1rn9KNe4gDs/edit?usp=sharing', icon: '🎵'},
+        {title: 'Софт/Сервисы ', url: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing', icon: '⚙'},
+        {title: 'ЮТ-каналы ', url: 'https://docs.google.com/spreadsheets/d/1BLWN5txwatQdyRSHt0Jl2IWUqIbm-dcAMkEMXIiyTqg/edit?usp=sharing', icon: '📹'},
+        {title: "Телеграм Каналы ", url: "https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing", icon: '📣'},
+        {title: "Театры/Мюзиклы ", url: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing", icon: '🎭'},
+        {title: 'Пиво Россия ', url: 'https://docs.google.com/spreadsheets/d/1JdhEktmNFFrolieF7O4pkmlic3urTROx8Fq8C2RNWY4/edit?usp=sharing', icon: '🍺'},
+        {title: 'Рестики/Кафешки Россия ', url: 'https://docs.google.com/spreadsheets/d/1h56SxxWjZCJmGULhlzVsRvT4KSU4rWoYBEWhQvrecGk/edit?usp=sharing', icon: '🐷'},
+        {title: 'танцевальное по лайту ', url: 'https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q', icon: '📺'},
 
     ]
 
@@ -241,20 +266,37 @@
     /**
      * @param {Project[]} projects
      */
-    function makeProjectCards(projects) {
+    function makeProjectCards(projects, marked = false) {
         return projects.map(p => {
-            return `
-                <a href="${p.url}" class="card card-marked">
-                    <div>
+            let cardClass = `card`;
+            if (marked) {
+                cardClass = `${cardClass} card-marked`
+            }
+
+            let icon = '';
+            if (p.icon) {
+                icon = `<div>
                         ${p.icon}
-                    </div>
+                    </div>`
+            }
+
+            let subtitle = ''
+            if (p.subtitle) {
+                console.log(p)
+                subtitle = `<small class="card-subtitle">
+                            ${p.subtitle}
+                        </small>`
+            }
+
+            return `
+                <a href="${p.url}" class="${cardClass}">
+                    ${icon}
                     <div>
                         <div>
                             ${p.title}
                         </div>
-                        <small class="card-subtitle">
-                            ${p.subtitle}
-                        </small>
+
+                        ${subtitle}
                     </div>
                 </a>
             `
@@ -286,13 +328,11 @@
         ).join('');
     }
 
-    document.querySelector('#marked-projects').innerHTML = makeProjectCards(markedProjects);
-    document.querySelector('#projects').innerHTML = makeChipsHtml(projects);
-    document.querySelector('#projects-details').innerHTML = makeProjectsHtml(projects);
+    document.querySelector('#marked-projects').innerHTML = makeProjectCards(markedProjects, true);
+    document.querySelector('#projects').innerHTML = makeProjectCards(projects);
 
-    document.querySelector('#tables').innerHTML = makeChipsHtml(tables);
+    document.querySelector('#tables').innerHTML = makeProjectCards(tables);
 
-    document.querySelector('#coding-projects').innerHTML = makeChipsHtml(codingProjects);
-    document.querySelector('#coding-projects-details').innerHTML = makeProjectsHtml(codingProjects);
+    document.querySelector('#coding-projects').innerHTML = makeProjectCards(codingProjects);
 </script>
 </html>
