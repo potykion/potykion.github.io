@@ -10,170 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
           rel="stylesheet">
 
-    <style>
-        body {
-            font-family: Rubik, system-ui;
-            font-size: 0.8rem;
-        }
+    <link rel="stylesheet" href="css/index.css">
 
-        .main {
-            margin: auto;
-            padding: 4px;
-            max-width: 500px;
-        }
-
-        @media screen and (max-width: 480px) {
-            .main {
-                margin-top: 0;
-            }
-        }
-
-        .title {
-            font-size: 48px;
-            border-radius: 20px;
-            margin-bottom: 0;
-            text-align: center;
-        }
-
-        .subtitle {
-            margin-top: 0;
-            margin-bottom: 12px;
-
-            color: dodgerblue;
-
-
-        }
-
-        .center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-        }
-
-        a {
-            color: dodgerblue;
-            padding: 2px;
-            border-radius: 2px;
-            font-weight: bold;
-
-        }
-
-        a:hover {
-            background: lemonchiffon;
-
-        }
-
-        .chips {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 24px
-
-
-        }
-
-        .mb-6 {
-            margin-bottom: 6px;
-        }
-
-        .chip {
-            /*font-weight: bold;*/
-        }
-
-        .projects {
-            display: flex;
-            flex-direction: column;
-            gap: 5px
-        }
-
-        .proj {
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #e8e8e8
-        }
-
-        .proj:hover {
-            background: yellow;
-        }
-
-        .proj-title {
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        .proj-subtitle {
-            color: black;
-            font-style: italic;
-        }
-
-        summary {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            margin-bottom: 0px;
-            margin-top: 0px;
-        }
-
-        hr {
-            border: 1px solid #f4f4f4;
-            margin: 10px;
-        }
-
-        #globe {
-            width: 24px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 5px;
-            margin-bottom: 16px;
-        }
-
-        .card {
-            padding: 8px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            text-decoration: none;
-            color: inherit;
-            font-weight: 600;
-            flex-grow: 1;
-            border: 1px solid dodgerblue;
-        }
-
-        .card-header {
-
-            padding: 0;
-            border: 0;
-            align-items: baseline;
-        }
-
-        .card-subtitle {
-            font-weight: normal;
-        }
-
-        .card:hover {
-            background: lemonchiffon;
-        } .card-header:hover {
-            background: inherit;
-        }
-
-        .card-marked {
-            background: lightyellow;
-        }
-
-        .card-marked:hover {
-            background: lemonchiffon;
-        }
-    </style>
 </head>
 <body>
 <main class="main">
@@ -201,6 +39,9 @@
         <div class="subtitle card-subtitle">Coding shit × smoking weed</div>
     </div>
     <div class="chips" id="coding-projects"></div>
+
+
+
 </main>
 </body>
 <script>
@@ -220,7 +61,6 @@
         {title: "potyk-food", subtitle: 'Ворую рецепты', url: "https://potyk.io/potyk-food/", icon: '🍕'},
         {title: "potyk-art", subtitle: 'Рисую чертей по фану', url: "https://www.instagram.com/potyk.art", icon: '🖼️'},
         {title: "potyk-dreams", subtitle: 'Потребление', url: "http://84.201.131.244:5002", icon: '✨'},
-        {title: "potyk-self-2", subtitle: "Дневниковое", url: "http://84.201.131.244:5005", icon: '📝'},
     ];
 
     /** @type {Project[]} */
@@ -236,8 +76,9 @@
         {title: "potyk-stories", subtitle: 'Cool stories', url: "https://potyk.io/stories/"},
         {title: "potyk-wiki", subtitle: "Всякие факты, знания, справочники, конспекты", url: "http://potyk.io/potyk-wiki/"},
         {title: "potyk-vibes", subtitle: "Стафф, который хочу запостить", url: "http://84.201.131.244:5006"},
+        {title: "Винный погребок", subtitle: "Понравившееся вино", url: "/wine"},
+        {title: "Пивной холодильник", subtitle: "Понравившееся пиво", url: "/beer"},
     ]
-        .toSorted((p1, p2) => p1.title.length - p2.title.length);
 
     /** @type {Project[]} */
     const codingProjects = [
@@ -246,8 +87,9 @@
         {title: "potyk-assistant", subtitle: 'Telegram bot & api for routine stuff like tracking weight', url: "https://github.com/potykion/potyk-assistant"},
         {title: "sqlite-api", subtitle: '<code>Select * from table as json</code>', url: "https://github.com/potykion/sqlite-api"},
         {title: "src-e", subtitle: "BitBucket (Non-Sucking) Client", url: "http://84.201.131.244:5001/"},
+        {title: "potyk-self-2", subtitle: "Дневниковое", url: "http://84.201.131.244:5005"},
+
     ]
-        .toSorted((p1, p2) => p1.title.length - p2.title.length)
 
     /** @type {Project[]} */
     const tables = [
