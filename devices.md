@@ -2,7 +2,7 @@
 
 ## Электронная книга Digma F4
 
-![digma-f4.jpg](img/digma-f4.jpg)
+![digma-f4.jpg](_static/img/digma-f4.jpg)
 
 - Дата покупки: 2026-06-05
 - Цена: 7000₽ ([озон](https://ozon.ru/t/aHVJ4Y5))

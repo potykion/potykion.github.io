@@ -10,13 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="_static/css/index.css">
 
 </head>
 <body>
 <main class="main">
     <h1 class="title">potyk.io</h1>
-    <div class="subtitle center">Делаю свой интернет <img src="static/img/globe.gif" id="globe"></div>
+    <div class="subtitle center">Делаю свой интернет <img src="_static/img/globe.gif" id="globe"></div>
 
     <!-- Контент-Проекты -->
     <div class="card card-header">
@@ -43,6 +43,11 @@
 
 
 </main>
+
+<footer style="text-align: center;">
+    <a href="https://github.com/potykion/potykion.github.io">Гитхаб</a>
+</footer>
+
 </body>
 <script>
     /**
@@ -57,7 +62,7 @@
 
     /** @type {Project[]} */
     const markedProjects = [
-        {title: "potyk-io", subtitle: 'Эта страница', url: "https://github.com/potykion/potykion.github.io", icon: '🏠'},
+        {title: "potyk-io", subtitle: 'Эта страница', url: "/toc", icon: '🏠'},
         {title: "potyk-food", subtitle: 'Ворую рецепты', url: "https://potyk.io/potyk-food/", icon: '🍕'},
         {title: "potyk-art", subtitle: 'Рисую чертей по фану', url: "https://www.instagram.com/potyk.art", icon: '🖼️'},
         {title: "potyk-dreams", subtitle: 'Потребление', url: "http://84.201.131.244:5002", icon: '✨'},

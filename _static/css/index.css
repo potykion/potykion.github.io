@@ -3,7 +3,11 @@ body {
     font-size: 0.8rem;
 }
 
-.main {
+footer {
+    margin-bottom:  10px ;
+}
+
+body {
     margin: auto;
     padding: 4px;
     max-width: 500px;
