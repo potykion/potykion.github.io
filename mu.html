@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>potyk.io</title>
+
+    <style>
+        .albums {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .album {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+    </style>
+
+
+</head>
+<body>
+
+<h1 style="display: inline-block">Музык</h1> • <span>На все времена</span>
+
+<div class="albums" id="albums">
+
+
+</div>
+
+</body>
+<script>
+    /**
+     * @typedef {Object} Album
+     * @property {string} title
+     * @property {string} artist
+     * @property {number} year
+     * @property {string} cover
+     * @property {string} [yandexMusic]
+     * @property {string} [favTrack]
+     */
+
+    // <!-- @formatter:off -->
+
+    /** @type {Album[]} */
+    const albums = [
+        {artist:"The Garden", title: "Six Desperate Ballads", year: 2024, yandexMusic: "https://music.yandex.ru/album/40291562", cover: "static/img/mu/The Garden — Six Desperate Ballads.jpg", favTrack: "ALL"},
+        {artist:"The Garden", title: "HORSESHIT ON ROUTE 66", year: 2022, yandexMusic: "https://music.yandex.ru/album/33408082", cover: "static/img/mu/The Garden — HORSESHIT ON ROUTE 66.jpg", favTrack: "ALL"},
+        {artist:"Tamaryn", title: "Cranekiss", year: 2015, yandexMusic: "https://music.yandex.com/album/3890874", cover: "static/img/mu/Tamaryn — Cranekiss.jpg", favTrack: "Softcare"},
+        {artist:"Pharcyde", title: "Labcabincalifornia ", year: 1995, yandexMusic: "https://music.yandex.ru/album/2988400", cover: "static/img/mu/Pharcyde — Labcabincalifornia.jpg", favTrack: "Devil Music"},
+    ];
+
+
+    // <!-- @formatter:on -->
+
+
+    /**
+     * @param {Album[]} albums
+     */
+    function makeAlbumCards(albums) {
+
+        return albums.map(album => {
+            let favTrackHtml = '';
+            if (album.favTrack) {
+                favTrackHtml = `<br>fav: ${album.favTrack}`;
+            }
+
+
+            return `<div class="album">
+                <img width="100" src="${album.cover}">
+                <div>
+                <a href="${album.yandexMusic}" >${album.artist} — ${album.title} (${album.year})</a>
+                ${favTrackHtml}
+                </div>
+            </div>`
+        }).join('')
+    }
+
+    document.querySelector('#albums').innerHTML = makeAlbumCards(albums);
+</script>
+</html>
