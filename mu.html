@@ -7,6 +7,8 @@
 
     <style>
         .albums {
+            --album-cover-width: 80px;
+
             display: flex;
             flex-direction: column;
             gap: 5px;
@@ -17,14 +19,18 @@
             gap: 5px;
             align-items: center;
         }
+
+        .album img {
+            width: var(--album-cover-width);
+        }
     </style>
 </head>
+
 <body>
-
-<h1 style="display: inline-block">Музык</h1> • <span>На все времена</span>
-<div class="albums" id="albums"></div>
-
+    <h1 style="display: inline-block">Музык</h1> • <span>На все времена</span>
+    <div class="albums" id="albums"></div>
 </body>
+
 <script>
     /**
      * @typedef {Object} Album
@@ -32,8 +38,8 @@
      * @property {string} artist
      * @property {number} year
      * @property {string} cover
-     * @property {string} [yandexMusic]
-     * @property {string} [favTrack]
+     * @property {string} yandexMusic
+     * @property {string} favTrack
      */
 
     // <!-- @formatter:off -->
@@ -46,27 +52,18 @@
         {artist:"Pharcyde", title: "Labcabincalifornia ", year: 1995, yandexMusic: "https://music.yandex.ru/album/2988400", cover: "static/img/mu/Pharcyde — Labcabincalifornia.jpg", favTrack: "Devil Music"},
     ];
 
-
     // <!-- @formatter:on -->
-
 
     /**
      * @param {Album[]} albums
      */
     function makeAlbumCards(albums) {
-
         return albums.map(album => {
-            let favTrackHtml = '';
-            if (album.favTrack) {
-                favTrackHtml = `<br>fav: ${album.favTrack}`;
-            }
-
-
-            return `<div class="album">
-                <img width="100" src="${album.cover}">
+           return `<div class="album">
+                <img src="${album.cover}">
                 <div>
                 <a href="${album.yandexMusic}" >${album.artist} — ${album.title} (${album.year})</a>
-                ${favTrackHtml}
+                <br>fav: ${album.favTrack}
                 </div>
             </div>`
         }).join('')
