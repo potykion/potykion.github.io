@@ -2,6 +2,10 @@
 
 > Лента
 
+## 2026-07-07
+
+- [🎵 Мэшап-сет с Абстрактного Фестиваля 2026 | kanash](https://www.youtube.com/watch?v=qk3YtXIEFrw)
+
 ## 2026-07-05
 
 - [🎥 Русалка (2007)](https://www.kinopoisk.ru/film/278156/)
