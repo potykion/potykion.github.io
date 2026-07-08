@@ -28,10 +28,10 @@
 
 ## *✨ Russian y2k weird-core ✨*
 
-|                                                      |                                        |                                                 |
-|------------------------------------------------------|----------------------------------------|-------------------------------------------------|
-| ![down-house.png](/static/img/movies/down-house.png) | ![dmb.png](/static/img/movies/dmb.png) | [rusalka.webp](/static/img/movies/rusalka.webp) |
-| Даун-Хаус                                            | ДМБ                                    | Русалка                                         |
+|                                                      |                                             |                                                  |
+|------------------------------------------------------|---------------------------------------------|--------------------------------------------------|
+| ![down-house.png](/static/img/movies/down-house.png) | ![dmb.png](/static/img/movies/dmb.png)      | ![rusalka.webp](/static/img/movies/rusalka.webp) |
+| [Даун-Хаус](https://www.kinopoisk.ru/film/41149/)    | [ДМБ](https://www.kinopoisk.ru/film/41133/) | [Русалка](https://www.kinopoisk.ru/film/278156/) |
 
 ## 💊 Фильмы про наркотики 💊
 
