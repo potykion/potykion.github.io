@@ -26,6 +26,7 @@
     - [Флоатинг](cool-stories/floating)
     - [Доверие](cool-stories/trust)
     - [Бля поход к урологу](cool-stories/urologist)
+    - [Маша 19.02](cool-stories/masha.md)
 - `/collections` - виртуальные коллекции
     - [Пивной холодильник](/collections/beer)
     - [Винный погребок](/collections/wine)
