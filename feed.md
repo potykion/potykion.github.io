@@ -11,9 +11,8 @@
 
 ## 2026-07-09
 
-- 🖼️ потик.арт ирл 
-![potyk-art-irl.jpg](static/img/feed/potyk-art-irl.jpg)
-![blame.jpg](static/img/feed/blame.jpg)
+- 🖼️ потик.арт ирл
+![potyk-art-irl.jpg](static/img/feed/potyk-art-irl.jpg) ![blame.jpg](static/img/feed/blame.jpg)
 
 ## 2026-07-08
 
