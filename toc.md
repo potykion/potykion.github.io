@@ -22,6 +22,7 @@
 - `/guides` - всякие инструкции
     - [Как найти девушку](guides/find-gf)
     - [Как сделать пассивный доход](guides/passive-income)
+    - [Музыка: Качаем, Размечаем](guides/music.md)
 - `/cool-stories` - кул-стори всякие жизненные
     - [Флоатинг](cool-stories/floating)
     - [Доверие](cool-stories/trust)
@@ -31,6 +32,5 @@
     - [Пивной холодильник](/collections/beer)
     - [Винный погребок](/collections/wine)
     - [Мои девайсы](/collections/devices)
-    - [Music](/collections/mu)
     - [Кинцо](/collections/movies)
 
