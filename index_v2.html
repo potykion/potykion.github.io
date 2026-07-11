@@ -176,7 +176,9 @@
     /** @type {string} */
     const cardsHtml = cards.map(card => {
         const cardItemsHtml = card.items.map(cardItem => {
-            return `<li>${cardItem.icon} <a href="${cardItem.link}">${cardItem.title}</a></li>`
+            return `<li>
+                <small>${cardItem.icon}</small> <a href="${cardItem.link}">${cardItem.title}</a>
+            </li>`
         }).join('')
 
         return `<div class="card">
