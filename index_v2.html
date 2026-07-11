@@ -29,11 +29,22 @@
             background: white;
             border-radius: 16px;
             padding: 8px;
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .icon {
+            /* https://getcssscan.com/css-box-shadow-examples */
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background: white;
+            border-radius: 16px;
+            padding: 8px;
+
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 16px;
         }
 
@@ -44,7 +55,7 @@
 
 
             .grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
             }
         }
 
@@ -81,6 +92,11 @@
             gap: 4px;
             justify-content: center;
         }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
     </style>
 
 
@@ -115,8 +131,37 @@
      * @property {CardItem[]} items
      */
 
+    /** @type {CardItem[]} */
+    const icons = [
+        {
+            title: 'potyk-art',
+            icon: '🖼️',
+            subtitle: 'Рисую чертей по фану',
+            link: 'https://www.instagram.com/potyk.art'
+        },
+        {
+            title: '/feed',
+            icon: '📜',
+            link: '/feed'
+        },
+        {
+            title: 'potyk-art',
+            icon: '🖼️',
+            subtitle: 'Рисую чертей по фану',
+            link: 'https://www.instagram.com/potyk.art'
+        },
+        {
+            title: 'potyk-art',
+            icon: '🖼️',
+            subtitle: 'Рисую чертей по фану',
+            link: 'https://www.instagram.com/potyk.art'
+        },
+    ];
+
     /** @type {Card[]} */
     const cards = [
+
+
         {
             title: 'Музыка',
             items: [
@@ -160,7 +205,12 @@
                     icon: '🧠',
                     title: 'Размышления о еде',
                     link: '/thoughts/food'
-                }
+                },
+                {
+                    title: 'Сладости',
+                    link: 'https://docs.google.com/spreadsheets/d/1qreMshjaTWnI5GhAEc-CIJafXcK9iwUC16RaG7gYCsM/edit?usp=sharing',
+                    icon: '📊'
+                },
             ]
         },
         {
@@ -182,9 +232,34 @@
                     link: "/travel/memories",
                 },
             ],
-        }
+        },
+        {
+            title: "Прога",
+            items: [
+                {
+                    icon: '👨‍💻',
+                    title: 'Резюме',
+                    link: '/n/cv'
+                },
+                {
+                    title: 'Софт/Сервисы ',
+                    link: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing',
+                    icon: '📊'
+                },
 
+            ]
+        }
     ]
+
+
+    const iconsHtml = icons.map(icon => {
+        return `<a href="${icon.link}">
+            <div class="flex-center flex-col icon">
+                <div>${icon.icon}</div>
+                <div><small>${icon.title}</small></div>
+            </div>
+        </a>`
+    }).join('')
 
     /** @type {string} */
     const cardsHtml = cards.map(card => {
@@ -200,7 +275,7 @@
         </div>`
     }).join('')
 
-    document.querySelector('#cards').innerHTML = cardsHtml;
+    document.querySelector('#cards').innerHTML = iconsHtml + cardsHtml;
 </script>
 
 
