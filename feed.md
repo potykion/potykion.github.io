@@ -12,7 +12,9 @@
 ## 2026-07-11
 
 - 🖼 Денёк
-! [](static/img/feed/IMG_0646.png)
+![denek.png](static/img/feed/IMG_0646.png)
+
+
 - [🎵 УННВ — RAP 2026](https://music.yandex.ru/album/39946538/track/146645672)
 
 ## 2026-07-09
