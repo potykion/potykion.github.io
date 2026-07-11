@@ -13,7 +13,6 @@
     <style>
         body {
             font-family: Rubik, system-ui;
-            font-size: 0.8rem;
             margin: 0;
         }
 
@@ -29,7 +28,7 @@
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             background: white;
             border-radius: 16px;
-            padding: 10px;
+            padding: 8px;
         }
 
         .grid {
@@ -38,7 +37,12 @@
             gap: 16px;
         }
 
-        @media screen and (max-width: 580px) {
+        @media screen and (max-width: 480px) {
+            body {
+                font-size: 0.8rem;
+            }
+
+
             .grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -132,7 +136,7 @@
                     link: 'https://www.youtube.com/playlist?list=PLdb8DVmvU9i5bGINNz10f-ga_bqD41O4q',
                     icon: '📺'
                 },
-                 {
+                {
                     icon: '🤝',
                     title: "Го дружить в RYM",
                     link: "https://rateyourmusic.com/~potykion",
@@ -167,7 +171,16 @@
                     title: "Гайд/принципы по путешествиям",
                     link: "/travel/how-to",
                 },
-
+                {
+                    icon: '📝',
+                    title: "Планы",
+                    link: "/travel/plans",
+                },
+                {
+                    icon: '📝',
+                    title: "Воспоминания / впечатления о поездках",
+                    link: "/travel/memories",
+                },
             ],
         }
 
