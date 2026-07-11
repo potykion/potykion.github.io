@@ -7,5 +7,9 @@
 - [src-e](http://84.201.131.244:5001/) - BitBucket (Non-Sucking) Client 
 - [potyk-self-2](http://84.201.131.244:5005) - Дневниковое 
 - [potyk-stats](http://84.201.131.244:5003) - Abandoned daily stats 
-- [potyk-dreams](http://84.201.131.244:5002) - Путешествия, вишлисты, скоро будет удалено 🤐 
+- [potyk-dreams](http://84.201.131.244:5002) - Путешествия, вишлисты, скоро будет удалено 🤐
+- [potyk-ai](https://github.com/potykion/potyk-ai) - ИИ приколы
+- [potyk-arch](https://github.com/potykion/potyk-arch) - Software architecture thoughts
+- [potyk-food-guide](https://github.com/potykion/potyk-food-guide) - What & where to eat
+- [potyk-mu](http://84.201.131.244:5004/) - Loved music collection
 
