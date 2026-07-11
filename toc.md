@@ -1,36 +1,26 @@
 # Содержание
 
-- [📜 Лента](/feed) - мое литцо когда хочу что-то запостить
+>Все, что не попало в другие разделы
+
 - `/n` - самопознание: что вдохновляет, что приносит удовольствие, как мне жить
     - [Вдохновение / генерация идей](n/inspiration)
     - [Приятности](n/pleasures)
     - [Чем заняться когда нехуй делать](n/todo)
-    - [Резюме](n/cv)
     - [Спорт](n/sport)
     - [Еда и я](n/food)
     - [Аптека](n/apteka)
     - [Как делать свою писанину](n/blog)
-- `/travel` - путешествия
-    - `/plans` - планы/закладочки про местечки, куда можно съездить
-        - [Питер Планы на 2027-...](/travel/plans/spb-27)
-    - [Гайд/принципы по путешествиям](/travel/how-to)
-    - [питер-26](/travel/memories/spb-26.md)
 - `/thoughts` - мысли, взгляды
     - [Мнение про тоту](/thoughts/tattoo)
-    - [Эстетика кофеен](thoughts/food/coffee)
-    - [Размышления о сэндвичах](thoughts/food/sandwich)
 - `/guides` - всякие инструкции
     - [Как найти девушку](guides/find-gf)
     - [Как сделать пассивный доход](guides/passive-income)
-    - [Музыка: Качаем, Размечаем](guides/music.md)
 - `/cool-stories` - кул-стори всякие жизненные
     - [Флоатинг](cool-stories/floating)
     - [Доверие](cool-stories/trust)
     - [Бля поход к урологу](cool-stories/urologist)
     - [Маша 19.02](cool-stories/masha.md)
 - `/collections` - виртуальные коллекции
-    - [Пивной холодильник](/collections/beer)
-    - [Винный погребок](/collections/wine)
     - [Мои девайсы](/collections/devices)
     - [Кинцо](/collections/movies)
 

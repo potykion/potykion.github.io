@@ -14,6 +14,7 @@
         body {
             font-family: Rubik, system-ui;
             margin: 0;
+
         }
 
         main {
@@ -25,7 +26,7 @@
 
         .card {
             /* https://getcssscan.com/css-box-shadow-examples */
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             background: white;
             border-radius: 16px;
             padding: 8px;
@@ -35,7 +36,7 @@
 
         .icon {
             /* https://getcssscan.com/css-box-shadow-examples */
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
             background: white;
             border-radius: 16px;
             padding: 8px;
@@ -44,7 +45,7 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 16px;
         }
 
@@ -113,7 +114,6 @@
 
     <div class="grid" id="cards"></div>
 </main>
-
 </body>
 
 <script>
@@ -134,9 +134,8 @@
     /** @type {CardItem[]} */
     const icons = [
         {
-            title: 'potyk-art',
+            title: 'potyk.art',
             icon: '🖼️',
-            subtitle: 'Рисую чертей по фану',
             link: 'https://www.instagram.com/potyk.art'
         },
         {
@@ -145,23 +144,49 @@
             link: '/feed'
         },
         {
-            title: 'potyk-art',
-            icon: '🖼️',
-            subtitle: 'Рисую чертей по фану',
-            link: 'https://www.instagram.com/potyk.art'
+            title: '/toc',
+            icon: '📦',
+            link: '/toc'
         },
         {
-            title: 'potyk-art',
-            icon: '🖼️',
-            subtitle: 'Рисую чертей по фану',
-            link: 'https://www.instagram.com/potyk.art'
+            title: 'github',
+            icon: '👩‍💻',
+            link: 'https://github.com/potykion/potykion.github.io'
         },
     ];
 
     /** @type {Card[]} */
     const cards = [
-
-
+        {
+            title: "Еда",
+            items: [
+                {
+                    icon: '📃',
+                    title: 'Рецептики',
+                    link: 'https://potyk.io/potyk-food/'
+                },
+                {
+                    icon: '🧠',
+                    title: 'Размышления о еде',
+                    link: '/thoughts/food'
+                },
+                {
+                    title: 'Отзывы на ресты',
+                    link: 'yandex.ru/maps/user/potyk-io',
+                    icon: '📝'
+                },
+                {
+                    title: 'Сладости',
+                    link: 'https://docs.google.com/spreadsheets/d/1qreMshjaTWnI5GhAEc-CIJafXcK9iwUC16RaG7gYCsM/edit?usp=sharing',
+                    icon: '📊'
+                },
+                {
+                    icon: '📊',
+                    title: 'Рестики и кафешки',
+                    link: 'https://docs.google.com/spreadsheets/d/1h56SxxWjZCJmGULhlzVsRvT4KSU4rWoYBEWhQvrecGk/edit?usp=sharing',
+                },
+            ]
+        },
         {
             title: 'Музыка',
             items: [
@@ -185,31 +210,6 @@
                     icon: '🤝',
                     title: "Го дружить в RYM",
                     link: "https://rateyourmusic.com/~potykion",
-                },
-            ]
-        },
-        {
-            title: "Еда",
-            items: [
-                {
-                    icon: '📃',
-                    title: 'Рецептики',
-                    link: 'https://potyk.io/potyk-food/'
-                },
-                {
-                    icon: '📊',
-                    title: 'Рестики и кафешки',
-                    link: 'https://docs.google.com/spreadsheets/d/1h56SxxWjZCJmGULhlzVsRvT4KSU4rWoYBEWhQvrecGk/edit?usp=sharing',
-                },
-                {
-                    icon: '🧠',
-                    title: 'Размышления о еде',
-                    link: '/thoughts/food'
-                },
-                {
-                    title: 'Сладости',
-                    link: 'https://docs.google.com/spreadsheets/d/1qreMshjaTWnI5GhAEc-CIJafXcK9iwUC16RaG7gYCsM/edit?usp=sharing',
-                    icon: '📊'
                 },
             ]
         },
@@ -246,17 +246,60 @@
                     link: 'https://docs.google.com/spreadsheets/d/13xf7UHVDKiCf6rbHeHe2rsgwOlWaNRhUYDqAU5M3ULk/edit?usp=sharing',
                     icon: '📊'
                 },
-
+                {
+                    title: 'Мои кодинг проекты',
+                    link: '/code',
+                    icon: '📝'
+                },
             ]
-        }
+        },
+        {
+            title: "Алко",
+            items: [
+                {
+                    icon: '📊',
+                    title: 'Винный погребок',
+                    link: '/collections/wine'
+                },
+                {
+                    icon: '📊',
+                    title: 'Пивной холодильник',
+                    link: '/collections/beer'
+                },
+                {
+                    title: 'Пиво Россия',
+                    link: 'https://docs.google.com/spreadsheets/d/1JdhEktmNFFrolieF7O4pkmlic3urTROx8Fq8C2RNWY4/edit?usp=sharing',
+                    icon: '📊'
+                },
+            ]
+        },
+        {
+            title: "Еще таблички",
+            items: [
+                {
+                    title: 'ЮТ-каналы ',
+                    link: 'https://docs.google.com/spreadsheets/d/1BLWN5txwatQdyRSHt0Jl2IWUqIbm-dcAMkEMXIiyTqg/edit?usp=sharing',
+                    icon: '📹'
+                },
+                {
+                    title: "Телеграм Каналы ",
+                    link: "https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing",
+                    icon: '📣'
+                },
+                {
+                    title: "Театры/Мюзиклы ",
+                    link: "https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing",
+                    icon: '🎭'
+                },
+            ]
+        },
     ]
 
-
     const iconsHtml = icons.map(icon => {
-        return `<a href="${icon.link}">
+        return `<a style="text-decoration: none" href="${icon.link}">
             <div class="flex-center flex-col icon">
-                <div>${icon.icon}</div>
-                <div><small>${icon.title}</small></div>
+                <div style="">${icon.icon}</div>
+                <div style="text-decoration: underline"><small>${icon.title}</small></div>
             </div>
         </a>`
     }).join('')
