@@ -1,4 +1,5 @@
-# Мои кодинг проекты
+# Мои кодинг проекты и заметки про it
+## Мои кодинг проекты
 
 - [flask-proj-templ](https://github.com/potykion/flask-proj-templ) - Template for simple flask apps like potyk-dreams 
 - [lines](https://github.com/potykion/lines) - Simply find lines within file without grep brain fvck 
