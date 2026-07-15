@@ -9,6 +9,10 @@
 - 🎥 - кинцо
 - 🖼️ - картинка
 
+## 2026-07-15
+
+- [🎵 Viper - Money Is As Addicted To Me As I Am To Tha Rap Game](https://youtu.be/9j-bqxhCLJk?si=34oMUMaVIeHDpAh4)
+
 ## 2026-07-13
 
 - [📹 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
