@@ -2,12 +2,17 @@
 
 > У меня иногда возникает желание что-то запостить, но тг канал - это не мой интернет, а я ведь делаю сво й и вот крч
 
-## Обозначения
+## Обозначения и мета
 
+- [📝 Редактировать на гитхабе](https://github.com/potykion/potykion.github.io/edit/master/feed.md)
 - 🎵 - музончик: клипы, сеты и тд
 - 📹 - ютуб видик
 - 🎥 - кинцо
 - 🖼️ - картинка
+
+## 2026-07-15
+
+- [🎵 Viper - Money Is As Addicted To Me As I Am To Tha Rap Game](https://youtu.be/9j-bqxhCLJk?si=34oMUMaVIeHDpAh4)
 
 ## 2026-07-13
 
