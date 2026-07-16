@@ -12,6 +12,7 @@
 
 ## 2026-07-16
 
+- [📹 Новый видик от танакабосс](https://www.youtube.com/watch?v=_ucBXSSNEj8) про гипногонию
 - [📹 Бимбо-обзор на "Технологическую республику" от CEO Palantir](https://www.youtube.com/watch?v=mhe8gxHkuoI) × [Кисунь, дата-центры нас уничтожат(](https://www.youtube.com/watch?v=FjEcJ3hIaik) - новый ютубер (и [подкастер](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)) джаст дроппед
 
 ## 2026-07-15
