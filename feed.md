@@ -7,22 +7,26 @@
 - [📝 Редактировать на гитхабе](https://github.com/potykion/potykion.github.io/edit/master/feed.md)
 - 🎵 - музончик: клипы, сеты и тд
 - 📹 - ютуб видик
+- 🎮 - игрушки
 - 🎥 - кинцо
 - 🖼️ - картинка
 
-## 2026-07-16
+## 2026-07-13 — 2026-07-19
 
+### Pick of the Week
+
+- VIPER
+    - [🎵 Viper - Money Is As Addicted To Me As I Am To Tha Rap Game](https://youtu.be/9j-bqxhCLJk?si=34oMUMaVIeHDpAh4)
+    - [🎵 Viper - I Sell A1 Cocaine](https://youtu.be/A6dg28hpbKU?si=0HIRDIRwSzRRSQkJ)
+- [📝 ИИ-рефакторинг](code/ai)
+
+### Notable
+
+- [🎮 Desktop Explorer](https://store.steampowered.com/app/2527160/Desktop_Explorer/) - ахуй стилек, но вот бы русик......
+- [🎮 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
 - [📹 Новый видик от танакабосс](https://www.youtube.com/watch?v=_ucBXSSNEj8) про гипногонию
 - [📹 Бимбо-обзор на "Технологическую республику" от CEO Palantir](https://www.youtube.com/watch?v=mhe8gxHkuoI) × [Кисунь, дата-центры нас уничтожат(](https://www.youtube.com/watch?v=FjEcJ3hIaik) - новый ютубер (и [подкастер](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)) джаст дроппед
-
-## 2026-07-15
-
 - [🎵 Napalm Death: Tiny Desk Concert](https://youtu.be/e81LZCHhNKQ?si=WKFXpxMofA3L4oJl) - ахах Барни такой скини
-- [🎵 Viper - Money Is As Addicted To Me As I Am To Tha Rap Game](https://youtu.be/9j-bqxhCLJk?si=34oMUMaVIeHDpAh4)
-
-## 2026-07-13
-
-- [📹 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
 
 ## 2026-07-06 - 2026-07-12
 
