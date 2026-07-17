@@ -11,6 +11,13 @@
 - 🎥 - кинцо
 - 🖼️ - картинка
 
+## Посмотреть (употребить) позже
+
+- [📹 БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
+- [📹 Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
+- [📹 КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
+- [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
+
 ## 2026-07-13 — 2026-07-19
 
 ### Pick of the Week
