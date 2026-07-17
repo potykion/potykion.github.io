@@ -22,11 +22,12 @@
 
 ### Notable
 
-- [🎮 Desktop Explorer](https://store.steampowered.com/app/2527160/Desktop_Explorer/) - ахуй стилек, но вот бы русик......
-- [🎮 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
+- [📹 Крах ТРАХТЕНБЕРГА. Как уничтожить свою карьеру](https://www.youtube.com/watch?v=JL2oOVe33fQ) - о, чел, который делал видики про музыку на ленте (коля редькин, ты вторичен), начал делать видики про y2k
 - [📹 Новый видик от танакабосс](https://www.youtube.com/watch?v=_ucBXSSNEj8) про гипногонию
 - [📹 Бимбо-обзор на "Технологическую республику" от CEO Palantir](https://www.youtube.com/watch?v=mhe8gxHkuoI) × [Кисунь, дата-центры нас уничтожат(](https://www.youtube.com/watch?v=FjEcJ3hIaik) - новый ютубер (и [подкастер](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)) джаст дроппед
 - [🎵 Napalm Death: Tiny Desk Concert](https://youtu.be/e81LZCHhNKQ?si=WKFXpxMofA3L4oJl) - ахах Барни такой скини
+- [🎮 Desktop Explorer](https://store.steampowered.com/app/2527160/Desktop_Explorer/) - ахуй стилек, но вот бы русик......
+- [🎮 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
 
 ## 2026-07-06 - 2026-07-12
 
