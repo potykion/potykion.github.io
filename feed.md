@@ -17,6 +17,8 @@
 - [📹 Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
 - [📹 КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
+- [🎮 Ньяувостная лента — Июль 2026](https://store.steampowered.com/news/app/2868840/view/674000199448790400?l=russian)
+- [🎮 The First Ever Sub 10 Claw% Speedrun](https://www.youtube.com/watch?v=TJ_-Q1tE--I&t=235s)
 
 ## 2026-07-13 — 2026-07-19
 
