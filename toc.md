@@ -18,10 +18,9 @@
 ## Мысли/взгляды/Гайды
 
 - [Мнение про тоту](/thoughts/tattoo)
-- [Как найти девушку](guides/find-gf)
 
 
-## Коллекции/Таблички
+## Коллекции/Таблички/Всякое
 
 - [Мои девайсы](/collections/devices)
 - [Кинцо](/collections/movies)
@@ -42,3 +41,7 @@
 - [Блядь, Лейбович!](https://t.me/+scHXi2m3_Q0zMTIy)
 - [потик инста 📸](https://t.me/potyk_insta)
 - [potyk-space](https://t.me/+81ILbctchgo1NDIy)
+
+### Заметки
+
+- [Чай](notes/tea)
