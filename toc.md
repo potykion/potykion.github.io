@@ -42,6 +42,12 @@
 - [потик инста 📸](https://t.me/potyk_insta)
 - [potyk-space](https://t.me/+81ILbctchgo1NDIy)
 
-### Заметки
+## Хлам: Идеи, заметки, черновички, недописанное, в процессе, брошенное
 
 - [Чай](notes/tea)
+- [Москва базовые едальни](food/msk)
+- [Москва Фуд-гайд 2026](notes/msk-food-guide-2026)
+- [oks-23-07.md](notes/oks-23-07)
+- [Идеи что закодить](notes/soft-ideas)
+- [Трейдинг заметки](notes/trading)
+- [2026.md](years/2026)
