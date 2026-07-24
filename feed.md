@@ -15,14 +15,15 @@
 
 ## Посмотреть (употребить) позже
 
-- [📹 БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
-- [📹 Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
-- [📹 КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
+- [📹 Олег Кармунин — БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
+- [📹 Олег Кармунин — Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
+- [📹 Олег Кармунин — КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
 
 ## 2026-07-20 — 2026-07-26
 
-- [📹 Китайский ИИ рвёт амеров, КРАХ Мосбиржи, динозавр на аукционе](https://youtu.be/NNhKO7DBQfs?si=QUIGp9fSy19oGJXL)
+- [📹 jpegviolence — гаспар ноэ: режиссер твоих кошмаров](https://www.youtube.com/watch?v=JMkzw_Xmst8)
+- [📹 Хулиномика — Китайский ИИ рвёт амеров, КРАХ Мосбиржи, динозавр на аукционе](https://youtu.be/NNhKO7DBQfs?si=QUIGp9fSy19oGJXL)
 
 ## 2026-07-13 — 2026-07-19
 
@@ -35,7 +36,7 @@
 
 ### Notable
 
-- [📹 Крах ТРАХТЕНБЕРГА. Как уничтожить свою карьеру](https://www.youtube.com/watch?v=JL2oOVe33fQ) - о, чел, который делал видики про музыку на ленте (коля редькин, ты вторичен), начал делать видики про y2k
+- [📹 Олег Кармунин — Крах ТРАХТЕНБЕРГА. Как уничтожить свою карьеру](https://www.youtube.com/watch?v=JL2oOVe33fQ) - о, чел, который делал видики про музыку на ленте (коля редькин, ты вторичен), начал делать видики про y2k
 - [📹 Новый видик от танакабосс](https://www.youtube.com/watch?v=_ucBXSSNEj8) про гипногонию
 - [📹 Бимбо-обзор на "Технологическую республику" от CEO Palantir](https://www.youtube.com/watch?v=mhe8gxHkuoI) × [Кисунь, дата-центры нас уничтожат(](https://www.youtube.com/watch?v=FjEcJ3hIaik) - новый ютубер (и [подкастер](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)) джаст дроппед
 - [🎵 Napalm Death: Tiny Desk Concert](https://youtu.be/e81LZCHhNKQ?si=WKFXpxMofA3L4oJl) - ахах Барни такой скини
