@@ -2,9 +2,11 @@
 
 > У меня иногда возникает желание что-то запостить, но тг канал - это не мой интернет, а я ведь делаю сво й и вот крч
 
+- [📝 РЕДАКТИРОВАТЬ НА ГИТХАБ](https://github.com/potykion/potykion.github.io/edit/master/feed.md)
+
+
 ## Обозначения и мета
 
-- [📝 Редактировать на гитхабе](https://github.com/potykion/potykion.github.io/edit/master/feed.md)
 - 🎵 - музончик: клипы, сеты и тд
 - 📹 - ютуб видик
 - 🎮 - игрушки
@@ -17,9 +19,10 @@
 - [📹 Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
 - [📹 КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
-- [🎮 Ньяувостная лента — Июль 2026](https://store.steampowered.com/news/app/2868840/view/674000199448790400?l=russian)
-- [🎮 The First Ever Sub 10 Claw% Speedrun](https://www.youtube.com/watch?v=TJ_-Q1tE--I&t=235s)
-- https://youtu.be/NNhKO7DBQfs?si=QUIGp9fSy19oGJXL
+
+## 2026-07-20 — 2026-07-26
+
+- [📹 Китайский ИИ рвёт амеров, КРАХ Мосбиржи, динозавр на аукционе](https://youtu.be/NNhKO7DBQfs?si=QUIGp9fSy19oGJXL)
 
 ## 2026-07-13 — 2026-07-19
 
@@ -38,6 +41,7 @@
 - [🎵 Napalm Death: Tiny Desk Concert](https://youtu.be/e81LZCHhNKQ?si=WKFXpxMofA3L4oJl) - ахах Барни такой скини
 - [🎮 Desktop Explorer](https://store.steampowered.com/app/2527160/Desktop_Explorer/) - ахуй стилек, но вот бы русик......
 - [🎮 Uncanny Cat Golf RELEASE TRAILER](https://youtu.be/yWYgvXV18VA?si=jEDEmH3R4cAkAdE8)
+- [🎮 The First Ever Sub 10 Claw% Speedrun](https://www.youtube.com/watch?v=TJ_-Q1tE--I&t=235s)
 
 ## 2026-07-06 - 2026-07-12
 
