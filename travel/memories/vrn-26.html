@@ -1,7 +1,9 @@
-{% extends '_base.html' %}
-
-{% block style %}
-
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Воронеж '26</title>
     <style>
         figure {
             display: flex;
@@ -22,15 +24,12 @@
             gap: 10px
         }
     </style>
-{% endblock %}
-
-
-
-{% block main %}
+</head>
+<body>
 
     <h1 style="text-align: center">Воронеж '26</h1>
     <figure>
-        <img src="{{ url_for('static', filename='img/voronezh-cat.jpg') }}" style="width: 100%">
+        <img src="static/img/voronezh-cat.jpg" style="width: 100%">
         <figcaption style="text-align: center">
             <small>Котёнок
                 с улицы Лизюкова</small>
@@ -80,7 +79,7 @@
     <div class="img-grid">
 
         <figure style="grid-column: span 2">
-            <img src="{{ url_for('static', filename='img/voronezh-svo.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-svo.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Еее СВО</small>
             </figcaption>
@@ -88,7 +87,7 @@
 
 
         <figure style="width: 100%">
-            <img src="{{ url_for('static', filename='img/voronezh-sms.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-sms.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>СМС — это прогрессив</small>
             </figcaption>
@@ -97,7 +96,7 @@
 
 
         <figure style="width: 100%">
-            <img src="{{ url_for('static', filename='img/voronezh-rschs.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-rschs.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Встретили БПЛА и проводили БПЛА</small>
             </figcaption>
@@ -148,13 +147,13 @@
     <div class="img-grid">
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-breakfast.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-breakfast.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>15/86</small>
             </figcaption>
         </figure>
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-cheburek.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-cheburek.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Чебуречная</small>
             </figcaption>
@@ -162,7 +161,7 @@
 
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-ribs.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-ribs.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Брюггер</small>
             </figcaption>
@@ -171,7 +170,7 @@
 
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-husk.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-husk.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Гармошка</small>
             </figcaption>
@@ -218,7 +217,7 @@
     </ul>
 
     <figure>
-        <img src="{{ url_for('static', filename='img/voronezh-gallery.jpg') }}" style="width: 300px">
+        <img src="static/img/voronezh-gallery.jpg" style="width: 300px">
         <figcaption style="text-align: center">
             <small>Х.Л.А.М.</small>
         </figcaption>
@@ -255,13 +254,13 @@
     <div class="img-grid">
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-water.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-water.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Большой музей-кораблик</small>
             </figcaption>
         </figure>
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-sculpt.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-sculpt.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Всратые скульптуры</small>
             </figcaption>
@@ -269,7 +268,7 @@
 
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-rotonda.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-rotonda.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Эпик Ротонда</small>
             </figcaption>
@@ -278,7 +277,7 @@
 
 
         <figure>
-            <img src="{{ url_for('static', filename='img/voronezh-park.jpg') }}" style="width: 100%">
+            <img src="static/img/voronezh-park.jpg" style="width: 100%">
             <figcaption style="text-align: center">
                 <small>Атмосферные парки</small>
             </figcaption>
@@ -286,8 +285,6 @@
         </figure>
     </div>
 
-
-
-{% endblock %}
-
+</body>
+</html>
 
