@@ -3,14 +3,14 @@
 - [🔫 Пацаны ебланят 🔫](#pacany)
 - [🥴 Фильмы когда убитый 🥴](#ubitiy)
 - [✨ Russian y2k weird-core ✨](#russian-y2k)
-- [✨ Прими свою судьбу ✨](#primi-sudbu)
+- [🔮 Прими свою судьбу 🔮](#primi-sudbu)
 - [💊 Фильмы про наркотики 💊](#narkotiki)
 - [🤮 Грязь, Чернь 🤮](#gryaz)
 
-## 🔫 Пацаны ебланят 🔫 {id=pacany}
+<h2 id="pacany">🔫 Пацаны ебланят 🔫</h2>
 
 <div style="text-align: center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QWaWsgBbFsA?si=L1jvlj7E3RL2V-XP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: max(560px, 100%); height: 315px" src="https://www.youtube.com/embed/QWaWsgBbFsA?si=L1jvlj7E3RL2V-XP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <table>
@@ -28,18 +28,18 @@
   </tr>
 </table>
 
-### Посмотреть позже
+<h3>Посмотреть позже</h3>
 
 - Ромпер-стомпер
 - Россия-88
 
-## 🥴 Фильмы когда убитый 🥴 {id=ubitiy}
+<h2 id="ubitiy">🥴 Фильмы когда убитый 🥴</h2>
 
 > Когда упитый, упоротый, больной, и время уже под вечер-нось, и хочется кинчика, которого в трезвом состоянии не
 > прочувствуешь
 
 <div style="text-align: center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-kyAucCCiRI?si=OHYBVGWQop4zCBrf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: max(560px, 100%); height: 315px" src="https://www.youtube.com/embed/-kyAucCCiRI?si=OHYBVGWQop4zCBrf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <table>
@@ -57,7 +57,7 @@
   </tr>
 </table>
 
-## *✨ Russian y2k weird-core ✨* {id=russian-y2k}
+<h2 id="russian-y2k"><em>✨ Russian y2k weird-core ✨</em></h2>
 
 <table>
   <tr>
@@ -66,13 +66,13 @@
     <td><img src="/static/img/movies/rusalka.webp" alt="rusalka.webp"></td>
   </tr>
   <tr>
-    <td><a href="https://www.kinopoisk.ru/film/41149/">Даун-Хаус</a></td>
-    <td><a href="https://www.kinopoisk.ru/film/41133/">ДМБ</a></td>
-    <td><a href="https://www.kinopoisk.ru/film/278156/">Русалка</a></td>
+    <td><a href="https://www.kinopoisk.ru/film/41149/">Даун-Хаус (2001)</a></td>
+    <td><a href="https://www.kinopoisk.ru/film/41133/">ДМБ (2000)</a></td>
+    <td><a href="https://www.kinopoisk.ru/film/278156/">Русалка (2007)</a></td>
   </tr>
 </table>
 
-## *✨ Прими свою судьбу ✨* {id=primi-sudbu}
+<h2 id="primi-sudbu"><em>🔮 Прими свою судьбу 🔮</em></h2>
 
 <table>
   <tr>
@@ -87,7 +87,7 @@
   </tr>
 </table>
 
-## 💊 Фильмы про наркотики 💊 {id=narkotiki}
+<h2 id="narkotiki">💊 Фильмы про наркотики 💊</h2>
 
 - [Реквием по мечте](https://www.kinopoisk.ru/film/367/)
 - [Дневник баскетболиста](https://www.kinopoisk.ru/film/6175/)
@@ -114,13 +114,13 @@
 - [Рейв](https://www.kinopoisk.ru/film/1053967/)
 - [Кислотный дом](https://www.kinopoisk.ru/film/18805/)
 
-## 🤮 Грязь, Чернь 🤮 {id=gryaz}
+<h2 id="gryaz">🤮 Грязь, Чернь 🤮</h2>
 
 > Когда хочется чернухи, мерзости, жестокости
 
 - [Экс-ударник](https://www.kinopoisk.ru/film/281752/)
 - [Казнь](https://www.kinopoisk.ru/film/1405778/)
 
-### Посмотреть позже
+<h3>Посмотреть позже</h3>
 
 - [Французское новое трансгрессивное кино](https://www.kinopoisk.ru/lists/movies/french_new_transgressive/)
