@@ -20,6 +20,7 @@ views:
       note.status:
         - new
         - wip
+        - done
     cardOrders:
       file.file: {}
       note.tags: {}
@@ -33,5 +34,6 @@ views:
     columnColors:
       file.file: {}
       note.tags: {}
-      note.status: {}
+      note.status:
+        done: green
     groupByProperty: note.status

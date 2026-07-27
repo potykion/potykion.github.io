@@ -19,23 +19,8 @@
               "icon": "columns",
               "title": "potyk-io-tasks"
             }
-          },
-          {
-            "id": "717591f40283512c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Кино прими свою судьбу.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Кино прими свою судьбу"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -197,10 +182,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "717591f40283512c",
+  "active": "98e4285b50c85e68",
   "lastOpenFiles": [
-    "potyk-io-tasks.base",
     "Кино прими свою судьбу.md",
+    "potyk-io-tasks.base",
     "msk-food-guide-2026.md"
   ]
 }

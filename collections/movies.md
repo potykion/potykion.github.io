@@ -10,7 +10,7 @@
 <h2 id="pacany">🔫 Пацаны ебланят 🔫</h2>
 
 <div style="text-align: center">
-<iframe style="width: max(560px, 100%); height: 315px" src="https://www.youtube.com/embed/QWaWsgBbFsA?si=L1jvlj7E3RL2V-XP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: min(560px, 100%); height: 315px" src="https://www.youtube.com/embed/QWaWsgBbFsA?si=L1jvlj7E3RL2V-XP" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <table>
@@ -39,7 +39,7 @@
 > прочувствуешь
 
 <div style="text-align: center">
-<iframe style="width: max(560px, 100%); height: 315px" src="https://www.youtube.com/embed/-kyAucCCiRI?si=OHYBVGWQop4zCBrf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe style="width: min(560px, 100%); height: 315px" src="https://www.youtube.com/embed/-kyAucCCiRI?si=OHYBVGWQop4zCBrf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <table>
