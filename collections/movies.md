@@ -57,7 +57,7 @@
   </tr>
 </table>
 
-<h2 id="russian-y2k"><em>✨ Russian y2k weird-core ✨</em></h2>
+<h2 id="russian-y2k">✨ <em>Russian y2k weird-core </em> ✨</h2>
 
 <table>
   <tr>
@@ -72,7 +72,7 @@
   </tr>
 </table>
 
-<h2 id="primi-sudbu"><em>🔮 Прими свою судьбу 🔮</em></h2>
+<h2 id="primi-sudbu">🔮 <em> Прими свою судьбу </em> 🔮</h2>
 
 <table>
   <tr>
