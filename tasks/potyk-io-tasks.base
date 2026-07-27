@@ -1,0 +1,37 @@
+views:
+  - type: kanban-view
+    name: Table
+    filters:
+      and:
+        - file.ext == "md"
+    order:
+      - tags
+    columnOrders:
+      file.file:
+        - Projects/potyk-io-tasks.md
+        - Projects/potyk-io-tasks_tasks/msk-food-guide.md
+        - Untitled.base
+        - msk-food-guide-2026.md
+        - Картофельный салат с селёдкой.md
+        - Курица с капустой по-азиатски.md
+      note.tags:
+        - "#potyk-food"
+        - Uncategorized
+      note.status:
+        - new
+        - wip
+    cardOrders:
+      file.file: {}
+      note.tags: {}
+      note.status:
+        Uncategorized:
+          - msk-food-guide-2026.md
+          - potyk-io-tasks.base
+        new:
+          - Картофельный салат с селёдкой.md
+          - Курица с капустой по-азиатски.md
+    columnColors:
+      file.file: {}
+      note.tags: {}
+      note.status: {}
+    groupByProperty: note.status
