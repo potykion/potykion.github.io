@@ -20,6 +20,10 @@
 - [📹 Олег Кармунин — КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
 
+## 2026-07-27 — 2026-08-02
+
+- [📹 Was Jim Carrey Right About Napalm Death?](https://www.youtube.com/shorts/xS3KC0QTotE) - и еще о напалмах вспоминаем
+
 ## 2026-07-20 — 2026-07-26
 
 - [📹 jpegviolence — гаспар ноэ: режиссер твоих кошмаров](https://www.youtube.com/watch?v=JMkzw_Xmst8)
