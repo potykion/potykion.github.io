@@ -23,7 +23,6 @@
 ## Коллекции/Таблички/Всякое
 
 - [Мои девайсы](/collections/devices)
-- [Кинцо](/collections/movies)
 - [📹 ЮТ-каналы](https://docs.google.com/spreadsheets/d/1BLWN5txwatQdyRSHt0Jl2IWUqIbm-dcAMkEMXIiyTqg/edit?usp=sharing)
 - [📣 Телеграм Каналы](https://docs.google.com/spreadsheets/d/1C0RXi9eChoP_AfyLda1jM_aC0aSuLr-fBaJLpaZ34Kw/edit?usp=sharing)
 - [🎭 Театры/Мюзиклы](https://docs.google.com/spreadsheets/d/1pT59i5SuDrjovAKZXybnOzNWIn1SSljU24STSjIs8tk/edit?usp=sharing)
