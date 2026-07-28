@@ -12,6 +12,13 @@
 - [Исси и биси](https://yandex.ru/maps/-/CPg3JFJK)
 - [Hello Kitty and friends](https://yandex.ru/maps/-/CPg~UZ~g)
 
+### 🔵 Крылатское
+
+- Крылатское
+- Серебряный бор
+- Щукинский полуост.
+
+
 ### 🟠 ВДНХ / Бот-сад / Проспект мира
 
 - Музей Космонавтики
@@ -38,7 +45,7 @@
 
 ### 🟣 1905 / Пресня
 
-- [Государственный биологический музей имени К.А. Тимирязева](https://yandex.ru/maps/org/gosudarstvenny_biologicheskiy_muzey_imeni_k_a_timiryazeva/1100812528?si=potyk-io)
+- [x] [Государственный биологический музей имени К.А. Тимирязева](https://yandex.ru/maps/org/gosudarstvenny_biologicheskiy_muzey_imeni_k_a_timiryazeva/1100812528?si=potyk-io)
 - [Московский Планетарий](https://yandex.ru/maps/-/CPg3q84E)
 
 ### 🟣 Пушкинская 
