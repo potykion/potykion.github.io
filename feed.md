@@ -16,12 +16,12 @@
 ## Посмотреть (употребить) позже
 
 - [📹 Олег Кармунин — БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
-- [📹 Олег Кармунин — Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
 - [📹 Олег Кармунин — КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
 
 ## 2026-07-27 — 2026-08-02
 
+- [📹 Олег Кармунин — Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
 - [📹 Was Jim Carrey Right About Napalm Death?](https://www.youtube.com/shorts/xS3KC0QTotE) - и еще о напалмах вспоминаем
 
 ## 2026-07-20 — 2026-07-26
