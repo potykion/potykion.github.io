@@ -26,14 +26,17 @@ views:
       note.tags: {}
       note.status:
         Uncategorized:
-          - msk-food-guide-2026.md
-          - potyk-io-tasks.base
+          - Екат Воспоминания.md
         new:
           - Картофельный салат с селёдкой.md
           - Курица с капустой по-азиатски.md
+          - Перенос potyk-io на flask + caddy.md
+          - Екат Воспоминания.md
     columnColors:
       file.file: {}
       note.tags: {}
       note.status:
         done: green
+        wip: purple
+        new: cyan
     groupByProperty: note.status

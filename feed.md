@@ -15,10 +15,23 @@
 
 ## Посмотреть (употребить) позже
 
-- [📹 Олег Кармунин — БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
-- [📹 Олег Кармунин — КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 - [🗣️ Подкаст Продактка](https://music.yandex.ru/album/26382063?utm_source=desktop&utm_medium=copy_link)
-- [📹 Дрон инкорпорейтед — Глубокий лор «Что? Где? Когда?» Часть 2](https://youtu.be/FwKNv6xz16c?si=3kJTE64p-8vQJEw3)
+
+### Кушаем ностальгию 😋
+
+#### Дрон инкорпорейтед
+
+- [📹 Когда "ДАЁШЬ МОЛОДЁЖЬ" точнее учебников истории](https://www.youtube.com/watch?v=E7caDC4CzZg)
+- [📹 Глубокий лор «Аншлага»](https://www.youtube.com/watch?v=vg_aG0TbFxg)
+- [📹 Провал российских кинопародий 00-х](https://www.youtube.com/watch?v=HKXMv5_wVoI)
+- [📹 Глубокий лор «Что? Где? Когда?» Часть 1](https://www.youtube.com/watch?v=OSiwDWyEiK8)
+- [📹 Глубокий лор «Что? Где? Когда?» Часть 2](https://youtu.be/FwKNv6xz16c?si=3kJTE64p-8vQJEw3)
+
+#### Олег Кармунин
+
+- [📹 Вселенная раннего Сергея Минаева](https://www.youtube.com/watch?v=udv3BoxLSjw)
+- [📹 БЫТЬ НЕФОРОМ. Флекс и нищета русских субкультур](https://www.youtube.com/watch?v=lhRR76v9ang)
+- [📹 КОНЕЦ КЛИПОВ: как в России погибла целая индустрия](https://www.youtube.com/watch?v=XI0JU_1yLzk)
 
 ## 2026-07-27 — 2026-08-02
 
