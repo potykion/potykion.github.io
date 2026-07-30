@@ -34,6 +34,12 @@
 
 ## 2026-07-27 — 2026-08-02
 
+### Pick of the Week
+
+- [📹 диаболик — БРАУЗЕРНЫЕ ИГРЫ....](https://www.youtube.com/watch?v=xHPML_WkGmY)
+
+### Notable
+
 - [📹 Олег Кармунин — Вселенная раннего Сергея Минаева](https://www.youtube.com/watch?v=udv3BoxLSjw)
 - [📹 Олег Кармунин — Артемий Лебедев, которого мы потеряли](https://www.youtube.com/watch?v=Xop-22b9XPI)
 - [📹 Was Jim Carrey Right About Napalm Death?](https://www.youtube.com/shorts/xS3KC0QTotE) - и еще о напалмах вспоминаем
