@@ -19,8 +19,22 @@
               "icon": "columns",
               "title": "potyk-io-tasks"
             }
+          },
+          {
+            "id": "72a26434df5b22df",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "potyk-io-tasks.base",
+                "viewName": "Table"
+              },
+              "icon": "columns",
+              "title": "potyk-io-tasks"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -182,10 +196,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "98e4285b50c85e68",
+  "active": "72a26434df5b22df",
   "lastOpenFiles": [
-    "Екат Воспоминания.md",
+    "Музыка 2к26.md",
     "potyk-io-tasks.base",
+    "Екат Воспоминания.md",
     "Clippings/Рецепт Жаркое из курицы с картошкой на RussianFood.com.md",
     "Clippings",
     "Перенос potyk-io на flask + caddy.md",

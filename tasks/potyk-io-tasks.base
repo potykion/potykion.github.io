@@ -32,6 +32,9 @@ views:
           - Курица с капустой по-азиатски.md
           - Перенос potyk-io на flask + caddy.md
           - Екат Воспоминания.md
+        wip:
+          - msk-food-guide-2026.md
+          - Музыка 2к26.md
     columnColors:
       file.file: {}
       note.tags: {}
