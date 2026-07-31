@@ -14,7 +14,8 @@
         body {
             font-family: Rubik, system-ui;
             margin: 0;
-
+            background: #fff0e0;
+            min-height: 100vh;
         }
 
         main {
@@ -51,7 +52,7 @@
 
         @media screen and (max-width: 480px) {
             body {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
 
 
@@ -346,8 +347,22 @@
                 },
 
             ]
+        }, {
+            title: "Селф",
+            items: [
+                {
+                    icon: '📝',
+                    title: 'Обо мне',
+                    link: '/n'
+                },
+                {
+                    icon: '📔',
+                    title: 'Днев',
+                    link: '/diary'
+                },
+            ]
         },
-    ]
+    ].toSorted(() => Math.random()-0.5)
 
     const iconsHtml = icons.map(icon => {
         return `<a style="text-decoration: none" href="${icon.link}">
